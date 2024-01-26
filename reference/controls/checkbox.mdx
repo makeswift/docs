@@ -1,4 +1,52 @@
 ---
 title: Checkbox
-description: Checkbox control description
+description: Adds a Checkbox panel in the Makeswift builder to visually edit a `boolean` prop.
 ---
+
+<Frame
+  type="glass"
+  caption="A checkbox panel on a Navigation component to show the logo"
+>
+  <img src="/images/checkbox-panel.png" />
+</Frame>
+
+## Params
+
+<ParamField query="label" type="string" default="Label">
+  Text for the checkbox label. The label appears in the panel in the Makeswift
+  builder.
+</ParamField>
+
+<ParamField query="defaultValue" type="boolean">
+  Defines the value shown for the checkbox in the Makeswift builder when the
+  value isn’t set. If you don’t provide a default value, the Checkbox control
+  passes an `undefined` value to your component.
+</ParamField>
+
+<RequestExample>
+
+As mentioned in [Registering components](/integrating-components/makeswift), add controls to component props when you register the component.
+
+The following example shows the Checkbox control added to the `on` prop when you register a `Switch` component.
+
+The control passes information about the checkbox, including its default value. For all the information that the Checkbox control passes, see [API parameters](#api-parameters)
+
+```jsx /components/Navigation/Navigation.makeswift.js
+import { Checkbox } from "@makeswift/runtime/controls"
+import { runtime } from "@/lib/makeswift/runtime"
+
+import { Navigation } from "./Navigation"
+
+runtime.registerComponent(Navigation, {
+  type: "navigation",
+  label: "Navigation",
+  props: {
+    showLogo: Checkbox({
+      label: "Show Logo",
+      defaultValue: false,
+    }),
+  },
+})
+```
+
+</RequestExample>
