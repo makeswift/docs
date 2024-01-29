@@ -2,3 +2,29 @@
 title: Code splitting
 description: Code splitting
 ---
+
+### Using `next/dynamic`
+
+Often times you'll have a lot of components being registered with Makeswift but not all of them are
+used on every page. To avoid a large bundle size you can load a component **only** when it's used by
+leveraging Next.js' `next/dynamic`. [Learn more here.](https://nextjs.org/docs/pages/building-your-application/optimizing/lazy-loading#nextdynamic)
+
+```js
+import dynamic from "next/dynamic"
+import { ReactRuntime } from "@makeswift/runtime/react"
+
+const DynamicHeader = dynamic(() => import("../components/header"), {
+  suspense: true,
+})
+
+ReactRuntime.registerComponent(DynamicHeader, {
+  type: "header",
+  label: "Header",
+  props: {
+    /* Header props... */
+  },
+})
+```
+
+Registering `DynamicHeader` means that all the JavaScript in `../components/header` will not be
+included in a page unless the component is actually used.

@@ -2,3 +2,48 @@
 title: Troubleshooting
 description: Troubleshooting
 ---
+
+## Builder isn't loading in Safari
+
+If you're using Safari and the builder isn't loading, it's likely that you're running into issues
+with [mixed content](https://developer.mozilla.org/en-US/Web/Security/Mixed_content).
+
+Safari blocks loading of all mixed-content resources, which means that `https://app.makeswift.com`,
+which is loaded via **HTTPS**, can't load `http://localhost:3000`, which is loaded via **HTTP**.
+
+The solution to this issue is to run your local Next.js app with HTTPS. If you're not familiar with
+running your Next.js app locally with HTTPS, we've explained how to do so
+in <a href="https://www.makeswift.com/blog/accessing-your-local-nextjs-dev-server-using-https">this blog post</a>.
+
+If you follow the instructions in the blog post, i.e., use `mkcert`, you might need to make sure
+that Node.js trusts `mkcert`'s CA. This can be done with the `NODE_EXTRA_CA_CERTS` env var.
+
+For example, in your `package.json`:
+
+```diff
+-    "dev": "next dev",
++    "dev": "NODE_EXTRA_CA_CERTS=\"$(mkcert -CAROOT)/rootCA.pem\" next dev",
+```
+
+If you don't make this change you might see an `UNABLE_TO_VERIFY_LEAF_SIGNATURE` error. Read more in
+[this Stack Overflow answer](https://stackoverflow.com/a/68135600).
+
+Makeswift checks if your app is running in development and will automatically bypass the SSL proxy,
+so you should not encounter this error unless you're running a production build of your Next.js app
+or makeswift fails to bypass the SSL proxy for some reason.
+
+## Builder isn't loading in Brave Browser
+
+If you're using Brave and the builder isn't loading, it's likely you're running into issues with
+Brave Shields and its restrictions on `localhost`.
+
+After [#463](https://github.com/brave/adblock-lists/pull/463) was merged, Brave blocks requests to
+`localhost` from non-`localhost` documents.
+
+To solve this issue, go to `brave://adblock` and add the following custom filter:
+
+```
+@@||localhost^$domain=app.makeswift.com
+```
+
+This will make it so that Brave Shields doesn't block `localhost` requests from `app.makeswift.com`.
