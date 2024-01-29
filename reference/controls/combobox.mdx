@@ -17,7 +17,7 @@ description: Adds a Combobox (autocomplete) panel in the Makeswift builder to vi
 </ParamField>
 
 <ParamField query="getOptions" type="(query: string) => ComboboxControlOption[] | Promise<ComboboxControlOption[]>" required>
-  A function that receives a query string and returns an array of options to display in the Makeswift builder. The options can be retrieved asynchronously using an API call.
+  A function that receives a query string and returns an array of options to display in the Makeswift builder. May return a promise of an array. The options can be retrieved asynchronously using an API call.
 </ParamField>
 
 ## Types
@@ -28,16 +28,17 @@ description: Adds a Combobox (autocomplete) panel in the Makeswift builder to vi
 type ComboboxControlOption<T> = { id: string; label: string; value: T }
 ``` 
 
-<ParamField query="id">
+<ParamField query="id" required>
   Unique ID for the Combobox option.
 </ParamField>
 
-<ParamField query="label">
+<ParamField query="label" required>
   Label for the Combobox option shown in the Makeswift builder.
 </ParamField>
 
-<ParamField query="value">
-  Value for the Combobox option. 
+<ParamField query="value" required>
+  Value for the Combobox option. If you don’t provide a value, the Combobox control
+  passes an `undefined` value to your component.
 </ParamField>
 
 
