@@ -16,7 +16,7 @@ description: Adds a Combobox (autocomplete) panel in the Makeswift builder to vi
   Text for the Combobox label. The label appears in the panel in the Makeswift builder.
 </ParamField>
 
-<ParamField query="getOptions" type="(query: string) => ComboboxControlOption[] | Promise<ComboboxControlOption[]>">
+<ParamField query="getOptions" type="(query: string) => ComboboxControlOption[] | Promise<ComboboxControlOption[]>" required>
   A function that receives a query string and returns an array of options to display in the Makeswift builder. The options can be retrieved asynchronously using an API call.
 </ParamField>
 
