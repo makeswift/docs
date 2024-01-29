@@ -8,8 +8,8 @@
   "favicon": "/svg/favicon.svg",
   "colors": {
     "primary": "#EA3BA7",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "light": "#EA3BA7",
+    "dark": "#EA3BA7",
     "anchors": {
       "from": "#EA3BA7",
       "to": "#07C983"
@@ -57,20 +57,20 @@
         {
           "group": "Controls",
           "pages": [
-            "/reference/controls/checkbox",
-            "/reference/controls/color",
-            "/reference/controls/combobox",
-            "/reference/controls/image",
-            "/reference/controls/link",
-            "/reference/controls/list",
-            "/reference/controls/number",
-            "/reference/controls/rich-text",
-            "/reference/controls/select",
-            "/reference/controls/shape",
-            "/reference/controls/slot",
-            "/reference/controls/style",
-            "/reference/controls/text-area",
-            "/reference/controls/text-input"
+            "reference/controls/checkbox",
+            "reference/controls/color",
+            "reference/controls/combobox",
+            "reference/controls/image",
+            "reference/controls/link",
+            "reference/controls/list",
+            "reference/controls/number",
+            "reference/controls/rich-text",
+            "reference/controls/select",
+            "reference/controls/shape",
+            "reference/controls/slot",
+            "reference/controls/style",
+            "reference/controls/text-area",
+            "reference/controls/text-input"
           ]
         }
       ]
@@ -78,11 +78,11 @@
     {
       "group": "Guides",
       "pages": [
-        "/guides/manual-installation",
-        "/guides/extending-the-document",
-        "/guides/troubleshooting",
-        "/guides/deploying-to-production",
-        "/guides/migrating-component-data"
+        "guides/manual-installation",
+        "guides/extending-the-document",
+        "guides/troubleshooting",
+        "guides/deploying-to-production",
+        "guides/migrating-component-data"
       ]
     }
   ],
