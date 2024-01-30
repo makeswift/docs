@@ -1,3 +1,48 @@
 ---
 title: Shape
+description: Adds a collection of controls to a component in the Makeswift builder. Each item in the collection has a value defined using another control.
 ---
+
+<Frame
+  type="glass"
+  caption=""
+>
+  <img src="" />
+</Frame>
+
+The Shape control can be nested as deeply as you want within Shape and List controls.
+
+## Params
+
+<ParamField query="type" type="{ [key: string]: ControlDefinition }" required>
+  An object of controls in which the type and values returned from each control determines the shape of the overall value passed to your component.
+  May consist of any of the Makeswift controls.
+</ParamField>
+
+
+<RequestExample>
+
+```jsx /components/UserBio/UserBio.makeswift.js
+import { runtime } from "@/lib/makeswift/runtime"
+import { Shape, TextInput, Number, TextArea, Image } from '@makeswift/runtime/controls'
+
+import { UserBio } from './UserBio'
+
+runtime.registerComponent(UserBio, {
+  type: 'user-bio',
+  label: 'User Bio',
+  props: {
+    user: Shape({
+      type: {
+        name: TextInput({ label: 'Name', defaultValue: '' }),
+        age: Number({ label: 'Age', min: 0, defaultValue: 0 }),
+        bio: TextArea({ label: 'Bio', defaultValue: '' }),
+        profilePictureUrl: Image({ label: 'Profile Picture' }),
+      },
+    }),
+  },
+})
+```
+
+
+</RequestExample>
