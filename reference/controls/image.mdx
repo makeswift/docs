@@ -1,49 +1,25 @@
 ---
 title: Image
-description: Provides access to Images hosted by Makeswift to visually select a `string` prop of the URL image in the Makeswift builder.
+description: Adds an Image panel in the Makeswift builder to visually edit an image prop.
 ---
 
-<Frame
-  type="glass"
-  caption=""
->
+<Frame type="glass" caption="">
   <img src="" />
 </Frame>
 
-
 The images stored and managed by Makeswift can be shared across pages in a site.
-
 
 ## Params
 
 <ParamField query="label" type="string" default="Image">
-  Text for the Image label. The label appears in the panel in the Makeswift builder.
+  Text for the Image label. The label appears in the panel in the Makeswift
+  builder.
 </ParamField>
 
-<ParamField query="format" type="Image.Format" default="Image.Format.URL">
-  Image attributes or properties. If you don’t provide a value and the defaulted image URL doesn't exist, the Image control
-  passes an `undefined` value to your component.
-</ParamField>
+<ParamField query="format" type="Image.Format.URL | Image.Format.WithDimensions" default="Image.Format.URL">
+  Changes the prop type this component receives. If set to `Image.Format.URL`, your component receives a `string` value of the image url. If set to `Image.Format.WithDimensions`, your component receives an object of type `ImageWithDimensions`.
 
-## Types
-
-### Image.Format
-
-```javascript
-type Image.Format = { 
-  URL: string
-  WithDimensions: ImageWithDimensions
-}
-``` 
-
-| Property | Type | Description |
-| --- | --- | --- |
-| URL | string | Image URL. |
-| WithDimensions | ImageWithDimensions | Includes image dimensions. | 
-
-### ImageWithDimensions
-
-```javascript
+```ts
 type ImageWithDimensions = {
   url: string
   dimensions: {
@@ -53,15 +29,15 @@ type ImageWithDimensions = {
 }
 ```
 
-| Property | Type | Description | 
-| --- | --- | --- |
-| url | string | Unique ID for the Image option. |
-| dimensions.width | integer | Image width in pixels. | 
-| dimensions.height | integer | Image height in pixels. | 
+</ParamField>
 
+## Prop type
 
+If `format` is set to `Image.Format.URL`, the prop type is `string`.
 
-<RequestExample>
+If `format` is set to `Image.Format.WithDimensions`, the prop type is `ImageWithDimensions`.
+
+## Example
 
 ```jsx /components/Img/Img.makeswift.js
 import { Image } from "@makeswift/runtime/controls"
@@ -78,5 +54,3 @@ runtime.registerComponent(Img, {
   },
 })
 ```
-
-</RequestExample>

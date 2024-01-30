@@ -1,12 +1,9 @@
 ---
 title: Style
-description: Adds Styling options to your component in the Makeswift builder to visually configure a CSS class `string` prop. 
+description: Adds Styling options to your component in the Makeswift builder to visually configure a CSS class `string` prop.
 ---
 
-<Frame
-  type="glass"
-  caption=""
->
+<Frame type="glass" caption="">
   <img src="" />
 </Frame>
 
@@ -14,23 +11,26 @@ The Style control is the only control that is responsive; its values can be chan
 
 ## Params
 
-<ParamField query="properties" type="StyleControlProperty[]" default="Style.Default">
+<ParamField
+  query="properties"
+  type="StyleControlProperty[]"
+  default="Style.Default"
+>
   The CSS properties to configure in the panels.
 </ParamField>
 
-
 Available values for the `properties` parameter:
+
 - `Style.Width`
 - `Style.Margin`
-- `Style.Padding` 
+- `Style.Padding`
 - `Style.Border`
 - `Style.BorderRadius`
 - `Style.TextStyle`
 - `Style.Default`: preset that includes `Style.Width` and `Style.Margin`
 - `Style.All`: preset that includes all available properties
 
-
-## Types 
+## Types
 
 ```javascript StyleControlProperty
 enum StyleControlProperty {
@@ -42,7 +42,6 @@ enum StyleControlProperty {
   TextStyle,
 }
 ```
-
 
 <RequestExample>
 
