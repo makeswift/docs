@@ -1,3 +1,68 @@
 ---
 title: Select
+description: Adds a dropdown to a component in the Makeswift builder to visually select a value from a list of options.
 ---
+
+<Frame
+  type="glass"
+  caption=""
+>
+  <img src="" />
+</Frame>
+
+## Params
+
+<ParamField query="label" type="string" default="Text">
+  Text for the dropdown label. The label appears in the panel in the Makeswift
+  builder.
+</ParamField>
+
+<ParamField query="labelOrientation" type="LabelOrientation" default="horizontal">
+  Orientation of the dropdown label within the panel.
+</ParamField>
+
+<ParamField query="options" type="SelectControlOption<T>[]" required>
+  The options available in the panel input.
+</ParamField>
+
+<ParamField query="defaultValue" type="T" default="undefined">
+  Defines the value selected in the Makeswift builder when the
+  value isn’t set. If you don’t provide a default value, the control
+  passes an `undefined` value to your component.
+</ParamField>
+
+## Types
+
+```javascript LabelOrientation
+type LabelOrientation = 'vertical' | 'horizontal'
+
+type SelectControlOption<T extends string> = { value: T; label: string }
+```
+
+<RequestExample>
+
+```jsx /components/Button/Button.makeswift.js
+import { Select } from "@makeswift/runtime/controls"
+import { runtime } from "@/lib/makeswift/runtime"
+
+import { Button } from "./Button"
+
+runtime.registerComponent(Button, {
+  type: "button",
+  label: "Button",
+  props: {
+    variant: Select({
+      label: 'Variant',
+      labelOrientation: 'vertical',
+      options: [
+        { value: 'solid', label: 'Solid' },
+        { value: 'outline', label: 'Outline' },
+        { value: 'clear', label: 'Clear' },
+      ],
+      defaultValue: 'solid',
+    }),
+  },
+})
+```
+
+</RequestExample>
