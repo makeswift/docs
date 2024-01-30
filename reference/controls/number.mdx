@@ -17,8 +17,8 @@ description: Adds a Number input in the Makeswift builder to visually edit a `nu
   builder.
 </ParamField>
 
-<ParamField query="labelOrientation" type="string" default="horizontal">
-  Orientation of the number label within the panel. Can take enum values `horizontal` or `vertical`.
+<ParamField query="labelOrientation" type="LabelOrientation" default="horizontal">
+  Orientation of the number label within the panel.
 </ParamField>
 
 <ParamField query="defaultValue" type="number" default="undefined">
@@ -43,6 +43,12 @@ description: Adds a Number input in the Makeswift builder to visually edit a `nu
   Decorative text appended to the end of the panel input.
 </ParamField>
 
+
+## Types
+
+```javascript LabelOrientation
+type LabelOrientation = 'vertical' | 'horizontal'
+```
 
 <RequestExample>
 
