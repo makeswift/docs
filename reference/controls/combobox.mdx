@@ -28,19 +28,11 @@ description: Adds a Combobox (autocomplete) panel in the Makeswift builder to vi
 type ComboboxControlOption<T> = { id: string; label: string; value: T }
 ``` 
 
-<ParamField query="id" required>
-  Unique ID for the Combobox option.
-</ParamField>
-
-<ParamField query="label" required>
-  Label for the Combobox option shown in the Makeswift builder.
-</ParamField>
-
-<ParamField query="value" required>
-  Value for the Combobox option. If you don’t provide a value, the Combobox control
-  passes an `undefined` value to your component.
-</ParamField>
-
+| Properties | Description |
+| --- | --- |
+| id | Unique ID for the Combobox option. |
+| label | Label for the Combobox option shown in the Makeswift builder. |
+| value | Value for the Combobox option. If you don’t provide a value, the control passes an `undefined` value to your component. |
 
 
 <RequestExample>
