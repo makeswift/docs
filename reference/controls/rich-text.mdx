@@ -1,3 +1,73 @@
 ---
 title: RichText
+description: Adds Rich Text boxes in the Makeswift builder to visually edit a `ReactNode` of text.
 ---
+
+## Params
+
+<ParamField query="mode" type="RichTextMode" default="RichText.Mode.Block">
+  Type of richtext markup you want to create (version v0.10.0).
+</ParamField>
+
+## Types 
+
+```javascript RichTextMode
+type RichTextMode = typeof RichText.Mode.Inline | typeof RichText.Mode.Block
+```
+
+| Type | Description |
+| --- | --- |
+| `RichText.Mode.Block` | Use for creating editable sections of your site. Creates a value that is `display: block`. | 
+| `RichText.Mode.Inline` | Use for visually editing buttons and links. Creates a value that is `display: inline`. Prevents [hydration mismatch errors](https://nextjs.org/messages/react-hydration-error) that can occur when placing block level elements into inline level elements. Only available for `v0.10.0` and above. | 
+
+## Versions
+
+| Version | Changes |
+| --- | --- |
+| [`v0.10.0`](https://github.com/makeswift/makeswift/releases/tag/%40makeswift%2Fruntime%400.10.0) | Overhauled control architecture and introduced `Inline` mode. |
+| [`v0.6.3`](https://github.com/makeswift/makeswift/releases/tag/%40makeswift%2Fruntime%400.6.3)   | Introduced `RichText` control.                                |
+
+
+<RequestExample>
+
+```jsx /components/Hero/Hero.makeswift.js
+import { RichText, Image } from '@makeswift/runtime/controls'
+import { runtime } from "@/lib/makeswift/runtime"
+
+import { Hero } from "./Hero"
+
+runtime.registerComponent(Hero, {
+  type: 'hero',
+  label: 'Hero',
+  props: {
+    title: RichText(),
+    body: RichText(),
+    image: Image({ format: Image.Format.WithDimensions }),
+  },
+})
+```
+
+</RequestExample>
+
+<RequestExample>
+
+```jsx /components/MyDisclosure/MyDisclosureero.makeswift.js
+import { RichText } from '@makeswift/runtime/controls'
+import { runtime } from "@/lib/makeswift/runtime"
+
+import { Hero } from "./Hero"
+
+runtime.registerComponent(MyDisclosure, {
+  type: 'disclosure',
+  label: 'Disclosure',
+  props: {
+    richtextButton: RichText({
+      mode: RichText.Mode.Inline,
+    }),
+    richtextPanel: RichText(),
+    className: Style({ properties: Style.All }),
+  },
+})
+```
+
+</RequestExample>

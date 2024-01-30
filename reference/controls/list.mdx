@@ -1,3 +1,61 @@
 ---
 title: List
+description: Adds a List to components in the Makeswift builder to visually display an `array` prop. Each item in the list has a value defined using another control.
 ---
+
+<Frame
+  type="glass"
+  caption=""
+>
+  <img src="" />
+</Frame>
+
+The List control can be nested as deeply as you want within List and Shape controls. 
+
+## Params
+
+<ParamField query="type" type="ControlDefinition" required>
+  The control that determines the type and values in the array passed to your component. Can be any of the Makeswift controls.
+</ParamField>
+
+<ParamField query="label" type="string" default="List">
+  Text for the panel label that appears in the Makeswift builder.
+</ParamField>
+
+<ParamField query="getItemLabel" type="(item: T) => string" default="undefined">
+  A function to get the label for each list item shown in the panel. If you don’t provide a value, the control
+  passes an `undefined` value to your component.
+</ParamField>
+
+
+
+<RequestExample>
+
+```jsx /components/Testimonials/Testimonials.makeswift.js
+import { runtime } from "@/lib/makeswift/runtime"
+import { List, Shape, TextInput, TextArea } from '@makeswift/runtime/controls'
+
+import { Testimonials } from './Testimonials'
+
+runtime.registerComponent(Testimonials, {
+  type: 'testimonials',
+  label: 'Testimonials',
+  props: {
+    testimonials: List({
+      label: 'Testimonials',
+      type: Shape({
+        type: {
+          author: TextInput({ label: 'Author', defaultValue: '' }),
+          quote: TextArea({ label: 'Quote', defaultValue: '' }),
+        },
+      }),
+      getItemLabel(testimonial) {
+        return testimonial?.author || 'Untitled'
+      },
+    }),
+  },
+})
+```
+
+
+</RequestExample>

@@ -1,3 +1,38 @@
 ---
 title: TextArea
+description: Adds a multiline Text Area to your component in the Makeswift builder to visually edit a `string` prop. 
 ---
+
+
+## Params
+
+<ParamField query="label" type="string" default="Text">
+  Text for the text area label. The label appears in the panel in the Makeswift builder.
+</ParamField>
+
+<ParamField query="defaultValue" type="string" default="undefined">
+  Defines the value shown in the text area in the Makeswift builder when the
+  value isn’t inputted. If you don’t provide a default value, the Checkbox control
+  passes an `undefined` value to your component.
+</ParamField>
+
+
+
+<RequestExample>
+
+```jsx /components/Paragraph/Paragraph.makeswift.js
+import { TextArea } from "@makeswift/runtime/controls"
+import { runtime } from "@/lib/makeswift/runtime"
+
+import { Paragraph } from "./Paragraph"
+
+runtime.registerComponent(Paragraph, {
+  type: "paragraph",
+  label: "Paragraph",
+  props: {
+    children: TextArea({ label: 'Paragraph text', defaultValue: '' }),
+  },
+})
+```
+
+</RequestExample>

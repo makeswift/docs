@@ -1,3 +1,82 @@
 ---
 title: Image
+description: Provides access to Images hosted by Makeswift to visually select a `string` prop of the URL image in the Makeswift builder.
 ---
+
+<Frame
+  type="glass"
+  caption=""
+>
+  <img src="" />
+</Frame>
+
+
+The images stored and managed by Makeswift can be shared across pages in a site.
+
+
+## Params
+
+<ParamField query="label" type="string" default="Image">
+  Text for the Image label. The label appears in the panel in the Makeswift builder.
+</ParamField>
+
+<ParamField query="format" type="Image.Format" default="Image.Format.URL">
+  Image attributes or properties. If you don’t provide a value and the defaulted image URL doesn't exist, the Image control
+  passes an `undefined` value to your component.
+</ParamField>
+
+## Types
+
+### Image.Format
+
+```javascript
+type Image.Format = { 
+  URL: string
+  WithDimensions: ImageWithDimensions
+}
+``` 
+
+| Property | Type | Description |
+| --- | --- | --- |
+| URL | string | Image URL. |
+| WithDimensions | ImageWithDimensions | Includes image dimensions. | 
+
+### ImageWithDimensions
+
+```javascript
+type ImageWithDimensions = {
+  url: string
+  dimensions: {
+    width: number
+    height: number
+  }
+}
+```
+
+| Property | Type | Description | 
+| --- | --- | --- |
+| url | string | Unique ID for the Image option. |
+| dimensions.width | integer | Image width in pixels. | 
+| dimensions.height | integer | Image height in pixels. | 
+
+
+
+<RequestExample>
+
+```jsx /components/Img/Img.makeswift.js
+import { Image } from "@makeswift/runtime/controls"
+import { runtime } from "@/lib/makeswift/runtime"
+
+import { Img } from "./Img"
+
+runtime.registerComponent(Img, {
+  type: "image",
+  label: "Upload an Image",
+  props: {
+    src: Image(),
+    image: Image({ format: Image.Format.WithDimensions }),
+  },
+})
+```
+
+</RequestExample>

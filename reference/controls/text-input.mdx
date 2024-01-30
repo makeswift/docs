@@ -1,3 +1,38 @@
 ---
 title: TextInput
+description: Adds a single-line Text Input in the Makeswift builder to visually edit a `string` prop. 
 ---
+
+
+## Params
+
+<ParamField query="label" type="string" default="Text">
+  Text for the text box label. The label appears in the panel in the Makeswift builder.
+</ParamField>
+
+<ParamField query="defaultValue" type="string" default="undefined">
+  Defines the value shown in the text box in the Makeswift builder when the
+  value isn’t inputted. If you don’t provide a default value, the Checkbox control
+  passes an `undefined` value to your component.
+</ParamField>
+
+
+
+<RequestExample>
+
+```jsx /components/Link/Link.makeswift.js
+import { TextInput } from "@makeswift/runtime/controls"
+import { runtime } from "@/lib/makeswift/runtime"
+
+import { Link } from "./Link"
+
+runtime.registerComponent(Link, {
+  type: "link",
+  label: "Link",
+  props: {
+    children: TextInput({ label: 'Link text', defaultValue: '' }),
+  },
+})
+```
+
+</RequestExample>

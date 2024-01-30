@@ -1,3 +1,65 @@
 ---
 title: Combobox
+description: Adds a Combobox panel in the Makeswift builder to visually select a value from a list of autocompleted options provided by an `array` prop.
 ---
+
+<Frame
+  type="glass"
+  caption=""
+>
+  <img src="" />
+</Frame>
+
+## Params
+
+<ParamField query="label" type="string" default="Text">
+  Text for the Combobox label. The label appears in the panel in the Makeswift builder.
+</ParamField>
+
+<ParamField query="getOptions" type="(query: string) => ComboboxControlOption[] | Promise<ComboboxControlOption[]>" required>
+  A function that receives a query string and returns an array of options to display in the Makeswift builder. May return a promise of an array. The options can be retrieved asynchronously using an API call.
+</ParamField>
+
+## Types
+
+### ComboboxControlOption
+
+```javascript
+type ComboboxControlOption<T> = { id: string; label: string; value: T }
+``` 
+
+| Properties | Description |
+| --- | --- |
+| id | Unique ID for the Combobox option. |
+| label | Label for the Combobox option shown in the Makeswift builder. |
+| value | Value for the Combobox option. If you don’t provide a value, the control passes an `undefined` value to your component. |
+
+
+<RequestExample>
+
+```jsx /components/Combobox/Combobox.makeswift.js
+import { Combobox } from "@makeswift/runtime/controls"
+import { runtime } from "@/lib/makeswift/runtime"
+
+import { SpaceXRocket } from "./SpaceXRocket"
+
+runtime.registerComponent(SpaceXRocket, {
+  type: "spacex-rocket",
+  label: "SpaceX Rocket",
+  props: {
+    rocket: Combobox({
+      label: 'SpaceX rocket',
+      async getOptions(query) {
+        const response = await fetch(`https://api.spacexdata.com/v4/rockets`)
+        const rockets = await response.json()
+
+        return rockets
+          .map(rocket => ({ id: rocket.id, label: rocket.name, value: rocket }))
+          .filter(option => option.label.toLowerCase().includes(query.toLowerCase()))
+      },
+    }),
+  },
+})
+```
+
+</RequestExample>
