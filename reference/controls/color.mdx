@@ -5,36 +5,44 @@ description: Adds a Color picker panel in the Makeswift builder to visually edit
 
 <Frame
   type="glass"
-  caption=""
+  caption="Color panels on a Button component to edit the background and text colors"
 >
-  <img src="" />
+  <img src="/images/color-panel.png" />
 </Frame>
 
 ## Params
 
 <ParamField query="label" type="string" default="Text">
-  Text for the color label. The label appears in the panel in the Makeswift builder.
+  Text for the color label. The label appears in the panel in the Makeswift
+  builder.
 </ParamField>
 
-<ParamField query="labelOrientation" type="LabelOrientation" default="horizontal">
-  Position for the color label within the panel. 
+<ParamField
+  query="labelOrientation"
+  type='"vertical" | "horizontal"'
+  default="horizontal"
+>
+  Position for the color label within the panel.
 </ParamField>
 
-<ParamField query="defaultValue" type="string" default="undefined">
-  Defines the color shown in the Makeswift Builder when the value isn't set. Can be any CSS color string. If you don't provide a default value, the control passes an `undefined` value to your component.
+<ParamField query="defaultValue" type="string">
+  Defines the color shown in the Makeswift Builder when the value isn't set. Can
+  be any CSS color string. If you don't provide a default value, the control
+  passes an `undefined` value to your component.
 </ParamField>
 
-<ParamField query="hideAlpha" type="boolean" default="false">
-  Indicates whether to hide the <Tooltip tip="UI component for selecting color transparency">alpha channel slider</Tooltip>.
+<ParamField query="hideAlpha" type="boolean" default={false}>
+  Indicates whether to hide the alpha channel slider.
+  <Frame
+  type="glass"
+  caption="The alpha channel slider on the Color panel"
+>
+  <img src="/images/color-panel-alpha.png" />
+</Frame>
+
 </ParamField>
 
-## Types
-
-```javascript LabelOrientation
-type LabelOrientation = 'vertical' | 'horizontal'
-```
-
-<RequestExample>
+## Example
 
 ```jsx /components/Button/Button.makeswift.js
 import { Color } from "@makeswift/runtime/controls"
@@ -46,11 +54,8 @@ runtime.registerComponent(Button, {
   type: "button",
   label: "Button",
   props: {
-    backgroundColor: Color({ label: 'Color', defaultValue: 'black' }),
-    color: Color({ label: 'Text color', defaultValue: 'white' })
-    }
+    backgroundColor: Color({ label: "Color", defaultValue: "black" }),
+    color: Color({ label: "Text color", defaultValue: "white" }),
   },
-)
+})
 ```
-
-</RequestExample>
