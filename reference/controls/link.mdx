@@ -1,3 +1,60 @@
 ---
 title: Link
+description: Enables components to link to other Makeswift pages, open a URL, or scroll to another UI element. 
 ---
+
+<Frame
+  type="glass"
+  caption=""
+>
+  <img src="" />
+</Frame>
+
+
+## Params
+
+<ParamField query="label" type="string" default="On click">
+  Text for the panel label that appears in the Makeswift builder.
+</ParamField>
+
+
+
+## Return type
+
+The Link control passes an object of type `LinkValue` to your component, or `undefined` if you don't set a value.
+
+```javascript
+type LinkValue = {
+  href: string
+  target: '_blank' | '_self' | undefined
+  onClick(event: MouseEvent<HTMLElement>): void
+}
+``` 
+
+| Property | Type | Description |
+| --- | --- | --- |
+| href | string |  |
+| target | string |  | 
+| onClick(event: MouseEvent<HTMLElement>) | void |  |
+
+
+
+
+<RequestExample>
+
+```jsx /components/Img/Img.makeswift.js
+import { Link } from "@makeswift/runtime/controls"
+import { runtime } from "@/lib/makeswift/runtime"
+
+import { Img } from "./Img"
+
+runtime.registerComponent(Img, {
+  type: "link",
+  label: "Link",
+  props: {
+    link: Link(),
+  },
+})
+```
+
+</RequestExample>
