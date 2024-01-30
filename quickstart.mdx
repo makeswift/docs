@@ -57,17 +57,19 @@ The CLI then opens a new page in your browser where you will continue integratin
 
 The browser will prompt you to select a Makeswift site to connect to your local Next.js app. You may need to login or sign up, but the browser will redirect you to this page.
 
-1. Select an existing site or create a new one.
+<Steps>
+  <Step title="Select an existing site or create a new one">
+    ![Select Site](./images/select-site.png)
+  </Step>
+  <Step title="Pick a template (optional)">
+    ![Select Template](./images/select-template.png)
+  </Step>
+  <Step title="Check the CLI for prompts">
+    When the Makeswift site is being linked to `localhost`, check the CLI for any prompts. During this step, the Makeswift site API Key is stored as an environment variable inside your local `.env.local` file.
 
-![Select Site](./images/select-site.png)
-
-2. Pick a template (optional).
-
-![Select Template](./images/select-template.png)
-
-3. Check the CLI for any prompts when the Makeswift site is being linked to `localhost`. During this step, the Makeswift site API Key is stored as an environment variable inside your local `.env.local` file.
-
-![Integrating](./images/integrating.png)
+    ![Integrating](./images/integrating.png)
+  </Step>
+</Steps>
 
 The browser redirects you to Page Builder once the integration is complete. To learn how to use Page Builder, see the [Help Center](https://help.makeswift.com/) articles.
 
