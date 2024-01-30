@@ -1,3 +1,64 @@
 ---
 title: Style
+description: Adds Styling options to your component in the Makeswift builder to visually configure a CSS class `string` prop. 
 ---
+
+<Frame
+  type="glass"
+  caption=""
+>
+  <img src="" />
+</Frame>
+
+The Style control is the only control that is responsive; its values can be changed at different viewport sizes without affecting the others. For example, you could set a width of 1200px in desktop and 100% in mobile.
+
+## Params
+
+<ParamField query="properties" type="StyleControlProperty[]" default="Style.Default">
+  The CSS properties to configure in the panels.
+</ParamField>
+
+
+Available values for the `properties` parameter:
+- `Style.Width`
+- `Style.Margin`
+- `Style.Padding` 
+- `Style.Border`
+- `Style.BorderRadius`
+- `Style.TextStyle`
+- `Style.Default`: preset that includes `Style.Width` and `Style.Margin`
+- `Style.All`: preset that includes all available properties
+
+
+## Types 
+
+```javascript 
+enum StyleControlProperty {
+  Width,
+  Margin,
+  Padding,
+  Border,
+  BorderRadius,
+  TextStyle,
+}
+```
+
+
+<RequestExample>
+
+```jsx /components/Box/Box.makeswift.js
+import { Style } from "@makeswift/runtime/controls"
+import { runtime } from "@/lib/makeswift/runtime"
+
+import { Box } from "./Box"
+
+runtime.registerComponent(Box, {
+  type: "box",
+  label: "Box",
+  props: {
+    className: Style({ properties: Style.All }),
+  },
+})
+```
+
+</RequestExample>
