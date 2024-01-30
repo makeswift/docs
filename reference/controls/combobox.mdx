@@ -1,65 +1,71 @@
 ---
 title: Combobox
-description: Adds a Combobox panel in the Makeswift builder to visually select a value from a list of autocompleted options provided by an `array` prop.
+description: Adds a Combobox panel in the Makeswift builder to visually edit a generic `T` prop from a potentially asynchronously fetched list of options.
 ---
 
-<Frame
-  type="glass"
-  caption=""
->
-  <img src="" />
+<Frame type="glass" caption="">
+  <img src="/images/combobox-panel.png" />
 </Frame>
 
 ## Params
 
 <ParamField query="label" type="string" default="Text">
-  Text for the Combobox label. The label appears in the panel in the Makeswift builder.
+  Text for the Combobox label. The label appears in the panel in the Makeswift
+  builder.
 </ParamField>
 
-<ParamField query="getOptions" type="(query: string) => ComboboxControlOption[] | Promise<ComboboxControlOption[]>" required>
-  A function that receives a query string and returns an array of options to display in the Makeswift builder. May return a promise of an array. The options can be retrieved asynchronously using an API call.
+<ParamField
+  query="getOptions"
+  type="<T>(query: string) => Option<T>[] | Promise<Option<T>[]>"
+  required
+>
+  A function that receives a query string and returns an array of type `Option<T>`. This function may be async to fetch options asynchronously.
+
+```ts
+type Option<T> = {
+  id: string
+  label: string
+  value: T
+}
+```
+
+The `label` field is displayed in the Makeswift builder and `id` must be unique.
+
 </ParamField>
 
-## Types
+## Prop type
 
-### ComboboxControlOption
+The Combobox control passes the generic type `T` from the return value of `getOptions` to your component, or `undefined` if there is no value set in the builder.
 
-```javascript
-type ComboboxControlOption<T> = { id: string; label: string; value: T }
-``` 
+## Example
 
-| Properties | Description |
-| --- | --- |
-| id | Unique ID for the Combobox option. |
-| label | Label for the Combobox option shown in the Makeswift builder. |
-| value | Value for the Combobox option. If you don’t provide a value, the control passes an `undefined` value to your component. |
-
-
-<RequestExample>
-
-```jsx /components/Combobox/Combobox.makeswift.js
+```jsx /components/ProductsCarousel/ProductsCarousel.makeswift.js
 import { Combobox } from "@makeswift/runtime/controls"
 import { runtime } from "@/lib/makeswift/runtime"
 
-import { SpaceXRocket } from "./SpaceXRocket"
+import { ProductsCarousel } from "./ProductsCarousel"
 
-runtime.registerComponent(SpaceXRocket, {
-  type: "spacex-rocket",
-  label: "SpaceX Rocket",
+runtime.registerComponent(ProductsCarousel, {
+  type: "products-carousel",
+  label: "Products Carousel",
   props: {
-    rocket: Combobox({
-      label: 'SpaceX rocket',
+    products: Combobox({
+      label: "Product name",
       async getOptions(query) {
-        const response = await fetch(`https://api.spacexdata.com/v4/rockets`)
-        const rockets = await response.json()
+        const response = await fetch("/api/products")
+        const products = await response.json()
 
-        return rockets
-          .map(rocket => ({ id: rocket.id, label: rocket.name, value: rocket }))
-          .filter(option => option.label.toLowerCase().includes(query.toLowerCase()))
+        return products
+          .map((product) => ({
+            id: product.id,
+            label: product.name,
+            value: product,
+          }))
+          .filter((option) =>
+            option.label.toLowerCase().includes(query.toLowerCase())
+          )
       },
     }),
   },
 })
 ```
-
-</RequestExample>
