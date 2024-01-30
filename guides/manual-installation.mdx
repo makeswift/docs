@@ -5,7 +5,7 @@ description: Install Makeswift dependencies and integrate an existing Next.js ap
 # Before you start
 
 The fastest way to get started with Makeswift on a new Next.js project is to follow the
-[getting started guide](/getting-started/installation). If you have an existing Next.js application
+[getting started guide](/quickstart). If you have an existing Next.js application
 or want to set things up yourself, continue with the rest of this guide.
 
 System Requirements:
@@ -17,7 +17,7 @@ System Requirements:
 
 First, open a Next.js project. If you don't already have one, head over to the [Next.js](https://nextjs.org/docs/getting-started/installation) documentation to get one set up. If you do have one, please verify you are using [Next.js 12](https://nextjs.org/blog/next-12) or a later version.
 
-# Install Dependencies
+# Install dependencies
 
 Install the `@makeswift/runtime` package. This package contains all of the necessary
 code to integrate Makeswift into your Next.js app.
@@ -40,7 +40,7 @@ MAKESWIFT_SITE_API_KEY = paste-your-api-key-here
 
 # <a name="client-installation"/>Add Makeswift runtime and client
 
-Create a file for the Makeswift [runtime](/concepts/runtime) named `lib/makeswift/runtime.js`.
+Create a file for the Makeswift [runtime](/architecture#runtime) named `lib/makeswift/runtime.js`.
 
 ```js filename="lib/makeswift/runtime.js"
 import { ReactRuntime } from '@makeswift/runtime/react'
@@ -48,7 +48,7 @@ import { ReactRuntime } from '@makeswift/runtime/react'
 export const runtime = new ReactRuntime()
 ```
 
-Create a file for the Makeswift [client](/concepts/client) named `lib/makeswift/client.js`
+Create a file for the Makeswift [client](/architecture#client) named `lib/makeswift/client.js`
 
 ```js filename="lib/makeswift/client.js" showLineNumbers
 import { Makeswift } from '@makeswift/runtime/next'
@@ -95,11 +95,11 @@ Create a [custom Document](https://nextjs.org/docs/pages/building-your-applicati
 export { Document as default } from '@makeswift/runtime/next'
 ```
 
-If you already have a `_document.js`, you can update it to [extend the Document](/guides/advanced-setup#extending-the-custom-document) from `@makeswift/runtime/next`.
+If you already have a `_document.js`, you can update it to [extend the Document](guides/extending-the-document) from `@makeswift/runtime/next`.
 
 # <a name="pages-route" />Add a route for Makeswift pages
 
-Create an [optional catch-all route](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#optional-catch-all-segments) named `[[...path]].js`. You will use the `Makeswift` client to fetch page [snapshots](/concepts/snapshots) and pass it to the `MakeswiftPage` component to render.
+Create an [optional catch-all route](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#optional-catch-all-segments) named `[[...path]].js`. You will use the `Makeswift` client to fetch page [snapshots](/architecture#snapshots) and pass it to the `MakeswiftPage` component to render.
 
 {/* prettier-ignore-start */}
 ```jsx filename="pages/[[...path]].js" icon="js" showLineNumbers
@@ -152,7 +152,7 @@ by levaraging the [Makeswift API handler](#api-handler).
 
 # Register components with Makeswift
 
-Create a file for registered components called `lib/makeswift/components.js`. In this example, only one component is registered. However, as you register more components, we recommend creating separate files for each component and rolling up the imports in the `lib/makeswift/components.js` file. Learn more about [registering components](/guide/registering-components).
+Create a file for registered components called `lib/makeswift/components.js`. In this example, only one component is registered. However, as you register more components, we recommend creating separate files for each component and rolling up the imports in the `lib/makeswift/components.js` file. Learn more about [registering components](/essentials/components).
 
 ```js filename="lib/makeswift/components.js" icon="js" showLineNumbers
 import { ReactRuntime } from '@makeswift/runtime/react'
@@ -201,7 +201,7 @@ Finally, open the Makeswift builder, navigate to **Settings > Host**, and add yo
 ![Preview URL](./images/host-url.png)
 
 When you're ready to deploy, set up a separate site and use your deployment URL
-instead of `localhost`. You can keep this site for local development. Read more about [deploying to production](/guides/deploying).
+instead of `localhost`. You can keep this site for local development. Read more about [deploying to production](/guides/deploying-to-production).
 
 # Start building
 
