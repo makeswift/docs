@@ -17,33 +17,38 @@ description: Adds a Select option (dropdown) to a component in the Makeswift bui
   builder.
 </ParamField>
 
-<ParamField query="labelOrientation" type="LabelOrientation" default="horizontal">
+<ParamField query="labelOrientation" type='"vertical" | "horizontal"' default="horizontal">
   Orientation of the dropdown label within the panel.
 </ParamField>
 
 <ParamField query="options" type="SelectControlOption<T>[]" required>
-  The options available in the panel input.
+  An array of objects of type `SelectControlOption<T>` that contains the options available in the panel input.
+
+  ```ts
+  type SelectControlOption<T extends string> = { 
+    value: T 
+    label: string 
+  }
+  ```
+
+  The `label` field is displayed in the Makeswift builder.
+
 </ParamField>
 
-<ParamField query="defaultValue" type="T" default="undefined">
+<ParamField query="defaultValue" type="T">
   Defines the value selected in the Makeswift builder when the
-  value isn’t set. If you don’t provide a default value, the control
-  passes an `undefined` value to your component.
+  value isn’t set.
 </ParamField>
 
-## Types
+## Prop type
 
-```javascript LabelOrientation
-type LabelOrientation = 'vertical' | 'horizontal'
-```
+The Select control passes a `array` to your component. If you don't set a `defaultValue` and no value is set in the builder, your component receives `undefined`.
 
-```javascript SelectControlOption
-type SelectControlOption<T extends string> = { value: T; label: string }
-```
+## Example
 
-<RequestExample>
+The following example adds a Select control to the `variant` prop of a Button component.
 
-```jsx /components/Button/Button.makeswift.js
+```tsx Button.makeswift.ts
 import { Select } from "@makeswift/runtime/controls"
 import { runtime } from "@/lib/makeswift/runtime"
 
@@ -66,5 +71,3 @@ runtime.registerComponent(Button, {
   },
 })
 ```
-
-</RequestExample>
