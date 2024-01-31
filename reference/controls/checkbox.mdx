@@ -19,17 +19,20 @@ description: Adds a Checkbox panel in the Makeswift builder to visually edit a `
 
 <ParamField query="defaultValue" type="boolean">
   Defines the value shown for the checkbox in the Makeswift builder when the
-  value isn’t set. If you don’t provide a default value, the Checkbox control
-  passes an `undefined` value to your component.
+  value isn’t set.
 </ParamField>
 
 ## Prop type
 
-The Checkbox control passes a `boolean` to your component, or `undefined` if there is no value set in the builder.
+The Checkbox control passes a `boolean` to your component. If you don't set a `defaultValue` and no value is set in the builder, your component will receive `undefined`.
 
 ## Example
 
-```jsx /components/Navigation/Navigation.makeswift.js
+The following example adds a Checkbox control to the `showLogo` prop of a Navigation component.
+
+<CodeGroup>
+
+```tsx Navigation.makeswift.ts
 import { Checkbox } from "@makeswift/runtime/controls"
 import { runtime } from "@/lib/makeswift/runtime"
 
@@ -46,3 +49,20 @@ runtime.registerComponent(Navigation, {
   },
 })
 ```
+
+```tsx Navigation.tsx
+interface Props {
+  showLogo: boolean
+}
+
+export function ({ showLogo = false }: Props) {
+  return (
+    <nav>
+      {props.showLogo && <img src="/logo.png" />}
+      {/* ... */}
+    </nav>
+  )
+}
+```
+
+</CodeGroup>
