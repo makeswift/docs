@@ -5,9 +5,9 @@ description: Adds a Number input in the Makeswift builder to visually edit a `nu
 
 <Frame
   type="glass"
-  caption=""
+  caption="A Number panel on a Feed component to set the number of items shown"
 >
-  <img src="" />
+  <img src="/images/number-panel.png" />
 </Frame>
 
 ## Params
@@ -17,56 +17,86 @@ description: Adds a Number input in the Makeswift builder to visually edit a `nu
   builder.
 </ParamField>
 
-<ParamField query="labelOrientation" type="LabelOrientation" default="horizontal">
+<ParamField
+  query="labelOrientation"
+  type='"horizontal" | "vertical"'
+  default="horizontal"
+>
   Orientation of the number label within the panel.
 </ParamField>
 
-<ParamField query="defaultValue" type="number" default="undefined">
-  Defines the value shown for the number in the Makeswift builder when the
-  value isn’t set. If you don’t provide a default value, the Checkbox control
-  passes an `undefined` value to your component.
+<ParamField query="defaultValue" type="number">
+  Defines the value shown for the number in the Makeswift builder when the value
+  isn’t set. If you don’t provide a default value, the Checkbox control passes
+  an `undefined` value to your component.
 </ParamField>
 
-<ParamField query="min" type="number" default="0">
+<ParamField query="min" type="number" default={0}>
   The smallest number that can be set in the panel input.
 </ParamField>
 
-<ParamField query="min" type="number" default="0">
+<ParamField query="min" type="number" default={0}>
   The largest number that can be set in the panel input.
 </ParamField>
 
-<ParamField query="step" type="number" default="1">
-  Amount by which to increment the number value when using the ↑ ↓ arrows to drag the panel input.
+<ParamField query="step" type="number" default={1}>
+  Amount by which to increment the number value when using the ↑ ↓ arrows to
+  drag the panel input.
 </ParamField>
 
-<ParamField query="suffix" type="string" default="">
+<ParamField query="suffix" type="string">
   Decorative text appended to the end of the panel input.
 </ParamField>
 
+## Prop type
 
-## Types
+The Number control passes a `number` to your component. If you don't set a `defaultValue` and no value is set in the builder, your component receives `undefined`.
 
-```javascript LabelOrientation
-type LabelOrientation = 'vertical' | 'horizontal'
-```
+## Example
 
-<RequestExample>
+<CodeGroup>
 
-```jsx /components/NumberComponent/NumberComponent.makeswift.js
+```tsx Feed.makeswift.ts
 import { Number } from "@makeswift/runtime/controls"
 import { runtime } from "@/lib/makeswift/runtime"
 
-import { NumberComponent } from "./NumberComponent"
+import { Feed } from "./Feed"
 
-runtime.registerComponent(NumberComponent, {
-  type: "number-component",
-  label: "NumberComponent",
+runtime.registerComponent(Feed, {
+  type: "feed",
+  label: "Feed",
   props: {
-    defaultValue: Number({ label: 'Default value', defaultValue: 3 }),
-    min: Number({ label: 'Min', defaultValue: 0 }),
-    max: Number({ label: 'Max', defaultValue: 10 }),
+    itemsShown: Number({
+      label: "Items shown",
+      defaultValue: 10,
+      min: 0,
+      max: 100,
+    }),
   },
 })
 ```
 
-</RequestExample>
+```tsx Feed.tsx
+const items = [
+  { id: "1", name: "item 1" },
+  { id: "2", name: "item 2" },
+  { id: "3", name: "item 3" },
+  { id: "4", name: "item 4" },
+]
+
+interface Props {
+  itemsShown?: number
+}
+
+export function Feed({ itemsShown = 10 }: Props) {
+  return (
+    <div>
+      {items.slice(0, itemsShown).map((item) => (
+        <div key={item.id}>{item.name}</div>
+      ))}
+    </div>
+  )
+}
+```
+
+</CodeGroup>
