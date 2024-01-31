@@ -1,6 +1,6 @@
 ---
 title: Slot
-description: Adds Slots in the Makeswift builder to visually drop a `ReactNode` of components passed to your component.
+description: Adds Slots in the Makeswift builder to visually drop a `ReactNode` of components.
 ---
 
 <Frame
@@ -14,9 +14,15 @@ description: Adds Slots in the Makeswift builder to visually drop a `ReactNode` 
 
 The Slot control currently doesn't take any parameters.
 
-<RequestExample>
+## Prop type
 
-```jsx /components/Box/Box.makeswift.js
+The Slot control passes a `ReactNode` to your component. 
+
+## Example
+
+The following example adds a Slot control to the `children` prop of a Box component.
+
+```tsx Box.makeswift.ts
 import { Slot } from "@makeswift/runtime/controls"
 import { runtime } from "@/lib/makeswift/runtime"
 
@@ -30,6 +36,3 @@ runtime.registerComponent(Box, {
   },
 })
 ```
-
-</RequestExample>
-
