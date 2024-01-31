@@ -82,13 +82,17 @@ interface Props {
 }
 
 export function Button({ backgroundColor, color }: Props) {
-  return <button style={{ backgroundColor, color }}>Click me</button>
+  return (
+    <button className="px-4 py-2 rounded-md" style={{ backgroundColor, color }}>
+      Click me
+    </button>
+  )
 }
 ```
 
 </CodeGroup>
 
-### Using CSS variables with Tailwind
+### Using CSS variables
 
 <CodeGroup>
 
