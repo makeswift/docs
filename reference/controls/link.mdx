@@ -4,7 +4,7 @@ description: Adds a Link panel in the Makeswift builder to visually edit a `Link
 ---
 
 <Frame type="glass" caption="">
-  <img src="" />
+  <img src="/images/link-panel.png" />
 </Frame>
 
 ## Params
@@ -15,29 +15,57 @@ description: Adds a Link panel in the Makeswift builder to visually edit a `Link
 
 ## Prop type
 
-The Link control passes an object of type `LinkValue` to your component, or `undefined` if you don't set a value.
+The Link control passes an object of type `LinkValue` to your component.
 
-```javascript
+```ts
 type LinkValue = {
   href: string
-  target: '_blank' | '_self' | undefined
-  onClick(event: MouseEvent<HTMLElement>): void
+  target?: "_blank" | "_self"
 }
 ```
 
+If no value is set in the builder, your component receives `{ href: '#' }`.
+
 ## Example
 
-```jsx /components/Link/Link.makeswift.js
+The following example adds an Link control to the `link` prop of a Button component.
+
+<CodeGroup>
+
+```tsx Button.makeswift.ts
 import { Link } from "@makeswift/runtime/controls"
 import { runtime } from "@/lib/makeswift/runtime"
 
-import { Img } from "./Img"
+import { Button } from "./Button"
 
-runtime.registerComponent(Img, {
-  type: "link",
-  label: "Link",
+runtime.registerComponent(Button, {
+  type: "button",
+  label: "Button",
   props: {
     link: Link(),
   },
 })
 ```
+
+```tsx Button.tsx
+interface Props {
+  link: {
+    href: string
+    target?: "_blank" | "_self"
+  }
+}
+
+export function Button({ link }) {
+  return (
+    <a
+      className="px-4 py-3 rounded bg-black text-white"
+      href={link.href}
+      target={link.target}
+    >
+      Click me
+    </a>
+  )
+}
+```
+
+</CodeGroup>
