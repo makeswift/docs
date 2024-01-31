@@ -27,8 +27,7 @@ description: Adds a Color picker panel in the Makeswift builder to visually edit
 
 <ParamField query="defaultValue" type="string">
   Defines the color shown in the Makeswift Builder when the value isn't set. Can
-  be any CSS color string. If you don't provide a default value, the control
-  passes an `undefined` value to your component.
+  be any CSS color string.
 </ParamField>
 
 <ParamField query="hideAlpha" type="boolean" default={false}>
@@ -42,9 +41,19 @@ description: Adds a Color picker panel in the Makeswift builder to visually edit
 
 </ParamField>
 
+## Prop type
+
+The Color control passes a `string` RGBA value to your component. If you don't set a `defaultValue` and no value is set in the builder, your component will receive `undefined`.
+
 ## Example
 
-```jsx /components/Button/Button.makeswift.js
+The following examples adds two Color controls to the `backgroundColor` and `color` props of a Button component.
+
+### Using inline styles
+
+<CodeGroup>
+
+```tsx Button.makeswift.ts
 import { Color } from "@makeswift/runtime/controls"
 import { runtime } from "@/lib/makeswift/runtime"
 
@@ -54,8 +63,82 @@ runtime.registerComponent(Button, {
   type: "button",
   label: "Button",
   props: {
-    backgroundColor: Color({ label: "Color", defaultValue: "black" }),
-    color: Color({ label: "Text color", defaultValue: "white" }),
+    backgroundColor: Color({
+      label: "Background color",
+      defaultValue: "black",
+    }),
+    color: Color({
+      label: "Text color",
+      defaultValue: "white",
+    }),
   },
 })
 ```
+
+```tsx Button.tsx
+interface Props {
+  backgroundColor?: string
+  color?: string
+}
+
+export function Button({ backgroundColor, color }: Props) {
+  return <button style={{ backgroundColor, color }}>Click me</button>
+}
+```
+
+</CodeGroup>
+
+### Using CSS variables with Tailwind
+
+<CodeGroup>
+
+```tsx Button.makeswift.ts
+import { Color } from "@makeswift/runtime/controls"
+import { runtime } from "@/lib/makeswift/runtime"
+
+import { Button } from "./Button"
+
+runtime.registerComponent(Button, {
+  type: "button",
+  label: "Button",
+  props: {
+    backgroundColor: Color({
+      label: "Background color",
+      defaultValue: "black",
+    }),
+    color: Color({
+      label: "Text color",
+      defaultValue: "white",
+    }),
+  },
+})
+```
+
+```tsx Button.tsx
+import { CSSProperties } from "react"
+
+interface Props {
+  backgroundColor?: string
+  color?: string
+}
+
+export function Button({ backgroundColor, color }: Props) {
+  return (
+    <button
+      className="px-4 py-2 rounded-md 
+        bg-[var(--bg-color)] text-[var(--color)] 
+        hover:bg-[--color] hover:text-[var(--bg-color)]"
+      style={
+        {
+          "--bg-color": backgroundColor,
+          "--color": color,
+        } as CSSProperties
+      }
+    >
+      Click me
+    </button>
+  )
+}
+```
+
+</CodeGroup>
