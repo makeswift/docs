@@ -40,7 +40,8 @@ The `label` field is displayed in the Makeswift builder.
 </ParamField>
 
 <ParamField query="defaultValue" type="T">
-  Defines the value selected in the Makeswift builder when the value isn’t set.
+  The value passed to your component when nothing is set in the Makeswift
+  builder.
 </ParamField>
 
 ## Prop type
@@ -50,6 +51,8 @@ The Select control passes the generic type `T` from the selected `Option` to you
 ## Example
 
 The following example adds a Select control to the `variant` prop of a Button component.
+
+<CodeGroup>
 
 ```tsx Button.makeswift.ts
 import { Select } from "@makeswift/runtime/controls"
@@ -62,15 +65,44 @@ runtime.registerComponent(Button, {
   label: "Button",
   props: {
     variant: Select({
-      label: "Variant",
-      labelOrientation: "vertical",
+      label: "Style",
+      labelOrientation: "horizontal",
       options: [
-        { value: "solid", label: "Solid" },
+        { value: "floating", label: "Floating" },
         { value: "outline", label: "Outline" },
         { value: "clear", label: "Clear" },
       ],
-      defaultValue: "solid",
+      defaultValue: "floating",
     }),
   },
 })
 ```
+
+```tsx Button.tsx
+import clsx from "clsx"
+
+interface Props {
+  variant?: "floating" | "outline" | "clear"
+}
+
+export function Button({ variant = "floating" }) {
+  return (
+    <a
+      className={clsx(
+        "px-4 py-3 rounded",
+        {
+          floating: "bg-primary text-white shadow",
+          outline: "bg-transparent border border-primary text-primary",
+          clear: "text-primary bg-transparent border-none",
+        }[variant]
+      )}
+      href={link.href}
+      target={link.target}
+    >
+      Click me
+    </a>
+  )
+}
+```
+
+</CodeGroup>

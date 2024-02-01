@@ -26,9 +26,8 @@ description: Adds a Number input in the Makeswift builder to visually edit a `nu
 </ParamField>
 
 <ParamField query="defaultValue" type="number">
-  Defines the value shown for the number in the Makeswift builder when the value
-  isn’t set. If you don’t provide a default value, the Checkbox control passes
-  an `undefined` value to your component.
+  The value passed to your component when nothing is set in the Makeswift
+  builder.
 </ParamField>
 
 <ParamField query="min" type="number" default={0}>
@@ -40,8 +39,7 @@ description: Adds a Number input in the Makeswift builder to visually edit a `nu
 </ParamField>
 
 <ParamField query="step" type="number" default={1}>
-  Amount by which to increment the number value when using the ↑ ↓ arrows to
-  drag the panel input.
+  The increment amount when using the ↑ ↓ arrows or dragging the panel input.
 </ParamField>
 
 <ParamField query="suffix" type="string">
