@@ -5,7 +5,7 @@ description:
 
 You can integrate a local Next.js app with a Makeswift site using an automatic or manual setup. You can integrate new or existing Next.js apps; however, we recommend using the [Manual Installation](/guides/manual-installation) guide for existing apps. 
 
-This guide shows you how to integrate a Next.js app for a local development environment using an automatic setup. 
+This guide shows you how to set up a Next.js app for a local development environment using an automatic setup. 
 
 # Prerequisites
 
@@ -17,67 +17,58 @@ You don't need an existing Makeswift site to complete this guide.
 
 # Automatic setup
 
-Set up a new Next.js app or integrate an existing Next.js app with Makeswift using the CLI.
-
-## Initialize the app
-
 <Steps>
-  <Step title="Navigate into a project folder or into the root directory for an existing project">
-    ```bash
-    cd example-project-folder
-    ```
-  </Step>
-  <Step title="Perform the following command in the CLI">
+  <Step title="Initialize the app">
+
+    Perform the following command in the CLI while in the root directory of a project folder.
+
     ```bash
     npx makeswift@latest init
     ```
-    
-    If you are setting up a new Next.js app, the CLI returns the following output and creates a new app to be connected to Makeswift.
-    
+        
     ``` 
     // CLI output for a new Next.js app
     
     ? What would you like to name your project? (my-app)
-    ```
-    
-    If you are working with an existing Next.js app, the CLI returns the following output. 
-    
-    ```
+
     // CLI output for an existing Next.js app
     
     ? It appears this directory is an existing Next.js app — would you like to use it? (Y/n)
     ```
 
     After you confirm you'd like to integrate your app, the CLI generates all the necessary files in the project folder.
+  
+    The CLI then opens a new page in your browser where you will continue integrating your app.
+
   </Step>
-</Steps>
 
-The CLI then opens a new page in your browser where you will continue integrating your app.
+  <Step title="Connect the Next.js app to a Makeswift site">
 
-## Connect the Next.js app to a Makeswift site
+    The browser will prompt you to select a Makeswift site to connect to your local Next.js app. You may need to login or sign up, but the browser will redirect you to this page.
 
-The browser will prompt you to select a Makeswift site to connect to your local Next.js app. You may need to login or sign up, but the browser will redirect you to this page.
-
-<Steps>
-  <Step title="Select an existing site or create a new one">
+    Select an existing site or create a new one.
     ![Select Site](./images/select-site.png)
-  </Step>
-  <Step title="Pick a template (optional)">
-    ![Select Template](./images/select-template.png)
-  </Step>
-  <Step title="Check the CLI for prompts">
-    When the Makeswift site is being linked to `localhost`, check the CLI for any prompts. During this step, the Makeswift site API Key is stored as an environment variable inside your local `.env.local` file.
 
+    Pick a template (optional).
+    ![Select Template](./images/select-template.png)
+
+    When the Makeswift site is being linked to `localhost`, check the CLI for any prompts. During this step, the Makeswift site API Key is stored as an environment variable inside your local `.env.local` file.
     ![Integrating](./images/integrating.png)
+
+  </Step>
+
+  <Step title="Start building">
+    The browser redirects you to Page Builder once the integration is complete. To learn how to use Page Builder, see the [Help Center](https://help.makeswift.com/) articles.    
+    
+    - Make sure the site has at least one page. The toolbar for each page should contain custom components for the template, as shown in the following image:
+
+    ![Custom Components](./images/custom-components.png)
+
+    - You can make your own custom components available in Page Builder. To learn how, see [Registering Components](/essentials/components). For examples on how to register a component, navigate to the `components` folder in your local Next app.  
   </Step>
 </Steps>
 
-The browser redirects you to Page Builder once the integration is complete. To learn how to use Page Builder, see the [Help Center](https://help.makeswift.com/) articles.
 
-# Next steps
 
-- Make sure the site has at least one page. The toolbar for each page should contain custom components for the template, as shown in the following image:
 
-![Custom Components](./images/custom-components.png)
 
-- You can make your own custom components available in Page Builder. To learn how, see [Registering Components](/essentials/components). For examples on how to register a component, navigate to the `components` folder in your local Next app.  
