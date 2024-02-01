@@ -5,9 +5,8 @@ description:
 
 import { RuntimeIconsGrid } from '@/lib/runtime-icons-grid'
 
-Registering React components is what makes them available in the Makeswift builder. The
-`ReactRuntime.registerComponent` function accepts a `type` to identify the component, a `label` to 
-label it in the Makeswift builder, and `props` to define the [controls](/architecture#controls).
+Registering React components is what makes them available in the Makeswift builder. The `ReactRuntime.registerComponent` function accepts a `type` to identify the component, a `label` to label it in the Makeswift builder, and `props` to define the [controls](/architecture#controls).
+
 
 
 ```js
@@ -57,10 +56,14 @@ Similarly, if you have another `Cube` component that belongs in the same
 "Visuals" section, label it with `'Visuals/Cube'`. In the builder, these
 components will now be grouped together under a collapsible section called
 <<<<<<< HEAD
+<<<<<<< HEAD
 "Visuals".
 =======
 "Visuals". See the [Examples](#creating-sections) section for details.
 >>>>>>> fd9df8b (docs: add components)
+=======
+"Visuals".
+>>>>>>> 07ddcae (docs: update broken links)
 
 For even more organization, you can create multiple sections within the labels
 by separating them with slashes. This way, you can create a nested hierarchy
@@ -74,10 +77,14 @@ and select a value from this object as the component's `icon`. The component
 will now be displayed in the builder component tray with the icon of your
 choosing. If you do not provide an icon, the default cube icon will be
 <<<<<<< HEAD
+<<<<<<< HEAD
 displayed.
 =======
 displayed. See the [Examples](#custom-icon) section for details.
 >>>>>>> fd9df8b (docs: add components)
+=======
+displayed.
+>>>>>>> 07ddcae (docs: update broken links)
 
 These icons are currently accessible via `ComponentIcon`:
 
