@@ -1,48 +1,95 @@
 ---
 title: Shape
-description: Adds a Shape, or collection of controls, to a component in the Makeswift builder to visually display an `object` of controls. Each item in the `object` has a value defined using another control.
+description: Adds a Shape panel in the Makeswift builder to visually edit an `object`.
 ---
 
-<Frame
-  type="glass"
-  caption=""
->
-  <img src="" />
+<Frame type="glass" caption="A shape panel for a tab in a Tabs component.">
+  <img src="/images/shape-panel.png" />
 </Frame>
 
 The Shape control can be nested as deeply as you want within Shape and List controls.
 
 ## Params
 
-<ParamField query="type" type="{ [key: string]: ControlDefinition }" required>
-  An object of controls in which the type and values returned from each control determines the shape of the overall value passed to your component.
-  May consist of any of the Makeswift controls.
+<ParamField query="type" type="{ [key: string]: Control }" required>
+  An object of controls in which the type and values returned from each control
+  determines the shape of the overall value passed to your component. May
+  consist of any of the Makeswift controls.
 </ParamField>
 
+## Prop type
 
-<RequestExample>
+The Shape control passes an `object` based on the controls used in the `type` field. The keys of the object are the keys of the controls in the `type` field, and the values are based on the corresponding control's prop type.
 
-```jsx /components/UserBio/UserBio.makeswift.js
+## Example
+
+This example adds a Shape control to the `type` field of a [List](/reference/controls/list) control for a Feature Grid component.
+
+<CodeGroup>
+
+```tsx FeatureGrid.makeswift.ts
 import { runtime } from "@/lib/makeswift/runtime"
-import { Shape, TextInput, Number, TextArea, Image } from '@makeswift/runtime/controls'
+import {
+  Shape,
+  TextInput,
+  Number,
+  TextArea,
+  Image,
+} from "@makeswift/runtime/controls"
 
-import { UserBio } from './UserBio'
+import { FeatureGrid } from "./FeatureGrid"
 
-runtime.registerComponent(UserBio, {
-  type: 'user-bio',
-  label: 'User Bio',
+runtime.registerComponent(FeatureGrid, {
+  type: "feature-grid",
+  label: "Feature Grid",
   props: {
-    user: Shape({
-      type: {
-        name: TextInput({ label: 'Name', defaultValue: '' }),
-        age: Number({ label: 'Age', min: 0, defaultValue: 0 }),
-        bio: TextArea({ label: 'Bio', defaultValue: '' }),
-        profilePictureUrl: Image({ label: 'Profile Picture' }),
-      },
+    features: List({
+      label: "Features",
+      type: Shape({
+        type: {
+          icon: Image({ label: "Icon" }),
+          iconAltText: TextInput({
+            label: "Icon alt text",
+            defaultValue: "icon",
+          }),
+          heading: TextArea({
+            label: "Heading",
+            defaultValue: "This is a heading",
+          }),
+          description: TextArea({
+            label: "Description",
+            defaultValue: "This is a description.",
+          }),
+        },
+      }),
     }),
   },
 })
 ```
 
+```tsx FeatureGrid.tsx
+interface Props {
+  features: {
+    icon: string
+    iconAltText: string
+    heading: string
+    description: string
+  }[]
+}
 
-</RequestExample>
+export function FeatureGrid({ features }) {
+  return (
+    <div className="grid grid-cols-2 gap-4">
+      {features.map((feature, index) => (
+        <div className="col-span-1 grid gap-2" key={index}>
+          <img src={feature.icon} alt={feature.iconAltText} />
+          <h3>{feature.heading}</h3>
+          <p>{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  )
+}
+```
+
+</CodeGroup>
