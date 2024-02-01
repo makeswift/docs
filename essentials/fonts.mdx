@@ -1,4 +1,180 @@
 ---
 title: Fonts
-description: Fonts
+description:
 ---
+
+Registering fonts is a way to add fonts to the builder so you can select them in the font dropdown.
+
+**You still need to install the font in the Next.js app by yourself.** Some common ways to do it are either by
+adding a font face declaration in the CSS file, or by adding a Google Font snippet in the `<head>` tag.
+
+Registering a font enables you to:
+
+- Use a custom font that's not available on Google Fonts in the builder.
+- Use a font that's already installed on your Next.js app in the builder.
+
+---
+
+If your font is available on Google Fonts, or if you haven't installed your font yet, it's easier
+to add the font directly from the builder. We will add and install the font automatically for you.
+
+![Manage fonts dialog](../images/manage-fonts-dialog.png)
+
+## Examples
+
+### Registering a custom font
+
+In this example, we have a custom font installed called `Metalsmith` that's located in `public/fonts/Metalsmith.woff`.
+We can register this font by modifying [`MakeswiftApiHandler`](/guides/manual-setup#add-the-makeswift-api-handler) located in `pages/api/makeswift/[...makeswift].ts`.:
+
+```jsx
+export default MakeswiftApiHandler('<makeswift_site_api_key>', {
+  getFonts: () => [
+    {
+      family: 'Metalsmith',
+      variants: [{ weight: '400', style: 'normal', src: '/fonts/Metalsmith.woff' }],
+    },
+  ],
+})
+```
+
+Once we do that, we can use the font in the builder:
+
+![Register custom font](../images/register-custom-font.png)
+
+The `src` field is optional. It will be used to load the font and preview the font in the dropdown.
+The `src` field could be either a relative URL or an absolute URL. If you don't provide the `src` field, the font won't be loaded
+in the font selection dropdown, but you can still select the font like normal.
+
+Note that adding the font to [`MakeswiftApiHandler`](/guides/manual-setup#add-the-makeswift-api-handler) will **only** make
+the font be available in the Makeswift builder. Make sure that you already installed
+the font manually in your Next.js app. One way to do it is by adding this code to `global.css` file:
+
+```css
+@font-face {
+  font-family: 'Metalsmith';
+  src: url('/fonts/Metalsmith.woff') format('woff');
+}
+```
+
+### Registering a Google Font
+
+In this example, we have a Google Font installed called `IBM Plex Mono`. We can register this font by modifying
+[`MakeswiftApiHandler`](/guides/manual-setup#add-the-makeswift-api-handler) located in `pages/api/makeswift/[...makeswift].ts`.:
+
+```js
+export default MakeswiftApiHandler('<makeswift_site_api_key>', {
+  getFonts: () => [
+    {
+      family: 'IBM Plex Mono',
+      variants: [{ weight: '400', style: 'normal' }],
+    },
+  ],
+})
+```
+
+Once we do that, we can use the font in the builder:
+
+![Register google font](../images/register-google-font.png)
+
+When you register a font that's available on Google Font, we'll load the font automatically so you don't have to provide the `src` field.
+
+Note that adding the font to [`MakeswiftApiHandler`](/guides/manual-setup#add-the-makeswift-api-handler) will **only** make
+the font be available in the Makeswift builder. Make sure that you already installed
+the font manually in your Next.js app. One way to do it is by adding this code to a [`Custom Document <Head/>`](/guides/advanced-setup#extending-the-custom-document):
+
+```html
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet" />
+```
+
+### Registering a font with many variants
+
+In this example, we have Google Font installed called `IBM Plex Mono` with many variants. We can register this font by modifying
+[`MakeswiftApiHandler`](/guides/manual-setup#add-the-makeswift-api-handler) located in `pages/api/makeswift/[...makeswift].ts`.:
+
+```js
+export default MakeswiftApiHandler('<makeswift_site_api_key>', {
+  getFonts: () => [
+    {
+      family: 'IBM Plex Mono',
+      variants: [
+        { weight: '400', style: 'normal' },
+        { weight: '400', style: 'italic' },
+        { weight: '500', style: 'normal' },
+        { weight: '500', style: 'italic' },
+      ],
+    },
+  ],
+})
+```
+
+Once we do that, we can use the variant in the builder:
+
+![Register font variant](../images/register-font-variant.png)
+
+We'll convert each variant into a readable format:
+
+| Weight | Label       |
+| ------ | ----------- |
+| 100    | Thin        |
+| 200    | Extra light |
+| 300    | Light       |
+| 400    | Regular     |
+| 500    | Medium      |
+| 600    | Semi bold   |
+| 700    | Bold        |
+| 800    | Extra bold  |
+| 900    | Black       |
+
+Note that adding the font to [`MakeswiftApiHandler`](/guides/manual-setup#add-the-makeswift-api-handler) will **only** make
+the font be available in the Makeswift builder. Make sure that you already installed
+the font manually in your Next.js app. One way to do it is by adding this code to a [`Custom Document <Head/>`](/guides/advanced-setup#extending-the-custom-document):
+
+```html
+<link
+  href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400;1,500&display=swap"
+  rel="stylesheet"
+/>
+```
+
+### Custom label
+
+The builder will use the `family` value in the font family dropdown by default. To add a custom label, use the `label` option.
+
+```jsx
+export default MakeswiftApiHandler('<makeswift_site_api_key>', {
+  getFonts: () => [
+    {
+      family: 'Metalsmith',
+      label: 'Stylish Custom Typeface',
+      variants: [{ weight: '400', style: 'normal', src: '/fonts/Metalsmith.woff' }],
+    },
+  ],
+})
+```
+
+![Register a font with a custom label](../images/register-font-custom-label.png)
+
+## API
+
+### Types
+
+```ts
+type MakeswiftApiHandlerConfig = {
+  getFonts?: () => Fonts | Promise<Fonts>
+}
+
+type Fonts = Font[]
+
+type Font = {
+  family: string
+  label?: string
+  variants: FontVariant[]
+}
+
+type FontVariant = {
+  weight: string
+  style: 'italic' | 'normal'
+  src?: string
+}
+```
