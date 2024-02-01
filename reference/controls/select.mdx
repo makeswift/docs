@@ -24,11 +24,11 @@ description: Adds a Select option (dropdown) to a component in the Makeswift bui
   Orientation of the dropdown label within the panel.
 </ParamField>
 
-<ParamField query="options" type="Option<T>[]" required>
-  An array of objects of type `Option<T>` that contains the options available in the panel input.
+<ParamField query="options" type="SelectOption<T>[]" required>
+  An array of objects of type `SelectOption<T>` that contains the options available in the panel input.
 
 ```ts
-type Option<T extends string> = {
+type SelectOption<T extends string> = {
   value: T
   label: string
 }
