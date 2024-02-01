@@ -41,6 +41,10 @@
       "group": "API Reference",
       "pages": [
         {
+          "group": "Components",
+          "pages": ["reference/components/page"]
+        },
+        {
           "group": "Controls",
           "pages": [
             "reference/controls/checkbox",
@@ -64,7 +68,8 @@
           "pages": [
             "reference/makeswift/constructor",
             "reference/makeswift/getSitemap",
-            "reference/makeswift/getPageSnapshot"
+            "reference/makeswift/getPageSnapshot",
+            "reference/makeswift/getPages"
           ]
         },
         "reference/makeswift-api-handler",
