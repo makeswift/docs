@@ -52,8 +52,6 @@
     {
       "group": "API Reference",
       "pages": [
-        "reference/runtime",
-        "reference/client",
         {
           "group": "Controls",
           "pages": [
@@ -71,6 +69,22 @@
             "reference/controls/style",
             "reference/controls/text-area",
             "reference/controls/text-input"
+          ]
+        },
+        {
+          "group": "Makeswift",
+          "pages": [
+            "reference/makeswift/constructor",
+            "reference/makeswift/getSitemap",
+            "reference/makeswift/getPageSnapshot"
+          ]
+        },
+        "reference/makeswift-api-handler",
+        {
+          "group": "ReactRuntime",
+          "pages": [
+            "reference/react-runtime/constructor",
+            "reference/react-runtime/register-component"
           ]
         }
       ]
