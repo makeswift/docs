@@ -25,7 +25,7 @@ to add the font directly from the builder. We will add and install the font auto
 ### Registering a custom font
 
 In this example, we have a custom font installed called `Metalsmith` that's located in `public/fonts/Metalsmith.woff`.
-We can register this font by modifying [`MakeswiftApiHandler`](/guides/manual-setup#add-the-makeswift-api-handler) located in `pages/api/makeswift/[...makeswift].ts`.:
+We can register this font by modifying [`MakeswiftApiHandler`](/guides/manual-installation#add-the-makeswift-api-handler) located in `pages/api/makeswift/[...makeswift].ts`.:
 
 ```jsx
 export default MakeswiftApiHandler('<makeswift_site_api_key>', {
@@ -46,7 +46,7 @@ The `src` field is optional. It will be used to load the font and preview the fo
 The `src` field could be either a relative URL or an absolute URL. If you don't provide the `src` field, the font won't be loaded
 in the font selection dropdown, but you can still select the font like normal.
 
-Note that adding the font to [`MakeswiftApiHandler`](/guides/manual-setup#add-the-makeswift-api-handler) will **only** make
+Note that adding the font to [`MakeswiftApiHandler`](/guides/manual-installation#add-the-makeswift-api-handler) will **only** make
 the font be available in the Makeswift builder. Make sure that you already installed
 the font manually in your Next.js app. One way to do it is by adding this code to `global.css` file:
 
@@ -60,7 +60,7 @@ the font manually in your Next.js app. One way to do it is by adding this code t
 ### Registering a Google Font
 
 In this example, we have a Google Font installed called `IBM Plex Mono`. We can register this font by modifying
-[`MakeswiftApiHandler`](/guides/manual-setup#add-the-makeswift-api-handler) located in `pages/api/makeswift/[...makeswift].ts`.:
+[`MakeswiftApiHandler`](/guides/manual-installation#add-the-makeswift-api-handler) located in `pages/api/makeswift/[...makeswift].ts`.:
 
 ```js
 export default MakeswiftApiHandler('<makeswift_site_api_key>', {
@@ -79,9 +79,9 @@ Once we do that, we can use the font in the builder:
 
 When you register a font that's available on Google Font, we'll load the font automatically so you don't have to provide the `src` field.
 
-Note that adding the font to [`MakeswiftApiHandler`](/guides/manual-setup#add-the-makeswift-api-handler) will **only** make
+Note that adding the font to [`MakeswiftApiHandler`](/guides/manual-installation#add-the-makeswift-api-handler) will **only** make
 the font be available in the Makeswift builder. Make sure that you already installed
-the font manually in your Next.js app. One way to do it is by adding this code to a [`Custom Document <Head/>`](/guides/advanced-setup#extending-the-custom-document):
+the font manually in your Next.js app. One way to do it is by adding this code to a [`Custom Document <Head/>`](/guides/extending-the-custom-document):
 
 ```html
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet" />
@@ -90,7 +90,7 @@ the font manually in your Next.js app. One way to do it is by adding this code t
 ### Registering a font with many variants
 
 In this example, we have Google Font installed called `IBM Plex Mono` with many variants. We can register this font by modifying
-[`MakeswiftApiHandler`](/guides/manual-setup#add-the-makeswift-api-handler) located in `pages/api/makeswift/[...makeswift].ts`.:
+[`MakeswiftApiHandler`](/guides/manual-installation#add-the-makeswift-api-handler) located in `pages/api/makeswift/[...makeswift].ts`.:
 
 ```js
 export default MakeswiftApiHandler('<makeswift_site_api_key>', {
@@ -126,9 +126,9 @@ We'll convert each variant into a readable format:
 | 800    | Extra bold  |
 | 900    | Black       |
 
-Note that adding the font to [`MakeswiftApiHandler`](/guides/manual-setup#add-the-makeswift-api-handler) will **only** make
+Note that adding the font to [`MakeswiftApiHandler`](/guides/manual-installation#add-the-makeswift-api-handler) will **only** make
 the font be available in the Makeswift builder. Make sure that you already installed
-the font manually in your Next.js app. One way to do it is by adding this code to a [`Custom Document <Head/>`](/guides/advanced-setup#extending-the-custom-document):
+the font manually in your Next.js app. One way to do it is by adding this code to a [`Custom Document <Head/>`](/guides/extending-the-custom-document):
 
 ```html
 <link

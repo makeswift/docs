@@ -7,7 +7,7 @@ import { RuntimeIconsGrid } from '@/lib/runtime-icons-grid'
 
 Registering React components is what makes them available in the Makeswift builder. The
 `ReactRuntime.registerComponent` function accepts a `type` to identify the component, a `label` to
-label it in the Makeswift builder, and `props` to define the [controls](/controls/checkbox).
+label it in the Makeswift builder, and `props` to define the [controls](/architecture#controls).
 
 ```js
 import { ReactRuntime } from '@makeswift/runtime/react'
@@ -55,7 +55,7 @@ Let's say you have a `Sphere` component that belongs in a section named
 Similarly, if you have another `Cube` component that belongs in the same
 "Visuals" section, label it with `'Visuals/Cube'`. In the builder, these
 components will now be grouped together under a collapsible section called
-"Visuals". See the [Examples](#creating-sections) section for details.
+"Visuals".
 
 For even more organization, you can create multiple sections within the labels
 by separating them with slashes. This way, you can create a nested hierarchy
@@ -68,7 +68,7 @@ components with an icon. Simply import `ComponentIcon` from `@makeswift/runtime`
 and select a value from this object as the component's `icon`. The component
 will now be displayed in the builder component tray with the icon of your
 choosing. If you do not provide an icon, the default cube icon will be
-displayed. See the [Examples](#custom-icon) section for details.
+displayed.
 
 These icons are currently accessible via `ComponentIcon`:
 
