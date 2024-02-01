@@ -80,9 +80,7 @@
       "pages": [
         "guides/manual-installation",
         "guides/extending-the-document",
-        "guides/troubleshooting",
-        "guides/deploying-to-production",
-        "guides/migrating-component-data"
+        "guides/troubleshooting"
       ]
     }
   ],
