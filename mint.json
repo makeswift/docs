@@ -38,18 +38,6 @@
       "pages": ["introduction", "quickstart", "architecture"]
     },
     {
-      "group": "Essentials",
-      "pages": [
-        "essentials/components",
-        "essentials/fonts",
-        "essentials/sitemaps",
-        "essentials/breakpoints",
-        "essentials/versioning",
-        "essentials/localization",
-        "essentials/code-splitting"
-      ]
-    },
-    {
       "group": "API Reference",
       "pages": [
         {
