@@ -13,25 +13,25 @@ description: Adds a Checkbox panel in the Makeswift builder to visually edit a `
 ## Params
 
 <ParamField query="label" type="string" default="Label">
-  Text for the checkbox label. The label appears in the panel in the Makeswift
-  builder.
+  Text for the panel label in the Makeswift builder.
 </ParamField>
 
 <ParamField query="defaultValue" type="boolean">
-  Defines the value shown for the checkbox in the Makeswift builder when the
-  value isn’t set. If you don’t provide a default value, the Checkbox control
-  passes an `undefined` value to your component.
+  The value passed to your component when nothing is set in the Makeswift
+  builder.
 </ParamField>
 
-<RequestExample>
+## Prop type
 
-As mentioned in [Registering components](/integrating-components/makeswift), add controls to component props when you register the component.
+The Checkbox control passes a `boolean` to your component. If you don't set a `defaultValue` and no value is set in the builder, your component receives `undefined`.
 
-The following example shows the Checkbox control added to the `on` prop when you register a `Switch` component.
+## Example
 
-The control passes information about the checkbox, including its default value. For all the information that the Checkbox control passes, see [API parameters](#api-parameters)
+The following example adds a Checkbox control to the `showLogo` prop of a Navigation component.
 
-```jsx /components/Navigation/Navigation.makeswift.js
+<CodeGroup>
+
+```tsx Navigation.makeswift.ts
 import { Checkbox } from "@makeswift/runtime/controls"
 import { runtime } from "@/lib/makeswift/runtime"
 
@@ -49,4 +49,19 @@ runtime.registerComponent(Navigation, {
 })
 ```
 
-</RequestExample>
+```tsx Navigation.tsx
+interface Props {
+  showLogo: boolean
+}
+
+export function ({ showLogo = false }: Props) {
+  return (
+    <nav>
+      {props.showLogo && <img src="/logo.png" />}
+      {/* ... */}
+    </nav>
+  )
+}
+```
+
+</CodeGroup>

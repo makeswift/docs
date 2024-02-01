@@ -5,45 +5,55 @@ description: Adds a Select option (dropdown) to a component in the Makeswift bui
 
 <Frame
   type="glass"
-  caption=""
+  caption="A Select panel for a Button component to change the style"
 >
-  <img src="" />
+  <img src="/images/select-panel.png" />
 </Frame>
 
 ## Params
 
 <ParamField query="label" type="string" default="Text">
-  Text for the dropdown label. The label appears in the panel in the Makeswift
-  builder.
+  Text for the panel label in the Makeswift builder.
 </ParamField>
 
-<ParamField query="labelOrientation" type="LabelOrientation" default="horizontal">
+<ParamField
+  query="labelOrientation"
+  type='"vertical" | "horizontal"'
+  default="horizontal"
+>
   Orientation of the dropdown label within the panel.
 </ParamField>
 
-<ParamField query="options" type="SelectControlOption<T>[]" required>
-  The options available in the panel input.
-</ParamField>
+<ParamField query="options" type="SelectOption<T>[]" required>
+  An array of objects of type `SelectOption<T>` that contains the options available in the panel input.
 
-<ParamField query="defaultValue" type="T" default="undefined">
-  Defines the value selected in the Makeswift builder when the
-  value isn’t set. If you don’t provide a default value, the control
-  passes an `undefined` value to your component.
-</ParamField>
-
-## Types
-
-```javascript LabelOrientation
-type LabelOrientation = 'vertical' | 'horizontal'
+```ts
+type SelectOption<T extends string> = {
+  value: T
+  label: string
+}
 ```
 
-```javascript SelectControlOption
-type SelectControlOption<T extends string> = { value: T; label: string }
-```
+The `label` field is displayed in the Makeswift builder.
 
-<RequestExample>
+</ParamField>
 
-```jsx /components/Button/Button.makeswift.js
+<ParamField query="defaultValue" type="T">
+  The value passed to your component when nothing is set in the Makeswift
+  builder.
+</ParamField>
+
+## Prop type
+
+The Select control passes the generic type `T` from the selected `Option` to your component. If you don't set a `defaultValue` and no value is set in the builder, your component will receive `undefined`.
+
+## Example
+
+The following example adds a Select control to the `variant` prop of a Button component.
+
+<CodeGroup>
+
+```tsx Button.makeswift.ts
 import { Select } from "@makeswift/runtime/controls"
 import { runtime } from "@/lib/makeswift/runtime"
 
@@ -54,17 +64,44 @@ runtime.registerComponent(Button, {
   label: "Button",
   props: {
     variant: Select({
-      label: 'Variant',
-      labelOrientation: 'vertical',
+      label: "Style",
+      labelOrientation: "horizontal",
       options: [
-        { value: 'solid', label: 'Solid' },
-        { value: 'outline', label: 'Outline' },
-        { value: 'clear', label: 'Clear' },
+        { value: "floating", label: "Floating" },
+        { value: "outline", label: "Outline" },
+        { value: "clear", label: "Clear" },
       ],
-      defaultValue: 'solid',
+      defaultValue: "floating",
     }),
   },
 })
 ```
 
-</RequestExample>
+```tsx Button.tsx
+import clsx from "clsx"
+
+interface Props {
+  variant?: "floating" | "outline" | "clear"
+}
+
+export function Button({ variant = "floating" }) {
+  return (
+    <a
+      className={clsx(
+        "px-4 py-3 rounded",
+        {
+          floating: "bg-primary text-white shadow",
+          outline: "bg-transparent border border-primary text-primary",
+          clear: "text-primary bg-transparent border-none",
+        }[variant]
+      )}
+      href={link.href}
+      target={link.target}
+    >
+      Click me
+    </a>
+  )
+}
+```
+
+</CodeGroup>
