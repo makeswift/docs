@@ -14,8 +14,8 @@ description: "An instance method that provides SEO information about the pages c
   Number of sitemap entries to fetch.
 </ParamField>
 
-<ParamField query="after" type="number" default={0}>
-  Starting pagination index of the last sitemap entry fetched.
+<ParamField query="after" type="string">
+  Starting `id` cursor of the last sitemap entry fetched.
 </ParamField>
 
 <ParamField query="pathnamePrefix" type="string" default="/">
