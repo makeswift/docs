@@ -3,6 +3,8 @@ title: "constructor"
 description: The `Makeswift` client is used to fetch data from the Makeswift API.
 ---
 
+import ClientExample from "/snippets/examples/client.mdx"
+
 ## Arguments
 
 1. <ParamField query="apiKey" type="string" required>
@@ -22,15 +24,4 @@ description: The `Makeswift` client is used to fetch data from the Makeswift API
 
 The following example instantiates a new `Makeswift` client.
 
-```ts makeswift/client.ts
-import { Makeswift } from "@makeswift/runtime/next"
-import { strict } from "assert"
-
-import { runtime } from "./runtime"
-
-strict(process.env.MAKESWIFT_SITE_API_KEY, "MAKESWIFT_SITE_API_KEY is required")
-
-export const client = new Makeswift(process.env.MAKESWIFT_SITE_API_KEY, {
-  runtime,
-})
-```
+<ClientExample />
