@@ -18,21 +18,22 @@ The default breakpoints are great for starting a new site, but for integrating a
 ## Usage
 
 <Warning>
-  Custom breakpoints are only available with the new API pattern. Note that you need to pass the
-  `runtime` instance to the `Makeswift` component and `MakeswiftPage` component.
+  Custom breakpoints are only available with the new API pattern. Note that you
+  need to pass the `runtime` instance to the `Makeswift` component and
+  `MakeswiftPage` component.
 </Warning>
 
 To use the new API pattern and custom breakpoints, you first need to import `ReactRuntime`, and create an instance
 while passing the `breakpoints` option to the constructor:
 
 ```jsx
-import { ReactRuntime } from '@makeswift/runtime/react'
+import { ReactRuntime } from "@makeswift/runtime/react"
 
 const runtime = new ReactRuntime({
   breakpoints: {
-    tablet: { width: 768, viewport: 760, label: 'Tablet' },
+    tablet: { width: 768, viewport: 760, label: "Tablet" },
     phablet: { width: 640 },
-    mobile: { width: 575, viewport: 390, label: 'Mobile' },
+    mobile: { width: 575, viewport: 390, label: "Mobile" },
   },
 })
 ```
