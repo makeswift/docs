@@ -76,7 +76,6 @@
             "reference/makeswift/constructor",
             "reference/makeswift/get-sitemap",
             "reference/makeswift/get-page-snapshot",
-            "reference/makeswift/get-pages",
             "reference/makeswift/get-site-version"
           ]
         },
