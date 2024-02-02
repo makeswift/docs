@@ -1,4 +1,30 @@
 ---
 title: Extending the document
-description: Extending the document
 ---
+
+If you are integrating Makeswift to an existing Next.js app and are already using a custom
+`Document` you can extend the Makeswift `Document` instead of the one exported by
+`next/document`. You _must_ render the `<PreviewModeScript>` component inside `<Head>`. Without
+`<PreviewModeScript>` the Makeswift builder will always show your published page instead of the
+draft version.
+
+```tsx pages/_document.tsx
+import { Html, Head, Main, NextScript } from "next/document"
+import { Document, PreviewModeScript } from "@makeswift/runtime/next"
+
+export default class MyDocument extends Document {
+  render() {
+    return (
+      <Html>
+        <Head>
+          <PreviewModeScript isPreview={this.props.__NEXT_DATA__.isPreview} />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    )
+  }
+}
+```

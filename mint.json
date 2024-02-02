@@ -35,7 +35,7 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction", "quickstart", "architecture"]
+      "pages": ["quickstart"]
     },
     {
       "group": "API Reference",
@@ -64,20 +64,20 @@
           ]
         },
         {
-          "group": "Makeswift",
+          "group": "Client",
           "pages": [
-            "reference/makeswift/constructor",
-            "reference/makeswift/getSitemap",
-            "reference/makeswift/getPageSnapshot",
-            "reference/makeswift/getPages"
+            "reference/client/constructor",
+            "reference/client/get-sitemap",
+            "reference/client/get-page-snapshot",
+            "reference/client/get-site-version"
           ]
         },
         "reference/makeswift-api-handler",
         {
           "group": "ReactRuntime",
           "pages": [
-            "reference/react-runtime/constructor",
-            "reference/react-runtime/register-component"
+            "reference/runtime/constructor",
+            "reference/runtime/register-component"
           ]
         }
       ]
@@ -87,6 +87,7 @@
       "pages": [
         "guides/manual-installation",
         "guides/extending-the-document",
+        "guides/localization",
         "guides/troubleshooting"
       ]
     }

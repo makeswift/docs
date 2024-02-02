@@ -1,25 +1,18 @@
 ---
 title: Style
-description: Adds Styling options to your component in the Makeswift builder to visually configure a CSS class `string` prop.
+description: Add a Style control to your component in the Makeswift builder to visually edit a CSS class `string` prop.
 ---
 
-<Frame type="glass" caption="">
-  <img src="" />
+<Frame type="glass" caption="Style controls for an Image component">
+  <img src="/images/style-control.png" />
 </Frame>
 
 The Style control is the only control that is responsive; its values can be changed at different viewport sizes without affecting the others. For example, you could set a width of 1200px in desktop and 100% in mobile.
 
 ## Params
 
-<ParamField
-  query="properties"
-  type="StyleControlProperty[]"
-  default="Style.Default"
->
-  The CSS properties to configure in the panels.
-</ParamField>
-
-Available values for the `properties` parameter:
+<ParamField query="properties" type="StyleProperty[] | Style.All | Style.Default" default="Style.Default">
+  An array of style properties that can be visually edited. These values include:
 
 - `Style.Width`
 - `Style.Margin`
@@ -27,37 +20,43 @@ Available values for the `properties` parameter:
 - `Style.Border`
 - `Style.BorderRadius`
 - `Style.TextStyle`
-- `Style.Default`: preset that includes `Style.Width` and `Style.Margin`
-- `Style.All`: preset that includes all available properties
 
-## Types
+The following presets are also available:
 
-```javascript StyleControlProperty
-enum StyleControlProperty {
-  Width,
-  Margin,
-  Padding,
-  Border,
-  BorderRadius,
-  TextStyle,
-}
-```
+- `Style.Default` which is equivalent to `[Style.Width, Style.Margin]`
+- `Style.All` which includes all properties.
 
-<RequestExample>
+</ParamField>
 
-```jsx /components/Box/Box.makeswift.js
+## Example
+
+The following example adds a Style control to the `className` prop of an Image component.
+
+<CodeGroup>
+
+```tsx Image.makeswift.ts
 import { Style } from "@makeswift/runtime/controls"
 import { runtime } from "@/lib/makeswift/runtime"
 
-import { Box } from "./Box"
+import { Image } from "./Image"
 
-runtime.registerComponent(Box, {
-  type: "box",
-  label: "Box",
+runtime.registerComponent(Image, {
+  type: "image",
+  label: "Image",
   props: {
     className: Style({ properties: Style.All }),
   },
 })
 ```
 
-</RequestExample>
+```tsx Image.tsx
+interface Props {
+  className?: string
+}
+
+export function Image({ className }: Props) {
+  return <img className={className} src="https://via.placeholder.com/150" />
+}
+```
+
+</CodeGroup>

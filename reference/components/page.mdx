@@ -1,4 +1,23 @@
 ---
-title: "<Page />"
-description: "Handle the API"
+title: "<Page>"
+description: The `<Page>` component takes a Makeswift [snapshot](/architecture/concepts#snapshot) and renders React elements using [components registered](/reference/runtime/register-component) with the [runtime](/architecture/concepts#runtime).
 ---
+
+import PagesCatchAllExample from "/snippets/examples/pages-catch-all.mdx"
+
+## Props
+
+<ParamField query="snapshot" type="Snapshot" required>
+  A Makeswift [snapshot](/architecture/concepts#snapshot) to render.
+</ParamField>
+
+<ParamField query="runtime" type="ReactRuntime">
+  An optional [runtime instance](/reference/runtime/constructor) to use for
+  components and breakpoints.
+</ParamField>
+
+## Example
+
+The following example sets up a [catch all route](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#catch-all-segments) where page [snapshots](/architecture/concepts#snapshots) are fetched from Makeswift and rendered using the `<Page>` component.
+
+<PagesCatchAllExample />

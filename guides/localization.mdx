@@ -1,25 +1,25 @@
 ---
 title: Localization
-description:
+description: "This guide will walk you through setting up localization for your Makeswift site so you can visually customize your site for different locales."
 ---
 
-Makeswift's support for localization allows you to visually edit your site for different locales.
-The feature is deeply integrated with [Next.js' Internationalization features](https://nextjs.org/docs/app/building-your-application/routing/internationalization).
-
-For example, if you have a company page at `example.com/company` you can create the Spanish version of the page at `example.com/es/compania` or `example.es/compania`.
+<Info>
+  The feature is deeply integrated with [Next.js' internationalization
+  features](https://nextjs.org/docs/app/building-your-application/routing/internationalization).
+</Info>
 
 <Warning>
-
-Localization is currently only available on the Enterprise plan.
-Reach out to support at [support@makeswift.com](mailto:support@makeswift.com) if you want to enable this feature.
-
+  Localization is currently only available on the Enterprise plan. Reach out to
+  support at [support@makeswift.com](mailto:support@makeswift.com) if you want
+  to enable this feature.
 </Warning>
 
 ## Getting started
 
-### Managing locales in the settings
+<Steps>
 
-To get started, open site settings and go to the "Locales" tab:
+<Step title="Add locales in the Makeswift builder">
+Open site settings and go to the "Locales" tab:
 
 ![Localization first step](../images/localization-first-step.png)
 
@@ -33,18 +33,25 @@ Once you add all the locales you need, it might look like this:
 
 ![Manage locales in settings](../images/localization-manage-locales.png)
 
-### Configuring locales in the Next.js config
+</Step>
+
+<Step title="Configure locales in your Next.js config">
 
 The locales in your site settings need to match the locales configured in `next.config.js`. For example, to match the locales on the screenshot above,
 we need to update `next.config.js` to be like this:
 
-```ts
+```js next.config.js
+const withMakeswift = require("@makeswift/runtime/next/plugin")()
+
 const nextConfig = {
+  // ...
   i18n: {
-    defaultLocale: 'en-US',
-    locales: ['en-US', 'de-DE', 'en-SG', 'es', 'es-MX', 'id-ID'],
+    defaultLocale: "en-US",
+    locales: ["en-US", "de-DE", "en-SG", "es", "es-MX", "id-ID"],
   },
 }
+
+module.exports = withMakeswift(nextConfig)
 ```
 
 Note that in `next.config.js`, you also need to put your `defaultLocale` to the `locales`.
@@ -53,30 +60,36 @@ For example, here, we're adding `en-US` to the `locales`.
 It is important to match the locales and the default locale on the site settings to the locales configured in `next.config.js`, otherwise
 the pages on the builder will not load properly.
 
-### Updating `getStaticProps`
+</Step>
 
-Once you set up locales in the site settings and in the Next.js config, you need to pass the locale from `getStaticProps`'s `ctx` to `getPageSnapshot`.
+<Step title="Update snapshot fetching">
+Once you set up locales in the site settings and in the Next.js config, you need to pass the locale from `getStaticProps` to `getPageSnapshot`.
 
-```diff
-export async function getStaticProps(ctx) {
-  // ...
+import PagesCatchAllLocalizedExample from "/snippets/examples/pages-catch-all-localized.mdx"
 
-  const snapshot = await makeswift.getPageSnapshot(path, {
-    siteVersion: Makeswift.getSiteVersion(ctx.previewData),
-+   locale: ctx.locale,
-  });
-}
-```
+<PagesCatchAllLocalizedExample />
 
 This code is usually located in `[[...path]].tsx`, but it might be different depending on your setup.
 
-### Editing localized pages in the builder
+</Step>
+
+<Step title="Edit your pages in the builder">
 
 Once you've set everything up, you should be able to switch to the locale using the locale switcher on the builder.
 
 ![Manage locales in settings](../images/localization-locales-switcher.png)
 
-### Domain-based localization
+<Note>
+
+You can customize the path for each page in each locale. For example, if you have a company page at `example.com/company` you can create the Spanish version of the page at `example.com/es/compania` or `example.es/compania`.
+
+</Note>
+
+</Step>
+
+</Steps>
+
+## Domain-based localization
 
 If you don't provide a domain for a locale, the localized pages will be located on the same domain as the default locale,
 but nested on the locale's path. For example, `es` pages will be located on `example.com/es/page`.
@@ -87,26 +100,30 @@ To use domain-based localization, first, add the domain to the locale on your si
 
 Then, add the domain to your `next.config.js`:
 
-```ts
+```js next.config.js
+const withMakeswift = require("@makeswift/runtime/next/plugin")()
+
 const nextConfig = {
   i18n: {
-    defaultLocale: 'en-US',
-    locales: ['en-US', 'de-DE', 'en-SG', 'es', 'es-MX', 'id-ID'],
+    defaultLocale: "en-US",
+    locales: ["en-US", "de-DE", "en-SG", "es", "es-MX", "id-ID"],
     domains: [
       {
-        domain: 'example.es',
-        defaultLocale: 'es',
+        domain: "example.es",
+        defaultLocale: "es",
       },
     ],
   },
 }
+
+module.exports = withMakeswift(nextConfig)
 ```
 
-Once you have done that, the Spanish localized pages will be located on `example.es/page`.
+Once you've done that, the Spanish localized pages will be located on `example.es/page`.
 
-### Localized resources
+## Localized resources
 
 When making changes on a different locale you can override any property, including the page's pathname, metadata, and SEO tags.
 
 You can also localize a global component. To do this, edit a global component within a localized page, make changes,
-and then save the global component. Then, that global component will be saved for that locale.
+and then save the global component. That global component will be saved for that locale.
