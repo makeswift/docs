@@ -1,4 +1,37 @@
 ---
 title: "<Page />"
-description: "Handle the API"
+description: The `<Page />` component takes a Makeswift [snapshot](/architecture/concepts#snapshot) and renders React elements using [components registered](/reference/react-runtime/register-component) with the [runtime](/architecture/concepts#runtime).
 ---
+
+## Props
+
+<ParamField query="snapshot" type="Snapshot" required>
+  A Makeswift [snapshot](/architecture/concepts#snapshot) to render.
+</ParamField>
+
+<ParamField query="runtime" type="ReactRuntime">
+  An optional [runtime](/reference/react-runtime/constructor) instance to use
+  for components and breakpoints.
+</ParamField>
+
+## Example
+
+```tsx pages/[...slug].tsx
+import { Makeswift, Page as MakeswiftPage } from "@makeswift/runtime/next"
+import { client } from "makeswift/client"
+import { runtime } from "makeswift/runtime"
+import "makeswift/components"
+
+export async function getStaticProps(ctx) {
+  const path = "/" + (ctx.params?.path ?? []).join("/")
+  const snapshot = await client.getPageSnapshot(path)
+
+  if (snapshot == null) return { notFound: true }
+
+  return { props: { snapshot } }
+}
+
+export default function Page({ snapshot }) {
+  return <MakeswiftPage snapshot={snapshot} runtime={runtime} />
+}
+```
