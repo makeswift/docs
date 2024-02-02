@@ -1,11 +1,10 @@
 ---
 title: "constructor"
-description: The `ReactRuntime` can be instantiated to provide client configurations like custom breakpoints.
+description: The `ReactRuntime` is the bridge between Makeswift and your app. It tells the Makeswift builder about the schema of your components and which breakpoints are used.
 ---
 
-import PagesCatchAllExample from "/snippets/examples/pages-catch-all.mdx"
 import RuntimeExample from "/snippets/examples/runtime.mdx"
-import ClientExample from "/snippets/examples/client.mdx"
+import BreakpointsExample from "/snippets/examples/breakpoints.mdx"
 
 ## Options
 
@@ -30,19 +29,12 @@ type Breakpoint = {
   </Accordion>
 </ParamField>
 
-## Example
+## Examples
 
-The following example instantiates a new `ReactRuntime` with 4 custom breakpoints.
+### Basic usage
 
 <RuntimeExample />
 
-You must then pass this instance of the runtime to
-**both** your [client instance](/reference/makeswift/constructor) and [`<Page>`](/reference/components/page) component.
+### Custom breakpoints
 
-<CodeGroup>
-
-<ClientExample />
-
-<PagesCatchAllExample />
-
-</CodeGroup>
+<BreakpointsExample />
