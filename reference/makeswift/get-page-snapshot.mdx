@@ -1,4 +1,37 @@
 ---
 title: "getPageSnapshot"
-description: "Fetch a page snapshot"
+description: "An instance method that fetches a snapshot of a Makeswift page at a given path. This snapshot is only intended to be rendered by the `<Page>` component."
 ---
+
+import PagesCatchAllExample from "/snippets/examples/pages-catch-all.mdx"
+
+## Arguments
+
+1. <ParamField query="pathname" type="string" required>
+     The path of the page to fetch a snapshot of.
+   </ParamField>
+2. <ParamField query="options" type="object" required>
+     Options for site version and locale.
+     <Expandable>
+       <ParamField query="siteVersion" type="SiteVersion" required>
+         The return value from
+         [`getSiteVersion`](/reference/makeswift/get-site-version).
+       </ParamField>
+       <ParamField query="locale" type="string">
+         A valid locale string.
+       </ParamField>
+     </Expandable>
+   </ParamField>
+
+## Return type
+
+<ResponseField name="snapshot" type="Snapshot">
+  An opaque `Snapshot` object that is only intended to be rendered by the
+  [`<Page>`](/reference/components/page) component.
+</ResponseField>
+
+## Example
+
+The following example sets up a [catch all route](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#catch-all-segments) where page [snapshots](/architecture/concepts#snapshots) are fetched from Makeswift and rendered using the [`<Page>`](/reference/components/page) component.
+
+<PagesCatchAllExample />

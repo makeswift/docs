@@ -1,7 +1,12 @@
 ---
 title: "getSitemap"
-description: "A sitemap is a structured list of pages that enables web crawlers to find the pages of a site. `getSitemap` provides SEO information about the pages created within Makeswift. You can combine the results of `getSitemap` with SEO information for your hardcoded pages to create a sitemap."
+description: "An instance method that provides SEO information about the pages created within Makeswift. You can combine the results of `getSitemap` with SEO information for your hardcoded pages to create a sitemap."
 ---
+
+<Note>
+  A sitemap is a structured list of pages that enables web crawlers to find the
+  pages of a site.
+</Note>
 
 ## Options
 
@@ -10,12 +15,13 @@ description: "A sitemap is a structured list of pages that enables web crawlers 
 </ParamField>
 
 <ParamField query="after" type="number" default={0}>
-  Starting pagination position by index of the last sitemap entry fetched.
+  Starting pagination index of the last sitemap entry fetched.
 </ParamField>
 
 <ParamField query="pathnamePrefix" type="string" default="/">
-  [Pathname](https://developer.mozilla.org/en-US/Web/API/URL/pathname) prefix to
-  filter returned entries.
+  Only sitemap entries beginning with this
+  [pathname](https://developer.mozilla.org/en-US/Web/API/URL/pathname) will be
+  returned.
 </ParamField>
 
 <ParamField query="locale" type="string">

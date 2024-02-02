@@ -5,14 +5,18 @@ description: The `Makeswift` client is used to fetch data from the Makeswift API
 
 ## Arguments
 
-1. `apiKey` (string): The API key for the Makeswift site.
-
-2. `options` (object): An object with the following properties:
-
-<ParamField query="runtime" type="ReactRuntime">
-  An optional instance of the `ReactRuntime` class. This is required for custom
-  breakpoints.
-</ParamField>
+1. <ParamField query="apiKey" type="string" required>
+     The API key for the Makeswift site.
+   </ParamField>
+2. <ParamField query="options" type="object">
+     Options for site version and locale.
+     <Expandable>
+       <ParamField query="runtime" type="ReactRuntime">
+         A [runtime instance](/reference/runtime/constructor). This is required
+         for custom breakpoints.
+       </ParamField>
+     </Expandable>
+   </ParamField>
 
 ## Example
 

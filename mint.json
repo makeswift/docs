@@ -83,8 +83,8 @@
         {
           "group": "ReactRuntime",
           "pages": [
-            "reference/react-runtime/constructor",
-            "reference/react-runtime/register-component"
+            "reference/runtime/constructor",
+            "reference/runtime/register-component"
           ]
         }
       ]
