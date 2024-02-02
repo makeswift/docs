@@ -69,8 +69,8 @@ import ApiHandlerExample from "/snippets/examples/api-handler.mdx"
 <ApiHandlerExample />
 
 This API route adds support for
-[preview Mode](https://nextjs.org/advanced-features/preview-mode),
-[on-demand revalidation](https://nextjs.org/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation),
+[preview Mode](https://nextjs.org/docs/pages/building-your-application/configuring/preview-mode),
+[on-demand revalidation](https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration#on-demand-revalidation),
 and other features that make Makeswift work seamlessly with your Next.js app.
 
   </Step>
@@ -124,7 +124,7 @@ ReactRuntime.registerComponent(HelloWorld, {
   </Step>
   <Step title="Add a route for Makeswift pages">
   
-Create an [optional catch-all route](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#optional-catch-all-segments) named `[[...path]].js`. You will use the `Makeswift` client to fetch page [snapshots](/architecture#snapshots) and pass it to the [`Page`](/reference/components/page) component to render.
+Create an [optional catch-all route](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#optional-catch-all-segments) named `[[...path]].js`. You will use the catch-all route to fetch page snapshots from the `Makeswift` client and pass them to the [`Page`](/reference/components/page) component to render.
 
 <PagesCatchAllExample />
 
@@ -137,11 +137,11 @@ Create an [optional catch-all route](https://nextjs.org/docs/pages/building-your
 3. [`fallback: 'blocking'`](https://nextjs.org/docs/pages/api-reference/functions/get-static-paths#fallback-blocking) is used here so that your Next.js app doesn't need to be re-deployed whenever a new Makeswift page is created.
 
 With this setup, your pages will be rendered using
-[incremental static regeneration](https://nextjs.org/basic-features/data-fetching/incremental-static-regeneration).
+[incremental static regeneration](https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration).
 A `revalidate` field isn't added to the returned value of `getStaticProps` because
 Makeswift pages are automatically revalidated using
 [on-demand revalidation](https://nextjs.org/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation)
-by leveraging the [Makeswift API handler](#api-handler).
+by leveraging the Makeswift API handler.
 
   </Step>
   
@@ -153,8 +153,8 @@ Run the local development script. This will start the Next.js app at `http://loc
 npm run dev
 ```
 
-If port `3000` is already in use, Next.js will try port `3001`, then `3002`, and so forth until an
-unused port is found.
+If port `3000` is already in use, Next.js will try port `3001`, then `3002`, and so forth until it finds an
+unused port.
 
 <Note>Take note of this port for the next step.</Note>
 
@@ -169,7 +169,7 @@ Finally, open the Makeswift builder, navigate to **Settings > Host**, and add yo
 </Frame>
 
 When you're ready to deploy, set up a separate site and use your deployment URL
-instead of `localhost`. You can keep this site for local development. Read more about [deploying to production](/guides/deploying-to-production).
+instead of `localhost`. You can keep this site for local development.
 
   </Step>
   <Step title="Start building">

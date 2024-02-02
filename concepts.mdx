@@ -1,6 +1,6 @@
 ---
 title: "Concepts"
-description: "To best understand Makeswift, there are a few core concepts to establish common vocabulary on."
+description: "To best understand Makeswift, there are a few core concepts for which to establish common vocabulary."
 ---
 
 ## Props
@@ -19,13 +19,13 @@ You can read more about props in the [React documentation](https://react.dev/lea
 
 ## Controls
 
-Controls describe the way users can pass data to your components props. Each control maps a [prop](#props) on your component to user interface elements such as <Tooltip tip="Form elements in the right sidebar of the Makeswift builder">panels</Tooltip> and <Tooltip tip="Interactive elements placed on the Makeswift builder preview">overlays</Tooltip>. Controls are defined when [registering components](/reference/register-component).
+Controls describe how users can pass data to your components props. Each control maps a [prop](#props) on your component to user interface elements such as <Tooltip tip="Form elements in the right sidebar of the Makeswift builder">panels</Tooltip> and <Tooltip tip="Interactive elements placed on the Makeswift builder preview">overlays</Tooltip>. Controls are defined when you [register components](/reference/register-component).
 
-There are two types of controls: [basic](#basic) and [composable](#composable) controls.
+There are two types of controls: [basic](#basic-controls) and [composable](#composable-controls) controls.
 
 ### Basic controls
 
-Basic controls cannot contain other controls. Multiple basic controls can provide the same type of data, but with different user interfaces. For example you can provide a `string` to your component with a [`TextInput`](/reference/controls/text-input), [`TextArea`](/reference/controls/text-area), [`Select`](/reference/controls/select), or [`Combobox`](/reference/controls/combobox) control. Here are all of the basic controls:
+Basic controls cannot contain other controls. Multiple basic controls can provide the same type of data, but with different user interfaces. For example, you can provide a `string` to your component with a [`TextInput`](/reference/controls/text-input), [`TextArea`](/reference/controls/text-area), [`Select`](/reference/controls/select), or [`Combobox`](/reference/controls/combobox) control. Here are all of the basic controls:
 
 <CardGroup cols={3}>
   <Card
@@ -55,7 +55,7 @@ Basic controls cannot contain other controls. Multiple basic controls can provid
   />
 </CardGroup>
 
-There are 3 special basic controls that are designed for specific types of props such as `className` and `children`:
+There are three special basic controls that are designed for specific types of props such as `className` and `children`:
 
 <CardGroup cols={3}>
   <Card title="RichText" icon="text" href="/reference/controls/rich-text" />
@@ -63,9 +63,9 @@ There are 3 special basic controls that are designed for specific types of props
   <Card title="Style" icon="droplet" href="/reference/controls/style" />
 </CardGroup>
 
-- The [`RichText`](/reference/controls/rich-text) control provides a `ReactNode` to your component, and then renders an inline rich text editor <Tooltip tip="Interactive elements placed on the Makeswift builder preview">overlay</Tooltip> wherever that `ReactNode` is rendered.
+- The [`RichText`](/reference/controls/rich-text) control provides a `ReactNode` to your component and then renders an inline rich text editor <Tooltip tip="Interactive elements placed on the Makeswift builder preview">overlay</Tooltip> wherever the builder renders the `ReactNode`.
 
-- The [`Slot`](/reference/controls/slot) control provides a `ReactNode` to your component, and places a drop zone [overlay](/reference/concepts/overlay) wherever the prop is rendered. Users can then add components visually to that drop zone.
+- The [`Slot`](/reference/controls/slot) control provides a `ReactNode` to your component and places a drop zone <Tooltip tip="Interactive elements placed on the Makeswift builder preview">overlay</Tooltip> wherever the builder renders the prop. Users can then add components visually to that drop zone.
 
 - The [`Style`](/reference/controls/style) control provides multiple <Tooltip tip="Form elements in the right sidebar of the Makeswift builder">panels</Tooltip> and <Tooltip tip="Interactive elements placed on the Makeswift builder preview">overlays</Tooltip> that modify various CSS properties. This data is then passed to your component as a `string` value.
 

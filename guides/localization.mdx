@@ -1,6 +1,6 @@
 ---
 title: Localization
-description: "This guide will walk you through setting up localization for your Makeswift site so you can visually customize your site for different locales."
+description: "This guide walks you through setting up localization for your Makeswift site so you can visually customize your site for different locales."
 ---
 
 <Info>
@@ -37,8 +37,7 @@ Once you add all the locales you need, it might look like this:
 
 <Step title="Configure locales in your Next.js config">
 
-The locales in your site settings need to match the locales configured in `next.config.js`. For example, to match the locales on the screenshot above,
-we need to update `next.config.js` to be like this:
+The locales in your site settings need to match the locales configured in `next.config.js`. For example, to match the locales on the screenshot above, update `next.config.js` to be like this:
 
 ```js next.config.js
 const withMakeswift = require("@makeswift/runtime/next/plugin")()
@@ -55,9 +54,9 @@ module.exports = withMakeswift(nextConfig)
 ```
 
 Note that in `next.config.js`, you also need to put your `defaultLocale` to the `locales`.
-For example, here, we're adding `en-US` to the `locales`.
+The example includes `en-US` to the `locales`.
 
-It is important to match the locales and the default locale on the site settings to the locales configured in `next.config.js`, otherwise
+It is important to match the locales and the default locale on the site settings to the locales configured in `next.config.js`. Otherwise
 the pages on the builder will not load properly.
 
 </Step>
@@ -81,7 +80,7 @@ Once you've set everything up, you should be able to switch to the locale using 
 
 <Note>
 
-You can customize the path for each page in each locale. For example, if you have a company page at `example.com/company` you can create the Spanish version of the page at `example.com/es/compania` or `example.es/compania`.
+You can customize the path for each page in each locale. For example, if you have a company page at `example.com/company`, you can create the Spanish version of the page at `example.com/es/compania` or `example.es/compania`.
 
 </Note>
 

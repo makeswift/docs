@@ -1,6 +1,6 @@
 ---
 title: "MakeswiftApiHandler"
-description: An API route for Makeswift that adds support for [preview mode](https://nextjs.org/advanced-features/preview-mode), [on-demand revalidation](https://nextjs.org/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation), and other features that make Makeswift work seamlessly with your Next.js app.
+description: An API route for Makeswift that adds support for [preview mode](https://nextjs.org/docs/pages/building-your-application/configuring/preview-mode), [on-demand revalidation](https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration#on-demand-revalidation), and other features that make Makeswift work seamlessly with your Next.js app.
 ---
 
 import FontsExample from '/snippets/examples/fonts.mdx'
@@ -28,7 +28,7 @@ import ApiHandlerExample from '/snippets/examples/api-handler.mdx'
         }
         ```
 
-        The `src` field is used to preview the font in the builder. The `src` field can be either a relative or absolute URL. If the `src` field is omitted the font will still be selectable but will use a fallback font in the builder.
+        The `src` field is used to preview the font in the builder. The `src` field can be either a relative or absolute URL. If the `src` field is omitted, the font is still selectable but uses a fallback font in the builder.
        </ParamField>
      </Expandable>
    </ParamField>
@@ -41,6 +41,6 @@ import ApiHandlerExample from '/snippets/examples/api-handler.mdx'
 
 ### Adding fonts
 
-The following example adds Spline Sans and Spline Sans Mono fonts to the site using `next/font` and adds them to the `MakeswiftApiHandler`. A variable is font is used to reduce the number of font files requested.
+The following example adds Spline Sans and Spline Sans Mono fonts to the site using `next/font` and adds them to the `MakeswiftApiHandler`. Using a variable font reduces the number of font files requested.
 
 <FontsExample />
