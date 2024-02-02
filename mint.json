@@ -2,22 +2,22 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Starter Kit",
   "logo": {
-    "dark": "/svg/logo.svg",
-    "light": "/svg/logo.svg"
+    "dark": "/images/logo.svg",
+    "light": "/images/logo.svg"
   },
-  "favicon": "/svg/favicon.svg",
+  "favicon": "/images/favicon.svg",
   "colors": {
     "primary": "#EA3BA7",
     "light": "#EA3BA7",
     "dark": "#EA3BA7",
     "anchors": {
       "from": "#EA3BA7",
-      "to": "#07C983"
+      "to": "#5F49F4"
     }
   },
   "topbarLinks": [],
   "topbarCtaButton": {
-    "name": "Builder",
+    "name": "Log in",
     "url": "https://app.makeswift.com"
   },
   "anchors": [
