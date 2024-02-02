@@ -1,9 +1,10 @@
 ---
 title: "MakeswiftApiHandler"
-description: A catch-all API route for Makeswift to send revalidation requests and other Next.js specific features.
+description: An API route for Makeswift that adds support for [preview mode](https://nextjs.org/advanced-features/preview-mode), [on-demand revalidation](https://nextjs.org/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation), and other features that make Makeswift work seamlessly with your Next.js app.
 ---
 
 import FontsExample from '/snippets/examples/fonts.mdx'
+import ApiHandlerExample from '/snippets/examples/api-handler.mdx'
 
 ## Arguments
 
@@ -36,14 +37,7 @@ import FontsExample from '/snippets/examples/fonts.mdx'
 
 ### Basic usage
 
-```ts pages/api/[...makeswift].ts
-import { MakeswiftApiHandler } from "@makeswift/runtime/next"
-import { strict } from "assert"
-
-strict(process.env.MAKESWIFT_SITE_API_KEY, "MAKESWIFT_SITE_API_KEY is required")
-
-export default MakeswiftApiHandler(process.env.MAKESWIFT_SITE_API_KEY)
-```
+<ApiHandlerExample />
 
 ### Adding fonts
 
