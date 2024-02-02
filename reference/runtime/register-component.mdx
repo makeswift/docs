@@ -40,7 +40,7 @@ component in the Makeswift builder. `'Box'` is the `label`, which appears in
 the Makeswift builder. The example applies a [`Style`](/controls/style) control to the
 `className` prop.
 
-```tsx
+```tsx Box.makeswift.ts
 import { ReactRuntime } from "@makeswift/runtime/react"
 import { Style } from "@makeswift/runtime/controls"
 
@@ -57,6 +57,8 @@ ReactRuntime.registerComponent(Box, {
 })
 ```
 
+<Note>The `.makeswift.ts` file must be inside the `components` directory or its subdirectories. You do not need to export the components.</Note>
+
 ### Creating sections
 
 This example shows how to register a `Cube` and a `Sphere` component under a "Visuals" section. In each
@@ -70,7 +72,7 @@ builder, both components appear under the same Visuals collapsible section:
   />
 </Frame>
 
-```jsx
+```jsx Visuals.makeswift.ts
 import { ReactRuntime } from "@makeswift/runtime/react"
 import { Style } from "@makeswift/runtime/controls"
 
@@ -113,7 +115,7 @@ component tray, we can see our component with the selected icon.
   />
 </Frame>
 
-```jsx
+```jsx Cube.makeswift.ts
 import { ReactRuntime } from "@makeswift/runtime/react"
 import { Style } from "@makeswift/runtime/controls"
 import { ComponentIcon } from "@makeswift/runtime"
