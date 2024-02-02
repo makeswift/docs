@@ -18,12 +18,16 @@ description: Adds a Combobox panel in the Makeswift builder to visually edit a g
 
 <ParamField
   query="getOptions"
-  type="(q: string) => ComboboxOption<T>[] | Promise<ComboboxOption<T>[]>"
+  type="getComboboxOptions<T>"
   required
 >
   A function that receives a query string and returns an array of type `Option<T>`. This function may be async to fetch options asynchronously.
 
 ```ts
+type getComboboxOptions<T> = (
+  query: string
+) => ComboboxOption<T>[] | Promise<ComboboxOption<T>[]>
+
 type ComboboxOption<T> = {
   id: string
   label: string
