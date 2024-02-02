@@ -1,19 +1,20 @@
 ---
-title: 'Quickstart'
-description: 
+title: "Quickstart"
+description:
 ---
 
-You can integrate a local Next.js app with a Makeswift site using an automatic or manual setup. You can integrate new or existing Next.js apps; however, we recommend using the [Manual Installation](/guides/manual-installation) guide for existing apps. 
+You can integrate a local Next.js app with a Makeswift site using an automatic or manual setup. You can integrate new or existing Next.js apps; however, we recommend using the [manual installation](/guides/manual-installation) guide for existing apps.
 
-This guide shows you how to set up a Next.js app for a local development environment using an automatic setup. 
+This guide shows you how to set up a Next.js app for a local development environment using an automatic setup.
 
 # Prerequisites
 
 You will need the following:
-- Node.js. For version requirements, see the Next.js [Installation](https://nextjs.org/docs/getting-started/installation) guide.
-- Experience building Next.js applications.
 
-You don't need an existing Makeswift site to complete this guide. 
+- Node.js. For version requirements, see the Next.js [installation](https://nextjs.org/docs/getting-started/installation) guide.
+- Familiarity with [Next.js](https://nextjs.org/docs)
+
+You don't need an existing Makeswift site to complete this guide.
 
 # Automatic setup
 
@@ -27,7 +28,7 @@ You don't need an existing Makeswift site to complete this guide.
     ```
 
     After you confirm you'd like to integrate your app, the CLI generates all the necessary files in the project folder.
-  
+
     The CLI then opens a new page in your browser where you will continue integrating your app.
 
   </Step>
@@ -36,35 +37,51 @@ You don't need an existing Makeswift site to complete this guide.
 
     The browser will prompt you to select a Makeswift site to connect to your local Next.js app. You may need to login or sign up, but the browser will redirect you to this page.
 
+
     <Accordion title="Select an existing site or create a new one.">
-      ![Select Site](./images/select-site.png)
+      <Frame>
+        <img src="/images/select-site.png" alt="Screenshot of select site to integrate" />
+      </Frame>
     </Accordion>
 
     <Accordion title="Pick a template (optional).">
-      ![Select Template](./images/select-template.png)
+      <Frame>
+        <img src="/images/select-template.png" alt="Screenshot of template picker" />
+      </Frame>
     </Accordion>
-    
-    <Accordion title="When the Makeswift site is being linked to `localhost`, check the CLI for any prompts.">
-      ![Integrating](./images/integrating.png)
+
+    <Accordion title="Check CLI while site is being linked.">
+      <Frame>
+        <img src="/images/integrating.png" alt="Screenshot of linking page" />
+      </Frame>
 
       During this step, the Makeswift site API Key is stored as an environment variable inside your local `.env.local` file.
     </Accordion>
 
+    <Warning>
+      Make sure to check your console during the linking process. If the CLI fails to install dependencies you may need to install them manually.
+    </Warning>
+
   </Step>
 
   <Step title="Start building">
-    The browser redirects you to Makeswift Builder once the integration is complete. To learn how to use Makeswift builder, see the [Help Center](https://help.makeswift.com/) articles.    
-    
-    - Make sure the site has at least one page. The toolbar for each page should contain custom components for the template, as shown in the following image:
+    The browser redirects you to Makeswift Builder once the integration is complete. If you skipped the template option make sure to create a page.
 
-    ![Custom Components](./images/custom-components.png)
+    <Accordion title="How do I create a page?">
+      <Frame>
+        <img src="/images/add-page.png" alt="Screenshot of add page" />
+      </Frame>
+    </Accordion>
 
-    - You can make your own custom components available in Makeswift builder. For examples on how to register a component, see the [Runtime](/reference/runtime) reference or navigate to the `components` folder in your local Next app.  
+    You should find some new custom components in the toolbar.
+
+    <Frame>
+      <img src="/images/registered-components.png" alt="Screenshot of custom components in toolbar" />
+    </Frame>
+
+    These components will be located in the `components` folder of your Next.js app. You can explore the files ending with `.makeswift.ts` to learn more about [registering components](/reference/runtime/register-component).
+
+    To learn how to use Makeswift builder, see the [Help Center](https://help.makeswift.com/) articles.
 
   </Step>
 </Steps>
-
-
-
-
-

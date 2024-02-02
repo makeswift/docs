@@ -2,6 +2,8 @@
 title: Manual installation
 ---
 
+import PagesCatchAllExample from "/snippets/examples/pages-catch-all.mdx"
+
 The fastest way to get started with Makeswift on a new Next.js project is to follow the
 [getting started guide](/quickstart). If you have an existing Next.js application
 or want to set things up yourself, continue with the rest of this guide.
@@ -124,11 +126,9 @@ ReactRuntime.registerComponent(HelloWorld, {
   
 Create an [optional catch-all route](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#optional-catch-all-segments) named `[[...path]].js`. You will use the `Makeswift` client to fetch page [snapshots](/architecture#snapshots) and pass it to the [`Page`](/reference/components/page) component to render.
 
-import PagesCatchAllExample from "/snippets/examples/pages-catch-all.mdx"
-
 <PagesCatchAllExample />
 
-Important notes:
+**Important notes**:
 
 1. If you already have an `index.js` file, you will need to name the file `[...path.js]` instead of `[[...path.js]]`. For more information about the differences between catch-all and optional catch-all segments, refer to the Next.js [Catch-all segments](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#catch-all-segments) documentation.
 
@@ -137,11 +137,11 @@ Important notes:
 3. [`fallback: 'blocking'`](https://nextjs.org/docs/pages/api-reference/functions/get-static-paths#fallback-blocking) is used here so that your Next.js app doesn't need to be re-deployed whenever a new Makeswift page is created.
 
 With this setup, your pages will be rendered using
-[Incremental Static Regeneration](https://nextjs.org/basic-features/data-fetching/incremental-static-regeneration).
+[incremental static regeneration](https://nextjs.org/basic-features/data-fetching/incremental-static-regeneration).
 A `revalidate` field isn't added to the returned value of `getStaticProps` because
 Makeswift pages are automatically revalidated using
-[On-demand Revalidation](https://nextjs.org/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation)
-by levaraging the [Makeswift API handler](#api-handler).
+[on-demand revalidation](https://nextjs.org/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation)
+by leveraging the [Makeswift API handler](#api-handler).
 
   </Step>
   
@@ -154,7 +154,9 @@ npm run dev
 ```
 
 If port `3000` is already in use, Next.js will try port `3001`, then `3002`, and so forth until an
-unused port is found. Take note of this port for the next step.
+unused port is found.
+
+<Note>Take note of this port for the next step.</Note>
 
   </Step>
   <Step title="Add your app's URL to Makeswift">
