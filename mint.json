@@ -94,6 +94,7 @@
       "pages": [
         "guides/manual-installation",
         "guides/extending-the-document",
+        "guides/localization",
         "guides/troubleshooting"
       ]
     }

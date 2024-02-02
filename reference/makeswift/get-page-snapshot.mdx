@@ -4,6 +4,7 @@ description: "An instance method that fetches a snapshot of a Makeswift page at 
 ---
 
 import PagesCatchAllExample from "/snippets/examples/pages-catch-all.mdx"
+import PagesCatchAllLocalizedExample from "/snippets/examples/pages-catch-all-localized.mdx"
 
 ## Arguments
 
@@ -30,8 +31,16 @@ import PagesCatchAllExample from "/snippets/examples/pages-catch-all.mdx"
   [`<Page>`](/reference/components/page) component.
 </ResponseField>
 
-## Example
+## Examples
+
+### Basic usage
 
 The following example sets up a [catch all route](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#catch-all-segments) where page [snapshots](/architecture/concepts#snapshots) are fetched from Makeswift and rendered using the [`<Page>`](/reference/components/page) component.
 
 <PagesCatchAllExample />
+
+### Localization
+
+The following example uses the `locale` param in `getStaticProps` to fetch a localized snapshot of a page.
+
+<PagesCatchAllLocalizedExample />
