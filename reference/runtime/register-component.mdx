@@ -1,36 +1,38 @@
 ---
 title: "registerComponent"
-description: "Register a component"
+description: Adds your components to the Makeswift builder.
 ---
 
-### Params
+## Arguments
 
-| Parameter | Type                                     | Required | Default | Description                                       |
-| --------- | ---------------------------------------- | -------- | ------- | ------------------------------------------------- |
-| `type`    | `string`                                 | yes      | N/A     | A unique identifier for the registered component. |
-| `label`   | `string`                                 | yes      | N/A     | The label shown in the Makeswift builder.         |
-| `props`   | `{ [key: propName]: ControlDefinition }` | yes      | N/A     | Mapping from prop name to Makeswift control.      |
+1. <ParamField query="component" type="Component" required>
+     Your component to be registered. This can be a React component or a function.
+   </ParamField>
+2. <ParamField query="options" type="object">
+     Options for site version and locale.
+     <Expandable>
+       <ParamField query="type" type="string">
+          A unique string that identifies the component. This is how Makeswift knows to
+          render this component and should not change once the component has been used in
+          the Makeswift builder.
 
-Valid control values for the `props` parameter are the following:
-
-- [`Checkbox`](/controls/checkbox)
-- [`Number`](/controls/number)
-- [`TextInput`](/controls/text-input)
-- [`TextArea`](/controls/text-area)
-- [`Select`](/controls/select)
-- [`Color`](/controls/color)
-- [`Image`](/controls/image)
-- [`Link`](/controls/link)
-- [`Combobox`](/controls/combobox)
-- [`Shape`](/controls/shape)
-- [`List`](/controls/list)
-- [`Style`](/controls/style)
-- [`Slot`](/controls/slot)
-- [`RichText`](/controls/rich-text)
+          <Warning>If this value is changed after being used in the Makeswift builder you will see this component rendered as a "Component not found" block. To fix this restore the `type` to the original value, or delete this component and re-add add it to the page.</Warning>
+       </ParamField>
+       <ParamField query="label" type="string" required>
+          The label shown in the Makeswift builder.
+       </ParamField>
+       <ParamField query="icon" type="Icon">
+          The icon shown in the Makeswift builder.
+       </ParamField>
+       <ParamField query="props" type="Record<string, Control>" required>
+          An object mapping prop names to Makeswift [controls](#controls).
+       </ParamField>
+     </Expandable>
+   </ParamField>
 
 ## Examples
 
-### A simple box
+### Registering a box
 
 In this example we register a `Box` component. We provide the value `'box'` for `type` which must
 be unique and is how Makeswift knows to render the component. This value shouldn't change once the
@@ -38,19 +40,17 @@ component has been used in the Makeswift builder. We also provide `label`, which
 the Makeswift builder. For the `props` we use a [`Style`](/controls/style) to control the
 `className` prop.
 
-![Registered box component](../../public/registered-box-component.png)
-
-```jsx
-import { ReactRuntime } from '@makeswift/runtime/react'
-import { Style } from '@makeswift/runtime/controls'
+```tsx
+import { ReactRuntime } from "@makeswift/runtime/react"
+import { Style } from "@makeswift/runtime/controls"
 
 function Box({ className }) {
   return <div className={className}>I'm a box!</div>
 }
 
 ReactRuntime.registerComponent(Box, {
-  type: 'box',
-  label: 'Box',
+  type: "box",
+  label: "Box",
   props: {
     className: Style({ properties: Style.All }),
   },
@@ -63,11 +63,16 @@ In this example, we register a `Cube` and a `Sphere` component under a "Visuals"
 components' `label`, use slashes to separate the section name and component name. In the Makeswift
 builder, both components are shown under the same Visuals collapsible section:
 
-![Registered component sections](../../public/registered-component-sections.png)
+<Frame>
+  <img
+    src="/images/registered-component-sections.png"
+    alt="Screenshot of registered component sections"
+  />
+</Frame>
 
 ```jsx
-import { ReactRuntime } from '@makeswift/runtime/react'
-import { Style } from '@makeswift/runtime/controls'
+import { ReactRuntime } from "@makeswift/runtime/react"
+import { Style } from "@makeswift/runtime/controls"
 
 function Cube({ className }) {
   return <div className={className}>Cube!</div>
@@ -78,43 +83,48 @@ function Sphere({ className }) {
 }
 
 ReactRuntime.registerComponent(Cube, {
-  type: 'cube',
-  label: 'Visuals/Cube',
+  type: "cube",
+  label: "Visuals/Cube",
   props: {
     className: Style({ properties: Style.All }),
   },
 })
 
 ReactRuntime.registerComponent(Sphere, {
-  type: 'sphere',
-  label: 'Visuals/Sphere',
+  type: "sphere",
+  label: "Visuals/Sphere",
   props: {
     className: Style({ properties: Style.All }),
   },
 })
 ```
 
-### Custom Icon
+### Adding custom icons
 
 In this example, we register an `ImageGallery` component with a custom icon. We
 import `ComponentIcon` from `@makeswift/runtime` and pass
 `ComponentIcon.Gallery` as the `icon` for our component. In the builder
 component tray, we can see our component with the selected icon.
 
-![Registered component sections](../../public/register-custom-icon.png)
+<Frame>
+  <img
+    src="/images/register-custom-icon.png"
+    alt="Screenshot of registered component icons"
+  />
+</Frame>
 
 ```jsx
-import { ReactRuntime } from '@makeswift/runtime/react'
-import { Style } from '@makeswift/runtime/controls'
-import { ComponentIcon } from '@makeswift/runtime'
+import { ReactRuntime } from "@makeswift/runtime/react"
+import { Style } from "@makeswift/runtime/controls"
+import { ComponentIcon } from "@makeswift/runtime"
 
 function ImageGallery({ className }) {
   return <div className={className}>I'm an image gallery!</div>
 }
 
 ReactRuntime.registerComponent(Cube, {
-  type: 'image-galley',
-  label: 'ImageGallery',
+  type: "image-galley",
+  label: "ImageGallery",
   icon: ComponentIcon.Gallery,
   props: {
     className: Style({ properties: Style.All }),
