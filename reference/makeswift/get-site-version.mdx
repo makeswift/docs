@@ -1,0 +1,34 @@
+---
+title: "getSiteVersion"
+description: "A static method on the `Makeswift` class that returns the current version of the Makeswift site. This method is currently only used when calling `getPageSnapshot`."
+---
+
+## Arguments
+
+1. `previewData`: The preview data provided in [`getStaticProps`](https://nextjs.org/docs/pages/api-reference/functions/get-static-props).
+
+## Example
+
+```tsx pages/[[...path]].tsx
+import { Makeswift, Page as MakeswiftPage } from "@makeswift/runtime/next"
+import { client } from "makeswift/client"
+import { runtime } from "makeswift/runtime"
+import "makeswift/components"
+
+export async function getStaticProps({ params, previewData }) {
+  if (params == null) return { notFound: true }
+
+  const path = "/" + (params.path ?? []).join("/")
+  const snapshot = await client.getPageSnapshot(path, {
+    siteVersion: Makeswift.getSiteVersion(previewData),
+  })
+
+  if (snapshot == null) return { notFound: true }
+
+  return { props: { snapshot } }
+}
+
+export default function Page({ snapshot }) {
+  return <MakeswiftPage snapshot={snapshot} runtime={runtime} />
+}
+```

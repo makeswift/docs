@@ -1,4 +1,32 @@
 ---
 title: "constructor"
-description: "Instantiate your runtime"
+description: The `Makeswift` client is used to fetch data from the Makeswift API.
 ---
+
+## Arguments
+
+1. `apiKey` (string): The API key for the Makeswift site.
+
+2. `options` (object): An object with the following properties:
+
+<ParamField query="runtime" type="ReactRuntime">
+  An optional instance of the `ReactRuntime` class. This is required for custom
+  breakpoints.
+</ParamField>
+
+## Example
+
+The following example instantiates a new `Makeswift` client.
+
+```ts makeswift/client.ts
+import { Makeswift } from "@makeswift/runtime/next"
+import { strict } from "assert"
+
+import { runtime } from "./runtime"
+
+strict(process.env.MAKESWIFT_SITE_API_KEY, "MAKESWIFT_SITE_API_KEY is required")
+
+export const client = new Makeswift(process.env.MAKESWIFT_SITE_API_KEY, {
+  runtime,
+})
+```

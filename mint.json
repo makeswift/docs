@@ -35,7 +35,14 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction", "quickstart", "architecture"]
+      "pages": [
+        "introduction",
+        "quickstart",
+        {
+          "group": "Architecture",
+          "pages": ["architecture/project-structure", "architecture/concepts"]
+        }
+      ]
     },
     {
       "group": "API Reference",
@@ -67,9 +74,10 @@
           "group": "Makeswift",
           "pages": [
             "reference/makeswift/constructor",
-            "reference/makeswift/getSitemap",
-            "reference/makeswift/getPageSnapshot",
-            "reference/makeswift/getPages"
+            "reference/makeswift/get-sitemap",
+            "reference/makeswift/get-page-snapshot",
+            "reference/makeswift/get-pages",
+            "reference/makeswift/get-site-version"
           ]
         },
         "reference/makeswift-api-handler",

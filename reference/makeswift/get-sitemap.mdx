@@ -1,21 +1,28 @@
 ---
 title: "getSitemap"
-description: "A sitemap is a structured list of pages that enables web crawlers to find the pages of a site. `getSitemap` provides SEO information about the pages created within Makeswift.
-You can combine the results of `getSitemap` with SEO information for your hardcoded pages to create a sitemap."
+description: "A sitemap is a structured list of pages that enables web crawlers to find the pages of a site. `getSitemap` provides SEO information about the pages created within Makeswift. You can combine the results of `getSitemap` with SEO information for your hardcoded pages to create a sitemap."
 ---
 
-## API
+## Options
 
-### Options
+<ParamField query="limit" type="number" default={50}>
+  Number of sitemap entries to fetch.
+</ParamField>
 
-| Parameter        | Type     | Required | Default | Version   | Description                                                                                    |
-| ---------------- | -------- | -------- | ------- | --------- | ---------------------------------------------------------------------------------------------- |
-| `limit`          | `number` | no       | `50`    | `v0.10.7` | Number of sitemap entries to fetch.                                                            |
-| `after`          | `string` | no       | `0`     | `v0.10.7` | Starting pagination position by `id` of the last sitemap entry fetched.                        |
-| `pathnamePrefix` | `string` | no       | `/`     | `v0.10.7` | [pathname](https://developer.mozilla.org/en-US/Web/API/URL/pathname) prefix to filter entries. |
-| `locale`         | `string` | no       | `null`  | `v0.11.2` | Site locale to fetch                                                                           |
+<ParamField query="after" type="number" default={0}>
+  Starting pagination position by index of the last sitemap entry fetched.
+</ParamField>
 
-### Return type
+<ParamField query="pathnamePrefix" type="string" default="/">
+  [Pathname](https://developer.mozilla.org/en-US/Web/API/URL/pathname) prefix to
+  filter returned entries.
+</ParamField>
+
+<ParamField query="locale" type="string">
+  Site locale to fetch. Introduced in `v0.11.2`
+</ParamField>
+
+## Return type
 
 ```ts
 type Sitemap = {
@@ -44,7 +51,7 @@ type Sitemap = {
 
 Here is an example using `getSitemap` with `next-sitemap` a popular Next.js library for generating sitemaps.
 
-```js
+```ts pages/sitemap.xml.ts
 import { Makeswift } from "@makeswift/runtime/next"
 import { GetServerSidePropsContext, GetServerSidePropsResult } from "next"
 // Use `getServerSideSitemapLegacy` for sitemap entries in the pages directory.
@@ -68,7 +75,7 @@ export default function Sitemap() {}
 
 The `getSitemap` method supports filtering results by a pathname prefix using the `pathnamePrefix` parameter.
 
-```js
+```ts pages/sitemap.xml.ts
 import { Makeswift } from "@makeswift/runtime/next"
 import { GetServerSidePropsContext, GetServerSidePropsResult } from "next"
 import { getServerSideSitemapLegacy } from "next-sitemap"
@@ -92,7 +99,7 @@ export default function BlogSitemap() {}
 The `getSitemap` method is paginated with a default page size of 50.
 If you want to request more pages or use a different page size pass the `limit` and `after` arguments.
 
-```ts
+```ts pages/sitemap.xml.ts
 import { Makeswift, Sitemap } from "@makeswift/runtime/next"
 import { GetServerSidePropsContext, GetServerSidePropsResult } from "next"
 import { getServerSideSitemapLegacy } from "next-sitemap"
@@ -127,7 +134,7 @@ If a locale is using domain-based localization, passing the locale to `getSitema
 
 For example, if in the site settings there is an `es` locale with a domain of `foo.es`, then passing `es` to `getSitemap` will return the sitemap for `foo.es`.
 
-```js
+```ts pages/sitemap.xml.ts
 import { Makeswift } from "@makeswift/runtime/next"
 import { GetServerSidePropsContext, GetServerSidePropsResult } from "next"
 import { getServerSideSitemapLegacy } from "next-sitemap"
