@@ -12,11 +12,11 @@ description: Adds your components to the Makeswift builder.
      Options for site version and locale.
      <Expandable>
        <ParamField query="type" type="string">
-          A unique string that identifies the component. This is how Makeswift knows to
-          render this component and should not change once the component has been used in
+          A unique string that identifies the component for Makeswift to
+          render. Do not change once you use the component in
           the Makeswift builder.
 
-          <Warning>If this value is changed after being used in the Makeswift builder you will see this component rendered as a "Component not found" block. To fix this restore the `type` to the original value, or delete this component and re-add add it to the page.</Warning>
+          <Warning>If this value changes after you use the component in the Makeswift builder, the component will appear as a "Component not found" block. To fix this, restore the `type` to the original value, or delete this component and re-add add it to the page.</Warning>
        </ParamField>
        <ParamField query="label" type="string" required>
           The label shown in the Makeswift builder.
@@ -34,10 +34,10 @@ description: Adds your components to the Makeswift builder.
 
 ### Registering a box
 
-In this example we register a `Box` component. We provide the value `'box'` for `type` which must
-be unique and is how Makeswift knows to render the component. This value shouldn't change once the
-component has been used in the Makeswift builder. We also provide `label`, which will be shown in
-the Makeswift builder. For the `props` we use a [`Style`](/controls/style) to control the
+This example shows how to register a `Box` component. `'box'` is the value for `type`, which must
+be unique, as Makeswift uses this value to identify the component. This value shouldn't change once you use the
+component in the Makeswift builder. `'Box'` is the `label`, which appears in
+the Makeswift builder. The example applies a [`Style`](/controls/style) control to the
 `className` prop.
 
 ```tsx
@@ -59,9 +59,9 @@ ReactRuntime.registerComponent(Box, {
 
 ### Creating sections
 
-In this example, we register a `Cube` and a `Sphere` component under a "Visuals" section. In each
+This example shows how to register a `Cube` and a `Sphere` component under a "Visuals" section. In each
 components' `label`, use slashes to separate the section name and component name. In the Makeswift
-builder, both components are shown under the same Visuals collapsible section:
+builder, both components appear under the same Visuals collapsible section:
 
 <Frame>
   <img
@@ -101,7 +101,7 @@ ReactRuntime.registerComponent(Sphere, {
 
 ### Adding custom icons
 
-In this example, we register an `ImageGallery` component with a custom icon. We
+This example shows how to register an `ImageGallery` component with a custom icon. We
 import `ComponentIcon` from `@makeswift/runtime` and pass
 `ComponentIcon.Gallery` as the `icon` for our component. In the builder
 component tray, we can see our component with the selected icon.
