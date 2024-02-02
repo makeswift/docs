@@ -3,6 +3,8 @@ title: "<Page>"
 description: The `<Page>` component takes a Makeswift [snapshot](/architecture/concepts#snapshot) and renders React elements using [components registered](/reference/runtime/register-component) with the [runtime](/architecture/concepts#runtime).
 ---
 
+import PagesCatchAllExample from "/snippets/examples/pages-catch-all.mdx"
+
 ## Props
 
 <ParamField query="snapshot" type="Snapshot" required>
@@ -16,22 +18,6 @@ description: The `<Page>` component takes a Makeswift [snapshot](/architecture/c
 
 ## Example
 
-```tsx pages/[...slug].tsx
-import { Makeswift, Page as MakeswiftPage } from "@makeswift/runtime/next"
-import { client } from "makeswift/client"
-import { runtime } from "makeswift/runtime"
-import "makeswift/components"
+The following example sets up a [catch all route](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#catch-all-segments) where page [snapshots](/architecture/concepts#snapshots) are fetched from Makeswift and rendered using the `<Page>` component.
 
-export async function getStaticProps(ctx) {
-  const path = "/" + (ctx.params?.path ?? []).join("/")
-  const snapshot = await client.getPageSnapshot(path)
-
-  if (snapshot == null) return { notFound: true }
-
-  return { props: { snapshot } }
-}
-
-export default function Page({ snapshot }) {
-  return <MakeswiftPage snapshot={snapshot} runtime={runtime} />
-}
-```
+<PagesCatchAllExample />

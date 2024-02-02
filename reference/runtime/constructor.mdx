@@ -4,6 +4,8 @@ description: The `ReactRuntime` can be instantiated to provide client configurat
 ---
 
 import PagesCatchAllExample from "/snippets/examples/pages-catch-all.mdx"
+import RuntimeExample from "/snippets/examples/runtime.mdx"
+import ClientExample from "/snippets/examples/client.mdx"
 
 ## Options
 
@@ -32,36 +34,14 @@ type Breakpoint = {
 
 The following example instantiates a new `ReactRuntime` with 4 custom breakpoints.
 
-```ts makeswift/runtime.ts
-import { ReactRuntime } from "@makeswift/runtime/react"
-
-export const runtime = new ReactRuntime({
-  breakpoints: {
-    mobile: { width: 575, viewport: 390, label: "Mobile" },
-    tablet: { width: 768, viewport: 765, label: "Tablet" },
-    laptop: { width: 1024, viewport: 1000, label: "Laptop" },
-    external: { width: 1280, label: "External" },
-  },
-})
-```
+<RuntimeExample />
 
 You must then pass this instance of the runtime to
 **both** your [client instance](/reference/makeswift/constructor) and [`<Page>`](/reference/components/page) component.
 
 <CodeGroup>
 
-```ts makeswift/client.ts
-import { Makeswift } from "@makeswift/runtime/next"
-import { strict } from "assert"
-
-import { runtime } from "./runtime"
-
-strict(process.env.MAKESWIFT_SITE_API_KEY, "MAKESWIFT_SITE_API_KEY is required")
-
-export const client = new Makeswift(process.env.MAKESWIFT_SITE_API_KEY, {
-  runtime,
-})
-```
+<ClientExample />
 
 <PagesCatchAllExample />
 
