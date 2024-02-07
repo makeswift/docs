@@ -19,7 +19,7 @@ icon: "list"
   Text for the panel label that appears in the Makeswift builder.
 </ParamField>
 
-<ParamField query="getItemLabel" type="(item: T) => string" default="undefined">
+<ParamField query="getItemLabel" type="(item: T) => string">
   A function to get the label for each list item shown in the panel. If you
   don’t provide a value, the control passes an `undefined` value to your
   component.
@@ -38,8 +38,9 @@ This example adds an List control to the `accordionTitles` prop of an Accordions
 <CodeGroup>
 
 ```tsx Accordions.makeswift.ts
-import { runtime } from "@/lib/makeswift/runtime"
 import { List, TextInput } from "@makeswift/runtime/controls"
+
+import { runtime } from "@/makeswift/runtime"
 
 import { Accordions } from "./Accordions"
 
