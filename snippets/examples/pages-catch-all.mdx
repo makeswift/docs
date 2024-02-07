@@ -1,9 +1,9 @@
 ```tsx pages/[[...path]].tsx
 import { Makeswift, Page as MakeswiftPage } from "@makeswift/runtime/next"
 
-import { client } from "makeswift/client"
-import { runtime } from "makeswift/runtime"
-import "makeswift/components"
+import { client } from "@/makeswift/client"
+import { runtime } from "@/makeswift/runtime"
+import "@/makeswift/components"
 
 export async function getStaticProps({ params, previewData }) {
   if (params == null) return { notFound: true }

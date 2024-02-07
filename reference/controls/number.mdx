@@ -34,7 +34,7 @@ icon: "input-numeric"
   The smallest number that can be set in the panel input.
 </ParamField>
 
-<ParamField query="min" type="number" default={0}>
+<ParamField query="max" type="number" default={0}>
   The largest number that can be set in the panel input.
 </ParamField>
 
@@ -56,7 +56,8 @@ The Number control passes a `number` to your component. If you don't set a `defa
 
 ```tsx Feed.makeswift.ts
 import { Number } from "@makeswift/runtime/controls"
-import { runtime } from "@/lib/makeswift/runtime"
+
+import { runtime } from "@/makeswift/runtime"
 
 import { Feed } from "./Feed"
 

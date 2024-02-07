@@ -10,10 +10,10 @@ with [mixed content](https://developer.mozilla.org/en-US/Web/Security/Mixed_cont
 Safari blocks the loading of all mixed-content resources. This means that `https://app.makeswift.com`,
 which is loaded via **HTTPS**, can't load `http://localhost:3000`, since it is loaded via **HTTP**.
 
-The solution to this issue is to run your local Next.js app with HTTPS. If you're not familiar with this, see our <a href="https://www.makeswift.com/blog/accessing-your-local-nextjs-dev-server-using-https">how to run your Next.js app locally with HTTPS</a> blog post. 
+The solution to this issue is to run your local Next.js app with HTTPS. If you're not familiar with this, see our <a href="https://www.makeswift.com/blog/accessing-your-local-nextjs-dev-server-using-https">how to run your Next.js app locally with HTTPS</a> blog post.
 
 If you follow the instructions in the blog post, i.e., use `mkcert`, you might need to make sure
-that Node.js trusts `mkcert`'s CA. This can be done with the `NODE_EXTRA_CA_CERTS` environmental variable.
+that Node.js trusts `mkcert`'s CA. This can be done with the `NODE_EXTRA_CA_CERTS` env variable.
 
 For example, in your `package.json`:
 

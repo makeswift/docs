@@ -20,7 +20,7 @@ or want to set things up yourself, continue with the rest of this guide.
     First, open your Next.js project. If you don't already have one, head over to
     the [Next.js](https://nextjs.org/docs/getting-started/installation)
     documentation to get one set up. If you do have one, please verify you are
-    using [Next.js 12](https://nextjs.org/blog/next-12) or a later version.
+    using [Next.js 13.4](https://nextjs.org/blog/next-12) or a later version.
   </Step>
   <Step title="Install dependencies">
   Install the `@makeswift/runtime` package. This package contains all of the necessary
@@ -42,7 +42,7 @@ Requesting data through the `Makeswift` client requires a site API key from Make
 Once the API key is in your clipboard, open your [`.env.local`](https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables) file and paste the snippet below.
 
 ```sh
-MAKESWIFT_SITE_API_KEY = paste-your-api-key-here
+MAKESWIFT_SITE_API_KEY=paste-your-api-key-here
 ```
 
   </Step>
@@ -130,7 +130,7 @@ Create an [optional catch-all route](https://nextjs.org/docs/pages/building-your
 
 **Important notes**:
 
-1. If you already have an `index.js` file, you will need to name the file `[...path.js]` instead of `[[...path.js]]`. For more information about the differences between catch-all and optional catch-all segments, refer to the Next.js [Catch-all segments](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#catch-all-segments) documentation.
+1. If you already have an `index.js` file, you will need to name the file `[...path].js` instead of `[[...path]].js`. For more information about the differences between catch-all and optional catch-all segments, refer to the Next.js [Catch-all segments](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#catch-all-segments) documentation.
 
 2. The filename defines the `path` param. For example, if the filename is `[[...slug]].js` instead of `[[...path]].js`, then the param name is `slug`. Because this is an optional catch-all route, there are no params when visiting the index (i.e., `/`) path. The `path` param defaults to an empty array.
 
