@@ -20,6 +20,9 @@
     "name": "Log in",
     "url": "https://app.makeswift.com"
   },
+  "search": {
+    "prompt": "Search or ask..."
+  },
   "anchors": [
     {
       "name": "Help Center",
@@ -96,5 +99,10 @@
     "twitter": "https://twitter.com/makeswifthq",
     "github": "https://github.com/makeswift",
     "linkedin": "https://www.linkedin.com/company/makeswifthq"
+  },
+  "feedback": {
+    "thumbsRating": true,
+    "suggestEdit": true,
+    "raiseIssue": true
   }
 }
