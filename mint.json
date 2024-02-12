@@ -103,6 +103,6 @@
   "feedback": {
     "thumbsRating": true,
     "suggestEdit": true,
-    "raiseIssue": true
+    "raiseIssue": false
   }
 }
