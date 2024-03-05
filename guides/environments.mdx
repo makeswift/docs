@@ -1,22 +1,22 @@
 ---
-title: Workflows
+title: Environments
 ---
 
-The primary design goal of Makeswift is to decouple the workflows of developers and marketers. That means building and maintaining a website in Makeswift is different than a traditional CMS, and will require you to think differently about the workflows. If the goal is to allow your marketing team to build new pages without developer bottlenecks, then we need to think about component code updates and content publishing as two independent workflows.
+The primary design goal of Makeswift is to decouple the workflows of developers and marketers. That means building and maintaining a website in Makeswift is different than a traditional CMS, and will require you to think differently about environments. That means thinking about component code updates and content publishing as two independent workflows.
 
-To represent this, we recommend you create two Makeswift sites in your workspace:
+To represent these environments, we recommend you create two Makeswift sites in your workspace:
 
-1. **Local development site**
+1. **Local development**
 
 This site is where you will build and test new components and is **not** to be used for content publishing. The host URL for this site is `localhost`.
 
-2. **Production site**
+2. **Production**
 
 This site is where your pages and content live and is **not** to be used for component development. The host URL for this site is your production domain.
 
 <Frame caption="Your workspace dropdown should look something like this">
   <img
-    src="/images/workflows-workspace.png"
+    src="/images/environments-workspace.png"
     alt="Two sites in the workspace dropdown"
   />
 </Frame>
@@ -41,7 +41,7 @@ Once you've stress tested your primitive components in your local development si
 
 <Frame>
   <img
-    src="/images/workflows-production-host.png"
+    src="/images/environments-production-host.png"
     alt="Two sites in the workspace dropdown"
   />
 </Frame>
