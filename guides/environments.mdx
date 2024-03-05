@@ -4,15 +4,20 @@ title: Environments
 
 The primary design goal of Makeswift is to decouple the workflows of developers and marketers. That means building and maintaining a website in Makeswift is different than a traditional CMS, and will require you to think differently about environments. That means thinking about component code updates and content publishing as two independent workflows.
 
-To represent these environments, we recommend you create two Makeswift sites in your workspace:
+To represent this, create two Makeswift sites in your workspace:
 
 1. **Local development**
 
-This site is where you will build and test new components and is **not** to be used for content publishing. The host URL for this site is `localhost`.
+This site is where you will build and test new components and is **not** to be used for content publishing. The host URL for this site is `http://localhost:3000`.
 
 2. **Production**
 
 This site is where your pages and content live and is **not** to be used for component development. The host URL for this site is your production domain.
+
+<Warning>
+  You can think of these sites like database environments where you can copy
+  data from production into development, **but not the other way around**.
+</Warning>
 
 <Frame caption="Your workspace dropdown should look something like this">
   <img
