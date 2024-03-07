@@ -5,6 +5,19 @@ import { client } from "@/makeswift/client"
 import { runtime } from "@/makeswift/runtime"
 import "@/makeswift/components"
 
+export async function getStaticPaths() {
+  const pages = await client.getPages()
+
+  return {
+    paths: pages.map((page) => ({
+      params: {
+        path: page.path.split("/").filter((segment) => segment !== ""),
+      },
+    })),
+    fallback: "blocking",
+  }
+}
+
 export async function getStaticProps({ params, previewData }) {
   if (params == null) return { notFound: true }
 
