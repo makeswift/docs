@@ -1,5 +1,5 @@
 ---
-title: Manual installation
+title: Installation
 ---
 
 import PagesCatchAllExample from "/snippets/examples/pages-catch-all.mdx"
@@ -91,13 +91,36 @@ module.exports = withMakeswift(nextConfig)
   </Step>
   <Step title="Set up a custom Document">
   
-Create a [custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document) named `_document.js` and export `Document` from `@makeswift/runtime/next`. The Makeswift custom Document handles styles during server-side rendering and using [Preview Mode](https://nextjs.org/docs/pages/building-your-application/configuring/preview-mode) when opening your pages in the Makeswift builder.
+Create a [custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document) named `_document.ts` and export `Document` from `@makeswift/runtime/next`. The Makeswift custom Document handles styles during server-side rendering and using [Preview Mode](https://nextjs.org/docs/pages/building-your-application/configuring/preview-mode) when opening your pages in the Makeswift builder.
 
-```js pages/_document.js
+```js pages/_document.ts
 export { Document as default } from "@makeswift/runtime/next"
 ```
 
-If you already have a `_document.js`, you can [extend the Document](/guides/extending-the-document) from `@makeswift/runtime/next` instead.
+If you already have a `_document.ts`, you can extend the `Document` from `@makeswift/runtime/next` instead. You _must_ render the `<PreviewModeScript>` component inside `<Head>`. Without
+`<PreviewModeScript>` the Makeswift builder will always show your published page instead of the
+draft version.
+
+```tsx pages/_document.tsx
+import { Html, Head, Main, NextScript } from "next/document"
+import { Document, PreviewModeScript } from "@makeswift/runtime/next"
+
+export default class MyDocument extends Document {
+  render() {
+    return (
+      <Html>
+        <Head>
+          <PreviewModeScript isPreview={this.props.__NEXT_DATA__.isPreview} />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    )
+  }
+}
+```
 
   </Step>
   <Step title="Register components with Makeswift">

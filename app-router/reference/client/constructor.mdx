@@ -1,0 +1,27 @@
+---
+title: "constructor"
+description: The `Makeswift` client is used to fetch data from the Makeswift API.
+---
+
+import ClientExample from "/snippets/examples/client.mdx"
+
+## Arguments
+
+1. <ParamField query="apiKey" type="string" required>
+     The API key for the Makeswift site.
+   </ParamField>
+2. <ParamField query="options" type="object">
+     Options for a [runtime instance](reference/runtime/constructor).
+     <Expandable>
+       <ParamField query="runtime" type="ReactRuntime">
+         A [runtime instance](/reference/runtime/constructor). Required
+         for custom breakpoints.
+       </ParamField>
+     </Expandable>
+   </ParamField>
+
+## Example
+
+The following example instantiates a new `Makeswift` client.
+
+<ClientExample />

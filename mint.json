@@ -41,8 +41,61 @@
       "pages": ["quickstart", "concepts"]
     },
     {
+      "group": "App Router",
+      "pages": [
+        "app-router/installation",
+        {
+          "group": "Reference",
+          "pages": [
+            {
+              "group": "Components",
+              "pages": ["app-router/reference/components/page"]
+            },
+            {
+              "group": "Controls",
+              "pages": [
+                "app-router/reference/controls/checkbox",
+                "app-router/reference/controls/color",
+                "app-router/reference/controls/combobox",
+                "app-router/reference/controls/image",
+                "app-router/reference/controls/link",
+                "app-router/reference/controls/list",
+                "app-router/reference/controls/number",
+                "app-router/reference/controls/rich-text",
+                "app-router/reference/controls/select",
+                "app-router/reference/controls/shape",
+                "app-router/reference/controls/slot",
+                "app-router/reference/controls/style",
+                "app-router/reference/controls/text-area",
+                "app-router/reference/controls/text-input"
+              ]
+            },
+            {
+              "group": "Client",
+              "pages": [
+                "app-router/reference/client/constructor",
+                "app-router/reference/client/get-sitemap",
+                "app-router/reference/client/get-page-snapshot",
+                "app-router/reference/client/get-site-version"
+              ]
+            },
+            "app-router/reference/makeswift-api-handler",
+            {
+              "group": "ReactRuntime",
+              "pages": [
+                "app-router/reference/runtime/constructor",
+                "app-router/reference/runtime/register-component"
+              ]
+            }
+          ]
+        },
+        "app-router/localization"
+      ]
+    },
+    {
       "group": "Pages Router",
       "pages": [
+        "pages-router/installation",
         {
           "group": "Reference",
           "pages": [
@@ -88,17 +141,12 @@
             }
           ]
         },
-        {
-          "group": "Guides",
-          "pages": [
-            "pages-router/guides/manual-installation",
-            "pages-router/guides/extending-the-document",
-            "pages-router/guides/localization",
-            "pages-router/guides/troubleshooting",
-            "pages-router/guides/environments"
-          ]
-        }
+        "pages-router/localization"
       ]
+    },
+    {
+      "group": "Guides",
+      "pages": ["guides/troubleshooting", "guides/environments"]
     },
     {
       "group": "Migrations",
@@ -125,8 +173,16 @@
       "destination": "/pages-router/reference/:slug*"
     },
     {
-      "source": "/guides/:slug*",
-      "destination": "/pages-router/guides/:slug*"
+      "source": "/guides/localization",
+      "destination": "/pages-router/guides/localization"
+    },
+    {
+      "source": "/guides/extending-the-document",
+      "destination": "/pages-router/installation"
+    },
+    {
+      "source": "/guides/manual-installation",
+      "destination": "/pages-router/installation"
     }
   ]
 }
