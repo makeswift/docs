@@ -2,7 +2,7 @@
 title: Installation
 ---
 
-import PagesCatchAllExample from "/snippets/examples/pages-catch-all.mdx"
+import PagesCatchAllExample from "/snippets/pages-router/pages-catch-all.mdx"
 
 The fastest way to get started with Makeswift on a new Next.js project is to follow the
 [quickstart](/quickstart) guide. If you have an existing Next.js application
@@ -50,8 +50,8 @@ MAKESWIFT_SITE_API_KEY=paste-your-api-key-here
   
 Create files for the Makeswift [runtime](/reference/runtime/constructor) and [client](/reference/client/constructor).
 
-import RuntimeExample from "/snippets/examples/runtime.mdx"
-import ClientExample from "/snippets/examples/client.mdx"
+import RuntimeExample from "/snippets/pages-router/runtime.mdx"
+import ClientExample from "/snippets/pages-router/client.mdx"
 
 <CodeGroup>
   <RuntimeExample />
@@ -64,7 +64,7 @@ import ClientExample from "/snippets/examples/client.mdx"
 Similar to [NextAuth.js](https://next-auth.js.org/), Makeswift uses an API handler to communicate with your Next.js app. Create the file `pages/api/makeswift/[...makeswift].js`. It's important that the file has that exact name, excluding
 the extension, which can be `ts` if you're using TypeScript.
 
-import ApiHandlerExample from "/snippets/examples/api-handler.mdx"
+import ApiHandlerExample from "/snippets/pages-router/api-handler.mdx"
 
 <ApiHandlerExample />
 

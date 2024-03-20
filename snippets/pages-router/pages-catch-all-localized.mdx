@@ -2,8 +2,6 @@
 import { Makeswift, Page as MakeswiftPage } from "@makeswift/runtime/next"
 
 import { client } from "@/makeswift/client"
-import { runtime } from "@/makeswift/runtime"
-import "@/makeswift/components"
 
 export async function getStaticPaths() {
   const pages = await client.getPages()
@@ -18,12 +16,13 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params, previewData }) {
+export async function getStaticProps({ params, previewData, locale }) {
   if (params == null) return { notFound: true }
 
   const path = "/" + (params.path ?? []).join("/")
   const snapshot = await client.getPageSnapshot(path, {
     siteVersion: Makeswift.getSiteVersion(previewData),
+    locale,
   })
 
   if (snapshot == null) return { notFound: true }
@@ -32,6 +31,6 @@ export async function getStaticProps({ params, previewData }) {
 }
 
 export default function Page({ snapshot }) {
-  return <MakeswiftPage snapshot={snapshot} runtime={runtime} />
+  return <MakeswiftPage snapshot={snapshot} />
 }
 ```
