@@ -1,0 +1,20 @@
+```js next.config.mjs
+import createWithMakeswift from "@makeswift/runtime/next/plugin"
+
+const withMakeswift = createWithMakeswift()
+
+const nextConfig = {
+  i18n: {
+    defaultLocale: "en-US",
+    locales: ["en-US", "de-DE", "en-SG", "es", "es-MX", "id-ID"],
+    domains: [
+      {
+        domain: "example.es",
+        defaultLocale: "es",
+      },
+    ],
+  },
+}
+
+export default withMakeswift(nextConfig)
+```

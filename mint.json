@@ -42,106 +42,55 @@
     },
     {
       "group": "App Router",
-      "pages": [
-        "app-router/installation",
-        {
-          "group": "Reference",
-          "pages": [
-            {
-              "group": "Components",
-              "pages": ["app-router/reference/components/page"]
-            },
-            {
-              "group": "Controls",
-              "pages": [
-                "app-router/reference/controls/checkbox",
-                "app-router/reference/controls/color",
-                "app-router/reference/controls/combobox",
-                "app-router/reference/controls/image",
-                "app-router/reference/controls/link",
-                "app-router/reference/controls/list",
-                "app-router/reference/controls/number",
-                "app-router/reference/controls/rich-text",
-                "app-router/reference/controls/select",
-                "app-router/reference/controls/shape",
-                "app-router/reference/controls/slot",
-                "app-router/reference/controls/style",
-                "app-router/reference/controls/text-area",
-                "app-router/reference/controls/text-input"
-              ]
-            },
-            {
-              "group": "Client",
-              "pages": [
-                "app-router/reference/client/constructor",
-                "app-router/reference/client/get-sitemap",
-                "app-router/reference/client/get-page-snapshot",
-                "app-router/reference/client/get-site-version"
-              ]
-            },
-            "app-router/reference/makeswift-api-handler",
-            {
-              "group": "ReactRuntime",
-              "pages": [
-                "app-router/reference/runtime/constructor",
-                "app-router/reference/runtime/register-component"
-              ]
-            }
-          ]
-        },
-        "app-router/localization"
-      ]
+      "pages": ["app-router/installation", "app-router/localization"]
     },
     {
       "group": "Pages Router",
+      "pages": ["pages-router/installation", "pages-router/localization"]
+    },
+    {
+      "group": "Reference",
       "pages": [
-        "pages-router/installation",
         {
-          "group": "Reference",
+          "group": "Components",
+          "pages": ["reference/components/page"]
+        },
+        {
+          "group": "Controls",
           "pages": [
-            {
-              "group": "Components",
-              "pages": ["pages-router/reference/components/page"]
-            },
-            {
-              "group": "Controls",
-              "pages": [
-                "pages-router/reference/controls/checkbox",
-                "pages-router/reference/controls/color",
-                "pages-router/reference/controls/combobox",
-                "pages-router/reference/controls/image",
-                "pages-router/reference/controls/link",
-                "pages-router/reference/controls/list",
-                "pages-router/reference/controls/number",
-                "pages-router/reference/controls/rich-text",
-                "pages-router/reference/controls/select",
-                "pages-router/reference/controls/shape",
-                "pages-router/reference/controls/slot",
-                "pages-router/reference/controls/style",
-                "pages-router/reference/controls/text-area",
-                "pages-router/reference/controls/text-input"
-              ]
-            },
-            {
-              "group": "Client",
-              "pages": [
-                "pages-router/reference/client/constructor",
-                "pages-router/reference/client/get-sitemap",
-                "pages-router/reference/client/get-page-snapshot",
-                "pages-router/reference/client/get-site-version"
-              ]
-            },
-            "pages-router/reference/makeswift-api-handler",
-            {
-              "group": "ReactRuntime",
-              "pages": [
-                "pages-router/reference/runtime/constructor",
-                "pages-router/reference/runtime/register-component"
-              ]
-            }
+            "reference/controls/checkbox",
+            "reference/controls/color",
+            "reference/controls/combobox",
+            "reference/controls/image",
+            "reference/controls/link",
+            "reference/controls/list",
+            "reference/controls/number",
+            "reference/controls/rich-text",
+            "reference/controls/select",
+            "reference/controls/shape",
+            "reference/controls/slot",
+            "reference/controls/style",
+            "reference/controls/text-area",
+            "reference/controls/text-input"
           ]
         },
-        "pages-router/localization"
+        {
+          "group": "Client",
+          "pages": [
+            "reference/client/constructor",
+            "reference/client/get-sitemap",
+            "reference/client/get-page-snapshot",
+            "reference/client/get-site-version"
+          ]
+        },
+        "reference/makeswift-api-handler",
+        {
+          "group": "ReactRuntime",
+          "pages": [
+            "reference/runtime/constructor",
+            "reference/runtime/register-component"
+          ]
+        }
       ]
     },
     {
@@ -168,10 +117,6 @@
     "raiseIssue": false
   },
   "redirects": [
-    {
-      "source": "/reference/:slug*",
-      "destination": "/pages-router/reference/:slug*"
-    },
     {
       "source": "/guides/localization",
       "destination": "/pages-router/guides/localization"

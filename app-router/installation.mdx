@@ -2,7 +2,13 @@
 title: Installation
 ---
 
-import PagesCatchAllExample from "/snippets/pages-router/pages-catch-all.mdx"
+import CatchAllExample from "/snippets/app-router/catch-all.mdx"
+import ProvidersExample from "/snippets/app-router/providers.mdx"
+import LayoutExample from "/snippets/app-router/layout.mdx"
+import ApiHandlerExample from "/snippets/app-router/api-handler.mdx"
+import RuntimeExample from "/snippets/reference/runtime.mdx"
+import ClientExample from "/snippets/reference/client.mdx"
+import NextConfigExample from "/snippets/reference/next-config.mdx"
 
 The fastest way to get started with Makeswift on a new Next.js project is to follow the
 [quickstart](/quickstart) guide. If you have an existing Next.js application
@@ -20,10 +26,10 @@ or want to set things up yourself, continue with the rest of this guide.
     First, open your Next.js project. If you don't already have one, head over to
     the [Next.js](https://nextjs.org/docs/getting-started/installation)
     documentation to get one set up. If you do have one, please verify you are
-    using [Next.js 13.4](https://nextjs.org/blog/next-12) or a later version.
+    using [Next.js 13.4](https://nextjs.org/blog/next-12) or a later version that is using app router.
 
     <Info>
-      If you are not using app router, please read how to [incrementally adopt](https://nextjs.org/docs/app/building-your-application/upgrading/app-router-migration) it.
+      If you are not using app router, here's how to [incrementally adopt](https://nextjs.org/docs/app/building-your-application/upgrading/app-router-migration) it.
     </Info>
 
   </Step>
@@ -55,9 +61,6 @@ MAKESWIFT_SITE_API_KEY=paste-your-api-key-here
   
 Create files for the Makeswift [runtime](/reference/runtime/constructor) and [client](/reference/client/constructor).
 
-import RuntimeExample from "/snippets/pages-router/runtime.mdx"
-import ClientExample from "/snippets/pages-router/client.mdx"
-
 <CodeGroup>
   <RuntimeExample />
   <ClientExample />
@@ -66,10 +69,7 @@ import ClientExample from "/snippets/pages-router/client.mdx"
 </Step>
   <Step title="Add the Makeswift API handler">
   
-Similar to [NextAuth.js](https://next-auth.js.org/), Makeswift uses an API handler to communicate with your Next.js app. Create the file `pages/api/makeswift/[...makeswift].js`. It's important that the file has that exact name, excluding
-the extension, which can be `ts` if you're using TypeScript.
-
-import ApiHandlerExample from "/snippets/pages-router/api-handler.mdx"
+Similar to [NextAuth.js](https://next-auth.js.org/), Makeswift uses an API handler to communicate with your Next.js app. Create the file `app/api/makeswift/[...makeswift]/route.ts`. It's important that this directory and file structure is followed precisely.
 
 <ApiHandlerExample />
 
@@ -83,26 +83,19 @@ and other features that make Makeswift work seamlessly with your Next.js app.
   
 Next.js plugins are configured in the project's next.config.js file by wrapping `nextConfig`. The Makeswift Next.js plugin whitelists Makeswift image domains and sets up rewrites to enable preview mode in the Makeswift builder.
 
-```js next.config.js
-const withMakeswift = require("@makeswift/runtime/next/plugin")()
-
-const nextConfig = {
-  /* Your Next.js config... */
-}
-
-module.exports = withMakeswift(nextConfig)
-```
+<NextConfigExample />
 
   </Step>
-  <Step title="Set up a custom Document">
-  
-Create a [custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document) named `_document.js` and export `Document` from `@makeswift/runtime/next`. The Makeswift custom Document handles styles during server-side rendering and using [Preview Mode](https://nextjs.org/docs/pages/building-your-application/configuring/preview-mode) when opening your pages in the Makeswift builder.
+  <Step title="Create Makeswift provider component">
+    Create a client component for the Makeswift providers.
 
-```js pages/_document.js
-export { Document as default } from "@makeswift/runtime/next"
-```
+    <ProvidersExample />
 
-If you already have a `_document.js`, you can [extend the Document](/guides/extending-the-document) from `@makeswift/runtime/next` instead.
+  </Step>
+  <Step title="Update the root layout">
+    Wrap your app with the `MakeswiftProviders` component created in the last step and add the `DraftModeScript` to the `head` of your root layout. This script enables draft mode when inside the Makeswift builder.
+
+    <LayoutExample />
 
   </Step>
   <Step title="Register components with Makeswift">
@@ -129,24 +122,9 @@ ReactRuntime.registerComponent(HelloWorld, {
   </Step>
   <Step title="Add a route for Makeswift pages">
   
-Create an [optional catch-all route](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#optional-catch-all-segments) named `[[...path]].js`. You will use the catch-all route to fetch page snapshots from the `Makeswift` client and pass them to the [`Page`](/reference/components/page) component to render.
+Create an [optional catch-all route](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes) named `[[...path]]`. You will use the catch-all route to fetch page snapshots from the `Makeswift` client and pass them to the [`Page`](/reference/components/page) component to render.
 
-<PagesCatchAllExample />
-
-**Important notes**:
-
-1. If you already have an `index.js` file, you will need to name the file `[...path].js` instead of `[[...path]].js`. For more information about the differences between catch-all and optional catch-all segments, refer to the Next.js [Catch-all segments](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#catch-all-segments) documentation.
-
-2. The filename defines the `path` param. For example, if the filename is `[[...slug]].js` instead of `[[...path]].js`, then the param name is `slug`. Because this is an optional catch-all route, there are no params when visiting the index (i.e., `/`) path. The `path` param defaults to an empty array.
-
-3. [`fallback: 'blocking'`](https://nextjs.org/docs/pages/api-reference/functions/get-static-paths#fallback-blocking) is used here so that your Next.js app doesn't need to be re-deployed whenever a new Makeswift page is created.
-
-With this setup, your pages will be rendered using
-[incremental static regeneration](https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration).
-A `revalidate` field isn't added to the returned value of `getStaticProps` because
-Makeswift pages are automatically revalidated using
-[on-demand revalidation](https://nextjs.org/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation)
-by leveraging the Makeswift API handler.
+<CatchAllExample />
 
   </Step>
   

@@ -2,7 +2,12 @@
 title: Installation
 ---
 
-import PagesCatchAllExample from "/snippets/pages-router/pages-catch-all.mdx"
+import RuntimeExample from "/snippets/reference/runtime.mdx"
+import ClientExample from "/snippets/reference/client.mdx"
+import NextConfigExample from "/snippets/reference/next-config.mdx"
+import PagesCatchAllExample from "/snippets/pages-router/catch-all.mdx"
+import DocumentExample from "/snippets/pages-router/document.mdx"
+import ApiHandlerExample from "/snippets/pages-router/api-handler.mdx"
 
 The fastest way to get started with Makeswift on a new Next.js project is to follow the
 [quickstart](/quickstart) guide. If you have an existing Next.js application
@@ -50,9 +55,6 @@ MAKESWIFT_SITE_API_KEY=paste-your-api-key-here
   
 Create files for the Makeswift [runtime](/reference/runtime/constructor) and [client](/reference/client/constructor).
 
-import RuntimeExample from "/snippets/pages-router/runtime.mdx"
-import ClientExample from "/snippets/pages-router/client.mdx"
-
 <CodeGroup>
   <RuntimeExample />
   <ClientExample />
@@ -63,8 +65,6 @@ import ClientExample from "/snippets/pages-router/client.mdx"
   
 Similar to [NextAuth.js](https://next-auth.js.org/), Makeswift uses an API handler to communicate with your Next.js app. Create the file `pages/api/makeswift/[...makeswift].js`. It's important that the file has that exact name, excluding
 the extension, which can be `ts` if you're using TypeScript.
-
-import ApiHandlerExample from "/snippets/pages-router/api-handler.mdx"
 
 <ApiHandlerExample />
 
@@ -78,24 +78,14 @@ and other features that make Makeswift work seamlessly with your Next.js app.
   
 Next.js plugins are configured in the project's next.config.js file by wrapping `nextConfig`. The Makeswift Next.js plugin whitelists Makeswift image domains and sets up rewrites to enable preview mode in the Makeswift builder.
 
-```js next.config.js
-const withMakeswift = require("@makeswift/runtime/next/plugin")()
-
-const nextConfig = {
-  /* Your Next.js config... */
-}
-
-module.exports = withMakeswift(nextConfig)
-```
+<NextConfigExample />
 
   </Step>
   <Step title="Set up a custom Document">
   
 Create a [custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document) named `_document.ts` and export `Document` from `@makeswift/runtime/next`. The Makeswift custom Document handles styles during server-side rendering and using [Preview Mode](https://nextjs.org/docs/pages/building-your-application/configuring/preview-mode) when opening your pages in the Makeswift builder.
 
-```js pages/_document.ts
-export { Document as default } from "@makeswift/runtime/next"
-```
+<DocumentExample />
 
 If you already have a `_document.ts`, you can extend the `Document` from `@makeswift/runtime/next` instead. You _must_ render the `<PreviewModeScript>` component inside `<Head>`. Without
 `<PreviewModeScript>` the Makeswift builder will always show your published page instead of the
