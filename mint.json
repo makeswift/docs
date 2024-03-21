@@ -98,8 +98,8 @@
       "pages": ["guides/troubleshooting", "guides/environments"]
     },
     {
-      "group": "Migrations",
-      "pages": ["migrations/0.14.0", "migrations/0.13.0", "migrations/0.9.0"]
+      "group": "Upgrading",
+      "pages": ["upgrading/0.14.0", "upgrading/0.13.0", "upgrading/0.9.0"]
     },
     {
       "group": "Integrations",
@@ -117,6 +117,10 @@
     "raiseIssue": false
   },
   "redirects": [
+    {
+      "source": "/migrations/:slug*",
+      "destination": "/upgrading/:slug*"
+    },
     {
       "source": "/guides/localization",
       "destination": "/pages-router/guides/localization"
