@@ -99,7 +99,12 @@
     },
     {
       "group": "Upgrading",
-      "pages": ["upgrading/0.14.0", "upgrading/0.13.0", "upgrading/0.9.0"]
+      "pages": [
+        "upgrading/0.15.0",
+        "upgrading/0.14.0",
+        "upgrading/0.13.0",
+        "upgrading/0.9.0"
+      ]
     },
     {
       "group": "Integrations",
