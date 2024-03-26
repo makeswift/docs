@@ -26,10 +26,10 @@ or want to set things up yourself, continue with the rest of this guide.
     First, open your Next.js project. If you don't already have one, head over to
     the [Next.js](https://nextjs.org/docs/getting-started/installation)
     documentation to get one set up. If you do have one, please verify you are
-    using [Next.js 13.4](https://nextjs.org/blog/next-12) or a later version that is using app router.
+    using [Next.js 13.4](https://nextjs.org/blog/next-13-4) or a later version that is using [App Router](https://nextjs.org/docs/getting-started/installation).
 
     <Info>
-      If you are not using app router, here's how to [incrementally adopt](https://nextjs.org/docs/app/building-your-application/upgrading/app-router-migration) it.
+      If you are not using App Router, here's how to [incrementally adopt](https://nextjs.org/docs/app/building-your-application/upgrading/app-router-migration) it.
     </Info>
 
   </Step>
@@ -74,7 +74,7 @@ Similar to [NextAuth.js](https://next-auth.js.org/), Makeswift uses an API handl
 <ApiHandlerExample />
 
 This API route adds support for
-[draft mode](https://nextjs.org/docs/app/building-your-application/configuring/draft-mode),
+[Draft Mode](https://nextjs.org/docs/app/building-your-application/configuring/draft-mode),
 [on-demand revalidation](https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration#on-demand-revalidation),
 and other features that make Makeswift work seamlessly with your Next.js app.
 
@@ -113,19 +113,19 @@ ReactRuntime.registerComponent(HelloWorld, {
 
     <ProvidersExample />
 
-    An important Note with this file is that you need to import the components registered in `makeswift/components.tsx`. 
+    An important Note with this file is that you need to import the components registered in `makeswift/components.tsx`.
 
   </Step>
   <Step title="Update the root layout">
-    In your root layout, wrap your app with the `MakeswiftProviders` component created in the last step, import the registered components, and add the `DraftModeScript` to the `head`. 
-    This script enables draft mode when inside the Makeswift builder.
+    In your root layout, wrap your app with the `MakeswiftProvider` component created in the last step, import the registered components, and add the `DraftModeScript` to the `head`. 
+    This script enables [Draft Mode](https://nextjs.org/docs/app/building-your-application/configuring/draft-mode) when inside the Makeswift builder.
 
     <LayoutExample />
 
   </Step>
   <Step title="Add a route for Makeswift pages">
   
-Create an [optional catch-all route](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes) named `[[...path]]`. 
+Create an [optional catch-all route](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#optional-catch-all-segments) named `[[...path]]`. 
 This catch-all route will fetch page data from `Makeswift` and pass it to be rendered in the `Page` component.
 
 <CatchAllExample />
