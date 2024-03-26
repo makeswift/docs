@@ -74,28 +74,16 @@ Similar to [NextAuth.js](https://next-auth.js.org/), Makeswift uses an API handl
 <ApiHandlerExample />
 
 This API route adds support for
-[preview Mode](https://nextjs.org/docs/pages/building-your-application/configuring/preview-mode),
+[draft mode](https://nextjs.org/docs/app/building-your-application/configuring/draft-mode),
 [on-demand revalidation](https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration#on-demand-revalidation),
 and other features that make Makeswift work seamlessly with your Next.js app.
 
   </Step>
   <Step title="Add the Next.js plugin">
   
-Next.js plugins are configured in the project's next.config.js file by wrapping `nextConfig`. The Makeswift Next.js plugin whitelists Makeswift image domains and sets up rewrites to enable preview mode in the Makeswift builder.
+Next.js plugins are configured in the project's next.config.js file by wrapping `nextConfig`. The Makeswift Next.js plugin whitelists Makeswift image domains and sets up rewrites to enable draft mode in the Makeswift builder.
 
 <NextConfigExample />
-
-  </Step>
-  <Step title="Create Makeswift provider component">
-    Create a client component for the Makeswift providers.
-
-    <ProvidersExample />
-
-  </Step>
-  <Step title="Update the root layout">
-    Wrap your app with the `MakeswiftProviders` component created in the last step and add the `DraftModeScript` to the `head` of your root layout. This script enables draft mode when inside the Makeswift builder.
-
-    <LayoutExample />
 
   </Step>
   <Step title="Register components with Makeswift">
@@ -120,9 +108,25 @@ ReactRuntime.registerComponent(HelloWorld, {
 ```
 
   </Step>
+  <Step title="Create Makeswift provider component">
+    Create a client component for the Makeswift providers.
+
+    <ProvidersExample />
+
+    An important Note with this file is that you need to import the components registered in `makeswift/components.tsx`. 
+
+  </Step>
+  <Step title="Update the root layout">
+    In your root layout, wrap your app with the `MakeswiftProviders` component created in the last step, import the registered components, and add the `DraftModeScript` to the `head`. 
+    This script enables draft mode when inside the Makeswift builder.
+
+    <LayoutExample />
+
+  </Step>
   <Step title="Add a route for Makeswift pages">
   
-Create an [optional catch-all route](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes) named `[[...path]]`. You will use the catch-all route to fetch page snapshots from the `Makeswift` client and pass them to the [`Page`](/reference/components/page) component to render.
+Create an [optional catch-all route](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes) named `[[...path]]`. 
+This catch-all route will fetch page data from `Makeswift` and pass it to be rendered in the `Page` component.
 
 <CatchAllExample />
 

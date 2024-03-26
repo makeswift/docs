@@ -69,7 +69,7 @@ the extension, which can be `ts` if you're using TypeScript.
 <ApiHandlerExample />
 
 This API route adds support for
-[preview Mode](https://nextjs.org/docs/pages/building-your-application/configuring/preview-mode),
+[preview mode](https://nextjs.org/docs/pages/building-your-application/configuring/preview-mode),
 [on-demand revalidation](https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration#on-demand-revalidation),
 and other features that make Makeswift work seamlessly with your Next.js app.
 
@@ -83,7 +83,8 @@ Next.js plugins are configured in the project's next.config.js file by wrapping 
   </Step>
   <Step title="Set up a custom Document">
   
-Create a [custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document) named `_document.ts` and export `Document` from `@makeswift/runtime/next`. The Makeswift custom Document handles styles during server-side rendering and using [Preview Mode](https://nextjs.org/docs/pages/building-your-application/configuring/preview-mode) when opening your pages in the Makeswift builder.
+Create a [custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document) named `_document.ts` and export `Document` from `@makeswift/runtime/next`. 
+The Makeswift custom Document handles styles during server-side rendering and using [Preview Mode](https://nextjs.org/docs/pages/building-your-application/configuring/preview-mode) when opening your pages in the Makeswift builder.
 
 <DocumentExample />
 

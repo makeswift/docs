@@ -5,7 +5,7 @@ import { Page as MakeswiftPage } from "@makeswift/runtime/next"
 
 import { client } from "@/makeswift/client"
 
-type ParsedUrlQuery = { lang: string; path?: string[] }
+type ParsedUrlQuery = { path?: string[] }
 
 export async function generateStaticParams() {
   const pages = await client.getPages()
@@ -19,7 +19,6 @@ export default async function Page({ params }: { params: ParsedUrlQuery }) {
   const path = "/" + (params?.path ?? []).join("/")
   const snapshot = await client.getPageSnapshot(path, {
     siteVersion: getSiteVersion(),
-    locale: params.lang,
   })
 
   if (snapshot == null) return notFound()
