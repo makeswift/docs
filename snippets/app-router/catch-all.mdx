@@ -10,9 +10,9 @@ type ParsedUrlQuery = { path?: string[] }
 export async function generateStaticParams() {
   const pages = await client.getPages()
 
-  return pages.flatMap((page) =>
-    path: page.path.split("/").filter((segment) => segment !== "")
-  )
+  return pages.flatMap(page => ({
+    path: page.path.split('/').filter(segment => segment !== ''),
+  }))
 }
 
 export default async function Page({ params }: { params: ParsedUrlQuery }) {
