@@ -1,0 +1,87 @@
+---
+title: Localization
+description: "This guide walks you through setting up localization for your Makeswift site so you can visually customize your site for different locales."
+---
+
+import AppCatchAllLocalizedExample from "/snippets/app-router/catch-all-localized.mdx"
+import LocalizationExample from "/snippets/app-router/localization.mdx"
+
+<Info>
+  The feature is deeply integrated with [Next.js' internationalization
+  features](https://nextjs.org/docs/app/building-your-application/routing/internationalization).
+</Info>
+
+<Warning>
+  Localization is currently only available on the Enterprise plan. Reach out to
+  [support@makeswift.com](mailto:support@makeswift.com) if you want to enable
+  this feature.
+</Warning>
+
+## Getting started
+
+<Steps>
+
+<Step title="Add locales in the Makeswift builder">
+Open site settings and go to the "Locales" tab:
+
+![Localization first step](../images/localization-first-step.png)
+
+To add a new locale, click the "+ Add locale" button. You can modify or delete existing locales by hovering over the locale:
+
+![Hovering over the locale](../images/localization-hover-locale.png)
+
+You can also modify the default locale by hovering over the default locale and clicking the edit button.
+
+Once you add all the locales you need, it might look like this:
+
+![Manage locales in settings](../images/localization-manage-locales.png)
+
+</Step>
+
+<Step title="Configure your Next.js app for localization">
+
+Follow the [internationalization docs](https://nextjs.org/docs/app/building-your-application/routing/internationalization) for app router and make sure that all routes except the [Makeswift API handler](/reference/makeswift-api-handler) are nested inside `/app/[lang]`.
+
+</Step>
+
+<Step title="Fetch snapshot by locale">
+
+Update your catch-all route to fetch the snapshot by locale.
+
+<AppCatchAllLocalizedExample />
+
+</Step>
+
+<Step title="Edit your pages in the builder">
+
+Once you've set everything up, you should be able to switch to the locale using the locale switcher on the builder.
+
+![Manage locales in settings](../images/localization-locales-switcher.png)
+
+<Note>
+
+You can customize the path for each page in each locale. For example, if you have a company page at `example.com/company`, you can create the Spanish version of the page at `example.com/es/compania` or `example.es/compania`.
+
+</Note>
+
+</Step>
+
+</Steps>
+
+## Domain-based localization
+
+If you don't provide a domain for a locale, the localized pages will be located on the same domain as the default locale,
+but nested on the locale's path. For example, `es` pages will be located on `example.com/es/page`.
+
+To use domain-based localization, just add the domain to the locale on your site settings:
+
+![Adding domain-based on settings](../images/localization-domain-based-settings.png)
+
+Once you've done that, the Spanish localized pages will be located on `example.es/page`.
+
+## Localized resources
+
+When making changes on a different locale you can override any property, including the page's pathname, metadata, and SEO tags.
+
+You can also localize a global component. To do this, edit a global component within a localized page, make changes,
+and then save the global component. That global component will be saved for that locale.

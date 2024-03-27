@@ -1,5 +1,6 @@
-import ClientExample from "/snippets/examples/client.mdx"
-import PagesCatchAllExample from "/snippets/examples/pages-catch-all.mdx"
+import ClientExample from "/snippets/reference/client.mdx"
+import PagesCatchAllExample from "/snippets/pages-router/catch-all.mdx"
+import AppCatchAllExample from "/snippets/app-router/catch-all.mdx"
 
 The following example instantiates a new `ReactRuntime` with 4 custom breakpoints.
 
@@ -15,14 +16,3 @@ export const runtime = new ReactRuntime({
   },
 })
 ```
-
-You must then pass this instance of the runtime to
-**both** your [client instance](/reference/makeswift/constructor) and [`<Page>`](/reference/components/page) component.
-
-<CodeGroup>
-
-<ClientExample />
-
-<PagesCatchAllExample />
-
-</CodeGroup>

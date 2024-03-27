@@ -41,7 +41,15 @@
       "pages": ["quickstart", "concepts"]
     },
     {
-      "group": "API Reference",
+      "group": "App Router",
+      "pages": ["app-router/installation", "app-router/localization"]
+    },
+    {
+      "group": "Pages Router",
+      "pages": ["pages-router/installation", "pages-router/localization"]
+    },
+    {
+      "group": "Reference",
       "pages": [
         {
           "group": "Components",
@@ -87,17 +95,16 @@
     },
     {
       "group": "Guides",
-      "pages": [
-        "guides/manual-installation",
-        "guides/extending-the-document",
-        "guides/localization",
-        "guides/troubleshooting",
-        "guides/environments"
-      ]
+      "pages": ["guides/troubleshooting", "guides/environments"]
     },
     {
-      "group": "Migrations",
-      "pages": ["migrations/0.14.0", "migrations/0.13.0", "migrations/0.9.0"]
+      "group": "Upgrading",
+      "pages": [
+        "upgrading/0.15.0",
+        "upgrading/0.14.0",
+        "upgrading/0.13.0",
+        "upgrading/0.9.0"
+      ]
     },
     {
       "group": "Integrations",
@@ -113,5 +120,23 @@
     "thumbsRating": true,
     "suggestEdit": true,
     "raiseIssue": false
-  }
+  },
+  "redirects": [
+    {
+      "source": "/migrations/:slug*",
+      "destination": "/upgrading/:slug*"
+    },
+    {
+      "source": "/guides/localization",
+      "destination": "/pages-router/guides/localization"
+    },
+    {
+      "source": "/guides/extending-the-document",
+      "destination": "/pages-router/installation"
+    },
+    {
+      "source": "/guides/manual-installation",
+      "destination": "/pages-router/installation"
+    }
+  ]
 }
