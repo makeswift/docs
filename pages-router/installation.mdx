@@ -65,8 +65,12 @@ Create files for the Makeswift [runtime](/reference/runtime/constructor) and [cl
 </Step>
   <Step title="Add the Makeswift API handler">
   
-Similar to [NextAuth.js](https://next-auth.js.org/), Makeswift uses an API handler to communicate with your Next.js app. Create the file `pages/api/makeswift/[...makeswift].js`. It's important that the file has that exact name, excluding
-the extension, which can be `ts` if you're using TypeScript.
+Similar to [NextAuth.js](https://next-auth.js.org/), Makeswift uses an API handler to communicate with your Next.js app. Create the file `pages/api/makeswift/[...makeswift].ts`.
+
+<Info>
+  It is important this file has that exact name and path. The extension can be
+  `.js` or `.ts`.
+</Info>
 
 <ApiHandlerExample />
 
