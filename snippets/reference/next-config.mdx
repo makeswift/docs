@@ -1,3 +1,5 @@
+<CodeGroup>
+
 ```js next.config.mjs
 import createWithMakeswift from "@makeswift/runtime/next/plugin"
 
@@ -10,3 +12,18 @@ const nextConfig = {
 
 export default withMakeswift(nextConfig)
 ```
+
+```js next.config.js
+const createWithMakeswift = require("@makeswift/runtime/next/plugin")
+
+const withMakeswift = createWithMakeswift()
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // your existing next config
+}
+
+export default withMakeswift(nextConfig)
+```
+
+</CodeGroup>

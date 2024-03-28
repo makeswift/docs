@@ -4,10 +4,12 @@ title: Installation
 
 import RuntimeExample from "/snippets/reference/runtime.mdx"
 import ClientExample from "/snippets/reference/client.mdx"
+import ComponentsExample from "/snippets/reference/components.mdx"
 import NextConfigExample from "/snippets/reference/next-config.mdx"
 import PagesCatchAllExample from "/snippets/pages-router/catch-all.mdx"
 import DocumentExample from "/snippets/pages-router/document.mdx"
 import ApiHandlerExample from "/snippets/pages-router/api-handler.mdx"
+import PagesAppExample from "/snippets/pages-router/pages-app.mdx"
 
 The fastest way to get started with Makeswift on a new Next.js project is to follow the
 [quickstart](/quickstart) guide. If you have an existing Next.js application
@@ -118,35 +120,28 @@ export default class MyDocument extends Document {
   
 Create a file for registered components called `makeswift/components.tsx`. In this example, only one component is registered. However, as you register more components, we recommend creating separate files for each component and rolling up the imports in the `makeswift/components.ts` file. Learn more about [registering components](/reference/runtime/register-component).
 
-```tsx makeswift/components.tsx
-import { ReactRuntime } from "@makeswift/runtime/react"
-import { Style } from "@makeswift/runtime/controls"
-
-function HelloWorld(props) {
-  return <p {...props}>Hello, world!</p>
-}
-
-ReactRuntime.registerComponent(HelloWorld, {
-  type: "hello-world",
-  label: "Hello, world!",
-  props: {
-    className: Style(),
-  },
-})
-```
+<ComponentsExample />
 
   </Step>
+  <Step title="">
+
+If you don't have a [Custom App](https://nextjs.org/docs/pages/building-your-application/routing/custom-app) you'll need to create one. Then wrap your Custom App with the Makeswift `ReactRuntimeProvider` component.
+
+<PagesAppExample />
+
+  </Step>
+
   <Step title="Add a route for Makeswift pages">
   
-Create an [optional catch-all route](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#optional-catch-all-segments) named `[[...path]].js`. You will use the catch-all route to fetch page snapshots from the `Makeswift` client and pass them to the [`Page`](/reference/components/page) component to render.
+Create an [optional catch-all route](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#optional-catch-all-segments) named `[[...path]].tsx`. You will use this route to fetch page snapshots from the `Makeswift` client and render them using the [`Page`](/reference/components/page) component.
 
 <PagesCatchAllExample />
 
 **Important notes**:
 
-1. If you already have an `index.js` file, you will need to name the file `[...path].js` instead of `[[...path]].js`. For more information about the differences between catch-all and optional catch-all segments, refer to the Next.js [Catch-all segments](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#catch-all-segments) documentation.
+1. If you already have an `index.tsx` file, you will need to name the file `[...path].tsx` instead of `[[...path]].tsx`. For more information about the differences between catch-all and optional catch-all segments, refer to the Next.js [Catch-all segments](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#catch-all-segments) documentation.
 
-2. The filename defines the `path` param. For example, if the filename is `[[...slug]].js` instead of `[[...path]].js`, then the param name is `slug`. Because this is an optional catch-all route, there are no params when visiting the index (i.e., `/`) path. The `path` param defaults to an empty array.
+2. The filename defines the `path` param. For example, if the filename is `[[...slug]].tsx` instead of `[[...path]].tsx`, then the param name is `slug`. Because this is an optional catch-all route, there are no params when visiting the index (i.e., `/`) path. The `path` param defaults to an empty array.
 
 3. [`fallback: 'blocking'`](https://nextjs.org/docs/pages/api-reference/functions/get-static-paths#fallback-blocking) is used here so that your Next.js app doesn't need to be re-deployed whenever a new Makeswift page is created.
 
