@@ -53,7 +53,10 @@
       "pages": [
         {
           "group": "Components",
-          "pages": ["reference/components/page"]
+          "pages": [
+            "reference/components/page",
+            "reference/components/react-runtime-provider"
+          ]
         },
         {
           "group": "Controls",

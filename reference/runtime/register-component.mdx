@@ -40,15 +40,16 @@ component in the Makeswift builder. `'Box'` is the `label`, which appears in
 the Makeswift builder. The example applies a [`Style`](/controls/style) control to the
 `className` prop.
 
-```tsx Box.makeswift.ts
-import { ReactRuntime } from "@makeswift/runtime/react"
+```tsx makeswift/components.tsx
 import { Style } from "@makeswift/runtime/controls"
+
+import { runtime } from './runtime'
 
 function Box({ className }) {
   return <div className={className}>I'm a box!</div>
 }
 
-ReactRuntime.registerComponent(Box, {
+runtime.registerComponent(Box, {
   type: "box",
   label: "Box",
   props: {
@@ -70,9 +71,10 @@ builder, both components appear under the same Visuals collapsible section:
   />
 </Frame>
 
-```jsx Visuals.makeswift.ts
-import { ReactRuntime } from "@makeswift/runtime/react"
+```tsx makeswift/components.tsx
 import { Style } from "@makeswift/runtime/controls"
+
+
 
 function Cube({ className }) {
   return <div className={className}>Cube!</div>
@@ -82,7 +84,7 @@ function Sphere({ className }) {
   return <div className={className}>Sphere!</div>
 }
 
-ReactRuntime.registerComponent(Cube, {
+runtime.registerComponent(Cube, {
   type: "cube",
   label: "Visuals/Cube",
   props: {
@@ -90,7 +92,7 @@ ReactRuntime.registerComponent(Cube, {
   },
 })
 
-ReactRuntime.registerComponent(Sphere, {
+runtime.registerComponent(Sphere, {
   type: "sphere",
   label: "Visuals/Sphere",
   props: {
@@ -113,16 +115,17 @@ component tray, we can see our component with the selected icon.
   />
 </Frame>
 
-```jsx Cube.makeswift.ts
-import { ReactRuntime } from "@makeswift/runtime/react"
+```tsx makeswift/components.tsx
 import { Style } from "@makeswift/runtime/controls"
 import { ComponentIcon } from "@makeswift/runtime"
+
+import { runtime } from './runtime'
 
 function ImageGallery({ className }) {
   return <div className={className}>I'm an image gallery!</div>
 }
 
-ReactRuntime.registerComponent(Cube, {
+runtime.registerComponent(Cube, {
   type: "image-galley",
   label: "ImageGallery",
   icon: ComponentIcon.Gallery,
@@ -131,3 +134,57 @@ ReactRuntime.registerComponent(Cube, {
   },
 })
 ```
+
+### Registering many components
+
+As you register more components in `makeswift/components.tsx`, you may notice this file growing rather large. To keep your codebase organized, we recommend breaking out your Makeswift registration code into separate files and co-locating it with your component file. 
+
+For example, if you have a `Box` component, you can create a `Box.makeswift.ts` file next to your `Box.tsx` file. This file will contain the registration code for the `Box` component.
+
+<Info>
+  This is just a naming convention, the filename and extension can be whatever makes sense to you.
+</Info>
+
+
+<CodeGroup>
+
+```tsx components/Box/Box.tsx
+interface Props {
+  className?: string
+}
+
+function Box({ className }) {
+  return <div className={className}>I'm a box!</div>
+}
+```
+
+```tsx components/Box/Box.makeswift.ts
+import { Style } from "@makeswift/runtime/controls"
+
+import { runtime } from '@/makeswift/runtime'
+
+import { Box } from './Box'
+
+runtime.registerComponent(Box, {
+  type: "box",
+  label: "Box",
+  props: {
+    className: Style({ properties: Style.All }),
+  },
+})
+```
+
+</CodeGroup>
+
+Then update your `makeswift/components.tsx` file to import all of the component registrations, like so:
+
+```ts makeswift/components.ts
+import "@/components/Box/Box.makeswift"
+import "@/components/Cube/Cube.makeswift"
+import "@/components/Sphere/Sphere.makeswift"
+/*
+ * Add all of your component registrations here
+ */
+```
+
+The file `makeswift/components.ts` should be imported wherever you use [`<ReactRuntimeProvider>`](/reference/components/react-runtime-provider) in your app.

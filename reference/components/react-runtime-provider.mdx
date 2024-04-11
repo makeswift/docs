@@ -1,0 +1,38 @@
+---
+title: "<ReactRuntimeProvider>"
+description: The `<ReactRuntimeProvider>` component takes a Makeswift runtime and provides it to the [`<Page>`](/reference/components/page) component for rendering snapshots.
+---
+
+import AppProviders from "/snippets/app-router/providers.mdx"
+import AppLayout from "/snippets/app-router/layout.mdx"
+import PagesApp from "/snippets/pages-router/pages-app.mdx"
+
+## Props
+
+<ParamField query="runtime" type="Runtime" required>
+  A Makeswift [runtime](/reference/runtime/constructor.mdx).
+</ParamField>
+
+<ParamField query="children" type="React.Node">
+  The children components to render.
+</ParamField>
+
+## Example
+
+### App Router
+
+The following example shows the `<ReactRuntimeProvider>` being used in a Client Component and imported into the Root Layout in the app router.
+
+<CodeGroup>
+
+<AppProviders />
+
+<AppLayout />
+
+</CodeGroup>
+
+### Pages Router
+
+The following example uses a [Custom App](https://nextjs.org/docs/pages/building-your-application/routing/custom-app) to add the `<ReactRuntimeProvider>`.
+
+<PagesApp />
