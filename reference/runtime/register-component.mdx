@@ -135,14 +135,14 @@ runtime.registerComponent(Cube, {
 })
 ```
 
-### Registering many components
+### Organizing registration code
 
 As you register more components in `makeswift/components.tsx`, you may notice this file growing rather large. To keep your codebase organized, we recommend breaking out your Makeswift registration code into separate files and co-locating it with your component file. 
 
 For example, if you have a `Box` component, you can create a `Box.makeswift.ts` file next to your `Box.tsx` file. This file will contain the registration code for the `Box` component.
 
 <Info>
-  This is just a naming convention, the filename and extension can be whatever makes sense to you.
+  Makeswift does **not** rely on this naming convention. Feel free to use whatever naming convention you prefer.
 </Info>
 
 
