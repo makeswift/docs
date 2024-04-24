@@ -70,29 +70,3 @@ Our recommended workflow is that your marketing team makes all edits in the prod
 For the most part, component updates should be shipped asynchronously. Things like style updates that don't affect component props can be tested locally and then pushed to a preview deployment using your production site's API key for testing. Once merged, your marketing team will see the updated component in the builder.
 
 If component props need to change, we recommend creating a new prop if possible so that the old prop can be deprecated over time. This will allow your marketing team to update pages at their own pace.
-
-In the case this is not possible, here is how you can handle breaking changes or changes where content and code need to be shipped simultaneously:
-
-<Steps>
-  <Step title="Duplicate your site">
-    The first step is to duplicate your production site. All content changes and
-    publishing should freeze on the existing production site. Rename the
-    duplicated site to your staging site.
-  </Step>
-  <Step title="Create a preview deployment">
-    Next, create a preview deployment with your component code changes. This
-    preview deployment should use the staging site's API key.
-  </Step>
-  <Step title="Update the host URL">
-    Update the host URL of your staging site to point to the URL of the new
-    preview deployment.
-  </Step>
-  <Step title="Publish changes to staging">
-    Make edits and publish content changes in the staging site.
-  </Step>
-  <Step title="Promote staging">
-    Once staging is looking good, update your DNS to point your domain to the
-    staging site. Then rename the staging site to your production site and
-    delete the old production site.
-  </Step>
-</Steps>
