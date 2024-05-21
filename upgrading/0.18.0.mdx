@@ -1,0 +1,22 @@
+---
+title: Upgrading to 0.18.0
+---
+
+If you haven't upgraded to `0.15.0` please read the [upgrading guide](/upgrading/0.15.0).
+
+### Migrate to @makeswift/runtime/controls
+
+<Warning>
+This upgrade guide is only necessary if you're using deprecated APIs from `@makeswift/runtime/prop-controllers`. If you're not using these APIs, you can safely skip this upgrade guide.
+</Warning>
+
+Update your components to use controls from `@makeswift/runtime/controls` instead of `@makeswift/runtime/prop-controllers`.
+
+Example:
+
+```diff
+- import { List, Shape } from '@makeswift/runtime/prop-controllers';
++ import { List, Shape } from '@makeswift/runtime/controls';
+```
+
+For more information about the available controls and how to use them, please refer to the [controls documentation](/concepts#basic-controls).
