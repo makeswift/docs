@@ -1,0 +1,106 @@
+---
+title: "Snippets"
+description:
+icon: "brackets-curly" iconType: "solid"
+---
+
+## Introduction
+
+Snippets are blocks of code shared at the site level that can be added to your pages. Code that is not visual, such as Google Analytics, Facebook pixels, or custom CSS, should be placed into snippets. We recommend using separate snippets for each block of code to keep things flexible and easy to find.
+
+## **Creating a snippet**
+
+To create a new snippet, deselect all elements and click the Page tab in the right sidebar. Click the "+" icon in the "Snippets" panel, and select "Create snippet" in the menu.
+
+Name your snippet, paste in your code, and add cleanup code if necessary. You can select if the code should be placed in the `<head>` or end of the closing `<body>`. If you’re unsure which to choose, please check with the code’s documentation. Lastly, select whether or not to automatically include this snippet when new pages are created.
+
+![Makeswift Snippet Modal](public/images/snippets/snippet-modal.png)
+
+After clicking "Create" you'll be given the option of adding the new snippet to your current page or all pages in your site. This snippet will also appear in the add snippet menu for pages that don't already include it.
+
+To remove a snippet from a page, click on the `—` found on each snippet row.
+
+Once you’ve added it once, you can add it again to any page.
+
+![Add and remove snippets](public/images/snippets/add-and-remove-snippet.gif)
+
+## **Managing snippets**
+
+Opening a snippet's action menu will display options to edit the snippet or add it to all pages. When editing a snippet, saved changes will be applied to all pages using this snippet. Deleting a snippet will remove it from all pages in a site.
+
+## **Snippets and client-side routing**
+
+Makeswift sites are [Next.js](https://nextjs.org/) applications and feature client-side routing for blazing fast navigation throughout your site. Navigating between pages within the site does not cause a page refresh, which requires additional considerations for certain types of snippets.
+
+Sometimes you want to be able to run a snippet in specific pages but not in others. For example, you might want a chat support widget on your marketing pages but not on your blog pages. Makeswift will automatically remove the relevant snippet HTML and CSS when moving from a page with a snippet to a page that doesn't have that snippet. But if the snippet ran a side effect with JavaScript (i.e., installing a chat support widget), then a clean up script will need to be provided (i.e., to uninstall the chat support widget).
+
+**Note, the clean up script is only needed when a snippet isn't used in all pages and also has some sort of side effect that needs to be cleaned up.**
+
+## Examples
+
+## **Clean up script example**
+
+**Google Analytics [provides instructions](https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications) for measuring page activity in single page applications. Here's an example of what that looks like in Makeswift.**
+
+### **Snippet**
+
+```
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-XXXXX-Y', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+<!-- Google Analytics SPA Tracking -->
+<script>
+window['ga-disable-UA-XXXXX-Y'] = false;
+
+function onStateChange(state) {
+	ga('set', 'page', state.url);
+	ga('send', 'pageview');
+}
+
+var originalPushState = window.history.pushState;
+window.history.pushState = function pushState(state) {
+	originalPushState.apply(window.history, arguments);
+
+	onStateChange(state);
+};
+
+var originalReplaceState = window.history.replaceState;
+window.history.replaceState = function replaceState(state) {
+  originalReplaceState.apply(window.history, arguments);
+
+  onStateChange(state);
+};
+</script>
+<!-- End Google Analytics SPA Tracking -->
+```
+
+### **Clean up script**
+
+```
+window['ga-disable-UA-XXXXX-Y'] = true;
+window.history.pushState = originalPushState;
+window.history.replaceState = originalReplaceState;
+```
+
+## Pro Tips
+
+If you are using a custom host, consider adding your snippet directly into your code.
+
+### Shortcuts
+
+You can have snippet be automatically added to all new pages created upon creating one.
+
+![Add snippets to new pages](public/images/snippets/add-to-new-pages-snippet.png)
+
+## Developer Notes
+
+Injecting snippets directly into the codebase is often preferable for SEO purposes, as it can enhance page performance and is easier to manage. It's also important to provide guardrails for users who may not be as familiar with the code to ensure they don't inadvertently cause issues.

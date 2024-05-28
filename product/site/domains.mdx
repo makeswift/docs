@@ -1,0 +1,42 @@
+---
+title: "Domains"
+description:
+icon: "lines-leaning" iconType: "duotone"
+---
+
+## **Custom Domains**
+
+Domains are managed in your settings. Each new site begins with a "makeswift.site" domain. Click "Connect your domain" or "+ Add domain" to add a custom domain.
+
+Once added, follow the instructions to set up your DNS to finish connecting your domain. You can also click the information icon to reopen the DNS instructions.
+
+## **Updating Your DNS**
+
+For domains with subdomains (e.g., "www" or "blog"), add a CNAME record with the host set to the subdomain ("www", "blog", etc.) and the value to "makeswift.site".
+
+For domains without subdomains (naked or root domains), add an A record with the host set to "@" and the value set to "76.76.21.21".
+
+**For your main website, include both the www and non-www versions of your domain.**
+
+Here is DNS help documentation for several common domain providers:
+
+- [1and1.com](https://www.ionos.com/help/domains/dns-settings/#acc2685)
+- [Bluehost](https://my.bluehost.com/hosting/help/dns-management-add-edit-or-delete-dns-entries)
+- [Google Domains](https://support.google.com/a/answer/47283?hl=en) or Squarespace Domains
+- [Domain.com](https://www.domain.com/help/article/dns-management-how-to-update-dns-records)
+- [eNom](https://help.enom.com/hc/en-us/articles/115000474012-How-to-Change-DNS-Host-Records)
+- [GoDaddy](https://www.godaddy.com/help/view-my-dns-settings-19182)
+- [NameCheap](https://www.namecheap.com/support/knowledgebase/article.aspx/434/2237/how-do-i-set-up-host-records-for-a-domain)
+- [Network Solutions](https://www.networksolutions.com/support/how-to-manage-advanced-dns-records/)
+
+## **Setting a Primary Domain**
+
+After adding one or more domains, select which domain to set as the primary domain. All other domains, as well as the Makeswift domain, will redirect to the primary one.
+
+It can take up to 48 hours for your DNS to finish connecting. Once connected, all published page URLs will use your primary domain.
+
+To ensure your home page uses only the primary domain (e.g., [www.mysite.com](http://www.mysite.com/)), edit the URL of the page and leave the "Path" field blank.
+
+## **SSL Certificates**
+
+All Makeswift pages automatically generate SSL certificates at no extra cost. Once your DNS has fully connected to Makeswift, it may take a little more time for the SSL certificate to be generated.

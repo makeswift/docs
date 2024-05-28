@@ -1,0 +1,67 @@
+---
+title: "SEO Metadata"
+description:
+icon: "magnifying-glass-chart" iconType: "duotone"
+---
+
+## Introduction
+
+Makeswift enables you to manage your SEO settings per page directly within the Builder. If you're using a Custom Host, setting up a Sitemap API endpoint may be necessary for proper functionality with Makeswift. Nonetheless, these settings are largely customizable out of the box.
+
+## **Meta Tags**
+
+The following Meta Tags are managed within the Page Panel of each Page in Makeswift:
+
+- Title
+- Description
+- Social Image
+
+by default Makeswift will use these Meta Tags as their Open Graph (OG) equivalent as well (e.g., OG Title = Meta Title).
+
+<Note>
+For special Meta Tags that aren't the ones standard within the page properties in Makeswift, or if your OG Tags differ, you must configure this in code. For more info https://nextjs.org/learn-pages-router/seo/crawling-and-indexing/metatags
+
+</Note>
+
+![metatags](public/images/seo-Metadata/metatags.png)
+
+### **Canonical Tags**
+
+Canonical URLs are also managed in the Page Panel. Typically, these are self-referencing and thus are set to default in Makeswift.
+
+![canonical](public/images/seo-metadata/canonical.png)
+
+## Sitemap Settings
+
+Your [Sitemap](/product/site/sitemaps) is automatically generated based on your inputs in the Page Panel.
+
+### Sitemap Priority
+
+You can set the Sitemap Priority (0-1) on each Page within the Page Panel. Pages come with a default value of 0.75.
+
+### Sitemap Frequency
+
+You can set your Sitemap Frequency per Page as well. The default in Makeswift is Hourly.
+
+<Note>
+Note for Custom Hosts
+
+</Note>
+
+![sitemap priority](public/images/seo-metadata/sitemap-prio.png)
+
+![sitemap frequency](public/images/seo-metadata/sitemap-freq.png)
+
+## Robots
+
+Within the Page Panel, there is a checkbox for Robots called “Exclude from search Engines.”
+
+![Exclude from search engine checkbox](public/images/seo-metadata/robots.png)
+
+When unchecked, this will set the page to be Indexed and Followed. When checked, this will set the page to be no-index, follow.
+
+## Developer Notes
+
+Note the user controls and inputs as they relate to the [Sitemap Endpoints](/developer/reference/client/get-sitemap) you will be configuring.
+
+Any additional SEO settings outside of the controls available in the page properties will need to be added directly to the codebase.
