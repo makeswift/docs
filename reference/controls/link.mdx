@@ -50,6 +50,8 @@ runtime.registerComponent(Button, {
 ```
 
 ```tsx Button.tsx
+import Link from "next/link"
+
 interface Props {
   link: {
     href: string
@@ -59,13 +61,13 @@ interface Props {
 
 export function Button({ link }) {
   return (
-    <a
+    <Link
       className="px-4 py-3 rounded bg-black text-white"
       href={link.href}
       target={link.target}
     >
       Click me
-    </a>
+    </Link>
   )
 }
 ```
