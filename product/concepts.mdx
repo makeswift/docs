@@ -1,0 +1,124 @@
+---
+
+title: "Concepts & Settings"
+description: Here you'll find some terminology to help you easily navigate Makeswift.
+icon: "lightbulb-gear" iconType: "duotone"
+---
+
+<Tabs>
+  <Tab title="Workspaces">
+
+A Makeswift Workspace is the digital space you and your organization share to manage sites built with Makeswift. Users are managed at the workspace level and have access to all sites in that workspace. Billing and subscription management are also handled in your workspace settings.
+
+### Switching Workspaces
+
+A user can be invited to multiple workspaces. To switch to another workspace, open the site dropdown at the top left of the app, select the site switcher, and hover over your workspace.
+![removing users](public/images/workspace/switch-workspace.gif)
+
+  </Tab>
+  <Tab title="Sites">
+A Makeswift site is an instance of your website that is 1 to 1 with your domain. You can host multiple sites in the same Workspace.
+
+### Site Settings
+
+From the Site Setting menu you can:
+
+1. Rename the site
+2. Set the site favicon
+3. View the sitemap
+4. Take the site offline or online
+5. Delete the site
+
+#### **Setting a favicon**
+
+To select a custom favicon, click “Change favicon”. The files picker will open, allowing you to select an existing file or add a new one.
+
+A .png file with minimum dimensions of 32 x 32 px is recommended. Keep in mind that favicons are displayed at only 16 x 16 px in the browser tab, so anything larger than 32 x 32 px is unnecessary.
+
+### Site Management
+
+#### Duplicate Site
+
+Duplicating a site creates an identical copy of a site, including content, theme, publish history, and files. This feature allows users to retain older versions of a site, but provide a quick starting point for creating an updated design. Duplicating a site can also be used to create staging versions of a site to safely work on new components and content if needed. Learn more about creating staging sites using the duplicate site feature.
+
+Duplicating a site copies the following into the new site:
+
+- Collections
+- Pages and content
+- Files (if in Site files in original site)
+- Colors
+- Text styles
+- Fonts
+- Global components
+- Publish history
+- Host settings
+- Domains
+- Locales
+- Redirects
+- Database tables?
+
+#### Archive Site
+
+When you archive a site all pages will be taken offline and you will not be billed for this site in future invoices while the site remains offline. It’s important to note that your pages will still be available and will seem to be online via the green live indicator, however they are not online.
+
+You may choose to take an archived site back online, this will publish all pages that were previously live on your site as indicated by the green live icon.
+
+#### Delete Site
+
+Deleting a site will remove all of its collections, pages, site files, and site database tables. Deleting a site cannot be undone. Form submissions saved to a workspace table will remain in your database and will not be deleted.
+
+### Sitemaps
+
+You can dowload an xml file of your sitemap from your site settings. For more information on the configuration of Sitemaps, see
+
+  </Tab>
+  <Tab title="Pages">
+## Creating Pages
+
+To create a new page in Makeswift click the “+” button in the upper left of the Builder.
+
+![creating pages
+](public/images/pages/creating-pages.gif)
+You have several options for creating a page: Page from Template, Blank Page, and Collection.
+
+### Page from Template
+
+Use Makeswift-designed templates to start quickly, or use a page you've created previously.
+
+![creating page from template
+](public/images/pages/page-from-template.gif)
+
+### Blank Page
+
+Start from scratch with a Blank Page and customize your [layout](https://) by adding components.
+
+![creating page from scratch
+](public/images/pages/page-from-scratch.gif)
+
+### Collections
+
+Collections help keep pages, such as blog posts, organized. You can create unlimited collections and nest them within each other.
+
+Organize pages and collections by dragging and dropping them. They appear in alphabetical order on the left-hand side.
+
+![creating a collection
+](public/images/pages/remove-from-collection.gif)
+
+To move a page out of a collection, drag it back up to the Pages label at the top of the sidebar.
+
+![move a page out of a collection
+](public/images/pages/remove-from-collection.gif)
+
+## **Actions**
+
+Open the action menu for a page or collection to reveal its actions. Along with rename and delete, page actions include:
+
+- Viewing the live page
+- Editing the page URL
+- Copying the page URL
+- Duplicating the page
+- Taking a page offline
+
+<Note>See more information on [Page Settings](product/page/paths.mdx)</Note>
+    </Tab>
+  </Tabs>
