@@ -39,7 +39,16 @@
   "navigation": [
     {
       "group": "Getting Started",
-      "pages": ["product/quickstart", "product/concepts"]
+      "pages": [
+        "product/quickstart",
+        "product/concepts",
+        "product/builder-basics",
+        "product/layouts",
+        "product/elements",
+        "product/components",
+        "product/device-toggle",
+        "product/publishing"
+      ]
     },
     {
       "group": "Reference",
@@ -64,31 +73,25 @@
           "group": "Page",
           "pages": [
             "product/page/paths",
-            "product/page/SEO-metadata",
+            "product/page/metadata",
             "product/page/snippets"
           ]
         },
         {
-          "group": "Component",
+          "group": "Controls",
           "pages": [
-            "product/component/global-components",
-            {
-              "group": "Property Controls",
-              "pages": [
-                "product/component/property-controls/visibility",
-                "product/component/property-controls/animations",
-                "product/component/property-controls/gap",
-                "product/component/property-controls/shadows",
-                "product/component/property-controls/corners",
-                "product/component/property-controls/borders",
-                "product/component/property-controls/padding",
-                "product/component/property-controls/margin",
-                "product/component/property-controls/width",
-                "product/component/property-controls/alignment",
-                "product/component/property-controls/height",
-                "product/component/property-controls/backgrounds"
-              ]
-            }
+            "product/component/property-controls/visibility",
+            "product/component/property-controls/animations",
+            "product/component/property-controls/gap",
+            "product/component/property-controls/shadows",
+            "product/component/property-controls/corners",
+            "product/component/property-controls/borders",
+            "product/component/property-controls/padding",
+            "product/component/property-controls/margin",
+            "product/component/property-controls/width",
+            "product/component/property-controls/alignment",
+            "product/component/property-controls/height",
+            "product/component/property-controls/backgrounds"
           ]
         }
       ]
