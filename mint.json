@@ -46,8 +46,12 @@
         "product/layouts",
         "product/elements",
         "product/components",
+        "product/themeing",
         "product/device-toggle",
-        "product/publishing"
+        "product/SEO",
+        "product/site/localization",
+        "product/publishing",
+        "product/files"
       ]
     },
     {
@@ -60,7 +64,6 @@
         {
           "group": "Site",
           "pages": [
-            "product/site/localization",
             "product/site/redirects",
             "product/site/hosting",
             "product/site/domains",

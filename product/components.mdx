@@ -14,19 +14,64 @@ There are a few components that come stock standard with the Makeswift default h
 
 <Tabs>
   <Tab title="Box">
-  Although simple at first glance, the Box is your most valuable and versatile tool in the toolbar. It’s exactly as described, a box, but you can use it for so much more. If you’re familiar with HTML, the easiest way to conceptualize a box is like a `<Div>`. From a developer perspective, boxes can also be synonmous with [Slots](developer/reference/controls/slot.mdx).
+  Although simple at first glance, the Box is your most valuable and versatile tool in the toolbar. It’s exactly as described, a box, but you can use it for so much more. If you’re familiar with HTML, the easiest way to conceptualize a box is like a `<Div>`. From a developer perspective, boxes can also be synonmous with [Slots](developer/reference/controls/slot.mdx). Use boxes to configure different [Layouts](/product/layouts)
   </Tab>
   <Tab title="Text">
-  Makeswift's stock text component uses next/text which is super cool and great and awesome.
-  </Tab>
+
+Double-click on any text on your page to start editing it directly, similar to Google Docs.
+
+### Block options
+
+Block options apply to an entire paragraph and correlate to the HTML tag used on the live page. Block options include:
+
+- Paragraph
+- Heading 1
+- Heading 2
+- Heading 3
+- Bulleted and numbered lists
+- Blockquotes
+
+Heading tags can affect a page's SEO, so make sure to use the appropriate options throughout your site.
+
+</Tab>
+
   <Tab title="Image">
-  Makeswift's stock image uses next/image which is super
+Images are used to place media between other elements, unlike a background image that goes behind content. Think of an image as framed art on a wall, whereas the background image is the wallpaper behind it.
+
+To place an image, select an image element on your page and click "Choose" or “Replace” in the sidebar. Select a replacement from the file picker, or upload a new image.
+
+![Image properties](public/images/builder/image-props1.gif)
+Alt text is used to provide descriptions of an image and increases the accessibility of your website for disabled visitors. Images can also be given links, similar to buttons.
+
+Images will automatically be optimized and resized when published, increasing the performance of your site.
+
   </Tab>
   <Tab title="Button">
-  oh
-  </Tab>
-</Tabs>
+Use buttons to create links within your pages. The following are the link options for buttons:
 
+- Open a Makeswift page
+- Open an external URL
+- Compose an email
+- Call a phone number
+- Scroll to an element
+
+### Open page
+
+When linking to other pages within your site, you’ll select from a list of existing pages. Once a page is selected, the page’s URL will be used for the button link. If the page’s URL is updated in the future, the button link will automatically update as well.
+
+### Scroll to element
+
+To use “Scroll to element” you must first give the target element a custom name. This name will now appear in the dropdown found in the button’s “On click” panel.
+
+You can also select the screen position of the scrolled to element.
+
+### Styling buttons
+
+You can select from a list of premade styles for your button. Along with styles, you can customize the size, shape, color and text styles.
+
+</Tab>
+</Tabs>
+-----
 ## **Global Components**
 
 Global components are groups of elements that can be saved and reused across your entire site. If you make an update to a global component, every instance of that component on your site will be updated as well.
