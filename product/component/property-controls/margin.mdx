@@ -3,3 +3,66 @@ title: "Margin"
 description:
 icon: "arrows-left-right-to-line" iconType: "duotone"
 ---
+
+## Introduction
+
+Margin is the space between elements, similarly to [Padding](/product/component/property-controls/padding) it allows you to create spacing around elements, ensuring proper alignment, readability, and visual balance within a layout.
+
+By adjusting the margin, you can create breathing room between content and borders, preventing elements from feeling cramped or cluttered.
+
+Conversely from Padding, margin controls the spacing between elements, while padding controls the spacing within an element as its values are relative.
+
+<Tip>It’s typically best to use Margin where you can instead of Padding.</Tip>
+
+With an element selected, utilize the margin [overlays](/product/overlays) by dragging the top or bottom handles to change its vertical margin. For a box, they will be the top-most and bottom-most handle
+
+![Using margin overlays](public/images/builder/margin1.gif)
+
+In Makeswift, Horizontal [Alignment](/product/component/property-controls/alignment) is controlled by essentially applying left and right margin values. If you center align your element, it will assume an equal “auto” value for left and right margins. For Left aligned or Right aligned elements, it will assume a margin of 0 on the side that it is aligned to, and an automatic value for the opposite side.
+
+![Alignment overlays](public/images/builder/margin2.gif)
+
+## Examples
+
+### Text & Buttons
+
+Add additional space above and below text and buttons.
+![Text & Buttons example](public/images/builder/margin3.gif)
+
+### Images
+
+Properly position your images using margin.
+![Image example](public/images/builder/margin4.gif)
+
+## Pro Tips
+
+You can achieve proper symmetrical spacing by using [Gap](/product/component/property-controls/gap) control on elements within a box, or at the page level. See if you can apply the proper spacing with Gap before resorting to Margin.
+
+### Shortcuts
+
+<Tip>
+❗ Use the preset alignments to quickly center, left, or right align your content without worrying about pixel values. Use the [Width](/product/component/property-controls/width) control of your element to manage how your content appears from there.
+
+</Tip>
+
+![Using preset alignments](public/images/builder/margin5.gif)
+
+<Tip>
+Hold the **⌥ Option (or Alt) key to change corresponding Margin, and ⇧ Shift  + ⌥ Option (or Alt) to change all Margin equally.**
+
+</Tip>
+
+![⌥ Option (or Alt) hotkey](public/images/builder/margin6.gif)
+
+<Tip>
+When resetting to base, you can also hold **⌥ Option (or Alt) and click to reset to base**
+
+</Tip>
+
+![⌥ Option (or Alt) + click reset to base hotkey](public/images/builder/margin7.gif)
+
+## Developer Notes
+
+Keep in mind the ability to alter margin within Makeswift when [styling](/developer/reference/controls/style) components.
+
+It may make sense to utilize a [slot](/developer/reference/controls/slot) to allow users to alter the margin to their choosing within a component

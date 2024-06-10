@@ -10,7 +10,9 @@ Search Engine Optimization (SEO) is a critical practice for enhancing your websi
 
 ## Managed in Makeswift
 
-### <Icon icon="code" iconType="duotone" /> Semantic Structure
+There are certain SEO tools that are available for configuration directly in the builder. Familiarizing yourself with what can be edited in the builder will allow you to adapt your SEO settings on an ongoing basis to finely tune your web presence.
+
+### Semantic Structure
 
 The [Text Style](/product/site/text-styles) of a content block in Makeswift is decoupled from the <Tooltip tip="Semantic structure is the use of HTML tags to convey the meaning and hierarchy of content on a webpage.">Semantic Structure</Tooltip> of each content block. You can use the Block property on each text component to apply the proper HTML tags around your content.
 ![Block Property](public/images/text-styles/block-property.png)
@@ -18,35 +20,61 @@ Properly configuring your content semantic structure is important for SEO as it 
 
 It also is responsible for accessibility for users relying on screen readers and other assitive technologies, if your page is properly structured it makes your site more inclusive.
 
-#### Best Practices
-
 <Tip>Don't include more than one H1 block on a page</Tip>
-### <Icon icon="cannon" iconType="duotone" /> Canonical URL
+### Canonical URL
 
 A canonical URL is the preferred version of a webpage that search engines should index and rank. Canonicals are managed within the page properties of the Makeswift builder.
 ![Canonical URL property](public/images/seo-metadata/canonical-property.png)
 
 Check that canonical tags are correctly implemented to avoid duplicate content issues, especially if there are multiple versions of the same page (e.g., HTTP vs. HTTPS). By default, if no canonical is indicated, Makeswift will implement a self referencing canonical url.
 
-#### Best Practices
-
 <Tip>
   {" "}
   Make sure Canonicals are indexable. Utilize the **Exclude from Search Engines**
   checkbox property to manage this. ![Exlude from search engines](public/images/seo-metadata/robots.png)
 </Tip>
+### XML Sitemaps{" "}
 
-### <Icon icon="tags" iconType="duotone" /> Meta Tags
+Makeswift will automatically generate an XML sitemap for you based on properties available to you on each page.
+![Sitemap properties](public/images/seo-metadata/sitemap-properties.png)
+
+#### Sitemap Priority Sitemap priority
+
+is a value from 0.0 to 1.0 assigned to URLs in a sitemap to indicate their relative
+importance. This helps search engines prioritize which pages to crawl and index first.
+
+By default, each new page you create will be given a value of 0.75
+
+<Tip>
+  Your homepage or other critical landing pages should have a Sitemap Priority
+  value of 1.0
+</Tip>
+#### Sitemap Frequency{" "}
+
+Sitemap frequency, also known as "change frequency" or "changefreq,"is
+an attribute in a sitemap that indicates how often a particular URL is likely to
+change. - always: Used for pages that change constantly, such as live data feeds.
+
+- **hourly:** For pages that update every hour.
+- **daily:** For pages that change daily,such as news articles or blogs.
+- **weekly:** For pages that are updated weekly.
+- **monthly:** For pages with monthly updates.
+- **yearly:** For pages with annual updates.
+- **never:** For pages that never change, like archived content.
+
+By setting the appropriate change frequency, you can help search engines optimize their crawling efforts and ensure your most current content is indexed efficiently.
+
+Each new page you create in Makeswift will have a default value of **Hourly**
+
+### Meta Tags
 
 [Page Metadata](/product/page/metadata) covers some of the essential SEO Metadata controls that can get you started quickly. Leverage the ability to edit the title tags, meta descriptions, and social images on an ongoing basis to optimize for relevant keywords and accurately reflect the content of each page.
 ![Metatags](public/images/seo-metadata/metatags-property.png)
 
-### <Icon icon="sitemap" iconType="duotone" /> **Internal Linking Structure**
+### Internal Linking Structure
 
 Internal linking structure refers to the way links are organized within your website, connecting different pages and content. Review and optimize the internal linking structure to ensure that important pages are easily accessible and properly prioritized for search engines. Prioritization is controlled within the Page Properties in the Makeswift builder.
 ![Sitemap Priority Control](public/images/seo-metadata/sitemap-priority-control.png)
-
-#### Best Practices
 
 <Tip>
   Creating a new page it’s an opportunity to link to another page. The more
@@ -58,29 +86,37 @@ Internal linking structure refers to the way links are organized within your web
   breaking all of the links associated with that page.
 </Tip>
 
-### <Icon icon="hexagon-image" iconType="solid" /> **Image Optimization**
+### Image Optimization
 
-Optimize image filenames through the [Files Manager](/product/files-manager), alt tags, and captions to improve accessibility and provide additional context for search engines. Image prioritization, file names, and alt tags are to be managed primarily in Makeswift. Can utilize preload tags
+Optimize image file names and alt text to improve accessibility and provide additional context for search engins. Files names can be managed through the [Files](/product/files) manager and alt tags can be managed on each individual image.
+
+![File naming and image alt text properties](public/images/seo-metadata/image-optimization.png)
+
+Image prioritization can also be managed in Makeswift by using the Priority checkbox.
+![Image priority checkbox](public/images/seo-metadata/image-priority-prop.png)
 
 <Tip>
-Alt tags should be a common practice but may need to be migrated from the legacy website. File names will likely maintain the same file name from their legacy site. Make sure this is communicated to the customer.
-
+  Utilize the Priority control primarily on Header images to load them first on
+  the page as this is a contributing factor to your page performance.
 </Tip>
 
-### <Icon icon="laptop-mobile" iconType="duotone" /> **Mobile-Responsiveness**
+### Mobile-Responsiveness
 
-Ensure that the new website is responsive and optimized for mobile devices to comply with search engine guidelines and improve rankings in mobile search results.
+[Mobile Responsiveness](/product/device-toggle) is crucial because Google predominantly uses the mobile version of a website for indexing and ranking. If your site isn't mobile-friendly, it can negatively impact your search engine rankings.
 
-<aside>
-Check with the customer on the number of breakpoints they have on their current site (Desktop, Tablet, & Mobile are defaults). Take these breakpoints into account when developing components.
+Utilize the device toggle menu in the Makeswift builder as you create content to make sure your [layouts](/product/layouts) look good on every device.
+![Device Toggle](public/images/seo-metadata/device-toggle.png)
 
-</aside>
+<Tip>
+  If you want to add additional responsive breakpoints, you will need to do this
+  in your codebase
+</Tip>
 
-### <Icon icon="icons" iconType="duotone" /> Favicon
+### Favicon
 
-Favicon is the icon that shows up in your web browser tab. This can be configured in the settings within Makeswift builder. We can extract this by inspecting a site or using websites that help, but if the customer has a new Favicon or the original file somewhere it’s best to get it from there.
+Favicon is the icon that shows up in your web browser tab. This can be configured in the settings within Makeswift builder. While favicons might not directly influence search rankings, they support a positive user experience and reinforce your brand, which can indirectly impact SEO through improved engagement metrics and user behavior.
 
-### <Icon icon="do-not-enter" iconType="solid" /> 404 Page
+### 404 Page
 
 Ensure there’s a 404 page based on the customers’ preferences. This needs to be done in code, as there’s no url to define the 404 page in the builder.
 
@@ -88,7 +124,11 @@ Ensure there’s a 404 page based on the customers’ preferences. This needs to
 
 ## Managed in Code
 
-### <Icon icon="robot" iconType="solid" /> **Robots.txt**
+More advanced SEO requirements will need to be managed directly in your codebase. The guide below outlines some additional SEO concepts to consider, but their application is not specific to Makeswift.
+
+<Warning>The following can only be administered using a custom host</Warning>
+
+### Robots.txt
 
 Used to review and update the robots.txt file to ensure that search engines can crawl the new site properly and that sensitive or duplicate content is blocked as necessary.
 
@@ -98,7 +138,7 @@ Utilize Screaming Frog to crawl the legacy website and the new website and compa
 
 </aside>
 
-### <Icon icon="diamond-turn-right" iconType="solid" /> **Redirects**
+### Redirects
 
 Set up 301 redirects from old URLs to new URLs to ensure that users and search engines are directed to the correct pages. Usually contained in a CMS. Observe Redirect chains. Might be concerning to customers. Can use a crawler to find some redirects. Would be great to have a way to download them from the code from within Makeswift. https://www.easyredir.com/ manages your redirects for you.
 
@@ -107,7 +147,7 @@ Set up 301 redirects from old URLs to new URLs to ensure that users and search e
 
 </aside>
 
-### <Icon icon="file-xml" iconType="duotone" /> **XML Sitemap**
+### Additional Sitemaps
 
 Generate a new XML sitemap for the migrated website and submit it to search engines to ensure all pages are crawled and indexed properly. 404’s shouldn’t be in Sitemaps. Watch out for duplicates. Typically there is .xml index sitemap, for larger sites they may need a separate sitemap (example: articles). There is a limit to sitemaps (50k) but having different sitemaps is easier to manage.
 
@@ -116,7 +156,7 @@ Generate a new XML sitemap for the migrated website and submit it to search engi
 
 </aside>
 
-### <Icon icon="gauge-circle-bolt" iconType="solid" /> **Page Speed Optimization**
+### Page Speed Optimization
 
 Test the loading speed of the new website and optimize as necessary to improve user experience and search engine rankings.
 
@@ -125,7 +165,7 @@ Test the loading speed of the new website and optimize as necessary to improve u
 
 </aside>
 
-### <Icon icon="expeditedssl" iconType="solid" /> **SSL Certificate**
+### SSL Certificate
 
 If the website is migrating to HTTPS, ensure that an SSL certificate is properly installed and configured to provide a secure browsing experience for users and boost search engine rankings.
 
@@ -134,7 +174,7 @@ If the website is migrating to HTTPS, ensure that an SSL certificate is properly
 
 </aside>
 
-### <Icon icon="markdown" iconType="solid" /> **Structured Data Markup**
+### Structured Data Markup
 
 Implement structured data markup (such as Schema.org) to provide additional context to search engines and enhance the visibility of rich snippets in search results. Typically Json markup. Author, Published, Updated.
 
@@ -143,6 +183,6 @@ Implement structured data markup (such as Schema.org) to provide additional cont
 
 </aside>
 
-### <Icon icon="traffic-light-stop" iconType="solid" /> **Monitor Traffic and Rankings**
+### Monitor Traffic and Rankings
 
 Keep a close eye on website traffic and search engine rankings before, during, and after the migration to identify any issues and make necessary adjustments.

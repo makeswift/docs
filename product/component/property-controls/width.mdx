@@ -1,5 +1,37 @@
 ---
 title: "Width"
-description:
+description: this one aint done
 icon: "ruler-horizontal"
 ---
+
+## Introduction
+
+Similarly to [Image](/product/components#introduction) you can set a maximum width to a box or element to maintain consistent spacing between sections. You can either set a pixel value, or a percentage of the screen.
+
+The width of elements defaults to 100% of the maximum pixel width of your device.
+
+## Examples
+
+![Editing width](public/images/builder/width1.gif)
+
+## Pro Tips
+
+Manage width [responsively](/product/device-toggle) across devices. Typically your sections should be 100% of the page, and then you set your content box within that section to a maximum pixel width (ex. 1280 px). You can then set any content within your content box to 100% if desired. this doesn’t apply to images and buttons necessarily.
+
+In some instances you will want to set a pixel value and others you will want to use a percentage of the display width. Typically you won’t use any percentage widths other than 100% and 50%. Width is respective of Device Responsiveness so you can set it to different values across devices.
+
+![Changing width across devices](public/images/builder/width2.gif)
+
+Avoid using [Padding](/product/component/property-controls/padding) instead of width. Width is maximum width which means it is dynamic to the width of your screen and start shrinking whereas padding is a hard pixel value and will reformat your content to apply those values and squish your content on smaller devices.
+
+### Shortcuts
+
+You can manually set the value of both Pixel width and Percentage width in the Control Panel, however to quickly adjust an element to 100% width, you can simply drag it to full width.
+
+![Dragging to full width](public/images/builder/width3.gif)
+
+## Developer Notes
+
+Keep in mind the ability to alter width within Makeswift when [styling](/developer/reference/controls/style) components.
+
+It may be better to avoid hard coding a width to a component. Also keep in mind [Device Responsiveness](/product/device-toggle) when considering width for a component.
