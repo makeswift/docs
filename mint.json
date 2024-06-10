@@ -81,6 +81,7 @@
           "group": "Client",
           "pages": [
             "reference/client/constructor",
+            "reference/client/get-pages",
             "reference/client/get-sitemap",
             "reference/client/get-page-snapshot",
             "reference/client/get-site-version"
