@@ -49,7 +49,7 @@
         "product/themeing",
         "product/device-toggle",
         "product/SEO",
-        "product/site/localization",
+        "product/localization",
         "product/publishing",
         "product/files"
       ]
@@ -100,16 +100,12 @@
       ]
     },
     {
-      "group": "Guides (coming soon)",
+      "group": "Guides",
       "pages": ["product/guides"]
     },
     {
-      "group": "Tutorials (coming soon)",
+      "group": "Tutorials",
       "pages": ["product/tutorials"]
-    },
-    {
-      "group": "Explanation (coming soon)",
-      "pages": ["product/explanation"]
     },
 
     {
