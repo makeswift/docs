@@ -104,6 +104,7 @@
     {
       "group": "Upgrading",
       "pages": [
+        "upgrading/0.19.0",
         "upgrading/0.18.0",
         "upgrading/0.15.0",
         "upgrading/0.14.0",
