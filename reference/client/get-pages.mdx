@@ -93,7 +93,7 @@ export async function getAllPages() {
   // You can also get all pages with a `for await` loop
   const pagesFromForAwait: MakeswiftPage[] = []
   for await (const page of client.getPages()) {
-    pages.push(page)
+    pagesFromForAwait.push(page)
   }
 
   // Get a single paginated result set 
