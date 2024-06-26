@@ -1,17 +1,17 @@
 ---
 title: "Concepts"
-description: "To best understand Makeswift, there are a few core concepts for which to establish common vocabulary."
+description: "To best understand Makeswift, let's start by going over a few key concepts and common vocabulary"
 ---
 
 ## Props
 
-Props are the primary way to pass data into a React component. They are one of the two types of data that control a component. The other type of data is state, which is used to control data within the component.
+Props are the primary way to pass data into a React component. They are one of the two types of data that control a component. The other type of data is **state**, which holds dynamic data specific to a component, enabling it to re-render and update the user interface when this data changes.
 
 Props are passed into the render function of a component as an object in the first argument position. The object contains all the props passed into the component.
 
 ```jsx
 function MyComponent(props) {
-  return <div>{props.name}</div>
+  return <div>{props.name}</div>;
 }
 ```
 
@@ -19,13 +19,13 @@ You can read more about props in the [React documentation](https://react.dev/lea
 
 ## Controls
 
-Controls describe the way users can pass data to your components props. Each control maps a [prop](#props) on your component to user interface elements such as <Tooltip tip="Form elements in the right sidebar of the Makeswift builder">panels</Tooltip> and <Tooltip tip="Interactive elements placed on the Makeswift builder preview">overlays</Tooltip>. Controls are defined when [registering components](/reference/runtime/register-component).
+Controls describe the way users can pass data to your components props. Each control maps a [prop](#props) in your component to user interface elements such as <Tooltip tip="Form elements in the right sidebar of the Makeswift builder">panels</Tooltip> and <Tooltip tip="Interactive elements placed on the Makeswift builder preview">overlays</Tooltip>. Controls are defined when [registering components](/reference/runtime/register-component).
 
 There are two types of controls: [basic](#basic-controls) and [composable](#composable-controls) controls.
 
 ### Basic controls
 
-Basic controls cannot contain other controls. Multiple basic controls can provide the same type of data, but with different user interfaces. For example, you can provide a `string` to your component with a [`TextInput`](/reference/controls/text-input), [`TextArea`](/reference/controls/text-area), [`Select`](/reference/controls/select), or [`Combobox`](/reference/controls/combobox) control. Here are all of the basic controls:
+Basic controls cannot contain other controls. Multiple basic controls can provide the same type of data, but with different user interfaces. For example, you can provide a `string` to your component with a `TextInput`, `TextArea`, `Select`, or `Combobox` control. Here are all basic controls available in Makeswift:
 
 <CardGroup cols={3}>
   <Card
@@ -55,7 +55,7 @@ Basic controls cannot contain other controls. Multiple basic controls can provid
   />
 </CardGroup>
 
-There are three special basic controls that are designed for specific types of props such as `className` and `children`:
+There are also three special basic controls that are designed for specific types of props such as `className` and `children`:
 
 <CardGroup cols={3}>
   <Card title="RichText" icon="text" href="/reference/controls/rich-text" />
@@ -63,15 +63,15 @@ There are three special basic controls that are designed for specific types of p
   <Card title="Style" icon="droplet" href="/reference/controls/style" />
 </CardGroup>
 
-- The [`RichText`](/reference/controls/rich-text) control provides a `ReactNode` to your component and then renders an inline rich text editor <Tooltip tip="Interactive elements placed on the Makeswift builder preview">overlay</Tooltip> wherever the builder renders the `ReactNode`.
+- The `RichText` control provides a `ReactNode` to your component and then renders an inline rich text editor <Tooltip tip="Interactive elements placed on the Makeswift builder preview">overlay</Tooltip> wherever the builder renders the `ReactNode`.
 
-- The [`Slot`](/reference/controls/slot) control provides a `ReactNode` to your component and places a drop zone <Tooltip tip="Interactive elements placed on the Makeswift builder preview">overlay</Tooltip> wherever the builder renders the prop. Users can then add components visually to that drop zone.
+- The `Slot` control provides a `ReactNode` to your component and places a drop zone <Tooltip tip="Interactive elements placed on the Makeswift builder preview">overlay</Tooltip> wherever the builder renders the prop. Users can then add components visually to that drop zone.
 
-- The [`Style`](/reference/controls/style) control provides multiple <Tooltip tip="Form elements in the right sidebar of the Makeswift builder">panels</Tooltip> and <Tooltip tip="Interactive elements placed on the Makeswift builder preview">overlays</Tooltip> that modify various CSS properties. This data is then passed to your component as a `string` value.
+- The `Style` control provides multiple <Tooltip tip="Form elements in the right sidebar of the Makeswift builder">panels</Tooltip> and <Tooltip tip="Interactive elements placed on the Makeswift builder preview">overlays</Tooltip> that modify various CSS properties. This data is then passed to your component as a `string` value.
 
 ### Composable controls
 
-Composable controls provide an `array` or `object` to a prop of your component. Composable controls have a `type` property that can recursively contain any control. The [`List`](/reference/controls/list) control is used to modify props that expect an `array`, and the [`Shape`](/reference/controls/shape) control is used to modify props that expect an `object`.
+Composable controls provide an `array` or `object` to a prop of your component. Composable controls have a `type` property that can recursively contain any control. The `List` control is used to modify props that expect an `array`, and the `Shape` control is used to modify props that expect an `object`.
 
 <CardGroup cols={2}>
   <Card title="List" icon="list" href="/reference/controls/list" />
