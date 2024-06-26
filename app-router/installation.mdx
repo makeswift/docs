@@ -2,15 +2,15 @@
 title: Installation
 ---
 
-import CatchAllExample from "/snippets/app-router/catch-all.mdx"
-import ProvidersExample from "/snippets/app-router/providers.mdx"
-import LayoutExample from "/snippets/app-router/layout.mdx"
-import ApiHandlerExample from "/snippets/app-router/api-handler.mdx"
-import RuntimeExample from "/snippets/reference/runtime.mdx"
-import ClientExample from "/snippets/reference/client.mdx"
-import NextConfigExample from "/snippets/reference/next-config.mdx"
+import CatchAllExample from "/snippets/app-router/catch-all.mdx";
+import ProvidersExample from "/snippets/app-router/providers.mdx";
+import LayoutExample from "/snippets/app-router/layout.mdx";
+import ApiHandlerExample from "/snippets/app-router/api-handler.mdx";
+import RuntimeExample from "/snippets/reference/runtime.mdx";
+import ClientExample from "/snippets/reference/client.mdx";
+import NextConfigExample from "/snippets/reference/next-config.mdx";
 
-The fastest way to get started with Makeswift on a new Next.js project is to follow the
+The fastest way to get started with Makeswift for a new Next.js project is to follow the
 [quickstart](/quickstart) guide. If you have an existing Next.js application
 or want to set things up yourself, continue with the rest of this guide.
 
@@ -44,17 +44,17 @@ npm install @makeswift/runtime
   </Step>
   <Step title="Add API key to environment variables">
   
-Requesting data through the `Makeswift` client requires a site API key from Makeswift. In the Makeswift builder, go to **Settings > Host** and copy the API key for the site.
-
-<Frame>
-  <img src="/images/site-api-key.gif" alt="How to get the site API key" />
-</Frame>
-
-Once the API key is in your clipboard, open your [`.env.local`](https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables) file and paste the snippet below.
+Requesting data through the `Makeswift` client requires a site API key from Makeswift. First, open your `.env.local` file and paste the snippet below along with your other [environment variables](https://nextjs.org/docs/app/building-your-application/configuring/environment-variables).
 
 ```sh
 MAKESWIFT_SITE_API_KEY=paste-your-api-key-here
 ```
+
+Then, in the Makeswift builder, go to **Settings > Host** and copy the API key for the site and replace the value of the environment variable you pasted above.
+
+<Frame>
+  <img src="/images/site-api-key.gif" alt="How to get the site API key" />
+</Frame>
 
   </Step>
   <Step title="Add Makeswift runtime and client">
@@ -96,11 +96,11 @@ Next.js plugins are configured in the project's next.config.js file by wrapping 
 Create a file for registered components called `makeswift/components.tsx`. In this example, only one component is registered. However, as you register more components, we recommend creating separate files for each component and rolling up the imports in the `makeswift/components.ts` file. Learn more about [registering components](/reference/runtime/register-component).
 
 ```tsx makeswift/components.tsx
-import { ReactRuntime } from "@makeswift/runtime/react"
-import { Style } from "@makeswift/runtime/controls"
+import { ReactRuntime } from "@makeswift/runtime/react";
+import { Style } from "@makeswift/runtime/controls";
 
 function HelloWorld(props) {
-  return <p {...props}>Hello, world!</p>
+  return <p {...props}>Hello, world!</p>;
 }
 
 ReactRuntime.registerComponent(HelloWorld, {
@@ -109,7 +109,7 @@ ReactRuntime.registerComponent(HelloWorld, {
   props: {
     className: Style(),
   },
-})
+});
 ```
 
   </Step>
@@ -153,15 +153,18 @@ unused port.
   </Step>
   <Step title="Add your app's URL to Makeswift">
   
-Finally, open the Makeswift builder, navigate to **Settings > Host**, and add your app's URL. If you haven't changed anything in the example and the server is running on port `3000`, the app's URL should be
+Finally, navigate back to **Settings > Host**, and add your app's URL. If you haven't changed anything in the example and the server is running on port `3000`, the app's URL should be
 `http://localhost:3000`.
 
 <Frame>
   <img src="/images/host-url.gif" alt="How to update the host url" />
 </Frame>
 
-When you're ready to deploy, set up a separate site and use your deployment URL
-instead of `http://localhost:3000`. You can keep this site for local development.
+<Info>
+  When you're ready to deploy, set up a separate site and use your deployment
+  URL instead of `http://localhost:3000`. You can keep this site for local
+  development.
+</Info>
 
   </Step>
   <Step title="Start building">
