@@ -1,12 +1,12 @@
 ---
 title: Number
-description: Adds a Number input in the Makeswift builder to visually edit a `number` prop.
+description: Adds a number panel in the Makeswift builder to visually edit a `number` prop.
 icon: "input-numeric"
 ---
 
 <Frame
   type="glass"
-  caption="A Number panel on a Feed component to set the number of items shown"
+  caption="A number panel on a feed component to set the number of items shown"
 >
   <img src="/images/number-panel.png" />
 </Frame>
@@ -14,7 +14,7 @@ icon: "input-numeric"
 ## Params
 
 <ParamField query="label" type="string" default="Number">
-  Text for the panel label in the Makeswift builder.
+  Text for the panel label and input in the Makeswift builder.
 </ParamField>
 
 <ParamField
@@ -55,11 +55,11 @@ The Number control passes a `number` to your component. If you don't set a `defa
 <CodeGroup>
 
 ```tsx Feed.makeswift.ts
-import { Number } from "@makeswift/runtime/controls"
+import { Number } from "@makeswift/runtime/controls";
 
-import { runtime } from "@/makeswift/runtime"
+import { runtime } from "@/makeswift/runtime";
 
-import { Feed } from "./Feed"
+import { Feed } from "./Feed";
 
 runtime.registerComponent(Feed, {
   type: "feed",
@@ -72,7 +72,7 @@ runtime.registerComponent(Feed, {
       max: 100,
     }),
   },
-})
+});
 ```
 
 ```tsx Feed.tsx
@@ -81,10 +81,10 @@ const items = [
   { id: "2", name: "item 2" },
   { id: "3", name: "item 3" },
   { id: "4", name: "item 4" },
-]
+];
 
 interface Props {
-  itemsShown?: number
+  itemsShown?: number;
 }
 
 export function Feed({ itemsShown = 10 }: Props) {
@@ -94,12 +94,12 @@ export function Feed({ itemsShown = 10 }: Props) {
         <div key={item.id}>{item.name}</div>
       ))}
     </div>
-  )
+  );
 }
 ```
 
 </CodeGroup>
 
-import NamingConventions from "/snippets/naming-conventions.mdx"
+import NamingConventions from "/snippets/naming-conventions.mdx";
 
 <NamingConventions />

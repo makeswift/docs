@@ -18,16 +18,16 @@ The Slot control passes a `ReactNode` to your component.
 
 ## Example
 
-The following example adds a Slot control to the `media` prop of a Feature Card component.
+The following example adds a Slot control to the `media` prop of a feature card component.
 
 <CodeGroup>
 
 ```tsx FeatureCard.makeswift.ts
-import { Slot, TextInput, Image } from "@makeswift/runtime/controls"
+import { Slot, TextInput, Image } from "@makeswift/runtime/controls";
 
-import { runtime } from "@/makeswift/runtime"
+import { runtime } from "@/makeswift/runtime";
 
-import { FeatureCard } from "./FeatureCard"
+import { FeatureCard } from "./FeatureCard";
 
 runtime.registerComponent(FeatureCard, {
   type: "feature-card",
@@ -38,15 +38,15 @@ runtime.registerComponent(FeatureCard, {
     body: TextInput({ label: "Body" }),
     media: Slot(),
   },
-})
+});
 ```
 
 ```tsx FeatureCard.tsx
 interface Props {
-  icon?: string
-  headline?: string
-  body?: string
-  media: ReactNode
+  icon?: string;
+  headline?: string;
+  body?: string;
+  media: ReactNode;
 }
 
 export function FeatureCard({ icon, headline, body, media }) {
@@ -57,12 +57,12 @@ export function FeatureCard({ icon, headline, body, media }) {
       <p>{body}</p>
       <div>{media}</div>
     </div>
-  )
+  );
 }
 ```
 
 </CodeGroup>
 
-import NamingConventions from "/snippets/naming-conventions.mdx"
+import NamingConventions from "/snippets/naming-conventions.mdx";
 
 <NamingConventions />

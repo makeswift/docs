@@ -1,6 +1,6 @@
 ---
 title: List
-description: Adds a List panel in the Makeswift builder to visually edit an `array` of items.
+description: Adds a list panel in the Makeswift builder to visually edit an `array` of items.
 icon: "list"
 ---
 
@@ -33,16 +33,16 @@ The Link control passes an `array` of values based on the `type` control.
 
 ### An array of strings
 
-This example adds an List control to the `accordionTitles` prop of an Accordions component.
+This example adds a List control to the `accordionTitles` prop of an accordions component.
 
 <CodeGroup>
 
 ```tsx Accordions.makeswift.ts
-import { List, TextInput } from "@makeswift/runtime/controls"
+import { List, TextInput } from "@makeswift/runtime/controls";
 
-import { runtime } from "@/makeswift/runtime"
+import { runtime } from "@/makeswift/runtime";
 
-import { Accordions } from "./Accordions"
+import { Accordions } from "./Accordions";
 
 runtime.registerComponent(Accordions, {
   type: "accordions",
@@ -52,18 +52,18 @@ runtime.registerComponent(Accordions, {
       label: "Accordions",
       type: TextInput({ label: "Title", defaultValue: "Accordion Title" }),
       getItemLabel(item) {
-        return item ?? "Accordion Title"
+        return item ?? "Accordion Title";
       },
     }),
   },
-})
+});
 ```
 
 ```tsx Accordions.tsx
-import { Accordion } from "@/components/Accordion"
+import { Accordion } from "@/components/Accordion";
 
 interface Props {
-  accordionTitles: string[]
+  accordionTitles: string[];
 }
 
 export function Accordions({ accordionTitles }) {
@@ -75,7 +75,7 @@ export function Accordions({ accordionTitles }) {
         </Accordion>
       ))}
     </div>
-  )
+  );
 }
 ```
 
@@ -88,10 +88,10 @@ This example uses the [Shape](/reference/controls/shape) control to define the s
 <CodeGroup>
 
 ```tsx Accordions.makeswift.ts
-import { runtime } from "@/lib/makeswift/runtime"
-import { List, Shape, TextInput, TextArea } from "@makeswift/runtime/controls"
+import { runtime } from "@/lib/makeswift/runtime";
+import { List, Shape, TextInput, TextArea } from "@makeswift/runtime/controls";
 
-import { Accordions } from "./Accordions"
+import { Accordions } from "./Accordions";
 
 runtime.registerComponent(Accordions, {
   type: "accordions",
@@ -106,21 +106,21 @@ runtime.registerComponent(Accordions, {
         },
       }),
       getItemLabel(item) {
-        return item ?? "Accordion Title"
+        return item ?? "Accordion Title";
       },
     }),
   },
-})
+});
 ```
 
 ```tsx Accordions.tsx
-import { Accordion } from "@/components/Accordion"
+import { Accordion } from "@/components/Accordion";
 
 interface Props {
   accordions: {
-    title: string
-    body: string
-  }[]
+    title: string;
+    body: string;
+  }[];
 }
 
 export function Accordions({ accordionTitles }) {
@@ -132,12 +132,12 @@ export function Accordions({ accordionTitles }) {
         </Accordion>
       ))}
     </div>
-  )
+  );
 }
 ```
 
 </CodeGroup>
 
-import NamingConventions from "/snippets/naming-conventions.mdx"
+import NamingConventions from "/snippets/naming-conventions.mdx";
 
 <NamingConventions />

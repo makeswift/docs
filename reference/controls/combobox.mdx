@@ -1,12 +1,12 @@
 ---
 title: Combobox
-description: Adds a Combobox panel in the Makeswift builder to visually edit a generic prop from a list of options.
+description: Adds a combobox panel in the Makeswift builder to visually edit a generic prop from a list of options.
 icon: "input-pipe"
 ---
 
 <Frame
   type="glass"
-  caption="A Combobox panel on a Product Card component to pick a product by name"
+  caption="A combobox panel on a product card component to pick a product by name"
 >
   <img src="/images/combobox-panel.png" />
 </Frame>
@@ -27,13 +27,13 @@ icon: "input-pipe"
 ```ts
 type getComboboxOptions<T> = (
   query: string
-) => ComboboxOption<T>[] | Promise<ComboboxOption<T>[]>
+) => ComboboxOption<T>[] | Promise<ComboboxOption<T>[]>;
 
 type ComboboxOption<T> = {
-  id: string
-  label: string
-  value: T
-}
+  id: string;
+  label: string;
+  value: T;
+};
 ```
 
 The `label` field is displayed in the Makeswift builder and `id` must be unique.
@@ -46,17 +46,17 @@ The Combobox control passes the generic type `T` from the selected `Option` to y
 
 ## Example
 
-The following example adds a Combobox control to the `product` prop of a Product Card component.
+The following example adds a Combobox control to the `product` prop of a product card component.
 
 <CodeGroup>
 
 ```tsx ProductCard.makeswift.ts
-import { Combobox } from "@makeswift/runtime/controls"
+import { Combobox } from "@makeswift/runtime/controls";
 
-import { fetchProducts } from "@/lib/fetchers"
-import { runtime } from "@/makeswift/runtime"
+import { fetchProducts } from "@/lib/fetchers";
+import { runtime } from "@/makeswift/runtime";
 
-import { ProductCard } from "./ProductCard"
+import { ProductCard } from "./ProductCard";
 
 runtime.registerComponent(ProductCard, {
   type: "product-card",
@@ -65,7 +65,7 @@ runtime.registerComponent(ProductCard, {
     product: Combobox({
       label: "Product name",
       async getOptions(query) {
-        const products = await fetchProducts()
+        const products = await fetchProducts();
 
         return products
           .map((product) => ({
@@ -75,11 +75,11 @@ runtime.registerComponent(ProductCard, {
           }))
           .filter((option) =>
             option.label.toLowerCase().includes(query.toLowerCase())
-          )
+          );
       },
     }),
   },
-})
+});
 ```
 
 ```tsx ProductCard.tsx
@@ -114,6 +114,6 @@ export function ProductsCarousel({ product = defaultProduct }: Props) {
 
 </CodeGroup>
 
-import NamingConventions from "/snippets/naming-conventions.mdx"
+import NamingConventions from "/snippets/naming-conventions.mdx";
 
 <NamingConventions />

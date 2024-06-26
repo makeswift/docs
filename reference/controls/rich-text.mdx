@@ -6,14 +6,14 @@ icon: "text"
 
 <Tabs>
   <Tab title="Block">
-    <Frame type="glass" caption="A block Rich Text node for a Text component">
+    <Frame type="glass" caption="A block Rich Text node for a text component">
       <img src="/images/rich-text-block.png" />
     </Frame>
   </Tab>
   <Tab title="Inline">
     <Frame
       type="glass"
-      caption="An inline Rich Text node for a Button component"
+      caption="An inline Rich Text node for a button component"
     >
       <img src="/images/rich-text-inline.png" />
     </Frame>
@@ -31,7 +31,7 @@ Sets the `display` property of the `ReactNode` that is passed to the control. Th
 
 | Mode                   | Description                                                                                                                                                                                                                                                                                              |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `RichText.Mode.Block`  | Use for creating editable full line blocks of your site. Passes a `ReactNode` that is `display: block`.                                                                                                                                                                                                  |
+| `RichText.Mode.Block`  | Use for creating full, editable blocks of your site. Passes a `ReactNode` that is `display: block`.                                                                                                                                                                                                      |
 | `RichText.Mode.Inline` | Use for visually editing buttons and links. Passes a `ReactNode` that is `display: inline`. Prevents [hydration mismatch errors](https://nextjs.org/messages/react-hydration-error) that can occur when placing block level elements into inline level elements. Only available for `v0.10.0` and above. |
 
 </ParamField>
@@ -47,11 +47,11 @@ The RichText control passes a `ReactNode` to your component.
 <CodeGroup>
 
 ```tsx Hero.makeswift.ts
-import { RichText } from "@makeswift/runtime/controls"
+import { RichText } from "@makeswift/runtime/controls";
 
-import { runtime } from "@/makeswift/runtime"
+import { runtime } from "@/makeswift/runtime";
 
-import { Hero } from "./Hero"
+import { Hero } from "./Hero";
 
 runtime.registerComponent(Hero, {
   type: "hero",
@@ -59,12 +59,12 @@ runtime.registerComponent(Hero, {
   props: {
     headline: RichText(),
   },
-})
+});
 ```
 
 ```tsx Hero.tsx
 interface Props {
-  headline: ReactNode
+  headline: ReactNode;
 }
 
 export function Hero() {
@@ -73,7 +73,7 @@ export function Hero() {
       <img src="https://placehold.it/500" />
       <h1>{headline}</h1>
     </div>
-  )
+  );
 }
 ```
 
@@ -84,10 +84,10 @@ export function Hero() {
 <CodeGroup>
 
 ```tsx Button.makeswift.ts
-import { RichText, Image } from "@makeswift/runtime/controls"
-import { runtime } from "@/lib/makeswift/runtime"
+import { RichText, Image } from "@makeswift/runtime/controls";
+import { runtime } from "@/lib/makeswift/runtime";
 
-import { Button } from "./Button"
+import { Button } from "./Button";
 
 runtime.registerComponent(Button, {
   type: "button",
@@ -95,28 +95,28 @@ runtime.registerComponent(Button, {
   props: {
     children: RichText({ mode: RichText.Mode.Inline }),
   },
-})
+});
 ```
 
 ```tsx Button.tsx
 interface Props {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export function Button({ children }) {
-  return <a className="px-4 py-3 rounded bg-black text-white">{children}</a>
+  return <a className="px-4 py-3 rounded bg-black text-white">{children}</a>;
 }
 ```
 
 </CodeGroup>
 
-import NamingConventions from "/snippets/naming-conventions.mdx"
+import NamingConventions from "/snippets/naming-conventions.mdx";
 
 <NamingConventions />
 
 ## Changelog
 
-| Version                                                                                          | Changes                                                       |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------- |
-| [`v0.10.0`](https://github.com/makeswift/makeswift/releases/tag/%40makeswift%2Fruntime%400.10.0) | Overhauled control architecture and introduced `Inline` mode. |
-| [`v0.6.3`](https://github.com/makeswift/makeswift/releases/tag/%40makeswift%2Fruntime%400.6.3)   | Introduced `RichText` control.                                |
+| Version   | Changes                                                       |
+| --------- | ------------------------------------------------------------- |
+| `v0.10.0` | Overhauled control architecture and introduced `Inline` mode. |
+| `v0.6.3`  | Introduced `RichText` control.                                |

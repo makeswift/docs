@@ -8,7 +8,7 @@ icon: "droplet"
   <img src="/images/style-control.png" />
 </Frame>
 
-The Style control is the only control that is responsive; its values can be changed at different viewport sizes without affecting the others. For example, you could set a width of 1200px in desktop and 100% in mobile.
+The Style control is the only control that is responsive—its values can be changed at smaller viewport sizes without affecting larger ones. For example, you could set a width of 1200px in desktop and 100% in mobile.
 
 ## Params
 
@@ -31,16 +31,16 @@ The following presets are also available:
 
 ## Example
 
-The following example adds a Style control to the `className` prop of an Image component.
+The following example adds a Style control to the `className` prop of an image component.
 
 <CodeGroup>
 
 ```tsx Image.makeswift.ts
-import { Style } from "@makeswift/runtime/controls"
+import { Style } from "@makeswift/runtime/controls";
 
-import { runtime } from "@/makeswift/runtime"
+import { runtime } from "@/makeswift/runtime";
 
-import { Image } from "./Image"
+import { Image } from "./Image";
 
 runtime.registerComponent(Image, {
   type: "image",
@@ -48,21 +48,21 @@ runtime.registerComponent(Image, {
   props: {
     className: Style({ properties: Style.All }),
   },
-})
+});
 ```
 
 ```tsx Image.tsx
 interface Props {
-  className?: string
+  className?: string;
 }
 
 export function Image({ className }: Props) {
-  return <img className={className} src="https://via.placeholder.com/150" />
+  return <img className={className} src="https://via.placeholder.com/150" />;
 }
 ```
 
 </CodeGroup>
 
-import NamingConventions from "/snippets/naming-conventions.mdx"
+import NamingConventions from "/snippets/naming-conventions.mdx";
 
 <NamingConventions />
