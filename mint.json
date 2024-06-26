@@ -26,7 +26,7 @@
   "anchors": [
     {
       "name": "Help Center",
-      "icon": "book-open-cover",
+      "icon": "circle-question",
       "url": "https://help.makeswift.com"
     },
     {
