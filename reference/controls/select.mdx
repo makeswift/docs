@@ -1,12 +1,12 @@
 ---
 title: Select
-description: Adds a Select option (dropdown) to a component in the Makeswift builder to visually select a `string` value.
+description: Adds a select option (dropdown) to a component in the Makeswift builder to visually select a `string` value.
 icon: "list-dropdown"
 ---
 
 <Frame
   type="glass"
-  caption="A Select panel for a Button component to change the style"
+  caption="A select panel for a button component to change the style"
 >
   <img src="/images/select-panel.png" />
 </Frame>
@@ -22,7 +22,7 @@ icon: "list-dropdown"
   type='"vertical" | "horizontal"'
   default="horizontal"
 >
-  Orientation of the dropdown label within the panel.
+  Orientation of the panel label and dropdown select within the panel.
 </ParamField>
 
 <ParamField query="options" type="SelectOption<T>[]" required>
@@ -30,9 +30,9 @@ icon: "list-dropdown"
 
 ```ts
 type SelectOption<T extends string> = {
-  value: T
-  label: string
-}
+  value: T;
+  label: string;
+};
 ```
 
 The `label` field is displayed in the Makeswift builder.
@@ -50,16 +50,16 @@ The Select control passes the generic type `T` from the selected `Option` to you
 
 ## Example
 
-The following example adds a Select control to the `variant` prop of a Button component.
+The following example adds a Select control to the `variant` prop of a button component.
 
 <CodeGroup>
 
 ```tsx Button.makeswift.ts
-import { Select } from "@makeswift/runtime/controls"
+import { Select } from "@makeswift/runtime/controls";
 
-import { runtime } from "@/makeswift/runtime"
+import { runtime } from "@/makeswift/runtime";
 
-import { Button } from "./Button"
+import { Button } from "./Button";
 
 runtime.registerComponent(Button, {
   type: "button",
@@ -76,14 +76,14 @@ runtime.registerComponent(Button, {
       defaultValue: "floating",
     }),
   },
-})
+});
 ```
 
 ```tsx Button.tsx
-import clsx from "clsx"
+import clsx from "clsx";
 
 interface Props {
-  variant?: "floating" | "outline" | "clear"
+  variant?: "floating" | "outline" | "clear";
 }
 
 export function Button({ variant = "floating" }) {
@@ -102,12 +102,12 @@ export function Button({ variant = "floating" }) {
     >
       Click me
     </a>
-  )
+  );
 }
 ```
 
 </CodeGroup>
 
-import NamingConventions from "/snippets/naming-conventions.mdx"
+import NamingConventions from "/snippets/naming-conventions.mdx";
 
 <NamingConventions />

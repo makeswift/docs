@@ -1,6 +1,6 @@
 ---
 title: Shape
-description: Adds a Shape panel in the Makeswift builder to visually edit an `object`.
+description: Adds a shape panel in the Makeswift builder to visually edit an `object`.
 icon: "brackets-curly"
 ---
 
@@ -15,7 +15,7 @@ The Shape control can be nested as deeply as you want within Shape and List cont
 <ParamField query="type" type="{ [key: string]: Control }" required>
   An object of controls in which the type and values returned from each control
   determines the shape of the overall value passed to your component. May
-  consist of any of the Makeswift controls.
+  consist of any Makeswift control.
 </ParamField>
 
 ## Prop type
@@ -24,7 +24,7 @@ The Shape control passes an `object` based on the controls used in the `type` fi
 
 ## Example
 
-This example adds a Shape control to the `type` field of a [List](/reference/controls/list) control for a Feature Grid component.
+This example adds a Shape control to the `type` field of a [List](/reference/controls/list) control for a feature grid component.
 
 <CodeGroup>
 
@@ -35,11 +35,11 @@ import {
   TextInput,
   TextArea,
   Image,
-} from "@makeswift/runtime/controls"
+} from "@makeswift/runtime/controls";
 
-import { runtime } from "@/makeswift/runtime"
+import { runtime } from "@/makeswift/runtime";
 
-import { FeatureGrid } from "./FeatureGrid"
+import { FeatureGrid } from "./FeatureGrid";
 
 runtime.registerComponent(FeatureGrid, {
   type: "feature-grid",
@@ -66,17 +66,17 @@ runtime.registerComponent(FeatureGrid, {
       }),
     }),
   },
-})
+});
 ```
 
 ```tsx FeatureGrid.tsx
 interface Props {
   features: {
-    icon: string
-    iconAltText: string
-    heading: string
-    description: string
-  }[]
+    icon: string;
+    iconAltText: string;
+    heading: string;
+    description: string;
+  }[];
 }
 
 export function FeatureGrid({ features }) {
@@ -90,12 +90,12 @@ export function FeatureGrid({ features }) {
         </div>
       ))}
     </div>
-  )
+  );
 }
 ```
 
 </CodeGroup>
 
-import NamingConventions from "/snippets/naming-conventions.mdx"
+import NamingConventions from "/snippets/naming-conventions.mdx";
 
 <NamingConventions />

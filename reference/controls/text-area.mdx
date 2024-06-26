@@ -1,13 +1,10 @@
 ---
 title: TextArea
-description: Adds a multiline Text Area to your component in the Makeswift builder to visually edit a `string` prop.
+description: Adds a multiline textarea panel to your component in the Makeswift builder to visually edit a `string` prop.
 icon: "align-left"
 ---
 
-<Frame
-  type="glass"
-  caption="A Text Area panel for a Code Block component to change the code"
->
+<Frame type="glass" caption="A textarea panel for a code block component">
   <img src="/images/text-area-panel.png" />
 </Frame>
 
@@ -28,16 +25,16 @@ The TextArea control passes a `string` to your component. If you don't set a `de
 
 ## Example
 
-The following example adds a Text Area control to the `Code` prop of a Code Block component.
+The following example adds a TextArea control to the `Code` prop of a code block component.
 
 <CodeGroup>
 
 ```tsx CodeBlock.makeswift.ts
-import { TextArea } from "@makeswift/runtime/controls"
+import { TextArea } from "@makeswift/runtime/controls";
 
-import { runtime } from "@/makeswift/runtime"
+import { runtime } from "@/makeswift/runtime";
 
-import { CodeBlock } from "./CodeBlock"
+import { CodeBlock } from "./CodeBlock";
 
 runtime.registerComponent(CodeBlock, {
   type: "code-block",
@@ -45,14 +42,14 @@ runtime.registerComponent(CodeBlock, {
   props: {
     code: TextArea({ label: "Code" }),
   },
-})
+});
 ```
 
 ```tsx CodeBlock.tsx
-import { highlight, languages } from "prismjs"
+import { highlight, languages } from "prismjs";
 
 interface Props {
-  code?: string
+  code?: string;
 }
 
 export function CodeBlock({ code }) {
@@ -62,12 +59,12 @@ export function CodeBlock({ code }) {
         __html: highlight(code, languages.js, "js"),
       }}
     />
-  )
+  );
 }
 ```
 
 </CodeGroup>
 
-import NamingConventions from "/snippets/naming-conventions.mdx"
+import NamingConventions from "/snippets/naming-conventions.mdx";
 
 <NamingConventions />
