@@ -3,8 +3,8 @@ title: Localization
 description: "This guide walks you through setting up localization for your Makeswift site so you can visually customize your site for different locales."
 ---
 
-import AppCatchAllLocalizedExample from "/snippets/app-router/catch-all-localized.mdx"
-import LocalizationExample from "/snippets/app-router/localization.mdx"
+import AppCatchAllLocalizedExample from "/snippets/app-router/catch-all-localized.mdx";
+import LocalizationExample from "/snippets/app-router/localization.mdx";
 
 <Info>
   The feature is deeply integrated with [Next.js' internationalization
@@ -22,25 +22,38 @@ import LocalizationExample from "/snippets/app-router/localization.mdx"
 <Steps>
 
 <Step title="Add locales in the Makeswift builder">
-Open site settings and go to the "Locales" tab:
+Open site settings and go to the "Locales" tab.
 
-![Localization first step](../images/localization-first-step.png)
+<Frame>
+  <img
+    src="/images/localization-first-step.png"
+    alt="Locales settings in Makeswift"
+  />
+</Frame>
 
-To add a new locale, click the "+ Add locale" button. You can modify or delete existing locales by hovering over the locale:
+To add a new locale, click the "+ Add locale" button. You can find options to modify or delete existing locales by hovering over the locale. You can also modify the default locale by hovering over it and clicking the edit button.
 
-![Hovering over the locale](../images/localization-hover-locale.png)
+<Frame>
+  <img
+    src="/images/localization-hover-locale.png"
+    alt="Hovering over a locale row with more options displayed"
+  />
+</Frame>
 
-You can also modify the default locale by hovering over the default locale and clicking the edit button.
+Here's an example of a list of locales added to a Makeswift site:
 
-Once you add all the locales you need, it might look like this:
-
-![Manage locales in settings](../images/localization-manage-locales.png)
+<Frame>
+  <img
+    src="/images/localization-manage-locales.png"
+    alt="List of locales in Makeswift settings"
+  />
+</Frame>
 
 </Step>
 
 <Step title="Configure your Next.js app for localization">
 
-Follow the [internationalization docs](https://nextjs.org/docs/app/building-your-application/routing/internationalization) for app router and make sure that all routes except the [Makeswift API handler](/reference/makeswift-api-handler) are nested inside `/app/[lang]`.
+Follow the [internationalization docs](https://nextjs.org/docs/app/building-your-application/routing/internationalization) for app router and make sure all routes except the [Makeswift API handler](/reference/makeswift-api-handler) are nested inside `/app/[lang]`.
 
 </Step>
 
@@ -54,9 +67,14 @@ Update your catch-all route to fetch the snapshot by locale.
 
 <Step title="Edit your pages in the builder">
 
-Once you've set everything up, you should be able to switch to the locale using the locale switcher on the builder.
+Once you've set everything up, you should be able to switch to the new locales using the locale switcher in the builder.
 
-![Manage locales in settings](../images/localization-locales-switcher.png)
+<Frame>
+  <img
+    src="/images/localization-locales-switcher.png"
+    alt="List of locales in locale switcher inside of the Makeswift builder"
+  />
+</Frame>
 
 <Note>
 
@@ -70,18 +88,28 @@ You can customize the path for each page in each locale. For example, if you hav
 
 ## Domain-based localization
 
-If you don't provide a domain for a locale, the localized pages will be located on the same domain as the default locale,
-but nested on the locale's path. For example, `es` pages will be located on `example.com/es/page`.
+If you don't provide a domain for a locale, the localized pages will be on the same domain as the default locale,
+but nested in the locale's path. For example, `es` page URLs will look like `example.com/es/page`.
 
-To use domain-based localization, just add the domain to the locale on your site settings:
+To use domain-based localization, just add the domain to the locale in your site settings:
 
-![Adding domain-based on settings](../images/localization-domain-based-settings.png)
+<Frame>
+  <img
+    src="/images/localization-domain-based-settings.png"
+    alt="Adding domain-based locales in site settings"
+  />
+</Frame>
 
-Once you've done that, the Spanish localized pages will be located on `example.es/page`.
+Once you've done that, the Spanish localized pages will be located on `example.es`.
 
 ## Localized resources
 
-When making changes on a different locale you can override any property, including the page's pathname, metadata, and SEO tags.
+When making changes in a different locale you can override any property, including the page's pathname, metadata, and SEO tags.
 
-You can also localize a global component. To do this, edit a global component within a localized page, make changes,
-and then save the global component. That global component will be saved for that locale.
+You can also localize a global component. To do this, edit a global component within a localized page
+and then save the global component.
+
+<Note>
+  You must save a global component in a locale before switching and editing it
+  in another locale.
+</Note>
