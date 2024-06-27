@@ -6,22 +6,22 @@ icon: "lightbulb-gear" iconType: "duotone"
 ---
 
 <Tabs>
-  <Tab title="Workspaces">
+  <Tab title="Workspace">
 
-A Makeswift Workspace is the digital space you and your organization share to manage sites built with Makeswift. Users are managed at the workspace level and have access to all sites in that workspace. Billing and subscription management are also handled in your workspace settings.
+A workspace is the digital space you and your organization share to manage sites built within Makeswift. Users are managed at the workspace level and have access to all sites in that workspace. Billing and subscription management are also handled in your workspace settings.
 
-### Switching Workspaces
+## Switching workspaces
 
 A user can be invited to multiple workspaces. To switch to another workspace, open the site dropdown at the top left of the app, select the site switcher, and hover over your workspace.
 ![removing users](public/images/workspace/switch-workspace.gif)
 
   </Tab>
-  <Tab title="Sites">
-A Makeswift site is an instance of your website that is 1 to 1 with your domain. You can host multiple sites in the same Workspace.
+  <Tab title="Site">
+A Makeswift site is an instance of your website that is 1 to 1 with your domain. You can host multiple sites in the same workspace.
 
-### Site Settings
+## Site settings
 
-From the Site Setting menu you can:
+From the site settings menu you can:
 
 1. Rename the site
 2. Set the site favicon
@@ -29,66 +29,47 @@ From the Site Setting menu you can:
 4. Take the site offline or online
 5. Delete the site
 
-#### **Setting a favicon**
+### Setting a favicon
 
-To select a custom favicon, click “Change favicon”. The files picker will open, allowing you to select an existing file or add a new one.
+To use a custom favicon, click “Change favicon”. The files manager will open, allowing you to select an existing file or add a new one.
 
-A .png file with minimum dimensions of 32 x 32 px is recommended. Keep in mind that favicons are displayed at only 16 x 16 px in the browser tab, so anything larger than 32 x 32 px is unnecessary.
+A `.png` file with minimum dimensions of 32 x 32 pixels is recommended. Keep in mind that favicons are displayed at only 16 x 16 pixels in the browser tab, so anything larger than 32 x 32 pixels is unnecessary.
 
-### Site Management
+## Site management
 
-#### Duplicate Site
+### Archive site
 
-Duplicating a site creates an identical copy of a site, including content, theme, publish history, and files. This feature allows users to retain older versions of a site, but provide a quick starting point for creating an updated design. Duplicating a site can also be used to create staging versions of a site to safely work on new components and content if needed. Learn more about creating staging sites using the duplicate site feature.
+When you archive a site all pages will be taken offline and you will not be billed for this site in future invoices. It's important to note that your pages will still be available and will seem to be online via the green live indicator, however they are not online.
 
-Duplicating a site copies the following into the new site:
+You may choose to take an archived site back online. This will publish all pages that were previously live on your site as indicated by the green live icon.
 
-- Collections
-- Pages and content
-- Files (if in Site files in original site)
-- Colors
-- Text styles
-- Fonts
-- Global components
-- Publish history
-- Host settings
-- Domains
-- Locales
-- Redirects
-- Database tables?
-
-#### Archive Site
-
-When you archive a site all pages will be taken offline and you will not be billed for this site in future invoices while the site remains offline. It’s important to note that your pages will still be available and will seem to be online via the green live indicator, however they are not online.
-
-You may choose to take an archived site back online, this will publish all pages that were previously live on your site as indicated by the green live icon.
-
-#### Delete Site
+### Delete site
 
 Deleting a site will remove all of its collections, pages, site files, and site database tables. Deleting a site cannot be undone. Form submissions saved to a workspace table will remain in your database and will not be deleted.
 
-### Sitemaps
+## Sitemaps
 
-You can dowload an xml file of your sitemap from your site settings. For more information on the configuration of Sitemaps, see
+You can dowload an `.xml` file of your sitemap from your site settings. Learn more about [sitemaps](/product/site/sitemaps).
 
   </Tab>
-  <Tab title="Pages">
-## Creating Pages
+  <Tab title="Page">
+## Creating pages
 
-To create a new page in Makeswift click the “+” button in the upper left of the Builder.
+To create a new page in Makeswift click the “+” button in the upper left of the builder.
 
-![creating pages
-](public/images/pages/creating-pages.gif)
-You have several options for creating a page: Page from Template, Blank Page, and Collection.
+<Frame>
+  ![creating pages ](public/images/pages/creating-pages.gif) You have several
+  options for creating a page: page from template, blank page, and collection.
+</Frame>
 
-### Page from Template
+### Page from template
 
 Use Makeswift-designed templates to start quickly, or use a page you've created previously.
 
 ![creating page from template
 ](public/images/pages/page-from-template.gif)
 
-### Blank Page
+### Blank page
 
 Start from scratch with a Blank Page and customize your [layout](https://) by adding components.
 
