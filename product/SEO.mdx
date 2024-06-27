@@ -86,6 +86,17 @@ Internal linking structure refers to the way links are organized within your web
   breaking all of the links associated with that page.
 </Tip>
 
+### Redirects
+
+301 redirects are essential for SEO as they prevent 404 pages from showing up as results for pages whose URL's have changed or no longer exist. If you are using the Makeswift default host, you are able to [configure redirects](/product/site/redirects) directly within Makeswift
+
+If you are using a custom host you will need to manage your redirects in your codebase using a `json` file as you normally would.
+
+<aside>
+❗ Obtain a copy of all redirects from the customer. The redirect feature within Makeswift DOES NOT WORK with custom hosts, so this is something that we will need to manage within the codebase.
+
+</aside>
+
 ### Image Optimization
 
 Optimize image file names and alt text to improve accessibility and provide additional context for search engins. Files names can be managed through the [Files](/product/files) manager and alt tags can be managed on each individual image.
@@ -99,6 +110,10 @@ Image prioritization can also be managed in Makeswift by using the Priority chec
   Utilize the Priority control primarily on Header images to load them first on
   the page as this is a contributing factor to your page performance.
 </Tip>
+
+### SSL Certificate
+
+All Makeswift pages automatically generate SSL certificates at no extra cost. Once your [DNS](/product/site/domains) has fully connected to Makeswift, it may take a little more time for the SSL certificate to be generated.
 
 ### Mobile-Responsiveness
 
@@ -114,14 +129,11 @@ Utilize the device toggle menu in the Makeswift builder as you create content to
 
 ### Favicon
 
-Favicon is the icon that shows up in your web browser tab. This can be configured in the settings within Makeswift builder. While favicons might not directly influence search rankings, they support a positive user experience and reinforce your brand, which can indirectly impact SEO through improved engagement metrics and user behavior.
-
-### 404 Page
-
-Ensure there’s a 404 page based on the customers’ preferences. This needs to be done in code, as there’s no url to define the 404 page in the builder.
+While favicons might not directly influence search rankings, they support a positive user experience and reinforce your brand, which can indirectly impact SEO through improved engagement metrics and user behavior. Favicon is the icon that shows up in your web browser tab. This can be configured in the settings within Makeswift builder.
 
 ---
 
+<aside>
 ## Managed in Code
 
 More advanced SEO requirements will need to be managed directly in your codebase. The guide below outlines some additional SEO concepts to consider, but their application is not specific to Makeswift.
@@ -135,15 +147,6 @@ Used to review and update the robots.txt file to ensure that search engines can 
 <aside>
 ❗ For info visit https://nextjs.org/learn-pages-router/seo/crawling-and-indexing/robots-txt
 Utilize Screaming Frog to crawl the legacy website and the new website and compare.
-
-</aside>
-
-### Redirects
-
-Set up 301 redirects from old URLs to new URLs to ensure that users and search engines are directed to the correct pages. Usually contained in a CMS. Observe Redirect chains. Might be concerning to customers. Can use a crawler to find some redirects. Would be great to have a way to download them from the code from within Makeswift. https://www.easyredir.com/ manages your redirects for you.
-
-<aside>
-❗ Obtain a copy of all redirects from the customer. The redirect feature within Makeswift DOES NOT WORK with custom hosts, so this is something that we will need to manage within the codebase.
 
 </aside>
 
@@ -176,13 +179,10 @@ If the website is migrating to HTTPS, ensure that an SSL certificate is properly
 
 ### Structured Data Markup
 
-Implement structured data markup (such as Schema.org) to provide additional context to search engines and enhance the visibility of rich snippets in search results. Typically Json markup. Author, Published, Updated.
+Implement structured data markup (such as Schema.org) to provide additional context to search engines and enhance the visibility of rich snippets in search results. Typically `JSON` markup
 
-<aside>
-❗ Done in code but maybe should be managed in Makeswift
+### 404 Page
+
+404 pages are crucial for SEO and user experience. A well designed 404 page can guide a user back to the main site and reduce the chances of that user bouncing. It also reduces crawl errors from an SEO perspective and lets search engines know that this page is intentional. It also enhances [internal linking](/product/SEO#internal-linking-structure).
 
 </aside>
-
-### Monitor Traffic and Rankings
-
-Keep a close eye on website traffic and search engine rankings before, during, and after the migration to identify any issues and make necessary adjustments.
