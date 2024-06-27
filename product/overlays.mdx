@@ -1,0 +1,54 @@
+---
+
+title: "Overlays"
+description: 
+icon: "border-center-h" iconType: "thin"
+---
+
+## Introduction
+
+Overlays are a group of controls you’ll see on most elements but most popularly, the [Box](product/toolbar/box.mdx)
+
+In general, Overlays are used to control and define spacing around your elements.
+
+## Grid
+
+Box width is divided into a 12 column grid, allowing you to shift the proportions of the contents in the box by 1/12th at a time per row. To adjust, simply click and hold the dotted column line and drag.
+
+![12 column grid](public/images/builder/Overlays.gif)
+
+## [Width](product/component/property-controls/width.mdx)
+
+Similarly to [Image](product/toolbar/image.mdx) you can set a maximum width to a box or element to maintain consistent spacing between sections. You can either set a pixel value, or a percentage of the screen. Keep in mind [Device Toggle](product/canvas/device-toggle.mdx) when managing width across devices.
+
+## [Margin](product/component/property-controls/margin.mdx)
+
+Margin is the space between elements. With an element selected, drag the top or bottom handles to change its margin. For a box, they will be the top-most and bottom-most handle
+
+![Margin](public/images/builder/Overlays1.gif)
+
+Left or right margins become available in the sidebar when the element is left or right-aligned. You cannot adjust the left or right margins if the element is center aligned. In this case, try adjusting the width instead.
+
+![Alignment using margin](public/images/builder/Overlays2.gif)
+
+## [Padding](product/component/property-controls/padding.mdx)
+
+Padding is the space created between a box's border and its contents. This differs from margin which is used to push elements away from each other.
+
+Boxes contain extra handles on the inside when selected. Grab any of these inner handles to change its padding, which is displayed in green.
+
+![Padding](public/images/builder/Overlays3.gif)
+
+Padding can also be applied using the “Padding” panel.
+
+![Padding in the panel](public/images/builder/Overlays4.gif)
+
+You can always get rid of padding all together if it’s not necessary. The quickest way to do this when you’re on Desktop responsiveness is to rest Padding to Base.
+
+![Reset padding to base](public/images/builder/Overlays5.gif)
+
+<Note>
+Hold the **⌥ Option (or Alt) key to change corresponding Margin/Padding, and ⇧ Shift  + ⌥ Option (or Alt) to change all Margin/Padding equally.**
+
+</Note>
+![Padding and margin control shortcut](public/images/builder/Overlays6.gif)

@@ -1,0 +1,188 @@
+---
+title: "SEO"
+description:
+icon: "magnifying-glass-chart" iconType: "duotone"
+---
+
+## Introduction
+
+Search Engine Optimization (SEO) is a critical practice for enhancing your website's visibility and ranking on search engine results pages. By optimizing your site's content, structure, and technical elements, you can attract more organic traffic, improve user experience, and ultimately achieve your business goals. This article will guide you through essential SEO concepts and how to leverage the tools in Makeswift's Builder to manage them.
+
+## Managed in Makeswift
+
+There are certain SEO tools that are available for configuration directly in the builder. Familiarizing yourself with what can be edited in the builder will allow you to adapt your SEO settings on an ongoing basis to finely tune your web presence.
+
+### Semantic Structure
+
+The [Text Style](/product/site/text-styles) of a content block in Makeswift is decoupled from the <Tooltip tip="Semantic structure is the use of HTML tags to convey the meaning and hierarchy of content on a webpage.">Semantic Structure</Tooltip> of each content block. You can use the Block property on each text component to apply the proper HTML tags around your content.
+![Block Property](public/images/text-styles/block-property.png)
+Properly configuring your content semantic structure is important for SEO as it allows search engines to accurately index your content and present it effectively in search results.
+
+It also is responsible for accessibility for users relying on screen readers and other assitive technologies, if your page is properly structured it makes your site more inclusive.
+
+<Tip>Don't include more than one H1 block on a page</Tip>
+### Canonical URL
+
+A canonical URL is the preferred version of a webpage that search engines should index and rank. Canonicals are managed within the page properties of the Makeswift builder.
+![Canonical URL property](public/images/seo-metadata/canonical-property.png)
+
+Check that canonical tags are correctly implemented to avoid duplicate content issues, especially if there are multiple versions of the same page (e.g., HTTP vs. HTTPS). By default, if no canonical is indicated, Makeswift will implement a self referencing canonical url.
+
+<Tip>
+  {" "}
+  Make sure Canonicals are indexable. Utilize the **Exclude from Search Engines**
+  checkbox property to manage this. ![Exlude from search engines](public/images/seo-metadata/robots.png)
+</Tip>
+### XML Sitemaps{" "}
+
+Makeswift will automatically generate an XML sitemap for you based on properties available to you on each page.
+![Sitemap properties](public/images/seo-metadata/sitemap-properties.png)
+
+#### Sitemap Priority Sitemap priority
+
+is a value from 0.0 to 1.0 assigned to URLs in a sitemap to indicate their relative
+importance. This helps search engines prioritize which pages to crawl and index first.
+
+By default, each new page you create will be given a value of 0.75
+
+<Tip>
+  Your homepage or other critical landing pages should have a Sitemap Priority
+  value of 1.0
+</Tip>
+#### Sitemap Frequency{" "}
+
+Sitemap frequency, also known as "change frequency" or "changefreq,"is
+an attribute in a sitemap that indicates how often a particular URL is likely to
+change. - always: Used for pages that change constantly, such as live data feeds.
+
+- **hourly:** For pages that update every hour.
+- **daily:** For pages that change daily,such as news articles or blogs.
+- **weekly:** For pages that are updated weekly.
+- **monthly:** For pages with monthly updates.
+- **yearly:** For pages with annual updates.
+- **never:** For pages that never change, like archived content.
+
+By setting the appropriate change frequency, you can help search engines optimize their crawling efforts and ensure your most current content is indexed efficiently.
+
+Each new page you create in Makeswift will have a default value of **Hourly**
+
+### Meta Tags
+
+[Page Metadata](/product/page/metadata) covers some of the essential SEO Metadata controls that can get you started quickly. Leverage the ability to edit the title tags, meta descriptions, and social images on an ongoing basis to optimize for relevant keywords and accurately reflect the content of each page.
+![Metatags](public/images/seo-metadata/metatags-property.png)
+
+### Internal Linking Structure
+
+Internal linking structure refers to the way links are organized within your website, connecting different pages and content. Review and optimize the internal linking structure to ensure that important pages are easily accessible and properly prioritized for search engines. Prioritization is controlled within the Page Properties in the Makeswift builder.
+![Sitemap Priority Control](public/images/seo-metadata/sitemap-priority-control.png)
+
+<Tip>
+  Creating a new page it’s an opportunity to link to another page. The more
+  connected all of your pages are the better!
+</Tip>
+<Tip>
+  Be sure to utilize Makeswift's Open Page references when linking to pages.
+  This enables you to change the path name to a page down the road without
+  breaking all of the links associated with that page.
+</Tip>
+
+### Redirects
+
+301 redirects are essential for SEO as they prevent 404 pages from showing up as results for pages whose URL's have changed or no longer exist. If you are using the Makeswift default host, you are able to [configure redirects](/product/site/redirects) directly within Makeswift
+
+If you are using a custom host you will need to manage your redirects in your codebase using a `json` file as you normally would.
+
+<aside>
+❗ Obtain a copy of all redirects from the customer. The redirect feature within Makeswift DOES NOT WORK with custom hosts, so this is something that we will need to manage within the codebase.
+
+</aside>
+
+### Image Optimization
+
+Optimize image file names and alt text to improve accessibility and provide additional context for search engins. Files names can be managed through the [Files](/product/files) manager and alt tags can be managed on each individual image.
+
+![File naming and image alt text properties](public/images/seo-metadata/image-optimization.png)
+
+Image prioritization can also be managed in Makeswift by using the Priority checkbox.
+![Image priority checkbox](public/images/seo-metadata/image-priority-prop.png)
+
+<Tip>
+  Utilize the Priority control primarily on Header images to load them first on
+  the page as this is a contributing factor to your page performance.
+</Tip>
+
+### SSL Certificate
+
+All Makeswift pages automatically generate SSL certificates at no extra cost. Once your [DNS](/product/site/domains) has fully connected to Makeswift, it may take a little more time for the SSL certificate to be generated.
+
+### Mobile-Responsiveness
+
+[Mobile Responsiveness](/product/device-toggle) is crucial because Google predominantly uses the mobile version of a website for indexing and ranking. If your site isn't mobile-friendly, it can negatively impact your search engine rankings.
+
+Utilize the device toggle menu in the Makeswift builder as you create content to make sure your [layouts](/product/layouts) look good on every device.
+![Device Toggle](public/images/seo-metadata/device-toggle.png)
+
+<Tip>
+  If you want to add additional responsive breakpoints, you will need to do this
+  in your codebase
+</Tip>
+
+### Favicon
+
+While favicons might not directly influence search rankings, they support a positive user experience and reinforce your brand, which can indirectly impact SEO through improved engagement metrics and user behavior. Favicon is the icon that shows up in your web browser tab. This can be configured in the settings within Makeswift builder.
+
+---
+
+<aside>
+## Managed in Code
+
+More advanced SEO requirements will need to be managed directly in your codebase. The guide below outlines some additional SEO concepts to consider, but their application is not specific to Makeswift.
+
+<Warning>The following can only be administered using a custom host</Warning>
+
+### Robots.txt
+
+Used to review and update the robots.txt file to ensure that search engines can crawl the new site properly and that sensitive or duplicate content is blocked as necessary.
+
+<aside>
+❗ For info visit https://nextjs.org/learn-pages-router/seo/crawling-and-indexing/robots-txt
+Utilize Screaming Frog to crawl the legacy website and the new website and compare.
+
+</aside>
+
+### Additional Sitemaps
+
+Generate a new XML sitemap for the migrated website and submit it to search engines to ensure all pages are crawled and indexed properly. 404’s shouldn’t be in Sitemaps. Watch out for duplicates. Typically there is .xml index sitemap, for larger sites they may need a separate sitemap (example: articles). There is a limit to sitemaps (50k) but having different sitemaps is easier to manage.
+
+<aside>
+❗ Obtain a copy of their current sitemap to compare and make sure it matches. Make sure that you are talking to the relevant SEO experts on their team. https://www.makeswift.com/docs/guides/sitemap
+
+</aside>
+
+### Page Speed Optimization
+
+Test the loading speed of the new website and optimize as necessary to improve user experience and search engine rankings.
+
+<aside>
+❗ We should be running page speed insights on pages before we ship a project. It is the developers responsibility to ensure that any javascript optimization is taken care of. Images should be lazily loaded where applicable to help improve this. Our threshold shouldn’t be below 90/100 on Desktop or below 80/100 on mobile
+
+</aside>
+
+### SSL Certificate
+
+If the website is migrating to HTTPS, ensure that an SSL certificate is properly installed and configured to provide a secure browsing experience for users and boost search engine rankings.
+
+<aside>
+❗ Vercel will try to automatically generate a certificate regardless
+
+</aside>
+
+### Structured Data Markup
+
+Implement structured data markup (such as Schema.org) to provide additional context to search engines and enhance the visibility of rich snippets in search results. Typically `JSON` markup
+
+### 404 Page
+
+404 pages are crucial for SEO and user experience. A well designed 404 page can guide a user back to the main site and reduce the chances of that user bouncing. It also reduces crawl errors from an SEO perspective and lets search engines know that this page is intentional. It also enhances [internal linking](/product/SEO#internal-linking-structure).
+
+</aside>
