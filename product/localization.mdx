@@ -1,10 +1,8 @@
 ---
 title: "Localization"
-description:
+description: "Localization involves adapting a website's content, layout, and functionality to meet the cultural, linguistic, and regulatory requirements of a specific target audience or geographic region. It goes beyond translation to ensure the website is effective and engaging for the local audience."
 icon: "map-location-dot" iconType: "duotone"
 ---
-
-Localization involves adapting a website's content, layout, and functionality to meet the cultural, linguistic, and regulatory requirements of a specific target audience or geographic region. It goes beyond translation to ensure the website is effective and engaging for the local audience.
 
 <Warning>
   Localization is currently only available on the Enterprise plan. Reach out to
@@ -12,57 +10,60 @@ Localization involves adapting a website's content, layout, and functionality to
   to enable this feature.
 </Warning>
 
-### **Adding Locales**
+## Adding locales
 
-Makeswift's Locale feature allows you to manage localized versions of your web pages within the builder itself. You’ll need to configure your locales in code, and then add them into the Localization settings within Makeswift to enable the locale toggle in the builder.
-
-## Steps
+Makeswift's localization feature allows you to manage localized versions of your web pages directly within the builder. You'll need to configure your locales in code, and then add them into the Locales settings within Makeswift to enable the locale toggle in the builder.
 
 <Steps>
+  <Step title="Add locales in the Makeswift builder">
+    Open site settings and go to the "Locales" tab.
 
-<Step title="Add locales in the Makeswift builder">
-Open site settings and go to the "Locales" tab:
+    <Frame>
+      ![Localization first step](../images/localization-first-step.png)
+    </Frame>
 
-![Localization first step](../images/localization-first-step.png)
+    To add a new locale, click the "+ Add locale" button. You can modify or delete existing locales by hovering over the locale:
 
-To add a new locale, click the "+ Add locale" button. You can modify or delete existing locales by hovering over the locale:
+    <Frame>
+      ![Hovering over the locale](../images/localization-hover-locale.png)
+    </Frame>
 
-![Hovering over the locale](../images/localization-hover-locale.png)
+    You can also modify the default locale by hovering over it and clicking the edit button.
 
-You can also modify the default locale by hovering over the default locale and clicking the edit button.
+    Here's an example of what a list of locales in settings looks like:
 
-Once you add all the locales you need, it might look like this:
+    <Frame>
+      ![Manage locales in settings](../images/localization-manage-locales.png)
+    </Frame>
 
-![Manage locales in settings](../images/localization-manage-locales.png)
+  </Step>
 
-</Step>
+  <Step title="Configure locales in your Next.js config">
+    For detailed instructions on setting up locales, see our [developer docs](https://docs.makeswift.com/pages-router/localization#localized-resources) on localization.
 
-<Step title="Configure locales in your Next.js config">
-<Note>
-For detailed instructions on setting up locales, see our [Developer Docs on Localization](https://docs.makeswift.com/pages-router/localization#localized-resources)
-</Note>
+  </Step>
 
-</Step>
+  <Step title="Edit your pages in the builder">
 
-<Step title="Edit your pages in the builder">
+    Once you've finished setting up your locales in Makeswift and in your codebase, you should be able to switch to different locales using the locale switcher in the builder browser bar.
 
-Once you've set everything up, you should be able to switch to the locale using the locale switcher on the builder.
+    <Frame>
+      ![Manage locales in settings](../images/localization-locales-switcher.png)
+    </Frame>
 
-![Manage locales in settings](../images/localization-locales-switcher.png)
+    <Note>
+      You can customize the path for each page in each locale. For example, if you
+      have a company page at `example.com/company`, you can create the Spanish
+      version of the page at `example.com/es/compania` or `example.es/compania`.
+    </Note>
 
-<Note>
-
-You can customize the path for each page in each locale. For example, if you have a company page at `example.com/company`, you can create the Spanish version of the page at `example.com/es/compania` or `example.es/compania`.
-
-</Note>
-
-</Step>
+  </Step>
 
 </Steps>
 
-### Localized resources
+## Localized resources
 
-When making changes on a different locale you can override any property, including the page's pathname, metadata, and SEO tags.
+When making changes in a different locale you can override any property, including the page's pathname, metadata, and SEO tags.
 
 You can also localize a global component. To do this, edit a global component within a localized page, make changes,
 and then save the global component. That global component will be saved for that locale.

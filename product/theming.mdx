@@ -1,0 +1,50 @@
+---
+
+title: "Theming"
+description: "Theming is the concept of creating a style pallete for your website. With [site colors](/product/site/site-colors) and [text styles](/product/site/text-styles) you can standardize the available stlyes for all users in your workspace to use."
+icon: "palette" iconType: "duotone"
+---
+
+## Colors
+
+While you can add as many colors as you want in your Makeswift site, we recommend you keep your pallete as small as possible. If your team only has a handful of colors to pick from when creating an element, it will make individual work look much more cohesive. In addition, if you were looking to do a minor rebrand using different colors, it's much easier to locate and replace colors on a smaller pallete.
+
+<Note>
+  Try limiting your color pallete to no more than 10 colors to keep it more
+  manageable.
+</Note>
+
+## Text styles
+
+Text styles ensure consistent typography across your website by defining fonts, sizes, colors, and other formatting attributes. This helps maintain a cohesive look and feel.
+
+<Note>
+  Block tags such as `<p>` and `<h1>` are set separately from text style.
+</Note>
+
+With text styles, you can easily manage and update typography throughout your site. This simplifies maintenance and reduces the risk of inconsistencies.
+
+## Global components
+
+[Global components](/product/components#global-components) are primarly used to create reusable components that can be synced and updated easily. You can also use global components as starting points for sections by utilizing the "Detach instance" action after adding a global component to a page:
+
+<Steps>
+  <Step title="Build your global component">
+    Build out a section that you would like to reuse as a template and save it
+    as a global component.
+  </Step>
+  <Step title="Add the global component section to a page">
+    Open your global component tray from the toolbar and add the saved section to a page.
+  </Step>
+  <Step title="Detatch the global component">
+    This is the most important step. Detatching this instance allows you to make
+    edits without affecting the base global component across your site.
+
+    <Warning>
+      Detaching a global component will break the link between the global component
+      and the instance on the page. This means that any changes made to the global
+      component will not be reflected in the instance on the page.
+    </Warning>
+
+  </Step>
+</Steps>
