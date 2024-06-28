@@ -1,120 +1,128 @@
 ---
 title: "Components"
-description:
+description: "Makeswift leverages the power of React to give you unparalleled flexibility and control over your website's design and functionality on an ongoing basis."
 icon: "gear-complex-code" iconType: "duotone"
 ---
 
-## **Introduction**
-
-Makeswift leverages the power of React to give you unparalleled flexibility and control over your website's design and functionality on an ongoing basis.
-
-Each component can be thought of as a self-contained module that renders a part of the user interface based on the provided inputs (props) and its internal state.
-
-There are a few components that come stock standard with the Makeswift default host.
+Several components come standard with the Makeswift default host. These are the 4 most common components you'll use to build your site:
 
 <Tabs>
   <Tab title="Box">
-  Although simple at first glance, the Box is your most valuable and versatile tool in the toolbar. It’s exactly as described, a box, but you can use it for so much more. If you’re familiar with HTML, the easiest way to conceptualize a box is like a `<Div>`. From a developer perspective, boxes can also be synonmous with [Slots](developer/reference/controls/slot.mdx). Use boxes to configure different [Layouts](/product/layouts)
+    The Box is your most valuable and versatile tool in the toolbar. It's works exactly as described, like a box you can place things in, but you can use it for so much more. If you're familiar with HTML, the easiest way to conceptualize a box is like a `<div>`. From a developer perspective, boxes can also be synonmous with [Slots](/developer/reference/controls/slot). Use boxes to configure different [layouts](/product/layouts).
   </Tab>
+
   <Tab title="Text">
+    Double-click on any text component on your page to start editing it directly, similar to Google Docs.
 
-Double-click on any text on your page to start editing it directly, similar to Google Docs.
+    ### Block panel
 
-### Block options
+    The block panel applies to an entire paragraph and correlates to the HTML tag used on the live page. Block options include:
 
-Block options apply to an entire paragraph and correlate to the HTML tag used on the live page. Block options include:
+    - Paragraph
+    - Heading 1
+    - Heading 2
+    - Heading 3
+    - Heading 4
+    - Heading 5
+    - Heading 6
+    - Bulleted list
+    - Numbered list
+    - Blockquotes
 
-- Paragraph
-- Heading 1
-- Heading 2
-- Heading 3
-- Bulleted and numbered lists
-- Blockquotes
+    Block tags affect a page's [SEO](/product/SEO), so make sure to use the appropriate options throughout your site.
 
-Heading tags can affect a page's SEO, so make sure to use the appropriate options throughout your site.
-
-</Tab>
+  </Tab>
 
   <Tab title="Image">
-Images are used to place media between other elements, unlike a background image that goes behind content. Think of an image as framed art on a wall, whereas the background image is the wallpaper behind it.
+    The image component is placed directly as content on your page, unlike a background image that goes behind content. Think of an image as framed art on a wall, whereas the background image is the wallpaper behind it.
 
-To place an image, select an image element on your page and click "Choose" or “Replace” in the sidebar. Select a replacement from the file picker, or upload a new image.
+    To place an image, select an image element on your page and click "Choose" or “Replace” in the panels sidebar. Select an existing image from the files manager, or upload a new one.
 
-![Image properties](public/images/builder/image-props1.gif)
-Alt text is used to provide descriptions of an image and increases the accessibility of your website for disabled visitors. Images can also be given links, similar to buttons.
+    <Frame>
+      ![Image properties](public/images/builder/image-props1.gif)
+    </Frame>
 
-Images will automatically be optimized and resized when published, increasing the performance of your site.
+    **Alt text** is used to provide descriptions of an image and increases the accessibility of your website for visually impaired visitors. Images can also be given links, similar to buttons.
+
+    Images will automatically be optimized and resized when published, increasing the performance of your site.
 
   </Tab>
+
   <Tab title="Button">
-Use buttons to create links within your pages. The following are the link options for buttons:
+    Use buttons to create links within your pages. The following are the link options for buttons:
 
-- Open a Makeswift page
-- Open an external URL
-- Compose an email
-- Call a phone number
-- Scroll to an element
+    - Open a Makeswift page
+    - Open an external URL
+    - Compose an email
+    - Call a phone number
+    - Scroll to an element
 
-### Open page
+    ### Open page
 
-When linking to other pages within your site, you’ll select from a list of existing pages. Once a page is selected, the page’s URL will be used for the button link. If the page’s URL is updated in the future, the button link will automatically update as well.
+    When linking to other pages within your site, you'll select from a list of existing pages. Once a page is selected, the page's URL will be used for the button link. If the page's URL is updated in the future, the button link will automatically update as well.
 
-### Scroll to element
+    ### Scroll to element
 
-To use “Scroll to element” you must first give the target element a custom name. This name will now appear in the dropdown found in the button’s “On click” panel.
+    To use “Scroll to element” you must first give the target element a [custom name](/product/elements#custom-element-name-and-id). This name will now appear in the dropdown found in the button's “On click” panel.
 
-You can also select the screen position of the scrolled to element.
+    You can also select the screen position of the scrolled to element.
 
-### Styling buttons
+    ### Styling buttons
 
-You can select from a list of premade styles for your button. Along with styles, you can customize the size, shape, color and text styles.
+    You can select from a list of premade styles for your buttons. Along with styles, you can customize the size, shape, color and text styles.
 
-</Tab>
+  </Tab>
 </Tabs>
------
-## **Global Components**
+
+## Global Components
 
 Global components are groups of elements that can be saved and reused across your entire site. If you make an update to a global component, every instance of that component on your site will be updated as well.
 
-### **Creating a global component**
+### Creating a global component
 
-Let's start by dropping in a navbar instant layout from the toolbar. Feel free to edit the styles of the navbar box, as well as any links or styles in the navigation component. Select the navbar box and click on the cube icon found at the top of the element sidebar.
-![creating a global component](public/images/components/create-component.gif)
+Let's start by dropping in a navbar instant layout from the toolbar. Feel free to edit the styles of the navbar, as well as any links or styles in the navigation component. Select the navbar box and click on the cube icon found at the top of the panels sidebar.
+
+<Frame>
+  ![creating a global component](public/images/components/create-component.gif)
+</Frame>
 
 Name your global component and click “Yes, continue” to convert the navbar into an instance of your new global component.
 
-Navigate to a different page in the same site. In the toolbar to the left of the builder, you’ll find another cube icon. Hovering over the icon will display all the global components available in your site. Like any other type of component, click and drag your new global component and place it on the page.
-![accessing global components](public/images/components/access-components.gif)
+Navigate to a different page in the same site. In the toolbar to the left of the builder, you'll find another cube icon. Hovering over the icon will display all the global components available in your site. Like any other component, click and drag your new global component and place it on the page.
 
-### **Editing a global component**
+<Frame>
+  ![accessing global components](public/images/components/access-components.gif)
+</Frame>
 
-To edit a global component, select any instance in your site and click “Edit component” in the sidebar.
-![editing a global component](public/images/components/edit-component.gif)
-While editing a global component, you have full control over the content and styles for all elements found in the component. You can add or remove elements, and even place other global components inside.
+### Editing a global component
+
+To edit a global component select any instance of that component in your site and click “Edit component” in the sidebar.
+
+<Frame>
+  ![editing a global component](public/images/components/edit-component.gif)
+</Frame>
+
+While editing a global component, you have full control over the content and styles for all elements found in that component. You can add or remove elements, and even place other global components inside.
 
 When you are done with edits, click the “Save” button at the top right of the global component overlay.
-![saving changes to a global component](public/images/components/save-component.gif)
+
+<Frame>
+  ![saving changes to a global
+  component](public/images/components/save-component.gif)
+</Frame>
 
 <Note>
-  **Global component updates will be applied globally to your site, including
-  live pages. Other changes on your pages will not be published.**
+  Global component updates are published as separate resources from pages. Learn
+  more about [publishing global
+  components](/product/publishing#publishing-site-resources).
 </Note>
 
-### **Managing global components**
+### Managing global components
 
 You can manage your global components from within the global element tray accessed in the toolbar. You can rename or delete any global component. If a global component is deleted, all instances of that component in your site will be replaced with an error message and will need to be manually removed.
 
-You can also detach any instance from it's global component, allowing you to make overrides.
-![detaching a global component](public/images/components/detatch-instance.gif)
+You can also detach any instance from it's global component, allowing you to make changes to those detached elements.
 
-### **Examples**
-
-#### Navigation Bars
-
-#### Footer
-
-#### Reusable Layouts
-
-## **Pro Tips**
-
-### **Developer Notes**
+<Frame>
+  ![detaching a global component](public/images/components/detatch-instance.gif)
+</Frame>

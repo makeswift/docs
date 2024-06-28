@@ -46,7 +46,7 @@
         "product/layouts",
         "product/elements",
         "product/components",
-        "product/themeing",
+        "product/theming",
         "product/device-toggle",
         "product/SEO",
         "product/localization",
