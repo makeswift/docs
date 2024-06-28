@@ -1,34 +1,34 @@
 ---
 
 title: "Responsiveness"
-description: 
+description: "Responsiveness refers to the optimization of your page designs for different screen sizes. You can switch device modes at the top center of the page builder browser bar to switch into that breakpoint."
 icon: "laptop-mobile" iconType: "duotone"
 ---
 
-## Introduction
+<Frame>![Default device sizes](public/images/builder/device-toggle1.png)</Frame>
 
-Responsiveness refers to the optimization of your page designs for different screen sizes. You can switch device modes at the top center of the page builder toolbar to see what your page will look like at the standard screen size for that device.
+## Designing for mobile and tablet
 
-![Default device sizes](public/images/builder/device-toggle1.png)
-
-## Designing for Mobile and Tablet
-
-By default, styles from desktop mode cascade to tablet, and tablet to mobile. Once a style has been overriden on a smaller device, that specific style will no longer be affected by changes from a larger device. All element and text styles can be set per device. Things such as altering content, sorting elements, or changing links are not responsive.
+In Makeswift, styles always cascade from larger devices to smaller ones. Once a style has been overriden on a smaller device, that specific style will no longer be affected by changes from a larger device. All element and text styles can be set per device. Things such as text content, images, sorting elements, or changing links are not responsive.
 
 Select an element and switch to a smaller device. If a style is being inherited from a larger device, the label for it's panel will be gray.
 
-![Inheriting from base](public/images/builder/device-toggle2.png)
+<Frame>![Inheriting from base](public/images/builder/device-toggle2.png)</Frame>
 
 Making an edit to the style on a smaller device will change the label color to blue. Clicking the blue label will open an option to revert changes back to the larger device.
 
-![Reset to desktop](public/images/builder/device-toggle3.png)
+<Frame>![Reset to desktop](public/images/builder/device-toggle3.png)</Frame>
 
 ## Setting responsive breakpoints
 
 Select a box containing multiple elements in a single row. Vertical dashed lines appear in between each element. Click anywhere on a vertical dashed line to split the row.
 
-![Splitting rows into columns](public/images/builder/device-toggle4.gif)
+<Frame>
+  ![Splitting rows into columns](public/images/builder/device-toggle4.gif)
+</Frame>
 
-A horizontal dashed line will now be between the two rows. Clicking the horizontal line will join the adjacent rows back into a single row. Different breakpoints can be set on different device modes.
+A horizontal dashed line will now be displayed between the two rows. Clicking the horizontal line will join the adjacent rows back into a single row. Different breakpoints can be set on different device modes.
 
-![Splitting columns into rows](public/images/builder/device-toggle5.gif)
+<Frame>
+  ![Splitting columns into rows](public/images/builder/device-toggle5.gif)
+</Frame>
