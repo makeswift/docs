@@ -64,11 +64,11 @@
         {
           "group": "Site",
           "pages": [
-            "product/site/redirects",
+            "product/site/colors",
+            "product/site/text-styles",
             "product/site/hosting",
             "product/site/domains",
-            "product/site/site-colors",
-            "product/site/text-styles",
+            "product/site/redirects",
             "product/site/sitemaps"
           ]
         },
@@ -81,20 +81,20 @@
           ]
         },
         {
-          "group": "Controls",
+          "group": "Panels",
           "pages": [
-            "product/component/property-controls/visibility",
+            "product/component/property-controls/width",
+            "product/component/property-controls/margin",
+            "product/component/property-controls/padding",
+            "product/component/property-controls/alignment",
+            "product/component/property-controls/backgrounds",
+            "product/component/property-controls/corners",
+            "product/component/property-controls/borders",
             "product/component/property-controls/animations",
             "product/component/property-controls/gap",
             "product/component/property-controls/shadows",
-            "product/component/property-controls/corners",
-            "product/component/property-controls/borders",
-            "product/component/property-controls/padding",
-            "product/component/property-controls/margin",
-            "product/component/property-controls/width",
-            "product/component/property-controls/alignment",
             "product/component/property-controls/height",
-            "product/component/property-controls/backgrounds"
+            "product/component/property-controls/visibility"
           ]
         }
       ]
