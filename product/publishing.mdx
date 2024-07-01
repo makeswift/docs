@@ -1,31 +1,25 @@
 ---
 
 title: "Publishing"
-description: 
+description: "You can publish changes made to your site and push them to your live domain instantly. Makeswift also allows you to selectively publish individual site resources, such as colors and global components, without publishing content changes to pages."
 icon: "rocket-launch" iconType: "regular"
 ---
 
-## Introduction
-
-You can publish changes made to your site and push them to your live domain instantly. Makeswift also allows you to selectively publish individual site resources, such as colors and global components, without publishing content changes to pages.
-
-## Preview Mode
-
-The Preview button by the URL bar will allow you to see a preview of what you have on your page without having the need to publish it. It’s similar to being in Interact mode but in it’s own window so that you can preview your page properly before publishing it live.
-
 ## How to publish
 
-You can find the publish button directly in the builder, located at the top right of the builder’s browser bar. Only users with Publisher, Admin, and Owner roles will be able to interact with the Publish button.
+You can find the publish button at the top right of the builder's browser bar. Only users with Publisher, Admin, and Owner roles will be able to interact with the Publish button.
 
-![Publish button](public/images/builder/publishing1.png)
+<Frame>![Publish button](public/images/builder/publishing1.png)</Frame>
 
 The publishing workflow begins by selecting which pages and resources you want to publish at this time. Your list of publishable changes are separated into different sections starting with pages and followed by different site resources.
 
-![Selective publish dialogue](public/images/builder/publishing2.png)
+<Frame>
+  ![Selective publish dialogue](public/images/builder/publishing2.png)
+</Frame>
 
-Toggle the checkbox to the left of each item to include it in this publish. You can also toggle the checkbox found in each section’s header to toggle all of it’s items on or off.
+Toggle the checkbox to the left of each item to include it in this publish. You can also toggle the checkbox found in each section's header to toggle all of it's items on or off.
 
-## **Publishing pages**
+## Publishing pages
 
 No changes made to pages will take affect on your live site until they are published, including deleting pages or editing their URLs. Pages with recent changes will appear in your publish dialog with a change status found to the right of each page. The different page statuses are the following:
 
@@ -36,13 +30,13 @@ No changes made to pages will take affect on your live site until they are publi
 - Taken offline
 - Path changed
 
-### **Publishing offline pages**
+### Publishing offline pages
 
 Edits made to offline pages will not appear in the publish dialog. To publish an offline page, you must first set it to be online. To do so, navigate to the offline page and deselect all elements in the builder. In the right sidebar, select the Page tab. Click the toggle in the “Online” panel to turn it green and set the page online. You will now find that page included in the publish dialog.
 
-![Online toggle](public/images/builder/publishing3.png)
+<Frame>![Online toggle](public/images/builder/publishing3.png)</Frame>
 
-## **Publishing site resources**
+## Publishing site resources
 
 Like pages, edits made to site resources will be displayed as individual, publishable items. Site resources found in the publish dialog include:
 
@@ -50,23 +44,22 @@ Like pages, edits made to site resources will be displayed as individual, publis
 - Colors
 - Text styles
 
-![Publishing site resources](public/images/builder/publishing4.png)
+<Frame>
+  ![Publishing site resources](public/images/builder/publishing4.png)
+</Frame>
 
 When adding a new resource to your site, you must select it in the publish dialog in order for it to be used on your live site. For example, not publishing a newly added site color will cause elements using that color to be displayed as black on live pages.
 
-You can also publish changes made to existing site resources without needing to publish the pages they are found on. Here’s a common situation to apply this workflow: you need to update the navigation global component and publish it immediately, but you have unfinished edits you’ve made to several pages. You can select to only publish the navigation global component which will update the navigation across your live site without publishing your unfinished changes to other pages.
+You can also publish changes made to existing site resources without needing to publish the pages they are found on. Here's a common situation to apply this workflow: you need to update the navigation global component and publish it immediately, but you have unfinished edits you've made to several pages. You can select to only publish the navigation global component which will update the navigation across your live site without publishing your unfinished changes to other pages.
 
-## **Site history**
+## Site history
 
 Makeswift automatically creates a version of your site every time you publish and stores it for up to 30 days. You can find the previous versions of your site in the “History” tab of the publish dialog.
 
-<Note>
-Site versions are currently only available to Enterprise customers.
-
-</Note>
+<Note>Site versions are currently only available to Enterprise customers.</Note>
 
 Each version will provide information on what was published and when. You can give versions a custom name as well as publish any previous version of your site. Publishing a previous site version will not affect the current draft state of your site in the builder. It will only point your live site to the selected previous version.
 
-![Publish history](public/images/builder/publishing5.png)
+<Frame>![Publish history](public/images/builder/publishing5.png)</Frame>
 
 To bring your live site back to the latest version, you can either publish the most recent version in your History tab, or publish new changes to your site in the Changes tab.
