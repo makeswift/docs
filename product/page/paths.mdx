@@ -1,37 +1,32 @@
 ---
 title: "Paths"
-description:
+description: "A path, or pathname is a string that identifies the location of a file or directory on a web server. It is part of the URL, after the domain, that specifies where an asset or page can be found such as `/about` or `/features`."
 icon: "route" iconType: "duotone"
 ---
 
-## Introduction
+In Makeswift, pathnames serve as unique identifiers for each page. You cannot use the same pathname for two separate pages. Makeswift will display an error if you attempt to name two pages with the same path.
 
-A path name is a string that identifies the location of a file or directory on the web server. It is part of the URL that specifies where an asset or page can be found within the website's file structure.
+<Frame>
+  ![Error displayed for conflicting
+  pathname](public/images/paths/path-name-conflict.png)
+</Frame>
 
-## Path Naming
+By default, when you create a new page, the pathname will be `/page-x` with x being the number of new page such as `/page-2` or `/page-4`.
 
-In Makeswift, path names also serve as unique identifiers for each page. You cannot use the same path name for two separate pages. Makeswift will throw an error if you attempt to name two pages with the same path.
+When you duplicate a page it will copy the path name and add a suffix of -copy like `/contact-copy`.
 
-![Unique path naming](public/images/paths/path-name-conflict.png)
+For your homepage, you will likely not have a pathname. This is signified by a single trailing slash “/” in the path field.
 
-By default, when you create a new page, the Path name will be /page-x with x being the number of new page (e.g., makeswift.com/page-4).
+<Frame>![Pathname for homepage](public/images/paths/homepage-path.png)</Frame>
 
-When you duplicate a page it will copy the path name and add a suffix of -copy (e.g., makeswift.com/contact-copy)
+## Localization
 
-For your homepage, you will likely not have a path name. This is signified by a single trailing slash “/” in the Path Name field.
+When utilizing the [localization](product/site/localization.mdx) feature, you may translate or alter path names within each locale as if they are separate pages. By default, each locale will inherit the path name of the base locale.
 
-![Path name for homepage](public/images/paths/homepage-path.png)
+## Pro tips
 
-Path names also dictate the Href of links, so pay attention to this when considering your internal linking structure.
+When using the "Open page" option for links, the pathname will be automatically filled in for you behind the scenes. After editing the URL of a linked page, Makeswift will maintain the correct pathname across all pages where that page is linked.
 
-## Path Name Localization
+## Developer notes
 
-For users utilizing the [Localization](product/site/localization.mdx) feature, you may translate or alter path names within each locale as if they are separate pages. By default, each locale will inherit the path name of the base locale.
-
-## Pro Tips
-
-Path name changes are a common reason to use an Open Page reference instead of an Open Link Reference for buttons and links in Makeswift. Makeswift will maintain the correct path name under Open Page references, even if you change the path name multiple times.
-
-## Developer Notes
-
-<Note>\_ _ template _ \_ pages note</Note>
+When using a custom host, we suggest using the [`<Link>`](https://nextjs.org/docs/app/api-reference/components/link) in your Next.js app for links. `<Link>` enables client-side navigation, which makes page transitions faster and smoother by avoiding full page reloads. Additionally, it helps with prefetching linked pages, improving the overall performance and user experience by loading the necessary data before the user even navigates to the page.
