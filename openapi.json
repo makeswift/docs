@@ -1,0 +1,766 @@
+{
+  "openapi": "3.1.0",
+  "paths": {
+    "/sites/{siteId}/locales": {
+      "post": {
+        "operationId": "SiteLocaleController_create",
+        "parameters": [
+          {
+            "name": "siteId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSiteLocaleV1RequestBodyDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateSiteLocaleV1ResponseBodyDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "SiteLocaleController_getByLocale",
+        "parameters": [
+          {
+            "name": "code",
+            "required": true,
+            "in": "query",
+            "description": "Locale of the site locale.",
+            "example": "es-ES",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "siteId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetByLocaleSiteLocaleV1ResponseBodyDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/locales/{id}": {
+      "delete": {
+        "operationId": "SiteLocaleController_delete",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "operationId": "SiteLocaleController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSiteLocaleV1RequestBodyDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateSiteLocaleV1ResponseBodyDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "SiteLocaleController_get",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReadSiteLocaleV1ResponseBodyDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/workspaces/{workspaceId}/sites": {
+      "post": {
+        "operationId": "SiteController_create",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSiteV1RequestBodyDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateSiteV1ResponseBodyDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sites/{id}": {
+      "delete": {
+        "operationId": "SiteController_delete",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/workspaces": {
+      "post": {
+        "operationId": "WorkspaceController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateWorkspaceV1RequestBodyDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateWorkspaceV1ResponseBodyDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/workspaces/{id}": {
+      "delete": {
+        "operationId": "WorkspaceController_delete",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/workspaces/{workspaceId}/members/{userId}": {
+      "post": {
+        "operationId": "WorkspaceMemberController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateWorkspaceMemberV1RequestBodyDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "operationId": "WorkspaceMemberController_delete",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "operationId": "WorkspaceMemberController_update",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateWorkspaceMemberV1RequestBodyDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        }
+      },
+      "get": {
+        "operationId": "WorkspaceMemberController_getUserRole",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/workspaces/{workspaceId}/members": {
+      "get": {
+        "operationId": "WorkspaceMemberController_getMembers",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/workspaces/{workspaceId}/webhooks": {
+      "post": {
+        "operationId": "WebhookController_create",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateWebhookV1RequestBodyDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateWebhookV1ResponseBodyDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "WebhookController_list",
+        "parameters": [
+          {
+            "name": "workspaceId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 0,
+              "maximum": 100,
+              "default": 20,
+              "type": "number"
+            }
+          },
+          {
+            "name": "after",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListWebhookV1ResponseBodyDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webhooks/{id}": {
+      "get": {
+        "operationId": "WebhookController_get",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetWebhookV1ResponseBodyDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "WebhookController_delete",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "info": {
+    "title": "Makeswift REST API",
+    "description": "Documentation for the Makeswift public REST API.",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "schemas": {
+      "CreateSiteLocaleV1RequestBodyDto": {
+        "type": ["object"],
+        "properties": {
+          "locale": {
+            "type": ["string"]
+          },
+          "domain": {
+            "type": ["string"],
+            "description": "Domain of the site locale if using domain-based localization. Domain URL must include the protocol.",
+            "example": "https://es.example.com"
+          }
+        },
+        "required": ["locale"]
+      },
+      "CreateSiteLocaleV1ResponseBodyDto": {
+        "type": ["object"],
+        "properties": {
+          "id": {
+            "type": ["string"],
+            "format": "uuid"
+          },
+          "locale": {
+            "type": ["string"]
+          },
+          "domain": {
+            "type": ["string", "null"],
+            "description": "Domain of the site locale if using domain-based localization. Domain URL must include the protocol.",
+            "example": "https://es.example.com"
+          }
+        },
+        "required": ["id", "locale", "domain"]
+      },
+      "UpdateSiteLocaleV1RequestBodyDto": {
+        "type": ["object"],
+        "properties": {
+          "locale": {
+            "type": ["string"],
+            "description": "Locale of the site locale.",
+            "example": "es-ES"
+          },
+          "domain": {
+            "type": ["string"],
+            "description": "Domain of the site locale if using domain-based localization. Domain URL must include the protocol.",
+            "example": "https://es.example.com"
+          }
+        }
+      },
+      "UpdateSiteLocaleV1ResponseBodyDto": {
+        "type": ["object"],
+        "properties": {
+          "id": {
+            "type": ["string"],
+            "format": "uuid"
+          },
+          "locale": {
+            "type": ["string"]
+          },
+          "domain": {
+            "type": ["string", "null"],
+            "description": "Domain of the site locale if using domain-based localization. Domain URL must include the protocol.",
+            "example": "https://es.example.com"
+          }
+        },
+        "required": ["id", "locale", "domain"]
+      },
+      "ReadSiteLocaleV1ResponseBodyDto": {
+        "type": ["object"],
+        "properties": {
+          "id": {
+            "type": ["string"],
+            "format": "uuid"
+          },
+          "locale": {
+            "type": ["string"]
+          },
+          "domain": {
+            "type": ["string", "null"],
+            "description": "Domain of the site locale if using domain-based localization. Domain URL must include the protocol.",
+            "example": "https://es.example.com"
+          }
+        },
+        "required": ["id", "locale", "domain"]
+      },
+      "GetByLocaleSiteLocaleV1ResponseBodyDto": {
+        "type": ["object"],
+        "properties": {
+          "id": {
+            "type": ["string"],
+            "format": "uuid"
+          },
+          "locale": {
+            "type": ["string"]
+          },
+          "domain": {
+            "type": ["string", "null"],
+            "description": "Domain of the site locale if using domain-based localization. Domain URL must include the protocol.",
+            "example": "https://es.example.com"
+          }
+        },
+        "required": ["id", "locale", "domain"]
+      },
+      "CreateSiteV1RequestBodyDto": {
+        "type": ["object"],
+        "properties": {
+          "name": {
+            "type": ["string"],
+            "description": "The name of the site"
+          }
+        },
+        "required": ["name"]
+      },
+      "CreateSiteV1ResponseBodyDto": {
+        "type": ["object"],
+        "properties": {
+          "id": {
+            "type": ["string"],
+            "format": "uuid"
+          },
+          "name": {
+            "type": ["string"],
+            "description": "The name of the site"
+          },
+          "url": {
+            "type": ["string"],
+            "description": "The URL of the site"
+          }
+        },
+        "required": ["id", "name", "url"]
+      },
+      "CreateWorkspaceV1RequestBodyDto": {
+        "type": ["object"],
+        "properties": {
+          "ownerId": {
+            "type": ["string"]
+          },
+          "name": {
+            "type": ["string"],
+            "description": "The name of the workspace"
+          }
+        },
+        "required": ["ownerId", "name"]
+      },
+      "CreateWorkspaceV1ResponseBodyDto": {
+        "type": ["object"],
+        "properties": {
+          "id": {
+            "type": ["string"],
+            "format": "uuid"
+          },
+          "name": {
+            "type": ["string"],
+            "description": "The name of the workspace"
+          }
+        },
+        "required": ["id", "name"]
+      },
+      "CreateWorkspaceMemberV1RequestBodyDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "UpdateWorkspaceMemberV1RequestBodyDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CreateWebhookV1RequestBodyDto": {
+        "type": ["object"],
+        "properties": {
+          "url": {
+            "type": ["string"],
+            "format": "uri",
+            "example": "https://example.com/webhook"
+          },
+          "eventType": {
+            "type": ["string"],
+            "enum": [
+              "page.created",
+              "page.deleted",
+              "page.updated",
+              "page.restored",
+              "site.published"
+            ]
+          }
+        },
+        "required": ["url", "eventType"]
+      },
+      "CreateWebhookV1ResponseBodyDto": {
+        "type": ["object"],
+        "properties": {
+          "id": {
+            "type": ["string"],
+            "format": "uuid"
+          },
+          "workspaceId": {
+            "type": ["string"],
+            "format": "uuid"
+          },
+          "url": {
+            "type": ["string"],
+            "format": "uri",
+            "example": "https://example.com/webhook"
+          },
+          "eventType": {
+            "type": ["string"],
+            "enum": [
+              "page.created",
+              "page.deleted",
+              "page.updated",
+              "page.restored",
+              "site.published"
+            ]
+          }
+        },
+        "required": ["id", "workspaceId", "url", "eventType"]
+      },
+      "ListWebhookV1ResponseBodyDto": {
+        "type": ["object"],
+        "properties": {
+          "data": {
+            "type": ["array"],
+            "items": {
+              "type": ["object"],
+              "properties": {
+                "id": {
+                  "type": ["string"],
+                  "format": "uuid"
+                },
+                "workspaceId": {
+                  "type": ["string"],
+                  "format": "uuid"
+                },
+                "url": {
+                  "type": ["string"],
+                  "format": "uri",
+                  "example": "https://example.com/webhook"
+                },
+                "eventType": {
+                  "type": ["string"],
+                  "enum": [
+                    "page.created",
+                    "page.deleted",
+                    "page.updated",
+                    "page.restored",
+                    "site.published"
+                  ]
+                }
+              },
+              "required": ["id", "workspaceId", "url", "eventType"]
+            }
+          },
+          "hasMore": {
+            "type": ["boolean"]
+          }
+        },
+        "required": ["data", "hasMore"]
+      },
+      "GetWebhookV1ResponseBodyDto": {
+        "type": ["object"],
+        "properties": {
+          "id": {
+            "type": ["string"],
+            "format": "uuid"
+          },
+          "workspaceId": {
+            "type": ["string"],
+            "format": "uuid"
+          },
+          "url": {
+            "type": ["string"],
+            "format": "uri",
+            "example": "https://example.com/webhook"
+          },
+          "eventType": {
+            "type": ["string"],
+            "enum": [
+              "page.created",
+              "page.deleted",
+              "page.updated",
+              "page.restored",
+              "site.published"
+            ]
+          }
+        },
+        "required": ["id", "workspaceId", "url", "eventType"]
+      }
+    }
+  }
+}

@@ -15,11 +15,18 @@
       "to": "#5F49F4"
     }
   },
+  "openapi": "/openapi.json",
   "topbarLinks": [],
   "topbarCtaButton": {
     "name": "Log in",
     "url": "https://app.makeswift.com"
   },
+  "tabs": [
+    {
+      "name": "REST API References",
+      "url": "rest-api"
+    }
+  ],
   "search": {
     "prompt": "Search or ask..."
   },
@@ -115,6 +122,29 @@
     {
       "group": "Integrations",
       "pages": ["integrations/bigcommerce"]
+    },
+    {
+      "group": "REST API Reference",
+      "pages": [
+        "rest-api/get-sites-locales",
+        "rest-api/post-sites-locales",
+        "rest-api/get-locales",
+        "rest-api/delete-locales",
+        "rest-api/patch-locales",
+        "rest-api/post-workspaces-sites",
+        "rest-api/delete-sites",
+        "rest-api/post-workspaces",
+        "rest-api/delete-workspaces",
+        "rest-api/get-workspaces-members",
+        "rest-api/post-workspaces-members",
+        "rest-api/delete-workspaces-members",
+        "rest-api/patch-workspaces-members",
+        "rest-api/get-workspaces-members-1",
+        "rest-api/get-workspaces-webhooks",
+        "rest-api/post-workspaces-webhooks",
+        "rest-api/get-webhooks",
+        "rest-api/delete-webhooks"
+      ]
     }
   ],
   "footerSocials": {
