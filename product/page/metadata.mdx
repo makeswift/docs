@@ -1,67 +1,75 @@
 ---
 title: "Metadata"
-description:
+description: "**Metadata** is stored at the page level and is configured using the properties in the Page tab of the panels sidebar. Out of the box, Makeswift exposes some standard metadata properties that can be used for [SEO](/product/SEO)."
 icon: "file-circle-info" iconType: "duotone"
 ---
 
-## Introduction
+## Meta tags
 
-Pages in Makeswift are in and of themselves, components. Metadata is stored at the page level and are configured using the properties in the page control panel. Out of the box, Makeswift exposes some standard Metadata properties that can be used for [SEO](/product/SEO). If you're using a Custom Host, you may extend the page properties to control more metadata within the builder.
-
-## **Meta Tags**
-
-The following Meta Tags are managed within the Page Panel of each Page in Makeswift:
+The following meta tags are managed within the Page tab of each page in Makeswift:
 
 - Title
 - Description
-- Social Image
+- Social image
 
-by default Makeswift will use these Meta Tags as their Open Graph (OG) equivalent as well (e.g., OG Title = Meta Title).
-
-<Note>
-For special Meta Tags that aren't the ones standard within the page properties in Makeswift, or if your OG Tags differ, you must configure this in code. For more info https://nextjs.org/learn-pages-router/seo/crawling-and-indexing/metatags
-
-</Note>
-
-![metatags](public/images/seo-Metadata/metatags.png)
-
-### **Canonical Tags**
-
-Canonical URLs are also managed in the Page Panel. Typically, these are self-referencing and thus are set to default in Makeswift.
-
-![canonical](public/images/seo-metadata/canonical.png)
-
-## Sitemap Settings
-
-Your [Sitemap](/product/site/sitemaps) is automatically generated based on your inputs in the Page Panel.
-
-### Sitemap Priority
-
-You can set the Sitemap Priority (0-1) on each Page within the Page Panel. Pages come with a default value of 0.75.
-
-### Sitemap Frequency
-
-You can set your Sitemap Frequency per Page as well. The default in Makeswift is Hourly.
+Makeswift also uses these meta tags as the Open Graph (OG) and X (Twitter) equivalents. For example, the Title meta tag is used as the OG Title and Twitter Title.
 
 <Note>
-If you're using a Custom Host, setting up a Sitemap API endpoint may be necessary for proper functionality with Makeswift.
-
+  For additional meta Tags that aren't standard within the page properties in
+  Makeswift, or if your OG Tags differ, you must configure this in your codebase
+  using a custom host. For more info view the [Next.js
+  documentation](https://nextjs.org/learn-pages-router/seo/crawling-and-indexing/metatags).
 </Note>
 
-![sitemap priority](public/images/seo-metadata/sitemap-prio.png)
+<Frame>
+  <img width="300" src="public/images/seo-Metadata/metatags.png" />
+</Frame>
 
-![sitemap frequency](public/images/seo-metadata/sitemap-freq.png)
+## Canonical URL
+
+Canonical URLs are also managed in the Page tab. Typically, these are self-referencing and thus are set by default in Makeswift.
+
+<Frame>
+  ![Canonical URL field in Makeswift](public/images/seo-metadata/canonical.png)
+</Frame>
+
+## Sitemap settings
+
+Your [sitemap](/product/site/sitemaps) is automatically generated for all sites using the default host. You can control several settings for your sitemap in Makeswift, including the priority and frequency of each page. These settings are located in the Page tab under your meta tags.
+
+<Note>
+  To configure the sitemap for your custom Next.js host, [read our developer
+  docs](/developer/reference/client/get-sitemap)
+</Note>
+
+### Sitemap priority
+
+Sitemap priority indicates the relative importance of pages within a website, helping search engines decide how frequently to crawl them. It ranges from 0.0 to 1.0, with higher values suggesting more important pages. Makeswift pages use a default value of 0.75.
+
+<Frame>
+  ![Sitemap priority panel in
+  Makeswift](public/images/seo-metadata/sitemap-prio.png)
+</Frame>
+
+### Sitemap frequency
+
+Sitemap frequency specifies how often a page's content is likely to change, guiding search engines on how frequently to check for updates. The default value in Makeswift is "Hourly".
+
+<Frame>
+  ![Sitemap frequency panel in
+  Makeswift](public/images/seo-metadata/sitemap-freq.png)
+</Frame>
 
 ## Robots
 
-Within the Page Panel, there is a checkbox for Robots called “Exclude from search Engines.”
+Robots metadata provides search engines with specific instructions on how to index and display that page. Makeswift allows you to control whether your pages are indexed using the “Exclude from search Engines” checkbox in the Page tab.
 
-![Exclude from search engine checkbox](public/images/seo-metadata/robots.png)
+<Frame>
+  ![Exclude from search engine checkbox](public/images/seo-metadata/robots.png)
+</Frame>
 
-When unchecked, this will set the page to be Indexed and Followed. When checked, this will set the page to be no-index, follow.
+When unchecked, this will set the robots metadata to be `index, follow`. When checked, this will set it to be `noindex, follow`.
 
-## Developer Notes
+## Developer notes
 
-Note the user controls and inputs as they relate to the [Sitemap Endpoints](/developer/reference/client/get-sitemap) you will be configuring.
-
-Any additional SEO settings outside of the controls available in the page properties will need to be added directly to the codebase.
+Additional SEO panels can be added to the `<Page>` copmonent within a custom host. View the [developer docs](/developer/reference/components/seo) for more information.
