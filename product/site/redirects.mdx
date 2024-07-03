@@ -1,25 +1,27 @@
 ---
 title: "Redirects"
-description:
+description: "Redirects allow you to forward visitors from one URL to another. They are commonly used when a live page is taken offline to direct visitors to a different URL and prevent them from encountering a broken link."
 icon: "turn-right" iconType: "solid"
 ---
 
-Redirects allow you to forward visitors from one URL to another. They are commonly used when a live page is taken offline to direct visitors to a different URL and prevent them from encountering a broken link.
+<Warning>
+  If using a custom host, redirects will need to be configured directly in your
+  codebase.
+</Warning>
 
-### **Creating a Redirect**
+## Creating a redirect
 
-To create a redirect, go to the “Redirects” tab in your settings and click “Add redirect.” Use the pathname for the URL you want to redirect from; you do not need to include your domain. Make sure the pathname begins with a “/”.
+To create a redirect, go to the “Redirects” tab in your settings and click “Add redirect”. Use the pathname for the URL you want to redirect from. You do not need to include your domain. Make sure the pathname begins with a “/”.
 
 You can forward the path to a page on your site or to any URL.
 
-![create a redirect
-](public/images/redirects/create-redirect.gif)
+<Frame>![create a redirect](public/images/redirects/create-redirect.gif)</Frame>
 
-### **Permanent and Temporary Redirects**
+## Permanent and temporary redirects
 
 Permanent redirects are commonly used for old URLs, but you may need to temporarily forward a URL. For example, you might have a URL live for the holidays but redirect it to another URL for the rest of the year. Uncheck the box labeled “This is a permanent redirect” to signal to search engines that the redirect is temporary.
 
-### **Dynamic Forwarding**
+## Dynamic forwarding
 
 You can use variables to dynamically forward multiple URLs with a single redirect rule. Here are some examples:
 
@@ -35,9 +37,4 @@ You can use variables to dynamically forward multiple URLs with a single redirec
 /:post -> /new-post/:post
 ```
 
-The variable (e.g., :name, :post, etc.) can be anything, as long as it's the same in the “From” and “To” fields.
-
-<Note>
-  301 Redirects will need to be configured directly in your codebase. To do this
-  you will need to utilize a [custom host](/product/site/hosting#custom-host)
-</Note>
+The variable (e.g., `:name`, `:post`, etc.) can be anything, as long as it's the same in the “From” and “To” fields.
