@@ -47,11 +47,11 @@
         "product/elements",
         "product/components",
         "product/theming",
-        "product/device-toggle",
-        "product/SEO",
+        "product/files",
+        "product/responsive-design",
+        "product/seo",
         "product/localization",
-        "product/publishing",
-        "product/files"
+        "product/publishing"
       ]
     },
     {
