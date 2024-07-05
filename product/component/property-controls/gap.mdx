@@ -1,37 +1,29 @@
 ---
 title: "Gap"
-description:
-icon: "distribute-spacing-vertical"
+description: "The gap controls allow you to easily adjust the spacing between elements within a box."
+icon: "distribute-spacing-vertical" iconType: "duotone"
 ---
 
-## Introduction
+Gap is an easier way to uniformly control spacing between an elements contents. This is a quick and easy way to set and manage consistent margins between all items found within a box.
 
-Gap is an easier way to uniformly control spacing between an elements contents. This is a quick and easy way to set and manage consistent margins between all items found within these elements.
+<Frame>![Row and Column Gap](public/images/property-panels/Gap.png)</Frame>
 
-![Row and Column Gap](public/images/property-panels/Gap.png)
+## Row gap
 
-### Row Gap
+Row gap refers to the distance between elements stacked on top of each other
 
-Row Gap refers to the distance between elements stacked on top of each other
+## Column gap
 
-### Column Gap
-
-Column Gap refers to the distance between elements placed next to each other
+Column gap refers to the distance between elements placed next to each other
 
 ## Examples
 
-The most common example of using Gap is for sections containing multiple elements or cards. Simply select the smallest corresponding box that contains all the elements you're looking to space out, and utilize your Row and Column Gap controls.
+The most common example of using gap is for sections containing multiple elements or cards. Simply select the smallest corresponding box that contains all the elements you're looking to space out, and utilize your row and column gap controls.
 
-![Using column and row gap](public/images/property-panels/Gap.gif)
+<Frame>
+  ![Using column and row gap](public/images/property-panels/Gap.gif)
+</Frame>
 
-## Pro Tips
+## Pro tips
 
-It's best practice to apply Gap instead of Margin and Padding when possible. This assures that if you are to add or remove elements to a box that you don't have to readjust any of the spacing. It's also a great way to guardrail components you plan on using across your site and maintain consistency.
-
-## Shortcuts
-
-You can either drag and slide to increase Gap or simply input a number of pixels. It's best to eyeball it the first time by dragging, but then utilizing the pixel values to maintain that consistency throughout every section of your site.
-
-## Developer Notes
-
-When developing components, take into account the standard gap that designers are used to. It'll look weird if your component has 30 gap while everything else is using 50. See [Style](https://docs.makeswift.com/reference/controls/style).
+For a list or grid of elements with equal spacing, use the [gap](/product/component/property-controls/gap) control instead of margin or padding. This will ensure consistent and easy to manage spacing between elements.

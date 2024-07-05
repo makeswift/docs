@@ -1,60 +1,47 @@
 ---
 title: "Animations"
-description: ""
+description: "Animations add dynamic movement to your pages, enhancing the user experience. You can apply animations to a container (e.g., a box or section) and its direct child elements"
 icon: "sparkles" iconType: "duotone"
 ---
 
-## Introduction
+Makeswift offers a variety of effects and customization options, including delay and stagger controls.
 
-Animations add dynamic movement to your pages, enhancing the user experience. You can apply animations to a container (e.g., a box or section) and its direct child elements. Makeswift offers a variety of effects and customization options, including delay and stagger controls.
+<Frame>
+  ![Animating a section](public/images/property-panels/Animations.gif)
+</Frame>
 
-### Effect
+## Effects
 
-Makeswift provides a comprehensive list of animation effects suitable for different types of content. Effects trigger once per page load, so refresh your preview or builder to see changes. Animations can be applied to containers or their direct children, allowing for flexibility in how elements animate.
+Animations are triggered when an element appears into view, or on page load if the element is already in view. Makeswift provides a comprehensive list of animation effects to choose from.
 
-In addition to the effects themselves, you are able to apply animations to either a [Box](product/builder/box.mdx) or Section, or to the items directly within that Box or Section. When adding animation to item in, it will only animate the direct children of the element where you applying that animation to.
+<Frame>
+  ![Animation effects](public/images/property-panels/animation-effects.png)
+</Frame>
 
-![Animate boxes or items](public/images/property-panels/animate-box-items.png)
+Animations can be applied to boxes and/or their direct children, allowing for flexibility in how elements animate. When adding animations to a box's items, it will only animate the direct children of the box.
 
-![Animation effects](public/images/property-panels/animation-effects.png)
+<Frame>
+  ![Animate boxes or items](public/images/property-panels/animate-box-items.png)
+</Frame>
 
-### Delay
+## Delay
 
-Delay is the time interval between when an animation is triggered and when it actually starts playing. It's a valuable tool for controlling the pacing and timing of animations, allowing designers to create more engaging and polished user experiences. By adjusting the delay, you can synchronize animations with user interactions or other events, ensuring a seamless and intuitive browsing experience. The trigger for animations is based on a percentage view in the view port of the section that you have animated.
+Delay specifies the amount of time to wait before the start of an animation, allowing for precise control over when animations begin. This can be used to create more dynamic and engaging user experiences by staggering animations or synchronizing them with other page events.
 
-<Note>
-When applying animations to mobile devices, this is important to take into account as often sections that may not be as long on desktop due to multiple columns may become very long when stacking on mobile. This can cause content to be too delayed in populating and makes for a poor user experience. Be sure to test out or alter your animations for your Mobile device to avoid any issues with loading
+## Stagger
 
-</Note>
+Stagger allows you to easily apply a delay to each item within a box, creating a cascading effect. Stagger control is only available for the "Animate Items In" panel.
 
-### Stagger
+<Frame>
+  ![Using animation
+  stagger](public/images/property-panels/animation-stagger.gif)
+</Frame>
 
-In Makeswift, the stagger control feature allows you to finely tune the timing and sequence of animations applied to the contents within a section of your webpage automatically. With this control, you can create visually appealing designs by orchestrating when different elements come into view. Makeswift essentially does the math for you on delay necessary to cascade each item in your element, and then applies the stagger to the content from left to right in the grid. Stagger control is only available for the Animate Items In property.
+## Pro tips
 
-## Examples
+Very tall sections can cause animations to not be triggered. This can more likely happen on mobile devices since content is stacked. Be sure to test out and adjust your animations for your mobile device to avoid any
+issues.
 
-### Animating a Section
+## Developer notes
 
-![Animating a section](public/images/property-panels/Animations.gif)
-
-### Animating Items In with Stagger
-
-This is an exaggerated example of Stagger so that the difference between the to Animation Controls is more obvious.
-
-![Using animation stagger](public/images/property-panels/animation-stagger.gif)
-
-### Using both Animation Controls on a Section and its Contents
-
-You’ll notice that the grey section animates separately from the animation on the content itself. Take this into account when combining both animation controls, in this example the delay on the section prohibits the first two elements in the content from firing the animation at the right time.
-
-![Using both section and item animation](public/images/property-panels/animate-box.gif)
-
-## Pro Tips
-
-In the example above of combining both animation controls, you’ll notice the delay on the larger grey section prohibits the first two elements in the smaller content section from firing the animation at the right time. Keep this in mind when adding animations, sometimes less is more!
-
-## Developer Notes
-
-If you have animations above the fold it can hurt your page performance score based on Google’s standards surrounding Largest Contentful Painting (LCP). It’s best to keep animations under the fold.
-
-As a developer you can add your own animations to just about any component. While you can do this, take into consideration the animation controls available within Makeswift to determine whether you want to hardcode your animation to the component.
+Animations above the fold which are triggered on page load can hurt your page performance score based on Google's standards related to [Largest Contentful Painting (LCP)](https://web.dev/articles/lcp). To prevent lower performance scores, apply animations to elements that are scrolled into view.
