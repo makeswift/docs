@@ -1,64 +1,53 @@
 ---
 title: "Border"
-description:
+description: "Border is used to define the boundary around an element, providing visual separation and emphasis within a page."
 icon: "border-all" iconType: "duotone"
 ---
 
-## Introduction
+You can customize a border's **thickness**, **color**, and **style** to enhance the overall design and highlight specific content. Border can be applied to all edges uniformly or to specific sides of an element.
 
-Borders are visual boundaries that define the edges of elements on a webpage.
+## Thickness
 
-In Makeswift, borders are essential for defining and emphasizing the structure of your webpage's content. They can be applied to almost any element to enhance visual interest, highlight parts of the content, or separate sections. You can adjust their **thickness**, **color**, and **style** to achieve precise visual effects and create distinctive layouts.
+Thickness refers to the width of the border around an element. Specifying border thickness helps create elements with varying visual emphasis, from subtle accents to bold outlines.
 
-### Edges
+## Color
 
-Customize border properties for each edge of an element. This feature provides control over the appearance of borders, letting you set distinct [thickness](product/component/property-controls/borders#thickness) for the top, bottom, left, and right edges. Separate edge controls enable striking layouts and highlight specific content areas.
+You can select from your [site colors](/product/theming#colors) to use as a border color. Customizing border color adds visual interest, creates contrast, and reinforces branding.
 
-### Thickness
-
-Border thickness refers to the width of the border around an element. Adjusting thickness controls the visual prominence of borders, influencing the overall design. Specifying border thickness helps create elements with varying visual emphasis, from subtle accents to bold outlines.
-
-### Color
-
-Customizing border color adds visual interest, creates contrast, and reinforces branding. Use border color to enhance the aesthetic appeal of your webpages, establish visual hierarchy, and guide users' attention to key elements. Control over border color in Makeswift allows for versatile and impactful design choices.
-
-### Style
+## Style
 
 Choose from styles like dotted, dashed, or solid lines to suit different design preferences. Dotted lines create a pattern of small dots; dashed lines consist of short dashes separated by spaces; and solid lines provide a continuous, unbroken border.
 
 ## Examples
 
-### Card Borders
-
 Apply borders to boxes to make them pop out as cards.
 
-![Card borders](public/images/property-panels/borders1.gif)
+<Frame>![Card borders](public/images/property-panels/borders1.gif)</Frame>
 
-### Using Borders as Dividers
+You can apply borders to specific sides to create dividers between elements.
 
-You can use the edge control in the border property to create a divider quickly.
+<Frame>
+  ![Borders as dividers](public/images/property-panels/borders2.gif)
+</Frame>
 
-![Borders as dividers](public/images/property-panels/borders2.gif)
+## Pro tips
 
-## Pro Tips
+Borders complement shadows, giving your boxes a crisper edge and emphasizing the depth of the shadow. Lower the border color opacity to create a more subtle effect.
 
-Borders complement shadows, giving your boxes a crisper edge and emphasizing the depth of the shadow.
+<Frame>
+  ![Shadows and borders compliment
+  eachother](public/images/property-panels/borders3.gif)
+</Frame>
 
-![Shadows and borders compliment eachother](public/images/property-panels/borders3.gif)
+## Shortcuts
 
-Avoid using solid black for borders; make it more transparent to reduce visual harshness.
+While dragging the border panel inputs, hold the `⌥ Option` or `Alt` key to equally change border width on both sides of an element. Hold `⇧ Shift  + ⌥ Option` or `Alt` to equally change border width for all sides.
 
-![Reduce opacity of borders](public/images/property-panels/borders4.gif)
+<Frame>
+  ![⌥ Option (or Alt) hotkey for changing
+  borders](public/images/property-panels/borders5.gif)
+</Frame>
 
-### Shortcuts
+## Developer notes
 
-<Tip>
-  Hold the **⌥ Option (or Alt)** key to change corresponding borders, and **⇧
-  Shift + ⌥ Option (or Alt)** to change all borders equally.
-</Tip>
-
-![⌥ Option (or Alt) hotkey for changing borders](public/images/property-panels/borders5.gif)
-
-## Developer Notes
-
-When [styling](/developer/reference/controls/style) components, keep in mind the border properties available to users in Makeswift to avoid redundant design.
+You can give your team control over the border property for any custom component using the [Style](/developer/reference/controls/style) control.

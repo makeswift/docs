@@ -1,29 +1,21 @@
 ---
 title: "Height"
-description:
-icon: "objects-align-top" iconType: "duotone"
+description: "Height allows you to set the height of a Box to be driven by its content or to stretch to match the tallest element in the same row."
+icon: "arrows-up-down" iconType: "duotone"
 ---
 
-## Introduction
+By default, the height of a Box is set to be driven by its content using `auto`. Alternatively, you can select `Stretch` which will automatically stretch the height of a box to match the tallest element found in the same row.
 
-Height is used for grids of elements where you want the height of all of your cards to be the same, You’ll notice that while there are controls for [Width](/product/component/property-controls/width) of elements in Makeswift, there’s no granular controls of height as it’s driven by the amount of content.
+<Frame>
+  <img
+    src="public/images/builder/height1.png"
+    width="300"
+    alt="Height panel in Makeswift"
+  />
+</Frame>
 
-![Height property](public/images/builder/height1.png)
+## Pro tips
 
-By default, the height of a Box is set to be driven by its content (Auto). Alternatively, you can apply a height of “Stretch” which will automatically stretch the height of a Box to match the tallest element or Box found in the same row.
+We suggest selecting `stretch` for elements like cards or grids where you want to ensure a consistent height across all elements. This will help to create a cleaner and more organized layout.
 
-## Examples
-
-### Stretch vs. Auto
-
-![Stretch vs auto](public/images/builder/height2.gif)
-
-## Pro Tips
-
-Typically, you’ll use Stretch height for grids of cards so that your grid symmetrical and cleaner. Use this with Vertical [Alignment](/product/component/property-controls/alignment) if your content in each cards differs to enhance the symmetry even further.
-
-Auto is typically just used on singular boxes where you want to container to fit the content.
-
-## Developer Notes
-
-Take the height control into account when creating components with predetermined heights. Depending on the component, you may be able to utilize the Makeswift builder height settings instead of hard coding it into the component.
+<Frame>![Stretch vs auto](public/images/builder/height2.gif)</Frame>

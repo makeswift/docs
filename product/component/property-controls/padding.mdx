@@ -1,71 +1,47 @@
 ---
 title: "Padding"
-description:
+description: "Padding is the space created between a box's border and its contents. This differs from margin which is used to push elements away from each other."
 icon: "distribute-spacing-horizontal" iconType: "duotone"
 ---
 
-## Introduction
+Boxes contain extra handles on the inside when selected. Grab any of these inner handles to change its padding, which is displayed in green.
 
-Padding refers to the space between the content of an element and its border. It's a crucial property that allows designers to control the spacing around elements, ensuring proper alignment, readability, and visual balance within a layout.
+By adjusting the padding, you can create breathing room between the box's content and it's borders, preventing elements from feeling cramped or cluttered. This differs from [margin](/product/component/property-controls/margin) which is used to create space between smaller elements.
 
-By adjusting the padding, you can create breathing room between content and borders, preventing elements from feeling cramped or cluttered. This differs from [Margin](/product/component/property-controls/margin) which is used to push elements away from each other.
+<Frame>![Using padding overlays](public/images/builder/padding1.gif)</Frame>
 
-Boxes contain extra handles in the [overlay](/product/overlays) on the inside when selected. Grab any of these inner handles to change its padding, which is displayed in green.
+Padding can also be applied using the padding panel in the sidebar.
 
-![Using padding overlays](public/images/builder/padding1.gif)
+<Frame>
+  ![Using the padding sidebar property](public/images/builder/padding2.gif)
+</Frame>
 
-Padding can also be applied using the **Padding** panel in the sidebar.
+You can also easily remove a box's padding by clicking the blue Padding label in the panel and selecting “Reset to base”.
 
-![using the padding sidebar property](public/images/builder/padding2.gif)
-
-You can always get rid of padding all together if it's not necessary. The quickest way to do this when you're on Desktop responsiveness is to reset Padding to Base.
-
-![Reset padding to base](public/images/builder/padding3.gif)
+<Frame>![Reset padding to base](public/images/builder/padding3.gif)</Frame>
 
 ## Examples
 
-### Card padding
+### Cards
 
-Use padding on cards to give your content more room to breath and a more card like feel.
+Use padding to ensure content is not touching the edge of the card. This will make the card more visually appealing and easier to read. This is also easier to manage as opposed to applying width on each individual element within the card.
 
-![Using padding to make room](public/images/builder/padding4.gif)
+<Frame>![Using padding to make room](public/images/builder/padding4.gif)</Frame>
 
-### Section Padding
+## Pro tip
 
-Adding padding to your sections is crucial in guiding site visitors down your page. It helps determine when sections come into view which can also trigger [Animations](/product/component/property-controls/animations)
+Avoid using [padding](/product/component/property-controls/padding) instead of
+width for boxes. Width allows your element to resize responsively while
+maintaining a limit to prevent it from becoming too wide on larger screens.
+Padding is a hard pixel value that does not automatically get reduced and will
+cause your content to be squished on smaller devices.
 
-## Pro Tips
+## Shortcuts
 
-Padding is great to use for unique elements that require special spacing, but it's usually best to utilize [Margin](/product/component/property-controls/margin) or even better [Gap](/product/component/property-controls/gap) to achieve proper spacing.
+While dragging the handles or inputs, hold the `⌥ Option` or `Alt` key to equally change margin on both sides of an element. Hold `⇧ Shift  + ⌥ Option` or `Alt` to equally change margin for all sides.
 
-### Resetting to Base
+<Frame>![⌥ Option (or Alt) hotkey](public/images/builder/padding7.gif)</Frame>
 
-When the control label is purple, that means it's been overidden from default. To reset it to default (0 padding all around) simply click on the label and click “Reset to Base”. This is handy for components like [Box](/product/components#introduction) come with padding by default.
+## Developer notes
 
-![Purple to grey resetting to base](public/images/builder/padding5.gif)
-
-In addition, padding can be altered from device to device but the base will be inherited from the device immediately larger. Meaning when you use the Resetting to Base feature, it will not necessarily reset it to zero, but simply whatever it was on the previous device (Tablet for Mobile and Desktop for Tablet by default).
-
-![Padding altered from device to device](public/images/builder/padding6.gif)
-
-### Shortcuts
-
-<Tip>
-Hold the **⌥ Option (or Alt) key to change corresponding Margin/Padding, and ⇧ Shift  + ⌥ Option (or Alt) to change all Margin/Padding equally.**
-
-</Tip>
-
-![⌥ Option (or Alt) hotkey](public/images/builder/padding7.gif)
-
-<Tip>
-When resetting to base, you can also hold **⌥ Option (or Alt) and click to reset to base**
-
-</Tip>
-
-![⌥ Option (or Alt) + click hotkey](public/images/builder/padding8.gif)
-
-## Developer Notes
-
-Keep in mind the ability to alter padding within Makeswift when [styling](/developer/reference/controls/style) components.
-
-It may make sense to utilize a [slot](/developer/reference/controls/slot) to allow users to alter the padding to their choosing within a component
+You can give your team control over the padding property for any custom component using the [Style](/developer/reference/controls/style) control.
