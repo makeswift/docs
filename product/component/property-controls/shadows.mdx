@@ -1,12 +1,10 @@
 ---
 title: "Shadows"
-description:
-icon: "eclipse" iconType: "duotone"
+description: "Boxes can have shadows to give them a more real-world, dimensional feel. Add shadows by clicking the “+” in the “Shadows” panel located in the sidebar."
+icon: "clone" iconType: "duotone"
 ---
 
-## Introduction
-
-Boxes can have shadows to give them a more real-world, dimensional feel. Add shadows by clicking the “+” in the “Shadows” panel located in the sidebar. Here you can control the following options for the shadow:
+Here are the following options for shadows:
 
 - Type: drop or inner shadow
 - Color
@@ -15,29 +13,33 @@ Boxes can have shadows to give them a more real-world, dimensional feel. Add sha
 - Blur: the softness of the shadow
 - Spread: when blur is set to “0”, a larger size will act like a solid border
 
-![Shadow control panel](public/images/property-panels/shadow-1.png)
+<Frame>
+  <img width="300" src="public/images/property-panels/shadow-1.png" />
+</Frame>
+
+An element can have multiple shadows which can be layered and sorted,
+allowing you to add more realistic shadows or create unique effects.
+
+<Frame>
+  ![Applying shadows to cards](public/images/property-panels/shadow-3.png)
+</Frame>
 
 ## Examples
 
 You can change the color and angle of your shadow to add a glowing effect to a specific element.
 
-![Shadow angle and color](public/images/property-panels/shadow-2.gif)
+<Frame>
+  ![Shadow angle and color](public/images/property-panels/shadow-2.gif)
+</Frame>
 
 @Andrew Reifman I think I need some examples from you here as I've never really used Shadows in a meaningful way. I'd like to capture any uses that used to take a long time to do with CSS or HTML or whatever.
 
-## Pro Tips
+## Pro tips
 
-<Note>
-An element can have multiple shadows which can be layered and sorted as well, allowing you to get creative with how your elements appear.
+Avoid importing assets with shadows included in the original file, as this can be added in Makeswift.
 
-</Note>
+Another tip is to lower the color opacity and use a higher blur to create softer, more realistic shadows.
 
-![Applying shadows to cards](public/images/property-panels/shadow-3.png)
+## Developer notes
 
-To avoid destructive design, try to avoid importing assets with shadows included in the original file, as this can be added in Makeswift.
-
-Be more subtle with your shadows and increase the spread
-
-## Developer Notes
-
-Since Shadows can be added to almost anything, it may not make sense to add shadows to your component if it isn’t controllable within Makeswift. Unless you have multiple shadows within your component, it will likely be better handled in Makeswift.
+Since Shadows can be added to almost anything, it may not make sense to add shadows to your component if it isn't controllable within Makeswift. Unless you have multiple shadows within your component, it will likely be better handled in Makeswift.
