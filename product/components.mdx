@@ -8,73 +8,70 @@ icon: "cube" iconType: "solid"
 
 Several components come standard with the Makeswift default host. These are the 4 most common components you'll use to build your site:
 
-<Tabs>
-  <Tab title="Box">
-    The Box is your most valuable and versatile tool in the toolbar. It's works exactly as described, like a box you can place things in, but you can use it for so much more. If you're familiar with HTML, the easiest way to conceptualize a box is like a `<div>`. From a developer perspective, boxes can also be synonmous with [Slots](/developer/reference/controls/slot). Use boxes to configure different [layouts](/product/layouts).
-  </Tab>
+### Box
 
-  <Tab title="Text">
-    Double-click on any text component on your page to start editing it directly, similar to Google Docs.
+The Box is your most valuable and versatile tool in the toolbar. It's works exactly as described, like a box you can place things in, but you can use it for so much more. If you're familiar with HTML, the easiest way to conceptualize a box is like a `<div>`. From a developer perspective, boxes can also be synonmous with [Slots](/developer/reference/controls/slot). Use boxes to configure different [layouts](/product/layouts).
 
-    ### Block panel
+### Text
 
-    The block panel applies to an entire paragraph and correlates to the HTML tag used on the live page. Block options include:
+Double-click on any text component on your page to start editing it directly, similar to Google Docs. Text components use the "paragraph" block tag by default, but you can change it to a heading or list in the panels sidebar. Text components can also be styled with [text styles](/product/site/text-styles).
 
-    - Paragraph
-    - Heading 1
-    - Heading 2
-    - Heading 3
-    - Heading 4
-    - Heading 5
-    - Heading 6
-    - Bulleted list
-    - Numbered list
-    - Blockquotes
+The block panel applies to an entire paragraph and correlates to the HTML tag used on the live page. Block options include:
 
-    Block tags affect a page's [SEO](/product/SEO), so make sure to use the appropriate options throughout your site.
+- Paragraph
+- Heading 1
+- Heading 2
+- Heading 3
+- Heading 4
+- Heading 5
+- Heading 6
+- Bulleted list
+- Numbered list
+- Blockquotes
 
-  </Tab>
+Block tags affect a page's [SEO](/product/SEO), so make sure to use the appropriate options throughout your site.
 
-  <Tab title="Image">
-    The image component is placed directly as content on your page, unlike a background image that goes behind content. Think of an image as framed art on a wall, whereas the background image is the wallpaper behind it.
+### Image
 
-    To place an image, select an image element on your page and click "Choose" or “Replace” in the panels sidebar. Select an existing image from the files manager, or upload a new one.
+The image component is placed directly as content on your page, unlike a background image that goes behind content. Think of an image as framed art on a wall, whereas the background image is the wallpaper behind it.
 
-    <Frame>
-      ![Image properties](public/images/builder/image-props1.gif)
-    </Frame>
+To place an image, select an image element on your page and click "Choose" or “Replace” in the panels sidebar. Select an existing image from the files manager, or upload a new one.
 
-    **Alt text** is used to provide descriptions of an image and increases the accessibility of your website for visually impaired visitors. Images can also be given links, similar to buttons.
+<Frame>
+  <img
+    src="public/images/builder/image-props1.gif"
+    width="300"
+    alt="Image panels in Makeswift"
+  />
+</Frame>
 
-    Images will automatically be optimized and resized when published, increasing the performance of your site.
+**Alt text** is used to provide descriptions of an image and increases the accessibility of your website for visually impaired visitors. Images can also be given links, similar to buttons.
 
-  </Tab>
+Images will automatically be optimized and resized when published, increasing the performance of your site.
 
-  <Tab title="Button">
-    Use buttons to create links within your pages. The following are the link options for buttons:
+### Button
 
-    - Open a Makeswift page
-    - Open an external URL
-    - Compose an email
-    - Call a phone number
-    - Scroll to an element
+Use buttons to create links within your pages. The following are the link options for buttons:
 
-    ### Open page
+- Open a Makeswift page
+- Open an external URL
+- Compose an email
+- Call a phone number
+- Scroll to an element
 
-    When linking to other pages within your site, you'll select from a list of existing pages. Once a page is selected, the page's URL will be used for the button link. If the page's URL is updated in the future, the button link will automatically update as well.
+#### Open page
 
-    ### Scroll to element
+When linking to other pages within your site, you'll select from a list of existing pages. Once a page is selected, the page's URL will be used for the button link. If the page's URL is updated in the future, the button link will automatically update as well.
 
-    To use “Scroll to element” you must first give the target element a custom name. This name will now appear in the dropdown found in the button's “On click” panel.
+#### Scroll to element
 
-    You can also select the screen position of the scrolled to element.
+To use “Scroll to element” you must first give the target element a custom name. This name will now appear in the dropdown found in the button's “On click” panel.
 
-    ### Styling buttons
+You can also select the screen position of the scrolled to element.
 
-    You can select from a list of premade styles for your buttons. Along with styles, you can customize the size, shape, color and text styles.
+#### Styling buttons
 
-  </Tab>
-</Tabs>
+You can select from a list of premade styles for your buttons. Along with styles, you can customize the size, shape, color and text styles.
 
 ### Custom element name and ID
 
