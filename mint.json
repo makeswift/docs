@@ -38,13 +38,12 @@
   ],
   "navigation": [
     {
-      "group": "Getting Started",
+      "group": "Getting started",
       "pages": [
         "product/quickstart",
         "product/concepts",
         "product/builder-basics",
         "product/layouts",
-        "product/elements",
         "product/components",
         "product/theming",
         "product/files",
@@ -99,17 +98,9 @@
         }
       ]
     },
-    {
-      "group": "Guides",
-      "pages": ["product/guides"]
-    },
-    {
-      "group": "Tutorials",
-      "pages": ["product/tutorials"]
-    },
 
     {
-      "group": "Get Started",
+      "group": "Get started",
       "pages": ["developer/quickstart", "developer/concepts"]
     },
     {
