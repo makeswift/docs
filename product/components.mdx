@@ -1,8 +1,10 @@
 ---
 title: "Components"
 description: "Makeswift leverages the power of React to give you unparalleled flexibility and control over your website's design and functionality on an ongoing basis."
-icon: "gear-complex-code" iconType: "duotone"
+icon: "cube" iconType: "solid"
 ---
+
+## Basic components
 
 Several components come standard with the Makeswift default host. These are the 4 most common components you'll use to build your site:
 
@@ -63,7 +65,7 @@ Several components come standard with the Makeswift default host. These are the 
 
     ### Scroll to element
 
-    To use “Scroll to element” you must first give the target element a [custom name](/product/elements#custom-element-name-and-id). This name will now appear in the dropdown found in the button's “On click” panel.
+    To use “Scroll to element” you must first give the target element a custom name. This name will now appear in the dropdown found in the button's “On click” panel.
 
     You can also select the screen position of the scrolled to element.
 
@@ -74,7 +76,41 @@ Several components come standard with the Makeswift default host. These are the 
   </Tab>
 </Tabs>
 
-## Global Components
+### Custom element name and ID
+
+Elements are instances of components you manage in the [canvas](/product/builder-basics). Name an element by selecting it and changing the default name at the top of the panels sidebar. Custom names must be alphanumeric and cannot contain any spaces.
+
+<Frame>![Custom element name input](public/images/builder/elements6.gif)</Frame>
+
+Custom names are displayed in [breadcrumbs](/product/layouts#breadcrumbs), also making it easier to discern between nested boxes.
+
+<Frame>![element custom name](public/images/builder/element1.gif)</Frame>
+
+Elements with custom names can also be scrolled to with buttons, images, and text links. All elements with custom names will appear in the scroll to dropdown found in on click panels.
+
+<Frame>
+  ![elements in dropdown click panel](public/images/builder/elements2.gif)
+</Frame>
+
+Custom names also serve as IDs added to the element's HTML that can be targeted by custom CSS and JavaScript.
+
+### Element actions
+
+Actions for selected elements can be found at the top right of the panels sidebar or by using keyboard shortcuts.
+
+<Frame>
+  <img
+    src="public/images/builder/elements3.gif"
+    width="500"
+    alt="Element actions menu"
+  />
+</Frame>
+
+- Duplicating an element, or pressing `⌘ + D`, creates an exact copy, including nested elements, either below or next to the original.
+- Copy an element or press `⌘ + C` to save it to your clipboard. When pasting `⌘ + V`, you will be able to select exactly where to place the copied element, similar to sorting.
+- Delete any selected element by pressing delete or backspace.
+
+## Global components
 
 Global components are groups of elements that can be saved and reused across your entire site. If you make an update to a global component, every instance of that component on your site will be updated as well.
 
@@ -83,7 +119,11 @@ Global components are groups of elements that can be saved and reused across you
 Let's start by dropping in a navbar instant layout from the toolbar. Feel free to edit the styles of the navbar, as well as any links or styles in the navigation component. Select the navbar box and click on the cube icon found at the top of the panels sidebar.
 
 <Frame>
-  ![creating a global component](public/images/components/create-component.gif)
+  <img
+    src="public/images/components/create-component.gif"
+    width="500"
+    alt="Hovering over the cube icon in the panels sidebar to create a global component"
+  />
 </Frame>
 
 Name your global component and click “Yes, continue” to convert the navbar into an instance of your new global component.
@@ -91,7 +131,11 @@ Name your global component and click “Yes, continue” to convert the navbar i
 Navigate to a different page in the same site. In the toolbar to the left of the builder, you'll find another cube icon. Hovering over the icon will display all the global components available in your site. Like any other component, click and drag your new global component and place it on the page.
 
 <Frame>
-  ![accessing global components](public/images/components/access-components.gif)
+  <img
+    src="public/images/components/access-components.gif"
+    width="500"
+    alt="The global component tray in the toolbar"
+  />
 </Frame>
 
 ### Editing a global component
@@ -99,7 +143,11 @@ Navigate to a different page in the same site. In the toolbar to the left of the
 To edit a global component select any instance of that component in your site and click “Edit component” in the sidebar.
 
 <Frame>
-  ![editing a global component](public/images/components/edit-component.gif)
+  <img
+    src="public/images/components/edit-component.gif"
+    width="300"
+    alt="The edit global component button in the panels sidebar"
+  />
 </Frame>
 
 While editing a global component, you have full control over the content and styles for all elements found in that component. You can add or remove elements, and even place other global components inside.
@@ -124,5 +172,9 @@ You can manage your global components from within the global element tray access
 You can also detach any instance from it's global component, allowing you to make changes to those detached elements.
 
 <Frame>
-  ![detaching a global component](public/images/components/detatch-instance.gif)
+  <img
+    src="public/images/components/detatch-instance.gif"
+    width="300"
+    alt="The global component action menu with the option to detach an instance"
+  />
 </Frame>
