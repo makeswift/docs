@@ -4,112 +4,50 @@ description: Here you'll find some terminology to help you easily navigate Makes
 icon: "lightbulb-gear" iconType: "solid"
 ---
 
-<Tabs>
-  <Tab title="Workspace">
+## Workspace
 
-    A workspace is the digital space you and your organization share to manage sites built within Makeswift. Users are managed at the workspace level and have access to all sites in that workspace. Billing and subscription management are also handled in your workspace settings.
+A workspace is the digital space you and your organization share to manage sites built within Makeswift. Users are managed at the workspace level and have access to all sites in that workspace. Billing and subscription management are also handled in your workspace settings.
 
-    ## Switching workspaces
+A user can be added to multiple workspaces. To switch to another workspace, open the site dropdown at the top left of the app, click on your current workspace to open the switcher and select another workspace to navigate to.
 
-    A user can be invited to multiple workspaces. To switch to another workspace, open the site dropdown at the top left of the app, select the site switcher, and hover over your workspace.
+<Frame>
+  ![Workspace switcher in
+  Makeswift](public/images/workspace/switch-workspace.gif)
+</Frame>
 
-    <Frame>
-      ![Workspace switcher in
-      Makeswift](public/images/workspace/switch-workspace.gif)
-    </Frame>
+## Site
 
-  </Tab>
+A Makeswift site is an instance of your website that is 1 to 1 with your domain. You can host multiple sites in the same workspace.
 
-  <Tab title="Site">
-    A Makeswift site is an instance of your website that is 1 to 1 with your domain. You can host multiple sites in the same workspace.
+The following resources are shared by all pages in a site:
 
-    ## Site settings
+- [Colors](/product/site/colors)
+- [Text styles](/product/site/text-styles)
+- Fonts
+- [Snippets](/product/site/snippets)
+- Site [files](/product/files)
 
-    From the site settings menu you can:
+## Page
 
-    1. Rename the site
-    2. Set the site favicon
-    3. View the sitemap
-    4. Take the site offline or online
-    5. Delete the site
+A page is a single web page with a unique [pathname](/product/page/paths) in a Makeswift site. Pages can be created from templates or from scratch. To create a new page in Makeswift click the “+” button in the upper left of the builder.
 
-    ### Setting a favicon
+<Frame
+  caption="You have several
+  options for creating a page: page from template, blank page, and collection."
+>
+  ![Dropdown menu in Makeswift for new pages and
+  collections](public/images/pages/creating-pages.gif)
+</Frame>
 
-    To use a custom favicon, click “Change favicon”. The files manager will open, allowing you to select an existing file or add a new one.
+## Collection
 
-    A `.png` file with minimum dimensions of 32 x 32 pixels is recommended. Keep in mind that favicons are displayed at only 16 x 16 pixels in the browser tab, so anything larger than 32 x 32 pixels is unnecessary.
+Collections allow you to group pages such as blog posts and landing pages into folders. You can create unlimited collections and nest them within each other.
 
-    ## Site management
+Organize pages and collections by dragging and dropping them. Collections and pages appear in alphabetical order in the left sidebar.
 
-    ### Archive site
+To move a page out of a collection, drag it back up to the Pages label at the top of the sidebar.
 
-    When you archive a site all pages will be taken offline and you will not be billed for this site in future invoices. It's important to note that your pages will still be available and will seem to be online via the green live indicator, however they are not online.
-
-    You may choose to take an archived site back online. This will publish all pages that were previously live on your site as indicated by the green live icon.
-
-    ### Delete site
-
-    Deleting a site will remove all of its collections, pages, site files, and site database tables. Deleting a site cannot be undone. Form submissions saved to a workspace table will remain in your database and will not be deleted.
-
-    ## Sitemaps
-
-    You can dowload an `.xml` file of your sitemap from your site settings. Learn more about [sitemaps](/product/site/sitemaps).
-
-  </Tab>
-  
-  <Tab title="Page">
-    ## Creating pages
-
-    To create a new page in Makeswift click the “+” button in the upper left of the builder.
-
-    <Frame
-      caption="You have several
-      options for creating a page: page from template, blank page, and collection."
-    >
-      ![Dropdown menu in Makeswift for new pages and
-      collections](public/images/pages/creating-pages.gif)
-    </Frame>
-
-    ### Page from template
-
-    Use Makeswift-designed templates for a quick starting point, or use an existing page in your workspace as a template.
-
-    <Frame>
-      ![creating page from template ](public/images/pages/page-from-template.gif)
-    </Frame>
-
-    ### Blank page
-
-    Start from scratch with a blank page and customize your layout by adding components.
-
-    <Frame>
-      ![creating page from scratch ](public/images/pages/page-from-scratch.gif)
-    </Frame>
-
-    ### Collections
-
-    Collections allow you to group pages such as blog posts and landing pages into folders. You can create unlimited collections and nest them within each other.
-
-    Organize pages and collections by dragging and dropping them. Collections and pages appear in alphabetical order in the left sidebar.
-
-    To move a page out of a collection, drag it back up to the Pages label at the top of the sidebar.
-
-    <Frame>
-      ![move a page out of a collection
-      ](public/images/pages/remove-from-collection.gif)
-    </Frame>
-
-    ## **Actions**
-
-    Open the action menu for a page or collection to reveal its actions. Along with rename and delete, page actions include:
-
-    - Viewing the live page
-    - Editing the page URL
-    - Copying the page URL
-    - Duplicating the page
-    - Taking a page offline
-
-    <Note>See more information on [page settings](/product/page/paths)</Note>
-
-  </Tab>
-</Tabs>
+<Frame>
+  ![move a page out of a collection
+  ](public/images/pages/remove-from-collection.gif)
+</Frame>

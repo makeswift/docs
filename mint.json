@@ -63,21 +63,19 @@
         {
           "group": "Site",
           "pages": [
+            "product/site/settings",
             "product/site/colors",
             "product/site/text-styles",
             "product/site/hosting",
             "product/site/domains",
+            "product/site/snippets",
             "product/site/redirects",
             "product/site/sitemaps"
           ]
         },
         {
           "group": "Page",
-          "pages": [
-            "product/page/paths",
-            "product/page/metadata",
-            "product/page/snippets"
-          ]
+          "pages": ["product/page/paths", "product/page/metadata"]
         },
         {
           "group": "Panels",
