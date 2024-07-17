@@ -213,6 +213,162 @@
     {
       "source": "/guides/manual-installation",
       "destination": "/pages-router/installation"
+    },
+    {
+      "source": "/app-router/installation",
+      "destination": "/developer/app-router/installation"
+    },
+    {
+      "source": "/app-router/localization",
+      "destination": "/developer/app-router/localization"
+    },
+    {
+      "source": "/concepts",
+      "destination": "/developer/concepts"
+    },
+    {
+      "source": "/guides/environments",
+      "destination": "/developer/guides/environments"
+    },
+    {
+      "source": "/guides/troubleshooting",
+      "destination": "/developer/guides/troubleshooting"
+    },
+    {
+      "source": "/integrations/bigcommerce",
+      "destination": "/developer/integrations/bigcommerce"
+    },
+    {
+      "source": "/pages-router/installation",
+      "destination": "/developer/pages-router/installation"
+    },
+    {
+      "source": "/pages-router/localization",
+      "destination": "/developer/pages-router/localization"
+    },
+    {
+      "source": "/quickstart",
+      "destination": "/developer/quickstart"
+    },
+    {
+      "source": "/reference/client/constructor",
+      "destination": "/developer/reference/client/constructor"
+    },
+    {
+      "source": "/reference/client/get-page-snapshot",
+      "destination": "/developer/reference/client/get-page-snapshot"
+    },
+    {
+      "source": "/reference/client/get-pages",
+      "destination": "/developer/reference/client/get-pages"
+    },
+    {
+      "source": "/reference/client/get-site-version",
+      "destination": "/developer/reference/client/get-site-version"
+    },
+    {
+      "source": "/reference/client/get-sitemap",
+      "destination": "/developer/reference/client/get-sitemap"
+    },
+    {
+      "source": "/reference/components/page",
+      "destination": "/developer/reference/components/page"
+    },
+    {
+      "source": "/reference/components/react-runtime-provider",
+      "destination": "/developer/reference/components/react-runtime-provider"
+    },
+    {
+      "source": "/reference/controls/checkbox",
+      "destination": "/developer/reference/controls/checkbox"
+    },
+    {
+      "source": "/reference/controls/color",
+      "destination": "/developer/reference/controls/color"
+    },
+    {
+      "source": "/reference/controls/combobox",
+      "destination": "/developer/reference/controls/combobox"
+    },
+    {
+      "source": "/reference/controls/image",
+      "destination": "/developer/reference/controls/image"
+    },
+    {
+      "source": "/reference/controls/link",
+      "destination": "/developer/reference/controls/link"
+    },
+    {
+      "source": "/reference/controls/list",
+      "destination": "/developer/reference/controls/list"
+    },
+    {
+      "source": "/reference/controls/number",
+      "destination": "/developer/reference/controls/number"
+    },
+    {
+      "source": "/reference/controls/rich-text",
+      "destination": "/developer/reference/controls/rich-text"
+    },
+    {
+      "source": "/reference/controls/select",
+      "destination": "/developer/reference/controls/select"
+    },
+    {
+      "source": "/reference/controls/shape",
+      "destination": "/developer/reference/controls/shape"
+    },
+    {
+      "source": "/reference/controls/slot",
+      "destination": "/developer/reference/controls/slot"
+    },
+    {
+      "source": "/reference/controls/style",
+      "destination": "/developer/reference/controls/style"
+    },
+    {
+      "source": "/reference/controls/text-area",
+      "destination": "/developer/reference/controls/text-area"
+    },
+    {
+      "source": "/reference/controls/text-input",
+      "destination": "/developer/reference/controls/text-input"
+    },
+    {
+      "source": "/reference/makeswift-api-handler",
+      "destination": "/developer/reference/makeswift-api-handler"
+    },
+    {
+      "source": "/reference/runtime/constructor",
+      "destination": "/developer/reference/runtime/constructor"
+    },
+    {
+      "source": "/reference/runtime/register-component",
+      "destination": "/developer/reference/runtime/register-component"
+    },
+    {
+      "source": "/upgrading/0.13.0",
+      "destination": "/developer/upgrading/0.13.0"
+    },
+    {
+      "source": "/upgrading/0.14.0",
+      "destination": "/developer/upgrading/0.14.0"
+    },
+    {
+      "source": "/upgrading/0.15.0",
+      "destination": "/developer/upgrading/0.15.0"
+    },
+    {
+      "source": "/upgrading/0.18.0",
+      "destination": "/developer/upgrading/0.18.0"
+    },
+    {
+      "source": "/upgrading/0.19.0",
+      "destination": "/developer/upgrading/0.19.0"
+    },
+    {
+      "source": "/upgrading/0.9.0",
+      "destination": "/developer/upgrading/0.9.0"
     }
   ]
 }
