@@ -152,7 +152,7 @@ export async function getAllPages() {
 By default, `getPages` will return data reflecting the state of published
 Makeswift pages. To specify which variant of your pages you want to retrieve,
 you can pass a value to the `siteVersion` option. If your site is using pages
-router, use the [`getSiteVersion` method](/reference/client/get-site-version) to
+router, use the [`getSiteVersion` method](/developer/reference/client/get-site-version) to
 retrieve the current site version. If your site is using app router, use the
 `getSiteVersion` function.
 
@@ -330,7 +330,7 @@ A few things to note:
 ### Localization
 
 To retrieve pages that you've created in one of your [registered
-locales](/app-router/localization), you can pass the `locale` option to the
+locales](/developer/app-router/localization), you can pass the `locale` option to the
 `getPages` method. Each returned page will include any of its localized
 alternates in the `localizedVariants` field.
 
@@ -348,7 +348,7 @@ be returned. Each page will include any of its localized alternates in the
 
 For an example of how to use `getPages` with localization to statically generate
 paths in Next.js app router, [see
-here](/app-router/localization#getting-started).
+here](/developer/app-router/localization#getting-started).
 
 ## Changelog
 

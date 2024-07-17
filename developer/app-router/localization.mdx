@@ -24,23 +24,23 @@ import LocalizationExample from "/snippets/app-router/localization.mdx"
 <Step title="Add locales in the Makeswift builder">
 Open site settings and go to the "Locales" tab:
 
-![Localization first step](../images/localization-first-step.png)
+![Localization first step](/images/localization-first-step.png)
 
 To add a new locale, click the "+ Add locale" button. You can modify or delete existing locales by hovering over the locale:
 
-![Hovering over the locale](../images/localization-hover-locale.png)
+![Hovering over the locale](/images/localization-hover-locale.png)
 
 You can also modify the default locale by hovering over the default locale and clicking the edit button.
 
 Once you add all the locales you need, it might look like this:
 
-![Manage locales in settings](../images/localization-manage-locales.png)
+![Manage locales in settings](/images/localization-manage-locales.png)
 
 </Step>
 
 <Step title="Configure your Next.js app for localization">
 
-Follow the [internationalization docs](https://nextjs.org/docs/app/building-your-application/routing/internationalization) for app router and make sure that all routes except the [Makeswift API handler](/reference/makeswift-api-handler) are nested inside `/app/[lang]`.
+Follow the [internationalization docs](https://nextjs.org/docs/app/building-your-application/routing/internationalization) for app router and make sure that all routes except the [Makeswift API handler](/developer/reference/makeswift-api-handler) are nested inside `/app/[lang]`.
 
 </Step>
 
@@ -56,7 +56,7 @@ Update your catch-all route to fetch the snapshot by locale.
 
 Once you've set everything up, you should be able to switch to the locale using the locale switcher on the builder.
 
-![Manage locales in settings](../images/localization-locales-switcher.png)
+![Manage locales in settings](/images/localization-locales-switcher.png)
 
 <Note>
 
@@ -75,7 +75,7 @@ but nested on the locale's path. For example, `es` pages will be located on `exa
 
 To use domain-based localization, just add the domain to the locale on your site settings:
 
-![Adding domain-based on settings](../images/localization-domain-based-settings.png)
+![Adding domain-based on settings](/images/localization-domain-based-settings.png)
 
 Once you've done that, the Spanish localized pages will be located on `example.es/page`.
 
