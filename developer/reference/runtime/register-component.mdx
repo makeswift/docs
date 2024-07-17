@@ -25,7 +25,7 @@ description: Adds your components to the Makeswift builder.
           The icon shown in the Makeswift builder.
        </ParamField>
        <ParamField query="props" type="Record<string, Control>" required>
-          An object mapping prop names to Makeswift [controls](/concepts#controls).
+          An object mapping prop names to Makeswift [controls](/developer/concepts#controls).
        </ParamField>
      </Expandable>
    </ParamField>
@@ -37,7 +37,7 @@ description: Adds your components to the Makeswift builder.
 This example shows how to register a `Box` component. `'box'` is the value for `type`, which must
 be unique, as Makeswift uses this value to identify the component. This value shouldn't change once you use the
 component in the Makeswift builder. `'Box'` is the `label`, which appears in
-the Makeswift builder. The example applies a [`Style`](/controls/style) control to the
+the Makeswift builder. The example applies a [`Style`](/developer/reference/controls/style) control to the
 `className` prop.
 
 ```tsx makeswift/components.tsx
@@ -187,4 +187,4 @@ import "@/components/Sphere/Sphere.makeswift"
  */
 ```
 
-The file `makeswift/components.ts` should be imported wherever you use [`<ReactRuntimeProvider>`](/reference/components/react-runtime-provider) in your app.
+The file `makeswift/components.ts` should be imported wherever you use [`<ReactRuntimeProvider>`](/developer/reference/components/react-runtime-provider) in your app.

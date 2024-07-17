@@ -12,7 +12,7 @@ import ApiHandlerExample from "/snippets/pages-router/api-handler.mdx"
 import PagesAppExample from "/snippets/pages-router/pages-app.mdx"
 
 The fastest way to get started with Makeswift on a new Next.js project is to follow the
-[quickstart](/quickstart) guide. If you have an existing Next.js application
+[quickstart](/developer/quickstart) guide. If you have an existing Next.js application
 or want to set things up yourself, continue with the rest of this guide.
 
 ## System requirements
@@ -55,7 +55,7 @@ MAKESWIFT_SITE_API_KEY=paste-your-api-key-here
   </Step>
   <Step title="Add Makeswift runtime and client">
   
-Create files for the Makeswift [runtime](/reference/runtime/constructor) and [client](/reference/client/constructor).
+Create files for the Makeswift [runtime](/developer/reference/runtime/constructor) and [client](/developer/reference/client/constructor).
 
 <CodeGroup>
   <RuntimeExample />
@@ -122,7 +122,7 @@ export default class MyDocument extends Document {
   </Step>
   <Step title="Register components with Makeswift">
   
-Create a file for registered components called `makeswift/components.tsx`. In this example, only one component is registered. However, as you register more components, we recommend creating separate files for each component and rolling up the imports in the `makeswift/components.ts` file. Learn more about [registering components](/reference/runtime/register-component).
+Create a file for registered components called `makeswift/components.tsx`. In this example, only one component is registered. However, as you register more components, we recommend creating separate files for each component and rolling up the imports in the `makeswift/components.ts` file. Learn more about [registering components](/developer/reference/runtime/register-component).
 
 <ComponentsExample />
 
@@ -137,7 +137,7 @@ If you don't have a [Custom App](https://nextjs.org/docs/pages/building-your-app
 
   <Step title="Add a route for Makeswift pages">
   
-Create an [optional catch-all route](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#optional-catch-all-segments) named `[[...path]].tsx`. You will use this route to fetch page snapshots from the `Makeswift` client and render them using the [`Page`](/reference/components/page) component.
+Create an [optional catch-all route](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#optional-catch-all-segments) named `[[...path]].tsx`. You will use this route to fetch page snapshots from the `Makeswift` client and render them using the [`Page`](/developer/reference/components/page) component.
 
 <PagesCatchAllExample />
 

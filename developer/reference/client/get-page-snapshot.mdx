@@ -16,7 +16,7 @@ import PagesCatchAllLocalizedExample from "/snippets/pages-router/catch-all-loca
      <Expandable>
        <ParamField query="siteVersion" type="SiteVersion" required>
          The return value from
-         [`getSiteVersion`](/reference/makeswift/get-site-version).
+         [`getSiteVersion`](/developer/reference/client/get-site-version).
        </ParamField>
        <ParamField query="locale" type="string">
          A valid locale string.
@@ -28,14 +28,14 @@ import PagesCatchAllLocalizedExample from "/snippets/pages-router/catch-all-loca
 
 <ResponseField name="snapshot" type="Snapshot">
   An opaque `Snapshot` object that is only intended to be rendered by the
-  [`<Page>`](/reference/components/page) component.
+  [`<Page>`](/developer/reference/components/page) component.
 </ResponseField>
 
 ## Examples
 
 ### Basic usage
 
-The following example sets up a [catch all route](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#catch-all-segments) where page [snapshots](/architecture/concepts#snapshots) are fetched from Makeswift and rendered using the [`<Page>`](/reference/components/page) component.
+The following example sets up a [catch all route](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#catch-all-segments) where page snapshots are fetched from Makeswift and rendered using the [`<Page>`](/developer/reference/components/page) component.
 
 <PagesCatchAllExample />
 
