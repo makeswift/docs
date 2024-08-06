@@ -10,24 +10,15 @@ with [mixed content](https://developer.mozilla.org/en-US/Web/Security/Mixed_cont
 Safari blocks the loading of all mixed-content resources. This means that `https://app.makeswift.com`,
 which is loaded via **HTTPS**, can't load `http://localhost:3000`, since it is loaded via **HTTP**.
 
-The solution to this issue is to run your local Next.js app with HTTPS. If you're not familiar with this, see our <a href="https://www.makeswift.com/blog/accessing-your-local-nextjs-dev-server-using-https">how to run your Next.js app locally with HTTPS</a> blog post.
+The solution to this issue is to run your local Next.js app with **HTTPS**. You can do this in Next.js with the following command:
 
-If you follow the instructions in the blog post, i.e., use `mkcert`, you might need to make sure
-that Node.js trusts `mkcert`'s CA. This can be done with the `NODE_EXTRA_CA_CERTS` env variable.
-
-For example, in your `package.json`:
-
-```diff
--    "dev": "next dev",
-+    "dev": "NODE_EXTRA_CA_CERTS=\"$(mkcert -CAROOT)/rootCA.pem\" next dev",
+```
+next dev --experimental-https
 ```
 
-If you don't make this change you might see an `UNABLE_TO_VERIFY_LEAF_SIGNATURE` error. Read more in
-[this Stack Overflow answer](https://stackoverflow.com/a/68135600).
+> The `--experimental-https` flag requires a Next.js version of `13.5.1` or higher.
 
-Makeswift checks if your app is running in development and will automatically bypass the SSL proxy,
-so you should not encounter this error unless you're running a production build of your Next.js app
-or Makeswift fails to bypass the SSL proxy for some reason.
+For full details, see their [How can I run Next.js on localhost through HTTPS?](https://vercel.com/guides/access-nextjs-localhost-https-certificate-self-signed) guide.
 
 ## Builder isn't loading in Brave Browser
 
