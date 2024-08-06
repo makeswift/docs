@@ -1,19 +1,18 @@
 ---
-title: "Layouts"
-description: "Layout refers to the composition of your page. Pages are in and of themselves components containing other components. The Makeswift builder gives you controls to organize and navigate layouts easily."
-icon: "table-layout"
+title: 'Layouts'
+description: 'Layouts are building blocks used to compose pages and are most commonly created using the Box component. The Makeswift builder gives you controls to organize and navigate layouts easily.'
+icon: 'table-layout'
 ---
 
-## Creating a layout inside of a Box
+## Creating a layout using a Box
 
-When you first drop a [Box](/product/components#box) onto your page, it will appear as an empty rectangle. You can add any number of components into a box. Components placed side-by-side create columns, and ones placed above and below create new rows.
+You can create a new layout by clicking the [Box](/product/components#box) component in the toolbar and dragging it onto your page. You can add any number of [Components](/product/components) into a Box, including other Boxes. Components can be placed side-by-side to create columns or placed above and below to create new rows.
+
+> Shortcut: Use `x` to select the Box tool. Then, click on the page where you want to add it.
 
 <Frame>![Creating layouts with boxes](/images/builder/layouts1.gif)</Frame>
 
-Boxes can also be nested inside of each other. When creating a multi-column layout,
-where each column has multiple elements, you'll most likely want to wrap each column
-in a Box. This way you can sort columns easily and keep all the elements together
-when creating breakpoints for mobile devices.
+When creating a multi-column layout, where each column has multiple elements, you’ll most likely want to wrap each column in a Box. This way you can sort columns easily and keep all the elements together when creating [breakpoints](/product/responsive-design) for mobile devices.
 
 ## Overlays
 
@@ -85,14 +84,12 @@ Overlays are controls placed directly on components in the canvas to allow you t
 
 ## Breadcrumbs
 
-If you have a lot of nested content on your page, it can be difficult to find and click on a specific box. Breadcrumbs are designed to help you understand your page structure and make it easier to select and sort your boxes. To get to the breadcrumbs, hover over an element within the desired box. Move your cursor to the label found at the top left of the component and it's breadcrumbs will open.
+If you have a lot of nested content on your page, it can be difficult to find and click on a specific Box. Breadcrumbs are designed to help you understand your page structure and make it easier to select and sort your Boxes. To get to the breadcrumbs, hover over an element within the desired Box. Move your cursor to the label found at the top left of the component and it's breadcrumbs will open.
 
 ### Selection
 
-You can hover over each breadcrumb to see its corresponding box or element. Click once on any breadcrumb in the list to select it.
+You can hover over each breadcrumb to see its corresponding Box or element. Click once on any breadcrumb in the list to select it.
 
 <Frame>![Using Makeswift breadcrumbs](/images/builder/Breadcrumbs.gif)</Frame>
 
-### Sorting
-
-You can also click and hold a breadcrumb to start sorting that highlighted box.
+You can also click and hold a breadcrumb to drag and drop the highlighted box somewhere else.
