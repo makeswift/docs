@@ -1,94 +1,30 @@
 ---
 title: 'Layouts'
-description: 'Layouts are building blocks used to compose pages and are most commonly created using the Box component. The Makeswift builder gives you controls to organize and navigate layouts easily.'
+description: 'Layout refers to the composition of your page. Pages are in and of themselves components containing other components. The Makeswift builder gives you controls to organize and navigate layouts easily.'
 icon: 'table-layout'
 ---
 
 ## Creating a layout using a Box
 
-You can create a new layout by clicking the [Box](/product/components#box) component in the toolbar and dragging it onto your page. You can add any number of [Components](/product/components) into a Box, including other Boxes. Components can be placed side-by-side to create columns or placed above and below to create new rows.
+You can create a new layout by clicking the [Box](/product/components#box) component in the toolbar, then clicking to add it onto your page. You can add any number of [Components](/product/components) into a Box, including other Boxes. Components can be placed side-by-side to create columns or placed above and below to create new rows.
 
-> Shortcut: Use `x` to select the Box tool. Then, click on the page where you want to add it.
+> Shortcut: Use the `x` key to select the Box tool. Then, click on the page where you want to add it.
 
 <Frame>![Creating layouts with boxes](/images/builder/layouts1.gif)</Frame>
 
-When creating a multi-column layout, where each column has multiple elements, you’ll most likely want to wrap each column in a Box. This way you can sort columns easily and keep all the elements together when creating [breakpoints](/product/responsive-design) for mobile devices.
+When creating a multi-column layout, where each column has multiple components, you’ll most likely want to wrap each column in a Box. This way you can move columns easily and keep all the components together when creating [breakpoints](/product/responsive-design) for mobile devices.
 
-## Overlays
+## 12-column grid
 
-Overlays are controls placed directly on components in the canvas to allow you to quickly adjust properties like width, margin, and padding.
+Boxes use a 12-column grid to allow for precise and flexible layout design. You can easily span components across multiple columns or align them within a single column, creating balanced and visually appealing designs. To adjust, simply click and hold the handle in the center of the dashed column line and drag.
 
-<Tabs>
-  <Tab title="Width">
-    The [Width](/product/component/property-controls/width) control makes it easy to adjust the width of elements on your pages. With intuitive handles and inputs, you can quickly set exact pixel widths or percentages to get your layout just right. Makeswift also ensures that elements are responsive and can adapt seamlessly to different screen sizes.
-  </Tab>
-
-  <Tab title="Grid">
-    Boxes use a 12-column grid to allow for precise and flexible layout design. You can easily span elements across multiple columns or align them within a single column, creating balanced and visually appealing designs. To adjust, simply click and hold the handle in the center of the dashed column line and drag.
-
-    <Frame>
-      ![12 column grid](/images/builder/Overlays.gif)
-    </Frame>
-
-  </Tab>
-  <Tab title="Margin">
-    [Margin](/product/component/property-controls/margin) is the space between elements. With an element selected, drag the top or bottom handles to change its margin. For a box, they will be the top-most and bottom-most handles.
-
-    Left or right margins become available in the sidebar when the element is left or right-aligned. You cannot adjust the left or right margins if the element is center aligned. In this case, try adjusting the width instead.
-
-    <Frame>
-      ![Alignment using margin](/images/builder/Overlays2.gif)
-    </Frame>
-
-    <Info>
-      While dragging the handles or inputs, hold the `⌥ Option` or `Alt` key to equally change margin on both sides of an element. Hold `⇧ Shift  + ⌥ Option` or `Alt` to equally change margin for all sides.
-    </Info>
-
-    <Frame>
-      ![Padding and margin control shortcut](/images/builder/Overlays6.gif)
-    </Frame>
-
-  </Tab>
-
-  <Tab title="Padding">
-    [Padding](/product/component/property-controls/padding) is the space created between a box's border and its contents. This differs from margin which is used to push elements away from each other.
-
-    Boxes contain extra handles on the inside when selected. Grab any of these inner handles to change its padding, which is displayed in green.
-
-    <Frame>
-      ![Padding](/images/builder/Overlays3.gif)
-    </Frame>
-
-    Padding can also be applied using the Padding panel in the right sidebar.
-
-    <Frame>
-      ![Padding in the panel](/images/builder/Overlays4.gif)
-    </Frame>
-
-    You can also easily remove a box's padding by clicking the blue Padding label in the panel and selecting "Reset to base". This also works for all panels in Makeswift. In smaller devices, blue panel labels will display options to [reset to larger breakpoints](/product/responsive-design).
-
-    <Frame>
-      ![Reset padding to base](/images/builder/Overlays5.gif)
-    </Frame>
-
-    <Info>
-      While dragging the handles or inputs, hold the `⌥ Option` or `Alt` key to equally change margin on both sides of an element. Hold `⇧ Shift  + ⌥ Option` or `Alt` to equally change margin for all sides.
-    </Info>
-
-    <Frame>
-      ![Padding and margin control shortcut](/images/builder/Overlays6.gif)
-    </Frame>
-
-  </Tab>
-</Tabs>
+<Frame>![12 column grid](/images/builder/Overlays.gif)</Frame>
 
 ## Breadcrumbs
 
-If you have a lot of nested content on your page, it can be difficult to find and click on a specific Box. Breadcrumbs are designed to help you understand your page structure and make it easier to select and sort your Boxes. To get to the breadcrumbs, hover over an element within the desired Box. Move your cursor to the label found at the top left of the component and it's breadcrumbs will open.
+If you have a lot of nested content on your page, it can be difficult to find and click on a specific Box. Breadcrumbs are designed to help you understand your page structure and make it easier to select and move your Boxes. To get to the breadcrumbs, hover over a component within the desired Box. Move your cursor to the label found at the top left of the component and it's breadcrumbs will open.
 
-### Selection
-
-You can hover over each breadcrumb to see its corresponding Box or element. Click once on any breadcrumb in the list to select it.
+You can hover over each breadcrumb to see its corresponding Box. Click once on any breadcrumb in the list to select it.
 
 <Frame>![Using Makeswift breadcrumbs](/images/builder/Breadcrumbs.gif)</Frame>
 
