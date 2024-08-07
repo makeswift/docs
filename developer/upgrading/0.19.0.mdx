@@ -9,8 +9,9 @@ If you haven't upgraded to `0.18.0` please read the [upgrading guide](/developer
   client method. If you're not using this method, you can safely skip this upgrade
   guide.
 
-  We also recommend following this guide if you're using the `getSitemap` client
-  method, which has been deprecated in this release.
+We also recommend following this guide if you're using the `getSitemap` client
+method, which has been deprecated in this release.
+
 </Warning>
 
 ### Updating usage of `getPages`
@@ -67,7 +68,7 @@ function pageToSitemapItem(page: MakeswiftPage) {
   const pageUrl = new URL(page.path, DOMAIN);
   return {
     loc: pageUrl.href,
-    lastmod: page.createdAt,
+    lastmod: page.updatedAt,
     changefreq: page.sitemapFrequency ?? DEFAULT_FREQUENCY,
     priority: page.sitemapPriority ?? DEFAULT_PRIORITY,
     alternateRefs: page.localizedVariants.map((variant) => {
@@ -112,7 +113,7 @@ function pageToSitemapEntry(page: MakeswiftPage): NextSitemapItem {
   const pageUrl = new URL(page.path, DOMAIN);
   return {
     url: pageUrl.href,
-    lastModified: page.createdAt,
+    lastModified: page.updatedAt,
     changeFrequency: page.sitemapFrequency ?? DEFAULT_FREQUENCY,
     priority: page.sitemapPriority ?? DEFAULT_PRIORITY,
   };
