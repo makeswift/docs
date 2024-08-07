@@ -10,7 +10,7 @@ If you haven't upgraded to `0.18.0` please read the [upgrading guide](/developer
   guide.
 
   We also recommend following this guide if you're using the `getSitemap` client
-  method, which has been deprecated in this release. 
+  method, which has been deprecated in this release.
 </Warning>
 
 ### Updating usage of `getPages`
@@ -45,11 +45,11 @@ refer to the [`getPages` documentation](/developer/reference/client/get-pages).
 `v0.19.0` of the runtime also deprecates the `getSitemap` client method. While
 `getSitemap` is still available in this version, **it will be removed in a
 future release.** We recommend using the `getPages` method to construct your
-sitemap instead. 
+sitemap instead.
 
 Note that the deprecation of `getSitemap` now involves the host
 being responsible for the construction of page URLs in the sitemap (either with
-domain or path based localization). 
+domain or path based localization).
 
 Below is an example for pages router that uses path-based localization with the
 `next-sitemap` library:
@@ -82,7 +82,7 @@ function pageToSitemapItem(page: MakeswiftPage) {
 }
 
 export async function getServerSideProps(context) {
-  const sitemap = client
+  const sitemap = await client
     .getPages()
     .filter((page) => !page.excludedFromSearch)
     .map((page) => pageToSitemapItem(page))
