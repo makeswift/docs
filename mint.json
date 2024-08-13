@@ -335,6 +335,10 @@
       "destination": "/developer/reference/controls/text-input"
     },
     {
+      "source": "/docs/controls/rich-text",
+      "destination": "/developer/reference/controls/rich-text"
+    },
+    {
       "source": "/reference/makeswift-api-handler",
       "destination": "/developer/reference/makeswift-api-handler"
     },
