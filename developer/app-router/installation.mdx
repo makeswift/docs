@@ -2,13 +2,13 @@
 title: Installation
 ---
 
-import CatchAllExample from "/snippets/app-router/catch-all.mdx"
-import ProvidersExample from "/snippets/app-router/providers.mdx"
-import LayoutExample from "/snippets/app-router/layout.mdx"
-import ApiHandlerExample from "/snippets/app-router/api-handler.mdx"
-import RuntimeExample from "/snippets/reference/runtime.mdx"
-import ClientExample from "/snippets/reference/client.mdx"
-import NextConfigExample from "/snippets/reference/next-config.mdx"
+import CatchAllExample from "/snippets/app-router/catch-all.mdx";
+import ProvidersExample from "/snippets/app-router/providers.mdx";
+import LayoutExample from "/snippets/app-router/layout.mdx";
+import ApiHandlerExample from "/snippets/app-router/api-handler.mdx";
+import RuntimeExample from "/snippets/reference/runtime.mdx";
+import ClientExample from "/snippets/reference/client.mdx";
+import NextConfigExample from "/snippets/reference/next-config.mdx";
 
 The fastest way to get started with Makeswift on a new Next.js project is to follow the
 [quickstart](/developer/quickstart) guide. If you have an existing Next.js application
@@ -59,7 +59,7 @@ MAKESWIFT_SITE_API_KEY=paste-your-api-key-here
   </Step>
   <Step title="Add Makeswift runtime and client">
   
-Create files for the Makeswift [runtime](/developer/reference/runtime/constructor) and [client](/developer/reference/client/constructor).
+Create files for the Makeswift [runtime](/developer/reference/runtime/constructor) and [client](/developer/reference/client/constructor) in a `src/makeswift` directory.
 
 <CodeGroup>
   <RuntimeExample />
@@ -69,7 +69,7 @@ Create files for the Makeswift [runtime](/developer/reference/runtime/constructo
 </Step>
   <Step title="Add the Makeswift API handler">
   
-Similar to [NextAuth.js](https://next-auth.js.org/), Makeswift uses an API handler to communicate with your Next.js app. Create the file `app/api/makeswift/[...makeswift]/route.ts`.
+Similar to [NextAuth.js](https://next-auth.js.org/), Makeswift uses an API handler to communicate with your Next.js app. Create the file `src/app/api/makeswift/[...makeswift]/route.ts`.
 
 <Info>
   It is important this file has that exact name and path. The extension can be
@@ -93,14 +93,14 @@ Next.js plugins are configured in the project's next.config.js file by wrapping 
   </Step>
   <Step title="Register components with Makeswift">
   
-Create a file for registered components called `makeswift/components.tsx`. In this example, only one component is registered. However, as you register more components, we recommend creating separate files for each component and rolling up the imports in the `makeswift/components.ts` file. Learn more about [registering components](/developer/reference/runtime/register-component).
+Create a file for registered components called `src/makeswift/components.tsx`. In this example, only one component is registered. However, as you register more components, we recommend creating separate files for each component and rolling up the imports in the `src/makeswift/components.tsx` file. Learn more about [registering components](/developer/reference/runtime/register-component).
 
-```tsx makeswift/components.tsx
-import { ReactRuntime } from "@makeswift/runtime/react"
-import { Style } from "@makeswift/runtime/controls"
+```tsx src/makeswift/components.tsx
+import { ReactRuntime } from "@makeswift/runtime/react";
+import { Style } from "@makeswift/runtime/controls";
 
 function HelloWorld(props) {
-  return <p {...props}>Hello, world!</p>
+  return <p {...props}>Hello, world!</p>;
 }
 
 ReactRuntime.registerComponent(HelloWorld, {
@@ -109,7 +109,7 @@ ReactRuntime.registerComponent(HelloWorld, {
   props: {
     className: Style(),
   },
-})
+});
 ```
 
   </Step>
@@ -118,7 +118,7 @@ ReactRuntime.registerComponent(HelloWorld, {
 
     <ProvidersExample />
 
-    An important Note with this file is that you need to import the components registered in `makeswift/components.tsx`.
+    <Note>Make sure to import your `src/makeswift/components.tsx` file here to ensure your registered components are available in the builder.</Note>
 
   </Step>
   <Step title="Update the root layout">
@@ -131,9 +131,15 @@ ReactRuntime.registerComponent(HelloWorld, {
   <Step title="Add a route for Makeswift pages">
   
 Create an [optional catch-all route](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#optional-catch-all-segments) named `[[...path]]`. 
-This catch-all route will fetch page data from `Makeswift` and pass it to be rendered in the `Page` component.
+This catch-all route will fetch page data from `Makeswift` and pass it to be rendered in the `Page` component**.**
 
 <CatchAllExample />
+
+<Note>
+  Make sure to remove the root page component at `src/app/page.tsx` file. This
+  will ensure all pages are managed by Makeswift. Otherwise, you'll get a
+  specificity error on your routes.
+</Note>
 
   </Step>
   
