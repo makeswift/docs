@@ -96,14 +96,14 @@ Next.js plugins are configured in the project's next.config.js file by wrapping 
 Create a file for registered components called `src/makeswift/components.tsx`. In this example, only one component is registered. However, as you register more components, we recommend creating separate files for each component and rolling up the imports in the `src/makeswift/components.tsx` file. Learn more about [registering components](/developer/reference/runtime/register-component).
 
 ```tsx src/makeswift/components.tsx
-import { ReactRuntime } from "@makeswift/runtime/react";
+import { runtime } from "@/makeswift/runtime";
 import { Style } from "@makeswift/runtime/controls";
 
 function HelloWorld(props) {
   return <p {...props}>Hello, world!</p>;
 }
 
-ReactRuntime.registerComponent(HelloWorld, {
+runtime.registerComponent(HelloWorld, {
   type: "hello-world",
   label: "Hello, world!",
   props: {
