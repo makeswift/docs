@@ -1,4 +1,6 @@
 {
   "cSpell.enableFiletypes": ["mdx"],
-  "cSpell.words": ["bigcommerce", "combobox", "Makeswift"]
+  "cSpell.words": ["bigcommerce", "combobox", "Makeswift"],
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true
 }

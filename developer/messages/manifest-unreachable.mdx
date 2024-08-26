@@ -1,0 +1,47 @@
+---
+# this page is referenced in Leo, please do not rename without updating the reference in:
+# https://github.com/makeswift/cosmos/blob/master/packages/leo/src/lib/docs.ts
+
+title: The site manifest is unreachable
+---
+
+## What this message means
+
+Makeswift is using a site manifest to fetch metadata about your site. This metadata is used to generate the pages on the builder. If the site manifest is unreachable, the pages on the builder will not load properly.
+
+## Possible ways to fix this
+
+Here is a list of things to check to make sure the site manifest is reachable
+
+<Steps>
+  <Step title="Check that your Next.js app is running">
+    Makeswift can only fetch the site manifest if your Next.js app is running. Make sure your Next.js app is running.
+  </Step>
+
+  <Step title="Check that the host URL is correct in the Makeswift host settings">
+    If your Next.js app is running, check that the host URL including the host name and port are
+    correct in the Makeswift host settings. Update the host URL if necessary.
+    
+    <Accordion title="Show me how">
+      <Frame>
+        <img src="/images/host-url.gif" alt="How to update the host url" />
+      </Frame>
+    </Accordion>
+  </Step>
+
+  <Step title="Check that your API key is set">
+    Makeswift uses an API key to fetch the site manifest. The API key should be set in your environment variables, 
+    otherwise the manifest will be unreachable. 
+    Make sure you completed the `Add API key to environment variables` step during the installation guide:
+
+    - [App router installation guide](/developer/app-router/installation)
+    - [Pages router installation guide](/developer/pages-router/installation)
+  </Step>
+  
+  <Step title="Check that the Makeswift API handler is set up">
+    Makeswift uses an API handler to communicate with your Next.js app. Make sure the API handler is set up correctly. See the `Add the Makeswift API handler` step of the installation guide for how to set it up:
+
+    - [App router installation guide](/developer/app-router/installation)
+    - [Pages router installation guide](/developer/pages-router/installation)
+  </Step>
+</Steps>
