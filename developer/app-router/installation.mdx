@@ -130,19 +130,17 @@ runtime.registerComponent(HelloWorld, {
   </Step>
   <Step title="Add a route for Makeswift pages">
   
-Create an [optional catch-all route](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#optional-catch-all-segments) named `[[...path]]`. 
-This catch-all route will fetch page data from `Makeswift` and pass it to be rendered in the `Page` component.
-
-<CatchAllExample />
-
-Delete the root page component `src/app/page.tsx` file to ensure that all pages (including the home page) are managed by Makeswift.
+Delete the root page component `src/app/page.tsx` file. Then, create an [optional catch-all route](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#optional-catch-all-segments) named `[[...path]]`. 
+This route will fetch page data from `Makeswift` and pass it to be rendered in the `Page` component.
 
 <Note>
-  Optional catch-all routes match the parent route which, in this case, would be
-  the root page `/`. If you wanted to have a hard-coded home page (not managed
-  by Makeswift), you could use a (non-optional) catch-all route which does not
-  match the parent route and uses single brackets instead (ex. `[...path]`).
+  Optional catch-all routes will match the parent route, in this case, the root
+  route `/`. This would be in conflict with the root page component you just
+  deleted. Without deleting it, Next.js would not how to render it and would
+  throw an error.
 </Note>
+
+<CatchAllExample />
 
   </Step>
   
