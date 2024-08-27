@@ -2,14 +2,15 @@
 title: Installation
 ---
 
-import RuntimeExample from "/snippets/reference/runtime.mdx"
-import ClientExample from "/snippets/reference/client.mdx"
-import ComponentsExample from "/snippets/reference/components.mdx"
-import NextConfigExample from "/snippets/reference/next-config.mdx"
-import PagesCatchAllExample from "/snippets/pages-router/catch-all.mdx"
-import DocumentExample from "/snippets/pages-router/document.mdx"
-import ApiHandlerExample from "/snippets/pages-router/api-handler.mdx"
-import PagesAppExample from "/snippets/pages-router/pages-app.mdx"
+import RuntimeExample from "/snippets/reference/runtime.mdx";
+import ClientExample from "/snippets/reference/client.mdx";
+import ComponentsExample from "/snippets/reference/components.mdx";
+import NextConfigExample from "/snippets/reference/next-config.mdx";
+import PagesCatchAllExample from "/snippets/pages-router/catch-all.mdx";
+import DocumentExample from "/snippets/pages-router/document.mdx";
+import ApiHandlerExample from "/snippets/pages-router/api-handler.mdx";
+import PagesAppExample from "/snippets/pages-router/pages-app.mdx";
+import SrcDirectoryCallout from "/snippets/callouts/src-directory.mdx";
 
 The fastest way to get started with Makeswift on a new Next.js project is to follow the
 [quickstart](/developer/quickstart) guide. If you have an existing Next.js application
@@ -57,6 +58,8 @@ MAKESWIFT_SITE_API_KEY=paste-your-api-key-here
   
 Create files for the Makeswift [runtime](/developer/reference/runtime/constructor) and [client](/developer/reference/client/constructor).
 
+<SrcDirectoryCallout />
+
 <CodeGroup>
   <RuntimeExample />
   <ClientExample />
@@ -65,7 +68,7 @@ Create files for the Makeswift [runtime](/developer/reference/runtime/constructo
 </Step>
   <Step title="Add the Makeswift API handler">
   
-Similar to [NextAuth.js](https://next-auth.js.org/), Makeswift uses an API handler to communicate with your Next.js app. Create the file `pages/api/makeswift/[...makeswift].ts`.
+Similar to [NextAuth.js](https://next-auth.js.org/), Makeswift uses an API handler to communicate with your Next.js app. Create the file `src/pages/api/makeswift/[...makeswift].ts`.
 
 <Info>
   It is important this file has that exact name and path. The extension can be
@@ -98,9 +101,9 @@ If you already have a `_document.ts`, you can extend the `Document` from `@makes
 `<PreviewModeScript>` the Makeswift builder will always show your published page instead of the
 draft version.
 
-```tsx pages/_document.tsx
-import { Html, Head, Main, NextScript } from "next/document"
-import { Document, PreviewModeScript } from "@makeswift/runtime/next"
+```tsx src/pages/_document.tsx
+import { Html, Head, Main, NextScript } from "next/document";
+import { Document, PreviewModeScript } from "@makeswift/runtime/next";
 
 export default class MyDocument extends Document {
   render() {
@@ -114,7 +117,7 @@ export default class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }
 ```
@@ -122,7 +125,7 @@ export default class MyDocument extends Document {
   </Step>
   <Step title="Register components with Makeswift">
   
-Create a file for registered components called `makeswift/components.tsx`. In this example, only one component is registered. However, as you register more components, we recommend creating separate files for each component and rolling up the imports in the `makeswift/components.ts` file. Learn more about [registering components](/developer/reference/runtime/register-component).
+Create a file for registered components called `src/makeswift/components.tsx`. In this example, only one component is registered. However, as you register more components, we recommend creating separate files for each component and rolling up the imports in the `src/makeswift/components.ts` file. Learn more about [registering components](/developer/reference/runtime/register-component).
 
 <ComponentsExample />
 
