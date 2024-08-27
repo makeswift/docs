@@ -1,6 +1,7 @@
 {
     "recommendations": [
         "unifiedjs.vscode-mdx",
-        "redhat.vscode-yaml"
+        "redhat.vscode-yaml",
+        "mintlify.mintlify-snippets"
     ]
 }
