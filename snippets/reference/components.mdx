@@ -1,10 +1,10 @@
-```tsx makeswift/components.tsx
-import { Style } from "@makeswift/runtime/controls"
+```tsx src/makeswift/components.tsx
+import { Style } from "@makeswift/runtime/controls";
 
-import { runtime } from "./runtime"
+import { runtime } from "./runtime";
 
 function HelloWorld(props) {
-  return <p {...props}>Hello, world!</p>
+  return <p {...props}>Hello, world!</p>;
 }
 
 runtime.registerComponent(HelloWorld, {
@@ -13,5 +13,5 @@ runtime.registerComponent(HelloWorld, {
   props: {
     className: Style(),
   },
-})
+});
 ```

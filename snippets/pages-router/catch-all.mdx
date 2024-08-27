@@ -1,18 +1,18 @@
 <CodeGroup>
 
-```tsx pages/[[...path]].tsx
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next"
+```tsx src/pages/[[...path]].tsx
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 
 import {
   Makeswift,
   Page as MakeswiftPage,
   PageProps,
-} from "@makeswift/runtime/next"
+} from "@makeswift/runtime/next";
 
-import { client } from "@/makeswift/client"
+import { client } from "@/makeswift/client";
 
 export const getStaticPaths = (async () => {
-  const pages = await client.getPages()
+  const pages = await client.getPages();
 
   return {
     paths: pages.map((page) => ({
@@ -21,37 +21,37 @@ export const getStaticPaths = (async () => {
       },
     })),
     fallback: "blocking",
-  }
-}) satisfies GetStaticPaths
+  };
+}) satisfies GetStaticPaths;
 
 export const getStaticProps = (async ({ params, previewData }) => {
-  if (params == null) return { notFound: true }
+  if (params == null) return { notFound: true };
 
-  const path = Array.isArray(params.path) ? "/" + params.path.join("/") : "/"
+  const path = Array.isArray(params.path) ? "/" + params.path.join("/") : "/";
 
   const snapshot = await client.getPageSnapshot(path, {
     siteVersion: Makeswift.getSiteVersion(previewData),
-  })
+  });
 
-  if (snapshot == null) return { notFound: true }
+  if (snapshot == null) return { notFound: true };
 
-  return { props: { snapshot } }
-}) satisfies GetStaticProps<PageProps>
+  return { props: { snapshot } };
+}) satisfies GetStaticProps<PageProps>;
 
 export default function Page({
   snapshot,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  return <MakeswiftPage snapshot={snapshot} />
+  return <MakeswiftPage snapshot={snapshot} />;
 }
 ```
 
-```jsx pages/[[...path]].jsx
-import { Makeswift, Page as MakeswiftPage } from "@makeswift/runtime/next"
+```jsx src/pages/[[...path]].jsx
+import { Makeswift, Page as MakeswiftPage } from "@makeswift/runtime/next";
 
-import { client } from "@/makeswift/client"
+import { client } from "@/makeswift/client";
 
 export async function getStaticPaths() {
-  const pages = await client.getPages()
+  const pages = await client.getPages();
 
   return {
     paths: pages.map((page) => ({
@@ -60,24 +60,24 @@ export async function getStaticPaths() {
       },
     })),
     fallback: "blocking",
-  }
+  };
 }
 
 export async function getStaticProps({ params, previewData }) {
-  if (params == null) return { notFound: true }
+  if (params == null) return { notFound: true };
 
-  const path = "/" + (params.path ?? []).join("/")
+  const path = "/" + (params.path ?? []).join("/");
   const snapshot = await client.getPageSnapshot(path, {
     siteVersion: Makeswift.getSiteVersion(previewData),
-  })
+  });
 
-  if (snapshot == null) return { notFound: true }
+  if (snapshot == null) return { notFound: true };
 
-  return { props: { snapshot } }
+  return { props: { snapshot } };
 }
 
 export default function Page({ snapshot }) {
-  return <MakeswiftPage snapshot={snapshot} />
+  return <MakeswiftPage snapshot={snapshot} />;
 }
 ```
 
