@@ -9,6 +9,7 @@ import ApiHandlerExample from "/snippets/app-router/api-handler.mdx";
 import RuntimeExample from "/snippets/reference/runtime.mdx";
 import ClientExample from "/snippets/reference/client.mdx";
 import NextConfigExample from "/snippets/reference/next-config.mdx";
+import SrcDirectoryCallout from "/snippets/callouts/src-directory.mdx";
 
 The fastest way to get started with Makeswift on a new Next.js project is to follow the
 [quickstart](/developer/quickstart) guide. If you have an existing Next.js application
@@ -60,11 +61,7 @@ MAKESWIFT_SITE_API_KEY=paste-your-api-key-here
   
 Create files for the Makeswift [runtime](/developer/reference/runtime/constructor) and [client](/developer/reference/client/constructor) in a `src/makeswift` directory.
 
-<Info>
-  This guide assumes you are using a `src` directory. If you aren't, make sure
-  to update your paths to remove `src`. For example, `src/makeswift` would
-  become `makeswift`
-</Info>
+<SrcDirectoryCallout />
 
 <CodeGroup>
   <RuntimeExample />
