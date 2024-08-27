@@ -33,11 +33,11 @@ The following example adds a Text Input control to the `children` prop of a Link
 <CodeGroup>
 
 ```tsx Button.makeswift.ts
-import { TextInput } from "@makeswift/runtime/controls"
+import { TextInput } from "@makeswift/runtime/controls";
 
-import { runtime } from "@/makeswift/runtime"
+import { runtime } from "@/makeswift/runtime";
 
-import { Button } from "./Button"
+import { Button } from "./Button";
 
 runtime.registerComponent(Button, {
   type: "button",
@@ -45,12 +45,12 @@ runtime.registerComponent(Button, {
   props: {
     text: TextInput({ label: "Text", defaultValue: "Click me" }),
   },
-})
+});
 ```
 
 ```tsx Button.tsx
 interface Props {
-  text?: string
+  text?: string;
 }
 
 export function Button({ text = "Click me" }) {
@@ -58,12 +58,12 @@ export function Button({ text = "Click me" }) {
     <button className="px-4 py-3 rounded bg-primary text-white shadow">
       {text}
     </button>
-  )
+  );
 }
 ```
 
 </CodeGroup>
 
-import NamingConventions from "/snippets/naming-conventions.mdx"
+import NamingConventions from "/snippets/naming-conventions.mdx";
 
 <NamingConventions />

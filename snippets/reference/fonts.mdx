@@ -1,10 +1,13 @@
 <CodeGroup>
 
 ```ts pages/api/[...makeswift].ts
-import { MakeswiftApiHandler } from "@makeswift/runtime/next/server"
-import { strict } from "assert"
+import { MakeswiftApiHandler } from "@makeswift/runtime/next/server";
+import { strict } from "assert";
 
-strict(process.env.MAKESWIFT_SITE_API_KEY, "MAKESWIFT_SITE_API_KEY is required")
+strict(
+  process.env.MAKESWIFT_SITE_API_KEY,
+  "MAKESWIFT_SITE_API_KEY is required"
+);
 
 export default MakeswiftApiHandler(process.env.MAKESWIFT_SITE_API_KEY, {
   getFonts() {
@@ -39,18 +42,18 @@ export default MakeswiftApiHandler(process.env.MAKESWIFT_SITE_API_KEY, {
           },
         ],
       },
-    ]
+    ];
   },
-})
+});
 ```
 
 ```tsx _app.tsx
-import { AppProps } from "next/app"
-import { Spline_Sans, Spline_Sans_Mono } from "next/font/google"
+import { AppProps } from "next/app";
+import { Spline_Sans, Spline_Sans_Mono } from "next/font/google";
 
-import clsx from "clsx"
+import clsx from "clsx";
 
-import "../styles/globals.css"
+import "../styles/globals.css";
 
 const splineSans = Spline_Sans({
   subsets: ["latin"],
@@ -63,22 +66,22 @@ const splineSans = Spline_Sans({
     "Arial",
     "sans-serif",
   ],
-})
+});
 const splineSansMono = Spline_Sans_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
   fallback: ["Courier New"],
-})
+});
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <main className={clsx(splineSans.variable, splineSansMono.variable)}>
       <Component {...pageProps} />
     </main>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;
 ```
 
 </CodeGroup>

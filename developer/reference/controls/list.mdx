@@ -38,11 +38,11 @@ This example adds an List control to the `accordionTitles` prop of an Accordions
 <CodeGroup>
 
 ```tsx Accordions.makeswift.ts
-import { List, TextInput } from "@makeswift/runtime/controls"
+import { List, TextInput } from "@makeswift/runtime/controls";
 
-import { runtime } from "@/makeswift/runtime"
+import { runtime } from "@/makeswift/runtime";
 
-import { Accordions } from "./Accordions"
+import { Accordions } from "./Accordions";
 
 runtime.registerComponent(Accordions, {
   type: "accordions",
@@ -52,18 +52,18 @@ runtime.registerComponent(Accordions, {
       label: "Accordions",
       type: TextInput({ label: "Title", defaultValue: "Accordion Title" }),
       getItemLabel(item) {
-        return item ?? "Accordion Title"
+        return item ?? "Accordion Title";
       },
     }),
   },
-})
+});
 ```
 
 ```tsx Accordions.tsx
-import { Accordion } from "@/components/Accordion"
+import { Accordion } from "@/components/Accordion";
 
 interface Props {
-  accordionTitles: string[]
+  accordionTitles: string[];
 }
 
 export function Accordions({ accordionTitles }) {
@@ -75,7 +75,7 @@ export function Accordions({ accordionTitles }) {
         </Accordion>
       ))}
     </div>
-  )
+  );
 }
 ```
 
@@ -88,10 +88,10 @@ This example uses the [Shape](/developer/reference/controls/shape) control to de
 <CodeGroup>
 
 ```tsx Accordions.makeswift.ts
-import { runtime } from "@/lib/makeswift/runtime"
-import { List, Shape, TextInput, TextArea } from "@makeswift/runtime/controls"
+import { runtime } from "@/lib/makeswift/runtime";
+import { List, Shape, TextInput, TextArea } from "@makeswift/runtime/controls";
 
-import { Accordions } from "./Accordions"
+import { Accordions } from "./Accordions";
 
 runtime.registerComponent(Accordions, {
   type: "accordions",
@@ -106,21 +106,21 @@ runtime.registerComponent(Accordions, {
         },
       }),
       getItemLabel(item) {
-        return item ?? "Accordion Title"
+        return item ?? "Accordion Title";
       },
     }),
   },
-})
+});
 ```
 
 ```tsx Accordions.tsx
-import { Accordion } from "@/components/Accordion"
+import { Accordion } from "@/components/Accordion";
 
 interface Props {
   accordions: {
-    title: string
-    body: string
-  }[]
+    title: string;
+    body: string;
+  }[];
 }
 
 export function Accordions({ accordionTitles }) {
@@ -132,12 +132,12 @@ export function Accordions({ accordionTitles }) {
         </Accordion>
       ))}
     </div>
-  )
+  );
 }
 ```
 
 </CodeGroup>
 
-import NamingConventions from "/snippets/naming-conventions.mdx"
+import NamingConventions from "/snippets/naming-conventions.mdx";
 
 <NamingConventions />

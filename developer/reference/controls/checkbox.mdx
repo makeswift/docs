@@ -33,11 +33,11 @@ The following example adds a Checkbox control to the `showLogo` prop of a Naviga
 <CodeGroup>
 
 ```tsx Navigation.makeswift.ts
-import { Checkbox } from "@makeswift/runtime/controls"
+import { Checkbox } from "@makeswift/runtime/controls";
 
-import { runtime } from "@/makeswift/runtime"
+import { runtime } from "@/makeswift/runtime";
 
-import { Navigation } from "./Navigation"
+import { Navigation } from "./Navigation";
 
 runtime.registerComponent(Navigation, {
   type: "navigation",
@@ -48,12 +48,12 @@ runtime.registerComponent(Navigation, {
       defaultValue: false,
     }),
   },
-})
+});
 ```
 
 ```tsx Navigation.tsx
 interface Props {
-  showLogo: boolean
+  showLogo: boolean;
 }
 
 export function Navigation({ showLogo }: Props) {
@@ -62,12 +62,12 @@ export function Navigation({ showLogo }: Props) {
       {props.showLogo && <img src="/logo.png" />}
       {/* ... */}
     </nav>
-  )
+  );
 }
 ```
 
 </CodeGroup>
 
-import NamingConventions from "/snippets/naming-conventions.mdx"
+import NamingConventions from "/snippets/naming-conventions.mdx";
 
 <NamingConventions />

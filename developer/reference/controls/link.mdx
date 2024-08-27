@@ -20,9 +20,9 @@ The Link control passes an object of type `LinkValue` to your component.
 
 ```ts
 type LinkValue = {
-  href: string
-  target?: "_blank" | "_self"
-}
+  href: string;
+  target?: "_blank" | "_self";
+};
 ```
 
 If no value is set in the builder, your component receives `{ href: '#' }`.
@@ -34,11 +34,11 @@ The following example adds an Link control to the `link` prop of a Button compon
 <CodeGroup>
 
 ```tsx Button.makeswift.ts
-import { Link } from "@makeswift/runtime/controls"
+import { Link } from "@makeswift/runtime/controls";
 
-import { runtime } from "@/makeswift/runtime"
+import { runtime } from "@/makeswift/runtime";
 
-import { Button } from "./Button"
+import { Button } from "./Button";
 
 runtime.registerComponent(Button, {
   type: "button",
@@ -46,17 +46,17 @@ runtime.registerComponent(Button, {
   props: {
     link: Link(),
   },
-})
+});
 ```
 
 ```tsx Button.tsx
-import Link from "next/link"
+import Link from "next/link";
 
 interface Props {
   link: {
-    href: string
-    target?: "_blank" | "_self"
-  }
+    href: string;
+    target?: "_blank" | "_self";
+  };
 }
 
 export function Button({ link }) {
@@ -68,12 +68,12 @@ export function Button({ link }) {
     >
       Click me
     </Link>
-  )
+  );
 }
 ```
 
 </CodeGroup>
 
-import NamingConventions from "/snippets/naming-conventions.mdx"
+import NamingConventions from "/snippets/naming-conventions.mdx";
 
 <NamingConventions />

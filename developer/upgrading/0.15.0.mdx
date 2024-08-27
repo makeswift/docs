@@ -9,16 +9,16 @@ If you haven't upgraded to `0.14.0` please read the [upgrading guide](/developer
 If you don't have a [Custom App](https://nextjs.org/docs/pages/building-your-application/routing/custom-app), you'll need to add one. Then wrap it with `ReactRuntimeProvider` and pass your `runtime` instance to it.
 
 ```tsx pages/_app.tsx
-import { runtime } from "@/makeswift/runtime"
-import { ReactRuntimeProvider } from "@makeswift/runtime/next"
-import type { AppProps } from "next/app"
+import { runtime } from "@/makeswift/runtime";
+import { ReactRuntimeProvider } from "@makeswift/runtime/next";
+import type { AppProps } from "next/app";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ReactRuntimeProvider runtime={runtime}>
       <Component {...pageProps} />
     </ReactRuntimeProvider>
-  )
+  );
 }
 ```
 

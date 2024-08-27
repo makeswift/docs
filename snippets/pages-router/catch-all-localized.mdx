@@ -1,10 +1,10 @@
 ```tsx pages/[[...path]].tsx
-import { Makeswift, Page as MakeswiftPage } from "@makeswift/runtime/next"
+import { Makeswift, Page as MakeswiftPage } from "@makeswift/runtime/next";
 
-import { client } from "@/makeswift/client"
+import { client } from "@/makeswift/client";
 
 export async function getStaticPaths() {
-  const pages = await client.getPages()
+  const pages = await client.getPages();
 
   return {
     paths: pages.map((page) => ({
@@ -13,24 +13,24 @@ export async function getStaticPaths() {
       },
     })),
     fallback: "blocking",
-  }
+  };
 }
 
 export async function getStaticProps({ params, previewData, locale }) {
-  if (params == null) return { notFound: true }
+  if (params == null) return { notFound: true };
 
-  const path = "/" + (params.path ?? []).join("/")
+  const path = "/" + (params.path ?? []).join("/");
   const snapshot = await client.getPageSnapshot(path, {
     siteVersion: Makeswift.getSiteVersion(previewData),
     locale,
-  })
+  });
 
-  if (snapshot == null) return { notFound: true }
+  if (snapshot == null) return { notFound: true };
 
-  return { props: { snapshot } }
+  return { props: { snapshot } };
 }
 
 export default function Page({ snapshot }) {
-  return <MakeswiftPage snapshot={snapshot} />
+  return <MakeswiftPage snapshot={snapshot} />;
 }
 ```

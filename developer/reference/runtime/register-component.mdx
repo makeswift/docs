@@ -5,30 +5,37 @@ description: Adds your components to the Makeswift builder.
 
 ## Arguments
 
-1. <ParamField query="component" type="Component" required>
-     Your component to be registered. This can be a React component or a function.
-   </ParamField>
-2. <ParamField query="options" type="object" required>
-     Options for site version and locale.
-     <Expandable>
-       <ParamField query="type" type="string">
-          A unique string that identifies the component for Makeswift to
-          render. Don't change the type once you use the component in
-          the Makeswift builder.
+1.  <ParamField query="component" type="Component" required>
+      Your component to be registered. This can be a React component or a
+      function.
+    </ParamField>
+2.  <ParamField query="options" type="object" required>
+  Options for site version and locale.
+  <Expandable>
+    <ParamField query="type" type="string">
+       A unique string that identifies the component for Makeswift to
+       render. Don't change the type once you use the component in
+       the Makeswift builder.
 
-          <Warning>If this value changes after you use the component in the Makeswift builder, the component will appear as a "Component not found" block. To fix this, restore the `type` to the original value, or delete this component and re-add add it to the page.</Warning>
-       </ParamField>
-       <ParamField query="label" type="string" required>
-          The label shown in the Makeswift builder.
-       </ParamField>
-       <ParamField query="icon" type="Icon">
-          The icon shown in the Makeswift builder.
-       </ParamField>
-       <ParamField query="props" type="Record<string, Control>" required>
-          An object mapping prop names to Makeswift [controls](/developer/concepts#controls).
-       </ParamField>
-     </Expandable>
-   </ParamField>
+              <Warning>If this value changes after you use the component in the Makeswift builder, the component will appear as a "Component not found" block. To fix this, restore the `type` to the original value, or delete this component and re-add add it to the page.</Warning>
+
+          </ParamField>
+
+    {" "}
+    <ParamField query="label" type="string" required>
+      The label shown in the Makeswift builder.
+    </ParamField>
+    <ParamField query="icon" type="Icon">
+      The icon shown in the Makeswift builder.
+    </ParamField>
+    <ParamField query="props" type="Record<string, Control>" required>
+      An object mapping prop names to Makeswift
+      [controls](/developer/concepts#controls).
+    </ParamField>
+
+              </Expandable>
+
+        </ParamField>
 
 ## Examples
 
@@ -41,12 +48,12 @@ the Makeswift builder. The example applies a [`Style`](/developer/reference/cont
 `className` prop.
 
 ```tsx makeswift/components.tsx
-import { Style } from "@makeswift/runtime/controls"
+import { Style } from "@makeswift/runtime/controls";
 
-import { runtime } from './runtime'
+import { runtime } from "./runtime";
 
 function Box({ className }) {
-  return <div className={className}>I'm a box!</div>
+  return <div className={className}>I'm a box!</div>;
 }
 
 runtime.registerComponent(Box, {
@@ -55,7 +62,7 @@ runtime.registerComponent(Box, {
   props: {
     className: Style({ properties: Style.All }),
   },
-})
+});
 ```
 
 ### Creating sections
@@ -72,16 +79,14 @@ builder, both components appear under the same Visuals collapsible section:
 </Frame>
 
 ```tsx makeswift/components.tsx
-import { Style } from "@makeswift/runtime/controls"
-
-
+import { Style } from "@makeswift/runtime/controls";
 
 function Cube({ className }) {
-  return <div className={className}>Cube!</div>
+  return <div className={className}>Cube!</div>;
 }
 
 function Sphere({ className }) {
-  return <div className={className}>Sphere!</div>
+  return <div className={className}>Sphere!</div>;
 }
 
 runtime.registerComponent(Cube, {
@@ -90,7 +95,7 @@ runtime.registerComponent(Cube, {
   props: {
     className: Style({ properties: Style.All }),
   },
-})
+});
 
 runtime.registerComponent(Sphere, {
   type: "sphere",
@@ -98,7 +103,7 @@ runtime.registerComponent(Sphere, {
   props: {
     className: Style({ properties: Style.All }),
   },
-})
+});
 ```
 
 ### Adding custom icons
@@ -116,13 +121,13 @@ component tray, we can see our component with the selected icon.
 </Frame>
 
 ```tsx makeswift/components.tsx
-import { Style } from "@makeswift/runtime/controls"
-import { ComponentIcon } from "@makeswift/runtime"
+import { Style } from "@makeswift/runtime/controls";
+import { ComponentIcon } from "@makeswift/runtime";
 
-import { runtime } from './runtime'
+import { runtime } from "./runtime";
 
 function ImageGallery({ className }) {
-  return <div className={className}>I'm an image gallery!</div>
+  return <div className={className}>I'm an image gallery!</div>;
 }
 
 runtime.registerComponent(Cube, {
@@ -132,38 +137,38 @@ runtime.registerComponent(Cube, {
   props: {
     className: Style({ properties: Style.All }),
   },
-})
+});
 ```
 
 ### Organizing registration code
 
-As you register more components in `makeswift/components.tsx`, you may notice this file growing rather large. To keep your codebase organized, we recommend breaking out your Makeswift registration code into separate files and co-locating it with your component file. 
+As you register more components in `makeswift/components.tsx`, you may notice this file growing rather large. To keep your codebase organized, we recommend breaking out your Makeswift registration code into separate files and co-locating it with your component file.
 
 For example, if you have a `Box` component, you can create a `Box.makeswift.ts` file next to your `Box.tsx` file. This file will contain the registration code for the `Box` component.
 
 <Info>
-  Makeswift does **not** rely on this naming convention. Feel free to use whatever naming convention you prefer.
+  Makeswift does **not** rely on this naming convention. Feel free to use
+  whatever naming convention you prefer.
 </Info>
-
 
 <CodeGroup>
 
 ```tsx components/Box/Box.tsx
 interface Props {
-  className?: string
+  className?: string;
 }
 
 function Box({ className }) {
-  return <div className={className}>I'm a box!</div>
+  return <div className={className}>I'm a box!</div>;
 }
 ```
 
 ```tsx components/Box/Box.makeswift.ts
-import { Style } from "@makeswift/runtime/controls"
+import { Style } from "@makeswift/runtime/controls";
 
-import { runtime } from '@/makeswift/runtime'
+import { runtime } from "@/makeswift/runtime";
 
-import { Box } from './Box'
+import { Box } from "./Box";
 
 runtime.registerComponent(Box, {
   type: "box",
@@ -171,7 +176,7 @@ runtime.registerComponent(Box, {
   props: {
     className: Style({ properties: Style.All }),
   },
-})
+});
 ```
 
 </CodeGroup>
@@ -179,9 +184,9 @@ runtime.registerComponent(Box, {
 Then update your `makeswift/components.tsx` file to import all of the component registrations, like so:
 
 ```ts makeswift/components.ts
-import "@/components/Box/Box.makeswift"
-import "@/components/Cube/Cube.makeswift"
-import "@/components/Sphere/Sphere.makeswift"
+import "@/components/Box/Box.makeswift";
+import "@/components/Cube/Cube.makeswift";
+import "@/components/Sphere/Sphere.makeswift";
 /*
  * Add all of your component registrations here
  */

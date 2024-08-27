@@ -1,11 +1,11 @@
-import ClientExample from "/snippets/reference/client.mdx"
-import PagesCatchAllExample from "/snippets/pages-router/catch-all.mdx"
-import AppCatchAllExample from "/snippets/app-router/catch-all.mdx"
+import ClientExample from "/snippets/reference/client.mdx";
+import PagesCatchAllExample from "/snippets/pages-router/catch-all.mdx";
+import AppCatchAllExample from "/snippets/app-router/catch-all.mdx";
 
 The following example instantiates a new `ReactRuntime` with 4 custom breakpoints.
 
 ```ts makeswift/runtime.ts
-import { ReactRuntime } from "@makeswift/runtime/react"
+import { ReactRuntime } from "@makeswift/runtime/react";
 
 export const runtime = new ReactRuntime({
   breakpoints: {
@@ -14,5 +14,5 @@ export const runtime = new ReactRuntime({
     laptop: { width: 1024, viewport: 1000, label: "Laptop" },
     external: { width: 1280, label: "External" },
   },
-})
+});
 ```

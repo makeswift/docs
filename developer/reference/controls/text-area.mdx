@@ -33,11 +33,11 @@ The following example adds a Text Area control to the `Code` prop of a Code Bloc
 <CodeGroup>
 
 ```tsx CodeBlock.makeswift.ts
-import { TextArea } from "@makeswift/runtime/controls"
+import { TextArea } from "@makeswift/runtime/controls";
 
-import { runtime } from "@/makeswift/runtime"
+import { runtime } from "@/makeswift/runtime";
 
-import { CodeBlock } from "./CodeBlock"
+import { CodeBlock } from "./CodeBlock";
 
 runtime.registerComponent(CodeBlock, {
   type: "code-block",
@@ -45,14 +45,14 @@ runtime.registerComponent(CodeBlock, {
   props: {
     code: TextArea({ label: "Code" }),
   },
-})
+});
 ```
 
 ```tsx CodeBlock.tsx
-import { highlight, languages } from "prismjs"
+import { highlight, languages } from "prismjs";
 
 interface Props {
-  code?: string
+  code?: string;
 }
 
 export function CodeBlock({ code }) {
@@ -62,12 +62,12 @@ export function CodeBlock({ code }) {
         __html: highlight(code, languages.js, "js"),
       }}
     />
-  )
+  );
 }
 ```
 
 </CodeGroup>
 
-import NamingConventions from "/snippets/naming-conventions.mdx"
+import NamingConventions from "/snippets/naming-conventions.mdx";
 
 <NamingConventions />

@@ -36,11 +36,11 @@ The following example adds a Style control to the `className` prop of an Image c
 <CodeGroup>
 
 ```tsx Image.makeswift.ts
-import { Style } from "@makeswift/runtime/controls"
+import { Style } from "@makeswift/runtime/controls";
 
-import { runtime } from "@/makeswift/runtime"
+import { runtime } from "@/makeswift/runtime";
 
-import { Image } from "./Image"
+import { Image } from "./Image";
 
 runtime.registerComponent(Image, {
   type: "image",
@@ -48,21 +48,21 @@ runtime.registerComponent(Image, {
   props: {
     className: Style({ properties: Style.All }),
   },
-})
+});
 ```
 
 ```tsx Image.tsx
 interface Props {
-  className?: string
+  className?: string;
 }
 
 export function Image({ className }: Props) {
-  return <img className={className} src="https://via.placeholder.com/150" />
+  return <img className={className} src="https://via.placeholder.com/150" />;
 }
 ```
 
 </CodeGroup>
 
-import NamingConventions from "/snippets/naming-conventions.mdx"
+import NamingConventions from "/snippets/naming-conventions.mdx";
 
 <NamingConventions />

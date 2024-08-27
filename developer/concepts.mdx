@@ -11,7 +11,7 @@ Props are passed into the render function of a component as an object in the fir
 
 ```jsx
 function MyComponent(props) {
-  return <div>{props.name}</div>
+  return <div>{props.name}</div>;
 }
 ```
 
@@ -33,7 +33,11 @@ Basic controls cannot contain other controls. Multiple basic controls can provid
     icon="square-check"
     href="/developer/reference/controls/checkbox"
   />
-  <Card title="Color" icon="palette" href="/developer/reference/controls/color" />
+  <Card
+    title="Color"
+    icon="palette"
+    href="/developer/reference/controls/color"
+  />
   <Card
     title="Combobox"
     icon="input-pipe"
@@ -41,8 +45,16 @@ Basic controls cannot contain other controls. Multiple basic controls can provid
   />
   <Card title="Image" icon="image" href="/developer/reference/controls/image" />
   <Card title="Link" icon="link" href="/developer/reference/controls/link" />
-  <Card title="Number" icon="input-numeric" href="/developer/reference/controls/number" />
-  <Card title="Select" icon="list-dropdown" href="/developer/reference/controls/select" />
+  <Card
+    title="Number"
+    icon="input-numeric"
+    href="/developer/reference/controls/number"
+  />
+  <Card
+    title="Select"
+    icon="list-dropdown"
+    href="/developer/reference/controls/select"
+  />
   <Card
     title="TextArea"
     icon="align-left"
@@ -58,9 +70,21 @@ Basic controls cannot contain other controls. Multiple basic controls can provid
 There are three special basic controls that are designed for specific types of props such as `className` and `children`:
 
 <CardGroup cols={3}>
-  <Card title="RichText" icon="text" href="/developer/reference/controls/rich-text" />
-  <Card title="Slot" icon="square-dashed" href="/developer/reference/controls/slot" />
-  <Card title="Style" icon="droplet" href="/developer/reference/controls/style" />
+  <Card
+    title="RichText"
+    icon="text"
+    href="/developer/reference/controls/rich-text"
+  />
+  <Card
+    title="Slot"
+    icon="square-dashed"
+    href="/developer/reference/controls/slot"
+  />
+  <Card
+    title="Style"
+    icon="droplet"
+    href="/developer/reference/controls/style"
+  />
 </CardGroup>
 
 - The [`RichText`](/developer/reference/controls/rich-text) control provides a `ReactNode` to your component and then renders an inline rich text editor <Tooltip tip="Interactive elements placed on the Makeswift builder preview">overlay</Tooltip> wherever the builder renders the `ReactNode`.
@@ -75,5 +99,9 @@ Composable controls provide an `array` or `object` to a prop of your component. 
 
 <CardGroup cols={2}>
   <Card title="List" icon="list" href="/developer/reference/controls/list" />
-  <Card title="Shape" icon="brackets-curly" href="/developer/reference/controls/shape" />
+  <Card
+    title="Shape"
+    icon="brackets-curly"
+    href="/developer/reference/controls/shape"
+  />
 </CardGroup>
