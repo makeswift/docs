@@ -182,10 +182,6 @@
         "developer/upgrading/0.13.0",
         "developer/upgrading/0.9.0"
       ]
-    },
-    {
-      "group": "Integrations",
-      "pages": ["developer/integrations/bigcommerce"]
     }
   ],
   "footerSocials": {
@@ -237,7 +233,7 @@
     },
     {
       "source": "/integrations/bigcommerce",
-      "destination": "/developer/integrations/bigcommerce"
+      "destination": "/developer"
     },
     {
       "source": "/pages-router/installation",
@@ -453,6 +449,11 @@
     {
       "source": "/article/20-integrations",
       "destination": "/developer/integrations",
+      "permanent": true
+    },
+    {
+      "source": "/developer/integrations",
+      "destination": "/developer",
       "permanent": true
     },
     {
