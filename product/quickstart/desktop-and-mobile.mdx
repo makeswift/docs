@@ -6,12 +6,14 @@ icon: "laptop-mobile" iconType: "solid"
 
 So far, you've only viewed your site on desktop, but Makeswift allows you to preview your site on sizes that simulate desktop, tablet, and mobile. Before previewing on different devices, take another look at the Hero component.
 
+## Hero component layout
+
 Notice this section has two columns: one for the text and button on the left and one for an image on the right. This section uses nested Boxes to create this two-column layout. To better visualize this, hover over the heading text to display the [Breadcrumbs](/product/layouts#breadcrumbs).
 
 The structure of this section looks like this:
 
 - `hero` - root Box for this section that includes padding
-- `hero-content` - nested Box that has two columns of content
+- `hero-content` - nested Box that has two columns of content with a set width
 - `hero-text` - left Box containing the text and button
 - `hero-graphic` - right Box containing the image
 
@@ -27,7 +29,9 @@ The structure of this section looks like this:
   ></video>
 </Frame>
 
-With that in mind, let's take a look at what this layout looks like on a smaller screen. Use the dropdown menu to the right of the URL Bar at the top of the builder abd select **Mobile**.
+## Preview different screen sizes
+
+With that in mind, let's take a look at what this layout looks like on a smaller screen. Use the dropdown menu to the right of the URL Bar at the top of the builder and select **Mobile**.
 
 <Frame>
   ![ Global component edit
@@ -51,6 +55,8 @@ If you explore the rest of the page, you'll notice a few other places where they
 This is called responsive design. To learn more about how to build responsive designs, check out the [Responsive design docs](/product/responsive-design).
 
 Styles always cascade from larger devices to smaller ones. These means you can build your core layout on desktop and then make adjustments for tablet and mobile.
+
+## How to build a responsive layout
 
 To see how the responsive design for the hero was built, switch the view to desktop and select the `hero-content` component. Then, hover on the line that divides the two columns (text on the left and the image on the right). You're cursor will show an arrow pointing down and to the left. Clicking there will allow you to stack the two columns vertically. To undo this, you can hover over the line separating the two rows and click the arrow pointing up and to the right.
 
