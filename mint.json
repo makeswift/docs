@@ -40,18 +40,35 @@
     {
       "group": "Getting started",
       "pages": [
-        "product/quickstart",
-        "product/concepts",
+        "product/introduction",
+        {
+          "group": "Quickstart",
+          "icon": "bolt",
+          "pages": [
+            "product/quickstart",
+            "product/quickstart/component-basics",
+            "product/quickstart/colors-and-text-styles",
+            "product/quickstart/customizing-the-navbar",
+            "product/quickstart/desktop-and-mobile",
+            "product/quickstart/next-steps"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "The Visual Builder",
+      "pages": [
         "product/builder-basics",
         "product/layouts",
         "product/components",
         "product/theming",
         "product/files",
-        "product/responsive-design",
-        "product/seo",
-        "product/localization",
-        "product/publishing"
+        "product/responsive-design"
       ]
+    },
+    {
+      "group": "Guides",
+      "pages": ["product/localization", "product/publishing"]
     },
     {
       "group": "Reference",
