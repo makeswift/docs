@@ -9,7 +9,7 @@ When you use Catalyst, you can create a fully functional BigCommerce storefront 
 You can find a demo version of Catalyst at https://catalyst-demo.site/, hosted on Vercel in a US region.
 
 <Warning>
-  While Makeswift is a subsidiary of BigCommerce, Catalyst and Makeswift are
+  While Makeswift is a part of BigCommerce, Catalyst and Makeswift are
   completely decoupled solutions. This is to say that Catalyst and Makeswift can
   be used in conjunction, or independent of one another. While they are separate
   solutions,both are built to be heavily integrated with one another. This guide
@@ -21,32 +21,31 @@ You can find a demo version of Catalyst at https://catalyst-demo.site/, hosted o
 
 ### 1. Node.js version 20.x
 
-Catalyst currently supports Node.js version 20.x (click here to download Node.js)
+Catalyst currently supports Node.js version 20.x ([click here to download Node.js](https://nodejs.org/en/download/package-manager))
 
 ### 2. Corepack-enabled pnpm
 
-Node.js version 20.x ships with Corepack by default; you should be able to run corepack enable from your terminal to meet this prerequisite (more information on the official Node.js Corepack documentation)
+Node.js version 20.x ships with Corepack by default; you should be able to run corepack enable from your terminal to meet this prerequisite ([more information on the official Node.js Corepack documentation](https://nodejs.org/docs/latest-v20.x/api/corepack.html))
 
 ### 3. Git version 2.35.x or later:
 
-(Click here to download Git)
+[Click here to download Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 ### 4. A BigCommerce store or sandbox
 
-You can create a trial store or spin up a developer sandbox to meet this prerequisite. If you already have a BigCommerce store, that will work fine too.
+You can [create a trial store](https://bigcommerce.com/start-your-trial/) or [spin up a developer sandbox](https://start.bigcommerce.com/developer-sandbox/) to meet this prerequisite. If you already have a BigCommerce store, that will work fine too.
 
-### 5. A Makeswift workspace with [locales](locales) enabled/provisioned.
+### 5. A Makeswift workspace.
 
-If you have not created a Makeswift workspace, do so ahead of time. The current
-version of Catalyst requires Locales to be enabled. Reach out
+If you have not created a Makeswift workspace, do so ahead of time [here](https://app.makeswift.com/).
 
 ### 6. Permission to create API accounts on your store
 
-In order to allow Catalyst to authenticate with your BigCommerce store, you'll need to make sure that your user account on the subject store has been granted the Create store-level API Accounts permission detailed in our documentation on High-Risk Permissions. If you are the assigned store owner of the store, you have these permissions implicitly.
+In order to allow Catalyst to authenticate with your BigCommerce store, you'll need to make sure that your user account on the subject store has been granted the `Create store-level API Accounts` permission detailed in our [documentation on High-Risk Permissions](https://support.bigcommerce.com/s/article/User-Permissions#highrisk). If you are the assigned store owner of the store, you have these permissions implicitly.
 
 ### 7. A GitHub account
 
-You can sign up for a free GitHub account on the official GitHub signup page.
+You can sign up for a free GitHub account on the [official GitHub signup page](https://github.com/join).
 
 ## Steps
 
@@ -54,21 +53,24 @@ You can sign up for a free GitHub account on the official GitHub signup page.
   <Step title="Follow the instructions on Catalyst's Doc Site">
   <Tabs>
   <Tab title="CLI">
-  Run the Catalyst CLI to pull down the latest version of the Catalyst `main` branch of the Catalyst monorepo.
+  Run the Catalyst CLI to pull down the latest version of the Catalyst `main` branch of the Catalyst monorepo. The CLI is built to do the following:
 {/* CLI does these things (bullet points) */}
-  ```
-  npm create @bigcommerce/catalyst@latest
-  ```
-  </Tab>
-  <Tab title="Monorepo">
-    The [Catalyst Monorepo documentation](https://www.catalyst.dev/docs/monorepo) will walk you through how to:
   1. Fork and clone the Catalyst monorepo.
   2. Add a remote pointing to the upstream Catalyst repository.
   3. Enable Corepack so that you can use pnpm as your package manager.
   4. Install Catalyst Dependencies.
   5. Set up environment variables.
-  6. Copy VSCode settings (optional).
-  7. Get up and running on your dev server.
+
+```
+npm create @bigcommerce/catalyst@latest
+```
+
+Once you run the CLI, you effectively have a Catalyst Next.js application created. The remaining steps will walk you through integrating your Catalyst application with Makeswift.
+
+  </Tab>
+  <Tab title="Monorepo">
+    The [Catalyst Monorepo documentation](https://www.catalyst.dev/docs/monorepo) is available as an option if you would like to manually walk through the steps outlined by the CLI. 
+    {/* Add a note as to why we would recommend the monorepo approach over the CLI */}
 </Tab>
 </Tabs>
   </Step>
@@ -97,21 +99,38 @@ MAKESWIFT_SITE_API_KEY= <YOUR_API_KEY>
 </Frame>
 Save your `.env.local` file
   </Step>
-<Step title="Run pnpm dev">
-{/* <Warning>
-When switching branches (i.e. `main` to `integrations/makeswift`) you may need to re-install pnpm so that you node packages match.
-</Warning>
-run pnpm i */}
-Run pnpm dev to start
+<Step title="Run your development server">
+1. Install dependencies to match the current branch
+
+Ensure your local environment has the correct and updated dependencies for the specific branch you're working on by running the following command:
+
+```
+pnpm i
+```
+
+This will install and synchronize the necessary dependencies based on the package.json and pnpm-lock.yaml files for the current branch.
+Ensure that your local environment has the correct and updated dependencies required for the specific branch you are working on by installing pnpm.
+
+2. Start the development server
+
+Once the dependencies are installed, you can start the development server to run the project locally. Use the following command:
+
 ```
 pnpm dev
 ```
+
 </Step>
 <Step title="Update Host">
-Within the Makeswift Site Settings, update your host to whatever port your local development is running on.
+Within the Makeswift Site Settings, update your host to whatever port your local development is running on. Typically it should run on `http://localhost:3000`
+<Frame caption="In your site settings">
+    ![Makeswift host URL](images/host-url.gif)
+</Frame>
 </Step>
 <Step title="Create a New Page">
 Create a new page within Makeswift. We recommend starting with a Blank Page.
+<Frame caption="In the builder">
+    ![Makeswift host URL](images/create-page.gif)
+</Frame>
 </Step>
 </Steps>
 
