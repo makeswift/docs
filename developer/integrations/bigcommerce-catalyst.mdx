@@ -89,7 +89,7 @@ git checkout -b integrations/makeswift upstream/integrations/makeswift
     Update the root `.env.local` file with your 
     `Site API Key` located under your Host settings in Makeswift.
     <Frame caption="In your Makeswift Host settings">
-    ![Makeswift Site API key](images/Site-API-key.png)
+    ![Makeswift Site API key](/images/Site-API-key.png)
 
 </Frame>
 Add the key to your `.env.local` file with the following key name:
@@ -97,18 +97,16 @@ Add the key to your `.env.local` file with the following key name:
 MAKESWIFT_SITE_API_KEY=<YOUR_API_KEY>
 ```
 <Frame caption="In your codebase">
-    ![Makeswift API env variable](images/env-local-api-key.png)
+    ![Makeswift API env variable](/images/env-local-api-key.png)
 </Frame>
 Save your `.env.local` file.
   </Step>
 <Step title="Run your development server">
 Install dependencies to match the current branch
 
-
 ```
 pnpm i
 ```
-
 
 Start the development server
 
@@ -120,13 +118,13 @@ pnpm dev
 <Step title="Update host settings">
 Within the Makeswift Site Settings, update the host to the URL of your locally running project. By default, it should be `http://localhost:3000`.
 <Frame caption="In your site settings">
-    ![Makeswift host URL](images/host-url.gif)
+    ![Makeswift host URL](/images/host-url.gif)
 </Frame>
 </Step>
 <Step title="Create a new page">
 Create a new page within Makeswift. We recommend starting with a Blank Page.
 <Frame caption="In the builder">
-    ![Makeswift host URL](images/create-page.gif)
+    ![Makeswift host URL](/images/create-page.gif)
 </Frame>
 </Step>
 </Steps>
