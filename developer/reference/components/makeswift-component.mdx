@@ -1,0 +1,56 @@
+---
+title: "<MakeswiftComponent>"
+description: The `<MakeswiftComponent>` component takes a Makeswift snapshot and renders React elements using [components registered](/developer/reference/runtime/register-component) with the runtime.
+---
+
+import PagesCatchAllExample from "/snippets/pages-router/catch-all-makeswift-component.mdx";
+import AppCatchAllExample from "/snippets/app-router/catch-all-makeswift-component.mdx";
+
+## Props
+
+1. <ParamField query="snapshot" type="Snapshot" required>
+     A Makeswift snapshot to render.
+   </ParamField>
+2. <ParamField query="name" type="string" required>
+     The name of the component as displayed in the Visual Builder.
+   </ParamField>
+3. <ParamField query="type" type="string" required>
+     The type of the registered Makeswift component.
+   </ParamField>
+
+## Example
+
+### Embedded component
+
+The following example embeds a Makeswift component in a Next.js page.
+
+```tsx
+import { MakeswiftComponent } from "@makeswift/runtime/next";
+
+const productDetailSnapshot = await client.getComponentSnapshot(
+  `${slug}-product`,
+  {
+    siteVersion: getSiteVersion(),
+  }
+);
+
+return (
+  <MakeswiftComponent
+    snapshot={snapshot}
+    name="Component Name"
+    type="component-type"
+  />
+);
+```
+
+### App Router
+
+The following example sets up a [catch all dynamic route](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#optional-catch-all-segments) in the app router under `[[...path]]/page.tsx`.
+
+<AppCatchAllExample />
+
+### Pages Router
+
+The following example sets up a [catch all dynamic route](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#optional-catch-all-segments) in the pages router under `[[...path]].tsx`.
+
+<PagesCatchAllExample />

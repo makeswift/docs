@@ -1,6 +1,6 @@
 ---
-title: "getPageSnapshot (deprecated)"
-description: "An instance method that fetches a snapshot of a Makeswift page at a given path. This snapshot is only intended to be rendered by the `<Page>` component."
+title: "getComponentSnapshot"
+description: "An instance method that fetches a snapshot of a Makeswift component with a specific id. This snapshot is only intended to be rendered by the [`<MakeswiftComponent>`](/developer/reference/components/makeswift-component) component."
 ---
 
 import PagesCatchAllExample from "/snippets/pages-router/catch-all.mdx";
@@ -8,8 +8,8 @@ import PagesCatchAllLocalizedExample from "/snippets/pages-router/catch-all-loca
 
 ## Arguments
 
-1. <ParamField query="pathname" type="string" required>
-     The path of the page.
+1. <ParamField query="id" type="string" required>
+     The id of the component.
    </ParamField>
 2. <ParamField query="options" type="object" required>
      Options for site version and locale.
@@ -28,7 +28,7 @@ import PagesCatchAllLocalizedExample from "/snippets/pages-router/catch-all-loca
 
 <ResponseField name="snapshot" type="Snapshot">
   An opaque `Snapshot` object that is only intended to be rendered by the
-  [`<Page>`](/developer/reference/components/page) component.
+  [`<MakeswiftComponent>`](/developer/reference/components/MakeswiftComponent) component.
 </ResponseField>
 
 ## Examples
