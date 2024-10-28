@@ -142,8 +142,9 @@
         {
           "group": "Components",
           "pages": [
-            "developer/reference/components/page",
-            "developer/reference/components/react-runtime-provider"
+            "developer/reference/components/makeswift-component",
+            "developer/reference/components/react-runtime-provider",
+            "developer/reference/components/page"
           ]
         },
         {
@@ -171,8 +172,9 @@
             "developer/reference/client/constructor",
             "developer/reference/client/get-pages",
             "developer/reference/client/get-sitemap",
-            "developer/reference/client/get-page-snapshot",
-            "developer/reference/client/get-site-version"
+            "developer/reference/client/get-component-snapshot",
+            "developer/reference/client/get-site-version",
+            "developer/reference/client/get-page-snapshot"
           ]
         },
         "developer/reference/makeswift-api-handler",
