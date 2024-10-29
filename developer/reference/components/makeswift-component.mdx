@@ -3,54 +3,87 @@ title: "<MakeswiftComponent>"
 description: The `<MakeswiftComponent>` component takes a Makeswift snapshot and renders React elements using [components registered](/developer/reference/runtime/register-component) with the runtime.
 ---
 
-import PagesCatchAllExample from "/snippets/pages-router/catch-all-makeswift-component.mdx";
-import AppCatchAllExample from "/snippets/app-router/catch-all-makeswift-component.mdx";
-
 ## Props
 
 1. <ParamField query="snapshot" type="Snapshot" required>
      A Makeswift snapshot to render.
    </ParamField>
 2. <ParamField query="name" type="string" required>
-     The name of the component as displayed in the Visual Builder.
+     The label of the component to be used in the Visual Builder.
    </ParamField>
 3. <ParamField query="type" type="string" required>
      The type of the registered Makeswift component.
    </ParamField>
 
-## Example
+## Examples
 
-### Embedded component
+`<MakeswiftComponent>` can be used to render editable components and entire Makeswift pages.
 
-The following example embeds a Makeswift component in a Next.js page.
+### Editable components
 
-```tsx
-import { MakeswiftComponent } from "@makeswift/runtime/next";
+The following example creates an editable Makeswift component inside of a Next.js page.
 
-const productDetailSnapshot = await client.getComponentSnapshot(
-  `${slug}-product`,
-  {
-    siteVersion: getSiteVersion(),
-  }
-);
+First, you'll need a base component that accepts `content` as a prop.
 
-return (
-  <MakeswiftComponent
-    snapshot={snapshot}
-    name="Component Name"
-    type="component-type"
-  />
-);
+```tsx @/components/container/my-container.tsx
+type Props = {
+  className?: string;
+  content: ReactNode;
+};
+
+export const MyContainer = ({ content }: Props) => {
+  return <div>{content}</div>;
+};
 ```
 
-### App Router
+Next, this component needs to be registered with Makeswift. This example uses the [`Slot`](/developer/reference/controls/slot) control for the `content` property which matches the name of the prop defined in `MyContainer`.
 
-The following example sets up a [catch all dynamic route](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#optional-catch-all-segments) in the app router under `[[...path]]/page.tsx`.
+```tsx @/components/container/my-container.makeswift.ts
+import { runtime } from "@/makeswift/runtime";
+import { Slot, Style } from "@makeswift/runtime/controls";
+import { MyContainer } from "./my-container";
 
-<AppCatchAllExample />
+export const MY_CONTAINER_TYPE = "my-container";
 
-### Pages Router
+runtime.registerComponent(MyContainer, {
+  type: MY_CONTAINER_TYPE,
+  label: "My Container",
+  props: {
+    content: Slot(),
+  },
+});
+```
 
-The following example sets up a [catch all dynamic route](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#optional-catch-all-segments) in the pages router under `[[...path]].tsx`.
+import NamingConventions from "/snippets/naming-conventions.mdx";
 
-<PagesCatchAllExample />
+<NamingConventions />
+
+Then, you'll need to retrieve the snapshot of the component from the Makeswift API by calling [`getComponentSnapshot`](/developer/reference/client/get-component-snapshot.mdx) with a unique id and pass that snapshot to the `<MakeswiftComponent>` component.
+
+```tsx @/app/my-page.tsx
+import { MakeswiftComponent } from "@makeswift/runtime/next";
+import { getSiteVersion } from "@makeswift/runtime/next/server";
+import { MY_CONTAINER_TYPE } from "@/components/container/my-container.makeswift";
+import { client } from "@/makeswift/client";
+
+export default async function Product() {
+  const myContainerSnapshot = await client.getComponentSnapshot(
+    `my-container-id`,
+    {
+      siteVersion: getSiteVersion(),
+    }
+  );
+
+  return (
+    <MakeswiftComponent
+      snapshot={myContainerSnapshot}
+      name={`My Container`}
+      type={MY_CONTAINER_TYPE}
+    />
+  );
+}
+```
+
+### Pages
+
+We are in the process of finalizing our APIs. For generating entire pages, you can use the deprecated [Page](/developer/reference/components/page) component until new components are finalized.
