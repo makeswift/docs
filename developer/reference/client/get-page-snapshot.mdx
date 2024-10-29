@@ -1,10 +1,16 @@
 ---
-title: "getPageSnapshot (deprecated)"
-description: "An instance method that fetches a snapshot of a Makeswift page at a given path. This snapshot is only intended to be rendered by the `<Page>` component."
+title: "getPageSnapshot"
+description: "An instance method of the Makeswift [client](/developer/reference/client/constructor) that fetches a snapshot of a Makeswift page at a given path. This snapshot is only intended to be rendered by the `<Page>` component."
 ---
 
 import PagesCatchAllExample from "/snippets/pages-router/catch-all.mdx";
 import PagesCatchAllLocalizedExample from "/snippets/pages-router/catch-all-localized.mdx";
+
+<Warning>
+  This method is deprecated. We recommend using
+  [getComponentSnapshot](/developer/reference/client/get-component-snapshot)
+  instead.
+</Warning>
 
 ## Arguments
 
