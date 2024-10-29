@@ -1,6 +1,6 @@
 ---
 title: "getComponentSnapshot"
-description: "An instance method that fetches a snapshot of a Makeswift component with a specific id. This snapshot is only intended to be rendered by the [`<MakeswiftComponent>`](/developer/reference/components/makeswift-component) component."
+description: "An instance method of the Makeswift [client](/developer/reference/client/constructor) that fetches a snapshot of a Makeswift component by its `id`. This snapshot is only intended to be rendered by [`<MakeswiftComponent>`](/developer/reference/components/makeswift-component)."
 ---
 
 import PagesCatchAllExample from "/snippets/pages-router/catch-all.mdx";
@@ -28,19 +28,36 @@ import PagesCatchAllLocalizedExample from "/snippets/pages-router/catch-all-loca
 
 <ResponseField name="snapshot" type="Snapshot">
   An opaque `Snapshot` object that is only intended to be rendered by the
-  [`<MakeswiftComponent>`](/developer/reference/components/MakeswiftComponent) component.
+  [`<MakeswiftComponent>`](/developer/reference/components/makeswift-component) component.
 </ResponseField>
 
 ## Examples
 
+The following examples expect that you have a Makeswift client instance already configured and exported from `"@/makeswift/client.ts"`. If you don't, see the [client](/developer/reference/client/constructor) reference.
+
 ### Basic usage
 
-The following example sets up a [catch all route](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#catch-all-segments) where page snapshots are fetched from Makeswift and rendered using the [`<Page>`](/developer/reference/components/page) component.
+```tsx
+import { client } from "@/makeswift/client";
+import { getSiteVersion } from "@makeswift/runtime/next/server";
 
-<PagesCatchAllExample />
+const productDetailSnapshot = await client.getComponentSnapshot(
+  `my-product-details`,
+  {
+    siteVersion: getSiteVersion(),
+  }
+);
+```
 
 ### Localization
 
-The following example uses the `locale` param in `getStaticProps` to fetch a localized snapshot of a page.
+```tsx
+import { client } from "@/makeswift/client";
+import { getSiteVersion } from "@makeswift/runtime/next/server";
 
-<PagesCatchAllLocalizedExample />
+const locale = "en-US";
+const snapshot = await client.getComponentSnapshot(id, {
+  siteVersion: getSiteVersion(),
+  locale,
+});
+```
