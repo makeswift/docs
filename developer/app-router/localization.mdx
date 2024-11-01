@@ -13,29 +13,35 @@ import LocalizationExample from "/snippets/app-router/localization.mdx";
 
 ## Getting started
 
-<Check>
-  All Makeswift plans support some level of localization. To follow this guide,
-  you'll need a plan that supports multiple locales, which is available with all
-  of our paid plans. Please check your current [plan](/product/workspace/plans)
-  for full details and upgrade options.
-</Check>
-
 <Steps>
 
 <Step title="Add locales in the Makeswift builder">
 Open site settings and go to the "Locales" tab:
 
-![Makeswift dashboard showing the root settings page for Locales](/images/localization-first-step.png)
+<Note>
+  The number of locales you have access to is dependent upon your
+  [plan](/product/workspace/plans). Refer to the [pricing
+  page](https://makeswift.com/pricing) for full details.
+</Note>
+
+<Frame>
+  ![Makeswift dashboard showing the root settings page for
+  Locales](/images/localization-first-step.png)
+</Frame>
 
 To add a new locale, click the "+ Add locale" button. You can modify or delete existing locales by hovering over the locale:
 
-![Hovering over the locale](/images/localization-hover-locale.png)
+<Frame>
+  ![Hovering over the locale](/images/localization-hover-locale.png)
+</Frame>
 
 You can also modify the default locale by hovering over the default locale and clicking the edit button.
 
 Once you add all the locales you need, it might look like this:
 
-![Manage locales in settings](/images/localization-manage-locales.png)
+<Frame>
+  ![Manage locales in settings](/images/localization-manage-locales.png)
+</Frame>
 
 </Step>
 
@@ -57,7 +63,9 @@ Update your catch-all route to fetch the snapshot by locale.
 
 Once you've set everything up, you should be able to switch to the locale using the locale switcher on the builder.
 
-![Manage locales in settings](/images/localization-locales-switcher.png)
+<Frame>
+  ![Manage locales in settings](/images/localization-locales-switcher.png)
+</Frame>
 
 <Note>
 
@@ -76,7 +84,10 @@ but nested on the locale's path. For example, `es` pages will be located on `exa
 
 To use domain-based localization, just add the domain to the locale on your site settings:
 
-![Adding domain-based on settings](/images/localization-domain-based-settings.png)
+<Frame>
+  ![Adding domain-based on
+  settings](/images/localization-domain-based-settings.png)
+</Frame>
 
 Once you've done that, the Spanish localized pages will be located on `example.es/page`.
 
