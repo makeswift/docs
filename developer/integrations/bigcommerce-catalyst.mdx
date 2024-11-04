@@ -1,21 +1,19 @@
 ---
 title: BigCommerce x Catalyst
+description: Catalyst is the composable, fully customizable headless ecommerce storefront framework for [BigCommerce](https://www.bigcommerce.com/) built with [Next.js](https://nextjs.org/) and BigCommerce's [GraphQL Storefront API](https://developer.bigcommerce.com/docs/storefront/graphql).
 ---
 
-Catalyst is the composable, fully customizable headless ecommerce storefront framework for [BigCommerce](https://www.bigcommerce.com/). Catalyst has been built with [Next.js](https://nextjs.org/), [React](https://react.dev/) storefront components, and BigCommerce's [GraphQL Storefront API](https://developer.bigcommerce.com/docs/storefront/graphql).
+[Catalyst](https://catalyst.dev/) is a fully functional BigCommerce storefront that is optmized for SEO, accessibility, and performance. Catalyst is designed to take care of the essentials so you can focus your efforts on building your brand and adding those special features that take storefronts to the next level.
 
-When you use Catalyst, you can create a fully functional BigCommerce storefront using their CLI and get to work without wiring up APIs or building ecommerce components from scratch that are optimized for SEO, accessibility, and performance. Catalyst is designed to take care of the essentials so you can focus your efforts on building your brand and adding those special features that take storefronts to the next level.
+To see Catalyst in action, check out the [working demo](https://catalyst-demo.vercel.app/).
 
-You can find a demo version of Catalyst at https://catalyst-demo.site/, hosted on Vercel in a US region.
-
-<Warning>
-  While Makeswift is a part of BigCommerce, Catalyst and Makeswift are
-  completely decoupled solutions. This is to say that Catalyst and Makeswift can
-  be used in conjunction, or independent of one another. While they are separate
-  solutions, both are built to be heavily integrated with one another. This
-  guide serves as a supplement to the documentation available on [Catalyst's
-  Getting Started documentation](https://www.catalyst.dev/docs).
-</Warning>
+<Note>
+  Catalyst and Makeswift can be used in conjunction, or independent of one
+  another. While they are separate solutions, both are built to be heavily
+  integrated with one another. This guide serves as a supplement to the
+  documentation available on the Catalyst [Getting
+  Started](https://www.catalyst.dev/docs) documentation.
+</Note>
 
 ## Prerequisites
 
@@ -50,54 +48,70 @@ You can sign up for a free GitHub account on the [official GitHub signup page](h
 ## Steps
 
 <Steps>
-  <Step title="Follow the instructions on Catalyst's Doc Site">
-  <Tabs>
-  <Tab title="CLI">
-  Run the Catalyst CLI to pull down the latest version of the Catalyst `main` branch of the Catalyst monorepo. The CLI is built to do the following:
-{/* CLI does these things (bullet points) */}
-  1. Fork and clone the Catalyst monorepo.
-  2. Add a remote pointing to the upstream Catalyst repository.
-  3. Enable Corepack so that you can use pnpm as your package manager.
-  4. Install Catalyst Dependencies.
-  5. Set up environment variables.
+  <Step title="Run the CLI">
+  Use the Catalyst CLI to pull down the latest version of the `main` branch of the monorepo. The CLI will:
+
+1. Clone the Catalyst monorepo.
+2. Add a remote pointing to the upstream Catalyst repository.
+3. Enable Corepack so that you can use pnpm as your package manager.
+4. Install Catalyst Dependencies.
+5. Set up environment variables.
 
 This command will prompt you to name your project, as well as connect it to a BigCommerce store.
 
-```
-npm create @bigcommerce/catalyst@latest
+```bash
+pnpm create @bigcommerce/catalyst@latest
 ```
 
-Once you run the CLI, you effectively have a Catalyst Next.js application created. The remaining steps will walk you through integrating your Catalyst application with Makeswift.
+Change into your new project directory:
 
-  </Tab>
-  <Tab title="Monorepo">
-    The [Catalyst Monorepo documentation](https://www.catalyst.dev/docs/monorepo) is available as an option if you would like to manually walk through the steps outlined by the CLI. 
-    {/* Add a note as to why we would recommend the monorepo approach over the CLI */}
-</Tab>
-</Tabs>
+```bash
+cd <YOUR_PROJECT_NAME>
+```
+
+  </Step>
+  <Step title="Fork the Catalyst repo">
+  Next, you'll want to fork the Catalyst repo. This will enable you to create and mange your own deployments. Navigate to [the Catalyst repo](https://github.com/bigcommerce/catalyst) and click **Fork** at the top of the page.
+
+GitHub will prompt you to choose a name for your fork; for the purposes of this guide, we'll refer to the name of the fork as `<YOUR_FORK_NAME>`. You should replace `<YOUR_FORK_NAME>` in all of the commands below with your actual fork name.
+
+Back in your terminal, add your fork as a remote to your local repository:
+
+```bash
+git remote add origin git@github.com:<YOUR_GITHUB_USERNAME>/<YOUR_FORK_NAME>.git
+```
+
   </Step>
   <Step title="Fetch the Makeswift integration branch">
-    The Makeswift Catalyst integration is a branch available in the upstream GitHub repository that can be checked out locally.
+    The Makeswift Catalyst integration is available in a branch in the upstream GitHub repository.
 
-```
+```bash
 git fetch upstream integrations/makeswift
 git checkout -b integrations/makeswift upstream/integrations/makeswift
+```
+
+Push this branch to your forked repository on Github.
+
+```bash
+git push -u origin integrations/makeswift
 ```
 
 </Step>
   <Step title="Update environment variables">
     Update the root `.env.local` file with your 
-    `Site API Key` located under your Host settings in Makeswift.
-    <Frame caption="In your Makeswift Host settings">
+    **Site API Key** located under your Host settings in Makeswift.
+    <Frame>
     ![Makeswift Site API key](/images/Site-API-key.png)
+    </Frame>
 
-</Frame>
 Add the key to your `.env.local` file with the following key name:
-```
+
+```bash
 MAKESWIFT_SITE_API_KEY=<YOUR_API_KEY>
 ```
-<Frame caption="In your codebase">
-    ![Makeswift API env variable](/images/env-local-api-key.png)
+
+<Frame >
+    ![Makeswift API key environment variable](/images/env-local-api-key.png)
 </Frame>
 Save your `.env.local` file.
   </Step>
@@ -117,19 +131,15 @@ pnpm dev
 </Step>
 <Step title="Update host settings">
 Within the Makeswift Site Settings, update the host to the URL of your locally running project. By default, it should be `http://localhost:3000`.
-<Frame caption="In your site settings">
+<Frame >
     ![Makeswift host URL](/images/host-url.gif)
 </Frame>
 </Step>
-<Step title="Create a new page">
-Create a new page within Makeswift. We recommend starting with a Blank Page.
-<Frame caption="In the builder">
-    ![Makeswift host URL](/images/create-page.gif)
-</Frame>
+<Step title="Explore">
+Now that you have a running Catalyst website within Makeswift, you can begin custom development on your Catalyst application and visually edit your pages in Makeswift.
+
 </Step>
 </Steps>
-
-You are now able to begin custom development on your Catalyst application and visually edit your pages in Makeswift.
 
 We recommend familiarizing yourself with Makeswift by going through the [Product Quickstart](/product/quickstart) before you begin any development. There are some out-of-the-box components that leverage the best of Next.js that can help drive some decisions around what custom components you'll want to create.
 
