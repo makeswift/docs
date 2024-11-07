@@ -75,7 +75,11 @@
       "pages": [
         {
           "group": "Workspace",
-          "pages": ["product/workspace/billing", "product/workspace/user"]
+          "pages": [
+            "product/workspace/billing",
+            "product/workspace/plans",
+            "product/workspace/user"
+          ]
         },
         {
           "group": "Site",
