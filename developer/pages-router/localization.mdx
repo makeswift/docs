@@ -3,20 +3,14 @@ title: Localization
 description: "This guide walks you through setting up localization for your Makeswift site so you can visually customize your site for different locales."
 ---
 
-import PagesCatchAllLocalizedExample from "/snippets/pages-router/catch-all-localized.mdx"
-import NextConfigLocalizedExample from "/snippets/pages-router/next-config-localized.mdx"
-import NextConfigDomainLocalizedExample from "/snippets/pages-router/next-config-domain-localized.mdx"
+import PagesCatchAllLocalizedExample from "/snippets/pages-router/catch-all-localized.mdx";
+import NextConfigLocalizedExample from "/snippets/pages-router/next-config-localized.mdx";
+import NextConfigDomainLocalizedExample from "/snippets/pages-router/next-config-domain-localized.mdx";
 
 <Info>
   The feature is deeply integrated with [Next.js' internationalization
   features](https://nextjs.org/docs/pages/building-your-application/routing/internationalization).
 </Info>
-
-<Warning>
-  Localization is currently only available on the Enterprise plan. Reach out to
-  support at [support@makeswift.com](mailto:support@makeswift.com) if you want
-  to enable this feature.
-</Warning>
 
 ## Getting started
 
@@ -25,17 +19,27 @@ import NextConfigDomainLocalizedExample from "/snippets/pages-router/next-config
 <Step title="Add locales in the Makeswift builder">
 Open site settings and go to the "Locales" tab:
 
-![Localization first step](/images/localization-first-step.png)
+<Note>
+  The number of locales you have access to is dependent upon your
+  [plan](/product/workspace/plans). Refer to the [pricing
+  page](https://makeswift.com/pricing) for full details.
+</Note>
+
+<Frame>![Localization first step](/images/localization-first-step.png)</Frame>
 
 To add a new locale, click the "+ Add locale" button. You can modify or delete existing locales by hovering over the locale:
 
-![Hovering over the locale](/images/localization-hover-locale.png)
+<Frame>
+  ![Hovering over the locale](/images/localization-hover-locale.png)
+</Frame>
 
 You can also modify the default locale by hovering over the default locale and clicking the edit button.
 
 Once you add all the locales you need, it might look like this:
 
-![Manage locales in settings](/images/localization-manage-locales.png)
+<Frame>
+  ![Manage locales in settings](/images/localization-manage-locales.png)
+</Frame>
 
 </Step>
 
@@ -66,7 +70,9 @@ This code is usually located in `[[...path]].tsx`, but it might be different dep
 
 Once you've set everything up, you should be able to switch to the locale using the locale switcher on the builder.
 
-![Manage locales in settings](/images/localization-locales-switcher.png)
+<Frame>
+  ![Manage locales in settings](/images/localization-locales-switcher.png)
+</Frame>
 
 <Note>
 
@@ -85,7 +91,10 @@ but nested on the locale's path. For example, `es` pages will be located on `exa
 
 To use domain-based localization, first, add the domain to the locale on your site settings:
 
-![Adding domain-based on settings](/images/localization-domain-based-settings.png)
+<Frame>
+  ![Adding domain-based on
+  settings](/images/localization-domain-based-settings.png)
+</Frame>
 
 Then, add the domain to your `next.config.mjs`:
 
