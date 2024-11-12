@@ -538,12 +538,12 @@
     },
     {
       "source": "/article/43-element-actions",
-      "destination": "/product/components#element-actions",
+      "destination": "/product/components#component-actions",
       "permanent": true
     },
     {
       "source": "/article/58-custom-element-name-and-id",
-      "destination": "/product/components#element-actions",
+      "destination": "/product/components#component-actions",
       "permanent": true
     },
     {
