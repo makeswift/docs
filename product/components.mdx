@@ -4,15 +4,15 @@ description: "Makeswift leverages the power of React to give you unparalleled fl
 icon: "cube" iconType: "solid"
 ---
 
-## Basic components
+## Built-in components
 
-Several components come standard with the Makeswift default host. These are the 4 most common components you'll use to build your site:
+There are four components that come standard with the Makeswift default host:
 
-### Box
-
-The Box is your most valuable and versatile tool in the toolbar. It's works exactly as described, like a box you can place things in, but you can use it for so much more. If you're familiar with HTML, the easiest way to conceptualize a box is like a `<div>`. From a developer perspective, boxes can also be synonmous with [Slots](/developer/reference/controls/slot). Use boxes to configure different [layouts](/product/layouts).
-
-### Text
+<AccordionGroup>
+  <Accordion title="Box">
+    The Box is your most valuable and versatile tool in the Component Toolbar. It works exactly as described, like a box you can place things in, but you can use it for so much more. If you're familiar with HTML, the easiest way to conceptualize a box is like a `<div>`. From a developer perspective, boxes can also be synonmous with [Slots](/developer/reference/controls/slot). Use Boxes to configure different [layouts](/product/layouts).
+  </Accordion>
+  <Accordion title="Text">
 
 Double-click on any text component on your page to start editing it directly, similar to Google Docs. Text components use the "paragraph" block tag by default, but you can change it to a heading or list in the panels sidebar. Text components can also be styled with [text styles](/product/site/text-styles).
 
@@ -31,11 +31,12 @@ The block panel applies to an entire paragraph and correlates to the HTML tag us
 
 Block tags affect a page's [SEO](/product/SEO), so make sure to use the appropriate options throughout your site.
 
-### Image
+  </Accordion>
+  <Accordion title="Image">
 
 The image component is placed directly as content on your page, unlike a background image that goes behind content. Think of an image as framed art on a wall, whereas the background image is the wallpaper behind it.
 
-To place an image, select an image element on your page and click "Choose" or “Replace” in the panels sidebar. Select an existing image from the files manager, or upload a new one.
+To place an image, select an image component on your page and click "Choose" or “Replace” in the panels sidebar. Select an existing image from the files manager, or upload a new one.
 
 <Frame>
   <img
@@ -49,15 +50,15 @@ To place an image, select an image element on your page and click "Choose" or �
 
 Images will automatically be optimized and resized when published, increasing the performance of your site.
 
-### Button
-
-Use buttons to create links within your pages. The following are the link options for buttons:
+  </Accordion>
+  <Accordion title="Button">
+  Use buttons to create links within your pages. The following are the link options for buttons:
 
 - Open a Makeswift page
 - Open an external URL
 - Compose an email
 - Call a phone number
-- Scroll to an element
+- Scroll to a component
 
 #### Open page
 
@@ -65,112 +66,111 @@ When linking to other pages within your site, you'll select from a list of exist
 
 #### Scroll to element
 
-To use “Scroll to element” you must first give the target element a custom name. This name will now appear in the dropdown found in the button's “On click” panel.
+To use “Scroll to element” you must first give the target component a custom name. This name will now appear in the dropdown found in the button's “On click” panel.
 
-You can also select the screen position of the scrolled to element.
+You can also select the screen position of the scrolled to component.
 
 #### Styling buttons
 
 You can select from a list of premade styles for your buttons. Along with styles, you can customize the size, shape, color and text styles.
 
-### Custom element name and ID
+  </Accordion>
+</AccordionGroup>
 
-Elements are instances of components you manage in the [canvas](/product/builder-basics). Name an element by selecting it and changing the default name at the top of the panels sidebar. Custom names must be alphanumeric and cannot contain any spaces.
+## Naming components
 
-<Frame>![Custom element name input](/images/builder/elements6.gif)</Frame>
-
-Custom names are displayed in [breadcrumbs](/product/layouts#breadcrumbs), also making it easier to discern between nested boxes.
-
-<Frame>![element custom name](/images/builder/element1.gif)</Frame>
-
-Elements with custom names can also be scrolled to with buttons, images, and text links. All elements with custom names will appear in the scroll to dropdown found in on click panels.
+You can name a component by selecting it and changing the default name at the top of the [Properties Sidebar](/product/builder-basics). Component names must be alphanumeric and cannot contain any spaces.
 
 <Frame>
-  ![elements in dropdown click panel](/images/builder/elements2.gif)
+  ![Custom component name input](/images/builder/components-custom-name.jpeg)
 </Frame>
 
-Custom names also serve as IDs added to the element's HTML that can be targeted by custom CSS and JavaScript.
-
-### Element actions
-
-Actions for selected elements can be found at the top right of the panels sidebar or by using keyboard shortcuts.
+Component names are displayed in [Breadcrumbs](/product/layouts#selecting-components) and the [Layers Panel](/product/builder-basics#layers-panel) making it easier to discern between different component.
 
 <Frame>
-  <img
-    src="/images/builder/elements3.gif"
-    width="500"
-    alt="Element actions menu"
-  />
+  ![Copmonent label showed in
+  breadcrumbs](/images/builder/components-breadcrumb-label.jpeg)
 </Frame>
 
-- Duplicating an element, or pressing `⌘ + D`, creates an exact copy, including nested elements, either below or next to the original.
-- Copy an element or press `⌘ + C` to save it to your clipboard. When pasting `⌘ + V`, you will be able to select exactly where to place the copied element, similar to sorting.
-- Delete any selected element by pressing delete or backspace.
-
-## Global components
-
-Global components are groups of elements that can be saved and reused across your entire site. If you make an update to a global component, every instance of that component on your site will be updated as well.
-
-### Creating a global component
-
-Let's start by dropping in a navbar instant layout from the toolbar. Feel free to edit the styles of the navbar, as well as any links or styles in the navigation component. Select the navbar box and click on the cube icon found at the top of the panels sidebar.
+Custom component names also serve as the `id` property added to the component's HTML. This allows them to be scrolled to with buttons, images, and text links. All components with custom names will appear in the **Scroll to element** dropdown found in the **on click** panel.
 
 <Frame>
-  <img
-    src="/images/components/create-component.gif"
-    width="500"
-    alt="Hovering over the cube icon in the panels sidebar to create a global component"
-  />
+  ![components in dropdown click
+  panel](/images/builder/components-scroll-to-custom-name.jpeg)
 </Frame>
 
-Name your global component and click “Yes, continue” to convert the navbar into an instance of your new global component.
+## Component actions
 
-Navigate to a different page in the same site. In the toolbar to the left of the builder, you'll find another cube icon. Hovering over the icon will display all the global components available in your site. Like any other component, click and drag your new global component and place it on the page.
+Actions for selected components can be found at the top right of the [Properties Sidebar](/product/builder-basics) or by using keyboard shortcuts.
 
 <Frame>
-  <img
-    src="/images/components/access-components.gif"
-    width="500"
-    alt="The global component tray in the toolbar"
-  />
+  ![Menu actions for component](/images/builder/components-menu-actions.jpeg)
 </Frame>
 
-### Editing a global component
+- Duplicate a component `⌘ + D` - creates an exact copy, including nested components, either below or next to the original
+- Copy a component `⌘ + C` - copies the selected component to your clipboard
+- Paste a component `⌘ + V` - places the copied component in the [Canvas](/product/builder-basics) (you choose exactly where to place it)
+- Delete a component `DELETE` - deletes the selected component
 
-To edit a global component select any instance of that component in your site and click “Edit component” in the sidebar.
+## Global Components
+
+Global Components are groups of components that can be saved and reused across your entire site. If you make an update to a Global Component, every instance of that component on your site will be updated as well.
+
+### Creating a Global Component
+
+To create a Global Component, select the Box containing the components you want to turn into a Global Component. Then, click on the cube icon found at the top of the [Properties Sidebar](/product/builder-basics).
 
 <Frame>
-  <img
-    src="/images/components/edit-component.gif"
-    width="300"
-    alt="The edit global component button in the panels sidebar"
-  />
+  ![Create global
+  component](/images/builder/components-creat-global-component.jpeg)
 </Frame>
 
-While editing a global component, you have full control over the content and styles for all elements found in that component. You can add or remove elements, and even place other global components inside.
+Name your global component and click **Yes, continue**.
 
-When you are done with edits, click the “Save” button at the top right of the global component overlay.
+You can find your newly created Global Components in the Component Toolbar by clicking the plus icon. Then, you can click and drag to place it on the page.
 
 <Frame>
-  ![saving changes to a global component](/images/components/save-component.gif)
+  ![List of components](/images/builder/components-find-global-component.jpeg)
+</Frame>
+
+### Editing a Global Component
+
+Editing a Global Component will update all instances across your site. To edit a Global Component select any instance of that component in the [Canvas](/product/builder-basics) and click **Edit component** in the [Properties Sidebar](/product/builder-basics).
+
+<Frame>
+  ![Edit global component](/images/builder/components-detach-global.jpeg)
+</Frame>
+
+While editing a Global Component, you have full control over the content and styles for all components found in that component. You can add or remove components, and even place other Global Components inside.
+
+When you are done with edits, click the **Save** button at the top right of the Global Component overlay.
+
+<Frame>
+  ![saving changes to a global
+  component](/images/builder/components-save-global-edit.jpeg)
 </Frame>
 
 <Note>
   Global component updates are published as separate resources from pages. Learn
-  more about [publishing global
-  components](/product/publishing#publishing-site-resources).
+  more about [publishing Global
+  Components](/product/publishing#publishing-site-resources).
 </Note>
 
-### Managing global components
+### Detaching from a Global Component
 
-You can manage your global components from within the global element tray accessed in the toolbar. You can rename or delete any global component. If a global component is deleted, all instances of that component in your site will be replaced with an error message and will need to be manually removed.
+Changes to a Global Component are propogated to all instances across your site. If you'd like to use a Global Component as a starting point and don't want to keep it in sync with the original component, you can detach an individual instance.
 
-You can also detach any instance from it's global component, allowing you to make changes to those detached elements.
+To detach, select the instance of the Global Component in the [Canvas](/product/builder-basics). Then, in the [Properties Sidebar](/product/builder-basics), click **Detach**. Remember, once detached, the instance will no longer be updated when the original Global Component is edited.
 
 <Frame>
-  <img
-    src="/images/components/detatch-instance.gif"
-    width="300"
-    alt="The global component action menu with the option to detach an instance"
-  />
+  ![Detach global component](/images/builder/components-detach-global.jpeg)
+</Frame>
+
+### Organizing Global Components
+
+As your list of components grow, you may want to organize them. You can do this by including a `/` in the Global Component name. For example, a component with a name of `ui/hero` will be nested under `ui`.
+
+<Frame>
+  ![Organizing components using
+  slash](/images/builder/components-organizing-with-slash.jpeg)
 </Frame>
