@@ -1,49 +1,52 @@
 ---
 title: "<MakeswiftComponent>"
-description: The `<MakeswiftComponent>` component takes a Makeswift snapshot and renders React elements using [components registered](/developer/reference/runtime/register-component) with the runtime.
+description: The `<MakeswiftComponent>` component takes a `MakeswiftComponentSnapshot` (returned from calling [getComponentSnapshot](/developer/reference/client/get-component-snapshot)) and renders React elements using [components registered](/developer/reference/runtime/register-component) with the runtime.
 ---
+
+<Warning>
+  This API is a WIP and is subject to change. To use this API, you can use the
+  following version of the Makeswift runtime: `0.0.0-snapshot-20241113160601`
+</Warning>
 
 ## Props
 
 1. <ParamField query="snapshot" type="Snapshot" required>
      A Makeswift snapshot to render.
    </ParamField>
-2. <ParamField query="name" type="string" required>
-     The label of the component to be used in the Visual Builder.
+2. <ParamField query="label" type="string" required>
+     The name of the component to be used in the Visual Builder.
    </ParamField>
 3. <ParamField query="type" type="string" required>
      The type of the registered Makeswift component.
    </ParamField>
+4. <ParamField query="fallback" type="string">
+     The type of the registered Makeswift component.
+   </ParamField>
 
-## Examples
+## Example
 
-`<MakeswiftComponent>` can be used to render editable components and entire Makeswift pages.
+The following example registers a `MakeswiftComponent` that allows the user to add content to a container using the Visual Builder.
 
-### Editable components
-
-The following example creates an editable Makeswift component inside of a Next.js page.
-
-First, you'll need a base component that accepts `content` as a prop.
+First, you'll need a React component. Here, we're going to use one that has a single `children` prop, but you can customize the component and its props as needed.
 
 ```tsx @/components/container/my-container.tsx
 type Props = {
-  className?: string;
-  content: ReactNode;
+  children: ReactNode;
 };
 
-export const MyContainer = ({ content }: Props) => {
-  return <div>{content}</div>;
-};
+export default async function MyContainer({ children }: Props) {
+  return <div>{children}</div>;
+}
 ```
 
-Next, this component needs to be registered with Makeswift. This example uses the [`Slot`](/developer/reference/controls/slot) control for the `content` property which matches the name of the prop defined in `MyContainer`.
+Next, this component needs to be registered with Makeswift. This example uses the [`Slot`](/developer/reference/controls/slot) control for a `content` property. Notice this `content` property matches the name of the prop defined in the `MyContainer` component.
 
 ```tsx @/components/container/my-container.makeswift.ts
 import { runtime } from "@/makeswift/runtime";
-import { Slot, Style } from "@makeswift/runtime/controls";
+import { Slot } from "@makeswift/runtime/controls";
 import { MyContainer } from "./my-container";
 
-export const MY_CONTAINER_TYPE = "my-container";
+export const MY_CONTAINER_TYPE = "my-container"; //unique id for the registered component
 
 runtime.registerComponent(MyContainer, {
   type: MY_CONTAINER_TYPE,
@@ -54,36 +57,37 @@ runtime.registerComponent(MyContainer, {
 });
 ```
 
-import NamingConventions from "/snippets/naming-conventions.mdx";
-
-<NamingConventions />
+<Note>
+  Each time you create a registered component, you'll need to import it into
+  both your `layout.tsx` file and your `makeswift/provider.tsx` file.
+</Note>
 
 Then, you'll need to retrieve the snapshot of the component from the Makeswift API by calling [`getComponentSnapshot`](/developer/reference/client/get-component-snapshot.mdx) with a unique id and pass that snapshot to the `<MakeswiftComponent>` component.
 
-```tsx @/app/my-page.tsx
+For the `MakeswiftComponent`, you'll need to pass the `snapshot`, `label`, and `type`. This `type` should match the `type` property of the registered component.
+
+Here, the `MakeswiftComponent` is being rendered on a page with the route `/my-page`.
+
+```tsx @/app/my-page/page.tsx
 import { MakeswiftComponent } from "@makeswift/runtime/next";
 import { getSiteVersion } from "@makeswift/runtime/next/server";
 import { MY_CONTAINER_TYPE } from "@/components/container/my-container.makeswift";
 import { client } from "@/makeswift/client";
 
-export default async function Product() {
+export default async function Page() {
   const myContainerSnapshot = await client.getComponentSnapshot(
-    `my-container-id`,
-    {
-      siteVersion: getSiteVersion(),
-    }
+    `my-container-id`, //id of the component rendered on the page
+    { siteVersion: await getSiteVersion() }
   );
 
   return (
     <MakeswiftComponent
       snapshot={myContainerSnapshot}
-      name={`My Container`}
-      type={MY_CONTAINER_TYPE}
+      label={`My Container`}
+      type={MY_CONTAINER_TYPE} //this should match the type property of the registered component
     />
   );
 }
 ```
 
-### Pages
-
-We are in the process of finalizing our APIs. For generating entire pages, you can use the deprecated [Page](/developer/reference/components/page) component until new components are finalized.
+To see this in the builder, you'll need to navigate to `/my-page` within the URL bar. This page won't be autopopulated in the builder, so you'll need to manually navigate to it.
