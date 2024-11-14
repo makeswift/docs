@@ -3,6 +3,11 @@ title: "<MakeswiftComponent>"
 description: The `<MakeswiftComponent>` component takes a `MakeswiftComponentSnapshot` (returned from calling [getComponentSnapshot](/developer/reference/client/get-component-snapshot)) and renders React elements using [components registered](/developer/reference/runtime/register-component) with the runtime.
 ---
 
+<Warning>
+  This API is a WIP and is subject to change. To use this API, you can use the
+  following version of the Makeswift runtime: `0.0.0-snapshot-20241113160601`
+</Warning>
+
 ## Props
 
 1. <ParamField query="snapshot" type="MakeswiftComponentSnapshot" required>
@@ -16,8 +21,11 @@ description: The `<MakeswiftComponent>` component takes a `MakeswiftComponentSna
      `type` property that was used when calling
      [registerComponent](/developer/reference/runtime/register-component).
    </ParamField>
+4. <ParamField query="fallback" type="string">
+     The type of the registered Makeswift component.
+   </ParamField>
 
-## Examples
+## Example
 
 <Warning>
   The following examples expects that you have integrated Makeswift into your
