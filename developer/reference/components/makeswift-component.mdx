@@ -39,7 +39,7 @@ export default async function MyContainer({ children }: Props) {
 }
 ```
 
-Next, this component needs to be registered with Makeswift. This example uses the [`Slot`](/developer/reference/controls/slot) control for a `content` property. Notice this `content` property matches the name of the prop defined in the `MyContainer` component.
+Next, this component needs to be registered with Makeswift. This example uses the [`Slot`](/developer/reference/controls/slot) control for a `children` property. Notice this `chlidren` property matches the name of the prop defined in the `MyContainer` component.
 
 ```tsx @/components/container/my-container.makeswift.ts
 import { runtime } from "@/makeswift/runtime";
@@ -52,7 +52,7 @@ runtime.registerComponent(MyContainer, {
   type: MY_CONTAINER_TYPE,
   label: "My Container",
   props: {
-    content: Slot(),
+    children: Slot(),
   },
 });
 ```
