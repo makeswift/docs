@@ -120,20 +120,38 @@
 
     {
       "group": "Get started",
-      "pages": ["developer/quickstart", "developer/concepts"]
-    },
-    {
-      "group": "App Router",
       "pages": [
-        "developer/app-router/installation",
-        "developer/app-router/localization"
+        "developer/quickstart",
+        {
+          "group": "Installation",
+          "pages": [
+            "developer/app-router/installation",
+            "developer/pages-router/installation"
+          ]
+        },
+        "developer/concepts"
       ]
     },
     {
-      "group": "Pages Router",
+      "group": "Guides",
       "pages": [
-        "developer/pages-router/installation",
-        "developer/pages-router/localization"
+        {
+          "group": "Caching",
+          "pages": [
+            "developer/caching/overview",
+            "developer/caching/time-based-revalidation",
+            "developer/caching/tag-based-revalidation"
+          ]
+        },
+        {
+          "group": "Localization",
+          "pages": [
+            "developer/app-router/localization",
+            "developer/pages-router/localization"
+          ]
+        },
+        "developer/guides/troubleshooting",
+        "developer/guides/environments"
       ]
     },
     {
@@ -185,13 +203,7 @@
         }
       ]
     },
-    {
-      "group": "Guides",
-      "pages": [
-        "developer/guides/troubleshooting",
-        "developer/guides/environments"
-      ]
-    },
+
     {
       "group": "Integrations",
       "pages": ["developer/integrations/bigcommerce-catalyst"]
