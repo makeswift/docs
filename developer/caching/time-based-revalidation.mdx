@@ -1,0 +1,15 @@
+---
+title: Time-based Revalidation
+description: "Learn how to use time-based revalidation to update static content without rebuilding your entire site."
+icon: "clock"
+---
+
+import InstallationRequirement from "/snippets/callouts/installation-requirement.mdx";
+
+By using [Incremental Static Regeneration (ISR)](https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration), you can update static content in your Next.js applications on a time-based interval that you define in your code without having to rebuilt your entire site.
+
+<InstallationRequirement />
+
+## Enabling time-based revalidation
+
+To enable ISR, export a `revalidate` property in a page component (a `page.tsx` file).
