@@ -151,7 +151,8 @@
           ]
         },
         "developer/guides/troubleshooting",
-        "developer/guides/environments"
+        "developer/guides/environments",
+        "developer/caching/overview"
       ]
     },
     {
