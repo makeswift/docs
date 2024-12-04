@@ -135,23 +135,9 @@
     {
       "group": "Guides",
       "pages": [
-        {
-          "group": "Caching",
-          "pages": [
-            "developer/caching/overview",
-            "developer/caching/time-based-revalidation",
-            "developer/caching/tag-based-revalidation"
-          ]
-        },
-        {
-          "group": "Localization",
-          "pages": [
-            "developer/app-router/localization",
-            "developer/pages-router/localization"
-          ]
-        },
         "developer/guides/troubleshooting",
-        "developer/guides/environments"
+        "developer/guides/environments",
+        "developer/caching/overview"
       ]
     },
     {
