@@ -120,20 +120,24 @@
 
     {
       "group": "Get started",
-      "pages": ["developer/quickstart", "developer/concepts"]
-    },
-    {
-      "group": "App Router",
       "pages": [
-        "developer/app-router/installation",
-        "developer/app-router/localization"
+        "developer/quickstart",
+        {
+          "group": "Installation",
+          "pages": [
+            "developer/app-router/installation",
+            "developer/pages-router/installation"
+          ]
+        },
+        "developer/concepts"
       ]
     },
     {
-      "group": "Pages Router",
+      "group": "Guides",
       "pages": [
-        "developer/pages-router/installation",
-        "developer/pages-router/localization"
+        "developer/guides/troubleshooting",
+        "developer/guides/environments",
+        "developer/caching/overview"
       ]
     },
     {
@@ -143,6 +147,7 @@
           "group": "Components",
           "pages": [
             "developer/reference/components/page",
+            "developer/reference/components/makeswift-component",
             "developer/reference/components/react-runtime-provider"
           ]
         },
@@ -170,8 +175,8 @@
           "pages": [
             "developer/reference/client/constructor",
             "developer/reference/client/get-pages",
-            "developer/reference/client/get-sitemap",
             "developer/reference/client/get-page-snapshot",
+            "developer/reference/client/get-component-snapshot",
             "developer/reference/client/get-site-version"
           ]
         },
@@ -182,16 +187,14 @@
             "developer/reference/runtime/constructor",
             "developer/reference/runtime/register-component"
           ]
+        },
+        {
+          "group": "Legacy APIs",
+          "pages": ["developer/reference/client/get-sitemap"]
         }
       ]
     },
-    {
-      "group": "Guides",
-      "pages": [
-        "developer/guides/troubleshooting",
-        "developer/guides/environments"
-      ]
-    },
+
     {
       "group": "Integrations",
       "pages": ["developer/integrations/bigcommerce-catalyst"]
