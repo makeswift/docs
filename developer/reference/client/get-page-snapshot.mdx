@@ -6,12 +6,6 @@ description: "An instance method of the Makeswift [client](/developer/reference/
 import PagesCatchAllExample from "/snippets/pages-router/catch-all.mdx";
 import PagesCatchAllLocalizedExample from "/snippets/pages-router/catch-all-localized.mdx";
 
-<Warning>
-  This method is deprecated. We recommend using
-  [getComponentSnapshot](/developer/reference/client/get-component-snapshot)
-  instead.
-</Warning>
-
 ## Arguments
 
 1. <ParamField query="pathname" type="string" required>
@@ -26,11 +20,6 @@ import PagesCatchAllLocalizedExample from "/snippets/pages-router/catch-all-loca
        </ParamField>
        <ParamField query="locale" type="string">
          A valid locale string.
-       </ParamField>
-       <ParamField query="next" type="object">
-         A [Next.js fetch()
-         options](https://nextjs.org/docs/app/api-reference/functions/fetch#fetchurl-options)
-         object
        </ParamField>
      </Expandable>
    </ParamField>

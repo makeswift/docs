@@ -160,6 +160,7 @@
         {
           "group": "Components",
           "pages": [
+            "developer/reference/components/page",
             "developer/reference/components/makeswift-component",
             "developer/reference/components/react-runtime-provider"
           ]
@@ -188,6 +189,7 @@
           "pages": [
             "developer/reference/client/constructor",
             "developer/reference/client/get-pages",
+            "developer/reference/client/get-page-snapshot",
             "developer/reference/client/get-component-snapshot",
             "developer/reference/client/get-site-version"
           ]
@@ -202,11 +204,7 @@
         },
         {
           "group": "Legacy APIs",
-          "pages": [
-            "developer/reference/components/page",
-            "developer/reference/client/get-page-snapshot",
-            "developer/reference/client/get-sitemap"
-          ]
+          "pages": ["developer/reference/client/get-sitemap"]
         }
       ]
     },
