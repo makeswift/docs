@@ -1,57 +1,27 @@
 <CodeGroup>
 
 ```tsx src/pages/[[...path]].tsx
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
+import {
+  GetStaticPathsResult,
+  GetStaticPropsContext,
+  GetStaticPropsResult,
+} from "next";
 
 import {
-  Makeswift,
   Page as MakeswiftPage,
-  PageProps,
+  PageProps as MakeswiftPageProps,
+  Makeswift,
 } from "@makeswift/runtime/next";
 
 import { client } from "@/makeswift/client";
+import "@/makeswift/components";
 
-export const getStaticPaths = (async () => {
-  const pages = await client.getPages();
+type ParsedUrlQuery = { path?: string[] };
 
-  return {
-    paths: pages.map((page) => ({
-      params: {
-        path: page.path.split("/").filter((segment) => segment !== ""),
-      },
-    })),
-    fallback: "blocking",
-  };
-}) satisfies GetStaticPaths;
-
-export const getStaticProps = (async ({ params, previewData }) => {
-  if (params == null) return { notFound: true };
-
-  const path = Array.isArray(params.path) ? "/" + params.path.join("/") : "/";
-
-  const snapshot = await client.getPageSnapshot(path, {
-    siteVersion: Makeswift.getSiteVersion(previewData),
-  });
-
-  if (snapshot == null) return { notFound: true };
-
-  return { props: { snapshot } };
-}) satisfies GetStaticProps<PageProps>;
-
-export default function Page({
-  snapshot,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
-  return <MakeswiftPage snapshot={snapshot} />;
-}
-```
-
-```jsx src/pages/[[...path]].jsx
-import { Makeswift, Page as MakeswiftPage } from "@makeswift/runtime/next";
-
-import { client } from "@/makeswift/client";
-
-export async function getStaticPaths() {
-  const pages = await client.getPages();
+export async function getStaticPaths(): Promise<
+  GetStaticPathsResult<ParsedUrlQuery>
+> {
+  const pages = await client.getPages().toArray();
 
   return {
     paths: pages.map((page) => ({
@@ -63,20 +33,36 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params, previewData }) {
-  if (params == null) return { notFound: true };
+export type PageProps = MakeswiftPageProps & {
+  previewMode: boolean;
+  locale: string | undefined;
+};
 
-  const path = "/" + (params.path ?? []).join("/");
+export async function getStaticProps({
+  params,
+  previewData,
+  locale,
+}: GetStaticPropsContext<ParsedUrlQuery>): Promise<
+  GetStaticPropsResult<PageProps>
+> {
+  const path = "/" + (params?.path ?? []).join("/");
   const snapshot = await client.getPageSnapshot(path, {
     siteVersion: Makeswift.getSiteVersion(previewData),
+    locale,
   });
 
   if (snapshot == null) return { notFound: true };
 
-  return { props: { snapshot } };
+  return {
+    props: {
+      snapshot,
+      previewMode: Makeswift.getPreviewMode(previewData),
+      locale,
+    },
+  };
 }
 
-export default function Page({ snapshot }) {
+export default function Page({ snapshot }: MakeswiftPageProps) {
   return <MakeswiftPage snapshot={snapshot} />;
 }
 ```
