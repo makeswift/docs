@@ -137,7 +137,15 @@
       "pages": [
         "developer/guides/troubleshooting",
         "developer/guides/environments",
-        "developer/caching/overview"
+        "developer/guides/caching/overview",
+        {
+          "group": "Deploying",
+          "pages": [
+            "developer/guides/deploying/overview",
+            "developer/guides/deploying/vercel",
+            "developer/guides/deploying/netlify"
+          ]
+        }
       ]
     },
     {
