@@ -19,9 +19,6 @@ description: The `<MakeswiftComponent>` component takes a `MakeswiftComponentSna
 3. <ParamField query="type" type="string" required>
      The type of the registered Makeswift component.
    </ParamField>
-4. <ParamField query="fallback" type="ReactNode">
-     The default content to be displayed if no content has been added yet.
-   </ParamField>
 
 ## Example
 
@@ -30,11 +27,13 @@ The following example registers a `MakeswiftComponent` that allows the user to a
 First, you'll need a React component. Here, we're going to use one that has a single `children` prop, but you can customize the component and its props as needed.
 
 ```tsx @/components/container/my-container.tsx
+import { ReactNode } from "react";
+
 type Props = {
   children: ReactNode;
 };
 
-export default async function MyContainer({ children }: Props) {
+export default function MyContainer({ children }: Props) {
   return <div>{children}</div>;
 }
 ```
@@ -44,13 +43,14 @@ Next, this component needs to be registered with Makeswift. This example uses th
 ```tsx @/components/container/my-container.makeswift.ts
 import { runtime } from "@/makeswift/runtime";
 import { Slot } from "@makeswift/runtime/controls";
-import { MyContainer } from "./my-container";
+import MyContainer from "./my-container";
 
-export const MY_CONTAINER_TYPE = "my-container"; //unique id for the registered component
+//unique id for the registered component that will be passed to `<MakeswiftComponent>`
+export const MY_CONTAINER_TYPE = "my-container-component";
 
 runtime.registerComponent(MyContainer, {
   type: MY_CONTAINER_TYPE,
-  label: "My Container",
+  label: "My Container Component",
   props: {
     children: Slot(),
   },
