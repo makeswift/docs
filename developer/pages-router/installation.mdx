@@ -23,6 +23,8 @@ or want to set things up yourself, continue with the rest of this guide.
 
 ## Geting started
 
+<SrcDirectoryCallout />
+
 <Steps>
   <Step title="Open your Next.js project">
     First, open your Next.js project. If you don't already have one, head over to
@@ -54,16 +56,18 @@ MAKESWIFT_SITE_API_KEY=paste-your-api-key-here
 ```
 
   </Step>
-  <Step title="Add Makeswift runtime and client">
+  <Step title="Add Makeswift runtime">
   
-Create files for the Makeswift [runtime](/developer/reference/runtime/constructor) and [client](/developer/reference/client/constructor).
+Create the Makeswift [runtime](/developer/reference/runtime/constructor) file in `src/makeswift`.
 
-<SrcDirectoryCallout />
+<RuntimeExample />
 
-<CodeGroup>
-  <RuntimeExample />
-  <ClientExample />
-</CodeGroup>
+</Step>
+<Step title="Add Makeswift client">
+  
+Create the Makeswift [client](/developer/reference/client/constructor) file in `src/makeswift`.
+
+<ClientExample />
 
 </Step>
   <Step title="Add the Makeswift API handler">
