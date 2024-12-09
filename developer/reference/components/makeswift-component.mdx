@@ -21,9 +21,6 @@ description: The `<MakeswiftComponent>` component takes a `MakeswiftComponentSna
      `type` property that was used when calling
      [registerComponent](/developer/reference/runtime/register-component).
    </ParamField>
-4. <ParamField query="fallback" type="ReactNode">
-     The default content to be displayed if no content has been added yet.
-   </ParamField>
 
 ## Example
 
@@ -37,6 +34,7 @@ description: The `<MakeswiftComponent>` component takes a `MakeswiftComponentSna
 
 The following example registers a `<Header>` component that is editable by the user and will be displayed on each page.
 
+<<<<<<< HEAD
 <Frame>
   <img
     src="/images/developer/reference/makeswift-component/header-example.jpg"
@@ -93,6 +91,17 @@ export function Header({ className, links, logo }: Props) {
       </nav>
     </header>
   );
+=======
+```tsx @/components/container/my-container.tsx
+import { ReactNode } from "react";
+
+type Props = {
+  children: ReactNode;
+};
+
+export default function MyContainer({ children }: Props) {
+  return <div>{children}</div>;
+>>>>>>> 3996d41 (chore: update installation docs for pages and app router)
 }
 ```
 
@@ -121,12 +130,24 @@ import {
 import { Header } from "./";
 
 import { runtime } from "@/makeswift/runtime";
+<<<<<<< HEAD
 
 export const HEADER_COMPONENT_TYPE = "makeswift-header";
 
 const logo = Group({
   label: "Logo",
   preferredLayout: Group.Layout.Popover,
+=======
+import { Slot } from "@makeswift/runtime/controls";
+import MyContainer from "./my-container";
+
+//unique id for the registered component that will be passed to `<MakeswiftComponent>`
+export const MY_CONTAINER_TYPE = "my-container-component";
+
+runtime.registerComponent(MyContainer, {
+  type: MY_CONTAINER_TYPE,
+  label: "My Container Component",
+>>>>>>> 3996d41 (chore: update installation docs for pages and app router)
   props: {
     src: Image({ label: "Logo" }),
     alt: TextInput({ label: "Alt text", defaultValue: "Logo alt" }),
