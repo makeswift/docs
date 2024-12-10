@@ -145,6 +145,13 @@
             "developer/guides/deploying/vercel",
             "developer/guides/deploying/netlify"
           ]
+        },
+        {
+          "group": "Localization",
+          "pages": [
+            "developer/app-router/localization",
+            "developer/pages-router/localization"
+          ]
         }
       ]
     },
