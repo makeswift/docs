@@ -1,4 +1,55 @@
 ---
 title: Vercel
-description: "Learn ahow to deploy your Makeswift application to Vercel"
+description: "Learn how to deploy your Makeswift application to Vercel."
 ---
+
+## Prerequisites
+
+- Makeswift site (follow the [developer quickstart](/developer/quickstart) or [installation guide](/developer/app-router/installation) if you don't have one)
+- Github repository
+- Vercel account ([sign up on Vercel](https://vercel.com/signup))
+
+## Create new project in Vercel
+
+This guide uses the Vercel dashboard to deploy your Makeswift application.
+Alternatively, you can use the [Vercel CLI](https://vercel.com/docs/cli). Within the Vercel dashboard, choose **Add New... > Project** from the top right.
+
+TODO: screenshot
+
+## Connect to Github repo
+
+Next, you'll need to connect your Github repository to Vercel. If you haven't done so, you may need to authorize Vercel to have access to your Github repository. After you've done so, you can choose your repository from the **Import Git Repository** section.
+
+TODO: screenshot
+
+## Build and output settings
+
+You can use default values for the following settings — no need to change anything. Vercel automatically detects that you have a Next.js app and will choose the correct build settings for you.
+
+- Project name
+- Root directory
+- Build command
+- Output directory
+- Development command
+
+TODO: screenshot
+
+## Environment variables
+
+When deploying your Makeswift application, you'll need to include your `MAKESWIFT_SITE_API_KEY` as an environment variable. This key ensures your deployed site is correctly connected to Makeswift.
+
+You can find your Makeswift site API Key in the Makeswift builder under **Settings > Host**.
+
+<Frame>
+  <img src="/images/site-api-key.gif" alt="How to get the site API key" />
+</Frame>
+
+Enter the API key in the Vercel dashboard.
+
+TODO: screenshot
+
+## Deploy
+
+After you finished configuring your settings, click the **Deploy** button. Vercel will build and deploy your Makeswift application. After the build has finished
+
+TODO: screenshot
