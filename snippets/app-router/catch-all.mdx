@@ -1,4 +1,4 @@
-```tsx src/app/[[...path]]/page.tsx
+```tsx src/app/[[...path]]/page.tsx (Next.js 15)
 import { getSiteVersion } from "@makeswift/runtime/next/server";
 import { notFound } from "next/navigation";
 import { Page as MakeswiftPage } from "@makeswift/runtime/next";
@@ -16,7 +16,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }: { params: ParsedUrlQuery }) {
-  const path = "/" + (params?.path ?? []).join("/");
+  const path = "/" + ((await params)?.path ?? []).join("/");
   const snapshot = await client.getPageSnapshot(path, {
     siteVersion: getSiteVersion(),
   });
