@@ -20,8 +20,10 @@ import PagesCatchAllLocalizedExample from "/snippets/pages-router/catch-all-loca
      Options for site version and locale.
      <Expandable>
        <ParamField query="siteVersion" type="SiteVersion" required>
-         The return value from
-         [`getSiteVersion`](/developer/reference/client/get-site-version).
+         For **App Router**, this is the return value from calling
+         [getSiteVersion](/developer/reference/get-site-version). For **Pages
+         Router**, this is the return value from
+         [getSiteVersion](/developer/reference/client/get-site-version).
        </ParamField>
        <ParamField query="locale" type="string">
          A valid locale string.
