@@ -135,9 +135,6 @@
     {
       "group": "Guides",
       "pages": [
-        "developer/guides/troubleshooting",
-        "developer/guides/environments",
-        "developer/guides/caching/overview",
         {
           "group": "Deploying",
           "pages": [
@@ -152,7 +149,9 @@
             "developer/app-router/localization",
             "developer/pages-router/localization"
           ]
-        }
+        },
+        "developer/guides/troubleshooting",
+        "developer/guides/environments"
       ]
     },
     {
@@ -202,6 +201,10 @@
             "developer/reference/runtime/constructor",
             "developer/reference/runtime/register-component"
           ]
+        },
+        {
+          "group": "Misc APIs",
+          "pages": ["developer/reference/get-site-version"]
         },
         {
           "group": "Legacy APIs",

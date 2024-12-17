@@ -1,0 +1,16 @@
+---
+title: "getSiteVersion"
+description: "A function that returns the current version of the Makeswift site. This function is currently only used when calling `getPageSnapshot` when using **App Router** in Next.js."
+---
+
+import AppRouterCatchAllExample from "/snippets/app-router/catch-all.mdx";
+
+## Arguments
+
+This function doesn't take any parameters.
+
+## Example
+
+The following example sets up a [catch all route](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#catch-all-segments) where page snapshots are fetched from Makeswift using `siteVersion` and rendered using the [`<Page>`](/developer/reference/components/page) component.
+
+<AppRouterCatchAllExample />
