@@ -8,21 +8,23 @@ import PagesCatchAllLocalizedExample from "/snippets/pages-router/catch-all-loca
 
 ## Arguments
 
-1. <ParamField query="pathname" type="string" required>
-     The path of the page.
-   </ParamField>
-2. <ParamField query="options" type="object" required>
-     Options for site version and locale.
-     <Expandable>
-       <ParamField query="siteVersion" type="SiteVersion" required>
-         The return value from
-         [`getSiteVersion`](/developer/reference/client/get-site-version).
-       </ParamField>
-       <ParamField query="locale" type="string">
-         A valid locale string.
-       </ParamField>
-     </Expandable>
-   </ParamField>
+1.  <ParamField query="pathname" type="string" required>
+      The path of the page.
+    </ParamField>
+2.  <ParamField query="options" type="object" required>
+      Options for site version and locale.
+      <Expandable>
+        <ParamField query="siteVersion" type="SiteVersion" required>
+          For **App Router**, this is the return value from calling
+          [getSiteVersion](/developer/reference/get-site-version). For **Pages
+          Router**, this is the return value from
+          [getSiteVersion](/developer/reference/client/get-site-version).
+        </ParamField>
+        <ParamField query="locale" type="string">
+          A valid locale string.
+        </ParamField>
+      </Expandable>
+    </ParamField>
 
 ## Return type
 

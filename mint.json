@@ -203,6 +203,10 @@
           ]
         },
         {
+          "group": "Misc APIs",
+          "pages": ["developer/reference/get-site-version"]
+        },
+        {
           "group": "Legacy APIs",
           "pages": ["developer/reference/client/get-sitemap"]
         }
