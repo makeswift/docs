@@ -1,5 +1,5 @@
 ---
-title: Installation
+title: App Router
 ---
 
 import CatchAllExample from "/snippets/app-router/catch-all.mdx";
@@ -15,6 +15,13 @@ The fastest way to get started with Makeswift on a new Next.js project is to fol
 [quickstart](/developer/quickstart) guide. If you have an existing Next.js application
 or want to set things up yourself, continue with the rest of this guide.
 
+<Note>
+  This installation guide is built for [Next.js
+  15](https://nextjs.org/blog/next-15) but also works with [Next.js
+  13](https://nextjs.org/blog/next-13) and [Next.js
+  14](https://nextjs.org/blog/next-14).
+</Note>
+
 ## System requirements
 
 - [Node.js 18.17](https://nodejs.org/en) or a later version.
@@ -22,8 +29,12 @@ or want to set things up yourself, continue with the rest of this guide.
 
 ## Geting started
 
-<Steps>
-  <Step title="Open your Next.js project">
+<SrcDirectoryCallout />
+
+<Steps titleSize="h3">
+
+  <Step title="Open your Next.js project" >
+  ### Open your Next.js project
     First, open your Next.js project. If you don't already have one, head over to
     the [Next.js](https://nextjs.org/docs/getting-started/installation)
     documentation to get one set up. If you do have one, please verify you are using [Next.js 13.4](https://nextjs.org/blog/next-13-4) or a later version that is using [App Router](https://nextjs.org/docs/getting-started/installation).
@@ -57,16 +68,18 @@ MAKESWIFT_SITE_API_KEY=paste-your-api-key-here
 ```
 
   </Step>
-  <Step title="Add Makeswift runtime and client">
+  <Step title="Add Makeswift runtime">
   
-Create files for the Makeswift [runtime](/developer/reference/runtime/constructor) and [client](/developer/reference/client/constructor) in a `src/makeswift` directory.
+Create the Makeswift [runtime](/developer/reference/runtime/constructor) file in `src/makeswift`.
 
-<SrcDirectoryCallout />
+<RuntimeExample />
 
-<CodeGroup>
-  <RuntimeExample />
-  <ClientExample />
-</CodeGroup>
+</Step>
+ <Step title="Add Makeswift client">
+  
+Create the Makeswift [client](/developer/reference/client/constructor) file in `src/makeswift`.
+
+<ClientExample />
 
 </Step>
   <Step title="Add the Makeswift API handler">
@@ -181,7 +194,10 @@ Great job! You should be able to create a page in Makeswift and start dropping i
 components from the left toolbar.
 
 <Frame>
-  <img src="/images/registered-components.png" alt="Registered components" />
+  <img
+    src="/images/hello-world-registered.png"
+    alt="Hello world component registered"
+  />
 </Frame>
 
 </Step>
