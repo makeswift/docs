@@ -203,7 +203,7 @@
           ]
         },
         {
-          "group": "Misc APIs",
+          "group": "Functions",
           "pages": ["developer/reference/get-site-version"]
         },
         {
