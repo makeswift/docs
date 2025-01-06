@@ -45,8 +45,15 @@ The following examples expect that you have a Makeswift client instance already 
 ### Basic usage
 
 ```tsx
-import { client } from "@/makeswift/client";
 import { getSiteVersion } from "@makeswift/runtime/next/server";
+import { Makeswift } from "@makeswift/runtime/next";
+import { ReactRuntime } from "@makeswift/runtime/react";
+
+export const runtime = new ReactRuntime();
+
+export const client = new Makeswift(process.env.MAKESWIFT_SITE_API_KEY, {
+  runtime,
+});
 
 const productDetailSnapshot = await client.getComponentSnapshot(
   `my-product-details`,
@@ -59,8 +66,15 @@ const productDetailSnapshot = await client.getComponentSnapshot(
 ### Localization
 
 ```tsx
-import { client } from "@/makeswift/client";
 import { getSiteVersion } from "@makeswift/runtime/next/server";
+import { Makeswift } from "@makeswift/runtime/next";
+import { ReactRuntime } from "@makeswift/runtime/react";
+
+export const runtime = new ReactRuntime();
+
+export const client = new Makeswift(process.env.MAKESWIFT_SITE_API_KEY, {
+  runtime,
+});
 
 const locale = "en-US";
 const snapshot = await client.getComponentSnapshot(id, {
