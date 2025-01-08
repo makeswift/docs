@@ -1,0 +1,79 @@
+---
+title: Font
+description: Add a Font in the Makeswift builder to visually drop in a `ReactNode`.
+icon: "font"
+---
+
+<Frame type="glass" caption="A font inside of a Feature Card component">
+  <img src="/images/font-control.png" />
+</Frame>
+
+## Params
+
+<ParamField query="label" type="string" default="List">
+  Text for the panel label that appears in the Makeswift Visual Builder.
+</ParamField>
+
+<ParamField query="variant" type="boolean" default="false">
+  A boolean...
+</ParamField>
+
+<ParamField query="defaultValue" type="object" default="false">
+  An object...
+</ParamField>
+
+## Prop type
+
+The Font control passes a `ReactNode` to your component.
+
+## Example
+
+The following example adds a Font control to the `media` prop of a Feature Card component.
+
+<CodeGroup>
+
+```tsx FeatureCard.makeswift.ts
+import { Font, TextInput, Image } from "@makeswift/runtime/controls";
+
+import { runtime } from "@/makeswift/runtime";
+
+import { FeatureCard } from "./FeatureCard";
+
+runtime.registerComponent(FeatureCard, {
+  type: "feature-card",
+  label: "Feature Card",
+  props: {
+    accent: Font({
+      label: "Accent",
+      variant: false,
+      defaultValue: { fontFamily: "var(--font-family-roboto-mono)" },
+    }),
+  },
+});
+```
+
+```tsx FeatureCard.tsx
+interface Props {
+  icon?: string;
+  headline?: string;
+  body?: string;
+  media: ReactNode;
+}
+
+export function FeatureCard({ icon, headline, body, media }) {
+  return (
+    <div className="rounded-lg bg-black/20 shadow space-y-4">
+      <img src={icon} />
+      <h1>{headline}</h1>
+      <p>{body}</p>
+      <div>{media}</div>
+    </div>
+  );
+}
+```
+
+</CodeGroup>
+
+import NamingConventions from "/snippets/naming-conventions.mdx";
+
+<NamingConventions />
