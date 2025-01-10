@@ -21,23 +21,25 @@ icon: "rocket-launch" iconType: "solid"
 </Note>
 
 Makeswift allows you to share a preview link of your site with others. The preview
-link will always show the latest changes made in the builder, even if they have not
-been published. You can find the **Preview** button at the top right of the builder's
+link will always show the latest changes made in the Visual Builder, even if they have not
+been published. You can find the **Preview** button at the top right of the Visual Builder's
 browser bar.
 
-<Frame>![Publish button](/images/builder/publishing1.png)</Frame>
+<Frame>![Preview button](/images/publishing/preview-button.jpg)</Frame>
 
-We encourage you to use the Preview feature to get feedback and review changes before doing a final publish.
+We encourage you to use the preview feature to get feedback and review changes before doing a final publish.
 
 ## How to publish
 
 You can find the **Publish** button at the top right of the Visual Builder's browser bar. Only users with Publisher, Admin, and Owner roles will be able to interact with the Publish button.
 
-<Frame>![Publish button](/images/builder/publishing1.png)</Frame>
+<Frame>![Publish button](/images/publishing/publish-button.jpg)</Frame>
 
-The publishing workflow begins by selecting which pages and resources you want to publish at this time. Your list of publishable changes are separated into different sections starting with pages and followed by different site resources.
+The publishing workflow begins by selecting which pages and resources you want to publish at this time. Your list of publishable changes are separated into different sections including pages and site resources.
 
-<Frame>![Selective publish dialogue](/images/builder/publishing2.png)</Frame>
+<Frame>
+  ![Selective publish dialogue](/images/publishing/publish-dialog.jpg)
+</Frame>
 
 Toggle the checkbox to the left of each item to include it in this publish. You can also toggle the checkbox found in each section's header to toggle all of it's items on or off.
 
@@ -54,23 +56,58 @@ No changes made to pages will take affect on your live site until they are publi
 
 ### Publishing offline pages
 
-Edits made to offline pages will not appear in the publish dialog. To publish an offline page, you must first set it to be online. To do so, navigate to the offline page and deselect all elements in the builder. In the right sidebar, select the Page tab. Click the toggle in the “Online” panel to turn it green and set the page online. You will now find that page included in the publish dialog.
+Edits made to offline pages will not appear in the publish dialog. To publish an offline page, you must first set it to be online. To do so, navigate to the offline page and deselect all elements in the Visual Builder. In the Properties Sidebar, click the **Online** toggle to turn it green and set the page online. You will now find that page included in the publish dialog.
 
-<Frame>![Online toggle](/images/builder/publishing3.png)</Frame>
+<Frame>![Online toggle](/images/publishing/page-online-toggle.jpg)</Frame>
 
 ## Publishing site resources
 
 Like pages, edits made to site resources will be displayed as individual, publishable items. Site resources found in the publish dialog include:
 
-- Global components
+- Components
 - Colors
-- Text styles
+- Typographies
 
-<Frame>![Publishing site resources](/images/builder/publishing4.png)</Frame>
+<Frame>
+  ![Publishing site
+  resources](/images/publishing/publish-dialog-site-resources.jpg)
+</Frame>
 
 When adding a new resource to your site, you must select it in the publish dialog in order for it to be used on your live site. For example, not publishing a newly added site color will cause elements using that color to be displayed as black on live pages.
 
 You can also publish changes made to existing site resources without needing to publish the pages they are found on. Here's a common situation to apply this workflow: you need to update the navigation global component and publish it immediately, but you have unfinished edits you've made to several pages. You can select to only publish the navigation global component which will update the navigation across your live site without publishing your unfinished changes to other pages.
+
+## Scheduling publishes
+
+<Frame>
+  <video
+    autoPlay
+    muted
+    controls
+    playsInline
+    title="Create new site from template"
+    className="w-full aspect-video"
+    src="/images/publishing/scheduled-publishing.mp4"
+  ></video>
+</Frame>
+
+<Warning>
+  Scheduled publishes are currently only available on certain paid plans. Refer
+  to the [Plans](/product/workspace/plans) page for full details.
+</Warning>
+
+In addition to publishing changes immediately, you have the ability to schedule publishes in the future. Here are a couple of important things to understand:
+
+- Scheduled changes won't show up in the the **Changes** tab while they are scheduled
+- You can cancel a scheduled publish at any time before the scheduled time arrives
+- If you cancel a scheduled publish, those changes will reappear in the **Changes** tab
+- You can create multiple scheduled publishes
+
+<Note>
+  Although you can have multiple scheduled publishes at a time, we recommend
+  avoiding overlaps in changes across them. This way, you have a clear idea of
+  which changes will be published at which time.
+</Note>
 
 ## Site history
 
@@ -79,23 +116,23 @@ You can also publish changes made to existing site resources without needing to 
   [Plans](/product/workspace/plans) page for full details.
 </Warning>
 
-Makeswift automatically creates a version of your site every time you publish and stores it for up to 30 days. You can find the previous versions of your site in the “History” tab of the publish dialog.
+Makeswift automatically creates a version of your site every time you publish and stores it for up to 30 days. You can find the previous versions of your site in the **History** tab of the publish dialog.
 
-Each version will provide information on what was published and when. You can give versions a custom name as well as publish any previous version of your site. Publishing a previous site version will not affect the current draft state of your site in the builder. It will only point your live site to the selected previous version.
+<Frame>![Publish history](/images/publishing/site-history.jpg)</Frame>
 
-<Frame>![Publish history](/images/builder/publishing5.png)</Frame>
+Each version will provide information on what was published and when. You can give versions a custom name as well as publish any previous version of your site. Publishing a previous site version will not affect the current draft state of your site in the Visual Builder. It will only point your live site to the selected previous version.
 
 To bring your live site back to the latest version, you can either publish the most recent version in your History tab, or publish new changes to your site in the Changes tab.
 
 ## Best Practices
 
-Maintaining a consistent publishing workflow is key to keeping your site in sync with your builder. Here are some best practices to follow:
+Maintaining a consistent publishing workflow is key to keeping your site in sync. Here are some best practices to follow:
 
 ### Utilize Previews
 
-Previews are a great way to test your changes before publishing them. You can find the preview button at the top right of the builder's browser bar.
+Previews are a great way to test your changes before publishing them. You can find the preview button at the top right of the Visual Builder's browser bar.
 
-<Frame>![Preview button](/images/builder/publishing1.png)</Frame>
+<Frame>![Preview button](/images/publishing/preview-button.jpg)</Frame>
 
 Every workspace comes with unlimited [Guests](/product/workspace/user#guests) who can view your site in preview mode.
 
