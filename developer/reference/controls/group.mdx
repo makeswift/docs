@@ -1,0 +1,95 @@
+---
+title: "Group"
+description: "The Group control allow you to define and visually edit a group of properties."
+icon: "brackets-curly"
+---
+
+<Frame type="glass" caption="A Group control ">
+  <img src="/images/controls/group.png" />
+</Frame>
+
+The Group control can be nested as deeply as you want within List controls.
+
+## Params
+
+<ParamField query="label" type="string" default="Text">
+  Text for the panel label in the Makeswift Visual Builder.
+</ParamField>
+
+<ParamField query="preferredLayout" type=" Group.Layout.Inline | Group.Layout.Popover">
+<p>
+  The preferred layout for the group in the Makeswift Visual Builder. Note that the builder may override this preference to optimize the user experience. Possible values include:
+</p>
+  <ul>
+    <li>`Group.Layout.Inline`: Renders the group properties within the parent panel, visually grouping them to reflect the hierarchy. This is the default if no explicit value is provided.</li>
+
+    <li>`Group.Layout.Popover`: Renders the group properties in a standalone popover panel.</li>
+
+</ul>
+
+</ParamField>
+
+## Example
+
+This example adds a Group control to the `type` field of a [List](/developer/reference/controls/list) control for a Header component.
+
+<CodeGroup>
+
+```tsx Header.makeswift.ts
+import {E313
+  Color,
+  Group,
+  Checkbox
+} from "@makeswift/runtime/controls";
+
+import { runtime } from "@/makeswift/runtime";
+
+import { Header } from "./Header";
+
+
+
+runtime.registerComponent(Header, {
+  type: "header",
+  label: "Header",
+  props: {
+    Group({
+      props: {
+        text: Color({ label: "Text" }),
+        background: Color({ label: "Background" }),
+        dismissible: Checkbox({ label: "Can be dismissed?" }),
+      },
+    });
+  },
+});
+```
+
+```tsx FeatureGrid.tsx
+interface Props {
+  features: {
+    icon: string;
+    iconAltText: string;
+    heading: string;
+    description: string;
+  }[];
+}
+
+export function FeatureGrid({ features }) {
+  return (
+    <div className="grid grid-cols-2 gap-4">
+      {features.map((feature, index) => (
+        <div className="col-span-1 grid gap-2" key={index}>
+          <img src={feature.icon} alt={feature.iconAltText} />
+          <h3>{feature.heading}</h3>
+          <p>{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+</CodeGroup>
+
+import NamingConventions from "/snippets/naming-conventions.mdx";
+
+<NamingConventions />

@@ -172,17 +172,22 @@
             "developer/reference/controls/checkbox",
             "developer/reference/controls/color",
             "developer/reference/controls/combobox",
+            "developer/reference/controls/group",
             "developer/reference/controls/image",
             "developer/reference/controls/link",
             "developer/reference/controls/list",
             "developer/reference/controls/number",
             "developer/reference/controls/rich-text",
             "developer/reference/controls/select",
-            "developer/reference/controls/shape",
             "developer/reference/controls/slot",
             "developer/reference/controls/style",
             "developer/reference/controls/text-area",
-            "developer/reference/controls/text-input"
+            "developer/reference/controls/text-input",
+
+            {
+              "group": "Deprecated",
+              "pages": ["developer/reference/controls/shape"]
+            }
           ]
         },
         {
