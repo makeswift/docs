@@ -35,11 +35,11 @@ import {
   TextInput,
   TextArea,
   Image,
-} from "@makeswift/runtime/controls";
+} from "@makeswift/runtime/controls"
 
-import { runtime } from "@/makeswift/runtime";
+import { runtime } from "@/makeswift/runtime"
 
-import { FeatureGrid } from "./FeatureGrid";
+import { FeatureGrid } from "./FeatureGrid"
 
 runtime.registerComponent(FeatureGrid, {
   type: "feature-grid",
@@ -66,17 +66,17 @@ runtime.registerComponent(FeatureGrid, {
       }),
     }),
   },
-});
+})
 ```
 
 ```tsx FeatureGrid.tsx
 interface Props {
   features: {
-    icon: string;
-    iconAltText: string;
-    heading: string;
-    description: string;
-  }[];
+    icon: string
+    iconAltText: string
+    heading: string
+    description: string
+  }[]
 }
 
 export function FeatureGrid({ features }) {
@@ -90,12 +90,12 @@ export function FeatureGrid({ features }) {
         </div>
       ))}
     </div>
-  );
+  )
 }
 ```
 
 </CodeGroup>
 
-import NamingConventions from "/snippets/naming-conventions.mdx";
+import NamingConventions from "/snippets/naming-conventions.mdx"
 
 <NamingConventions />
