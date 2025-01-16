@@ -1,0 +1,88 @@
+---
+title: "<MakeswiftComponent>"
+description: The `<MakeswiftComponent>` component takes a `MakeswiftComponentSnapshot` (returned from calling [getComponentSnapshot](/developer/reference/client/get-component-snapshot)) and renders React elements using [components registered](/developer/reference/runtime/register-component) with the runtime.
+---
+
+## Props
+
+1. <ParamField query="snapshot" type="MakeswiftComponentSnapshot" required>
+     The Makeswift snapshot to render.
+   </ParamField>
+2. <ParamField query="label" type="string" required>
+     The label of the component used in the Visual Builder.
+   </ParamField>
+3. <ParamField query="type" type="string" required>
+     The type of the registered Makeswift component. This should match the
+     `type` property that was used when calling
+     [registerComponent](/developer/reference/runtime/register-component).
+   </ParamField>
+
+## Example
+
+The following example registers a Makeswift component that allows the user to add content to a container using the Visual Builder.
+
+First, you'll need a React component. Here, we're going to use one that has a single `children` prop, but you can customize the component and its props as needed.
+
+```tsx @/components/container/my-container.tsx
+import { ReactNode } from "react";
+
+type Props = {
+  children: ReactNode;
+};
+
+export default function MyContainer({ children }: Props) {
+  return <div>{children}</div>;
+}
+```
+
+Next, this component needs to be registered with Makeswift. This example uses the [`Slot`](/developer/reference/controls/slot) control for a `children` property. Notice this `children` property matches the name of the property defined in the `MyContainer` component.
+
+```tsx @/components/container/my-container.makeswift.ts
+import { runtime } from "@/makeswift/runtime";
+import { Slot } from "@makeswift/runtime/controls";
+import MyContainer from "./my-container";
+
+//Unique identifier for the registered component that will be passed to `<MakeswiftComponent>`
+export const MY_CONTAINER_TYPE = "my-container-component";
+
+runtime.registerComponent(MyContainer, {
+  type: MY_CONTAINER_TYPE,
+  label: "My Container Component",
+  props: {
+    children: Slot(),
+  },
+});
+```
+
+<Note>
+  Each time you register a component, you'll need to import it into both your
+  `layout.tsx` file and your `makeswift/provider.tsx` file.
+</Note>
+
+Then, you'll need to retrieve the snapshot of the component from the Makeswift API by calling [`getComponentSnapshot`](/developer/reference/client/get-component-snapshot.mdx) with a unique ID and pass that snapshot to the `<MakeswiftComponent>` component.
+
+Here, the `<MakeswiftComponent>` is being rendered on a page with the route `/my-page`.
+
+```tsx @/app/my-page/page.tsx
+import { MakeswiftComponent } from "@makeswift/runtime/next";
+import { getSiteVersion } from "@makeswift/runtime/next/server";
+import { MY_CONTAINER_TYPE } from "@/components/container/my-container.makeswift";
+import { client } from "@/makeswift/client";
+
+export default async function Page() {
+  const myContainerSnapshot = await client.getComponentSnapshot(
+    `my-container-id`, //unique identifier of the component rendered on the page
+    { siteVersion: await getSiteVersion() }
+  );
+
+  return (
+    <MakeswiftComponent
+      snapshot={myContainerSnapshot}
+      label={`My Container`}
+      type={MY_CONTAINER_TYPE} //this should match the type property of the registered component
+    />
+  );
+}
+```
+
+To see this in the Visual Builder, you'll need to navigate to `/my-page` within the URL bar. This page won't be autopopulated in the builder, so you'll need to manually navigate to it.
