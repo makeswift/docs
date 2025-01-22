@@ -120,20 +120,38 @@
 
     {
       "group": "Get started",
-      "pages": ["developer/quickstart", "developer/concepts"]
-    },
-    {
-      "group": "App Router",
       "pages": [
-        "developer/app-router/installation",
-        "developer/app-router/localization"
+        "developer/quickstart",
+        {
+          "group": "Installation",
+          "pages": [
+            "developer/app-router/installation",
+            "developer/pages-router/installation"
+          ]
+        },
+        "developer/concepts"
       ]
     },
     {
-      "group": "Pages Router",
+      "group": "Guides",
       "pages": [
-        "developer/pages-router/installation",
-        "developer/pages-router/localization"
+        {
+          "group": "Localization",
+          "pages": [
+            "developer/app-router/localization",
+            "developer/pages-router/localization"
+          ]
+        },
+        {
+          "group": "Deploying",
+          "pages": [
+            "developer/guides/deploying/overview",
+            "developer/guides/deploying/vercel",
+            "developer/guides/deploying/netlify"
+          ]
+        },
+        "developer/guides/troubleshooting",
+        "developer/guides/environments"
       ]
     },
     {
@@ -143,6 +161,8 @@
           "group": "Components",
           "pages": [
             "developer/reference/components/page",
+            "developer/reference/components/makeswift-component",
+            "developer/reference/components/slot",
             "developer/reference/components/react-runtime-provider"
           ]
         },
@@ -152,17 +172,22 @@
             "developer/reference/controls/checkbox",
             "developer/reference/controls/color",
             "developer/reference/controls/combobox",
+            "developer/reference/controls/group",
             "developer/reference/controls/image",
             "developer/reference/controls/link",
             "developer/reference/controls/list",
             "developer/reference/controls/number",
             "developer/reference/controls/rich-text",
             "developer/reference/controls/select",
-            "developer/reference/controls/shape",
             "developer/reference/controls/slot",
             "developer/reference/controls/style",
             "developer/reference/controls/text-area",
-            "developer/reference/controls/text-input"
+            "developer/reference/controls/text-input",
+
+            {
+              "group": "Deprecated",
+              "pages": ["developer/reference/controls/shape"]
+            }
           ]
         },
         {
@@ -170,8 +195,8 @@
           "pages": [
             "developer/reference/client/constructor",
             "developer/reference/client/get-pages",
-            "developer/reference/client/get-sitemap",
             "developer/reference/client/get-page-snapshot",
+            "developer/reference/client/get-component-snapshot",
             "developer/reference/client/get-site-version"
           ]
         },
@@ -182,21 +207,14 @@
             "developer/reference/runtime/constructor",
             "developer/reference/runtime/register-component"
           ]
-        }
-      ]
-    },
-    {
-      "group": "Guides",
-      "pages": [
-        "developer/guides/troubleshooting",
-        "developer/guides/environments",
+        },
         {
-          "group": "Deploying",
-          "pages": [
-            "developer/guides/deploying/overview",
-            "developer/guides/deploying/vercel",
-            "developer/guides/deploying/netlify"
-          ]
+          "group": "Functions",
+          "pages": ["developer/reference/get-site-version"]
+        },
+        {
+          "group": "Legacy APIs",
+          "pages": ["developer/reference/client/get-sitemap"]
         }
       ]
     },
