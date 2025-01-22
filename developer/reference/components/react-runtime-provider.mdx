@@ -13,8 +13,36 @@ import PagesApp from "/snippets/pages-router/pages-app.mdx";
   A Makeswift [runtime](/developer/reference/runtime/constructor).
 </ParamField>
 
+<ParamField query="previewMode" type="boolean" required>
+  A boolean to allow draft data to be queried from Makeswift. 
+  
+  In [App Router](https://nextjs.org/docs/app), this will typically come from the `draftMode` header as in the following snippet:
+
+```tsx
+import { draftMode } from "next/headers";
+
+const previewMode = (await draftMode()).isEnabled;
+```
+
+In [Pages Router](https://nextjs.org/docs/pages), this will typically come from calling `Makeswift.getPreviewMode` in either [getStaticProps](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props) or [getServerSideProps](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props).
+
+```tsx
+import { Makeswift } from "@makeswift/runtime/next";
+
+const previewMode = Makeswift.getPreviewMode(previewData);
+```
+
+</ParamField>
+
 <ParamField query="children" type="React.Node">
   The children components to render.
+</ParamField>
+
+<ParamField query="locale" type="string">
+  <p>A valid locale string (ex. `"en-US"`).</p>
+
+  <Note>This is required if your site supports
+  more than one locale.</Note>
 </ParamField>
 
 ## Example

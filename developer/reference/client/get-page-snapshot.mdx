@@ -1,32 +1,34 @@
 ---
 title: "getPageSnapshot"
-description: "An instance method that fetches a snapshot of a Makeswift page at a given path. This snapshot is only intended to be rendered by the `<Page>` component."
+description: "An instance method of the Makeswift [client](/developer/reference/client/constructor) that fetches a snapshot of a Makeswift page at a given path. This snapshot is only intended to be rendered by the `<Page>` component."
 ---
 
-import PagesCatchAllExample from "/snippets/pages-router/catch-all.mdx"
-import PagesCatchAllLocalizedExample from "/snippets/pages-router/catch-all-localized.mdx"
+import PagesCatchAllExample from "/snippets/pages-router/catch-all.mdx";
+import PagesCatchAllLocalizedExample from "/snippets/pages-router/catch-all-localized.mdx";
 
 ## Arguments
 
-1. <ParamField query="pathname" type="string" required>
-     The path of the page.
-   </ParamField>
-2. <ParamField query="options" type="object" required>
-     Options for site version and locale.
-     <Expandable>
-       <ParamField query="siteVersion" type="SiteVersion" required>
-         The return value from
-         [`getSiteVersion`](/developer/reference/client/get-site-version).
-       </ParamField>
-       <ParamField query="locale" type="string">
-         A valid locale string.
-       </ParamField>
-     </Expandable>
-   </ParamField>
+1.  <ParamField query="pathname" type="string" required>
+      The path of the page.
+    </ParamField>
+2.  <ParamField query="options" type="object" required>
+      Options for site version and locale.
+      <Expandable>
+        <ParamField query="siteVersion" type="SiteVersion" required>
+          For **App Router**, this is the return value from calling
+          [getSiteVersion](/developer/reference/get-site-version). For **Pages
+          Router**, this is the return value from
+          [Makeswift.getSiteVersion](/developer/reference/client/get-site-version).
+        </ParamField>
+        <ParamField query="locale" type="string">
+          A valid locale string (ex. `"en-US"`).
+        </ParamField>
+      </Expandable>
+    </ParamField>
 
 ## Return type
 
-<ResponseField name="snapshot" type="Snapshot">
+<ResponseField name="snapshot" type="Promise<MakeswiftPageSnapshot | null>">
   An opaque `Snapshot` object that is only intended to be rendered by the
   [`<Page>`](/developer/reference/components/page) component.
 </ResponseField>
