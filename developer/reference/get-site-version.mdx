@@ -1,48 +1,36 @@
 ---
-title: "getPageSnapshot"
-description: "An instance method of the Makeswift [client](/developer/reference/client/constructor) that fetches a snapshot of a Makeswift page at a given path. This snapshot is only intended to be rendered by the `<Page>` component."
+title: "getSiteVersion"
+description: "A function that returns the current version of the Makeswift site. This function is currently only used when calling `getPageSnapshot` when using **App Router** in Next.js."
 ---
 
-import PagesCatchAllExample from "/snippets/pages-router/catch-all.mdx";
-import PagesCatchAllLocalizedExample from "/snippets/pages-router/catch-all-localized.mdx";
+<Warning>
+  This function can only be called inside of a [React Server
+  Component](https://react.dev/reference/rsc/server-components) or [Route
+  Handler](https://nextjs.org/docs/app/building-your-application/routing/route-handlers).
+</Warning>
 
 ## Arguments
 
-1.  <ParamField query="pathname" type="string" required>
-      The path of the page.
-    </ParamField>
-2.  <ParamField query="options" type="object" required>
-      Options for site version and locale.
-      <Expandable>
-        <ParamField query="siteVersion" type="SiteVersion" required>
-          For **App Router**, this is the return value from calling
-          [getSiteVersion](/developer/reference/get-site-version). For **Pages
-          Router**, this is the return value from
-          [Makeswift.getSiteVersion](/developer/reference/client/get-site-version).
-        </ParamField>
-        <ParamField query="locale" type="string">
-          A valid locale string (ex. `"en-US"`).
-        </ParamField>
-      </Expandable>
-    </ParamField>
+This function doesn't take any arguments.
 
-## Return type
+## Example
 
-<ResponseField name="snapshot" type="Promise<MakeswiftPageSnapshot | null>">
-  An opaque `Snapshot` object that is only intended to be rendered by the
-  [`<Page>`](/developer/reference/components/page) component.
-</ResponseField>
+The following example calls [getPageSnapshot](/developer/reference/client/get-page-snapshot) to query a page snapshot for the root route and passes the return value from `getSiteVersion` in its configuration options. It then renders the page using the [Page](/developer/reference/components/page) component.
 
-## Examples
+```tsx
+import { Page } from "@makeswift/runtime/next";
+import { client } from "@/makeswift/client";
+import { getSiteVersion } from "@makeswift/runtime/next/server";
 
-### Basic usage
+export default function Page() {
+  const snapshot = await client.getPageSnapshot("/", {
+    siteVersion: getSiteVersion(),
+  });
 
-The following example sets up a [catch all route](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#catch-all-segments) where page snapshots are fetched from Makeswift and rendered using the [`<Page>`](/developer/reference/components/page) component.
+  if (snapshot == null) notFound();
 
-<PagesCatchAllExample />
+  return <Page snapshot={snapshot} />;
+}
+```
 
-### Localization
-
-The following example uses the `locale` param in `getStaticProps` to fetch a localized snapshot of a page.
-
-<PagesCatchAllLocalizedExample />
+For a more detailed walkthrough, refer to the [App Router Installation guide](/developer/app-router/installation).
