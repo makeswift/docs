@@ -19,37 +19,126 @@ description: The `<MakeswiftComponent>` component takes a `MakeswiftComponentSna
 
 ## Example
 
-The following example registers a Makeswift component that allows the user to add content to a container using the Visual Builder.
+The following example registers a `<Header>` component that is editable by the user and will be displayed on each page.
 
-First, you'll need a React component. Here, we're going to use one that has a single `children` prop, but you can customize the component and its props as needed.
+<Frame>
+  <img
+    src="/images/developer/reference/makeswift-component/header-example.jpg"
+    alt="Properties of a header component in the Makeswift Visual Builder"
+  />
+</Frame>
 
-```tsx @/components/container/my-container.tsx
-import { ReactNode } from "react";
+### Creating the component
 
-type Props = {
-  children: ReactNode;
-};
+First, you'll need a React component. Here, we're going to create one that takes three properties: `className`, `logo`, and `links`.
 
-export default function MyContainer({ children }: Props) {
-  return <div>{children}</div>;
+```tsx @/components/header/index.tsx
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+
+interface Props {
+  className: string;
+  logo: {
+    src?: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
+  links: Array<{
+    label: string;
+    link: { href: string };
+  }>;
+}
+
+export function Header({ className, links, logo }: Props) {
+  return (
+    <header className={className}>
+      <nav className="mx-auto max-w-6xl flex items-center justify-between gap-4 p-8">
+        {logo?.src && (
+          <div className="flex items-center justify-start self">
+            <Image
+              src={logo.src}
+              alt={logo.alt}
+              width={logo.width}
+              height={logo.height}
+            />
+          </div>
+        )}
+
+        <ul className="flex gap-6">
+          {links.map((item, i) => (
+            <li key={i} value={i.toString()}>
+              <Link href={item.link.href}>{item.label}</Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
+  );
 }
 ```
 
-Next, this component needs to be registered with Makeswift. This example uses the [`Slot`](/developer/reference/controls/slot) control for a `children` property. Notice this `children` property matches the name of the property defined in the `MyContainer` component.
+### Registering with Makeswift
 
-```tsx @/components/container/my-container.makeswift.ts
+Next, this component needs to be registered with Makeswift. This example registers the same three properties: `className`, `logo`, and `links`. Notice these property property names match the property names defined in the `Header` component.
+
+<Note>
+  In `registerComponent` the `hidden` property is set to `true` which hides it
+  from being listed in the Component Tray. This is because we will be
+  hard-coding where this component will be incorporated into the page and we
+  don't want the user to drag and drop multiple instances of it.
+</Note>
+
+```tsx @/components/header/register.ts
+import {
+  Group,
+  Image,
+  Link,
+  List,
+  Number,
+  Style,
+  TextInput,
+} from "@makeswift/runtime/controls";
+
+import { Header } from "./";
+
 import { runtime } from "@/makeswift/runtime";
-import { Slot } from "@makeswift/runtime/controls";
-import MyContainer from "./my-container";
 
-//Unique identifier for the registered component that will be passed to `<MakeswiftComponent>`
-export const MY_CONTAINER_TYPE = "my-container-component";
+export const HEADER_COMPONENT_TYPE = "makeswift-header";
 
-runtime.registerComponent(MyContainer, {
-  type: MY_CONTAINER_TYPE,
-  label: "My Container Component",
+const logo = Group({
+  label: "Logo",
+  preferredLayout: Group.Layout.Popover,
   props: {
-    children: Slot(),
+    src: Image({ label: "Logo" }),
+    alt: TextInput({ label: "Alt text", defaultValue: "Logo alt" }),
+    width: Number({ label: "Width", suffix: "px", defaultValue: 200 }),
+    height: Number({ label: "Height", suffix: "px", defaultValue: 200 }),
+  },
+});
+
+const links = List({
+  label: "Links",
+  type: Group({
+    label: "Link",
+    props: {
+      label: TextInput({ label: "Text", defaultValue: "Text" }),
+      link: Link({ label: "URL" }),
+    },
+  }),
+  getItemLabel: (item) => item?.label ?? "Text",
+});
+
+runtime.registerComponent(Header, {
+  type: HEADER_COMPONENT_TYPE,
+  label: "Site Header",
+  hidden: true,
+  props: {
+    className: Style(),
+    logo,
+    links,
   },
 });
 ```
@@ -59,30 +148,58 @@ runtime.registerComponent(MyContainer, {
   `layout.tsx` file and your `makeswift/provider.tsx` file.
 </Note>
 
-Then, you'll need to retrieve the snapshot of the component from the Makeswift API by calling [`getComponentSnapshot`](/developer/reference/client/get-component-snapshot.mdx) with a unique ID and pass that snapshot to the `<MakeswiftComponent>` component.
+### Rendering the component
 
-Here, the `<MakeswiftComponent>` is being rendered on a page with the route `/my-page`.
+Then, you'll need to retrieve the snapshot of the component from the Makeswift API by calling [`getComponentSnapshot`](/developer/reference/client/get-component-snapshot.mdx) with a unique ID and pass that snapshot to `<MakeswiftComponent>`.
 
-```tsx @/app/my-page/page.tsx
+Here, we are adding the `<Header>` to the root `layout.tsx` file so that it shows up on each page.
+
+```tsx @/app/layout.tsx
+import { draftMode } from "next/headers";
+import { MakeswiftProvider } from "@/makeswift/provider";
+import { DraftModeScript } from "@makeswift/runtime/next/server";
+import "@/makeswift/components";
+import "./globals.css";
 import { MakeswiftComponent } from "@makeswift/runtime/next";
 import { getSiteVersion } from "@makeswift/runtime/next/server";
-import { MY_CONTAINER_TYPE } from "@/components/container/my-container.makeswift";
+import { HEADER_COMPONENT_TYPE } from "@/components/header/register";
 import { client } from "@/makeswift/client";
 
-export default async function Page() {
-  const myContainerSnapshot = await client.getComponentSnapshot(
-    `my-container-id`, //unique identifier of the component rendered on the page
+export default async function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  const myHeaderSnapshot = await client.getComponentSnapshot(
+    `my-header-id`, //unique identifier of the component rendered on the page
     { siteVersion: await getSiteVersion() }
   );
 
   return (
-    <MakeswiftComponent
-      snapshot={myContainerSnapshot}
-      label={`My Container`}
-      type={MY_CONTAINER_TYPE} //this should match the type property of the registered component
-    />
+    <html lang="en">
+      <head>
+        <DraftModeScript />
+      </head>
+      <body>
+        <MakeswiftProvider previewMode={(await draftMode()).isEnabled}>
+          <MakeswiftComponent
+            snapshot={myHeaderSnapshot}
+            label={`Site Header`}
+            type={HEADER_COMPONENT_TYPE}
+          />
+          {children}
+        </MakeswiftProvider>
+      </body>
+    </html>
   );
 }
 ```
 
-To see this in the Visual Builder, you'll need to navigate to `/my-page` within the URL bar. This page won't be autopopulated in the builder, so you'll need to manually navigate to it.
+The header should now be visible on each page within the Visual Builder.
+
+<Frame>
+  <img
+    src="/images/developer/reference/makeswift-component/header-finished.jpg"
+    alt="Header component showing on a page in the Makeswift Visual Builder"
+  />
+</Frame>
