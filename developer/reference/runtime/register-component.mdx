@@ -9,12 +9,12 @@ description: Adds your components to the Makeswift builder.
      Your component to be registered. This can be a React component or a function.
    </ParamField>
 2. <ParamField query="options" type="object" required>
-     Options for site version and locale.
+     <p>Options for site version and locale.</p>
      <Expandable>
        <ParamField query="type" type="string" required>
-          A unique string that identifies the component for Makeswift to
+          <p>A unique string that identifies the component for Makeswift to
           render. Don't change the type once you use the component in
-          the Makeswift builder.
+          the Makeswift builder.</p>
 
           <Warning>If this value changes after you use the component in the Makeswift builder, the component will appear as a "Component not found" block. To fix this, restore the `type` to the original value, or delete this component and re-add add it to the page.</Warning>
        </ParamField>
@@ -24,6 +24,9 @@ description: Adds your components to the Makeswift builder.
        <ParamField query="icon" type="Icon">
           The icon shown in the Makeswift builder.
        </ParamField>
+       <ParamField query="hidden" type="boolean">
+        A boolean that determines whether or not this component will be displayed in the Component Tray.
+      </ParamField>
        <ParamField query="props" type="Record<string, Control>" required>
           An object mapping prop names to Makeswift [controls](/developer/concepts#controls).
        </ParamField>
