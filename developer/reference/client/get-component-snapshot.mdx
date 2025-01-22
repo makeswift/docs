@@ -1,6 +1,6 @@
 ---
 title: "getComponentSnapshot"
-description: "An instance method of the Makeswift [client](/developer/reference/client/constructor) that fetches a snapshot of a Makeswift component by its `id`. This snapshot is only intended to be rendered by [`<MakeswiftComponent>`](/developer/reference/components/makeswift-component)."
+description: "An instance method of the Makeswift [client](/developer/reference/client/constructor) that fetches a snapshot of a Makeswift component by its `id`. This snapshot is only intended to be rendered by [`<MakeswiftComponent>`](/developer/reference/components/makeswift-component) and [`<Slot>`](/developer/reference/components/slot)."
 ---
 
 import PagesCatchAllExample from "/snippets/pages-router/catch-all.mdx";
@@ -29,8 +29,8 @@ import PagesCatchAllLocalizedExample from "/snippets/pages-router/catch-all-loca
 ## Return type
 
 <ResponseField name="snapshot" type="Promise<MakeswiftComponentSnapshot | null>">
-  An opaque `MakeswiftComponentSnapshot` object that is only intended to be rendered by the
-  [`<MakeswiftComponent>`](/developer/reference/components/makeswift-component) component.
+  An opaque `MakeswiftComponentSnapshot` object that is only intended to be rendered by
+  [`<MakeswiftComponent>`](/developer/reference/components/makeswift-component) and [`<Slot>`](/developer/reference/components/slot)..
 </ResponseField>
 
 ## Examples
