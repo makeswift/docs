@@ -14,64 +14,8 @@ import PagesApp from "/snippets/pages-router/pages-app.mdx";
 </ParamField>
 
 <ParamField query="previewMode" type="boolean" required>
-  When set to `true`, the preview version of a page will be rendered.
-  <Expandable title="Usage">
-
-    <Tabs>
-      <Tab title="App Router">
-        In [App Router](https://nextjs.org/docs/app), this will typically come from calling [draftMode()](https://nextjs.org/docs/app/api-reference/functions/draft-mode) in a [Server Component](https://nextjs.org/docs/app/building-your-application/rendering/server-components) or [Server Action](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations). The following example calls `draftMode()` in the root layout file which is a Server Component. For full details, refer to the [App Router Installation guide](/developer/app-router/installation).
-
-        ```tsx src/app/layout.tsx
-          import { draftMode } from "next/headers";
-          import { MakeswiftProvider } from "@/makeswift/provider";
-          import { DraftModeScript } from "@makeswift/runtime/next/server";
-
-          export default async function RootLayout({
-            children,
-          }: Readonly<{
-            children: React.ReactNode;
-          }>) {
-            return (
-              <html lang="en">
-                <head>
-                  <DraftModeScript />
-                </head>
-                <body>
-                  <MakeswiftProvider previewMode={(await draftMode()).isEnabled}>
-                    {children}
-                  </MakeswiftProvider>
-                </body>
-              </html>
-            );
-          }
-          ```
-      </Tab>
-      <Tab title="Pages Router">
-        In [Pages Router](https://nextjs.org/docs/pages), this will typically come from calling `Makeswift.getPreviewMode` in either [getStaticProps](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props) or [getServerSideProps](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props) in a page component.
-
-        This example returns `previewMode` from `getStaticProps` in an optional catch-all route. The `previewMode` property is then consumed in the `_app.tsx` file and passed to `<ReactRuntimeProvider>`. For full details, refer to the [Pages Router Installation guide](/developer/pages-router/installation).
-
-        ```tsx src/pages/[[...path]].tsx
-        import { Makeswift } from "@makeswift/runtime/next";
-
-        export async function getStaticProps({ params, previewData }) {
-          // ...
-
-          return {
-            props: {
-              // ...
-              previewMode: Makeswift.getPreviewMode(previewData),
-            },
-          };
-        }
-        ```
-
-      </Tab>
-
-    </Tabs>
-
-  </Expandable>
-
+  When set to `true`, the preview version of a page will be rendered. See
+  [example](#example) below for usage.
 </ParamField>
 
 <ParamField query="children" type="React.Node">
@@ -87,20 +31,41 @@ import PagesApp from "/snippets/pages-router/pages-app.mdx";
 
 ## Example
 
-### App Router
+<Tabs>
+  <Tab title="App Router">
+    The following example shows how the `<ReactRuntimeProvider>` is used to implement the `<MakeswiftProvider>` client component as outlined in step 9 of the [App Router Installation guide](/developer/app-router/installation). The `<MakeswiftProvider>` is subsequently utilized in the App Router's [root layout](https://nextjs.org/docs/app/api-reference/file-conventions/layout#root-layouts).
 
-The following example shows the `<ReactRuntimeProvider>` being used in a Client Component and imported into the Root Layout in the app router.
+    <CodeGroup>
 
-<CodeGroup>
+    <AppProviders />
 
-<AppProviders />
+    <AppLayout />
 
-<AppLayout />
+    </CodeGroup>
 
-</CodeGroup>
+  </Tab>
+  <Tab title="Pages Router">
 
-### Pages Router
+    The following example shows how to add a `<ReactRuntimeProvider>` to a [Custom App](https://nextjs.org/docs/pages/building-your-application/routing/custom-app) as outlined in step 10 of the [Pages Router Installation guide](/developer/pages-router/installation). The `previewMode` property is returned from `getStaticProps` in an optional catch-all route.
 
-The following example uses a [Custom App](https://nextjs.org/docs/pages/building-your-application/routing/custom-app) to add the `<ReactRuntimeProvider>`.
+    <CodeGroup>
 
-<PagesApp />
+    <PagesApp />
+    ```tsx src/pages/[[...path]].tsx
+    import { Makeswift } from "@makeswift/runtime/next";
+
+    export async function getStaticProps({ params, previewData }) {
+      // ...
+
+      return {
+        props: {
+          // ...
+          previewMode: Makeswift.getPreviewMode(previewData),
+        },
+      };
+    }
+    ```
+    </CodeGroup>
+
+  </Tab>  
+</Tabs>
