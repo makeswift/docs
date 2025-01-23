@@ -4,41 +4,22 @@ title: Upgrading to 0.23.0
 
 If you haven't upgraded to `0.20.0` please read the [upgrading guide](/developer/upgrading/0.20.0).
 
-`v0.23.0` of the runtime introduces a few new components and breaking changes.
+`v0.23.0` of the runtime introduces new runtime internals, 2 new components, and a few breaking changes.
 
-1.  Attempting to create a control with arbitrary configuration options will now
-    result in a TypeScript compilation error:
+## Breaking Changes
 
-    ```typescript
-    import { Number } from "@makeswift/runtime/controls";
+### `MakeswiftApiHandler` requires instance of `ReactRuntime`
 
-    const num = Number({ foo: "bar" }); // TS error, `foo` is not a valid `Number` param
-    ```
+To initialize an instance of the `MakeswiftApiHandler`, you must now pass an instance of the [ReactRuntime](/developer/reference/runtime/constructor). See [MakeswiftApiHandler](/developer/reference/makeswift-api-handler) for full details.
 
-    Prior to this version, the arbitrary options were silently ignored.
+### API changes to support multi-document pages
 
-2.  The `Select` control now requires `options` to be a readonly array with at
-    least one entry. If you are not defining your options inline, you may need
-    to declare the options `as const`.
+The [ReactRuntimeProvider](/developer/reference/components/react-runtime-provider) component now accepts two new props: `previewMode` and `locale`. `previewMode` is required in all cases, while `locale` is required if your site supports more than one locale. Check out our updated [App Router](/developer/app-router/installation) and [Pages Router](/developer/pages-router/installation) installation guides to learn how to provide these props in both setups.
 
-    ```typescript
-    import { Select } from "@makeswift/runtime/controls";
+## Editable page regions
 
-    const sel = Select({
-      label: "Select",
-      options: [], // TS error, non-empty array is required
-    });
-    ```
+This release introduces support for editable page regions through the new page regions API, which includes two built-in React components, [`<Slot>`](/developer/reference/components/slot) and [`<MakeswiftComponent>`](/developer/reference/components/makeswift-component), along with a corresponding Makeswift client method, [`getComponentSnapshot`](/developer/reference/client/get-component-snapshot).
 
-    Previously, the `options` array was allowed to be empty.
+Check out our new [editable-regions-example](https://github.com/makeswift/makeswift/tree/main/examples/editable-regions) to learn how to combine these APIs to create a set of dynamic pages with a visually editable header, footer, and a slot for the main content.
 
-Additionally, several undocumented internal types and functions are no longer
-being exported from the package, as they were not intended for our public API.
-
-Lastly, this version of the runtime now validates control configuration at
-runtime. If you were using the runtime without TypeScript, you may see errors in
-the console if you pass invalid options to a control. We recommend reading our
-[controls documentation](/developer/reference/controls) to ensure proper usage,
-or if possible, using TypeScript to catch these errors ahead of time.
-
-Here is the link to the [official release notes](https://github.com/makeswift/makeswift/releases/tag/%40makeswift%2Fruntime%400.20.0).
+Here is the link to the [official release notes](https://github.com/makeswift/makeswift/releases/tag/%40makeswift/runtime%400.23.0).

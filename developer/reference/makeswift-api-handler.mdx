@@ -3,9 +3,9 @@ title: "MakeswiftApiHandler"
 description: An API route for Makeswift that adds support for [preview mode](https://nextjs.org/docs/pages/building-your-application/configuring/preview-mode), [on-demand revalidation](https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration#on-demand-revalidation), and other features that make Makeswift work seamlessly with your Next.js app.
 ---
 
-import FontsExample from '/snippets/reference/fonts.mdx'
-import PagesApiHandlerExample from '/snippets/pages-router/api-handler.mdx'
-import AppApiHandlerExample from '/snippets/app-router/api-handler.mdx'
+import FontsExample from "/snippets/reference/fonts.mdx";
+import PagesApiHandlerExample from "/snippets/pages-router/api-handler.mdx";
+import AppApiHandlerExample from "/snippets/app-router/api-handler.mdx";
 
 ## Arguments
 
@@ -15,6 +15,9 @@ import AppApiHandlerExample from '/snippets/app-router/api-handler.mdx'
 2. <ParamField query="options" type="object">
      Options for site version and locale.
      <Expandable>
+       <ParamField query="runtime" type="ReactRuntime" required>
+         An instance of [ReactRuntime](/developer/reference/runtime/constructor)
+       </ParamField>
        <ParamField query="getFonts" type="() => FontFamily[]">
         This function is called when the builder requests the list of fonts available for the site. The function should return an array of `FontFamily` objects.
 
