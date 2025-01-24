@@ -39,6 +39,10 @@ The available values are sourced from our Google Fonts integration within Makesw
 
 ### Built-in elements
 
-This release introduces support for **built-in elements**, which are hard-coded instances of components in a page that can still be edited in the Visual Builder. To support this, we've included to new components, [`<MakeswiftComponent>`](/developer/reference/components/makeswift-component) and [`<Slot>`](/developer/reference/components/slot), along with a corresponding Makeswift client method, [`getComponentSnapshot`](/developer/reference/client/get-component-snapshot).
+This release introduces support for **built-in elements** which allow developers to define editable regions within a page. These regions are hard-coded instances of components using the new [`<MakeswiftComponent>`](/developer/reference/components/makeswift-component) API. This means these can't elements can't be removed by users in the Visual Builder, but they can be edited based on the properties developers decide to expose.
+
+A good example of this would be a `<Header>` component that you want to be included on every page. Instead of the user having to drag and drop that component visually onto each page, the developer can make this a built-in element in the page template. This way, the `<Header>` will show up on every page without manually having to add it. More details in [this example](/developer/reference/components/makeswift-component#example).
+
+To support this, we've included to new components, [`<MakeswiftComponent>`](/developer/reference/components/makeswift-component) and [`<Slot>`](/developer/reference/components/slot), along with a corresponding Makeswift client method, [`getComponentSnapshot`](/developer/reference/client/get-component-snapshot).
 
 Check out our new [editable-regions example](https://github.com/makeswift/makeswift/tree/main/examples/editable-regions) to learn how to combine these APIs to create a set of dynamic pages with a visually editable header, footer, and a slot for the main content.
