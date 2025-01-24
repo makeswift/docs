@@ -4,22 +4,41 @@ title: Upgrading to 0.23.0
 
 If you haven't upgraded to `0.20.0` please read the [upgrading guide](/developer/upgrading/0.20.0).
 
-`v0.23.0` of the runtime introduces new runtime internals, 2 new components, and a few breaking changes.
+`v0.23.0` of the runtime introduces new runtime internals, new components, and a few breaking changes. Refer to the [official release notes](https://github.com/makeswift/makeswift/releases/tag/%40makeswift/runtime%400.23.0) for more details.
 
 ## Breaking Changes
 
 ### `MakeswiftApiHandler` requires instance of `ReactRuntime`
 
-To initialize an instance of the `MakeswiftApiHandler`, you must now pass an instance of the [ReactRuntime](/developer/reference/runtime/constructor). See [MakeswiftApiHandler](/developer/reference/makeswift-api-handler) for full details.
+To initialize an instance of the [MakeswiftApiHandler](/developer/reference/makeswift-api-handler), you must now pass an instance of the [ReactRuntime](/developer/reference/runtime/constructor). See [MakeswiftApiHandler](/developer/reference/makeswift-api-handler) for full details.
 
-### API changes to support multi-document pages
+### New props for `ReactRuntimeProvider`
 
-The [ReactRuntimeProvider](/developer/reference/components/react-runtime-provider) component now accepts two new props: `previewMode` and `locale`. `previewMode` is required in all cases, while `locale` is required if your site supports more than one locale. Check out our updated [App Router](/developer/app-router/installation) and [Pages Router](/developer/pages-router/installation) installation guides to learn how to provide these props in both setups.
+In order to support the new [`<MakeswiftComponent>`](/developer/reference/components/makeswift-component) API (details [below](#built-in-elements)), which can be rendered multiple times on a Next.js page, we had to make some changes to the Makeswift provider. The [ReactRuntimeProvider](/developer/reference/components/react-runtime-provider) component now accepts two new props: `previewMode` and `locale`. `previewMode` is required in all cases, while `locale` is required if your site supports more than one locale.
 
-## Editable page regions
+Check out our updated [App Router](/developer/app-router/installation) and [Pages Router](/developer/pages-router/installation) installation guides to learn how to provide these props in both setups.
 
-This release introduces support for editable page regions through the new page regions API, which includes two built-in React components, [`<Slot>`](/developer/reference/components/slot) and [`<MakeswiftComponent>`](/developer/reference/components/makeswift-component), along with a corresponding Makeswift client method, [`getComponentSnapshot`](/developer/reference/client/get-component-snapshot).
+## Deprecated items
 
-Check out our new [editable-regions-example](https://github.com/makeswift/makeswift/tree/main/examples/editable-regions) to learn how to combine these APIs to create a set of dynamic pages with a visually editable header, footer, and a slot for the main content.
+### `Shape` control
 
-Here is the link to the [official release notes](https://github.com/makeswift/makeswift/releases/tag/%40makeswift/runtime%400.23.0).
+The [Shape](/developer/reference/controls/shape) control has been deprecated and will be removed in a future release. We recommend using the new [Group](/developer/reference/controls/group) control going forward.
+
+## New controls
+
+### `Group` control
+
+We've added a new [Group](/developer/reference/controls/group) control which is designed to be a more versatile replacement for the [Shape](/developer/reference/controls/shape) control.
+
+### `Font` control
+
+We've added a new [Font](/developer/reference/controls/font) control which let's you select a `fontFamily`, `fontStyle`, and `fontWeight`.
+The available values are sourced from our Google Fonts integration within Makeswift and from the variants you pass to `getFonts` in your [MakeswiftApiHandler](/developer/reference/makeswift-api-handler).
+
+## New Apis
+
+### Built-in elements
+
+This release introduces support for **built-in elements**, which are hard-coded instances of components in a page that can still be edited in the Visual Builder. To support this, we've included to new components, [`<MakeswiftComponent>`](/developer/reference/components/makeswift-component) and [`<Slot>`](/developer/reference/components/slot), along with a corresponding Makeswift client method, [`getComponentSnapshot`](/developer/reference/client/get-component-snapshot).
+
+Check out our new [editable-regions example](https://github.com/makeswift/makeswift/tree/main/examples/editable-regions) to learn how to combine these APIs to create a set of dynamic pages with a visually editable header, footer, and a slot for the main content.
