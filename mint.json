@@ -147,7 +147,8 @@
           "pages": [
             "developer/guides/deploying/overview",
             "developer/guides/deploying/vercel",
-            "developer/guides/deploying/netlify"
+            "developer/guides/deploying/netlify",
+            "developer/guides/deploying/docker"
           ]
         },
         "developer/guides/troubleshooting",

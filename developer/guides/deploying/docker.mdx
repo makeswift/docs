@@ -1,0 +1,27 @@
+---
+title: Docker
+description: "Learn how to deploy your Makeswift application with Docker."
+---
+
+## Prerequisites
+
+You'll need a Makeswift site. If you don't already have one, you can follow the [developer quickstart](/developer/quickstart) or [installation guide](/developer/app-router/installation) to get started.
+
+You'll also need to use [Makeswift runtime](https://www.npmjs.com/package/@makeswift/runtime?activeTab=readme) **version `0.23.2` or higher.**
+
+## Deploying
+
+Vercel has already documented how to deploy a Next.js application with Docker. The only change you have to make when deploying your Makeswift site is to your environment variables ([details below](#environment-variables)).
+
+Otherwise, you can follow the [Next.js with Docker](https://github.com/vercel/next.js/tree/canary/examples/with-docker) documentation.
+
+### Environment variables
+
+You'll need to include two environment variables in your Docker build: `MAKESWIFT_SITE_API_KEY` and `FORCE_HTTP`. These will need to be added in the `.env` file that is included in your Docker build or in the dashboard of your hosting provider.
+
+```bash
+MAKESWIFT_SITE_API_KEY=<YOUR_API_KEY>
+FORCE_HTTP=true
+```
+
+Your Makeswift API key can be found in the Makeswift Visual Builder under **Settings > Host**.
