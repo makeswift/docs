@@ -17,16 +17,25 @@ Otherwise, you can follow the [Next.js with Docker](https://github.com/vercel/ne
 
 ### Environment variables
 
-You'll need to include two environment variables in your Docker build: `MAKESWIFT_SITE_API_KEY` and `FORCE_HTTP`. These will need to be added in the `.env` file that is included in your Docker build or in the dashboard of your hosting provider.
+You'll need to include two environment variables in your Docker build: `MAKESWIFT_SITE_API_KEY` and `MAKESWIFT_DRAFT_MODE_PROXY_FORCE_HTTP`. These will need to be added in the `.env` file that is included in your Docker build or in the dashboard of your hosting provider.
 
 ```bash
 MAKESWIFT_SITE_API_KEY=<YOUR_API_KEY>
-FORCE_HTTP=true
+MAKESWIFT_DRAFT_MODE_PROXY_FORCE_HTTP=true
 ```
 
 <Note>
-  The `FORCE_HTTP` flag is only necessary to handle internal communication. This
-  **does not** affect your external domain name which should use `https`.
+  <p>
+    The `MAKESWIFT_DRAFT_MODE_PROXY_FORCE_HTTP` flag ensures that requests from
+    Makeswift's Draft Mode proxy always use HTTP, regardless of whether the
+    original request used HTTP or HTTPS. This prevents SSL errors when
+    forwarding HTTPS requests to servers that only support HTTP, which is common
+    for servers running in Docker containers.
+  </p>
+  <p>
+    Setting this variable **does not** affect your external domain, which should
+    always use HTTPS.
+  </p>
 </Note>
 
 Your Makeswift API key can be found in the Makeswift Visual Builder under **Settings > Host**.
