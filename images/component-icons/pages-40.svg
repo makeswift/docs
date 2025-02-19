@@ -1,0 +1,12 @@
+<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M36 8H4a2 2 0 0 0-2 2v26a2 2 0 0 0 2 2h32a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2ZM4 6a4 4 0 0 0-4 4v26a4 4 0 0 0 4 4h32a4 4 0 0 0 4-4V10a4 4 0 0 0-4-4H4Z"/>
+  <path opacity=".5" d="M4 5a2 2 0 0 1 2-2h28a2 2 0 0 1 2 2H4Z"/>
+  <path opacity=".25" d="M8 2a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2H8Z"/>
+  <rect opacity=".5" x="4" y="10" width="32" height="13" rx="2"/>
+  <rect opacity=".5" x="5" y="25" width="8" height="8" rx="4"/>
+  <rect opacity=".5" x="16" y="25" width="8" height="8" rx="4"/>
+  <rect opacity=".5" x="27" y="25" width="8" height="8" rx="4"/>
+  <rect opacity=".5" x="6" y="34" width="6" height="2" rx="1"/>
+  <rect opacity=".5" x="16" y="34" width="8" height="2" rx="1"/>
+  <rect opacity=".5" x="28" y="34" width="6" height="2" rx="1"/>
+</svg>

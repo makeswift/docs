@@ -151,6 +151,10 @@
             "developer/guides/deploying/docker"
           ]
         },
+        {
+          "group": "How to",
+          "pages": ["developer/guides/how-to/built-in-components"]
+        },
         "developer/guides/troubleshooting",
         "developer/guides/environments",
         {
