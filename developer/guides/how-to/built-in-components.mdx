@@ -1,11 +1,11 @@
 ---
 title: Built-in components
-description: "Learn how to create built-in components that integrate into Makeswift."
+description: "Learn how to create built-in components that integrate with Makeswift."
 ---
 
 import ProjectSetup from "/snippets/guides/project-setup.mdx";
 
-Built-in components are React components that are registered and integrated into Makeswift. These typically become available to users in the Visual Builder to use while building layouts and pages. Let's see how to create and register a built-in component.
+As opposed to components that are created in the Visual Builder, built-in components are React components that are registered and integrated with Makeswift from code. As expected, these are available to users in the Visual Builder to use while building layouts and pages. Let's see how to create and register a built-in component.
 
 ## Prerequisites
 
@@ -15,10 +15,10 @@ If your setup varies from this, please adjust the code snippets appropriately.
 
 ## Overview
 
-In this guide, we're going to build a `Card` component. This component will need a few different properties:
+In this guide, we're going to build a `Card` component that can be used to display product data. This component will need a few different properties:
 
 - `image` - the URL of the image
-- `altText` - the alt text to use for the image
+- `alt` - the alt text to use for the image
 - `heading` - the heading text
 - `description` - the description text
 - `link` - the link to navigate to
@@ -33,29 +33,20 @@ In this guide, we're going to build a `Card` component. This component will need
 
 In general, creating built-in components in Makeswift requires two things:
 
-1. a React component
-2. a file that registers the component with Makeswift
+1. A React component
+2. A file that registers the component with Makeswift
 
 When registering a component with Makeswift, you also define all of the properties that should be editable in the Visual Builder. These properties are defined using Makeswift [controls](developer/concepts#controls) and will map to the props your React component expects.
 
-Here's an example of how those properties will show up in the Visual Builder for our `Card` component when we're finished.
-
-<Frame>
-  <img
-    src="/images/developer/guides/how-to/built-in-components/card-properties.jpeg"
-    alt="Properties of the card component"
-  />
-</Frame>
-
 ## Creating the React component
 
-Start by creating a `src/components/Card` directory with an `index.tsx` file inside of it. Inside of this file, we can start by defining a type for the component props based on our requirements.
+Start by creating a `src/components/card` directory and add an `index.tsx` file. Then, define a type for the component props based on our requirements.
 
-```tsx src/components/Card/index.tsx
+```tsx src/components/card/index.tsx
 type CardProps = {
   className?: string;
   image?: string;
-  altText: string;
+  alt: string;
   heading: string;
   description: string;
   link: { href: string; target?: "_blank" | "_self" };
@@ -72,16 +63,16 @@ All of these properties will match the properties that the user can edit in the 
   />
 </Frame>
 
-Next, we cam define the component itself. In this example, we'll be using the [Link](https://nextjs.org/docs/pages/api-reference/components/link) and [Image](https://nextjs.org/docs/app/api-reference/components/image) components from Next.js. Ignoring styles, the final component will look like this.
+Next, we can define the component itself. In this example, we'll be using the [Link](https://nextjs.org/docs/pages/api-reference/components/link) and [Image](https://nextjs.org/docs/app/api-reference/components/image) components from Next.js. Ignoring styles, the final component will look like this.
 
-```tsx src/components/Card/index.tsx
+```tsx src/components/card/index.tsx
 import Link from "next/link";
 import Image from "next/image";
 
 type CardProps = {
   className?: string;
   image?: string;
-  altText: string;
+  alt: string;
   heading: string;
   description: string;
   link: { href: string; target?: "_blank" | "_self" };
@@ -91,7 +82,7 @@ type CardProps = {
 export function Card({
   className,
   image,
-  altText,
+  alt,
   heading,
   description,
   link,
@@ -99,7 +90,7 @@ export function Card({
 }: CardProps) {
   return (
     <div className={className}>
-      {image && <Image src={image} alt={altText} objectFit="cover" fill />}
+      {image && <Image src={image} alt={alt} objectFit="cover" fill />}
       <div>
         <h3>{heading}</h3>
         <p>{description}</p>
@@ -114,7 +105,7 @@ export function Card({
 
 ## Registering the component
 
-After creating the base React component, we need to register that component with Makeswift. This makes the component available in the Component Tray for users to drag onto the canvas.
+After creating the React component, we need to register that component with Makeswift. This makes the component available in the Component Tray for users to drag onto the canvas.
 
 <Frame>
   <img
@@ -134,39 +125,37 @@ When calling, `registerComponent`, you'll need to pass the React component to be
 - `props` - an object mapping of prop names to Makeswift [controls](/developer/concepts#controls)
 
 <Warning>
-  The `type` property underneath the hood is stored in the Makeswift database as
-  a unique identifier. This means that changing the `type` property might cause
-  side effects. For example, if you already have an instance of this component
-  to the Canvas and then change the `type`, Makeswift won't recognize the
-  original component. In this case, you'll see a "Component not found" message.
+  The `type` property is stored in the Makeswift database as a unique
+  identifier. This means that changing the `type` property might cause side
+  effects. For example, if you already have an instance of this component in the
+  Canvas and then change the `type`, Makeswift won't recognize the original
+  component. In this case, you'll see a "Component not found" message.
 </Warning>
 
 We can register our component like so:
 
-```ts src/components/Card/Card.makeswift.tsx
+```ts src/components/card/card.makeswift.tsx
 import { runtime } from "src/makeswift/runtime";
 import { Card } from "./";
 
 runtime.registerComponent(Card, {
-  type: "my-card",
-  label: "My Card",
+  type: "product-card",
+  label: "Product Card",
   props: {},
 });
 ```
 
 ### Adding an icon
 
-Additionally, you can include an optional `icon` property in your configuration object to specify which icon to be displayed along side your component.
-
-See the [Component icons](/developer/reference/component-icons) reference page for a full list of available icons. In this example, we'll use the `image` icon.
+Additionally, you can include an optional `icon` property in your configuration object to specify which icon to be displayed along side your component. In this example, we'll use the `image` icon.
 
 ```ts src/components/Card/Card.makeswift.tsx
 import { runtime } from "src/makeswift/runtime";
 import { Card } from "./";
 
 runtime.registerComponent(Card, {
-  type: "my-card",
-  label: "My Card",
+  type: "product-card",
+  label: "Product Card",
   icon: 'image'
   props: {},
 });
@@ -185,11 +174,11 @@ At this point, you should see an error in your editor on the reference to the `C
 
 If we update `props` accordingly, this error will go away.
 
-Note also that as we define each of these, we'll need to import the appropriate control from `"@makeswift/runtime/controls"`. We'll skip this for now, but each import is included in the [final registration code](#final-registration-code) for your reference.
+Note also that as we define each of these, we'll need to import the appropriate control from `@makeswift/runtime/controls`. We'll skip this for now, but each import is included in the [final registration code](#final-registration-code) for your reference.
 
 ### Adding a Style control
 
-We can start by using the [Style](/developer/reference/controls/style) control which allows our component to inherit styles that are defined by the user in the Visual Builder. To do this, add a key of `className` to the `props` object with a value of `Style()`. Notice that `className` matches the name of the prop that our component is expecting. We'll make sure to match this for each prop we define here.
+We can start by using the [Style](/developer/reference/controls/style) control which allows our component to receive styles that are defined by the user in the Visual Builder. To do this, add a key of `className` to the `props` object with a value of `Style()`. Notice that `className` matches the name of the prop that our component is expecting. We'll make sure to match this for each prop we define here.
 
 ```ts
 props: {
@@ -197,7 +186,7 @@ props: {
 }
 ```
 
-By default the `Style` controls allows the user to edit the `width` and `margin` for a component.
+By default the `Style` controls allows the user to edit the width and margin for a component.
 
 <Frame>
   <img
@@ -206,7 +195,7 @@ By default the `Style` controls allows the user to edit the `width` and `margin`
   />
 </Frame>
 
-Additionally, you can manually select which properties you want to be visually editable by passing an object with a `properties` like so:
+Additionally, you can manually select which properties you want to be visually editable by passing an object with a `properties` property like so:
 
 ```ts
 props: {
@@ -214,7 +203,7 @@ props: {
 }
 ```
 
-Each Makeswift control has its own set of configuration options, so you'll need to check the documentation for full details on each one. We'll keep the defaults in this example, but for full details, refer to the docs for the [Style control params](/developer/reference/controls/style#params).
+Each Makeswift control has its own set of configuration options. You can check the documentation for full details on each one. We'll keep the default in this example, but for full details, refer to the docs for the [Style control params](/developer/reference/controls/style#params).
 
 ### Adding a Image control
 
@@ -227,7 +216,7 @@ props: {
 }
 ```
 
-By default, the [Image](/developer/reference/controls/image) control will pass the URL of the image as a `string` to the React component which is what we want. However, it can also return an object that includes width and height properties like so:
+By default, the [Image](/developer/reference/controls/image) control will pass the URL of the image as a `string` to the React component. However, it can also return an object that includes width and height properties like so:
 
 ```ts
 {
@@ -251,7 +240,7 @@ const props = [
 ]
 ```
 
-For now, though, we'll just take the default output of a string.
+For now, though, we'll use the default output of a string.
 
 <Note>
   The documentation for each Makeswift control includes a `Prop type` section
@@ -270,14 +259,14 @@ props: {
 }
 ```
 
-Notice we are defining a `defaultValue` here. Beacause of this, the `heading` prop in our `Card` component is marked as required. If we didn't add the `defaultValue` the prop would have to be marked as optional.
+Notice we are defining a `defaultValue` here. Because of this, the `heading` prop in our `Card` component is marked as required. If we didn't add the `defaultValue`, the prop would have to be marked as optional.
 
-Let's continue by adding two more `TextInput` controls for `altText` and `linkText`. Again, we'll set `label` and `defaultValue` for both.
+Let's continue by adding two more `TextInput` controls for `alt` and `linkText`. Again, we'll set `label` and `defaultValue` for both.
 
 ```ts
 props: {
   //other props
-  altText: TextInput({
+  alt: TextInput({
     label: "Image alt text",
     defaultValue: "Description of the image",
   }),
@@ -322,13 +311,13 @@ import { Card } from "./";
 import { TextInput, Image, TextArea, Link, Style } from "@makeswift/runtime/controls";
 
 runtime.registerComponent(Card, {
-  type: "my-card",
-  label: "Card",
+  type: "product-card",
+  label: "Product Card",
   icon: "image"
   props: {
     className: Style()
     image: Image(),
-    altText: TextInput({
+    alt: TextInput({
       label: "Image alt text",
       defaultValue: "Description of the image",
     }),
@@ -351,7 +340,7 @@ After creating and registering the component, we need to make sure that Makeswif
 - the Makeswift provider in the `src/makeswift/provider.tsx` file
 - the dynamic API router in `src/app/api/makeswift/[...makeswift].ts`
 
-If you've followed the [Installation](/developer/app-router/installation.mdx) guide for initial setup, you should already have a `src/makeswift/components.ts` file which is already imported into each of these three places. In this case, you can import your registration file here, and you'll be good to go.
+If you've followed the [Installation](/developer/app-router/installation.mdx) guide for initial setup, you should have a `src/makeswift/components.ts` file which is already imported into each of these three places. In this case, you can import your registration file here, and you'll be good to go.
 
 ```ts src/makeswift/components.ts
 //other component imports...
@@ -362,7 +351,7 @@ If you didn't follow the installation guide, you'll need make sure the new compo
 
 ## Final result
 
-To be able to see your component withing the Visual Builder, you'll need your Makeswift site to be connected to your locally running application. Again, follow the [Installation](/developer/app-router/installation.mdx) guide for details on how to do that if you aren't already set up.
+To be able to see your component within the Visual Builder, you'll need your Makeswift site to be connected to your locally running application. Again, follow the [Installation](/developer/app-router/installation.mdx) guide for details on how to do that if you aren't already set up.
 
 Assuming your Makeswift site is connected, after refreshing the page, you should see your component listed in the Component Tray.
 
@@ -376,8 +365,14 @@ Assuming your Makeswift site is connected, after refreshing the page, you should
 Then, after dragging an instance of your component onto the Canvas and filling out the details, you should see your card in action.
 
 <Frame>
-  <img
-    src="/images/developer/guides/how-to/built-in-components/card-component-tray-and-canvas.jpeg"
-    alt="Properties of the card component"
-  />
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    controls
+    title="Final demo of card component"
+    className="w-full aspect-video"
+    src="/images/developer/guides/how-to/built-in-components/card-demo.mp4"
+  ></video>
 </Frame>
