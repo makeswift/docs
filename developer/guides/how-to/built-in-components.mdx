@@ -211,7 +211,8 @@ For the `image` property, we can use the [Image](/developer/reference/controls/i
 
 ```ts
 props: {
-  //other props
+  // ...other props
+
   image: Image(),
 }
 ```
@@ -231,13 +232,14 @@ By default, the [Image](/developer/reference/controls/image) control will pass t
 You can configure this by passing a configuration object with `format` property set to `Image.Format.WithDimensions`.
 
 ```ts
-const props = [
-  //other props
+const props = {
+  // ...other props
+
   image: Image({
-    label: 'Image',
+    label: "Image",
     format: Image.Format.WithDimensions,
-  })
-]
+  }),
+};
 ```
 
 For now, though, we'll use the default output of a string.
@@ -259,16 +261,17 @@ props: {
 }
 ```
 
-Notice we are defining a `defaultValue` here. Because of this, the `heading` prop in our `Card` component is marked as required. If we didn't add the `defaultValue`, the prop would have to be marked as optional.
+Notice we are defining a `defaultValue` here. Because the `heading` prop in our `Card` component is marked as required, we must provide the `defaultValue`. In general, how you define your props in Makeswift should match the interface you've defined in your React component.
 
 Let's continue by adding two more `TextInput` controls for `alt` and `linkText`. Again, we'll set `label` and `defaultValue` for both.
 
 ```ts
 props: {
-  //other props
+  // ...other props
+
   alt: TextInput({
     label: "Image alt text",
-    defaultValue: "Description of the image",
+    defaultValue: "",
   }),
   linkText: TextInput({ label: "Link text", defaultValue: "Read more" }),
 }
@@ -280,7 +283,8 @@ For the `description`, we want to allow the user to input a larger piece of text
 
 ```ts
 props: {
-  //other props
+  // ...other props
+
   description: TextArea({
     label: "Description",
     defaultValue: "My description",
@@ -294,7 +298,8 @@ Lastly, we can use the [Link](/developer/reference/controls/link) control for th
 
 ```ts
 props: {
-  //other props
+  // ...other props
+
   link: Link({ label: "Link" }),
 }
 ```
@@ -338,12 +343,13 @@ After creating and registering the component, we need to make sure that Makeswif
 
 - the root `layout.tsx` file
 - the Makeswift provider in the `src/makeswift/provider.tsx` file
-- the dynamic API router in `src/app/api/makeswift/[...makeswift].ts`
+- the dynamic API route in `src/app/api/makeswift/[...makeswift].ts`
 
 If you've followed the [Installation](/developer/app-router/installation.mdx) guide for initial setup, you should have a `src/makeswift/components.ts` file which is already imported into each of these three places. In this case, you can import your registration file here, and you'll be good to go.
 
 ```ts src/makeswift/components.ts
-//other component imports...
+// ...other component imports
+
 import "src/components/Card/Card.makeswift";
 ```
 
