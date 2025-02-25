@@ -6,6 +6,7 @@ import RuntimeExample from "/snippets/reference/runtime.mdx";
 import ClientExample from "/snippets/reference/client.mdx";
 import ComponentsExample from "/snippets/reference/components.mdx";
 import NextConfigExample from "/snippets/reference/next-config.mdx";
+import MiddlewareExample from "/snippets/reference/middleware.mdx";
 import PagesCatchAllExample from "/snippets/pages-router/catch-all.mdx";
 import DocumentExample from "/snippets/pages-router/document.mdx";
 import ApiHandlerExample from "/snippets/pages-router/api-handler.mdx";
@@ -87,11 +88,25 @@ and other features that make Makeswift work seamlessly with your Next.js app.
   </Step>
   <Step title="Add the Next.js plugin">
   
-Next.js plugins are configured in the project's next.config.js file by wrapping `nextConfig`. The Makeswift Next.js plugin whitelists Makeswift image domains and sets up rewrites to enable preview mode in the Makeswift builder.
+Next.js plugins are configured in the project's next.config.js file by wrapping `nextConfig`. The Makeswift Next.js plugin whitelists Makeswift image domains.
 
 <NextConfigExample />
 
   </Step>
+
+<Step title="Add the Makeswift middleware">
+
+Create a `middleware.ts` file at the same level as your `app` directory. The
+`withMakeswiftMiddleware` adds middleware to your project to shows you the preview
+version of your pages while in the builder. 
+
+If you already have existing middleware in your Next.js project, see our
+[Middleware guide](/developer/guides/middleware) for composing middleware.
+
+<MiddlewareExample />
+
+</Step>
+
   <Step title="Set up a custom Document">
   
 Create a [custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document) named `_document.ts` and export `Document` from `@makeswift/runtime/next`. 
