@@ -151,6 +151,7 @@
             "developer/guides/deploying/docker"
           ]
         },
+        "developer/guides/middleware",
         "developer/guides/troubleshooting",
         "developer/guides/environments",
         {

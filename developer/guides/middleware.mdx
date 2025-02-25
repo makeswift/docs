@@ -1,0 +1,121 @@
+---
+title: Middleware
+---
+
+import MiddlewareExample from "/snippets/reference/middleware.mdx";
+
+Makeswift uses a custom middleware to enable you to view the draft version of
+your page in the builder, but still see the live version of your page outside of
+the builder.
+
+In this guide, we'll walk through installing Makeswift's middleware and composing it
+with other middleware you have.
+
+Prior to reading this guide, we recommend that you [read the Next.js
+docs](https://nextjs.org/docs/app/building-your-application/routing/middleware)
+to have some familiarity with middleware.
+
+## Simple Installation
+
+In the simple case where you don't have other middleware, adding the Makeswift
+middleware is as simple as calling the `withMakeswiftMiddleware` function with
+your API key and exporting the result in your `middleware.ts` file.
+
+<MiddlewareExample />
+
+The [middleware
+matcher](https://nextjs.org/docs/app/building-your-application/routing/middleware#matcher)
+in this example can be modified to your needs, as long as it matches with the
+routes you wish to edit in Makeswift. 
+
+## Composing with other middleware
+
+What if you have your own middleware that you're already using? For example,
+let's consider a simple example where you have a middleware that redirects
+`/about` to `/contact`:
+
+```ts src/middleware.ts
+import { NextResponse, NextRequest } from 'next/server'
+ 
+export function middleware(request: NextRequest) {
+  if (request.nextUrl.pathname.startsWith('/about')) {
+    return NextResponse.redirect(new URL('/contact', request.url))
+  }
+  return NextResponse.next()
+}
+
+export const config = {
+  matcher: [
+    '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
+  ],
+}
+```
+
+The `withMakeswiftMiddleware` is a decorator function that takes in an input
+middleware and outputs a new middleware. The input middleware will be included
+in the additional modifications necessary for showing draft data. 
+
+We can modify our existing middleware to be an argument to
+`withMakeswiftMiddleware`, and export the result of `withMakeswiftMiddleware` as
+our main middleware:
+
+```ts src/middleware.ts
+import { NextResponse, NextRequest } from 'next/server'
+import { strict } from "assert";
+import { withMakeswiftMiddleware } from "@makeswift/runtime/next/middleware";
+
+strict(
+  process.env.MAKESWIFT_SITE_API_KEY,
+"MAKESWIFT_SITE_API_KEY is required"
+);
+ 
+function myMiddleware(request: NextRequest) {
+  if (request.nextUrl.pathname.startsWith('/about')) {
+    return NextResponse.redirect(new URL('/contact', request.url))
+  }
+  return NextResponse.next()
+}
+
+// Pass `myMiddleware` as the second argument:
+export default withMakeswiftMiddleware({
+  apiKey: process.env.MAKESWIFT_SITE_API_KEY,
+}, myMiddleware)
+
+export const config = {
+  matcher: [
+    '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
+  ],
+}
+```
+
+You could even define your custom middleware inline:
+
+```ts src/middleware.ts
+import { NextResponse, NextRequest } from 'next/server'
+import { strict } from "assert";
+import { withMakeswiftMiddleware } from "@makeswift/runtime/next/middleware";
+
+strict(
+  process.env.MAKESWIFT_SITE_API_KEY,
+"MAKESWIFT_SITE_API_KEY is required"
+);
+ 
+export default withMakeswiftMiddleware({
+  apiKey: process.env.MAKESWIFT_SITE_API_KEY,
+}, (request: NextRequest) => {
+  if (request.nextUrl.pathname.startsWith('/about')) {
+    return NextResponse.redirect(new URL('/contact', request.url))
+  }
+  return NextResponse.next()
+})
+
+export const config = {
+  matcher: [
+    '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
+  ],
+}
+```
+
+That's all it takes to compose your middleware with Makeswift's! If you have
+multiple middlewares that need to be composed, you can consider using a utility
+function to handle this for you.
