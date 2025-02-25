@@ -1,0 +1,91 @@
+---
+title: "Cookies in Makeswift"
+description: Learn how to troubleshoot working with cookies inside the Makeswift Visual Builder.
+icon: "cookie-bite" iconType: "regular"
+---
+
+## What are Cookies?
+
+[Cookies](https://web.dev/articles/understanding-cookies) are a tool used by
+sites to set small pieces of data on the browser. Some features that often rely
+on cookies include:
+
+- Saving login data after a user logs in to a site
+- Storing what items a user has added to their shopping cart
+- Tracking user analytics and behavior
+
+If your site relies on setting cookies, you may notice some issues with how your
+site behaves when you load it in the Makeswift Visual Builder. This is because
+your site is embedded inside an `<iframe>` when it loads in our builder. When an
+embedded site (in this case, your site) is attempting to set a cookie, that
+cookie is considered by the browser as a [**third-party
+cookie**](https://developer.mozilla.org/en-US/docs/Web/Privacy/Guides/Third-party_cookies).
+Modern web browsers have privacy restrictions on how third-party cookies are
+set. As a result, you may see issues related to cookies inside the builder, but
+not in your live page. 
+
+## Browser Settings
+
+If cookie related issues are impacting your editing experience, there's some
+ways you can modify your browser settings to allow third-party cookies to be
+set: We'll go over how for the major browsers:
+
+### Chrome / Brave / Arc
+
+Chrome (and other Chromium based browsers, like [Brave](https://brave.com/) and
+[Arc](https://arc.net/)) allow you to control whether specific sites can set
+third-party cookies. With their plan to soon disable all third-party cookies, it
+may be helpful to allow your site to set third-party cookies:
+
+1. In the URL bar, go to `chrome://settings/cookies`
+2. In the **Site allowed to use third party cookies** section, click the
+   **Add** button.
+3. A text input will appear that allows you to add a domain. Add your site's
+   domain. For example, if your host is on `example.com`, enter
+   `example.com` in the text input.
+   - You can also match your other subdomains, like `custom.example.com`, by
+   using a matcher: `[*.]example.com`.
+
+For more information on modifying Chrome's cookie permissions for you site, [see this
+article](https://support.google.com/chrome/answer/95647).
+
+<Warning>
+   Even with these browser settings, Chrome will still not allow sites to
+   set third-party cookies **unless the cookie has specific attributes**. For your
+   site, this means that your developer will have to make some changes to how
+   cookies are set. See the [Developer Settings](#developer-settings) section for
+   more details.
+</Warning>
+
+### Firefox
+
+Since 2021, Firefox automatically partitions third-party cookies, which means
+that any cookies your site sets while you're using the Makeswift Visual Builder
+will only be saved within the builder. Because of this, your site should behave
+as expected within Makeswift, without any action needed on your part.
+
+If you're still encountering issues, you can modify your browser settings:
+
+1. Go to **Preferences** > **Privacy & Security**
+2. Under the **Cookies and Site Data** section, click **Manage Exceptions**
+3. In the dialog that appears, enter your site's domain name and click **Allow**.
+
+For more information on modifying Firefox's cookie permissions for you site, [see this
+article](https://support.mozilla.org/en-US/kb/third-party-cookies-firefox-tracking-protection).
+
+### Safari
+
+To disable Safari's third-party cookie restrictions:
+1. Go to **Settings** > **Privacy**
+2. Uncheck the box for **Website tracking: Prevent cross-site tracking**.
+
+Disabling this setting will allow all website to set third-party cookies, not
+just your site within Makeswift. If you have privacy concerns, feel free to turn
+on the protections again when you're done editing your site in Makeswift.
+
+## Developer Settings
+
+If none of the above settings worked, you may need your developer to modify how
+cookies are set. Some browsers require that your site uses certain values when
+setting a cookie so that it can be properly set in a third-party context. See
+[this article](/developer/guides/how-to/setting-cookies) for more details.

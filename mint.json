@@ -68,7 +68,14 @@
     },
     {
       "group": "Guides",
-      "pages": ["product/localization", "product/publishing"]
+      "pages": [
+        "product/localization",
+        "product/publishing",
+        {
+          "group": "Troubleshooting",
+          "pages": ["product/troubleshooting/cookies"]
+        }
+      ]
     },
     {
       "group": "Reference",
@@ -152,8 +159,11 @@
           ]
         },
         {
-          "group": "How To",
-          "pages": ["developer/guides/how-to/built-in-components"]
+          "group": "How to",
+          "pages": [
+            "developer/guides/how-to/built-in-components",
+            "developer/guides/how-to/setting-cookies"
+          ]
         },
         "developer/guides/troubleshooting",
         "developer/guides/environments",
