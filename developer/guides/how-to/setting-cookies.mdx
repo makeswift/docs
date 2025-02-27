@@ -23,7 +23,7 @@ For example, let's say your site attempts to set a cookie client-side using
 `document.cookie`:
 
 ```typescript
-document.cookie = "myCookie=1234;"
+document.cookie = "myCookie=1234;";
 ```
 
 While this may work on your live site, it will not work in the builder because
@@ -31,42 +31,42 @@ of the third-party restrictions. Let's update this cookie to use
 `SameSite=None;` and `Secure;`:
 
 ```typescript
-document.cookie = "myCookie=1234; SameSite=None; Secure;"
+document.cookie = "myCookie=1234; SameSite=None; Secure;";
 ```
 
 This will now be able to be set in most browsers, assuming the user has the
 appropriate browser settings.
 
 Similarly, you may be setting cookies in a server response using the
-`Set-Cookie` header. For example, you may be using the [`cookies()` API from
-Next.js](https://nextjs.org/docs/app/api-reference/functions/cookies):
+`Set-Cookie` header. For example, you may be using the [`cookies()`](https://nextjs.org/docs/app/api-reference/functions/cookies) API from
+Next.js:
 
 ```typescript
-import { cookies } from 'next/headers'
- 
+import { cookies } from "next/headers";
+
 export async function setCustomCookies() {
-  const cookieStore = await cookies()
+  const cookieStore = await cookies();
   cookieStore.set({
-    name: 'myCookie',
-    value: '1234',
-  })
+    name: "myCookie",
+    value: "1234",
+  });
 }
 ```
 
 Again, the same attributes are necessary here:
 
 ```typescript
-import { cookies } from 'next/headers'
- 
+import { cookies } from "next/headers";
+
 export async function setCustomCookies() {
-  const cookieStore = await cookies()
+  const cookieStore = await cookies();
   cookieStore.set({
-    name: 'myCookie',
-    value: '1234',
+    name: "myCookie",
+    value: "1234",
     // Adding cross-site attribute below
-    sameSite: 'none',
+    sameSite: "none",
     secure: true,
-  })
+  });
 }
 ```
 
@@ -83,33 +83,32 @@ spec was introduced. Partitioned cookies are keyed by both the domain of the
 third-party site that set them and the top-level site in which they were set. In
 Makeswift, your site is the one setting the cookie, and the top-level site would
 be the Visual Builder, `app.makeswift.com`. This means that any cookies set by
-your site within the builder are scoped to the builder! 
+your site within the builder are scoped to the builder!
 
 To achieve this functionality, simply add a `Partitioned;` attribute whenever
 you set your cookies. Using our client-side example from above:
 
 ```typescript
-document.cookie = "myCookie=1234; SameSite=None; Secure; Partitioned;"
+document.cookie = "myCookie=1234; SameSite=None; Secure; Partitioned;";
 ```
 
 And our Next.js `cookies()` example:
 
 ```typescript
-import { cookies } from 'next/headers'
- 
+import { cookies } from "next/headers";
+
 export async function setCustomCookies() {
-  const cookieStore = await cookies()
+  const cookieStore = await cookies();
   cookieStore.set({
-    name: 'myCookie',
-    value: '1234',
-    sameSite: 'none',
+    name: "myCookie",
+    value: "1234",
+    sameSite: "none",
     secure: true,
-    partitioned: true
+    partitioned: true,
     // ^^^ Cookie will now be partitioned when set on the client
-  })
+  });
 }
 ```
-
 
 Partitioned cookies [are currently
 supported](https://developer.mozilla.org/en-US/docs/Web/Privacy/Guides/Privacy_sandbox/Partitioned_cookies#browser_compatibility)
@@ -125,8 +124,7 @@ cross-site tracking prevention when using our editor.
 ## Cookies by other libraries
 
 It's also possible that you're using an external package that sets its own
-cookies. For example, [middleware from the `next-intl`
-package](https://next-intl.dev/docs/routing/middleware) will attempt to set
+cookies. For example, middleware from the [`next-intl`](https://next-intl.dev/docs/routing/middleware) package will attempt to set
 cookies for detected locales. For such cases, we recommend checking the docs of
 these tools to see if they allow for cookie attribute configuration. Continuing
 the `next-intl` example, we see that their [APIs offer
