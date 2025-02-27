@@ -40,6 +40,25 @@ return {
 };
 ```
 
+You'll then need to make sure you're consuming this data in your `_app.tsx` file and passing it to the `<ReactRuntimeProvider>`.
+
+```tsx {3,8,9}
+export default function App({
+  Component,
+  pageProps: { previewMode, locale, ...pageProps },
+}: AppProps) {
+  return (
+    <ReactRuntimeProvider
+      runtime={runtime}
+      previewMode={previewMode}
+      locale={locale}
+    >
+      <Component {...pageProps} />
+    </ReactRuntimeProvider>
+  );
+}
+```
+
 Check out our updated [App Router](/developer/app-router/installation) and [Pages Router](/developer/pages-router/installation) installation guides to learn how to provide these props in both setups.
 
 ## Deprecated items
@@ -59,7 +78,7 @@ We've added a new [Group](/developer/reference/controls/group) control which is 
 We've added a new [Font](/developer/reference/controls/font) control which let's you select a `fontFamily`, `fontStyle`, and `fontWeight`.
 The available values are sourced from our Google Fonts integration within Makeswift and from the variants you pass to `getFonts` in your [MakeswiftApiHandler](/developer/reference/makeswift-api-handler).
 
-## New Apis
+## New APIs
 
 ### Built-in elements
 
