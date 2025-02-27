@@ -1,0 +1,28 @@
+export const IconList = () => {
+  const icons = [ "billing", "bolt", "button", "carousel", "chats",
+    "code", "countdown", "cube", "database", "divider", "form",
+    "gallery", "help", "image", "layout", "lock", "navigation", "social-links", "star",
+    "text", "users",  "video",
+  ]
+
+return (
+
+<CardGroup cols={4}>
+  {icons.map((icon) => (
+    <div className="py-2">
+      <div className="bg-gray-100 flex flex-col items-center rounded-lg p-3">
+        <img
+          className="m-0"
+          height={20}
+          noZoom
+          width={20}
+          src={`/images/component-icons/${icon}.svg`}
+        />
+        <p className="m-0 text-gray-800">{icon}</p>
+      </div>
+    </div>
+  ))}
+</CardGroup>
+);
+
+}
