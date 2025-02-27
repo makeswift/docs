@@ -12,9 +12,33 @@ If you haven't upgraded to `0.22.0` please read the [upgrading guide](/developer
 
 To initialize an instance of the [MakeswiftApiHandler](/developer/reference/makeswift-api-handler), you must now pass an instance of the [ReactRuntime](/developer/reference/runtime/constructor). See [MakeswiftApiHandler](/developer/reference/makeswift-api-handler) for full details.
 
+```diff
+- const handler = MakeswiftApiHandler(process.env.MAKESWIFT_SITE_API_KEY);
++ const handler = MakeswiftApiHandler(process.env.MAKESWIFT_SITE_API_KEY, { runtime });
+```
+
 ### New props for `ReactRuntimeProvider`
 
 In order to support the new [`<MakeswiftComponent>`](/developer/reference/components/makeswift-component) API (details [below](#built-in-elements)), which can be rendered multiple times on a Next.js page, we had to make some changes to the Makeswift provider. The [ReactRuntimeProvider](/developer/reference/components/react-runtime-provider) component now accepts two new props: `previewMode` and `locale`. `previewMode` is required in all cases, while `locale` is required if your site supports more than one locale.
+
+```diff
+- <ReactRuntimeProvider runtime={runtime}>
++ <ReactRuntimeProvider runtime={runtime} previewMode={previewMode} locale={locale}>
+```
+
+#### Pages Router
+
+If you're using the [Pages Router](https://nextjs.org/docs/pages), you'll need to update the `getStaticProps` function in your optional catch-all route to include `previewMode` in its returned data.
+
+```diff
+return {
+  props: {
+    snapshot,
++   previewMode: Makeswift.getPreviewMode(previewData),
+    locale,
+  },
+};
+```
 
 Check out our updated [App Router](/developer/app-router/installation) and [Pages Router](/developer/pages-router/installation) installation guides to learn how to provide these props in both setups.
 
@@ -46,3 +70,7 @@ A good example of this would be a `<Header>` component that you want to be inclu
 To support this, we've included to new components, [`<MakeswiftComponent>`](/developer/reference/components/makeswift-component) and [`<Slot>`](/developer/reference/components/slot), along with a corresponding Makeswift client method, [`getComponentSnapshot`](/developer/reference/client/get-component-snapshot).
 
 Check out our new [editable-regions example](https://github.com/makeswift/makeswift/tree/main/examples/editable-regions) to learn how to combine these APIs to create a set of dynamic pages with a visually editable header, footer, and a slot for the main content.
+
+```
+
+```
