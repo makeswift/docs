@@ -28,7 +28,7 @@ In order to support the new [`<MakeswiftComponent>`](/developer/reference/compon
 
 #### Pages Router
 
-If you're using the [Pages Router](https://nextjs.org/docs/pages), you'll need to update the `getStaticProps` function in your optional catch-all route to include `previewMode` in its returned data.
+If you're using the [Pages Router](https://nextjs.org/docs/pages), you'll need to update the `getStaticProps` function in your optional catch-all route to include `previewMode` in its returned data so that it becomes available in the `_app.tsx` file.
 
 ```diff
 return {
@@ -40,7 +40,7 @@ return {
 };
 ```
 
-You'll then need to make sure you're consuming this data in your `_app.tsx` file and passing it to the `<ReactRuntimeProvider>`.
+Then, you can consume this data in your `_app.tsx` file and pass it to the `<ReactRuntimeProvider>`.
 
 ```tsx {3,8,9}
 export default function App({
