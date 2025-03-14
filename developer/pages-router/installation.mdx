@@ -74,10 +74,10 @@ Create the Makeswift [client](/developer/reference/client/constructor) file in `
   
 Similar to [NextAuth.js](https://next-auth.js.org/), Makeswift uses an API handler to communicate with your Next.js app. Create the file `src/pages/api/makeswift/[...makeswift].ts`.
 
-<Info>
+<Note>
   It is important this file has that exact name and path. The extension can be
   `.js` or `.ts`.
-</Info>
+</Note>
 
 <ApiHandlerExample />
 
@@ -96,18 +96,24 @@ Next.js plugins are configured in the project's next.config.js file by wrapping 
   </Step>
   <Step title="Set up a custom Document">
   
-Create a [custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document) named `_document.ts` and export `Document` from `@makeswift/runtime/next`. 
-The Makeswift custom Document handles styles during server-side rendering and using [Preview Mode](https://nextjs.org/docs/pages/building-your-application/configuring/preview-mode) when opening your pages in the Makeswift builder.
+The Makeswift [custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document) handles styles during server-side rendering and using [Preview Mode](https://nextjs.org/docs/pages/building-your-application/configuring/preview-mode) when opening your pages in the Makeswift builder.
+
+Create the file `src/pages/_document.ts` and export `Document` from `@makeswift/runtime/next/document`:
 
 <DocumentExample />
 
-If you already have a `_document.ts`, you can extend the `Document` from `@makeswift/runtime/next` instead. You _must_ render the `<PreviewModeScript>` component inside `<Head>`. Without
+If you already have a `_document.ts`, you can extend the `Document` from `@makeswift/runtime/next/document` instead.
+
+<Note>
+You _must_ render the `<PreviewModeScript>` component inside `<Head>`. Without
 `<PreviewModeScript>` the Makeswift builder will always show your published page instead of the
 draft version.
+</Note>
 
 ```tsx src/pages/_document.tsx
 import { Html, Head, Main, NextScript } from "next/document";
-import { Document, PreviewModeScript } from "@makeswift/runtime/next";
+import { PreviewModeScript } from "@makeswift/runtime/next";
+import { Document } from "@makeswift/runtime/next/document";
 
 export default class MyDocument extends Document {
   render() {
