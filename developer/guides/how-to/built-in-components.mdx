@@ -40,9 +40,9 @@ When registering a component with Makeswift, you also define all of the properti
 
 ## Creating the React component
 
-Start by creating a `src/components/card` directory and add an `index.tsx` file. Then, define a type for the component props based on our requirements.
+Start by creating a `src/components/Card` directory and add an `index.tsx` file. Then, define a type for the component props based on our requirements.
 
-```tsx src/components/card/index.tsx
+```tsx src/components/Card/index.tsx
 type CardProps = {
   className?: string;
   image?: string;
@@ -65,7 +65,7 @@ All of these properties will match the properties that the user can edit in the 
 
 Next, we can define the component itself. In this example, we'll be using the [Link](https://nextjs.org/docs/pages/api-reference/components/link) and [Image](https://nextjs.org/docs/app/api-reference/components/image) components from Next.js. Ignoring styles, the final component will look like this.
 
-```tsx src/components/card/index.tsx
+```tsx src/components/Card/index.tsx
 import Link from "next/link";
 import Image from "next/image";
 
@@ -134,7 +134,7 @@ When calling, `registerComponent`, you'll need to pass the React component to be
 
 We can register our component like so:
 
-```ts src/components/card/card.makeswift.tsx
+```ts src/components/Card/Card.makeswift.tsx
 import { runtime } from "src/makeswift/runtime";
 import { Card } from "./";
 
@@ -315,14 +315,20 @@ After putting all of these properties together, you'll get something like this.
 ```ts
 import { runtime } from "src/makeswift/runtime";
 import { Card } from "./";
-import { TextInput, Image, TextArea, Link, Style } from "@makeswift/runtime/controls";
+import {
+  TextInput,
+  Image,
+  TextArea,
+  Link,
+  Style,
+} from "@makeswift/runtime/controls";
 
 runtime.registerComponent(Card, {
   type: "product-card",
   label: "Product Card",
-  icon: "image"
+  icon: "image",
   props: {
-    className: Style()
+    className: Style(),
     image: Image(),
     alt: TextInput({
       label: "Image alt text",
