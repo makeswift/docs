@@ -6,6 +6,7 @@ description: An API route for Makeswift that adds support for [preview mode](htt
 import FontsExample from "/snippets/reference/fonts.mdx";
 import PagesApiHandlerExample from "/snippets/pages-router/api-handler.mdx";
 import AppApiHandlerExample from "/snippets/app-router/api-handler.mdx";
+import OnPublishExample from "/snippets/reference/on-publish.mdx";
 
 ## Arguments
 
@@ -34,6 +35,26 @@ import AppApiHandlerExample from "/snippets/app-router/api-handler.mdx";
 
         The `src` field is used to preview the font in the builder. The `src` field can be either a relative or absolute URL. If the `src` field is omitted, the font is still selectable but uses a fallback font in the builder.
        </ParamField>
+       <ParamField query="events" type="object">
+        <Note>New in [v0.23.12](https://github.com/makeswift/makeswift/releases/tag/%40makeswift%2Fruntime%400.23.12)</Note>
+  
+        An object containing event handlers for the Makeswift site.
+
+        ### Available events
+
+        <ParamField query="events.onPublish" type="() => void | Promise<void>">
+          If defined, this function is called when the site is published.
+
+          #### Error handling
+          
+          Any errors thrown in the event handler will be logged and ignored.
+
+          #### Local development
+
+          The `onPublish` event only works for a deployed site. E.g. it won't works for a local development environment.
+          
+        </ParamField>
+       </ParamField>
      </Expandable>
    </ParamField>
 
@@ -52,3 +73,7 @@ import AppApiHandlerExample from "/snippets/app-router/api-handler.mdx";
 The following example adds Spline Sans and Spline Sans Mono fonts to the site using `next/font` and adds them to the `MakeswiftApiHandler`. Using a variable font reduces the number of font files requested.
 
 <FontsExample />
+
+### Using `onPublish` event
+
+<OnPublishExample />
