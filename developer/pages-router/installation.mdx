@@ -1,5 +1,5 @@
 ---
-title: Installation
+title: Pages Router
 ---
 
 import RuntimeExample from "/snippets/reference/runtime.mdx";
@@ -10,18 +10,20 @@ import PagesCatchAllExample from "/snippets/pages-router/catch-all.mdx";
 import DocumentExample from "/snippets/pages-router/document.mdx";
 import ApiHandlerExample from "/snippets/pages-router/api-handler.mdx";
 import PagesAppExample from "/snippets/pages-router/pages-app.mdx";
-import SrcDirectoryCallout from "/snippets/callouts/src-directory.mdx";
+import ProjectSetup from "/snippets/guides/project-setup.mdx";
+import SystemRequirements from "/snippets/guides/system-requirements.mdx";
 
 The fastest way to get started with Makeswift on a new Next.js project is to follow the
 [quickstart](/developer/quickstart) guide. If you have an existing Next.js application
 or want to set things up yourself, continue with the rest of this guide.
 
-## System requirements
+<SystemRequirements />
 
-- [Node.js 18.17](https://nodejs.org/en) or a later version.
-- macOS, Windows (including WSL), and Linux are supported.
+## Project Setup
 
-## Geting started
+<ProjectSetup />
+
+## Getting started
 
 <Steps>
   <Step title="Open your Next.js project">
@@ -54,26 +56,28 @@ MAKESWIFT_SITE_API_KEY=paste-your-api-key-here
 ```
 
   </Step>
-  <Step title="Add Makeswift runtime and client">
+  <Step title="Add Makeswift runtime">
   
-Create files for the Makeswift [runtime](/developer/reference/runtime/constructor) and [client](/developer/reference/client/constructor).
+Create the Makeswift [runtime](/developer/reference/runtime/constructor) file in `src/makeswift`.
 
-<SrcDirectoryCallout />
+<RuntimeExample />
 
-<CodeGroup>
-  <RuntimeExample />
-  <ClientExample />
-</CodeGroup>
+</Step>
+<Step title="Add Makeswift client">
+  
+Create the Makeswift [client](/developer/reference/client/constructor) file in `src/makeswift`.
+
+<ClientExample />
 
 </Step>
   <Step title="Add the Makeswift API handler">
   
 Similar to [NextAuth.js](https://next-auth.js.org/), Makeswift uses an API handler to communicate with your Next.js app. Create the file `src/pages/api/makeswift/[...makeswift].ts`.
 
-<Info>
+<Note>
   It is important this file has that exact name and path. The extension can be
   `.js` or `.ts`.
-</Info>
+</Note>
 
 <ApiHandlerExample />
 
@@ -92,18 +96,24 @@ Next.js plugins are configured in the project's next.config.js file by wrapping 
   </Step>
   <Step title="Set up a custom Document">
   
-Create a [custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document) named `_document.ts` and export `Document` from `@makeswift/runtime/next`. 
-The Makeswift custom Document handles styles during server-side rendering and using [Preview Mode](https://nextjs.org/docs/pages/building-your-application/configuring/preview-mode) when opening your pages in the Makeswift builder.
+The Makeswift [custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document) handles styles during server-side rendering and using [Preview Mode](https://nextjs.org/docs/pages/building-your-application/configuring/preview-mode) when opening your pages in the Makeswift builder.
+
+Create the file `src/pages/_document.ts` and export `Document` from `@makeswift/runtime/next/document`:
 
 <DocumentExample />
 
-If you already have a `_document.ts`, you can extend the `Document` from `@makeswift/runtime/next` instead. You _must_ render the `<PreviewModeScript>` component inside `<Head>`. Without
+If you already have a `_document.ts`, you can extend the `Document` from `@makeswift/runtime/next/document` instead.
+
+<Note>
+You _must_ render the `<PreviewModeScript>` component inside `<Head>`. Without
 `<PreviewModeScript>` the Makeswift builder will always show your published page instead of the
 draft version.
+</Note>
 
 ```tsx src/pages/_document.tsx
 import { Html, Head, Main, NextScript } from "next/document";
-import { Document, PreviewModeScript } from "@makeswift/runtime/next";
+import { PreviewModeScript } from "@makeswift/runtime/next";
+import { Document } from "@makeswift/runtime/next/document";
 
 export default class MyDocument extends Document {
   render() {
