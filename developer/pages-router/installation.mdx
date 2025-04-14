@@ -104,33 +104,27 @@ Create the file `src/pages/_document.ts` and export `Document` from `@makeswift/
 
 If you already have a `_document.ts`, you can extend the `Document` from `@makeswift/runtime/next/document` instead.
 
-<Note>
-You _must_ render the `<PreviewModeScript>` component inside `<Head>`. Without
-`<PreviewModeScript>` the Makeswift builder will always show your published page instead of the
-draft version.
-</Note>
+<Accordion title="Example of extending an existing document">
+  ```tsx src/pages/_document.tsx
+  import { Html, Head, Main, NextScript } from "next/document";
+  import { Document } from "@makeswift/runtime/next/document";
 
-```tsx src/pages/_document.tsx
-import { Html, Head, Main, NextScript } from "next/document";
-import { PreviewModeScript } from "@makeswift/runtime/next";
-import { Document } from "@makeswift/runtime/next/document";
-
-export default class MyDocument extends Document {
-  render() {
-    return (
-      <Html>
-        <Head>
-          <PreviewModeScript isPreview={this.props.__NEXT_DATA__.isPreview} />
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    );
+  export default class MyDocument extends Document {
+    render() {
+      return (
+        <Html>
+          <Head />
+          <body>
+            <Main />
+            {/* Your custom code here */}
+            <NextScript />
+          </body>
+        </Html>
+      );
+    }
   }
-}
-```
+  ```
+</Accordion>
 
   </Step>
   <Step title="Register components with Makeswift">
