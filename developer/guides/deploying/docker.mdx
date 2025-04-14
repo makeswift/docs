@@ -17,25 +17,17 @@ Otherwise, you can follow the [Next.js with Docker](https://github.com/vercel/ne
 
 ### Environment variables
 
-You'll need to include two environment variables in your Docker build: `MAKESWIFT_SITE_API_KEY` and `MAKESWIFT_DRAFT_MODE_PROXY_FORCE_HTTP`. These will need to be added in the `.env` file that is included in your Docker build or in the dashboard of your hosting provider.
+You'll need to include the `MAKESWIFT_SITE_API_KEY` environment variable in your Docker build. This will need to be added in the `.env` file that is included in your Docker build, or in the dashboard of your hosting provider.
 
 ```bash
 MAKESWIFT_SITE_API_KEY=<YOUR_API_KEY>
-MAKESWIFT_DRAFT_MODE_PROXY_FORCE_HTTP=true
 ```
 
-<Note>
-  <p>
-    The `MAKESWIFT_DRAFT_MODE_PROXY_FORCE_HTTP` flag ensures that requests from
-    Makeswift's Draft Mode proxy always use HTTP, regardless of whether the
-    original request used HTTP or HTTPS. This prevents SSL errors when
-    forwarding HTTPS requests to servers that only support HTTP, which is common
-    for servers running in Docker containers.
-  </p>
-  <p>
-    Setting this variable **does not** affect your external domain, which should
-    always use HTTPS.
-  </p>
-</Note>
-
 Your Makeswift API key can be found in the Makeswift Visual Builder under **Settings > Host**.
+
+## Changelog
+
+| Version                                                                                          | Changes                               |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------- |
+| [`v0.24.0`](https://github.com/makeswift/makeswift/releases/tag/%40makeswift%2Fruntime%400.24.0) | Removes proxy requests for draft mode. `MAKESWIFT_DRAFT_MODE_PROXY_FORCE_HTTP` environment variable is no longer needed in Docker builds. |
+| [`v0.23.2`](https://github.com/makeswift/makeswift/releases/tag/%40makeswift%2Fruntime%400.23.2) | Added support for Docker deployments |
