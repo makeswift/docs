@@ -170,6 +170,7 @@
         {
           "group": "Upgrading",
           "pages": [
+            "developer/upgrading/0.24.0",
             "developer/upgrading/0.23.0",
             "developer/upgrading/0.22.0",
             "developer/upgrading/0.21.0",

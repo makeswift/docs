@@ -165,7 +165,6 @@ Here, we are adding the `<Header>` to the root `layout.tsx` file so that it show
 ```tsx @/app/layout.tsx
 import { draftMode } from "next/headers";
 import { MakeswiftProvider } from "@/makeswift/provider";
-import { DraftModeScript } from "@makeswift/runtime/next/server";
 import "@/makeswift/components";
 import "./globals.css";
 import { MakeswiftComponent } from "@makeswift/runtime/next";
@@ -185,9 +184,6 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <head>
-        <DraftModeScript />
-      </head>
       <body>
         <MakeswiftProvider previewMode={(await draftMode()).isEnabled}>
           <MakeswiftComponent

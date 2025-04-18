@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { draftMode } from "next/headers";
 import { Inter } from "next/font/google";
 import { MakeswiftProvider } from "@/makeswift/provider";
-import { DraftModeScript } from "@makeswift/runtime/next/server";
 import "@/makeswift/components";
 import "./globals.css";
 
@@ -21,9 +20,6 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <DraftModeScript />
-      </head>
       <body className={inter.className}>
         <MakeswiftProvider previewMode={(await draftMode()).isEnabled}>
           {children}
