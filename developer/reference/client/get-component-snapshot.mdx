@@ -23,6 +23,9 @@ import PagesCatchAllLocalizedExample from "/snippets/pages-router/catch-all-loca
        <ParamField query="locale" type="string">
          A valid locale string.
        </ParamField>
+       <ParamField query="allowLocaleFallback" type="boolean" default={true}>
+         Controls whether a request for a localized component should fallback to the default locale if the requested locale is not available.
+       </ParamField>
      </Expandable>
    </ParamField>
 
@@ -77,3 +80,9 @@ const snapshot = await client.getComponentSnapshot(id, {
   locale,
 });
 ```
+
+## Changelog
+
+| Version                                                                                          | Changes                               |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------- |
+| [`v0.23.0`](https://github.com/makeswift/makeswift/releases/tag/%40makeswift%2Fruntime%400.23.0) | `getComponentSnapshot` method introduced |
