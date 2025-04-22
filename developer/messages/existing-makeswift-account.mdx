@@ -1,0 +1,20 @@
+---
+title: Account with this email already exists.
+---
+
+> "An account with this email already exists. In order to use One-Click Catalyst, you must add BigCommerce as a login method in user settings."
+
+When using [One-Click Catalyst](https://www.catalyst.dev/docs/workflows/one-click-catalyst), BigCommerce will try to provision a new Makeswift account for you using your BigCommerce account. You will get this error if you already have an existing Makeswift account with the same email address as your BigCommerce account.
+
+## How to fix this
+
+Connect your BigCommerce account to your existing Makeswift account, and then re-attempt to deploy a One-Click Catalyst application. To add your BigCommerce account to your Makeswift account, navigate to **Settings** -> **Login Methods**.
+
+<Frame>
+  <img
+    src="/images/developer/messages/existing-makeswift-account/add-big-commerce.jpeg"
+    alt="Login methods for Makeswift users with BigCommerce option highlighted"
+  />
+</Frame>
+
+Then, click **Connect** and follow the flow to log in with BigCommerce account. After you've finished, you should see your BigCommerce account as connected. You should then be able to follow the One-Click Catalyst workflow successfully.

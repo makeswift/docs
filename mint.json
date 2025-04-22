@@ -81,14 +81,6 @@
       "group": "Reference",
       "pages": [
         {
-          "group": "Workspace",
-          "pages": [
-            "product/workspace/billing",
-            "product/workspace/plans",
-            "product/workspace/user"
-          ]
-        },
-        {
           "group": "Site",
           "pages": [
             "product/site/settings",
@@ -100,6 +92,18 @@
             "product/site/redirects",
             "product/site/sitemaps"
           ]
+        },
+        {
+          "group": "Workspace",
+          "pages": [
+            "product/workspace/billing",
+            "product/workspace/plans",
+            "product/workspace/user"
+          ]
+        },
+        {
+          "group": "User settings",
+          "pages": ["product/user-settings/login-methods"]
         },
         {
           "group": "Page",
