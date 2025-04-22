@@ -66,6 +66,7 @@
         "product/responsive-design",
         {
           "group": "Panels",
+          "icon": "sliders",
           "pages": [
             "product/component/property-controls/width",
             "product/component/property-controls/margin",
@@ -90,6 +91,7 @@
         "product/publishing",
         {
           "group": "Troubleshooting",
+          "icon": "wrench",
           "pages": ["product/troubleshooting/cookies"]
         }
       ]
@@ -99,10 +101,12 @@
       "pages": [
         {
           "group": "Page",
+          "icon": "file",
           "pages": ["product/page/paths", "product/page/metadata"]
         },
         {
           "group": "Site",
+          "icon": "window-maximize",
           "pages": [
             "product/site/settings",
             "product/site/colors",
@@ -116,6 +120,7 @@
         },
         {
           "group": "Workspace",
+          "icon": "building",
           "pages": [
             "product/workspace/billing",
             "product/workspace/plans",
@@ -124,6 +129,7 @@
         },
         {
           "group": "User",
+          "icon": "user",
           "pages": ["product/user-settings/login-methods"]
         }
       ]
