@@ -165,7 +165,10 @@
             "developer/guides/how-to/setting-cookies"
           ]
         },
-        "developer/guides/troubleshooting",
+        {
+          "group": "Troubleshooting",
+          "pages": ["developer/guides/troubleshooting/builder-is-not-loading"]
+        },
         "developer/guides/environments",
         {
           "group": "Upgrading",
