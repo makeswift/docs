@@ -119,15 +119,6 @@ From now on, content changes are only associated with this locale and do not aff
 
 </Steps>
 
-## Domain-based localization
-
-If you don't provide a domain for a locale, the localized pages will be located on the same domain as the default locale,
-but nested on the locale's path. For example, `es` pages will be located on `example.com/es/`.
-
-To use domain-based localization, you can add the domain to the locale in its settings. You'll also need to follow the `next-intl` documentation on [routing domains](https://next-intl.dev/docs/routing#domains) to configure the routing config to support this.
-
-Once you've done that, the Spanish localized pages will be located on `example.es/`.
-
 ## Localized resources
 
 When making changes on a different locale you can override any property, including the page's pathname, metadata, and SEO tags.
