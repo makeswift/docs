@@ -5,6 +5,12 @@
     "dark": "/images/logo.svg",
     "light": "/images/logo.svg"
   },
+  "integrations": {
+    "posthog": {
+      "apiKey": "phc_HxqYFNwkvVqOh0ODl3RZEWw8qztt4KtR7FfqaNVRa3R",
+      "apiHost": "https://us.i.posthog.com"
+    }
+  },
   "favicon": "/images/favicon.svg",
   "colors": {
     "primary": "#EA3BA7",
