@@ -1,0 +1,189 @@
+---
+title: Layout shift on initial page load
+description: Learn how to identify and diagnose layout shifts on initial page load in your app
+---
+
+## What is a layout shift?
+
+Layout shift is a common issue in web development where elements on a page move unexpectedly,
+causing a poor user experience.
+
+Here is an example of a layout shift:
+
+<Frame>
+  <video
+    muted
+    loop
+    playsInline
+    controls
+    title="Layout shift example"
+    className="w-full aspect-video"
+    src="/images/developer/guides/troubleshooting/layout-shift/layout-shift.mp4"
+  ></video>
+</Frame>
+
+Layout shifts can occur for a variety of reasons, such as:
+- Components re-rendering or remounting while page is loading
+- Images or videos loading without a specified size
+- Fonts loading and causing text to shift
+
+## Layout shift due to context update during hydration
+
+Let's illustrate how layout shift can occur in a real-world scenario. In this example, we will
+investigate a layout shift caused by a context update during the hydration process.
+
+### Reproducing the issue
+
+Imagine you have a Makeswift site and you want to use `next-auth` for authentication capabilities. 
+So you add `SessionProvider` to manage the session state. 
+
+Since `SessionProvider` is a client component, you'd probably create a wrapper component, say `Providers`,
+to wrap your `SessionProvider` and use it in your `layout.tsx` file.
+
+Here is the code you might end up with.
+
+<CodeGroup>
+```tsx src/app/providers.tsx
+'use client'
+
+import { SessionProvider } from 'next-auth/react'
+
+export function Providers({ children }: { children: React.ReactNode }) {
+  return <SessionProvider>{children}</SessionProvider>
+}
+```
+
+```tsx src/app/layout.tsx
+// ...
+import { Providers } from './providers'
+
+export default async function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <html lang="en">
+      <head>
+        <DraftModeScript />
+      </head>
+      <body className={clsx(inter.className, 'bg-gray-600')}>
+        <MakeswiftProvider previewMode={(await draftMode()).isEnabled}>
+          <Providers>
+            <header className="flex items-center justify-between bg-gray-600 p-4 px-10 text-white">
+              <h1 className="text-3xl font-bold underline">header</h1>
+            </header>
+
+            {children}
+            
+            <footer className="flex items-center justify-between bg-gray-600 p-4 px-10 text-white">
+              <h1 className="text-3xl font-bold underline">footer</h1>
+            </footer>
+          </Providers>
+        </MakeswiftProvider>
+      </body>
+    </html>
+  )
+}
+```
+</CodeGroup>
+
+Nothing seems wrong with this code, right? Now let's run the app and see what happens.
+
+During the initial load, you will see the header and the footer collapsing together,
+and then, in a moment, a page content appearing between them. Exactly as on the video above.
+
+Congratulations! We have just created a site with a layout shift.
+
+<Note>
+To make the layout shift more noticeable, we added `header` and `footer` components to the layout
+</Note>
+
+### Diagnosing a layout shift
+
+Let's investigate the layout shift we just created. We are going to use **React Profiler** from the
+[React Developer Tools](https://react.dev/learn/react-developer-tools) to see what is happening.
+
+Open **DevTools** in your browser and navigate to the **Profiler** tab. Record a profile of a page reload
+and take a closer look at the updates:
+
+<Frame>
+  <video
+    muted
+    playsInline
+    controls
+    title="React profiler"
+    className="w-full aspect-video"
+    src="/images/developer/guides/troubleshooting/layout-shift/react-profiler.mp4"
+  ></video>
+</Frame>
+
+As you can see, the `SessionProvider` is updated twice. The first update corresponds to the
+initial render of the `SessionProvider` component:
+
+<Frame>
+  <img
+    src="/images/developer/guides/troubleshooting/layout-shift/react-profiler-render-1.png"
+    alt="First update to the SessionProvider"
+  />
+</Frame>
+
+The second update corresponds to the re-render of the `SessionProvider` component and is caused by changed props:
+
+<Frame>
+  <img
+    src="/images/developer/guides/troubleshooting/layout-shift/react-profiler-render-2.png"
+    alt="Second update to the SessionProvider"
+  />
+</Frame>
+
+### What's happening?
+
+So what's going on here? Why is this happening?
+
+This is related to the way React handles updates during the hydration process.
+
+Let's take a closer look at the `SessionProvider` [component](https://next-auth.js.org/getting-started/client#sessionprovider).
+It accepts a `session` prop that is used to determine the current session state. The problem arises when the `session` prop is
+updated *during the hydration process*.
+
+Here is the summary of what is going on:
+- The page is server-side rendered (SSR).
+- The server sends the HTML to the client, and React begins hydration.
+- While hydration is in progress, the client side receives a new update, in this case `session` value for the `SessionProvider` component.
+- This update interrupts hydration, causing React to discard the in-progress hydration and re-render the components on the client with the updated session value.
+- While client side re-rendering is happening, React replaces the server rendered content with a client side fallback found in a closest `Suspense` boundary. The fallback happens to be `null` in this case. This effectively causes the layout shift.
+
+According to the React team's [comment](https://github.com/facebook/react/issues/24476#issuecomment-1127800350) in a GitHub issue, this is expected behavior and not considered a bug.
+
+<Info>
+Makeswift runtime library wraps all page components in a `Suspense` boundary when serving a page.
+</Info>
+
+<Note>
+Diagnosing a layout shift caused by interrupted hydration can be tricky. React used to log a warning
+for this situation when using the Next.js Pages Router (though the App Router suppressed it). That warning
+[was removed](https://github.com/facebook/react/pull/25692) in later versions of React 18 and in React 19.
+</Note>
+
+### Fixing a layout shift
+
+Fixing a layout shift is not always straightforward. The issue we encountered in this guide could be fixed by providing `session` value to the `SessionProvider` component.
+This way, the session value will not change during the hydration process, and React will not need to re-render the rest of the components.
+
+In more complex cases, you might need to use different approaches and techniques.
+
+Here are some tips that might help to narrow down the issue:
+- Identify the components that are causing the layout shift.
+- Inspect all updates that occur during page loading and the hydration process.
+- For client components, provide the necessary props so server-rendered content matches the client-rendered content.
+
+## References
+
+We recommend checking out the following resources for more information on relevant topics:
+
+- [Making Sense of React Server Components](https://www.joshwcomeau.com/react/server-components/)
+- [New Suspense SSR Architecture in React 18](https://github.com/reactwg/react-18/discussions/37)
+- [React Developer Tools](https://react.dev/learn/react-developer-tools)
+- [Cumulative Layout Shift (CLS)](https://web.dev/articles/cls)
+- [Debug layout shifts](https://web.dev/articles/debug-layout-shifts)
