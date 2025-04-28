@@ -1,272 +1,279 @@
 {
-  "$schema": "https://mintlify.com/schema.json",
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
   "name": "Makeswift Docs",
-  "logo": {
-    "dark": "/images/logo.svg",
-    "light": "/images/logo.svg"
-  },
-  "favicon": "/images/favicon.svg",
   "colors": {
     "primary": "#EA3BA7",
     "light": "#EA3BA7",
-    "dark": "#EA3BA7",
-    "anchors": {
-      "from": "#EA3BA7",
-      "to": "#5F49F4"
-    }
+    "dark": "#EA3BA7"
   },
-  "topbarLinks": [],
-  "topbarCtaButton": {
-    "name": "Log in",
-    "url": "https://app.makeswift.com"
+  "favicon": "/images/favicon.svg",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Product",
+        "groups": [
+          {
+            "group": "Getting started",
+            "pages": [
+              "product/introduction",
+              {
+                "group": "Quickstart",
+                "icon": "bolt",
+                "pages": [
+                  "product/quickstart",
+                  "product/quickstart/component-basics",
+                  "product/quickstart/colors-and-text-styles",
+                  "product/quickstart/customizing-the-navbar",
+                  "product/quickstart/desktop-and-mobile",
+                  "product/quickstart/next-steps"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "The Visual Builder",
+            "pages": [
+              "product/builder-basics",
+              "product/layouts",
+              "product/components",
+              "product/theming",
+              "product/files",
+              "product/responsive-design"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "product/localization",
+              "product/publishing",
+              {
+                "group": "Troubleshooting",
+                "pages": ["product/troubleshooting/cookies"]
+              }
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              {
+                "group": "Workspace",
+                "pages": [
+                  "product/workspace/billing",
+                  "product/workspace/plans",
+                  "product/workspace/user"
+                ]
+              },
+              {
+                "group": "Site",
+                "pages": [
+                  "product/site/settings",
+                  "product/site/colors",
+                  "product/site/text-styles",
+                  "product/site/hosting",
+                  "product/site/domains",
+                  "product/site/snippets",
+                  "product/site/redirects",
+                  "product/site/sitemaps"
+                ]
+              },
+              {
+                "group": "Page",
+                "pages": ["product/page/paths", "product/page/metadata"]
+              },
+              {
+                "group": "Panels",
+                "pages": [
+                  "product/component/property-controls/width",
+                  "product/component/property-controls/margin",
+                  "product/component/property-controls/padding",
+                  "product/component/property-controls/alignment",
+                  "product/component/property-controls/backgrounds",
+                  "product/component/property-controls/corners",
+                  "product/component/property-controls/borders",
+                  "product/component/property-controls/animations",
+                  "product/component/property-controls/gap",
+                  "product/component/property-controls/shadows",
+                  "product/component/property-controls/height",
+                  "product/component/property-controls/visibility"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Developer",
+        "groups": [
+          {
+            "group": "Get started",
+            "pages": [
+              "developer/quickstart",
+              {
+                "group": "Installation",
+                "pages": [
+                  "developer/app-router/installation",
+                  "developer/pages-router/installation"
+                ]
+              },
+              "developer/concepts"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              {
+                "group": "Localization",
+                "pages": [
+                  "developer/app-router/localization",
+                  "developer/pages-router/localization"
+                ]
+              },
+              {
+                "group": "Deploying",
+                "pages": [
+                  "developer/guides/deploying/overview",
+                  "developer/guides/deploying/vercel",
+                  "developer/guides/deploying/netlify",
+                  "developer/guides/deploying/docker"
+                ]
+              },
+              {
+                "group": "How to",
+                "pages": [
+                  "developer/guides/how-to/built-in-components",
+                  "developer/guides/how-to/setting-cookies"
+                ]
+              },
+              {
+                "group": "Troubleshooting",
+                "pages": [
+                  "developer/guides/troubleshooting/builder-is-not-loading",
+                  "developer/guides/troubleshooting/layout-shift"
+                ]
+              },
+              "developer/guides/environments",
+              {
+                "group": "Upgrading",
+                "pages": [
+                  "developer/upgrading/0.24.0",
+                  "developer/upgrading/0.23.0",
+                  "developer/upgrading/0.22.0",
+                  "developer/upgrading/0.21.0",
+                  "developer/upgrading/0.20.0",
+                  "developer/upgrading/0.19.0",
+                  "developer/upgrading/0.18.0",
+                  "developer/upgrading/0.15.0",
+                  "developer/upgrading/0.14.0",
+                  "developer/upgrading/0.13.0",
+                  "developer/upgrading/0.9.0"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              {
+                "group": "Components",
+                "pages": [
+                  "developer/reference/components/page",
+                  "developer/reference/components/makeswift-component",
+                  "developer/reference/components/slot",
+                  "developer/reference/components/react-runtime-provider"
+                ]
+              },
+              {
+                "group": "Controls",
+                "pages": [
+                  "developer/reference/controls/checkbox",
+                  "developer/reference/controls/color",
+                  "developer/reference/controls/combobox",
+                  "developer/reference/controls/group",
+                  "developer/reference/controls/image",
+                  "developer/reference/controls/font",
+                  "developer/reference/controls/link",
+                  "developer/reference/controls/list",
+                  "developer/reference/controls/number",
+                  "developer/reference/controls/rich-text",
+                  "developer/reference/controls/select",
+                  "developer/reference/controls/slot",
+                  "developer/reference/controls/style",
+                  "developer/reference/controls/text-area",
+                  "developer/reference/controls/text-input",
+                  {
+                    "group": "Deprecated",
+                    "pages": ["developer/reference/controls/shape"]
+                  }
+                ]
+              },
+              {
+                "group": "Client",
+                "pages": [
+                  "developer/reference/client/constructor",
+                  "developer/reference/client/get-pages",
+                  "developer/reference/client/get-page-snapshot",
+                  "developer/reference/client/get-component-snapshot",
+                  "developer/reference/client/get-site-version"
+                ]
+              },
+              "developer/reference/makeswift-api-handler",
+              {
+                "group": "ReactRuntime",
+                "pages": [
+                  "developer/reference/runtime/constructor",
+                  "developer/reference/runtime/register-component"
+                ]
+              },
+              {
+                "group": "Functions",
+                "pages": ["developer/reference/get-site-version"]
+              },
+              {
+                "group": "Legacy APIs",
+                "pages": ["developer/reference/client/get-sitemap"]
+              }
+            ]
+          },
+          {
+            "group": "Integrations",
+            "pages": ["developer/integrations/bigcommerce-catalyst"]
+          }
+        ]
+      },
+      {
+        "tab": "Blog",
+        "href": "https://makeswift.com/blog"
+      }
+    ]
+  },
+  "logo": {
+    "light": "/images/logo.svg",
+    "dark": "/images/logo.svg"
+  },
+  "navbar": {
+    "links": [],
+    "primary": {
+      "type": "button",
+      "label": "Log in",
+      "href": "https://app.makeswift.com"
+    }
   },
   "search": {
     "prompt": "Search or ask..."
   },
-  "primaryTab": {
-    "name": "Product"
-  },
-  "tabs": [
-    {
-      "name": "Developer",
-      "url": "developer"
-    },
-    {
-      "name": "Blog",
-      "url": "https://makeswift.com/blog"
+  "footer": {
+    "socials": {
+      "twitter": "https://twitter.com/makeswifthq",
+      "github": "https://github.com/makeswift",
+      "linkedin": "https://www.linkedin.com/company/makeswifthq"
     }
-  ],
-  "navigation": [
-    {
-      "group": "Getting started",
-      "pages": [
-        "product/introduction",
-        {
-          "group": "Quickstart",
-          "icon": "bolt",
-          "pages": [
-            "product/quickstart",
-            "product/quickstart/component-basics",
-            "product/quickstart/colors-and-text-styles",
-            "product/quickstart/customizing-the-navbar",
-            "product/quickstart/desktop-and-mobile",
-            "product/quickstart/next-steps"
-          ]
-        }
-      ]
-    },
-    {
-      "group": "The Visual Builder",
-      "pages": [
-        "product/builder-basics",
-        "product/layouts",
-        "product/components",
-        "product/theming",
-        "product/files",
-        "product/responsive-design"
-      ]
-    },
-    {
-      "group": "Guides",
-      "pages": [
-        "product/localization",
-        "product/publishing",
-        {
-          "group": "Troubleshooting",
-          "pages": ["product/troubleshooting/cookies"]
-        }
-      ]
-    },
-    {
-      "group": "Reference",
-      "pages": [
-        {
-          "group": "Workspace",
-          "pages": [
-            "product/workspace/billing",
-            "product/workspace/plans",
-            "product/workspace/user"
-          ]
-        },
-        {
-          "group": "Site",
-          "pages": [
-            "product/site/settings",
-            "product/site/colors",
-            "product/site/text-styles",
-            "product/site/hosting",
-            "product/site/domains",
-            "product/site/snippets",
-            "product/site/redirects",
-            "product/site/sitemaps"
-          ]
-        },
-        {
-          "group": "Page",
-          "pages": ["product/page/paths", "product/page/metadata"]
-        },
-        {
-          "group": "Panels",
-          "pages": [
-            "product/component/property-controls/width",
-            "product/component/property-controls/margin",
-            "product/component/property-controls/padding",
-            "product/component/property-controls/alignment",
-            "product/component/property-controls/backgrounds",
-            "product/component/property-controls/corners",
-            "product/component/property-controls/borders",
-            "product/component/property-controls/animations",
-            "product/component/property-controls/gap",
-            "product/component/property-controls/shadows",
-            "product/component/property-controls/height",
-            "product/component/property-controls/visibility"
-          ]
-        }
-      ]
-    },
-
-    {
-      "group": "Get started",
-      "pages": [
-        "developer/quickstart",
-        {
-          "group": "Installation",
-          "pages": [
-            "developer/app-router/installation",
-            "developer/pages-router/installation"
-          ]
-        },
-        "developer/concepts"
-      ]
-    },
-    {
-      "group": "Guides",
-      "pages": [
-        {
-          "group": "Localization",
-          "pages": [
-            "developer/app-router/localization",
-            "developer/pages-router/localization"
-          ]
-        },
-        {
-          "group": "Deploying",
-          "pages": [
-            "developer/guides/deploying/overview",
-            "developer/guides/deploying/vercel",
-            "developer/guides/deploying/netlify",
-            "developer/guides/deploying/docker"
-          ]
-        },
-        {
-          "group": "How to",
-          "pages": [
-            "developer/guides/how-to/built-in-components",
-            "developer/guides/how-to/setting-cookies"
-          ]
-        },
-        {
-          "group": "Troubleshooting",
-          "pages": ["developer/guides/troubleshooting/builder-is-not-loading"]
-        },
-        "developer/guides/environments",
-        {
-          "group": "Upgrading",
-          "pages": [
-            "developer/upgrading/0.24.0",
-            "developer/upgrading/0.23.0",
-            "developer/upgrading/0.22.0",
-            "developer/upgrading/0.21.0",
-            "developer/upgrading/0.20.0",
-            "developer/upgrading/0.19.0",
-            "developer/upgrading/0.18.0",
-            "developer/upgrading/0.15.0",
-            "developer/upgrading/0.14.0",
-            "developer/upgrading/0.13.0",
-            "developer/upgrading/0.9.0"
-          ]
-        }
-      ]
-    },
-    {
-      "group": "Reference",
-      "pages": [
-        {
-          "group": "Components",
-          "pages": [
-            "developer/reference/components/page",
-            "developer/reference/components/makeswift-component",
-            "developer/reference/components/slot",
-            "developer/reference/components/react-runtime-provider"
-          ]
-        },
-        {
-          "group": "Controls",
-          "pages": [
-            "developer/reference/controls/checkbox",
-            "developer/reference/controls/color",
-            "developer/reference/controls/combobox",
-            "developer/reference/controls/group",
-            "developer/reference/controls/image",
-            "developer/reference/controls/font",
-            "developer/reference/controls/link",
-            "developer/reference/controls/list",
-            "developer/reference/controls/number",
-            "developer/reference/controls/rich-text",
-            "developer/reference/controls/select",
-            "developer/reference/controls/slot",
-            "developer/reference/controls/style",
-            "developer/reference/controls/text-area",
-            "developer/reference/controls/text-input",
-
-            {
-              "group": "Deprecated",
-              "pages": ["developer/reference/controls/shape"]
-            }
-          ]
-        },
-        {
-          "group": "Client",
-          "pages": [
-            "developer/reference/client/constructor",
-            "developer/reference/client/get-pages",
-            "developer/reference/client/get-page-snapshot",
-            "developer/reference/client/get-component-snapshot",
-            "developer/reference/client/get-site-version"
-          ]
-        },
-        "developer/reference/makeswift-api-handler",
-        {
-          "group": "ReactRuntime",
-          "pages": [
-            "developer/reference/runtime/constructor",
-            "developer/reference/runtime/register-component"
-          ]
-        },
-        {
-          "group": "Functions",
-          "pages": ["developer/reference/get-site-version"]
-        },
-        {
-          "group": "Legacy APIs",
-          "pages": ["developer/reference/client/get-sitemap"]
-        }
-      ]
-    },
-    {
-      "group": "Integrations",
-      "pages": ["developer/integrations/bigcommerce-catalyst"]
-    }
-  ],
-  "footerSocials": {
-    "twitter": "https://twitter.com/makeswifthq",
-    "github": "https://github.com/makeswift",
-    "linkedin": "https://www.linkedin.com/company/makeswifthq"
   },
-  "feedback": {
-    "thumbsRating": true,
-    "suggestEdit": true,
-    "raiseIssue": false
+  "integrations": {
+    "posthog": {
+      "apiKey": "phc_HxqYFNwkvVqOh0ODl3RZEWw8qztt4KtR7FfqaNVRa3R",
+      "apiHost": "https://us.i.posthog.com"
+    }
   },
   "redirects": [
     {
