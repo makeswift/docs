@@ -1,30 +1,30 @@
 <CodeGroup>
 
 ```js next.config.mjs
-import createWithMakeswift from "@makeswift/runtime/next/plugin"
+import createWithMakeswift from "@makeswift/runtime/next/plugin";
 
-const withMakeswift = createWithMakeswift()
+const withMakeswift = createWithMakeswift();
 
 const nextConfig = {
   i18n: {
     defaultLocale: "en-US",
-    locales: ["en-US", "de-DE", "en-SG", "es", "es-MX", "id-ID"],
+    locales: ["en-US", "es-ES"],
     domains: [
       {
-        domain: "example.es",
-        defaultLocale: "es",
+        domain: "es.localhost:3000",
+        defaultLocale: "en-US",
       },
     ],
   },
-}
+};
 
-export default withMakeswift(nextConfig)
+export default withMakeswift(nextConfig);
 ```
 
 ```js next.config.js
-const createWithMakeswift = require("@makeswift/runtime/next/plugin")
+const createWithMakeswift = require("@makeswift/runtime/next/plugin");
 
-const withMakeswift = createWithMakeswift()
+const withMakeswift = createWithMakeswift();
 
 const nextConfig = {
   i18n: {
@@ -37,9 +37,9 @@ const nextConfig = {
       },
     ],
   },
-}
+};
 
-export default withMakeswift(nextConfig)
+export default withMakeswift(nextConfig);
 ```
 
 </CodeGroup>

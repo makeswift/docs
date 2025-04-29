@@ -3,6 +3,8 @@ title: App Router
 description: "This guide walks you through setting up localization for your Makeswift site so you can visually customize your site for different locales."
 ---
 
+If you don't already have a Next.js project using App Router set up with Makeswift, follow the [App Router Installation](/app-router/installation) guide.
+
 import AppCatchAllLocalizedExample from "/snippets/app-router/catch-all-localized.mdx";
 
 <Note>
@@ -11,11 +13,8 @@ import AppCatchAllLocalizedExample from "/snippets/app-router/catch-all-localize
   how to update.
 </Note>
 
-## Getting started
+## Add locales in the Visual Builder
 
-<Steps>
-
-<Step title="Add locales in the Makeswift Visual Builder">
 Open site settings and go to the **Locales** tab:
 
 <Note>
@@ -38,9 +37,7 @@ To add a new locale, click the **+ Add locale** button. In this case, we've adde
   />
 </Frame>
 
-</Step>
-
-<Step title="Configure next-intl for your application">
+## Configure next-intl for your application
 
 We recommend using the [next-intl](https://next-intl.dev/) package to handle localization. You can follow their [App Router setup](https://next-intl.dev/docs/getting-started/app-router/with-i18n-routing) documentation to configure your application. This guide will walk you through updating your file structure, configure language files, middleware, etc.
 
@@ -77,17 +74,13 @@ export default withNextIntl(withMakeswift(nextConfig));
 
 4. Make sure all of your routing files are nested under `/app/[lang]` **except for the [Makeswift API handler](/developer/reference/makeswift-api-handler)**.
 
-</Step>
-
-<Step title="Fetch snapshots by locale">
+## Fetch snapshots by locale
 
 Update your catch-all route to fetch the page snapshots by locale.
 
 <AppCatchAllLocalizedExample />
 
-</Step>
-
-<Step title="Edit your pages in the builder">
+## Edit your pages in the Visual Builder
 
 Once you've set everything up, you should be able to switch to the locale using the locale switcher in the Visual Builder.
 
@@ -113,10 +106,6 @@ After choosing to edit the localized page, content changes are only associated w
   you can create the Spanish version of the page at `example.com/es/compania` or
   `example.es/compania`.
 </Note>
-
-</Step>
-
-</Steps>
 
 ## Localized resources
 
