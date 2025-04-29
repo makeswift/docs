@@ -1,4 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">
-<path fill-rule="evenodd" d="M4 7a4 4 0 0 0-4 4v1h40v-1a4 4 0 0 0-4-4H4Zm36 10H0v12a4 4 0 0 0 4 4h32a4 4 0 0 0 4-4V17ZM3 24a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1Zm1 3a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2H4Zm26-2.5a1.5 1.5 0 0 1 1.5-1.5h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a1.5 1.5 0 0 1-1.5-1.5v-3Z" clip-rule="evenodd"/>
-<path fill-rule="evenodd" d="M40 12H0v5h40v-5ZM4 23a1 1 0 1 0 0 2h18a1 1 0 1 0 0-2H4Zm-1 5a1 1 0 0 1 1-1h10a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1Zm28.5-5a1.5 1.5 0 0 0-1.5 1.5v3a1.5 1.5 0 0 0 1.5 1.5h3a1.5 1.5 0 0 0 1.5-1.5v-3a1.5 1.5 0 0 0-1.5-1.5h-3Z" clip-rule="evenodd" opacity=".25"/>
-</svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width={40} height={40} {...props}>
+    <path
+      fillRule="evenodd"
+      d="M4 7a4 4 0 0 0-4 4v1h40v-1a4 4 0 0 0-4-4H4Zm36 10H0v12a4 4 0 0 0 4 4h32a4 4 0 0 0 4-4V17ZM3 24a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1Zm1 3a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2H4Zm26-2.5a1.5 1.5 0 0 1 1.5-1.5h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a1.5 1.5 0 0 1-1.5-1.5v-3Z"
+      clipRule="evenodd"
+    />
+    <path
+      fillRule="evenodd"
+      d="M40 12H0v5h40v-5ZM4 23a1 1 0 1 0 0 2h18a1 1 0 1 0 0-2H4Zm-1 5a1 1 0 0 1 1-1h10a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1Zm28.5-5a1.5 1.5 0 0 0-1.5 1.5v3a1.5 1.5 0 0 0 1.5 1.5h3a1.5 1.5 0 0 0 1.5-1.5v-3a1.5 1.5 0 0 0-1.5-1.5h-3Z"
+      clipRule="evenodd"
+      opacity={0.25}
+    />
+  </svg>
