@@ -186,6 +186,7 @@
               {
                 "group": "Controls",
                 "pages": [
+                  "developer/reference/controls/overview",
                   "developer/reference/controls/checkbox",
                   "developer/reference/controls/color",
                   "developer/reference/controls/combobox",
