@@ -1,61 +1,59 @@
 export const IconList = () => {
   const icons = [
     { name: "billing", 
-      icon:  (<svg
-          xmlns="http://www.w3.org/2000/svg"
-          width={40}
-          height={40}
-        >
-          <path
-            fillRule="evenodd"
-            d="M4 7a4 4 0 0 0-4 4v1h40v-1a4 4 0 0 0-4-4H4Zm36 10H0v12a4 4 0 0 0 4 4h32a4 4 0 0 0 4-4V17ZM3 24a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1Zm1 3a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2H4Zm26-2.5a1.5 1.5 0 0 1 1.5-1.5h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a1.5 1.5 0 0 1-1.5-1.5v-3Z"
-            clipRule="evenodd"
-          />
-          <path
-            fillRule="evenodd"
-            d="M40 12H0v5h40v-5ZM4 23a1 1 0 1 0 0 2h18a1 1 0 1 0 0-2H4Zm-1 5a1 1 0 0 1 1-1h10a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1Zm28.5-5a1.5 1.5 0 0 0-1.5 1.5v3a1.5 1.5 0 0 0 1.5 1.5h3a1.5 1.5 0 0 0 1.5-1.5v-3a1.5 1.5 0 0 0-1.5-1.5h-3Z"
-            clipRule="evenodd"
-            opacity={0.25}
-          />
-        </svg>
+      icon:  (  <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} className="fill-[#9498A3]">
+              <path
+                fillRule="evenodd"
+                d="M2 4a2 2 0 0 0-2 2h20a2 2 0 0 0-2-2H2Zm18 4H0v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8Zm-2 4a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm-8 1a1 1 0 1 0 0-2H8a1 1 0 1 0 0 2h2Zm-4-1a1 1 0 0 1-1 1H3a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1Z"
+                clipRule="evenodd"
+              />
+              <path
+                d="M0 6h20v2H0V6ZM18 12a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"
+                opacity={0.25}
+              />
+              <path
+                fillRule="evenodd"
+                d="M11 12a1 1 0 0 1-1 1H8a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1ZM6 12a1 1 0 0 1-1 1H3a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1Z"
+                clipRule="evenodd"
+                opacity={0.25}
+              />
+            </svg>
         )
     },
     { name: "bolt", 
       icon:  (
-         <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} >
+         <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} className="fill-[#9498A3]">
           <path d="M4.172 10.368 6.9.368A.5.5 0 0 1 7.382 0h7.684a.5.5 0 0 1 .416.777L12 6h4.5a.5.5 0 0 1 .4.8l-9.75 13a.5.5 0 0 1-.4.2h-.092a.5.5 0 0 1-.482-.634L8.5 11H4.655a.5.5 0 0 1-.483-.632Z" />
         </svg>
         )
     }, {
       name: 'button',
       icon: (
-          <svg xmlns="http://www.w3.org/2000/svg" width={40} height={40}>
-            <path d="M8 9a8 8 0 1 0 0 16h9v-5.19c0-1.558 1.885-2.34 2.987-1.237L26.414 25H32a8 8 0 1 0 0-16H8z" />
-            <path
-              d="M18 32.293a.5.5 0 0 0 .854.353l2.893-2.893 2.329 5.63a1 1 0 0 0 1.848-.765L23.599 29h4.194a.5.5 0 0 0 .354-.854L19.28 19.28a.75.75 0 0 0-1.28.53v12.483z"
-              opacity={0.5}
-            />
-          </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} className="fill-[#9498A3]">
+          <path d="M4.5 2a4.5 4.5 0 0 0 0 9H8V7.966c0-1.248 1.508-1.872 2.39-.99L14.414 11H15.5a4.5 4.5 0 1 0 0-9h-11z" />
+          <path
+            d="M9 7.966v8.068a.4.4 0 0 0 .683.283l1.638-1.638 1.486 3.607a.75.75 0 1 0 1.386-.572L12.665 14h2.37a.4.4 0 0 0 .283-.683L9.683 7.683A.4.4 0 0 0 9 7.966z"
+            opacity={0.5}
+          />
+        </svg>
       )
     },
     {
       name: 'carousel',
       icon: (
-          <svg xmlns="http://www.w3.org/2000/svg" width={40} height={40}>
-            <path
-              fillRule="evenodd"
-              d="M40 10a1 1 0 0 1-1 1h-2a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h2a1 1 0 1 1 0 2h-2a3 3 0 0 1-3-3V12a3 3 0 0 1 3-3h2a1 1 0 0 1 1 1zM0 10a1 1 0 0 0 1 1h2a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H1a1 1 0 1 0 0 2h2a3 3 0 0 0 3-3V12a3 3 0 0 0-3-3H1a1 1 0 0 0-1 1z"
-              clipRule="evenodd"
-              opacity={0.25}
-            />
-            <rect width={22} height={22} x={9} y={9} rx={3} />
-          </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} className="fill-[#9498A3]">
+          <rect width={12} height={16} x={4} y={2} rx={2} />
+          <path
+            d="M0 4h1.5A1.5 1.5 0 0 1 3 5.5v9A1.5 1.5 0 0 1 1.5 16H0V4Zm20 12h-1.5a1.5 1.5 0 0 1-1.5-1.5v-9A1.5 1.5 0 0 1 18.5 4H20v12Z"
+            opacity={0.5}
+          />
+        </svg>
       )
     },
     {
       name: 'chats',
       icon: (
-          <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20}>
+          <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} className="fill-[#9498A3]">
             <path
               fillRule="evenodd"
               d="M6.962 16H11l4.77 3.975a.75.75 0 0 0 1.23-.576V16a3 3 0 0 0 3-3V6a3.001 3.001 0 0 0-2-2.83V10a4 4 0 0 1-4 4H9.362l-2.4 2Z"
@@ -69,41 +67,41 @@ export const IconList = () => {
     {
       name: 'code',
       icon: (
-           <svg xmlns="http://www.w3.org/2000/svg" width={40} height={40}>
-            <path
-              fillRule="evenodd"
-              d="M11.707 10.293a1 1 0 0 1 0 1.414L3.414 20l8.293 8.293a1 1 0 0 1-1.414 1.414l-9-9a1 1 0 0 1 0-1.414l9-9a1 1 0 0 1 1.414 0zm16.586 0a1 1 0 0 0 0 1.414L36.586 20l-8.293 8.293a1 1 0 0 0 1.414 1.414l9-9a1 1 0 0 0 0-1.414l-9-9a1 1 0 0 0-1.414 0z"
-              clipRule="evenodd"
-            />
-            <path
-              fillRule="evenodd"
-              d="M24.316 7.051a1 1 0 0 1 .633 1.265l-8 24a1 1 0 0 1-1.898-.632l8-24a1 1 0 0 1 1.265-.633z"
-              clipRule="evenodd"
-              opacity={0.5}
-            />
-          </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} className="fill-[#9498A3]">
+              <path
+                fillRule="evenodd"
+                d="M5.78 5.625a1 1 0 1 0-1.56-1.25l-4 5a1 1 0 0 0 0 1.25l4 5a1 1 0 1 0 1.56-1.25L2.28 10l3.5-4.375Zm8.44 0a1 1 0 1 1 1.56-1.25l4 5a1 1 0 0 1 0 1.25l-4 5a1 1 0 1 1-1.56-1.25L17.72 10l-3.5-4.375Z"
+                clipRule="evenodd"
+              />
+              <path
+                fillRule="evenodd"
+                d="M12.275 2.038a1 1 0 0 1 .686 1.237l-4 14a1 1 0 1 1-1.923-.55l4-14a1 1 0 0 1 1.237-.687Z"
+                clipRule="evenodd"
+                opacity={0.5}
+              />
+            </svg>
       )
     }, 
     {
       name: 'countdown',
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width={40} height={40} >
-          <path
-            fillRule="evenodd"
-            d="M10 3a6 6 0 0 0-6 6v10h6v-6.5a4.5 4.5 0 1 1 9 0V19h7v-7.826l-1.85 1.585a1 1 0 0 1-1.3-1.518l3.5-3A1 1 0 0 1 28 9v10h8V9a6 6 0 0 0-6-6H10zm26 17h-8v8.5h2a1 1 0 1 1 0 2h-6a1 1 0 1 1 0-2h2V20h-7v6.5a4.5 4.5 0 1 1-9 0V20H4v10a6 6 0 0 0 6 6h20a6 6 0 0 0 6-6V20zm-19-7.5V19h-5v-6.5a2.5 2.5 0 0 1 5 0zm0 14V20h-5v6.5a2.5 2.5 0 0 0 5 0z"
-            clipRule="evenodd"
-          />
-        </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} className="fill-[#9498A3]">
+            <path
+              fillRule="evenodd"
+              d="M0 3a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V3Zm15.493 1.13A1 1 0 0 1 16 5v10a1 1 0 1 1-2 0V6.766l-.985.591a1 1 0 0 1-1.03-1.715l2.5-1.5a1 1 0 0 1 1.008-.012ZM7 4a3 3 0 0 0-3 3v6a3 3 0 1 0 6 0V7a3 3 0 0 0-3-3ZM6 7a1 1 0 0 1 2 0v6a1 1 0 1 1-2 0V7Z"
+              clipRule="evenodd"
+            />
+          </svg>
       )
     },
     {
       name: 'cube',
       icon: (
-          <svg xmlns="http://www.w3.org/2000/svg" width={40} height={40} >
-            <path d="m20 18 18-8v20l-18 8V18Z" opacity={0.5} />
+           <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} className="fill-[#9498A3]">
+            <path d="m10 9 9-4v10l-9 4V9Z" opacity={0.5} />
             <path
               fillRule="evenodd"
-              d="M22.03 1.808a5 5 0 0 0-4.06 0l-14 6.222A5 5 0 0 0 1 12.6v14.8a5 5 0 0 0 2.97 4.57l14 6.222a5 5 0 0 0 4.06 0l14-6.222A5 5 0 0 0 39 27.4V12.6a5 5 0 0 0-2.97-4.57l-14-6.222Zm-3.248 1.828a3 3 0 0 1 2.436 0l14 6.222A3 3 0 0 1 37 12.6v14.8a3 3 0 0 1-1.782 2.742l-14 6.222a3 3 0 0 1-1.218.259V18L3.65 10.734c.296-.372.68-.675 1.132-.876l14-6.222Z"
+              d="M11.625.355a3.897 3.897 0 0 0-3.25 0L1.782 3.37C.698 3.866 0 4.97 0 6.192v7.616c0 1.22.698 2.326 1.782 2.821l6.593 3.016a3.896 3.896 0 0 0 3.25 0l6.593-3.016c1.084-.495 1.782-1.6 1.782-2.821V6.192c0-1.22-.698-2.326-1.782-2.821L11.625.355Zm-2.437 1.88a1.948 1.948 0 0 1 1.624 0l6.594 3.017c.361.165.594.533.594.94v7.616c0 .407-.233.775-.594.94l-6.594 3.016a1.953 1.953 0 0 1-.812.178V9L2.223 5.544c.098-.124.224-.225.37-.292l6.595-3.016Z"
               clipRule="evenodd"
             />
           </svg>
@@ -112,7 +110,7 @@ export const IconList = () => {
     {
       name: 'database',
       icon: (
-          <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20}>
+          <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} className="fill-[#9498A3]">
             <path
               fillRule="evenodd"
               d="M18 5.5C18 7.433 14.418 9 10 9S2 7.433 2 5.5v3c0 1.933 3.582 3.5 8 3.5s8-1.567 8-3.5v-3ZM10 13c4.418 0 8-1.567 8-3.5v3c0 1.933-3.582 3.5-8 3.5s-8-1.567-8-3.5v-3c0 1.933 3.582 3.5 8 3.5Zm0 4c4.418 0 8-1.567 8-3.5v3c0 1.933-3.582 3.5-8 3.5s-8-1.567-8-3.5v-3c0 1.933 3.582 3.5 8 3.5Z"
@@ -125,39 +123,40 @@ export const IconList = () => {
     {
       name: 'divider',
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width={40} height={40}>
-          <path
-            fillRule="evenodd"
-            d="M0 20a1 1 0 0 1 1-1h38a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z"
-            clipRule="evenodd"
-          />
-          <path
-            fillRule="evenodd"
-            d="M7 3a1 1 0 0 1 1 1v8a1 1 0 0 0 1 1h22a1 1 0 0 0 1-1V4a1 1 0 1 1 2 0v8a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V4a1 1 0 0 1 1-1zm0 34a1 1 0 0 0 1-1v-8a1 1 0 0 1 1-1h22a1 1 0 0 1 1 1v8a1 1 0 1 0 2 0v-8a3 3 0 0 0-3-3H9a3 3 0 0 0-3 3v8a1 1 0 0 0 1 1z"
-            clipRule="evenodd"
-            opacity={0.25}
-          />
-        </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} className="fill-[#9498A3]">
+            <path
+              fillRule="evenodd"
+              d="M18 4.5V0H2v4.5A1.5 1.5 0 0 0 3.5 6h13A1.5 1.5 0 0 0 18 4.5Zm-16 11V20h16v-4.5a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 2 15.5Z"
+              clipRule="evenodd"
+              opacity={0.25}
+            />
+            <rect width={20} height={2} y={9} rx={1} />
+          </svg>
       )
     },
      {
       name: 'form',
       icon: (
-          <svg xmlns="http://www.w3.org/2000/svg" width={40} height={40}>
+          <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} className="fill-[#9498A3]">
+            <rect
+              width={2}
+              height={12}
+              opacity={0.5}
+              rx={1}
+              transform="matrix(1 0 0 -1 4 16)"
+            />
             <path
               fillRule="evenodd"
-              d="M0 7a2 2 0 0 1 2-2h36a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V7zm38 0H2v5h36V7zM0 18a2 2 0 0 1 2-2h36a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-5zm38 0H2v5h36v-5z"
+              d="M0 4a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v12a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4Zm4-2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4Z"
               clipRule="evenodd"
-              opacity={0.5}
             />
-            <rect width={20} height={7} y={28} rx={2} />
           </svg>
       )
      },
       {
         name: 'gallery',
         icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20}>
+            <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} className="fill-[#9498A3]">
               <path
                 fillRule="evenodd"
                 d="M3 6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V9a3 3 0 0 0-3-3H3ZM2 9a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v5.4l-2.52-2.772a2 2 0 0 0-2.96 0l-3.41 3.751a1.5 1.5 0 0 1-2.22 0l-.41-.451a2 2 0 0 0-2.96 0L2 16.6V9Z"
@@ -176,7 +175,7 @@ export const IconList = () => {
       {
         name: 'help',
         icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} >
+            <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} className="fill-[#9498A3]" >
               <path
                 fillRule="evenodd"
                 d="M10 20c5.523 0 10-4.477 10-10S15.523 0 10 0 0 4.477 0 10s4.477 10 10 10ZM8 7a2 2 0 0 1 2-2h.219a1.781 1.781 0 0 1 .796 3.374l-.357.179A3 3 0 0 0 9 11.236V12a1 1 0 1 0 2 0v-.764a1 1 0 0 1 .553-.894l.357-.179A3.781 3.781 0 0 0 10.219 3H10a4 4 0 0 0-4 4 1 1 0 0 0 2 0Zm.75 8.75a1.25 1.25 0 1 1 2.5 0 1.25 1.25 0 0 1-2.5 0Z"
@@ -188,30 +187,20 @@ export const IconList = () => {
        {
           name: 'image',
           icon: (
-              <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width={40}
-                  height={40}
-                  fill="none"
-                >
-                  <path
-                    fill="#B6B9C2"
-                    fillRule="evenodd"
-                    d="M11 2a9 9 0 0 0-9 9v18a9 9 0 0 0 9 9h18a9 9 0 0 0 9-9V11a9 9 0 0 0-9-9H11Zm-7 9a7 7 0 0 1 7-7h18a7 7 0 0 1 7 7v8.718l-1.185-1.515c-3.105-3.967-9.061-4.111-12.354-.298l-4.497 5.207c-3.138 3.633-8.746 3.704-11.974.152L4 21.076V11Z"
-                    clipRule="evenodd"
-                  />
-                  <path
-                    fill="#B6B9C2"
-                    d="M18 13a5 5 0 1 1-10 0 5 5 0 0 1 10 0Z"
-                    opacity={0.5}
-                  />
-                </svg>
+               <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} className="fill-[#9498A3]">
+                <path
+                  fillRule="evenodd"
+                  d="M5 0a5 5 0 0 0-5 5v10a5 5 0 0 0 5 5h10a5 5 0 0 0 5-5V5a5 5 0 0 0-5-5H5zM2 5a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v6.364l-2.641-3.362a3 3 0 0 0-4.718 0l-3.64 4.632a3 3 0 0 1-4.717 0L2 12.273V5z"
+                  clipRule="evenodd"
+                />
+                <path d="M9 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" opacity={0.5} />
+              </svg>
           )
        },
       {
         name: 'layout',
         icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} >
+            <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} className="fill-[#9498A3]">
               <path
                 fillRule="evenodd"
                 d="M3 0a3 3 0 0 0-3 3v7a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V3a3 3 0 0 0-3-3H3zM2 3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v5l-2.586-2.586a2 2 0 0 0-2.828 0L9.06 8.94a1.5 1.5 0 0 1-2.122 0l-.525-.525a2 2 0 0 0-2.828 0L2 10V3z"
@@ -231,68 +220,53 @@ export const IconList = () => {
       {
         name: 'lock',
         icon: (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width={40}
-              height={40}
-              fill="none"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} className="fill-[#9498A3]">
               <path
-                fill="#9498A3"
                 fillRule="evenodd"
-                d="M20 4a8 8 0 0 0-8 8v4H8v-4C8 5.373 13.373 0 20 0s12 5.373 12 12v4h-4v-4a8 8 0 0 0-8-8Z"
+                d="M10 2a4 4 0 0 0-4 4v4H4V6a6 6 0 1 1 12 0v4h-2V6a4 4 0 0 0-4-4Z"
                 clipRule="evenodd"
                 opacity={0.5}
               />
               <path
-                fill="#9498A3"
                 fillRule="evenodd"
-                d="M8 16a4 4 0 0 0-4 4v16a4 4 0 0 0 4 4h24a4 4 0 0 0 4-4V20a4 4 0 0 0-4-4H8Zm16 10a4 4 0 0 1-2.37 3.654l.69 3.449a.75.75 0 0 1-.735.897h-3.17a.75.75 0 0 1-.736-.897l.69-3.45A4 4 0 1 1 24 26Z"
+                d="M4 9a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2H4Zm8 4a2 2 0 0 1-1 1.732V17a1 1 0 1 1-2 0v-2.268A2 2 0 0 1 10 11a2 2 0 0 1 2 2Z"
                 clipRule="evenodd"
               />
-            </svg>
+            </svg>  
         )  
       },
       {
         name: 'navigation',
         icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width={40} height={40} >
-              <path
-                fillRule="evenodd"
-                d="M2 31a1 1 0 1 1-2 0V12a2 2 0 0 1 2-2h36a2 2 0 0 1 2 2v19a1 1 0 1 1-2 0v-9H2v9z"
-                clipRule="evenodd"
-                opacity={0.25}
-              />
-              <path
-                fillRule="evenodd"
-                d="M6 19a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm27-4a1 1 0 1 0 0 2h3a1 1 0 1 0 0-2h-3zm-10 1a1 1 0 0 1 1-1h5a1 1 0 1 1 0 2h-5a1 1 0 0 1-1-1zm-7-1a1 1 0 1 0 0 2h4a1 1 0 1 0 0-2h-4z"
-                clipRule="evenodd"
-              />
-            </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} className="fill-[#9498A3]">
+                <rect width={20} height={2} y={3} rx={1} />
+                <rect width={16} height={2} y={9} opacity={0.5} rx={1} />
+                <rect width={20} height={2} y={15} rx={1} />
+              </svg>
         )
       },
       {
         name: 'social-links',
         icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width={40} height={40}>
-              <path
-                fillRule="evenodd"
-                d="M31 6c4.97 0 9 4.054 9 9.055 0 4.52-3.291 8.265-7.594 8.945v-6.328h2.098l.398-2.617h-2.496v-1.698c0-.717.349-1.414 1.467-1.414h1.135v-2.23s-1.03-.176-2.015-.176c-2.055 0-3.4 1.254-3.4 3.523v1.995h-.6a11.995 11.995 0 0 0-6.198-3.728C24.208 8.186 27.35 6 31 6zM8.037 23.95a9.001 9.001 0 1 1 9.18-12.626 11.922 11.922 0 0 0-3.129 1.231 3.47 3.47 0 0 0-.215-.924 2.52 2.52 0 0 0-.594-.91 2.525 2.525 0 0 0-.91-.594c-.328-.127-.7-.214-1.249-.239-.548-.025-.723-.03-2.12-.03-1.397 0-1.572.005-2.12.03-.548.025-.921.112-1.249.24a2.53 2.53 0 0 0-.91.592 2.523 2.523 0 0 0-.594.911c-.127.328-.214.701-.239 1.249-.025.548-.03.723-.03 2.12 0 1.397.005 1.572.03 2.12.025.548.112.921.24 1.25.13.337.307.624.592.91.286.286.573.462.911.593.328.127.701.214 1.249.239.447.02.646.028 1.462.03a12.029 12.029 0 0 0-.305 3.807zm5.158-10.835-.009-.193c-.023-.502-.106-.774-.177-.955a1.59 1.59 0 0 0-.385-.591 1.593 1.593 0 0 0-.59-.385c-.182-.071-.454-.154-.956-.177-.542-.025-.705-.03-2.078-.03-1.373 0-1.536.005-2.078.03-.502.023-.774.106-.955.177a1.59 1.59 0 0 0-.592.385c-.18.18-.29.351-.384.59-.07.182-.155.454-.177.956-.025.542-.03.705-.03 2.078 0 1.373.005 1.535.03 2.078.022.502.106.774.177.955.093.24.205.411.384.592.18.18.352.29.592.384.181.07.453.154.955.177.485.023.667.029 1.687.03.182-.548.402-1.079.658-1.589a2.64 2.64 0 1 1 2.316-3.18 12.045 12.045 0 0 1 1.612-1.332zm-2.55 2.369A1.716 1.716 0 0 0 9 13.286a1.714 1.714 0 1 0 .966 3.13c.211-.322.438-.633.679-.932zm1.1-3.847a.617.617 0 1 0 0 1.234.617.617 0 0 0 0-1.234z"
-                clipRule="evenodd"
-                opacity={0.5}
-              />
-              <path
-                fillRule="evenodd"
-                d="M20 34c6.075 0 11-4.925 11-11s-4.925-11-11-11S9 16.925 9 23s4.925 11 11 11zm4.779-13.183c0 3.336-2.477 7.183-7.005 7.183A6.843 6.843 0 0 1 14 26.866a4.871 4.871 0 0 0 3.645-1.046c-1.078-.02-1.987-.75-2.3-1.753a2.392 2.392 0 0 0 1.112-.043c-1.127-.232-1.975-1.252-1.975-2.475v-.032c.332.19.711.303 1.115.315a2.54 2.54 0 0 1-1.095-2.1c0-.463.121-.896.333-1.27 1.214 1.528 3.028 2.532 5.075 2.638a2.565 2.565 0 0 1-.064-.576c0-1.394 1.103-2.524 2.462-2.524.708 0 1.348.307 1.797.797a4.847 4.847 0 0 0 1.564-.612 2.524 2.524 0 0 1-1.083 1.396c.498-.06.973-.196 1.414-.397-.33.506-.748.95-1.228 1.307.005.108.007.217.007.326z"
-                clipRule="evenodd"
-              />
-            </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} className="fill-[#9498A3]">
+                <path
+                  fillRule="evenodd"
+                  d="M2.404 9.483a8.01 8.01 0 0 1 6.372-5.39A4.502 4.502 0 0 0 0 5.5a4.5 4.5 0 0 0 2.404 3.983Zm15.192 0a4.5 4.5 0 1 0-6.372-5.39 8.01 8.01 0 0 1 6.372 5.39Z"
+                  clipRule="evenodd"
+                  opacity={0.5}
+                />
+                <path
+                  fillRule="evenodd"
+                  d="M17 12a6.974 6.974 0 0 1-1.782 4.666A6.982 6.982 0 0 1 10 19a6.983 6.983 0 0 1-5.218-2.334A7 7 0 1 1 17 12Zm-2.39 3.841A6.11 6.11 0 0 0 10 13.75a6.11 6.11 0 0 0-4.61 2.091A5.987 5.987 0 0 0 10 18c1.852 0 3.509-.84 4.61-2.159ZM10 12.625a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"
+                  clipRule="evenodd"
+                />
+              </svg>
         )
       },
       {
         name: 'star',
         icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20}>
+            <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} className="fill-[#9498A3]">
               <path d="M9.536.655a.5.5 0 0 1 .928 0l2.264 5.638a.5.5 0 0 0 .43.313l6.061.41a.5.5 0 0 1 .287.883l-4.662 3.895a.5.5 0 0 0-.164.506l1.482 5.892a.5.5 0 0 1-.75.545l-5.146-3.23a.5.5 0 0 0-.532 0l-5.145 3.23a.5.5 0 0 1-.75-.545L5.32 12.3a.5.5 0 0 0-.164-.506L.494 7.9a.5.5 0 0 1 .287-.882l6.06-.411a.5.5 0 0 0 .431-.313L9.536.655Z" />
             </svg>
         )
@@ -300,7 +274,7 @@ export const IconList = () => {
       {
         name: 'text',
         icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20}>
+            <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} className="fill-[#9498A3]">
               <path d="M3 7a1 1 0 0 0 1-1V4h5v12H8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2h-1V4h5v2a1 1 0 0 0 2 0V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1z" />
             </svg>
         )
@@ -308,7 +282,7 @@ export const IconList = () => {
       {
         name: 'users',
         icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20}>
+            <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} className="fill-[#9498A3]">
               <path
                 fillRule="evenodd"
                 d="M10.667 7.109A4.48 4.48 0 0 0 11.5 4.5a4.48 4.48 0 0 0-.833-2.609 3.5 3.5 0 1 1 0 5.218ZM14.345 18A2.789 2.789 0 0 0 15 16.2V16a7.994 7.994 0 0 0-3.75-6.78A7 7 0 0 1 20 16v.2a1.8 1.8 0 0 1-1.8 1.8h-3.855Z"
@@ -326,13 +300,13 @@ export const IconList = () => {
       {
         name: 'video',
         icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width={40} height={40}>
-              <path
-                fillRule="evenodd"
-                d="M20 38c9.941 0 18-8.059 18-18S29.941 2 20 2 2 10.059 2 20s8.059 18 18 18zm-3.765-25.743A1.5 1.5 0 0 0 14 13.565v12.87a1.5 1.5 0 0 0 2.235 1.308l11.44-6.436a1.5 1.5 0 0 0 0-2.614l-11.44-6.436z"
-                clipRule="evenodd"
-              />
-            </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} className="fill-[#9498A3]">
+            <path
+              fillRule="evenodd"
+              d="M10 20c5.523 0 10-4.477 10-10S15.523 0 10 0 0 4.477 0 10s4.477 10 10 10ZM8.486 5.825A1 1 0 0 0 7 6.7v6.6a1 1 0 0 0 1.486.875l5.94-3.3a1 1 0 0 0 0-1.75l-5.94-3.3Z"
+              clipRule="evenodd"
+            />
+          </svg>
         )
       }
   ]
