@@ -3,8 +3,8 @@ import { Style } from "@makeswift/runtime/controls";
 
 import { runtime } from "./runtime";
 
-function HelloWorld(props) {
-  return <p {...props}>Hello, world!</p>;
+function HelloWorld({ className }: { className: string }) {
+  return <p className={className}>Hello, world!</p>;
 }
 
 runtime.registerComponent(HelloWorld, {

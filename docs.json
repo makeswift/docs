@@ -1,0 +1,667 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Makeswift Docs",
+  "colors": {
+    "primary": "#EA3BA7",
+    "light": "#EA3BA7",
+    "dark": "#EA3BA7"
+  },
+  "favicon": "/images/favicon.svg",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Product",
+        "groups": [
+          {
+            "group": "Getting started",
+            "pages": [
+              "product/introduction",
+              {
+                "group": "Quickstart",
+                "icon": "bolt",
+                "pages": [
+                  "product/quickstart",
+                  "product/quickstart/component-basics",
+                  "product/quickstart/colors-and-text-styles",
+                  "product/quickstart/customizing-the-navbar",
+                  "product/quickstart/desktop-and-mobile",
+                  "product/quickstart/next-steps"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "The Visual Builder",
+            "pages": [
+              "product/builder-basics",
+              "product/layouts",
+              "product/components",
+              "product/theming",
+              "product/files",
+              "product/responsive-design",
+              {
+                "group": "Panels",
+                "icon": "sliders",
+                "pages": [
+                  "product/component/property-controls/width",
+                  "product/component/property-controls/margin",
+                  "product/component/property-controls/padding",
+                  "product/component/property-controls/alignment",
+                  "product/component/property-controls/backgrounds",
+                  "product/component/property-controls/corners",
+                  "product/component/property-controls/borders",
+                  "product/component/property-controls/animations",
+                  "product/component/property-controls/gap",
+                  "product/component/property-controls/shadows",
+                  "product/component/property-controls/height",
+                  "product/component/property-controls/visibility"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "product/localization",
+              "product/publishing",
+              {
+                "group": "Troubleshooting",
+                "icon": "wrench",
+                "pages": ["product/troubleshooting/cookies"]
+              }
+            ]
+          },
+          {
+            "group": "Settings",
+            "pages": [
+              {
+                "group": "Page",
+                "icon": "file",
+                "pages": ["product/page/paths", "product/page/metadata"]
+              },
+              {
+                "group": "Site",
+                "icon": "window-maximize",
+                "pages": ["product/site/settings", "product/site/colors"]
+              },
+              {
+                "group": "Workspace",
+                "icon": "building",
+                "pages": [
+                  "product/workspace/billing",
+                  "product/workspace/plans",
+                  "product/workspace/user"
+                ]
+              },
+              {
+                "group": "User",
+                "icon": "user",
+                "pages": ["product/user-settings/login-methods"]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Developer",
+        "groups": [
+          {
+            "group": "Get started",
+            "pages": [
+              "developer/quickstart",
+              {
+                "group": "Installation",
+                "pages": [
+                  "developer/app-router/installation",
+                  "developer/pages-router/installation"
+                ]
+              },
+              "developer/concepts"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              {
+                "group": "Localization",
+                "pages": [
+                  "developer/app-router/localization",
+                  "developer/pages-router/localization"
+                ]
+              },
+              {
+                "group": "Deploying",
+                "pages": [
+                  "developer/guides/deploying/overview",
+                  "developer/guides/deploying/vercel",
+                  "developer/guides/deploying/netlify",
+                  "developer/guides/deploying/docker"
+                ]
+              },
+              {
+                "group": "How to",
+                "pages": [
+                  "developer/guides/how-to/built-in-components",
+                  "developer/guides/how-to/setting-cookies"
+                ]
+              },
+              {
+                "group": "Troubleshooting",
+                "pages": [
+                  "developer/guides/troubleshooting/builder-is-not-loading",
+                  "developer/guides/troubleshooting/layout-shift"
+                ]
+              },
+              "developer/guides/environments",
+              {
+                "group": "Upgrading",
+                "pages": [
+                  "developer/upgrading/0.24.0",
+                  "developer/upgrading/0.23.0",
+                  "developer/upgrading/0.22.0",
+                  "developer/upgrading/0.21.0",
+                  "developer/upgrading/0.20.0",
+                  "developer/upgrading/0.19.0",
+                  "developer/upgrading/0.18.0",
+                  "developer/upgrading/0.15.0",
+                  "developer/upgrading/0.14.0",
+                  "developer/upgrading/0.13.0",
+                  "developer/upgrading/0.9.0"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              {
+                "group": "Components",
+                "pages": [
+                  "developer/reference/components/page",
+                  "developer/reference/components/makeswift-component",
+                  "developer/reference/components/slot",
+                  "developer/reference/components/react-runtime-provider"
+                ]
+              },
+              {
+                "group": "Controls",
+                "pages": [
+                  "developer/reference/controls/checkbox",
+                  "developer/reference/controls/color",
+                  "developer/reference/controls/combobox",
+                  "developer/reference/controls/group",
+                  "developer/reference/controls/image",
+                  "developer/reference/controls/font",
+                  "developer/reference/controls/link",
+                  "developer/reference/controls/list",
+                  "developer/reference/controls/number",
+                  "developer/reference/controls/rich-text",
+                  "developer/reference/controls/select",
+                  "developer/reference/controls/slot",
+                  "developer/reference/controls/style",
+                  "developer/reference/controls/text-area",
+                  "developer/reference/controls/text-input",
+                  {
+                    "group": "Deprecated",
+                    "pages": ["developer/reference/controls/shape"]
+                  }
+                ]
+              },
+              {
+                "group": "Client",
+                "pages": [
+                  "developer/reference/client/constructor",
+                  "developer/reference/client/get-pages",
+                  "developer/reference/client/get-page-snapshot",
+                  "developer/reference/client/get-component-snapshot",
+                  "developer/reference/client/get-site-version"
+                ]
+              },
+              "developer/reference/makeswift-api-handler",
+              {
+                "group": "ReactRuntime",
+                "pages": [
+                  "developer/reference/runtime/constructor",
+                  "developer/reference/runtime/register-component"
+                ]
+              },
+              {
+                "group": "Functions",
+                "pages": ["developer/reference/get-site-version"]
+              },
+              {
+                "group": "Legacy APIs",
+                "pages": ["developer/reference/client/get-sitemap"]
+              }
+            ]
+          },
+          {
+            "group": "Integrations",
+            "pages": ["developer/integrations/bigcommerce-catalyst"]
+          }
+        ]
+      },
+      {
+        "tab": "Blog",
+        "href": "https://makeswift.com/blog"
+      }
+    ]
+  },
+  "logo": {
+    "light": "/images/logo.svg",
+    "dark": "/images/logo.svg"
+  },
+  "navbar": {
+    "links": [],
+    "primary": {
+      "type": "button",
+      "label": "Log in",
+      "href": "https://app.makeswift.com"
+    }
+  },
+  "search": {
+    "prompt": "Search or ask..."
+  },
+  "footer": {
+    "socials": {
+      "twitter": "https://twitter.com/makeswifthq",
+      "github": "https://github.com/makeswift",
+      "linkedin": "https://www.linkedin.com/company/makeswifthq"
+    }
+  },
+  "integrations": {
+    "posthog": {
+      "apiKey": "phc_HxqYFNwkvVqOh0ODl3RZEWw8qztt4KtR7FfqaNVRa3R",
+      "apiHost": "https://us.i.posthog.com"
+    }
+  },
+  "redirects": [
+    {
+      "source": "/migrations/:slug*",
+      "destination": "/upgrading/:slug*"
+    },
+    {
+      "source": "/guides/localization",
+      "destination": "/pages-router/guides/localization"
+    },
+    {
+      "source": "/guides/extending-the-document",
+      "destination": "/pages-router/installation"
+    },
+    {
+      "source": "/guides/manual-installation",
+      "destination": "/pages-router/installation"
+    },
+    {
+      "source": "/app-router/installation",
+      "destination": "/developer/app-router/installation"
+    },
+    {
+      "source": "/app-router/localization",
+      "destination": "/developer/app-router/localization"
+    },
+    {
+      "source": "/concepts",
+      "destination": "/developer/concepts"
+    },
+    {
+      "source": "/guides/environments",
+      "destination": "/developer/guides/environments"
+    },
+    {
+      "source": "/guides/troubleshooting",
+      "destination": "/developer/guides/troubleshooting"
+    },
+    {
+      "source": "/integrations/bigcommerce",
+      "destination": "/developer"
+    },
+    {
+      "source": "/pages-router/installation",
+      "destination": "/developer/pages-router/installation"
+    },
+    {
+      "source": "/pages-router/localization",
+      "destination": "/developer/pages-router/localization"
+    },
+    {
+      "source": "/quickstart",
+      "destination": "/developer/quickstart"
+    },
+    {
+      "source": "/reference/client/constructor",
+      "destination": "/developer/reference/client/constructor"
+    },
+    {
+      "source": "/reference/client/get-page-snapshot",
+      "destination": "/developer/reference/client/get-page-snapshot"
+    },
+    {
+      "source": "/reference/client/get-pages",
+      "destination": "/developer/reference/client/get-pages"
+    },
+    {
+      "source": "/reference/client/get-site-version",
+      "destination": "/developer/reference/client/get-site-version"
+    },
+    {
+      "source": "/reference/client/get-sitemap",
+      "destination": "/developer/reference/client/get-sitemap"
+    },
+    {
+      "source": "/reference/components/page",
+      "destination": "/developer/reference/components/page"
+    },
+    {
+      "source": "/reference/components/react-runtime-provider",
+      "destination": "/developer/reference/components/react-runtime-provider"
+    },
+    {
+      "source": "/reference/controls/checkbox",
+      "destination": "/developer/reference/controls/checkbox"
+    },
+    {
+      "source": "/reference/controls/color",
+      "destination": "/developer/reference/controls/color"
+    },
+    {
+      "source": "/reference/controls/combobox",
+      "destination": "/developer/reference/controls/combobox"
+    },
+    {
+      "source": "/reference/controls/image",
+      "destination": "/developer/reference/controls/image"
+    },
+    {
+      "source": "/reference/controls/link",
+      "destination": "/developer/reference/controls/link"
+    },
+    {
+      "source": "/reference/controls/list",
+      "destination": "/developer/reference/controls/list"
+    },
+    {
+      "source": "/reference/controls/number",
+      "destination": "/developer/reference/controls/number"
+    },
+    {
+      "source": "/reference/controls/rich-text",
+      "destination": "/developer/reference/controls/rich-text"
+    },
+    {
+      "source": "/reference/controls/select",
+      "destination": "/developer/reference/controls/select"
+    },
+    {
+      "source": "/reference/controls/shape",
+      "destination": "/developer/reference/controls/shape"
+    },
+    {
+      "source": "/reference/controls/slot",
+      "destination": "/developer/reference/controls/slot"
+    },
+    {
+      "source": "/reference/controls/style",
+      "destination": "/developer/reference/controls/style"
+    },
+    {
+      "source": "/reference/controls/text-area",
+      "destination": "/developer/reference/controls/text-area"
+    },
+    {
+      "source": "/reference/controls/text-input",
+      "destination": "/developer/reference/controls/text-input"
+    },
+    {
+      "source": "/controls/rich-text",
+      "destination": "/developer/reference/controls/rich-text"
+    },
+    {
+      "source": "/reference/makeswift-api-handler",
+      "destination": "/developer/reference/makeswift-api-handler"
+    },
+    {
+      "source": "/reference/runtime/constructor",
+      "destination": "/developer/reference/runtime/constructor"
+    },
+    {
+      "source": "/reference/runtime/register-component",
+      "destination": "/developer/reference/runtime/register-component"
+    },
+    {
+      "source": "/upgrading/0.13.0",
+      "destination": "/developer/upgrading/0.13.0"
+    },
+    {
+      "source": "/upgrading/0.14.0",
+      "destination": "/developer/upgrading/0.14.0"
+    },
+    {
+      "source": "/upgrading/0.15.0",
+      "destination": "/developer/upgrading/0.15.0"
+    },
+    {
+      "source": "/upgrading/0.18.0",
+      "destination": "/developer/upgrading/0.18.0"
+    },
+    {
+      "source": "/upgrading/0.19.0",
+      "destination": "/developer/upgrading/0.19.0"
+    },
+    {
+      "source": "/upgrading/0.9.0",
+      "destination": "/developer/upgrading/0.9.0"
+    },
+    {
+      "source": "/collection/1-articles",
+      "destination": "/product/quickstart",
+      "permanent": true
+    },
+    {
+      "source": "/category/9-managing-workspaces",
+      "destination": "/product/workspace/billing",
+      "permanent": true
+    },
+    {
+      "source": "/category/11-designing-pages",
+      "destination": "/product/theming",
+      "permanent": true
+    },
+    {
+      "source": "/category/15-style-panels",
+      "destination": "/product/component/property-controls",
+      "permanent": true
+    },
+    {
+      "source": "/category/14-components",
+      "destination": "/product/components",
+      "permanent": true
+    },
+    {
+      "source": "/article/38-colors",
+      "destination": "/product/site/colors",
+      "permanent": true
+    },
+    {
+      "source": "/category/72-custom-code-snippets",
+      "destination": "/product/site/snippets",
+      "permanent": true
+    },
+    {
+      "source": "/category/70-getting-started",
+      "destination": "/product/quickstart",
+      "permanent": true
+    },
+    {
+      "source": "/article/32-custom-domains",
+      "destination": "/product/site/domains",
+      "permanent": true
+    },
+    {
+      "source": "/article/77-global-components",
+      "destination": "/product/components#global-components",
+      "permanent": true
+    },
+    {
+      "source": "/article/79-redirects",
+      "destination": "/product/site/redirects",
+      "permanent": true
+    },
+    {
+      "source": "/article/80-sitemaps",
+      "destination": "/product/site/sitemaps",
+      "permanent": true
+    },
+    {
+      "source": "/article/35-snippets",
+      "destination": "/product/site/snippets",
+      "permanent": true
+    },
+    {
+      "source": "/article/45-designing-for-mobile-and-tablet",
+      "destination": "/product/responsive-design",
+      "permanent": true
+    },
+    {
+      "source": "/article/47-box",
+      "destination": "/product/components#box",
+      "permanent": true
+    },
+    {
+      "source": "/article/20-integrations",
+      "destination": "/developer/integrations",
+      "permanent": true
+    },
+    {
+      "source": "/developer/integrations",
+      "destination": "/developer",
+      "permanent": true
+    },
+    {
+      "source": "/article/24-sites",
+      "destination": "/product/site/settings",
+      "permanent": true
+    },
+    {
+      "source": "/article/23-users",
+      "destination": "/product/workspace/user",
+      "permanent": true
+    },
+    {
+      "source": "/article/29-google-analytics-event-tracking",
+      "destination": "/product/site/snippets#clean-up-script-example",
+      "permanent": true
+    },
+    {
+      "source": "/article/33-pages-and-collections",
+      "destination": "/product/concepts#page",
+      "permanent": true
+    },
+    {
+      "source": "/article/31-site-settings",
+      "destination": "/product/site/settings",
+      "permanent": true
+    },
+    {
+      "source": "/article/78-animations",
+      "destination": "/product/component/property-controls/animations",
+      "permanent": true
+    },
+    {
+      "source": "/article/25-custom-fonts",
+      "destination": "/product/site/text-styles",
+      "permanent": true
+    },
+    {
+      "source": "/article/44-layout-grid",
+      "destination": "/product/layouts",
+      "permanent": true
+    },
+    {
+      "source": "/article/40-text-styles",
+      "destination": "/product/site/text-styles",
+      "permanent": true
+    },
+    {
+      "source": "/article/12-billing",
+      "destination": "/product/workspace/billing",
+      "permanent": true
+    },
+    {
+      "source": "/article/7-what-is-a-workspace",
+      "destination": "/product/concepts#workspace",
+      "permanent": true
+    },
+    {
+      "source": "/article/43-element-actions",
+      "destination": "/product/components#component-actions",
+      "permanent": true
+    },
+    {
+      "source": "/article/58-custom-element-name-and-id",
+      "destination": "/product/components#component-actions",
+      "permanent": true
+    },
+    {
+      "source": "/article/60-width",
+      "destination": "/product/component/property-controls/width",
+      "permanent": true
+    },
+    {
+      "source": "/article/61-margin",
+      "destination": "/product/component/property-controls/margin",
+      "permanent": true
+    },
+    {
+      "source": "/article/62-alignment",
+      "destination": "/product/component/property-controls/alignment",
+      "permanent": true
+    },
+    {
+      "source": "/article/63-padding",
+      "destination": "/product/component/property-controls/padding",
+      "permanent": true
+    },
+    {
+      "source": "/article/64-border",
+      "destination": "/product/component/property-controls/borders",
+      "permanent": true
+    },
+    {
+      "source": "/article/65-corners",
+      "destination": "/product/component/property-controls/corners",
+      "permanent": true
+    },
+    {
+      "source": "/article/66-shadows",
+      "destination": "/product/component/property-controls/shadows",
+      "permanent": true
+    },
+    {
+      "source": "/article/67-column-and-row-gap",
+      "destination": "/product/component/property-controls/gap",
+      "permanent": true
+    },
+    {
+      "source": "/article/69-visibility",
+      "destination": "/product/component/property-controls/visibility",
+      "permanent": true
+    },
+    {
+      "source": "/article/82-publishing-your-site",
+      "destination": "/product/publishing",
+      "permanent": true
+    },
+    {
+      "source": "/article/34-page-metadata",
+      "destination": "/product/page/metadata",
+      "permanent": true
+    },
+    {
+      "source": "/article/59-backgrounds",
+      "destination": "/product/component/property-controls/backgrounds",
+      "permanent": true
+    }
+  ]
+}

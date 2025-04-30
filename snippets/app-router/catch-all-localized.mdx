@@ -1,33 +1,39 @@
-```tsx app/[lang]/[[...path]]/page.tsx
-import { getSiteVersion } from "@makeswift/runtime/next/server"
-import { notFound } from "next/navigation"
-import { Page as MakeswiftPage } from "@makeswift/runtime/next"
+```tsx app/[locale]/[[...path]]/page.tsx
+import { getSiteVersion } from "@makeswift/runtime/next/server";
+import { notFound } from "next/navigation";
+import { Page as MakeswiftPage } from "@makeswift/runtime/next";
 
-import { client } from "@/makeswift/client"
-import { locales } from "@/localization"
+import { client } from "@/makeswift/client";
+import { routing } from "@/i18n/routing";
 
-type ParsedUrlQuery = { lang: string; path?: string[] }
+type ParsedUrlQuery = { locale: string; path?: string[] };
 
 export async function generateStaticParams() {
-  const pages = await client.getPages()
+  const pages = await client.getPages().toArray();
 
   return pages.flatMap((page) =>
-    locales.map((locale) => ({
+    routing.locales.map((locale) => ({
       path: page.path.split("/").filter((segment) => segment !== ""),
-      lang: locale,
+      locale,
     }))
-  )
+  );
 }
 
-export default async function Page({ params }: { params: ParsedUrlQuery }) {
-  const path = "/" + (params?.path ?? []).join("/")
+export default async function Page({
+  params,
+}: {
+  params: Promise<ParsedUrlQuery>;
+}) {
+  const { locale, path: pathParam } = await params;
+
+  const path = "/" + (pathParam ?? []).join("/");
   const snapshot = await client.getPageSnapshot(path, {
     siteVersion: getSiteVersion(),
-    locale: params.lang,
-  })
+    locale,
+  });
 
-  if (snapshot == null) return notFound()
+  if (snapshot == null) return notFound();
 
-  return <MakeswiftPage snapshot={snapshot} />
+  return <MakeswiftPage snapshot={snapshot} />;
 }
 ```
