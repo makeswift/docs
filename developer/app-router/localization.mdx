@@ -3,8 +3,6 @@ title: App Router
 description: "This guide walks you through setting up localization for your Makeswift site so you can visually customize your site for different locales."
 ---
 
-If you don't already have a Next.js project using App Router set up with Makeswift, follow the [App Router Installation](/app-router/installation) guide.
-
 import AppCatchAllLocalizedExample from "/snippets/app-router/catch-all-localized.mdx";
 
 <Note>
@@ -13,8 +11,11 @@ import AppCatchAllLocalizedExample from "/snippets/app-router/catch-all-localize
   how to update.
 </Note>
 
-## Add locales in the Visual Builder
+## Getting started
 
+<Steps>
+
+<Step title="Add locales in the Makeswift Visual Builder">
 Open site settings and go to the **Locales** tab:
 
 <Note>
@@ -37,7 +38,9 @@ To add a new locale, click the **+ Add locale** button. In this case, we've adde
   />
 </Frame>
 
-## Configure next-intl for your application
+</Step>
+
+<Step title="Configure next-intl for your application">
 
 We recommend using the [next-intl](https://next-intl.dev/) package to handle localization. You can follow their [App Router setup](https://next-intl.dev/docs/getting-started/app-router/with-i18n-routing) documentation to configure your application. This guide will walk you through updating your file structure, configure language files, middleware, etc.
 
@@ -74,13 +77,17 @@ export default withNextIntl(withMakeswift(nextConfig));
 
 4. Make sure all of your routing files are nested under `/app/[lang]` **except for the [Makeswift API handler](/developer/reference/makeswift-api-handler)**.
 
-## Fetch snapshots by locale
+</Step>
+
+<Step title="Fetch snapshots by locale">
 
 Update your catch-all route to fetch the page snapshots by locale.
 
 <AppCatchAllLocalizedExample />
 
-## Edit your pages in the Visual Builder
+</Step>
+
+<Step title="Edit your pages in the builder">
 
 Once you've set everything up, you should be able to switch to the locale using the locale switcher in the Visual Builder.
 
@@ -107,6 +114,10 @@ After choosing to edit the localized page, content changes are only associated w
   `example.es/compania`.
 </Note>
 
+</Step>
+
+</Steps>
+
 ## Localized resources
 
 When making changes on a different locale you can override any property, including the page's pathname, metadata, and SEO tags.
@@ -116,7 +127,7 @@ When making changes on a different locale you can override any property, includi
   page.](/images/developer/guides/localization/edit-page-metadata.jpeg)
 </Frame>
 
-You can also localize a visually created component. To do this, select the component, then click **Edit component** within a localized page. Make your changes, and then click **Save**. That component will be saved for that locale and will not effect the component for the base locale.
+You can also localize a visually created component. While in a localized page, select the component and click **Edit component**. Make your changes, and then click **Save**. The changes made will be saved for that specific locale and will not affect the component for the base locale.
 
 <Frame>
   <iframe
@@ -131,7 +142,7 @@ You can also localize a visually created component. To do this, select the compo
 
 ## Publishing
 
-Remember that localized content (pages, components, etc.) need to be published just like any other resource. After you're done making all of your changes, publish them for these changes to go live. In the publish dialog, you'll be able to see the locale attached to each resource.
+Remember that localized content (pages, components, etc.) needs to be published just like any other resource. After you're done making all of your changes, publish them for these changes to go live. In the publish dialog, you'll be able to see the locale attached to each resource.
 
 <Frame>
   ![Publishing localized
