@@ -98,32 +98,34 @@ Next.js plugins are configured in the project's next.config.js file by wrapping 
   
 The Makeswift [custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document) handles styles during server-side rendering and using [Preview Mode](https://nextjs.org/docs/pages/building-your-application/configuring/preview-mode) when opening your pages in the Makeswift builder.
 
-Create the file `src/pages/_document.tsx` and export `Document` from `@makeswift/runtime/next/document`:
+Create the file `src/pages/_document.ts` and export `Document` from `@makeswift/runtime/next/document`:
 
 <DocumentExample />
 
-If you already have a `_document.tsx`, you can extend the `Document` from `@makeswift/runtime/next/document` instead.
+If you already have a `_document.ts`, you can extend the `Document` from `@makeswift/runtime/next/document` instead.
 
 <Accordion title="Example of extending an existing document">
-  ```tsx src/pages/_document.tsx
-  import { Html, Head, Main, NextScript } from "next/document";
-  import { Document } from "@makeswift/runtime/next/document";
 
-  export default class MyDocument extends Document {
-    render() {
-      return (
-        <Html>
-          <Head />
-          <body>
-            <Main />
-            {/* Your custom code here */}
-            <NextScript />
-          </body>
-        </Html>
-      );
-    }
+```tsx src/pages/_document.tsx
+import { Html, Head, Main, NextScript } from "next/document";
+import { Document } from "@makeswift/runtime/next/document";
+
+export default class MyDocument extends Document {
+  render() {
+    return (
+      <Html>
+        <Head />
+        <body>
+          <Main />
+          {/* Your custom code here */}
+          <NextScript />
+        </body>
+      </Html>
+    );
   }
-  ```
+}
+```
+
 </Accordion>
 
   </Step>
@@ -150,7 +152,7 @@ Create an [optional catch-all route](https://nextjs.org/docs/pages/building-your
 
 **Important notes**:
 
-1. If you already have an `index.tsx` file, you will need to name the file `[...path].tsx` instead of `[[...path]].tsx`. For more information about the differences between catch-all and optional catch-all segments, refer to the Next.js [Catch-all segments](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#catch-all-segments) documentation.
+1. If you already have a root page file (`index.tsx`), delete it to ensure that all pages (including the home page) are managed by Makeswift.
 
 2. The filename defines the `path` param. For example, if the filename is `[[...slug]].tsx` instead of `[[...path]].tsx`, then the param name is `slug`. Because this is an optional catch-all route, there are no params when visiting the index (i.e., `/`) path. The `path` param defaults to an empty array.
 
