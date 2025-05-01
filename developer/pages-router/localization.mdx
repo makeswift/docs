@@ -6,6 +6,7 @@ description: "This guide walks you through setting up localization for your Make
 import PagesCatchAllLocalizedExample from "/snippets/pages-router/catch-all-localized.mdx";
 import NextConfigLocalizedExample from "/snippets/pages-router/next-config-localized.mdx";
 import NextConfigDomainLocalizedExample from "/snippets/pages-router/next-config-domain-localized.mdx";
+import PagesAppLocalized from "/snippets/pages-router/pages-app-localized.mdx";
 
 If you don't already have a Next.js project using Pages Router set up with Makeswift, follow the [Pages Router Installation](/pages-router/installation) guide.
 
@@ -51,11 +52,13 @@ In this example, that would be `en-US`.
 
 ## Fetch snapshots by locale
 
-Update your catch-all route to fetch the page snapshots by locae. This requires you to pass the locale from `getStaticProps` to `getPageSnapshot`.
+Update your catch-all route to fetch the page snapshots by locale. This requires you to pass the locale from `getStaticProps` to `getPageSnapshot`. This code is usually located in `[[...path]].tsx`, but it might be different depending on your setup.
 
 <PagesCatchAllLocalizedExample />
 
-This code is usually located in `[[...path]].tsx`, but it might be different depending on your setup.
+You'll also need to pass the locale to the `<ReactRuntimeProvider>` component by updating your `_app.tsx` like so.
+
+<PagesAppLocalized />
 
 ## Edit your localized pages
 
