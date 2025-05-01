@@ -39,50 +39,10 @@
               "product/components",
               "product/theming",
               "product/files",
-              "product/responsive-design"
-            ]
-          },
-          {
-            "group": "Guides",
-            "pages": [
-              "product/localization",
-              "product/publishing",
-              {
-                "group": "Troubleshooting",
-                "pages": ["product/troubleshooting/cookies"]
-              }
-            ]
-          },
-          {
-            "group": "Reference",
-            "pages": [
-              {
-                "group": "Workspace",
-                "pages": [
-                  "product/workspace/billing",
-                  "product/workspace/plans",
-                  "product/workspace/user"
-                ]
-              },
-              {
-                "group": "Site",
-                "pages": [
-                  "product/site/settings",
-                  "product/site/colors",
-                  "product/site/text-styles",
-                  "product/site/hosting",
-                  "product/site/domains",
-                  "product/site/snippets",
-                  "product/site/redirects",
-                  "product/site/sitemaps"
-                ]
-              },
-              {
-                "group": "Page",
-                "pages": ["product/page/paths", "product/page/metadata"]
-              },
+              "product/responsive-design",
               {
                 "group": "Panels",
+                "icon": "sliders",
                 "pages": [
                   "product/component/property-controls/width",
                   "product/component/property-controls/margin",
@@ -97,6 +57,47 @@
                   "product/component/property-controls/height",
                   "product/component/property-controls/visibility"
                 ]
+              }
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "product/localization",
+              "product/publishing",
+              {
+                "group": "Troubleshooting",
+                "icon": "wrench",
+                "pages": ["product/troubleshooting/cookies"]
+              }
+            ]
+          },
+          {
+            "group": "Settings",
+            "pages": [
+              {
+                "group": "Page",
+                "icon": "file",
+                "pages": ["product/page/paths", "product/page/metadata"]
+              },
+              {
+                "group": "Site",
+                "icon": "window-maximize",
+                "pages": ["product/site/settings", "product/site/colors"]
+              },
+              {
+                "group": "Workspace",
+                "icon": "building",
+                "pages": [
+                  "product/workspace/billing",
+                  "product/workspace/plans",
+                  "product/workspace/user"
+                ]
+              },
+              {
+                "group": "User",
+                "icon": "user",
+                "pages": ["product/user-settings/login-methods"]
               }
             ]
           }
