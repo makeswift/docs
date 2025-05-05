@@ -50,8 +50,7 @@ import OnPublishExample from "/snippets/reference/on-publish.mdx";
           Any errors thrown in the event handler will be logged and ignored.
 
           #### Local development
-
-          The `onPublish` event only works for a deployed site. E.g. it won't works for a local development environment.
+          The `onPublish` will not work when running on `localhost`. To test locally, you can setup a reverse proxy using a service like [`ngrok`](https://ngrok.com/docs/what-is-ngrok/).
           
         </ParamField>
        </ParamField>
