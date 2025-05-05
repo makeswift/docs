@@ -150,7 +150,7 @@ Create an [optional catch-all route](https://nextjs.org/docs/pages/building-your
 
 **Important notes**:
 
-1. If you already have a root page file (`index.tsx`), delete it to ensure that all pages (including the home page) are managed by Makeswift.
+1. If you already have a root `index.tsx` file inside of the `pages` directory and you'd like to manage that page in code (not in Makeswift), you will need to name the file `[...path].tsx` instead of `[[...path]].tsx`. Otherwise, you'll need to delete it to let the root page be managed in Makeswift. For more information about the differences between catch-all and optional catch-all segments, refer to the Next.js [Catch-all segments](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#catch-all-segments) documentation.
 
 2. The filename defines the `path` param. For example, if the filename is `[[...slug]].tsx` instead of `[[...path]].tsx`, then the param name is `slug`. Because this is an optional catch-all route, there are no params when visiting the index (i.e., `/`) path. The `path` param defaults to an empty array.
 
@@ -213,13 +213,13 @@ Here are a couple of ideas for what you might want to do next.
 
 <CardGroup cols={3}>
   <Card title="Concepts" href="/developer/concepts">
-    Learn core concepts about how Makeswift works.
+    Learn the core concepts behind how Makeswift works.
   </Card>
   <Card
     title="Custom components"
     href="/developer/guides/how-to/built-in-components"
   >
-    Build custom components to be used in the Visual Builder.
+    Build custom components for use in the Visual Builder.
   </Card>
   <Card title="Localization" href="/developer/pages-router/localization">
     Translate your content into multiple languages.
