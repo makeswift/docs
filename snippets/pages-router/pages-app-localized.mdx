@@ -1,4 +1,4 @@
-```tsx src/pages/_app.tsx
+```tsx src/pages/_app.tsx {9, 15}
 import type { AppProps } from "next/app";
 import { ReactRuntimeProvider } from "@makeswift/runtime/next";
 
@@ -7,10 +7,14 @@ import "@/makeswift/components";
 
 export default function App({
   Component,
-  pageProps: { previewMode, ...pageProps },
+  pageProps: { previewMode, locale, ...pageProps },
 }: AppProps) {
   return (
-    <ReactRuntimeProvider runtime={runtime} previewMode={previewMode}>
+    <ReactRuntimeProvider
+      runtime={runtime}
+      previewMode={previewMode}
+      locale={locale}
+    >
       <Component {...pageProps} />
     </ReactRuntimeProvider>
   );

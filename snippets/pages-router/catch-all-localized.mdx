@@ -1,10 +1,25 @@
-```tsx pages/[[...path]].tsx
-import { Makeswift, Page as MakeswiftPage } from "@makeswift/runtime/next"
+```tsx src/pages/[[...path]].tsx {35, 41, 48, 57}
+import {
+  GetStaticPathsResult,
+  GetStaticPropsContext,
+  GetStaticPropsResult,
+} from "next";
 
-import { client } from "@/makeswift/client"
+import {
+  Page as MakeswiftPage,
+  PageProps as MakeswiftPageProps,
+  Makeswift,
+} from "@makeswift/runtime/next";
 
-export async function getStaticPaths() {
-  const pages = await client.getPages()
+import { client } from "@/makeswift/client";
+import "@/makeswift/components";
+
+type ParsedUrlQuery = { path?: string[] };
+
+export async function getStaticPaths(): Promise<
+  GetStaticPathsResult<ParsedUrlQuery>
+> {
+  const pages = await client.getPages().toArray();
 
   return {
     paths: pages.map((page) => ({
@@ -13,24 +28,39 @@ export async function getStaticPaths() {
       },
     })),
     fallback: "blocking",
-  }
+  };
 }
 
-export async function getStaticProps({ params, previewData, locale }) {
-  if (params == null) return { notFound: true }
+export type PageProps = MakeswiftPageProps & {
+  previewMode: boolean;
+  locale: string | undefined;
+};
 
-  const path = "/" + (params.path ?? []).join("/")
+export async function getStaticProps({
+  params,
+  previewData,
+  locale,
+}: GetStaticPropsContext<ParsedUrlQuery>): Promise<
+  GetStaticPropsResult<PageProps>
+> {
+  const path = "/" + (params?.path ?? []).join("/");
   const snapshot = await client.getPageSnapshot(path, {
     siteVersion: Makeswift.getSiteVersion(previewData),
     locale,
-  })
+  });
 
-  if (snapshot == null) return { notFound: true }
+  if (snapshot == null) return { notFound: true };
 
-  return { props: { snapshot } }
+  return {
+    props: {
+      snapshot,
+      previewMode: Makeswift.getPreviewMode(previewData),
+      locale,
+    },
+  };
 }
 
-export default function Page({ snapshot }) {
-  return <MakeswiftPage snapshot={snapshot} />
+export default function Page({ snapshot }: MakeswiftPageProps) {
+  return <MakeswiftPage snapshot={snapshot} />;
 }
 ```
