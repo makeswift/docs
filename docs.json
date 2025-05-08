@@ -150,7 +150,8 @@
                 "group": "Troubleshooting",
                 "pages": [
                   "developer/guides/troubleshooting/builder-is-not-loading",
-                  "developer/guides/troubleshooting/layout-shift"
+                  "developer/guides/troubleshooting/layout-shift",
+                  "developer/guides/troubleshooting/tailwind-styles-being-overridden"
                 ]
               },
               "developer/guides/environments",
