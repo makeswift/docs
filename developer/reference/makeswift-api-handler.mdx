@@ -50,7 +50,8 @@ import OnPublishExample from "/snippets/reference/on-publish.mdx";
           Any errors thrown in the event handler will be logged and ignored.
 
           #### Local development
-          The `onPublish` will not work when running on `localhost`. To test locally, you can setup a reverse proxy using a service like [`ngrok`](https://ngrok.com/docs/what-is-ngrok/).
+          
+          Since onPublish is powered by Makeswift webhooks, it's not possible to test them locally (e.g., localhost:3000) at this time. We have plans to enable this via tunneling by leveraging the Makeswift CLI but don't have that ready just yet.
           
         </ParamField>
        </ParamField>
