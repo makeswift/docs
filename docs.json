@@ -150,7 +150,8 @@
                 "group": "Troubleshooting",
                 "pages": [
                   "developer/guides/troubleshooting/builder-is-not-loading",
-                  "developer/guides/troubleshooting/layout-shift"
+                  "developer/guides/troubleshooting/layout-shift",
+                  "developer/guides/troubleshooting/tailwind-styles-being-overridden"
                 ]
               },
               "developer/guides/environments",
@@ -181,7 +182,8 @@
                   "developer/reference/components/page",
                   "developer/reference/components/makeswift-component",
                   "developer/reference/components/slot",
-                  "developer/reference/components/react-runtime-provider"
+                  "developer/reference/components/react-runtime-provider",
+                  "developer/reference/components/root-style-registry"
                 ]
               },
               {
