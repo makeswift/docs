@@ -11,7 +11,7 @@ import PagesApp from "/snippets/pages-router/pages-app.mdx";
 
 
 <ParamField query="cacheKey" type="string" default="mswft">
-  Optional key used when creating a Emotion cache for styles. Pass a unique value to avoid conflicts when multiple Emotion instances share the same key.
+  Optional key used when creating an [Emotion cache](https://emotion.sh/docs/@emotion/cache) for styles. Pass a unique value to avoid conflicts when multiple Emotion instances share the same key.
 </ParamField>
 
 <ParamField query="enableCssReset" type="boolean" default={true}>
@@ -26,7 +26,7 @@ import PagesApp from "/snippets/pages-router/pages-app.mdx";
 
 <Tabs>
   <Tab title="App Router">
-    The following example shows how the `<RootStyleRegistry>` is used to implement the `<MakeswiftProvider>` client component as outlined in step 9 of the [App Router Installation guide](/developer/app-router/installation). The `<MakeswiftProvider>` is subsequently utilized in the App Router's [root layout](https://nextjs.org/docs/app/api-reference/file-conventions/layout#root-layouts).
+    The following example shows how the `<RootStyleRegistry>` is used to implement the `<MakeswiftProvider>` client component as outlined in the [App Router Installation guide](/developer/app-router/installation). The `<MakeswiftProvider>` is subsequently utilized in the App Router's [root layout](https://nextjs.org/docs/app/api-reference/file-conventions/layout#root-layouts).
 
     <CodeGroup>
 
