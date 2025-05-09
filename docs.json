@@ -182,7 +182,8 @@
                   "developer/reference/components/page",
                   "developer/reference/components/makeswift-component",
                   "developer/reference/components/slot",
-                  "developer/reference/components/react-runtime-provider"
+                  "developer/reference/components/react-runtime-provider",
+                  "developer/reference/components/root-style-registry"
                 ]
               },
               {
