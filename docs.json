@@ -83,7 +83,16 @@
               {
                 "group": "Site",
                 "icon": "window-maximize",
-                "pages": ["product/site/settings", "product/site/colors"]
+                "pages": [
+                  "product/site/settings",
+                  "product/site/colors",
+                  "product/site/text-styles",
+                  "product/site/hosting",
+                  "product/site/domains",
+                  "product/site/snippets",
+                  "product/site/redirects",
+                  "product/site/sitemaps"
+                ]
               },
               {
                 "group": "Workspace",
