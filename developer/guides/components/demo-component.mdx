@@ -1,0 +1,559 @@
+---
+title: Building an Accordion Component in Makeswift
+sidebarTitle: Demo component
+description: "Learn how to create a built-in accordion component that integrates with Makeswift."
+---
+
+This tutorial walks you through how to build an accordion component in Makeswift. Instead of building an accordion from scratch, we’ll leverage the [Radix UI react accordion component](https://www.radix-ui.com/primitives/docs/components/accordion). Then, we’ll register it with Makeswift and use Makeswift controls to enable it to be visually editable.
+
+At the end, you'll get a feel for how to build [built-in components](/developer/guides/components/built-in-components) for Makeswift and make them editable using controls.
+
+Here’s a sneak peak of the final component:
+
+![Final accordion component](/images/developer/guides/components/demo-component/demo-component/accordion-component.png)
+
+## Prerequisites
+
+1. **Create a new Makeswift site:** We’re going to start with the Visual Builder and choose a blank template. Create a new blank page in the Navigation Sidebar.
+
+2. **Create a Next.js app:** Follow the [Automatic Installation](https://nextjs.org/docs/app/getting-started/installation#automatic-installation) instructions and make sure to include Typescript and Tailwind CSS. Then, follow the [App Router Installation](/developer/app-router/installation) guide to connect your Next.js app to your Makeswift site.
+
+## Build the React component
+
+First, we’ll build a React component that we can then integrate into Makeswift.
+
+To follow along, create the folder structure below.
+
+```
+src/
+├── components/
+    └── Accordions/
+        ├── index.tsx
+        └── Accordions.makeswift.tsx
+```
+
+Let’s start by creating a component with a basic `div` element inside of `index.tsx`.
+
+```tsx src/components/Accordions/index.tsx
+export function Accordions() {
+  return <div>Hello World</div>;
+}
+```
+
+### Register the component with Makeswift
+
+For components to become available to use inside of Makeswift, they need to be registered. We’ll do this in the `Accordions.makeswift.tsx` file.
+
+Here, we’ll reference the `runtime` that was created during the installation step to call its `registerComponent` function and pass the React component we just created as the first prop. Then, we’ll need to pass a configuration object with the following properties.
+
+- `type`: serves as an identifier for the component
+- `label`: shows up as its name in Makeswift
+- `props`: uses Makeswift [controls](/developer/reference/controls/checkbox) to pass props to the React component. We'll leave the `props` empty for now
+
+```tsx src/components/Accordions/Accordion.makeswift.tsx
+import { runtime } from "src/makeswift/runtime";
+
+import { Accordions } from "./";
+
+runtime.registerComponent(Accordions, {
+  type: "accordions",
+  label: "Accordions",
+  props: {},
+});
+```
+
+Learn more about [registering a component](/developer/guides/how-to/built-in-components#registering-the-component) in Makeswift.
+
+### Import the registered component
+
+Registered components need to be imported to show up in the Component Tray.
+
+We can copy the following line into our `src/makeswift/components.tsx` file, a file created during the installation step.
+
+```tsx src/makeswift/components.tsx
+import "src/components/Accordions/Accordions.makeswift";
+```
+
+Now, in Makeswift, we should see the `Accordions` component in the Component Toolbar, which we can then drag into the Canvas.
+
+Once we drag the component onto the Canvas, notice the `label` we defined in the `Accordions.makeswift.tsx` appears in the Properties Sidebar. Later, when we make the component editable in Makeswift, properties that can be edited will appear here.
+
+<Frame>
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    controls
+    title="Hello world component"
+    className="w-full aspect-video"
+    src="/images/developer/guides/components/demo-component/hello-world.mp4"
+  ></video>
+</Frame>
+
+### Build the Accordion component
+
+Let’s leverage the [Radix UI react accordion component](https://www.radix-ui.com/primitives/docs/components/accordion) to help us out. Stop your application and run the following command to install it:
+
+```
+npm install @radix-ui/react-accordion
+```
+
+In the `index.tsx` file, update your `Accordions` component to use the radix UI React accordion component. The example uses filler content for each accordion item. Each item has a title that triggers the expansion of its associated content.
+
+```tsx src/components/Accordions/index.tsx {1, 5-11, 12-19}
+import * as Accordion from "@radix-ui/react-accordion";
+
+export function Accordions() {
+  return (
+    <Accordion.Root type="single">
+      <Accordion.Item key="1" value={`item-${1}`}>
+        <Accordion.Trigger>Accordion 1</Accordion.Trigger>
+        <Accordion.Content>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+        </Accordion.Content>
+      </Accordion.Item>
+
+      <Accordion.Item key="2" value={`item-${2}`}>
+        <Accordion.Trigger>Accordion 2</Accordion.Trigger>
+        <Accordion.Content>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+        </Accordion.Content>
+      </Accordion.Item>
+    </Accordion.Root>
+  );
+}
+```
+
+Restart your development server. In the Visual Builder, when you click on the Accordion title, notice how the accordion doesn’t expand. That’s because we’re in Build mode by default. To toggle the accordion, we need to switch from Build mode to Interact mode in the Component Toolbar.
+
+<Frame>
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    controls
+    title="Build and interact mode"
+    className="w-full aspect-video"
+    src="/images/developer/guides/components/demo-component/accordion-mode.mp4"
+  ></video>
+</Frame>
+
+To make this a more realistic example, we can create an array of accordion items, then use `accordions.map` to create an `<Accordion.Item>` for each one:
+
+```tsx src/components/Accordions/index.tsx {5-14, 18-21}
+import * as Accordion from "@radix-ui/react-accordion";
+
+export function Accordions() {
+  const accordions = [
+    {
+      title: "Accordion 1",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    },
+    {
+      title: "Accordion 2",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    },
+  ];
+
+  return (
+    <Accordion.Root type="single">
+      {accordions.map((accordion, i) => (
+        <Accordion.Item key={i} value={`item-${i}`}>
+          <Accordion.Trigger>{accordion.title}</Accordion.Trigger>
+          <Accordion.Content>{accordion.content}</Accordion.Content>
+        </Accordion.Item>
+      ))}
+    </Accordion.Root>
+  );
+}
+```
+
+## Make the component editable in Makeswift
+
+Our current example hardcodes the accordion content. We’re now going to make our component editable in Makeswift by using controls to accept user input for each accordion item.
+
+### Accordion items
+
+We can access the Makeswift controls and have them return input from the user in Makeswift when we register the component in the `Accordions.makeswift.ts` file. Each control adds properties to the component that we can edit in Makeswift.
+
+We want the user to be able to edit the title for an accordion item. For this, we can use the [`TextInput`](/developer/reference/controls/text-input) control. We'll import this into the `Accordions.makeswift.ts` file and add it to our `props` object.
+
+```tsx src/components/Accordions/Accordions.makeswift.tsx {1, 11-14}
+import { TextInput } from "@makeswift/runtime/controls";
+
+import { runtime } from "src/makeswift/runtime";
+
+import { Accordions } from "./";
+
+runtime.registerComponent(Accordions, {
+  type: "accordions",
+  label: "Accordions",
+  props: {
+    accordions: TextInput({
+      label: "Title",
+      defaultValue: "Accordion title",
+    }),
+  },
+});
+```
+
+We also want the user to be able to add multiple accordion items, not just one. To support this, we can use the [`List`](/developer/reference/controls/list) control and put the `title` prop inside of it.
+
+```tsx src/components/Accordions/Accordions.makeswift.tsx {1, 11-17}
+import { TextInput, List } from "@makeswift/runtime/controls";
+
+import { runtime } from "@/makeswift/runtime";
+
+import { Accordions } from "./";
+
+runtime.registerComponent(Accordions, {
+  type: "accordions",
+  label: "Accordions",
+  props: {
+    accordions: List({
+      label: "Accordions",
+      type: TextInput({ label: "Title", defaultValue: "Accordion Title" }),
+      getItemLabel(accordionItem) {
+        return accordionItem ?? "Accordion Title";
+      },
+    }),
+  },
+});
+```
+
+Lastly, since we're going to add a `children` property to each accordion item next, we'll want to use the [`Group`](/developer/reference/controls/group) control to define each accordion item as an object. For the `Group` control we'll need to define its own props which will include the `title` props. We can also set its `preferredLayout` prop to be `Inline`.
+
+```tsx src/components/Accordions/Accordions.makeswift.tsx {3, 13-22, 24}
+import { runtime } from "src/makeswift/runtime";
+
+import { TextInput, List, Group } from "@makeswift/runtime/controls";
+
+import { Accordions } from "./";
+
+runtime.registerComponent(Accordions, {
+  type: "accordions",
+  label: "Accordions",
+  props: {
+    accordions: List({
+      label: "Accordions",
+      type: Group({
+        label: "Accordion",
+        preferredLayout: Group.Layout.Inline,
+        props: {
+          title: TextInput({
+            label: "Title",
+            defaultValue: "Accordion title",
+          }),
+        },
+      }),
+      getItemLabel(accordionItem) {
+        return accordionItem?.title || "Accordion title";
+      },
+    }),
+  },
+});
+```
+
+Next, adjust the `index.tsx` file to accept the `accordions` prop.
+
+```tsx src/components/Accordions/index.tsx {3-5, 7-9, 11, 13-16}
+import * as Accordion from "@radix-ui/react-accordion";
+
+type AccordionItem = {
+  title: string;
+};
+
+type Props = {
+  accordions: AccordionItem[];
+};
+
+export function Accordions({ accordions }: Props) {
+  if (accordions?.length === 0) return <p>There are no accordions</p>;
+
+  return (
+    <div>
+      <Accordion.Root type="single">
+        {accordions.map((accordion, i) => (
+          <Accordion.Item key={i} value={`item-${i}`}>
+            <Accordion.Trigger>
+              <div>{accordion.title}</div>
+            </Accordion.Trigger>
+
+            <Accordion.Content>Accordion content</Accordion.Content>
+          </Accordion.Item>
+        ))}
+      </Accordion.Root>
+    </div>
+  );
+}
+```
+
+Now, we can input as many accordion items as we want in Makeswift!
+
+Give it a try! Click on the element. In the properties sidebar, click the plus sign, and notice how the number of accordion items increases in the Canvas. Change the title of each accordion item in the properties sidebar and notice how the title gets rendered in the element. This happens through the Controls we passed to the component in the registration file.
+
+<Frame>
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    controls
+    title="Build and interact mode"
+    className="w-full aspect-video"
+    src="/images/developer/guides/components/demo-component/accordion-title.mp4"
+  ></video>
+</Frame>
+
+### Accordion item content
+
+Now, we can use the [`Slot`](/developer/reference/controls/slot) control to allow users to add content to each accordion item. The `Slot` control allows the user to add any elements they want as content.
+
+Here, we'll add a `Slot` control for a property called `children`:
+
+```tsx src/components/Accordions/Accordions.makeswift.tsx {3, 21}
+import { runtime } from "src/makeswift/runtime";
+
+import { List, Group, TextInput, Slot } from "@makeswift/runtime/controls";
+
+import { Accordions } from "./";
+
+runtime.registerComponent(Accordions, {
+  type: "accordions",
+  label: "Accordions",
+  props: {
+    accordions: List({
+      label: "Accordions!",
+      type: Group({
+        label: "Accordion",
+        preferredLayout: Group.Layout.Inline,
+        props: {
+          title: TextInput({
+            label: "Title",
+            defaultValue: "Accordion title",
+          }),
+          children: Slot(),
+        },
+      }),
+      getItemLabel(accordionItem) {
+        return accordionItem?.title || "Accordion title";
+      },
+    }),
+  },
+});
+```
+
+Next, adjust the `index.tsx` file to accept and render the `children` prop. Notice, the `children` prop gets rendered inside of the `<Accordion.Content>` component for each accordion item.
+
+```tsx src/components/Accordions/index.tsx {7, 33}
+import { ReactNode } from "react";
+
+import * as Accordion from "@radix-ui/react-accordion";
+
+type AccordionItem = {
+  title: string;
+  children?: ReactNode;
+};
+
+type Props = {
+  accordions: AccordionItem[];
+};
+
+export function Accordions({ accordions }: Props) {
+  if (accordions?.length === 0) return <p>There are no accordions</p>;
+
+  return (
+    <div>
+      <Accordion.Root type="single">
+        {accordions.map((accordion, i) => (
+          <Accordion.Item key={i} value={`item-${i}`}>
+            <Accordion.Trigger>
+              <div>{accordion.title}</div>
+            </Accordion.Trigger>
+
+            <Accordion.Content>{accordion.children}</Accordion.Content>
+          </Accordion.Item>
+        ))}
+      </Accordion.Root>
+    </div>
+  );
+}
+```
+
+Since the `children` prop is rendered inside of the content of the accordion, we need to expand the accordion to be able to access the slot:
+
+- Switch to Interactive mode.
+- Expand the accordion item by clicking on its title.
+- Switch back to Build mode
+- Drag a component, in this case, the text component into the slot.
+- Edit the content of the text component.
+
+<Frame>
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    controls
+    title="Build and interact mode"
+    className="w-full aspect-video"
+    src="/images/developer/guides/components/demo-component/accordion-content.mp4"
+  ></video>
+</Frame>
+
+### Styling the accordion
+
+We can allow a component’s width, margin, and alignment to be editable in Makeswift by using the [`Style`](/developer/reference/controls/style) Control.
+
+First, adjust the `Accordions.makeswift.ts` file to include a prop that accepts the `Style` control. In this case, we’ll call the prop `className`.
+
+```tsx src/components/Accordions/Accordion.makeswift.tsx {3, 11}
+import { runtime } from "src/makeswift/runtime";
+
+import {
+  List,
+  Group,
+  TextInput,
+  Slot,
+  Style,
+} from "@makeswift/runtime/controls";
+
+import { Accordions } from "./";
+
+runtime.registerComponent(Accordions, {
+  type: "accordions",
+  label: "Accordions",
+  props: {
+    className: Style(),
+    accordions: List({
+      label: "Accordions",
+      type: Group({
+        label: "Accordion",
+        preferredLayout: Group.Layout.Inline,
+        props: {
+          title: TextInput({
+            label: "Title",
+            defaultValue: "Accordion title",
+          }),
+          children: Slot(),
+        },
+      }),
+      getItemLabel(accordionItem) {
+        return accordionItem?.title || "Accordion title";
+      },
+    }),
+  },
+});
+```
+
+Next, adjust the `index.tsx` file so that the component accepts the `className` prop and use the class on the accordion component.
+
+```tsx src/components/Accordions/index.tsx {15, 23}
+import { ReactNode } from "react";
+
+import * as Accordion from "@radix-ui/react-accordion";
+
+type AccordionItem = {
+  title: string;
+  children?: ReactNode;
+};
+
+type Props = {
+  className: string;
+  accordions: AccordionItem[];
+};
+
+export function Accordions({ className, accordions }: Props) {
+  if (accordions?.length === 0) return <p>There are no accordions</p>;
+
+  return (
+    <Accordion.Root type="single" className={className}>
+      {accordions.map((accordion, i) => (
+        <Accordion.Item key={i} value={`item-${i}`}>
+          <Accordion.Trigger>
+            <div>{accordion.title}</div>
+          </Accordion.Trigger>
+
+          <Accordion.Content>{accordion.children}</Accordion.Content>
+        </Accordion.Item>
+      ))}
+    </Accordion.Root>
+  );
+}
+```
+
+By default, we can edit the width, margin, and alignment of text components in Makeswift. Since the accordion content was a text component, we don’t need to add the `Style` control for the accordion content. We could also edit the font typography for text in the accordion content.
+
+<Frame>
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    controls
+    title="Accordion styling in the Visual Builder"
+    className="w-full aspect-video"
+    src="/images/developer/guides/components/demo-component/accordion-style.mp4"
+  ></video>
+</Frame>
+
+### Tailwind CSS
+
+We can use tailwind CSS to further style the component. In the example, the CSS styling adds a border, padding, and font styling to each accordion item.
+
+```tsx src/components/Accordions/index.tsx {25-27, 32}
+import { ReactNode } from "react";
+
+import * as Accordion from "@radix-ui/react-accordion";
+
+type AccordionItem = {
+  title: string;
+  children?: ReactNode;
+};
+
+type Props = {
+  className: string;
+  accordions: AccordionItem[];
+};
+
+export function Accordions({ className, accordions }: Props) {
+  if (accordions?.length === 0) return <p>There are no accordions</p>;
+
+  return (
+    <Accordion.Root type="single" className={className}>
+      {accordions.map((accordion, i) => (
+        <Accordion.Item key={i} value={`item-${i}`} className="border-b-2 py-2">
+          <Accordion.Trigger className="py-4">
+            <div className="font-extrabold uppercase">{accordion.title}</div>
+          </Accordion.Trigger>
+
+          <Accordion.Content className="pb-6">
+            {accordion.children}
+          </Accordion.Content>
+        </Accordion.Item>
+      ))}
+    </Accordion.Root>
+  );
+}
+```
+
+Here’s what the final result looks like.
+
+<Frame>
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    controls
+    title="Accordion styling in the Visual Builder"
+    className="w-full aspect-video"
+    src="/images/developer/guides/components/demo-component/final-accordion.mp4"
+  ></video>
+</Frame>
+
+## Next steps
+
+There’s much more we can edit in Makeswift! Check out the [list of Controls](https://docs.makeswift.com/developer/concepts#controls) in our documentation.
