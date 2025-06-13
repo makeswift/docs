@@ -133,6 +133,13 @@
             "group": "Guides",
             "pages": [
               {
+                "group": "Components",
+                "pages": [
+                  "developer/guides/components/built-in-components",
+                  "developer/guides/components/demo-component"
+                ]
+              },
+              {
                 "group": "Localization",
                 "pages": [
                   "developer/app-router/localization",
@@ -151,7 +158,6 @@
               {
                 "group": "How to",
                 "pages": [
-                  "developer/guides/how-to/built-in-components",
                   "developer/guides/how-to/setting-cookies"
                 ]
               },
