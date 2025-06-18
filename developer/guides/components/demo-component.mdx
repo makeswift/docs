@@ -102,25 +102,25 @@ npm install @radix-ui/react-accordion
 In the `index.tsx` file, update your `Accordion` component to use the radix UI React accordion component. The example uses filler content for each accordion item. Each item has a title that triggers the expansion of its associated content.
 
 ```tsx src/components/Accordion/index.tsx {1, 5-11, 12-19}
-import * as Accordion from "@radix-ui/react-accordion";
+import * as BaseAccordion from "@radix-ui/react-accordion";
 
 export function Accordion() {
   return (
-    <Accordion.Root type="single">
-      <Accordion.Item key="1" value={`item-${1}`}>
-        <Accordion.Trigger>Accordion 1</Accordion.Trigger>
-        <Accordion.Content>
+    <BaseAccordion.Root type="single">
+      <BaseAccordion.Item key="1" value={`item-${1}`}>
+        <BaseAccordion.Trigger>Accordion 1</BaseAccordion.Trigger>
+        <BaseAccordion.Content>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit
-        </Accordion.Content>
-      </Accordion.Item>
+        </BaseAccordion.Content>
+      </BaseAccordion.Item>
 
-      <Accordion.Item key="2" value={`item-${2}`}>
-        <Accordion.Trigger>Accordion 2</Accordion.Trigger>
-        <Accordion.Content>
+      <BaseAccordion.Item key="2" value={`item-${2}`}>
+        <BaseAccordion.Trigger>Accordion 2</BaseAccordion.Trigger>
+        <BaseAccordion.Content>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit
-        </Accordion.Content>
-      </Accordion.Item>
-    </Accordion.Root>
+        </BaseAccordion.Content>
+      </BaseAccordion.Item>
+    </BaseAccordion.Root>
   );
 }
 ```
@@ -143,7 +143,7 @@ Restart your development server. You'll see your changes reflected in the Makesw
 To make this a more realistic example, we can create an array of accordion items, then use `accordions.map` to create an `<Accordion.Item>` for each one:
 
 ```tsx src/components/Accordion/index.tsx {5-14, 18-21}
-import * as Accordion from "@radix-ui/react-accordion";
+import * as BaseAccordion from "@radix-ui/react-accordion";
 
 export function Accordion() {
   const accordions = [
@@ -158,14 +158,14 @@ export function Accordion() {
   ];
 
   return (
-    <Accordion.Root type="single">
+    <BaseAccordion.Root type="single">
       {accordions.map((accordion, i) => (
-        <Accordion.Item key={i} value={`item-${i}`}>
-          <Accordion.Trigger>{accordion.title}</Accordion.Trigger>
-          <Accordion.Content>{accordion.content}</Accordion.Content>
-        </Accordion.Item>
+        <BaseAccordion.Item key={i} value={`item-${i}`}>
+          <BaseAccordion.Trigger>{accordion.title}</BaseAccordion.Trigger>
+          <BaseAccordion.Content>{accordion.content}</BaseAccordion.Content>
+        </BaseAccordion.Item>
       ))}
-    </Accordion.Root>
+    </BaseAccordion.Root>
   );
 }
 ```
@@ -356,7 +356,7 @@ Next, adjust the `index.tsx` file to accept and render the `children` prop. Noti
 ```tsx src/components/Accordion/index.tsx {7, 33}
 import { ReactNode } from "react";
 
-import * as Accordion from "@radix-ui/react-accordion";
+import * as BaseAccordion from "@radix-ui/react-accordion";
 
 type AccordionItem = {
   title: string;
@@ -372,17 +372,17 @@ export function Accordion({ accordions }: Props) {
 
   return (
     <div>
-      <Accordion.Root type="single">
+      <BaseAccordion.Root type="single">
         {accordions.map((accordion, i) => (
-          <Accordion.Item key={i} value={`item-${i}`}>
-            <Accordion.Trigger>
+          <BaseAccordion.Item key={i} value={`item-${i}`}>
+            <BaseAccordion.Trigger>
               <div>{accordion.title}</div>
-            </Accordion.Trigger>
+            </BaseAccordion.Trigger>
 
-            <Accordion.Content>{accordion.children}</Accordion.Content>
-          </Accordion.Item>
+            <BaseAccordion.Content>{accordion.children}</BaseAccordion.Content>
+          </BaseAccordion.Item>
         ))}
-      </Accordion.Root>
+      </BaseAccordion.Root>
     </div>
   );
 }
@@ -459,7 +459,7 @@ Next, adjust the `index.tsx` file so that the component accepts the `className` 
 ```tsx src/components/Accordion/index.tsx {15, 23}
 import { ReactNode } from "react";
 
-import * as Accordion from "@radix-ui/react-accordion";
+import * as BaseAccordion from "@radix-ui/react-accordion";
 
 type AccordionItem = {
   title: string;
@@ -475,17 +475,17 @@ export function Accordion({ className, accordions }: Props) {
   if (accordions?.length === 0) return <p>There are no accordions</p>;
 
   return (
-    <Accordion.Root type="single" className={className}>
+    <BaseAccordion.Root type="single" className={className}>
       {accordions.map((accordion, i) => (
-        <Accordion.Item key={i} value={`item-${i}`}>
-          <Accordion.Trigger>
+        <BaseAccordion.Item key={i} value={`item-${i}`}>
+          <BaseAccordion.Trigger>
             <div>{accordion.title}</div>
-          </Accordion.Trigger>
+          </BaseAccordion.Trigger>
 
-          <Accordion.Content>{accordion.children}</Accordion.Content>
-        </Accordion.Item>
+          <BaseAccordion.Content>{accordion.children}</BaseAccordion.Content>
+        </BaseAccordion.Item>
       ))}
-    </Accordion.Root>
+    </BaseAccordion.Root>
   );
 }
 ```
@@ -512,7 +512,7 @@ We can use tailwind CSS to further style the component. In the example, the CSS 
 ```tsx src/components/Accordion/index.tsx {25-27, 32}
 import { ReactNode } from "react";
 
-import * as Accordion from "@radix-ui/react-accordion";
+import * as BaseAccordion from "@radix-ui/react-accordion";
 
 type AccordionItem = {
   title: string;
@@ -528,19 +528,23 @@ export function Accordion({ className, accordions }: Props) {
   if (accordions?.length === 0) return <p>There are no accordions</p>;
 
   return (
-    <Accordion.Root type="single" className={className}>
+    <BaseAccordion.Root type="single" className={className}>
       {accordions.map((accordion, i) => (
-        <Accordion.Item key={i} value={`item-${i}`} className="border-b-2 py-2">
-          <Accordion.Trigger className="py-4">
+        <BaseAccordion.Item
+          key={i}
+          value={`item-${i}`}
+          className="border-b-2 py-2"
+        >
+          <BaseAccordion.Trigger className="py-4">
             <div className="font-extrabold uppercase">{accordion.title}</div>
-          </Accordion.Trigger>
+          </BaseAccordion.Trigger>
 
-          <Accordion.Content className="pb-6">
+          <BaseAccordion.Content className="pb-6">
             {accordion.children}
-          </Accordion.Content>
-        </Accordion.Item>
+          </BaseAccordion.Content>
+        </BaseAccordion.Item>
       ))}
-    </Accordion.Root>
+    </BaseAccordion.Root>
   );
 }
 ```
