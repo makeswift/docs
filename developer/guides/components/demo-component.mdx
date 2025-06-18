@@ -174,11 +174,47 @@ export function Accordion() {
 
 Our current example hardcodes the accordion content. We’re now going to make our component editable in Makeswift by using controls to accept user input for each accordion item.
 
+Makeswift controls allow you to map component props to UI elements—such as inputs, lists, and panels— that appear in the Properties Sidebar when the component is selected.
+
 ### Accordion items
 
-Makeswift controls allow you to map component props to UI elements—such as inputs, lists, and panels—that appear in the Properties Sidebar when the component is selected.
+We want the user to be able to edit the title for an accordion item.
 
-We want the user to be able to edit the title for an accordion item. For this, we can use the [`TextInput`](/developer/reference/controls/text-input) control. We'll import this into the `Accordion.makeswift.ts` file and add it to our `props` object.
+First, adjust the `index.tsx` file so that the component receives the `accordions` prop. The `accordions` prop should receive the title for each item from the Properties Sidebar as an array of strings.
+
+```tsx src/components/Accordion/index.tsx {3-5, 7-9, 11, 13-16}
+import * as BaseAccordion from "@radix-ui/react-accordion";
+
+type Props = {
+  accordions: string[];
+};
+
+export function Accordion({ accordions }: Props) {
+  if (accordions?.length === 0) return <p>There are no accordions</p>;
+
+  return (
+    <div>
+      <BaseAccordion.Root type="single">
+        {accordions.map((accordion, i) => (
+          <BaseAccordion.Item key={i} value={`item-${i}`}>
+            <BaseAccordion.Trigger>
+              <div>{accordion}</div>
+            </BaseAccordion.Trigger>
+
+            <BaseAccordion.Content>Accordion content</BaseAccordion.Content>
+          </BaseAccordion.Item>
+        ))}
+      </BaseAccordion.Root>
+    </div>
+  );
+}
+```
+
+Next, we'll pass the `accordions` prop to the component in the `Accordion.makeswift.ts` file.
+
+Let's start by using the [`TextInput`](/developer/reference/controls/text-input) control to define the prop. This makes the prop editable via a text field in Makeswift.
+
+To use the control, we need to import it into the `Accordion.makeswift.ts` file before adding it to the prop.
 
 ```tsx src/components/Accordion/Accordion.makeswift.tsx {1, 11-14}
 import { TextInput } from "@makeswift/runtime/controls";
@@ -199,7 +235,9 @@ runtime.registerComponent(Accordion, {
 });
 ```
 
-We also want the user to be able to add multiple accordion items, not just one. To support this, we can use the [`List`](/developer/reference/controls/list) control and put the `title` prop inside of it.
+At the moment, the `accordions` prop is receiving only one title from Makeswift. We're passing the prop as a string from the `TextInput` control, but we actually want the user to be able to add multiple accordion items, not just one.
+
+To support this, we can add the [`List`](/developer/reference/controls/list) control and put the title inside of it. Once you use the `List` control to define the `accordions` prop, the prop should receive an array of titles instead.
 
 ```tsx src/components/Accordion/Accordion.makeswift.tsx {1, 11-17}
 import { TextInput, List } from "@makeswift/runtime/controls";
@@ -222,6 +260,27 @@ runtime.registerComponent(Accordion, {
   },
 });
 ```
+
+So far, we've adjusted the `Accordion` component to receive input from Makeswift through the `accordions` prop. We've registered the `accordions` prop as an array of accordion items that the user inputs in Makeswift.
+
+Now, we can input as many accordion items as we want in Makeswift! Once you refresh the page, you should be able to input accordion items and edit their titles in the Properties Sidebar after you click on the component.
+
+Give it a try! Click on the element. In the properties sidebar, click the plus sign, and notice how the number of accordion items increases in the Canvas. Change the title of each accordion item in the properties sidebar and notice how the title gets rendered in the element. This happens through the Controls we passed to the component in the registration file.
+
+<Frame>
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    controls
+    title="Build and interact mode"
+    className="w-full aspect-video"
+    src="/images/developer/guides/components/demo-component/accordion-title.mp4"
+  ></video>
+</Frame>
+
+### Accordion item content
 
 Lastly, since we're going to add a `children` property to each accordion item next, we'll want to use the [`Group`](/developer/reference/controls/group) control to define each accordion item as an object. For the `Group` control we'll need to define its own props which will include the `title` props. We can also set its `preferredLayout` prop to be `Inline`.
 
@@ -255,59 +314,6 @@ runtime.registerComponent(Accordion, {
   },
 });
 ```
-
-Next, adjust the `index.tsx` file to accept the `accordions` prop.
-
-```tsx src/components/Accordion/index.tsx {3-5, 7-9, 11, 13-16}
-import * as Accordion from "@radix-ui/react-accordion";
-
-type AccordionItem = {
-  title: string;
-};
-
-type Props = {
-  accordions: AccordionItem[];
-};
-
-export function Accordion({ accordions }: Props) {
-  if (accordions?.length === 0) return <p>There are no accordions</p>;
-
-  return (
-    <div>
-      <Accordion.Root type="single">
-        {accordions.map((accordion, i) => (
-          <Accordion.Item key={i} value={`item-${i}`}>
-            <Accordion.Trigger>
-              <div>{accordion.title}</div>
-            </Accordion.Trigger>
-
-            <Accordion.Content>Accordion content</Accordion.Content>
-          </Accordion.Item>
-        ))}
-      </Accordion.Root>
-    </div>
-  );
-}
-```
-
-Now, we can input as many accordion items as we want in Makeswift!
-
-Give it a try! Click on the element. In the properties sidebar, click the plus sign, and notice how the number of accordion items increases in the Canvas. Change the title of each accordion item in the properties sidebar and notice how the title gets rendered in the element. This happens through the Controls we passed to the component in the registration file.
-
-<Frame>
-  <video
-    autoPlay
-    muted
-    loop
-    playsInline
-    controls
-    title="Build and interact mode"
-    className="w-full aspect-video"
-    src="/images/developer/guides/components/demo-component/accordion-title.mp4"
-  ></video>
-</Frame>
-
-### Accordion item content
 
 Now, we can use the [`Slot`](/developer/reference/controls/slot) control to allow users to add content to each accordion item. The `Slot` control allows the user to add any elements they want as content.
 
