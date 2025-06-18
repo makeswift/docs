@@ -457,9 +457,45 @@ Since the `children` prop is rendered inside of the content of the accordion, we
 
 ### Styling the accordion
 
-We can allow a component’s width, margin, and alignment to be editable in Makeswift by using the [`Style`](/developer/reference/controls/style) Control.
+We can edit a component’s width, margin, and alignment in Makeswift by using the [`Style`](/developer/reference/controls/style) Control.
 
-First, adjust the `Accordion.makeswift.ts` file to include a prop that accepts the `Style` control. In this case, we’ll call the prop `className`.
+First, update the component in the `index.tsx` file so that it receives the `className` prop and use the class on the accordion component.
+
+```tsx src/components/Accordion/index.tsx {15, 23}
+import { ReactNode } from "react";
+
+import * as BaseAccordion from "@radix-ui/react-accordion";
+
+type AccordionItem = {
+  title: string;
+  children?: ReactNode;
+};
+
+type Props = {
+  className: string;
+  accordions: AccordionItem[];
+};
+
+export function Accordion({ className, accordions }: Props) {
+  if (accordions?.length === 0) return <p>There are no accordions</p>;
+
+  return (
+    <BaseAccordion.Root type="single" className={className}>
+      {accordions.map((accordion, i) => (
+        <BaseAccordion.Item key={i} value={`item-${i}`}>
+          <BaseAccordion.Trigger>
+            <div>{accordion.title}</div>
+          </BaseAccordion.Trigger>
+
+          <BaseAccordion.Content>{accordion.children}</BaseAccordion.Content>
+        </BaseAccordion.Item>
+      ))}
+    </BaseAccordion.Root>
+  );
+}
+```
+
+Next, we'll pass the `className` prop to the component in the `Accordion.makeswift.ts` file. The prop should use the `Style` control.
 
 ```tsx src/components/Accordion/Accordion.makeswift.tsx {3, 11}
 import { runtime } from "src/makeswift/runtime";
@@ -498,42 +534,6 @@ runtime.registerComponent(Accordion, {
     }),
   },
 });
-```
-
-Next, adjust the `index.tsx` file so that the component accepts the `className` prop and use the class on the accordion component.
-
-```tsx src/components/Accordion/index.tsx {15, 23}
-import { ReactNode } from "react";
-
-import * as BaseAccordion from "@radix-ui/react-accordion";
-
-type AccordionItem = {
-  title: string;
-  children?: ReactNode;
-};
-
-type Props = {
-  className: string;
-  accordions: AccordionItem[];
-};
-
-export function Accordion({ className, accordions }: Props) {
-  if (accordions?.length === 0) return <p>There are no accordions</p>;
-
-  return (
-    <BaseAccordion.Root type="single" className={className}>
-      {accordions.map((accordion, i) => (
-        <BaseAccordion.Item key={i} value={`item-${i}`}>
-          <BaseAccordion.Trigger>
-            <div>{accordion.title}</div>
-          </BaseAccordion.Trigger>
-
-          <BaseAccordion.Content>{accordion.children}</BaseAccordion.Content>
-        </BaseAccordion.Item>
-      ))}
-    </BaseAccordion.Root>
-  );
-}
 ```
 
 By default, we can edit the width, margin, and alignment of text components in Makeswift. Since the accordion content was a text component, we don’t need to add the `Style` control for the accordion content. We could also edit the font typography for text in the accordion content.
