@@ -282,12 +282,51 @@ Give it a try! Click on the element. In the properties sidebar, click the plus s
 
 ### Accordion item content
 
-Lastly, since we're going to add a `children` property to each accordion item next, we'll want to use the [`Group`](/developer/reference/controls/group) control to define each accordion item as an object. For the `Group` control we'll need to define its own props which will include the `title` props. We can also set its `preferredLayout` prop to be `Inline`.
+The goal is to let you edit not just the accordion item titles, but also the body content in Makeswift.
 
-```tsx src/components/Accordion/Accordion.makeswift.tsx {3, 13-22, 24}
-import { runtime } from "src/makeswift/runtime";
+To do this, adjust the `index.tsx` file so that the component receives both a `title` and `content` property for each item in the `accordions` prop.
 
+```tsx src/components/Accordion/index.tsx
+import * as BaseAccordion from "@radix-ui/react-accordion";
+
+type AccordionItem = {
+  title: string;
+  content: string;
+};
+
+type Props = {
+  accordions: AccordionItem[];
+};
+
+export function Accordion({ accordions }: Props) {
+  if (accordions?.length === 0) return <p>There are no accordions</p>;
+
+  return (
+    <div>
+      <BaseAccordion.Root type="single">
+        {accordions.map((accordion, i) => (
+          <BaseAccordion.Item key={i} value={`item-${i}`}>
+            <BaseAccordion.Trigger>
+              <div>{accordion.title}</div>
+            </BaseAccordion.Trigger>
+
+            <BaseAccordion.Content>{accordion.content}</BaseAccordion.Content>
+          </BaseAccordion.Item>
+        ))}
+      </BaseAccordion.Root>
+    </div>
+  );
+}
+```
+
+Next, we'll need to update the `accordions` prop in the `Accordion.makeswift.ts` file so that it includes not just the title, but also the content, for each accordion item.
+
+To support this, we can use the [`Group`](/developer/reference/controls/group) control to define each accordion item as an object. The `Group` control requires that you define the object properties, in our case, the title and content, as its own props. Once you use the `Group` control, the prop should receive an array of objects instead.
+
+```tsx src/components/Accordion/Accordion.makeswift.tsx
 import { TextInput, List, Group } from "@makeswift/runtime/controls";
+
+import { runtime } from "@/makeswift/runtime";
 
 import { Accordion } from "./";
 
@@ -305,6 +344,11 @@ runtime.registerComponent(Accordion, {
             label: "Title",
             defaultValue: "Accordion title",
           }),
+          content: TextInput({
+            label: "Content",
+            defaultValue:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          }),
         },
       }),
       getItemLabel(accordionItem) {
@@ -315,9 +359,11 @@ runtime.registerComponent(Accordion, {
 });
 ```
 
-Now, we can use the [`Slot`](/developer/reference/controls/slot) control to allow users to add content to each accordion item. The `Slot` control allows the user to add any elements they want as content.
+[Video here]
 
-Here, we'll add a `Slot` control for a property called `children`:
+We can also use richer content (e.g. images) by switching the item body to use the [`Slot`](/developer/reference/controls/slot) control.
+
+For convention, let's also change the name of the prop to `children`.
 
 ```tsx src/components/Accordion/Accordion.makeswift.tsx {3, 21}
 import { runtime } from "src/makeswift/runtime";
@@ -351,7 +397,7 @@ runtime.registerComponent(Accordion, {
 });
 ```
 
-Next, adjust the `index.tsx` file to accept and render the `children` prop. Notice, the `children` prop gets rendered inside of the `<Accordion.Content>` component for each accordion item.
+Next, adjust the `index.tsx` file to receive the `children` prop.
 
 ```tsx src/components/Accordion/index.tsx {7, 33}
 import { ReactNode } from "react";
