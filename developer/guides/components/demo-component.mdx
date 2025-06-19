@@ -142,7 +142,7 @@ Restart your development server. You'll see your changes reflected in the Makesw
 
 To make this a more realistic example, we can create an array of accordion items, then use `accordions.map` to create an `<Accordion.Item>` for each one:
 
-```tsx src/components/Accordion/index.tsx {5-14, 18-21}
+```tsx src/components/Accordion/index.tsx {4-14, 17-22}
 import * as BaseAccordion from "@radix-ui/react-accordion";
 
 export function Accordion() {
@@ -178,11 +178,11 @@ Makeswift controls allow you to map component props to UI elements—such as inp
 
 ### Accordion items
 
-We want the user to be able to edit the title for an accordion item.
+We want you to be able to edit the title for each accordion item in the component and input as many accordion items as you want in Makeswift.
 
 First, adjust the `index.tsx` file so that the component receives the `accordions` prop. The `accordions` prop should receive the title for each item from the Properties Sidebar as an array of strings.
 
-```tsx src/components/Accordion/index.tsx {3-5, 7-9, 11, 13-16}
+```tsx src/components/Accordion/index.tsx {3-5, 7-9, 11, 16, 19}
 import * as BaseAccordion from "@radix-ui/react-accordion";
 
 type Props = {
@@ -201,7 +201,7 @@ export function Accordion({ accordions }: Props) {
               <div>{accordion}</div>
             </BaseAccordion.Trigger>
 
-            <BaseAccordion.Content>Accordion content</BaseAccordion.Content>
+            <BaseAccordion.Content>Accordion Content</BaseAccordion.Content>
           </BaseAccordion.Item>
         ))}
       </BaseAccordion.Root>
@@ -214,7 +214,7 @@ Next, we'll pass the `accordions` prop to the component in the `Accordion.makesw
 
 Let's start by using the [`TextInput`](/developer/reference/controls/text-input) control to define the prop. This makes the prop editable via a text field in Makeswift.
 
-To use the control, we need to import it into the `Accordion.makeswift.ts` file before adding it to the prop.
+To use the control, we need to import it into the `Accordion.makeswift.ts` file and then add it to the prop.
 
 ```tsx src/components/Accordion/Accordion.makeswift.tsx {1, 11-14}
 import { TextInput } from "@makeswift/runtime/controls";
@@ -229,7 +229,7 @@ runtime.registerComponent(Accordion, {
   props: {
     accordions: TextInput({
       label: "Title",
-      defaultValue: "Accordion title",
+      defaultValue: "Accordion Title",
     }),
   },
 });
@@ -237,7 +237,7 @@ runtime.registerComponent(Accordion, {
 
 At the moment, the `accordions` prop is receiving only one title from Makeswift. We're passing the prop as a string from the `TextInput` control, but we actually want the user to be able to add multiple accordion items, not just one.
 
-To support this, we can add the [`List`](/developer/reference/controls/list) control and put the title inside of it. Once you use the `List` control to define the `accordions` prop, the prop should receive an array of titles instead.
+To support this, we can add the [`List`](/developer/reference/controls/list) control and put the title inside of it. Once you use the `List` control to define the `accordions` prop, the prop should receive an array of strings instead.
 
 ```tsx src/components/Accordion/Accordion.makeswift.tsx {1, 11-17}
 import { TextInput, List } from "@makeswift/runtime/controls";
@@ -261,11 +261,9 @@ runtime.registerComponent(Accordion, {
 });
 ```
 
-So far, we've adjusted the `Accordion` component to receive input from Makeswift through the `accordions` prop. We've registered the `accordions` prop as an array of accordion items that the user inputs in Makeswift.
+To recap, we've adjusted the `Accordion` component to receive input from Makeswift through the `accordions` prop.
 
-Now, we can input as many accordion items as we want in Makeswift! Once you refresh the page, you should be able to input accordion items and edit their titles in the Properties Sidebar after you click on the component.
-
-Give it a try! Click on the element. In the properties sidebar, click the plus sign, and notice how the number of accordion items increases in the Canvas. Change the title of each accordion item in the properties sidebar and notice how the title gets rendered in the element. This happens through the Controls we passed to the component in the registration file.
+Once you refresh the page, you should be able to input accordion items and edit their titles in the Properties Sidebar after you click on the component.
 
 <Frame>
   <video
@@ -274,7 +272,7 @@ Give it a try! Click on the element. In the properties sidebar, click the plus s
     loop
     playsInline
     controls
-    title="Build and interact mode"
+    title="Accordion title"
     className="w-full aspect-video"
     src="/images/developer/guides/components/demo-component/accordion-title.mp4"
   ></video>
@@ -286,7 +284,7 @@ The goal is to let you edit not just the accordion item titles, but also the bod
 
 To do this, adjust the `index.tsx` file so that the component receives both a `title` and `content` property for each item in the `accordions` prop.
 
-```tsx src/components/Accordion/index.tsx
+```tsx src/components/Accordion/index.tsx {3-10, 21, 24}
 import * as BaseAccordion from "@radix-ui/react-accordion";
 
 type AccordionItem = {
@@ -323,7 +321,7 @@ Next, we'll need to update the `accordions` prop in the `Accordion.makeswift.ts`
 
 To support this, we can use the [`Group`](/developer/reference/controls/group) control to define each accordion item as an object. The `Group` control requires that you define the object properties, in our case, the title and content, as its own props. Once you use the `Group` control, the prop should receive an array of objects instead.
 
-```tsx src/components/Accordion/Accordion.makeswift.tsx
+```tsx src/components/Accordion/Accordion.makeswift.tsx {1, 13-26}
 import { TextInput, List, Group } from "@makeswift/runtime/controls";
 
 import { runtime } from "@/makeswift/runtime";
@@ -342,17 +340,16 @@ runtime.registerComponent(Accordion, {
         props: {
           title: TextInput({
             label: "Title",
-            defaultValue: "Accordion title",
+            defaultValue: "Accordion Title",
           }),
           content: TextInput({
             label: "Content",
-            defaultValue:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+            defaultValue: "Accordion Content",
           }),
         },
       }),
       getItemLabel(accordionItem) {
-        return accordionItem?.title || "Accordion title";
+        return accordionItem?.title || "Accordion Title";
       },
     }),
   },
@@ -397,13 +394,13 @@ runtime.registerComponent(Accordion, {
         props: {
           title: TextInput({
             label: "Title",
-            defaultValue: "Accordion title",
+            defaultValue: "Accordion Title",
           }),
           children: Slot(),
         },
       }),
       getItemLabel(accordionItem) {
-        return accordionItem?.title || "Accordion title";
+        return accordionItem?.title || "Accordion Title";
       },
     }),
   },
@@ -412,7 +409,7 @@ runtime.registerComponent(Accordion, {
 
 Next, adjust the `index.tsx` file to receive the `children` prop.
 
-```tsx src/components/Accordion/index.tsx {7, 33}
+```tsx src/components/Accordion/index.tsx {7, 26}
 import { ReactNode } from "react";
 
 import * as BaseAccordion from "@radix-ui/react-accordion";
@@ -474,7 +471,7 @@ We can edit a component’s width, margin, and alignment in Makeswift by using t
 
 First, update the component in the `index.tsx` file so that it receives the `className` prop and use the class on the accordion component.
 
-```tsx src/components/Accordion/index.tsx {15, 23}
+```tsx src/components/Accordion/index.tsx {11, 15, 19}
 import { ReactNode } from "react";
 
 import * as BaseAccordion from "@radix-ui/react-accordion";
@@ -510,7 +507,7 @@ export function Accordion({ className, accordions }: Props) {
 
 Next, we'll pass the `className` prop to the component in the `Accordion.makeswift.ts` file. The prop should use the `Style` control.
 
-```tsx src/components/Accordion/Accordion.makeswift.tsx {3, 11}
+```tsx src/components/Accordion/Accordion.makeswift.tsx {8, 17}
 import { runtime } from "src/makeswift/runtime";
 
 import {
@@ -536,20 +533,20 @@ runtime.registerComponent(Accordion, {
         props: {
           title: TextInput({
             label: "Title",
-            defaultValue: "Accordion title",
+            defaultValue: "Accordion Title",
           }),
           children: Slot(),
         },
       }),
       getItemLabel(accordionItem) {
-        return accordionItem?.title || "Accordion title";
+        return accordionItem?.title || "Accordion Title";
       },
     }),
   },
 });
 ```
 
-By default, we can edit the width, margin, and alignment of text components in Makeswift. Since the accordion content was a text component, we don’t need to add the `Style` control for the accordion content. We could also edit the font typography for text in the accordion content.
+By default, we can edit the width, margin, and alignment of text components in Makeswift. Since the accordion content was a text component, we didn't need to add the `Style` control for the accordion content. We could also edit the font typography for text in the accordion content.
 
 <Frame>
   <video
@@ -568,7 +565,7 @@ By default, we can edit the width, margin, and alignment of text components in M
 
 We can use tailwind CSS to further style the component. In the example, the CSS styling adds a border, padding, and font styling to each accordion item.
 
-```tsx src/components/Accordion/index.tsx {25-27, 32}
+```tsx src/components/Accordion/index.tsx {24, 26-27, 30}
 import { ReactNode } from "react";
 
 import * as BaseAccordion from "@radix-ui/react-accordion";
