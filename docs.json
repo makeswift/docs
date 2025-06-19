@@ -133,10 +133,10 @@
             "group": "Guides",
             "pages": [
               {
-                "group": "Components",
+                "group": "Building Components",
                 "pages": [
-                  "developer/guides/components/built-in-components",
-                  "developer/guides/components/demo-component"
+                  "developer/guides/components/card",
+                  "developer/guides/components/accordion"
                 ]
               },
               {
