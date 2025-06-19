@@ -359,7 +359,20 @@ runtime.registerComponent(Accordion, {
 });
 ```
 
-[Video here]
+We can now edit not only the title, but also the content for each accordion item.
+
+<Frame>
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    controls
+    title="Accordion content"
+    className="w-full aspect-video"
+    src="/images/developer/guides/components/demo-component/accordion-content-1.mp4"
+  ></video>
+</Frame>
 
 We can also use richer content (e.g. images) by switching the item body to use the [`Slot`](/developer/reference/controls/slot) control.
 
@@ -449,9 +462,9 @@ Since the `children` prop is rendered inside of the content of the accordion, we
     loop
     playsInline
     controls
-    title="Build and interact mode"
+    title="Accordion content with Slot control"
     className="w-full aspect-video"
-    src="/images/developer/guides/components/demo-component/accordion-content.mp4"
+    src="/images/developer/guides/components/demo-component/accordion-content-2.mp4"
   ></video>
 </Frame>
 
