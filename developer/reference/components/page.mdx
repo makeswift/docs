@@ -12,6 +12,10 @@ import AppCatchAllExample from "/snippets/app-router/catch-all.mdx";
   The Makeswift snapshot to render.
 </ParamField>
 
+<ParamField query="metadata" type="boolean | PageMetadataSettings" default="true">
+  Controls which page metadata from Makeswift are rendered in the `<head>` of the page.
+</ParamField>
+
 ## Example
 
 ### App Router
@@ -25,3 +29,42 @@ The following example sets up a [catch all dynamic route](https://nextjs.org/doc
 The following example sets up a [catch all dynamic route](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#optional-catch-all-segments) in the pages router under `[[...path]].tsx`.
 
 <PagesCatchAllExample />
+
+### Rendering metadata
+
+By default, the `<Page>` component will render metadata tags in the `<head>` of your page with data provided in the visual builder, such as the page title, description, social image, etc. If you have other sources
+of truth for your page metadata, you can avoid collisions with Makeswift by controlling which fields are rendered with the `metadata` prop. By default, all metadata from Makeswift is rendered.
+
+You can pass a boolean to disable or enable all metadata fields:
+
+```tsx
+// Disable all Makeswift metadata fields
+<Page snapshot={snapshot} metadata={false} />
+```
+
+For more granular control, you can pass a `PageMetadataSettings` object to specify which metadata fields should be rendered:
+
+```ts
+type PageMetadataSettings = {
+  title?: boolean
+  description?: boolean
+  keywords?: boolean
+  socialImage?: boolean
+  canonicalUrl?: boolean
+  indexingBlocked?: boolean
+  favicon?: boolean
+}
+```
+
+Pass `true` for a field to render it, or `false` to not render it. Omitting a field will result in it not being rendered. For example, to only render the `title` and `description` data from Makeswift:
+
+```tsx
+<Page snapshot={snapshot} metadata={{title: true, description: true }} />
+```
+
+## Changelog
+
+| Version                                                                                          | Changes                               |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------- |
+| [`v0.23.3`](https://github.com/makeswift/makeswift/releases/tag/%40makeswift%2Fruntime%400.23.3) | Added `metadata` prop                 |
+| [`v0.0.1`](https://github.com/makeswift/makeswift/releases/tag/%40makeswift%2Fruntime%400.0.1)   | Released `<Page>` component           |
