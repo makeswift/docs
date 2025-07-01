@@ -13,7 +13,7 @@ import AppCatchAllExample from "/snippets/app-router/catch-all.mdx";
 </ParamField>
 
 <ParamField query="metadata" type="boolean | PageMetadataSettings" default="true">
-  Controls which page metadata from Makeswift are rendered in the `<head>` of the page.
+  Controls which page metadata from Makeswift is rendered in the `<head>` of the page. More on this in the [Rendering metadata](#rendering-metadata) section below.
 </ParamField>
 
 ## Example
@@ -32,39 +32,39 @@ The following example sets up a [catch all dynamic route](https://nextjs.org/doc
 
 ### Rendering metadata
 
-By default, the `<Page>` component will render metadata tags in the `<head>` of your page with data provided in the visual builder, such as the page title, description, social image, etc. If you have other sources
+By default, the `<Page>` component will render metadata tags in the `<head>` of your page with data provided in the Visual Builder, such as the page title, description, social image, etc. If you have other sources
 of truth for your page metadata, you can avoid collisions with Makeswift by controlling which fields are rendered with the `metadata` prop. By default, all metadata from Makeswift is rendered.
 
-You can pass a boolean to disable or enable all metadata fields:
+You can pass a boolean to disable or enable all metadata fields. By passing `false`, you can disable all Makeswift metadata fields from being rendered. This implies that you will manually handle rendering metadata on your own.
 
 ```tsx
 // Disable all Makeswift metadata fields
 <Page snapshot={snapshot} metadata={false} />
 ```
 
-For more granular control, you can pass a `PageMetadataSettings` object to specify which metadata fields should be rendered:
+For more granular control, you can pass a `PageMetadataSettings` object to specify which metadata fields should be rendered. Each property is a boolean that indicates whether to render that specific metadata field.
 
 ```ts
 type PageMetadataSettings = {
-  title?: boolean
-  description?: boolean
-  keywords?: boolean
-  socialImage?: boolean
-  canonicalUrl?: boolean
-  indexingBlocked?: boolean
-  favicon?: boolean
-}
+  title?: boolean;
+  description?: boolean;
+  keywords?: boolean;
+  socialImage?: boolean;
+  canonicalUrl?: boolean;
+  indexingBlocked?: boolean;
+  favicon?: boolean;
+};
 ```
 
-Pass `true` for a field to render it, or `false` to not render it. Omitting a field will result in it not being rendered. For example, to only render the `title` and `description` data from Makeswift:
+Additionally, omitting a field will result in it not being rendered. For example, to only render the `title` and `description` data from Makeswift use the following:
 
 ```tsx
-<Page snapshot={snapshot} metadata={{title: true, description: true }} />
+<Page snapshot={snapshot} metadata={{ title: true, description: true }} />
 ```
 
 ## Changelog
 
-| Version                                                                                          | Changes                               |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------- |
-| [`v0.23.3`](https://github.com/makeswift/makeswift/releases/tag/%40makeswift%2Fruntime%400.23.3) | Added `metadata` prop                 |
-| [`v0.0.1`](https://github.com/makeswift/makeswift/releases/tag/%40makeswift%2Fruntime%400.0.1)   | Released `<Page>` component           |
+| Version                                                                                          | Changes                     |
+| ------------------------------------------------------------------------------------------------ | --------------------------- |
+| [`v0.23.3`](https://github.com/makeswift/makeswift/releases/tag/%40makeswift%2Fruntime%400.23.3) | Added `metadata` prop       |
+| [`v0.0.1`](https://github.com/makeswift/makeswift/releases/tag/%40makeswift%2Fruntime%400.0.1)   | Released `<Page>` component |
