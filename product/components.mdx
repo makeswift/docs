@@ -1,12 +1,39 @@
 ---
-title: "Components"
-description: "Makeswift leverages the power of React to give you unparalleled flexibility and control over your website's design and functionality on an ongoing basis."
+title: "Components and Elements"
 icon: "cube" iconType: "solid"
 ---
 
+Makeswift leverages the power of React to give you unparalleled flexibility and control over your website's design and functionality on an ongoing basis.
+
+**Components** are the building blocks of your website that show up in your Component Toolbar. Once you drag and drop a component onto your page, it becomes an **Element** and is visible on both your Canvas and [Elements Panel](/product/builder-basics#elements-panel).
+
+Elements on your page can be styled and manipulated based on the [controls](/developer/reference/controls) that are made available to you via the Component's properties.
+
+# Components
+
+There are two types of components that show up in your Component Toolbar:
+
+<Columns cols={2}>
+  <Card title="Built-in Components" icon="code">
+    Code components that are registered with your host.
+  </Card>
+  <Card title="Global Components" icon="cube">
+    Visually created components that are created in Makeswift.
+  </Card>
+</Columns>
+
 ## Built-in components
 
-There are four components that come standard with the Makeswift default host:
+Built-in components are standard react components that are registered with your host. You can use any react component as your starting point for a new component, and follow the [registration documentation](/developer/guides/components/card#registering-the-component) to make it available in your component toolbar.
+
+<Tip>
+  Checkout [VIBES](https://vibes.site/docs/soul/introduction) for an example of
+  a react component library that you can use to start!
+</Tip>
+
+The controls that are available to you are configured in code but can be expanded or contracted upon by a developer.
+
+Before registering your own components with Makeswift, there are a few built-in components that are available to you by default.
 
 <AccordionGroup>
   <Accordion title="Box">
@@ -60,65 +87,30 @@ Images will automatically be optimized and resized when published, increasing th
 - Call a phone number
 - Scroll to a component
 
-#### Open page
+### Open page
 
 When linking to other pages within your site, you'll select from a list of existing pages. Once a page is selected, the page's URL will be used for the button link. If the page's URL is updated in the future, the button link will automatically update as well.
 
-#### Scroll to element
+### Scroll to element
 
 To use “Scroll to element” you must first give the target component a custom name. This name will now appear in the dropdown found in the button's “On click” panel.
 
 You can also select the screen position of the scrolled to component.
 
-#### Styling buttons
+### Styling buttons
 
 You can select from a list of premade styles for your buttons. Along with styles, you can customize the size, shape, color and text styles.
 
   </Accordion>
 </AccordionGroup>
 
-## Naming components
+## Global components
 
-You can name a component by selecting it and changing the default name at the top of the [Properties Sidebar](/product/builder-basics). Component names must be alphanumeric and cannot contain any spaces.
-
-<Frame>
-  ![Custom component name input](/images/builder/components-custom-name.jpeg)
-</Frame>
-
-Component names are displayed in [Breadcrumbs](/product/layouts#selecting-components) and the [Elements Panel](/product/builder-basics#elements-panel) making it easier to discern between different components.
-
-<Frame>
-  ![Component label showed in
-  breadcrumbs](/images/builder/components-breadcrumb-label.jpeg)
-</Frame>
-
-Custom component names also serve as the `id` property added to the component's HTML. This allows them to be scrolled to with buttons, images, and text links. All components with custom names will appear in the **Scroll to element** dropdown found in the **on click** panel.
-
-<Frame>
-  ![components in dropdown click
-  panel](/images/builder/components-scroll-to-custom-name.jpeg)
-</Frame>
-
-## Component actions
-
-Actions for selected components can be found at the top right of the [Properties Sidebar](/product/builder-basics) or by using keyboard shortcuts.
-
-<Frame>
-  ![Menu actions for component](/images/builder/components-menu-actions.jpeg)
-</Frame>
-
-- Duplicate a component `⌘ + D` - creates an exact copy, including nested components, either below or next to the original
-- Copy a component `⌘ + C` - copies the selected component to your clipboard
-- Paste a component `⌘ + V` - places the copied component in the [Canvas](/product/builder-basics) (you choose exactly where to place it)
-- Delete a component `DELETE` - deletes the selected component
-
-## Global Components
-
-Global Components are groups of components that can be saved and reused across your entire site. If you make an update to a Global Component, every instance of that component on your site will be updated as well.
+Global components are components that you create and save visually within Makeswift and can be used across your entire site. They can be comprised of Built-in components, elements, and even other global components. They provide an easy way for you to create a reusable layout that you can easily drag an drop onto your canvas, without engaging with a developer.
 
 ### Creating a Global Component
 
-To create a Global Component, select the Box containing the components you want to turn into a Global Component. Then, click on the cube icon found at the top of the [Properties Sidebar](/product/builder-basics).
+You can create a global component by selecting an Element or group of Elements on your page and clicking the cube icon at the top of the [Properties Sidebar](/product/builder-basics). If you make an update to a Global Component, every instance of that component on your site will be updated as well.
 
 <Frame>
   ![Create global
@@ -158,7 +150,7 @@ When you are done with edits, click the **Save** button at the top right of the 
 
 ### Detaching from a Global Component
 
-Changes to a Global Component are propogated to all instances across your site. If you'd like to use a Global Component as a starting point and don't want to keep it in sync with the original component, you can detach an individual instance.
+Changes to a Global Component are propogated to all instances across your site. If you'd like to use a Global Component as a starting point and don't want to keep it in sync with the original component, you can detach an individual instance and convert it back to its original Element(s).
 
 To detach, select the instance of the Global Component in the [Canvas](/product/builder-basics). Then, in the [Properties Sidebar](/product/builder-basics), click **Detach**. Remember, once detached, the instance will no longer be updated when the original Global Component is edited.
 
@@ -168,9 +160,98 @@ To detach, select the instance of the Global Component in the [Canvas](/product/
 
 ### Organizing Global Components
 
-As your list of components grow, you may want to organize them. You can do this by including a `/` in the Global Component name. For example, a component with a name of `ui/hero` will be nested under `ui`.
+As your list of Global components grow, you may want to organize them. You can do this by including a `/` in the Global Component name. For example, a component with a name of `ui/hero` will be nested under `ui`.
 
 <Frame>
   ![Organizing components using
   slash](/images/builder/components-organizing-with-slash.jpeg)
 </Frame>
+
+# Elements
+
+Elements are instances of components on your canvas. While the difference can be subtle, what makes something an element is its unique placement and the specific customization data applied to it—essentially, an element is a component that’s been added and configured in a particular context.
+
+<Tip>
+  For example, the component defines what properties can be changed—like giving
+  you a control to edit a card’s title. But the *element* holds the actual value
+  you set for that property. So if you update the title in one card on your
+  page, that change belongs to that card element, not to the card component as a
+  whole.
+</Tip>
+
+There are two types of elements that you may encounter on a page:
+
+<Columns cols={2}>
+  <Card title="Elements" icon="laptop-medical" style="solid">
+    Standard elements that are instances of components dragged onto the canvas.
+  </Card>
+  <Card title="Built-in Elements" icon="laptop-code">
+    Elements on the canvas that can be edited but cannot be moved or deleted
+  </Card>
+</Columns>
+
+## Elements
+
+Elements are instances of components that you can place on a page. This is the more common interaction between your component toolbar and canvas and is the entity that hosts the actual values you set to your components properties. They are the starting point for all Global Components. Elements can be moved, copied, pasted, named, and deleted.
+
+### Naming elements
+
+You can name an Element by selecting it and changing the default name at the top of the [Properties Sidebar](/product/builder-basics). Element names must be alphanumeric and cannot contain any spaces.
+
+<Frame>
+  ![Custom element name input](/images/builder/components-custom-name.jpeg)
+</Frame>
+
+Element names are displayed in [Breadcrumbs](/product/layouts#selecting-components) and the [Elements Panel](/product/builder-basics#elements-panel) making it easier to discern between different elements.
+
+<Frame>
+  ![Element label showed in
+  breadcrumbs](/images/builder/components-breadcrumb-label.jpeg)
+</Frame>
+
+Custom element names also serve as the `id` property added to the element's HTML. This allows them to be scrolled to with buttons, images, and text links. All elements with custom names will appear in the **Scroll to element** dropdown found in the **on click** panel.
+
+<Frame>
+  ![elements in dropdown click
+  panel](/images/builder/components-scroll-to-custom-name.jpeg)
+</Frame>
+
+### Element actions
+
+Actions for selected elements can be found at the top right of the [Properties Sidebar](/product/builder-basics) or by using keyboard shortcuts.
+
+<Frame>
+  ![Menu actions for element](/images/builder/components-menu-actions.jpeg)
+</Frame>
+
+- Duplicate an element `⌘ + D` - creates an exact copy, including nested elements, either below or next to the original
+- Copy an element `⌘ + C` - copies the selected element to your clipboard
+- Paste an element `⌘ + V` - places the copied element in the [Canvas](/product/builder-basics) (you choose exactly where to place it)
+- Delete an element `DELETE` - deletes the selected element
+
+## Built-in Elements
+
+<Warning>Placement and configuration of Built-in Elements are developer actions. For details see [`<MakeswiftComponent>`](/developer/reference/components/makeswift-component)</Warning>
+
+These are instances of elements that are placed on the page in code and cannot be moved or deleted. What makes these elements and not components is that you can still change the property values within Makeswift, however the behavior is slightly different depending on the configuration.
+
+Some Built-in Elements may propogate changes throughout your whole site, while others may be utilized to lock down what is editable on a specific page or page type. They are affectively components that are purpose built to live on a specific page and allow specific editing capabilities.
+
+### Examples
+
+Here are some common examples of where a Built-in Element may be preferred.
+
+#### Navigation Bar
+
+Implementing a Built-in Element for a Navigation bar allows for all new pages to automatically include a Navigation bar, without having to add them manually. Furthermore, any edits to the Navigation will propogate to all new and existing pages.
+
+<Frame>
+  <img
+    src="/images/developer/reference/makeswift-component/header-finished.jpg"
+    alt="Header component showing on a page in the Makeswift Visual Builder"
+  />
+</Frame>
+
+#### Blogs
+
+Utilizing a Built-in Element for Blog content allows for editors to focus just on the copy for a blog, while
