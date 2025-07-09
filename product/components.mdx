@@ -170,11 +170,10 @@ As your list of components grow, you may want to organize them. You can do this 
 Elements are instances of components on your canvas. While the difference can be subtle, what makes something an element is its unique placement and the specific customization data applied to it—essentially, an element is a component that’s been added and configured in a particular context.
 
 <Tip>
-  For example, the *component* defines what properties can be changed like
-  you a control to edit a card’s title. But the *element* holds the actual value
-  you set for that property. So if you update the title in one card on your
-  page, that change belongs to that card element, not to the card component as a
-  whole.
+  For example, the *component* defines what properties can be changed like the
+  title on a card. But the *element* holds the actual value you set for that
+  property. So if you update the title in one card on your page, that change
+  belongs to that card element, not to the card component as a whole.
 </Tip>
 
 There are two types of elements that you may encounter on a page:
@@ -184,7 +183,8 @@ There are two types of elements that you may encounter on a page:
     Standard elements that are instances of components dragged onto the canvas.
   </Card>
   <Card title="Built-in Elements" icon="laptop-code">
-    Elements on the canvas that can be edited but cannot be moved or deleted visually
+    Elements on the canvas that can be edited but cannot be moved or deleted
+    visually
   </Card>
 </Columns>
 
@@ -231,7 +231,7 @@ Actions for selected elements can be found at the top right of the [Properties S
 
 <Warning>Placement and configuration of Built-in Elements are developer actions. For details see [`<MakeswiftComponent>`](/developer/reference/components/makeswift-component)</Warning>
 
-These are instances of elements that are placed on the page in code and cannot be moved or deleted. What makes these elements and not components is that you can still change the property values within Makeswift, however the behavior is slightly different depending on the configuration.
+These are instances of elements that are placed on the page in code and cannot be moved or deleted visually. What makes these elements and not components is that you can still change the property values within Makeswift, however the behavior is slightly different depending on the configuration.
 
 Some Built-in Elements may propogate changes throughout your whole site, while others may be utilized to lock down what is editable on a specific page or page type. They are affectively components that are purpose built to live on a specific page and allow specific editing capabilities.
 
