@@ -11,6 +11,10 @@ description: The `<MakeswiftComponent>` component takes a `MakeswiftComponentSna
 2. <ParamField query="label" type="string" required>
      The label of the component used in the Visual Builder.
    </ParamField>
+   <ParamField query="description" type="string">
+     The description shown in the Visual Builder. This is written in Markdown
+     format.
+   </ParamField>
 3. <ParamField query="type" type="string" required>
      The type of the registered Makeswift component. This should match the
      `type` property that was used when calling
@@ -207,3 +211,64 @@ The header should now be visible on each page within the Visual Builder.
     alt="Header component showing on a page in the Makeswift Visual Builder"
   />
 </Frame>
+
+### Adding a description
+
+This example shows how to add an `Circle` component with a rich description. We
+use markdown formatting for our tooltip descriptions.
+
+The `Circle` Component is registered in the following snippet:
+
+```tsx makeswift/components.tsx
+runtime.registerComponent(Circle, {
+  type: 'SuperCircleTester',
+  label: 'Custom / Circle',
+  icon: 'chats',
+  hidden: false,
+  description: `...
+```
+
+The `Circle` Makeswift Component can be given a description as shown in the following snippet:
+
+```tsx @/app/layout.tsx
+...
+
+          <MakeswiftComponent
+            label={"Embedded Circle"}
+            snapshot={myAwesomeSnapshot}
+            type={"SuperCircleTester"}
+            description={`
+# This is a larger heading
+# This is custom description for a
+## BUILT IN COMPONENT
+
+This is some text at the top of here
+
+![robot](https://plus.unsplash.com/premium_photo-1738614647383-0435fcb26a55?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8fA%3D%3D)
+
+# This is a larger heading
+
+blah blah blah...
+
+## This is a smaller heading
+
+This is a **description** about this control and what it does and to [learn more](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
+
+* First item
+* Second item
+  * Sub item
+  * Sub item 2
+      * Sub sub item
+        * Sub sub item 2
+* Third item
+* Fourth item
+
+This is a line with some \`\`<code/>\`\`
+
+![coolView](https://images.unsplash.com/photo-1750779940304-95eb48d09b5c?q=80&w=1675&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+
+`}
+          ></MakeswiftComponent>
+```
+
+The description should now be visible on each page within the Visual Builder when hovering over the Panel.
