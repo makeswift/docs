@@ -4,6 +4,8 @@ description: Adds a Color picker panel in the Makeswift builder to visually edit
 icon: "palette"
 ---
 
+import DescriptionParam from "/snippets/reference/description-param.mdx";
+
 <Frame
   type="glass"
   caption="Color panels on a Button component to edit the background and text colors"
@@ -16,6 +18,8 @@ icon: "palette"
 <ParamField query="label" type="string" default="Text">
   Text for the panel label in the Makeswift builder.
 </ParamField>
+
+<DescriptionParam />
 
 <ParamField
   query="labelOrientation"
@@ -53,11 +57,11 @@ The following examples adds two Color controls to the `backgroundColor` and `col
 <CodeGroup>
 
 ```tsx Button.makeswift.ts
-import { Color } from "@makeswift/runtime/controls"
+import { Color } from "@makeswift/runtime/controls";
 
-import { runtime } from "@/makeswift/runtime"
+import { runtime } from "@/makeswift/runtime";
 
-import { Button } from "./Button"
+import { Button } from "./Button";
 
 runtime.registerComponent(Button, {
   type: "button",
@@ -72,13 +76,13 @@ runtime.registerComponent(Button, {
       defaultValue: "white",
     }),
   },
-})
+});
 ```
 
 ```tsx Button.tsx
 interface Props {
-  backgroundColor?: string
-  color?: string
+  backgroundColor?: string;
+  color?: string;
 }
 
 export function Button({ backgroundColor, color }: Props) {
@@ -86,7 +90,7 @@ export function Button({ backgroundColor, color }: Props) {
     <button className="px-4 py-2 rounded-md" style={{ backgroundColor, color }}>
       Click me
     </button>
-  )
+  );
 }
 ```
 
@@ -97,10 +101,10 @@ export function Button({ backgroundColor, color }: Props) {
 <CodeGroup>
 
 ```tsx Button.makeswift.ts
-import { Color } from "@makeswift/runtime/controls"
-import { runtime } from "@/lib/makeswift/runtime"
+import { Color } from "@makeswift/runtime/controls";
+import { runtime } from "@/lib/makeswift/runtime";
 
-import { Button } from "./Button"
+import { Button } from "./Button";
 
 runtime.registerComponent(Button, {
   type: "button",
@@ -115,15 +119,15 @@ runtime.registerComponent(Button, {
       defaultValue: "white",
     }),
   },
-})
+});
 ```
 
 ```tsx Button.tsx
-import { CSSProperties } from "react"
+import { CSSProperties } from "react";
 
 interface Props {
-  backgroundColor?: string
-  color?: string
+  backgroundColor?: string;
+  color?: string;
 }
 
 export function Button({ backgroundColor, color }: Props) {
@@ -141,12 +145,12 @@ export function Button({ backgroundColor, color }: Props) {
     >
       Click me
     </button>
-  )
+  );
 }
 ```
 
 </CodeGroup>
 
-import NamingConventions from "/snippets/naming-conventions.mdx"
+import NamingConventions from "/snippets/naming-conventions.mdx";
 
 <NamingConventions />
