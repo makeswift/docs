@@ -17,6 +17,11 @@ icon: "list-dropdown"
   Text for the panel label in the Makeswift builder.
 </ParamField>
 
+<ParamField query="description" type="string">
+  The description shown in the Panel of the Makeswift Builder. This is written
+  in Markdown format.
+</ParamField>
+
 <ParamField
   query="labelOrientation"
   type='"vertical" | "horizontal"'
@@ -30,9 +35,9 @@ icon: "list-dropdown"
 
 ```ts
 type SelectOption<T extends string> = {
-  value: T
-  label: string
-}
+  value: T;
+  label: string;
+};
 ```
 
 The `label` field is displayed in the Makeswift builder.
@@ -55,11 +60,11 @@ The following example adds a Select control to the `variant` prop of a Button co
 <CodeGroup>
 
 ```tsx Button.makeswift.ts
-import { Select } from "@makeswift/runtime/controls"
+import { Select } from "@makeswift/runtime/controls";
 
-import { runtime } from "@/makeswift/runtime"
+import { runtime } from "@/makeswift/runtime";
 
-import { Button } from "./Button"
+import { Button } from "./Button";
 
 runtime.registerComponent(Button, {
   type: "button",
@@ -76,14 +81,14 @@ runtime.registerComponent(Button, {
       defaultValue: "floating",
     }),
   },
-})
+});
 ```
 
 ```tsx Button.tsx
-import clsx from "clsx"
+import clsx from "clsx";
 
 interface Props {
-  variant?: "floating" | "outline" | "clear"
+  variant?: "floating" | "outline" | "clear";
 }
 
 export function Button({ variant = "floating" }) {
@@ -102,12 +107,12 @@ export function Button({ variant = "floating" }) {
     >
       Click me
     </a>
-  )
+  );
 }
 ```
 
 </CodeGroup>
 
-import NamingConventions from "/snippets/naming-conventions.mdx"
+import NamingConventions from "/snippets/naming-conventions.mdx";
 
 <NamingConventions />
