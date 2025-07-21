@@ -22,9 +22,9 @@ description: The `<MakeswiftComponent>` component takes a `MakeswiftComponentSna
 <Warning>
   The following examples expects that you have integrated Makeswift into your
   project according to the [App Router
-  Installation](/developer/app-router/installation.mdx) guide. If you have not,
-  you may need to tweak the code snippets below to match your project setup and
-  file structure.
+  Installation](/developer/app-router/installation) guide. If you have not, you
+  may need to tweak the code snippets below to match your project setup and file
+  structure.
 </Warning>
 
 The following example registers a `<Header>` component that is editable by the user and will be displayed on each page.
@@ -151,14 +151,11 @@ runtime.registerComponent(Header, {
 });
 ```
 
-<Note>
-  Each time you register a component, you'll need to import it into both your
-  `layout.tsx` file and your `makeswift/provider.tsx` file.
-</Note>
+You'll then need to import this component into your `makeswift/components.ts` file with the rest of your components. If you don't already have this file, refer to the [App Router Installation](/developer/app-router/installation#register-components-with-makeswift) guide to ensure it's created and imported in the correct places.
 
 ### Rendering the component
 
-Then, you'll need to retrieve the snapshot of the component from the Makeswift API by calling [`getComponentSnapshot`](/developer/reference/client/get-component-snapshot.mdx) with a unique ID and pass that snapshot to `<MakeswiftComponent>`.
+Then, you'll need to retrieve the snapshot of the component from the Makeswift API by calling [`getComponentSnapshot`](/developer/reference/client/get-component-snapshot) with a unique ID and pass that snapshot to `<MakeswiftComponent>`.
 
 Here, we are adding the `<Header>` to the root `layout.tsx` file so that it shows up on each page.
 
