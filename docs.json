@@ -69,6 +69,11 @@
                 "group": "Troubleshooting",
                 "icon": "wrench",
                 "pages": ["product/troubleshooting/cookies"]
+              },
+              {
+                "group": "The Visual Builder",
+                "icon": "hammer-brush",
+                "pages": ["product/visual-builder/copy-paste-across-sites"]
               }
             ]
           },
@@ -157,9 +162,7 @@
               },
               {
                 "group": "How to",
-                "pages": [
-                  "developer/guides/how-to/setting-cookies"
-                ]
+                "pages": ["developer/guides/how-to/setting-cookies"]
               },
               {
                 "group": "Troubleshooting",

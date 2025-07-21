@@ -1,0 +1,47 @@
+---
+title: "Copy & Paste Across Sites"
+description: Duplicating content across sites in Makeswift.
+icon: "clone" iconType: "solid"
+---
+
+## Reassigning Resources
+
+Depending on your workflow, you may be building out layouts visually in one site, and then copying and pasting these sections into another site. Makeswift supports this use-case, but there is a caveat to be aware of.
+
+When building your content in Makeswift, you may be using resources like links, images, colors, and global elements. These resources belong to a particular site. When you copy and paste a selection containing resources from one site
+into another, the Visual Builder will prompt you to import the copied resources into the destination site:
+
+![Reassign Resources](/images/builder/cross-site-paste/dialog.png)
+
+This dialog will display each resource being copied, grouped by type. For each resource, you can select how to import it into the destination site. The resources will be listed in the left column, and the options for importing them will be displayed in the middle column.
+You must select an option for importing each resource before being able to proceed with the paste.
+
+Depending on the resources copied, you'll have different options for importing. All resources have the following options:
+
+- **Reassign to:** replaces the copied resource with a different resource in the destination site
+- **Clear:** removes the copied resource from the selection
+
+By default, the Visual Builder will automatically try to reassign all copied resources, and automatically match each copied resource to the most similar resource in the destination site.
+To override the automatic matching, use the menu in the rightmost column to select a different resource.
+
+![Manually selecting a replacement color](/images/builder/cross-site-paste/reassign-resource.png)
+
+Some resources have additional options for importing:
+
+- **Files:** Use the "Add to site" option if you'd like to duplicate a file into the destination site's file. This is the default option if the Visual Builder could not find a match for the copied file.
+  ![Reassign Resources](/images/builder/cross-site-paste/file-add-to-site.png)
+
+- **Components:** When pasting global components, you have the option to "Detach" the component. This will paste the global component as a component that can be edited without affecting other instances.
+  Note that detaching a global component might require you to import other resources that are contained within it.
+  ![Reassign Resources](/images/builder/cross-site-paste/global-component-detach.png)
+
+Once you've selected how you want to import each resource, click the **Import and paste** button to finalize the paste. This will allow you to paste your selection, but with your importing preferences applied.
+
+## Copy & Paste a Page
+
+Currently, the Visual Builder does not support copying and pasting entire pages across sites. The easiest way to copy a page's content from one site to another is to put the page's content into a single 
+[box](/product/components#box), and then copy and paste that box into a page on the destination site. This will allow you to copy all of the content on the page, but it will not copy any of the page's settings or metadata.
+
+## Forms
+
+The Visual Builder does not support copying and pasting Makeswift form elements (or their submissions) across sites. If you attempt to paste a form from a different site, the only option available will be to clear the form from the selection.
