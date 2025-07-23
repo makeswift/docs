@@ -3,6 +3,8 @@ title: "<MakeswiftComponent>"
 description: The `<MakeswiftComponent>` component takes a `MakeswiftComponentSnapshot` (returned from calling [getComponentSnapshot](/developer/reference/client/get-component-snapshot)) and renders React elements using [components registered](/developer/reference/runtime/register-component) with the runtime.
 ---
 
+import DescriptionParam from "/snippets/reference/description-param.mdx";
+
 ## Props
 
 1. <ParamField query="snapshot" type="MakeswiftComponentSnapshot" required>
@@ -11,7 +13,8 @@ description: The `<MakeswiftComponent>` component takes a `MakeswiftComponentSna
 2. <ParamField query="label" type="string" required>
      The label of the component used in the Visual Builder.
    </ParamField>
-3. <ParamField query="type" type="string" required>
+3. <DescriptionParam />
+4. <ParamField query="type" type="string" required>
      The type of the registered Makeswift component. This should match the
      `type` property that was used when calling
      [registerComponent](/developer/reference/runtime/register-component).
@@ -202,5 +205,51 @@ The header should now be visible on each page within the Visual Builder.
   <img
     src="/images/developer/reference/makeswift-component/header-finished.jpg"
     alt="Header component showing on a page in the Makeswift Visual Builder"
+  />
+</Frame>
+
+### Adding a description
+
+We can define a description string using markdown formatting, and then in this `layout.tsx' we can add the description field.
+
+```typescript
+const mdDescription = `
+# Site Header Description
+
+![Site Header Example](https://mintlify.s3.us-west-1.amazonaws.com/makeswift/images/developer/reference/makeswift-component/header-example.jpg)
+
+Find out how you can \`create\` a *header* like the **example** above.
+
+## Styles, Logo and Links
+
+This component has the following controls:
+* Width
+* Margin
+* Logo
+* Links
+  * You can add multiple links!
+
+Click this [link](https://docs.makeswift.com/product/introduction) to learn more!
+`
+```
+
+```tsx @/app/layout.tsx
+...
+
+          <MakeswiftComponent
+            snapshot={myHeaderSnapshot}
+            label={`Site Header`}
+            type={HEADER_COMPONENT_TYPE}
+            description = {mdDescription}
+          />
+...
+
+```
+You should now be able to see an info icon next to the label when selecting the component in the Visual Builder. To view your description, simply hover over the label and the tooltip will open.
+
+<Frame>
+  <img
+    src="/images/developer/reference/makeswift-component/siteheaderopendesc.png"
+    alt="Site header description open"
   />
 </Frame>

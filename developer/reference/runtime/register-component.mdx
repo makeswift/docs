@@ -3,6 +3,8 @@ title: "registerComponent"
 description: Adds your components to the Makeswift builder.
 ---
 
+import DescriptionParam from "/snippets/reference/description-param.mdx";
+
 ## Arguments
 
 {/* prettier-ignore-start */}
@@ -23,6 +25,7 @@ description: Adds your components to the Makeswift builder.
        <ParamField query="label" type="string" required>
           The label shown in the Makeswift builder.
        </ParamField>
+       <DescriptionParam/>
        <ParamField query="icon" type="Icon">
           The icon shown in the Makeswift builder. You can find all available icons in the [icons list](#icons-list) section.
        </ParamField>
@@ -146,6 +149,61 @@ runtime.registerComponent(Cube, {
 });
 ```
 
+### Adding a description
+
+This example shows how to add an `Circle` component with a rich description. We
+can define a description string using markdown formatting, and pass it into the component description field.
+
+```typescript
+const mdDescription = `
+# This is a larger heading
+
+This is some text at the top of here
+
+[![robot](https://plus.unsplash.com/premium_photo-1738614647383-0435fcb26a55?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8fA%3D%3D)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+
+## This is a smaller heading
+
+This is a **description** about this component, click to [learn more](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
+* First Item
+* Second item
+
+This is a line with some \`\`<code/>\`\`
+`
+```
+
+```tsx makeswift/components.tsx
+import { Style } from "@makeswift/runtime/controls";
+
+import { runtime } from "@/makeswift/runtime";
+
+function Circle({ className }) {
+  return <div className={className}>I'm a circle!</div>;
+}
+
+runtime.registerComponent(Circle, {
+  type: "circle-tester",
+  label: "Custom / Circle",
+  icon: "chats",
+  hidden: false,
+  description: mdDescription,
+  props: {
+    className: Style({ properties: Style.All }),
+  },
+});
+```
+
+In the Properties Sidebar, we can see an info icon next to the component label. Hover over the label to open the description tooltip.
+
+<Frame>
+  <img
+    src="/images/developer/reference/register-component/register-custom-description.png"
+    alt="custom component description open"
+  />
+</Frame>
+
+Descriptions that are longer than the standard tooltip will have a scrollbar to view the overflowing content.
+
 ### Organizing registration code
 
 As you register more components in `makeswift/components.tsx`, you may notice this file growing rather large. To keep your codebase organized, we recommend breaking out your Makeswift registration code into separate files and co-locating it with your component file.
@@ -193,6 +251,7 @@ Then update your `makeswift/components.tsx` file to import all of the component 
 import "@/components/Box/Box.makeswift";
 import "@/components/Cube/Cube.makeswift";
 import "@/components/Sphere/Sphere.makeswift";
+import "@/components/Circle/Circle.makeswift";
 /*
  * Add all of your component registrations here
  */

@@ -4,6 +4,8 @@ description: Adds a Checkbox panel in the Makeswift builder to visually edit a `
 icon: "square-check"
 ---
 
+import DescriptionParam from "/snippets/reference/description-param.mdx"
+
 <Frame
   type="glass"
   caption="A checkbox panel on a Navigation component to show the logo"
@@ -16,6 +18,8 @@ icon: "square-check"
 <ParamField query="label" type="string" default="Label">
   Text for the panel label in the Makeswift builder.
 </ParamField>
+
+<DescriptionParam />
 
 <ParamField query="defaultValue" type="boolean">
   The value passed to your component when nothing is set in the Makeswift
@@ -33,11 +37,11 @@ The following example adds a Checkbox control to the `showLogo` prop of a Naviga
 <CodeGroup>
 
 ```tsx Navigation.makeswift.ts
-import { Checkbox } from "@makeswift/runtime/controls"
+import { Checkbox } from "@makeswift/runtime/controls";
 
-import { runtime } from "@/makeswift/runtime"
+import { runtime } from "@/makeswift/runtime";
 
-import { Navigation } from "./Navigation"
+import { Navigation } from "./Navigation";
 
 runtime.registerComponent(Navigation, {
   type: "navigation",
@@ -48,12 +52,12 @@ runtime.registerComponent(Navigation, {
       defaultValue: false,
     }),
   },
-})
+});
 ```
 
 ```tsx Navigation.tsx
 interface Props {
-  showLogo: boolean
+  showLogo: boolean;
 }
 
 export function Navigation({ showLogo }: Props) {
@@ -62,12 +66,12 @@ export function Navigation({ showLogo }: Props) {
       {props.showLogo && <img src="/logo.png" />}
       {/* ... */}
     </nav>
-  )
+  );
 }
 ```
 
 </CodeGroup>
 
-import NamingConventions from "/snippets/naming-conventions.mdx"
+import NamingConventions from "/snippets/naming-conventions.mdx";
 
 <NamingConventions />

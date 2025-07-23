@@ -4,6 +4,8 @@ description: Adds a multiline Text Area to your component in the Makeswift build
 icon: "align-left"
 ---
 
+import DescriptionParam from "/snippets/reference/description-param.mdx";
+
 <Frame
   type="glass"
   caption="A Text Area panel for a Code Block component to change the code"
@@ -16,6 +18,8 @@ icon: "align-left"
 <ParamField query="label" type="string" default="Text">
   Text for the panel label in the Makeswift builder.
 </ParamField>
+
+<DescriptionParam />
 
 <ParamField query="defaultValue" type="string">
   The value passed to your component when nothing is set in the Makeswift
@@ -33,11 +37,11 @@ The following example adds a Text Area control to the `Code` prop of a Code Bloc
 <CodeGroup>
 
 ```tsx CodeBlock.makeswift.ts
-import { TextArea } from "@makeswift/runtime/controls"
+import { TextArea } from "@makeswift/runtime/controls";
 
-import { runtime } from "@/makeswift/runtime"
+import { runtime } from "@/makeswift/runtime";
 
-import { CodeBlock } from "./CodeBlock"
+import { CodeBlock } from "./CodeBlock";
 
 runtime.registerComponent(CodeBlock, {
   type: "code-block",
@@ -45,14 +49,14 @@ runtime.registerComponent(CodeBlock, {
   props: {
     code: TextArea({ label: "Code" }),
   },
-})
+});
 ```
 
 ```tsx CodeBlock.tsx
-import { highlight, languages } from "prismjs"
+import { highlight, languages } from "prismjs";
 
 interface Props {
-  code?: string
+  code?: string;
 }
 
 export function CodeBlock({ code }) {
@@ -62,12 +66,12 @@ export function CodeBlock({ code }) {
         __html: highlight(code, languages.js, "js"),
       }}
     />
-  )
+  );
 }
 ```
 
 </CodeGroup>
 
-import NamingConventions from "/snippets/naming-conventions.mdx"
+import NamingConventions from "/snippets/naming-conventions.mdx";
 
 <NamingConventions />
