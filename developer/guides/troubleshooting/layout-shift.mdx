@@ -76,7 +76,46 @@ React used to log a warning for this situation when using the Next.js Pages Rout
 
 - **Match SSR & Client:** Ensure initial props/state are identical. For example, compute or fetch values during SSR so the client sees the same markup.
 - **Memoize Values:** Wrap dynamic context or prop values in [`useMemo`](https://react.dev/reference/react/useMemo) to avoid identity changes during hydration.
-- **Defer Non-Critical Updates:** Use React's [`startTransition`](https://react.dev/reference/react/startTransition) to mark updates as non-urgent, preventing fallback rendering.
+- **Defer Non-Critical Updates:** Use React's [`startTransition`](https://react.dev/reference/react/startTransition) and [`useDeferredValue`](https://react.dev/reference/react/useDeferredValue) to mark updates as non-urgent and prevent fallback rendering. For example, if a layout shift occurs because a context provider's value changes between server-side rendering and client-side rendering, wrap that value with `useDeferredValue`. This allows the client to finish hydrating before React propagates the updated value, avoiding intermediate fallback UI and eliminating the layout shift:
+
+```tsx
+export function CartProvider({
+  initialCart,
+  currency,
+  children,
+}: {
+  initialCart: Cart
+  currency: string
+  children: React.ReactNode
+}) {
+  const [cart, setCart] = useState(initialCart)
+
+  // Update the cart on the client side after hydration. 
+  // Without the `useDeferredValue` technique below, this 
+  // can cause a noticeable layout shift on large pages.
+  useEffect(() => {
+    const savedCart = window.localStorage.getItem('cart')
+    if (savedCart) {
+      setCart(JSON.parse(savedCart))
+    }
+  }, [])
+
+  // Create a stable object for the context value.
+  const contextValue = useMemo(() => ({ cart, currency }), [cart, currency])
+
+  // Create a stable deferred value. The second argument
+  // to `useDeferredValue` is the initial value, which
+  // ensures the hook defers updates even during the  
+  // initial render.
+  const deferredValue = useDeferredValue(contextValue, contextValue)
+
+  return (
+    <CartContext.Provider value={deferredValue}>
+      {children}
+    </CartContext.Provider>
+  )
+}
+```
 
 #### 6. Verify the Resolution
 
