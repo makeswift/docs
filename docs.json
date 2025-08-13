@@ -40,6 +40,7 @@
               "product/theming",
               "product/files",
               "product/responsive-design",
+              "product/sharing",
               {
                 "group": "Panels",
                 "icon": "sliders",
