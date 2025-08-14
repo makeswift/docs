@@ -40,6 +40,7 @@
               "product/theming",
               "product/files",
               "product/responsive-design",
+              "product/sharing",
               {
                 "group": "Panels",
                 "icon": "sliders",
@@ -176,6 +177,7 @@
               {
                 "group": "Upgrading",
                 "pages": [
+                  "developer/upgrading/0.25.0",
                   "developer/upgrading/0.24.0",
                   "developer/upgrading/0.23.0",
                   "developer/upgrading/0.22.0",
