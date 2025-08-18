@@ -41,8 +41,39 @@ by the same `getSiteVersion` function.
 
 If you're using App Router, use the `getSiteVersion` function to get the value
 to be passed to the `siteVersion` prop of `<ReactRuntimeProvider>`. If you
-followed our installation guide and created a `<MakeswiftProvider>` component,
-you can update the value being passed to this prop in the root layout:
+followed our installation guide and created a `<MakeswiftProvider>` component in
+`src/makeswift/provider.tsx`, you can update the props of this component:
+
+```diff
+"use client";
+
+import { runtime } from "@/makeswift/runtime";
+import {
+  ReactRuntimeProvider,
+  RootStyleRegistry,
++ type SiteVersion,
+} from "@makeswift/runtime/next";
+import "@/makeswift/components";
+
+export function MakeswiftProvider({
+  children,
+-  previewMode,
++  siteVersion,
+}: {
+  children: React.ReactNode;
+-  previewMode: boolean;
++  siteVersion: SiteVersion | null
+}) {
+  return (
+    <ReactRuntimeProvider siteVersion={siteVersion} runtime={runtime}>
+      <RootStyleRegistry>{children}</RootStyleRegistry>
+    </ReactRuntimeProvider>
+  );
+}
+```
+
+Then, you can update the value being passed to the `siteVersion` prop in the
+root layout (`layout.tsx`):
 
 ```diff
 import { MakeswiftProvider } from '@/makeswift/provider'
