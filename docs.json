@@ -111,7 +111,10 @@
               {
                 "group": "User",
                 "icon": "user",
-                "pages": ["product/user-settings/login-methods"]
+                "pages": [
+                  "product/user-settings/login-methods",
+                  "product/user-settings/feature-previews"
+                ]
               }
             ]
           }
