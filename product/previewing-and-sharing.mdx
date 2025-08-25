@@ -1,0 +1,125 @@
+---
+title: "Previewing and sharing"
+description: "Makeswift allows you to share previews of different versions of your site for collaboration and feedback."
+icon: "share" iconType: "solid"
+---
+
+<Warning>
+  Sharing requires a [custom host](/product/site/hosting#custom-host) running at
+  least `v0.25.0` of the runtime. To upgrade, see our [runtime upgrade
+  guide](/developer/upgrading/0.25.0). If you are using a version prior to
+  `v0.25.0`, please reference the [preview feature
+  documentation](#previewing-deprecated).
+</Warning>
+
+Makeswift allows you to share different versions of your site for enhanced collaboration and feedback. In the Visual Builder, you can create shareable links to different site versions, which you can then send to your team members or stakeholders.
+
+Anyone with these links can view the shared version of your site directly on your site's domain itself. This means that site previews can be viewed on any device, including phones and tablets.
+
+You can generate shareable links for any of the following:
+
+- The current draft state of your site in the Visual Builder
+- A particular scheduled publish
+- A specific previous publish of your site
+
+## Privacy
+
+Shareable links are site-wide previews. This means that a recipient of a share link will be able to view the entire site as it was in the shared version.
+
+All share links expire after 5 days. After expiration, visiting the share link will result in an error, and users will no longer be able to see the shared version of the site.
+
+By default, share links can only be accessed by other members of your Makeswift workspace. To create a public share link, see the [Public Share Links](#public-share-links) section.
+
+## Sharing draft state
+
+To share the draft state (the current state of your site in the Visual Builder), click on the "Share" button in the top right corner of the Visual Builder header.
+This will open a dialog that has a new shareable link generated for you. You can copy this link and share it with others.
+
+<Frame>
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    controls
+    title="Sharing draft state"
+    className="w-full aspect-video"
+    src="/images/sharing/draft-share.mp4"
+  ></video>
+</Frame>
+
+## Sharing a scheduled publish
+
+To share a particular scheduled publish, open the publish dialog and navigate to the "Scheduled" tab. Hover over the scheduled publish you'd like to share and click the "Share" icon, which will open a dialog with a shareable link for that specific publish.
+
+<Frame>
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    controls
+    title="Sharing a scheduled publish"
+    className="w-full aspect-video"
+    src="/images/sharing/scheduled-publish-share.mp4"
+  ></video>
+</Frame>
+
+## Sharing a previous publish
+
+To share a specific previous publish, open the publish dialog and navigate to the "History" tab. Hover over the publish you'd like to share and click the "Share" icon, which will open a dialog with a shareable link for that specific publish.
+
+<Frame>
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    controls
+    title="Sharing a past publish"
+    className="w-full aspect-video"
+    src="/images/sharing/past-publish-share.mp4"
+  ></video>
+</Frame>
+
+## Public share links
+
+By default, a share link can only be accessed by other members of your Makeswift workspace. This means that in addition to sending the share link, you may also have to invite the recipient as a guest to your workspace.
+
+If you want your share link to be accessible by anyone, you can toggle the "Public preview" option when creating the share link. This will allow anyone with the link to view the shared version of your site without needing to be a member of your Makeswift workspace.
+
+<Frame>![Public preview toggle](/images/sharing/public-preview.png)</Frame>
+
+## Exiting the preview
+
+When you visit a share link, you will see the shared version of the site directly on the site's domain, even after you refresh. To exit the preview and go back to viewing the live site, click the "Exit preview" button in the bottom right corner of the page.
+
+<Frame>![Exit preview button](/images/sharing/exit-preview.png)</Frame>
+
+Alternatively, you can also clear your cookies for the site.
+
+## Previewing (deprecated)
+
+<Warning>
+  The previous preview functionality is now deprecated in favor of share links
+  (above) and is no longer available as of `v0.25.0`. However, if you are using
+  a version of the Makeswift runtime prior to `v0.25.0`, you can still use the
+  preview feature as described below.
+</Warning>
+
+<Note>
+  Preview links are only accessible to logged-in Makeswift users of the
+  workspace. For read-only access, you can add users with the role of
+  [Guest](/product/workspace/user#guests) which don't count against the number
+  of users in your plan. For more information, see the
+  [Users](/product/workspace/users) page.
+</Note>
+
+Makeswift allows you to share a preview link of your site with others. The preview
+link will always show the latest changes made in the Visual Builder, even if they have not
+been published. You can find the **Preview** button at the top right of the Visual Builder's
+browser bar.
+
+<Frame>![Preview button](/images/publishing/preview-button.jpg)</Frame>
+
+We encourage you to use the preview feature to get feedback and review changes before doing a final publish.
