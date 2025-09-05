@@ -1,0 +1,81 @@
+---
+title: Add Custom Fonts
+description: Add custom fonts to your Makeswift & Next.js project. 
+---
+
+You can use any web font with Makeswift not just Google Fonts. Fonts can come from your brand's type license, a foundry, or any other source, as long as you can serve them as standard web font files (e.g., .woff2, .woff). 
+Makeswift exposes those fonts in the builder once you register them in the API handler.
+
+## Next/Font
+
+We recommend adding custom fonts locally to your Next.js app and loading them with `next/font/local`.  This keeps font files in your app (no external requests), optimizes loading, and
+helps reduce layout shifts.  See the [Next.js docs](https://nextjs.org/docs/pages/api-reference/components/font) for more details.
+
+Why `next/font` helps (but is optional):
+
+- **Built-in self hosting** of any font file (including your non-Google fonts).
+- **Optimized loading** to reduce layout shift (CLS) and improve privacy (no external font CDNs at runtime).
+
+These benefits come from the `next/font` module's automatic handling of `@font-face` generation, preloading, and fallbacks.
+
+<Note>You do not have to use `next/font`.  If you prefer, you can hand-roll `@font-face` in CSS and still register those fonts with Makeswift (see alternative below).</Note>
+
+## Adding Custom Fonts to Next.js
+
+The following steps will walk you through adding custom fonts to your Next.js app and assume:
+
+- Font files stored at `/public/fonts/YourBrand-Regular.woff2` and `/public/fonts/YourBrand-Bold.woff2`
+- You'll register the same font family in Makeswift so it's selectable in the builder
+
+### Using `next/font`
+
+#### App Router
+```tsx
+// app/layout.tsx
+import './globals.css'
+import localFont from 'next/font/local'
+
+const yourBrand = localFont({
+  src: [
+    { path: './public/fonts/YourBrand-Regular.woff2', weight: '400', style: 'normal' },
+    { path: './public/fonts/YourBrand-Bold.woff2',    weight: '700', style: 'normal' },
+  ],
+  variable: '--font-yourbrand', // optional CSS variable you can use in styles
+  display: 'swap',              // good default
+})
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body className={yourBrand.className}>{children}</body>
+    </html>
+  )
+}
+```
+
+#### Pages Router
+
+```tsx
+// pages/_app.tsx
+import type { AppProps } from 'next/app'
+import localFont from 'next/font/local'
+import '../styles/globals.css'
+
+const yourBrand = localFont({
+  src: [
+    { path: '../public/fonts/YourBrand-Regular.woff2', weight: '400', style: 'normal' },
+    { path: '../public/fonts/YourBrand-Bold.woff2',    weight: '700', style: 'normal' },
+  ],
+  display: 'swap',
+})
+
+export default function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <main className={yourBrand.className}>
+      <Component {...pageProps} />
+    </main>
+  )
+}
+```
+
+<Note>See Next.js `next/font/local` [reference docs](https://nextjs.org/docs/pages/api-reference/components/font) for more options like fallbacks, subsets, and variable fonts.</Note>
