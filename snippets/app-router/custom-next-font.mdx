@@ -1,0 +1,21 @@
+```tsx app/layout.tsx highlight={1,2,4-11, 16}
+import './globals.css'
+import localFont from 'next/font/local'
+
+const yourBrand = localFont({
+  src: [
+    { path: './public/fonts/YourBrand-Regular.woff2', weight: '400', style: 'normal' },
+    { path: './public/fonts/YourBrand-Bold.woff2',    weight: '700', style: 'normal' },
+  ],
+  variable: '--font-yourbrand', // optional CSS variable you can use in styles
+  display: 'swap',              // good default
+})
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body className={yourBrand.className}>{children}</body>
+    </html>
+  )
+}
+```
