@@ -3,17 +3,14 @@ import type { AppProps } from 'next/app'
 import localFont from 'next/font/local'
 import '../styles/globals.css'
 
-const yourBrand = localFont({
-  src: [
-    { path: '../public/fonts/YourBrand-Regular.woff2', weight: '400', style: 'normal' },
-    { path: '../public/fonts/YourBrand-Bold.woff2',    weight: '700', style: 'normal' },
-  ],
-  display: 'swap',
+const satoshi = localFont({
+  src: "../public/fonts/Satoshi-Variable.woff2",
+  display: "swap",
 })
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <main className={yourBrand.className}>
+    <main className={satoshi.className}>
       <Component {...pageProps} />
     </main>
   )
