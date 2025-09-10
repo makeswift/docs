@@ -1,0 +1,260 @@
+---
+title: Adding Fonts
+description: Add fonts to your Makeswift & Next.js project.
+---
+
+import AppCustomNextFontExample from "/snippets/app-router/custom-next-font.mdx";
+import PagesCustomNextFontExample from "/snippets/pages-router/custom-next-font.mdx";
+
+You can use any web font with Makeswift not just Google Fonts. Fonts can come from your brand's type license, a foundry, or any other source, as long as you can serve them as standard web font files (e.g., .woff2, .woff, .ttf).
+Makeswift exposes those fonts in the builder once you register them in the [API handler](/developer/reference/makeswift-api-handler).
+
+Adding fonts to Makeswift involves two steps:
+
+1. Adding the font files to your Next.js app
+2. Registering the fonts with Makeswift in the API handler
+
+We recommend using variable fonts as they reduce the number of font files requested.
+
+## Variable fonts
+
+Variable fonts combine multiple styles (weights, widths, italics) into a **single font file**, whereas traditional fonts require **separate files for each style** (for example, Regular, Medium, Bold).
+
+### Benefits of variable fonts
+
+- **Performance**  
+  Instead of downloading multiple files (400, 500, 700, etc.), the browser downloads one file that covers the full range. This reduces HTTP requests and often leads to a smaller overall payload.
+
+- **Design flexibility**  
+  With variable fonts you can set values like `font-weight: 432;` or smoothly animate between weights, instead of being limited to predefined steps like 400 and 700. This gives you more granular control over typography.
+
+- **Future-proofing**  
+  Modern browsers have excellent support for variable fonts, and they are becoming the standard way type foundries distribute fonts.
+
+### When static fonts still make sense
+
+If you only ever use a single weight (for example, just Regular), a static `.woff2` file might be slightly smaller to load. But for most projects that use multiple weights or styles, variable fonts are more efficient and flexible.
+
+## `next/font`
+
+When adding fonts to your Next.js app we recommend using the `next/font` module. This keeps font files in your app (no external requests), optimizes loading, and
+helps reduce layout shifts.
+
+Depending on the source of your fonts, you have two options:
+
+- `next/font/google` for Google Fonts
+- `next/font/local` for custom or licensed fonts (non-Google)
+
+Why `next/font` helps (but is optional):
+
+- **Built-in self hosting** of any font file including your custom or licensed (non-Google) fonts.
+- **Optimized loading** to reduce layout shift (CLS) and improve privacy (no external font CDNs at runtime).
+
+These benefits come from the `next/font` module's automatic handling of `@font-face` generation, preloading, and fallbacks.
+
+<Info>
+  See Next.js `next/font` [reference
+  docs](https://nextjs.org/docs/pages/api-reference/components/font) for more
+  options like fallbacks, subsets, and variable fonts.
+</Info>
+
+<Tip>
+  You do not have to use `next/font`. If you prefer, you can manually define
+  `@font-face` in CSS and still register those fonts with Makeswift (see
+  alternative below).
+</Tip>
+
+## When to use `next/font` vs. `@font-face`
+
+Choosing the right approach depends on where your fonts come from and how much control you need.
+
+- Use `next/font/google` when the font you want is available in the [Google Fonts library](https://fonts.google.com). This is the simplest option since no font files need to live in your project.
+- Use `next/font/local` when you have custom brand fonts, licensed fonts, or any web font files you want to serve directly from your app. This ensures fonts are self-hosted and fully under your control.
+- Use plain `@font-face` in CSS if you need complete control over font loading behavior or prefer not to rely on the `next/font` module. This works fine, but you will not get the automatic optimizations that `next/font` provides.
+
+Once you have chosen an approach, follow the instructions below for setup.
+
+## Adding Google Fonts
+
+The simplest way for adding Google Fonts to your Next.js app is with the `next/font/google` module.
+
+<Tabs>
+  <Tab title="App Router">
+    ```tsx app/layout.tsx highlight={1,4,5,6,7,15}
+    import { Roboto } from 'next/font/google' 
+ 
+    // If loading a variable font, you don't need to specify the font weight
+    const roboto = Roboto({
+      subsets: ['latin'],
+      display: 'swap',
+    })
+ 
+    export default function RootLayout({
+      children,
+    }: {
+      children: React.ReactNode
+    }) {
+      return (
+        <html lang="en" className={roboto.className}>
+          <body>{children}</body>
+        </html>
+      )
+    }
+  ```
+  </Tab>
+  <Tab title="Pages Router">
+    ```tsx pages/_app.tsx highlight={1,4,8}
+    import { Roboto } from 'next/font/google'
+    
+    // If loading a variable font, you don't need to specify the font weight
+    const roboto = Roboto({ subsets: ['latin'] })
+    
+    export default function MyApp({ Component, pageProps }) {
+      return (
+        <main className={roboto.className}>
+          <Component {...pageProps} />
+        </main>
+      )
+    }
+    ```  
+  </Tab>
+</Tabs>
+
+Follow the [Registering fonts with Makeswift](#registering-fonts-with-makeswift) section to make sure these fonts show up in the visual builder.
+
+## Adding custom fonts
+
+The following steps will walk you through adding custom fonts to your Next.js app and assumes:
+
+- Variable font file stored in the `/public/fonts/` directory
+- You'll register the same font family in Makeswift so it's selectable in the builder
+
+### Using `next/font`
+
+<Tabs>
+  <Tab title="App Router">
+    <AppCustomNextFontExample />
+  </Tab>
+  <Tab title="Pages Router">
+    <PagesCustomNextFontExample />
+  </Tab>
+</Tabs>
+
+### Using `@font-face` in CSS
+
+```css globals.css
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Variable.woff2") format("woff2");
+  font-style: normal;
+  font-display: swap;
+}
+```
+
+Follow the [Registering fonts with Makeswift](#registering-fonts-with-makeswift) section to make sure these fonts show up in the visual builder.
+
+
+## Registering fonts with Makeswift
+
+Regardless of how you add fonts to your Next.js app, you need to register them with Makeswift in the [API handler](/developer/reference/makeswift-api-handler) so they are available in the builder.
+
+<Frame>
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    title="Adding Fonts"
+    className="aspect-video"
+    src="/images/fonts/adding-fonts.mp4"
+  ></video>
+</Frame>
+
+The following examples show how to register either a custom or licensed font (non-Google), or a Google Font that has been added to Next.js for use in the builder:
+
+<Tabs>
+  <Tab title="Custom Fonts">
+    ```ts pages/api/[...makeswift].ts
+    import { MakeswiftApiHandler } from "@makeswift/runtime/next/server";
+    import { strict } from "assert";
+
+    import { runtime } from "@/makeswift/runtime";
+
+    strict(
+      process.env.MAKESWIFT_SITE_API_KEY,
+      "MAKESWIFT_SITE_API_KEY is required"
+    );
+
+    export default MakeswiftApiHandler(process.env.MAKESWIFT_SITE_API_KEY, {
+      runtime,
+      getFonts() {
+        return [
+         {
+        family: 'Satoshi',
+        variants: [
+          { weight: '400', style: 'normal', src: '/fonts/Satoshi-Variable.woff2' },
+          { weight: '700', style: 'normal', src: '/fonts/Satoshi-Variable.woff2' },
+        ],
+      },
+        ];
+      },
+    });
+    ```
+  </Tab>
+  <Tab title="Google Fonts">
+    ```ts pages/api/[...makeswift].ts
+    import { MakeswiftApiHandler } from "@makeswift/runtime/next/server";
+    import { strict } from "assert";
+
+    import { runtime } from "@/makeswift/runtime";
+
+    strict(
+      process.env.MAKESWIFT_SITE_API_KEY,
+      "MAKESWIFT_SITE_API_KEY is required"
+    );
+
+    export default MakeswiftApiHandler(process.env.MAKESWIFT_SITE_API_KEY, {
+      runtime,
+      getFonts() {
+        return [
+          {
+            family: "Roboto",
+            variants: [
+              {
+                weight: "300",
+                style: "normal",
+              },
+              {
+                weight: "400",
+                style: "normal",
+              },
+              {
+                weight: "500",
+                style: "normal",
+              },
+              {
+                weight: "700",
+                style: "normal",
+              },
+            ],
+          }
+        ];
+      },
+    });
+    ```
+  </Tab>
+</Tabs>
+
+## FAQ
+
+### Do I have to use the `next/font` module?
+
+No. Makeswift doesn't require it. Use `next/font` for convenience and
+performance, or use plain `@font-face` in CSS. Both work as long as the font files
+are available and you register them using the [API handler](/developer/reference/makeswift-api-handler).
+
+### Can I use fonts that aren't from Google?
+
+Yes. Any properly licensed web font files (e.g., `.woff2`) are supported.
+You can load them locally and register them with Makeswift so editors can
+select them in the builder.
