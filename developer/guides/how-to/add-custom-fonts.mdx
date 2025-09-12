@@ -6,7 +6,7 @@ description: Add fonts to your Makeswift & Next.js project.
 import AppCustomNextFontExample from "/snippets/app-router/custom-next-font.mdx";
 import PagesCustomNextFontExample from "/snippets/pages-router/custom-next-font.mdx";
 
-You can use any web font with Makeswift not just Google Fonts. Fonts can come from your brand's type license, a foundry, or any other source, as long as you can serve them as standard web font files (e.g., .woff2, .woff, .ttf).
+You can use any web font with Makeswift not just Google Fonts. Fonts can come from your brand's type license, a foundry, or any other source, as long as you can serve them as standard web font files (e.g., `.woff2`, `.woff`, `.ttf`).
 Makeswift exposes those fonts in the builder once you register them in the [API handler](/developer/reference/makeswift-api-handler).
 
 Adding fonts to Makeswift involves two steps:
@@ -22,13 +22,13 @@ Variable fonts combine multiple styles (weights, widths, italics) into a **singl
 
 ### Benefits of variable fonts
 
-- **Performance**  
+- **Performance**
   Instead of downloading multiple files (400, 500, 700, etc.), the browser downloads one file that covers the full range. This reduces HTTP requests and often leads to a smaller overall payload.
 
-- **Design flexibility**  
+- **Design flexibility**
   With variable fonts you can set values like `font-weight: 432;` or smoothly animate between weights, instead of being limited to predefined steps like 400 and 700. This gives you more granular control over typography.
 
-- **Future-proofing**  
+- **Future-proofing**
   Modern browsers have excellent support for variable fonts, and they are becoming the standard way type foundries distribute fonts.
 
 ### When static fonts still make sense
@@ -81,14 +81,14 @@ The simplest way for adding Google Fonts to your Next.js app is with the `next/f
 <Tabs>
   <Tab title="App Router">
     ```tsx app/layout.tsx highlight={1,4,5,6,7,15}
-    import { Roboto } from 'next/font/google' 
- 
+    import { Roboto } from 'next/font/google'
+
     // If loading a variable font, you don't need to specify the font weight
     const roboto = Roboto({
       subsets: ['latin'],
       display: 'swap',
     })
- 
+
     export default function RootLayout({
       children,
     }: {
@@ -105,10 +105,10 @@ The simplest way for adding Google Fonts to your Next.js app is with the `next/f
   <Tab title="Pages Router">
     ```tsx pages/_app.tsx highlight={1,4,8}
     import { Roboto } from 'next/font/google'
-    
+
     // If loading a variable font, you don't need to specify the font weight
     const roboto = Roboto({ subsets: ['latin'] })
-    
+
     export default function MyApp({ Component, pageProps }) {
       return (
         <main className={roboto.className}>
@@ -116,7 +116,7 @@ The simplest way for adding Google Fonts to your Next.js app is with the `next/f
         </main>
       )
     }
-    ```  
+    ```
   </Tab>
 </Tabs>
 
