@@ -69,7 +69,10 @@
               {
                 "group": "Troubleshooting",
                 "icon": "wrench",
-                "pages": ["product/troubleshooting/cookies"]
+                "pages": [
+                  "product/troubleshooting/copy-diagnostics",
+                  "product/troubleshooting/cookies"
+                ]
               },
               {
                 "group": "The Visual Builder",
