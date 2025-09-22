@@ -25,12 +25,15 @@ To access the Copy Diagnostics feature:
 
 When you use Copy Diagnostics, the following information is automatically gathered and copied:
 
-- **Site Information**: Your site ID, domain, and current page details
-- **Browser Details**: Browser type, version, and relevant capabilities
-- **Builder State**: Current builder version and configuration
-- **Error Logs**: Recent error messages or warnings that may be affecting your site
-- **Performance Data**: Loading times and other performance metrics
-- **Session Details**: Information about your current editing session
+- **Workspace ID**: Your current workspace identifier
+- **Site ID**: The unique identifier for your site
+- **Page ID**: The identifier for the current page you're editing
+- **Hardcoded Path**: The specific path or route of the current page
+- **Custom Host Status**: Whether you're using a custom host or Makeswift's default hosting
+- **Host Origin**: The origin URL of your site
+- **Locale**: The current language/locale setting
+- **Runtime Version**: The version of the Makeswift runtime being used
+- **Selected Element**: Information about the currently selected element in the builder
 
 ## When to Use Copy Diagnostics
 
@@ -76,7 +79,7 @@ After copying the diagnostics:
 The diagnostic information is designed to help with technical troubleshooting while protecting your privacy:
 
 - No personal user data or site content is included
-- Only technical configuration and error information is captured
+- Only technical identifiers and configuration information is captured
 - The information is not automatically sent anywhere - you control when and where to share it
 
 ## Need More Help?
