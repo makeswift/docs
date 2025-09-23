@@ -694,6 +694,11 @@
       "source": "/article/59-backgrounds",
       "destination": "/product/component/property-controls/backgrounds",
       "permanent": true
+    },
+    {
+      "source": "/developer/guides/how-to/setting-cookies",
+      "destination": "/developer/guides/how-to/set-cookies",
+      "permanent": true
     }
   ]
 }
