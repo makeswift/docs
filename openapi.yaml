@@ -522,6 +522,12 @@ paths:
           schema:
             format: uuid
             type: string
+        - name: draft
+          required: false
+          in: query
+          schema:
+            type: boolean
+            default: false
       responses:
         '200':
           description: ''
@@ -1132,8 +1138,6 @@ components:
           type: string
           description: The name for the new duplicated site
           example: Hearth Furniture Duplicate
-      required:
-        - name
     DuplicateSiteV1ResponseBodyDto:
       type: object
       properties:
