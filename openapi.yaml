@@ -889,7 +889,7 @@ components:
       type: http
       scheme: bearer
       bearerFormat: "sk_abc123def456ghi789jkl012mno345pqr678stu901vwx234yz"
-      description: "The API key for the App (e.g. sk_abc123def456ghi789jkl012mno345pqr678stu901vwx234yz)"
+      description: "The API key for the App (e.g. sk_eczMHVBY9fV6GYFhvs53qcnxq7yptlXL3ABKOZtn6dQ)"
 
 
   schemas:
@@ -1005,7 +1005,6 @@ components:
           type: string
           format: uuid
           description: The ID of the template to import.
-          example: null
         locale:
           type: string
           description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
