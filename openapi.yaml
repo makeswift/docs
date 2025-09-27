@@ -186,7 +186,7 @@ paths:
                 $ref: '#/components/schemas/ListSiteV1ResponseBodyDto'
       tags:
         - Site
-  '/v1/sites/{id}':
+  '/v1/sites/{siteId}':
     get:
       operationId: SiteController_getOne_v1
       summary: "Get Site"
@@ -1003,12 +1003,6 @@ components:
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
           example: 'https://hearthfurniture.com'
-        templateId:
-          type: string
-          format: uuid
-          description: The ID of the template to import.
-          x-mint:
-            hideInExample: true
         locale:
           type: string
           description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
