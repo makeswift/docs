@@ -1005,6 +1005,7 @@ components:
           type: string
           format: uuid
           description: The ID of the template to import.
+          example: ""
         locale:
           type: string
           description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
