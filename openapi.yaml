@@ -880,6 +880,8 @@ tags:
   - name: Workspace Member
     description: ''
 servers:
+  - url: "https://8511e6e5e351.ngrok-free.app"
+    description: "Local development server with ngrok"
   - url: "http://localhost:8020"
     description: "Local development server"
 components:
@@ -1011,6 +1013,8 @@ components:
           type: string
           description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
           example: en-US
+          x-mint:
+            hideInExample: true
       required:
         - name
     CreateSiteV1ResponseBodyDto:
