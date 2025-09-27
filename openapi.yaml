@@ -506,6 +506,11 @@ paths:
   '/v1/sites/{siteId}/pages':
     post:
       operationId: PageController_create_v1
+      summary: "Create Page"
+      description: "Create a new page in a site"
+      x-mint:
+        metadata:
+          title: "Create Page"
       security:
         - AppAuth: []
       parameters:
