@@ -173,7 +173,6 @@
                   "developer/guides/how-to/set-cookies",
                   "developer/guides/how-to/add-custom-fonts"
                 ]
-
               },
               {
                 "group": "Troubleshooting",
@@ -207,64 +206,73 @@
             "group": "Reference",
             "pages": [
               {
-                "group": "Components",
+                "group": "@makeswift/runtime",
                 "pages": [
-                  "developer/reference/components/page",
-                  "developer/reference/components/makeswift-component",
-                  "developer/reference/components/slot",
-                  "developer/reference/components/react-runtime-provider",
-                  "developer/reference/components/root-style-registry"
-                ]
-              },
-              {
-                "group": "Controls",
-                "pages": [
-                  "developer/reference/controls/checkbox",
-                  "developer/reference/controls/color",
-                  "developer/reference/controls/combobox",
-                  "developer/reference/controls/group",
-                  "developer/reference/controls/image",
-                  "developer/reference/controls/font",
-                  "developer/reference/controls/link",
-                  "developer/reference/controls/list",
-                  "developer/reference/controls/number",
-                  "developer/reference/controls/rich-text",
-                  "developer/reference/controls/select",
-                  "developer/reference/controls/slot",
-                  "developer/reference/controls/style",
-                  "developer/reference/controls/text-area",
-                  "developer/reference/controls/text-input",
                   {
-                    "group": "Deprecated",
-                    "pages": ["developer/reference/controls/shape"]
+                    "group": "Components",
+                    "pages": [
+                      "developer/reference/components/page",
+                      "developer/reference/components/makeswift-component",
+                      "developer/reference/components/slot",
+                      "developer/reference/components/react-runtime-provider",
+                      "developer/reference/components/root-style-registry"
+                    ]
+                  },
+                  {
+                    "group": "Controls",
+                    "pages": [
+                      "developer/reference/controls/checkbox",
+                      "developer/reference/controls/color",
+                      "developer/reference/controls/combobox",
+                      "developer/reference/controls/group",
+                      "developer/reference/controls/image",
+                      "developer/reference/controls/font",
+                      "developer/reference/controls/link",
+                      "developer/reference/controls/list",
+                      "developer/reference/controls/number",
+                      "developer/reference/controls/rich-text",
+                      "developer/reference/controls/select",
+                      "developer/reference/controls/slot",
+                      "developer/reference/controls/style",
+                      "developer/reference/controls/text-area",
+                      "developer/reference/controls/text-input",
+                      {
+                        "group": "Deprecated",
+                        "pages": ["developer/reference/controls/shape"]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Client",
+                    "pages": [
+                      "developer/reference/client/constructor",
+                      "developer/reference/client/get-pages",
+                      "developer/reference/client/get-page-snapshot",
+                      "developer/reference/client/get-component-snapshot",
+                      "developer/reference/client/get-site-version"
+                    ]
+                  },
+                  "developer/reference/makeswift-api-handler",
+                  {
+                    "group": "ReactRuntime",
+                    "pages": [
+                      "developer/reference/runtime/constructor",
+                      "developer/reference/runtime/register-component"
+                    ]
+                  },
+                  {
+                    "group": "Functions",
+                    "pages": ["developer/reference/get-site-version"]
+                  },
+                  {
+                    "group": "Legacy APIs",
+                    "pages": ["developer/reference/client/get-sitemap"]
                   }
                 ]
               },
               {
-                "group": "Client",
-                "pages": [
-                  "developer/reference/client/constructor",
-                  "developer/reference/client/get-pages",
-                  "developer/reference/client/get-page-snapshot",
-                  "developer/reference/client/get-component-snapshot",
-                  "developer/reference/client/get-site-version"
-                ]
-              },
-              "developer/reference/makeswift-api-handler",
-              {
-                "group": "ReactRuntime",
-                "pages": [
-                  "developer/reference/runtime/constructor",
-                  "developer/reference/runtime/register-component"
-                ]
-              },
-              {
-                "group": "Functions",
-                "pages": ["developer/reference/get-site-version"]
-              },
-              {
-                "group": "Legacy APIs",
-                "pages": ["developer/reference/client/get-sitemap"]
+                "group": "REST API",
+                "pages": []
               }
             ]
           },
