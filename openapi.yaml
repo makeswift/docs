@@ -4,9 +4,7 @@ paths:
     post:
       operationId: SiteLocaleController_create_v1
       security:
-        - UserAuth: []
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: siteId
           required: true
@@ -32,9 +30,7 @@ paths:
     get:
       operationId: SiteLocaleController_getByLocale_v1
       security:
-        - UserAuth: []
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: code
           required: true
@@ -62,9 +58,7 @@ paths:
     delete:
       operationId: SiteLocaleController_delete_v1
       security:
-        - UserAuth: []
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: id
           required: true
@@ -80,9 +74,7 @@ paths:
     patch:
       operationId: SiteLocaleController_update_v1
       security:
-        - UserAuth: []
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: id
           required: true
@@ -108,9 +100,7 @@ paths:
     get:
       operationId: SiteLocaleController_get_v1
       security:
-        - UserAuth: []
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: id
           required: true
@@ -131,9 +121,7 @@ paths:
     post:
       operationId: SiteController_create_v1
       security:
-        - UserAuth: []
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: workspaceId
           required: true
@@ -159,9 +147,7 @@ paths:
     get:
       operationId: SiteController_list_v1
       security:
-        - UserAuth: []
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: workspaceId
           required: true
@@ -196,9 +182,7 @@ paths:
     get:
       operationId: SiteController_getOne_v1
       security:
-        - UserAuth: []
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: id
           required: true
@@ -218,9 +202,7 @@ paths:
     patch:
       operationId: SiteController_updateOne_v1
       security:
-        - UserAuth: []
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: id
           required: true
@@ -246,9 +228,7 @@ paths:
     delete:
       operationId: SiteController_delete_v1
       security:
-        - UserAuth: []
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: id
           required: true
@@ -265,9 +245,7 @@ paths:
     post:
       operationId: SiteController_duplicate_v1
       security:
-        - UserAuth: []
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: siteId
           required: true
@@ -295,8 +273,6 @@ paths:
   /v1/auth/user-info:
     get:
       operationId: AuthController_getUserInfo_v1
-      security:
-        - UserAuth: []
       responses:
         '200':
           description: ''
@@ -309,8 +285,6 @@ paths:
   /v1/workspaces:
     post:
       operationId: WorkspaceController_create_v1
-      security:
-        - FranchiseAuth: []
       requestBody:
         required: true
         content:
@@ -343,8 +317,6 @@ paths:
           schema:
             format: uuid
             type: string
-      security:
-        - UserAuth: []
       responses:
         '201':
           description: ''
@@ -364,9 +336,6 @@ paths:
           schema:
             format: uuid
             type: string
-      security:
-        - UserAuth: []
-        - FranchiseAuth: []
       requestBody:
         required: true
         content:
@@ -391,9 +360,6 @@ paths:
           schema:
             format: uuid
             type: string
-      security:
-        - UserAuth: []
-        - FranchiseAuth: []
       responses:
         '204':
           description: ''
@@ -402,9 +368,6 @@ paths:
   '/v1/workspaces/{workspaceId}/members/{userId}':
     post:
       operationId: WorkspaceMemberController_create_v1
-      security:
-        - UserAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: workspaceId
           required: true
@@ -433,9 +396,6 @@ paths:
         - Workspace Member
     delete:
       operationId: WorkspaceMemberController_delete_v1
-      security:
-        - UserAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: workspaceId
           required: true
@@ -458,9 +418,6 @@ paths:
         - Workspace Member
     patch:
       operationId: WorkspaceMemberController_update_v1
-      security:
-        - UserAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: workspaceId
           required: true
@@ -489,9 +446,6 @@ paths:
         - Workspace Member
     get:
       operationId: WorkspaceMemberController_getUserRole_v1
-      security:
-        - UserAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: workspaceId
           required: true
@@ -519,9 +473,6 @@ paths:
   '/v1/workspaces/{workspaceId}/members':
     get:
       operationId: WorkspaceMemberController_getMembers_v1
-      security:
-        - UserAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: workspaceId
           required: true
@@ -556,9 +507,7 @@ paths:
     post:
       operationId: PageController_create_v1
       security:
-        - UserAuth: []
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: siteId
           required: true
@@ -585,9 +534,7 @@ paths:
     patch:
       operationId: PageController_update_v1
       security:
-        - UserAuth: []
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: siteId
           required: true
@@ -619,9 +566,7 @@ paths:
     get:
       operationId: PageController_getOne_v1
       security:
-        - UserAuth: []
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: siteId
           required: true
@@ -647,9 +592,7 @@ paths:
     delete:
       operationId: PageController_delete_v1
       security:
-        - UserAuth: []
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: siteId
           required: true
@@ -672,9 +615,7 @@ paths:
     get:
       operationId: PageController_list_v0
       security:
-        - UserAuth: []
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: siteId
           required: true
@@ -718,9 +659,7 @@ paths:
     post:
       operationId: WebhookController_create_v1
       security:
-        - UserAuth: []
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: workspaceId
           required: true
@@ -746,9 +685,7 @@ paths:
     get:
       operationId: WebhookController_list_v1
       security:
-        - UserAuth: []
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: workspaceId
           required: true
@@ -783,9 +720,7 @@ paths:
     get:
       operationId: WebhookController_get_v1
       security:
-        - UserAuth: []
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: id
           required: true
@@ -805,9 +740,7 @@ paths:
     delete:
       operationId: WebhookController_delete_v1
       security:
-        - UserAuth: []
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: id
           required: true
@@ -825,7 +758,6 @@ paths:
       operationId: SiteRouteController_list_v1
       security:
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: siteId
           required: true
@@ -869,7 +801,6 @@ paths:
       operationId: SiteRouteController_create_v1
       security:
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: siteId
           required: true
@@ -906,7 +837,6 @@ paths:
       operationId: SiteRouteController_get_v1
       security:
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: routeId
           required: true
@@ -927,7 +857,6 @@ paths:
       operationId: SiteRouteController_update_v1
       security:
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: routeId
           required: true
@@ -963,7 +892,6 @@ paths:
       operationId: SiteRouteController_delete_v1
       security:
         - AppAuth: []
-        - FranchiseAuth: []
       parameters:
         - name: routeId
           required: true
@@ -1001,11 +929,6 @@ tags:
 servers: []
 components:
   securitySchemes:
-    UserAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-      description: "User authentication via JWT bearer token"
 
     AppAuth:
       type: apiKey
@@ -1013,11 +936,6 @@ components:
       name: Authorization
       description: "App authentication via API key in Authorization header"
 
-    FranchiseAuth:
-      type: apiKey
-      in: header
-      name: x-api-key
-      description: "Franchise authentication via API key"
 
   schemas:
     CreateSiteLocaleV1RequestBodyDto:

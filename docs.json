@@ -277,10 +277,6 @@
                 },
                 "pages": [
                   {
-                    "group": "Authentication",
-                    "pages": ["GET /v1/auth/user-info"]
-                  },
-                  {
                     "group": "Workspaces",
                     "pages": [
                       "POST /v1/workspaces",
