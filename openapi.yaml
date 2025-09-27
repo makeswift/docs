@@ -883,10 +883,10 @@ components:
   securitySchemes:
 
     AppAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: "sk_1234567890abcdef"
-      description: "The API key for the App"
+      type: apiKey
+      in: header
+      name: Authorization
+      description: "The API key for the App (e.g. Bearer sk_abc123def456ghi789jkl012mno345pqr678stu901vwx234yz)"
 
 
   schemas:
