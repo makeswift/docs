@@ -889,6 +889,7 @@ components:
       description: "The API key for the App"
       x-mint:
         format: "Bearer {token}"
+        example: "Bearer sk_1234567890abcdef"
 
 
   schemas:
