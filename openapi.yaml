@@ -986,17 +986,17 @@ tags:
     description: ''
   - name: Workspace
     description: ''
-  - name: Workspace Member
-    description: ''
   - name: Site
+    description: ''
+  - name: Page
     description: ''
   - name: Locale
     description: ''
   - name: Route
     description: ''
-  - name: Page
-    description: ''
   - name: Webhook Management
+    description: ''
+  - name: Workspace Member
     description: ''
 servers: []
 components:
