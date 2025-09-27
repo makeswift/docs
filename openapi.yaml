@@ -1005,10 +1005,11 @@ components:
           type: string
           format: uuid
           description: The ID of the template to import.
+          example: null
         locale:
           type: string
           description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
-          example: es-MX
+          example: en-US
       required:
         - name
     CreateSiteV1ResponseBodyDto:
