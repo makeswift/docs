@@ -281,9 +281,9 @@
                     "pages": [
                       "POST /v1/workspaces/{workspaceId}/sites",
                       "GET /v1/workspaces/{workspaceId}/sites",
-                      "GET /v1/sites/{id}",
-                      "PATCH /v1/sites/{id}",
-                      "DELETE /v1/sites/{id}",
+                      "GET /v1/sites/{siteId}",
+                      "PATCH /v1/sites/{siteId}",
+                      "DELETE /v1/sites/{siteId}",
                       "POST /v1/sites/{siteId}/duplicate"
                     ]
                   },
@@ -302,9 +302,9 @@
                     "pages": [
                       "POST /v1/sites/{siteId}/locales",
                       "GET /v1/sites/{siteId}/locales",
-                      "GET /v1/locales/{id}",
-                      "PATCH /v1/locales/{id}",
-                      "DELETE /v1/locales/{id}"
+                      "GET /v1/locales/{localeId}",
+                      "PATCH /v1/locales/{localeId}",
+                      "DELETE /v1/locales/{localeId}"
                     ]
                   },
                   {
@@ -322,8 +322,8 @@
                     "pages": [
                       "POST /v1/workspaces/{workspaceId}/webhooks",
                       "GET /v1/workspaces/{workspaceId}/webhooks",
-                      "GET /v1/webhooks/{id}",
-                      "DELETE /v1/webhooks/{id}"
+                      "GET /v1/webhooks/{webhookId}",
+                      "DELETE /v1/webhooks/{webhookId}"
                     ]
                   }
                 ]
