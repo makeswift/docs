@@ -886,8 +886,7 @@ components:
       type: apiKey
       in: header
       name: Authorization
-      description: "The API key for the App"
-      example: "Bearer sk_1234567890abcdef"
+      description: "The API key for the App (format: Bearer sk_1234567890abcdef)"
 
 
   schemas:
