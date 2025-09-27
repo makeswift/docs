@@ -130,6 +130,7 @@ paths:
         - AppAuth: []
       parameters:
         - name: workspaceId
+          description: The ID of the workspace
           required: true
           in: path
           schema:
@@ -878,15 +879,17 @@ tags:
     description: ''
   - name: Workspace Member
     description: ''
-servers: []
+servers:
+  - url: "http://localhost:8020"
+    description: "Local development server"
 components:
   securitySchemes:
 
     AppAuth:
-      type: apiKey
-      in: header
-      name: Authorization
-      description: "The API key for the App (e.g. Bearer sk_abc123def456ghi789jkl012mno345pqr678stu901vwx234yz)"
+      type: http
+      scheme: bearer
+      bearerFormat: "sk_abc123def456ghi789jkl012mno345pqr678stu901vwx234yz"
+      description: "The API key for the App (e.g. sk_abc123def456ghi789jkl012mno345pqr678stu901vwx234yz)"
 
 
   schemas:
@@ -1002,11 +1005,6 @@ components:
           type: string
           format: uuid
           description: The ID of the template to import.
-        templateSiteId:
-          type: string
-          format: uuid
-          description: The site ID of the template to import. Use templateId instead.
-          deprecated: true
         locale:
           type: string
           description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
