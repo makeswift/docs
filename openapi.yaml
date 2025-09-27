@@ -3,6 +3,7 @@ paths:
   '/v1/sites/{siteId}/locales':
     post:
       operationId: SiteLocaleController_create_v1
+      summary: "Create Site Locale"
       security:
         - AppAuth: []
       parameters:
@@ -29,6 +30,7 @@ paths:
         - Locale
     get:
       operationId: SiteLocaleController_getByLocale_v1
+      summary: "Get Site Locale by Code"
       security:
         - AppAuth: []
       parameters:
@@ -57,6 +59,7 @@ paths:
   '/v1/locales/{id}':
     delete:
       operationId: SiteLocaleController_delete_v1
+      summary: "Delete Site Locale"
       security:
         - AppAuth: []
       parameters:
@@ -73,6 +76,7 @@ paths:
         - Locale
     patch:
       operationId: SiteLocaleController_update_v1
+      summary: "Update Site Locale"
       security:
         - AppAuth: []
       parameters:
@@ -99,6 +103,7 @@ paths:
         - Locale
     get:
       operationId: SiteLocaleController_get_v1
+      summary: "Get Site Locale"
       security:
         - AppAuth: []
       parameters:
@@ -120,6 +125,7 @@ paths:
   '/v1/workspaces/{workspaceId}/sites':
     post:
       operationId: SiteController_create_v1
+      summary: "Create Site"
       security:
         - AppAuth: []
       parameters:
@@ -146,6 +152,7 @@ paths:
         - Site
     get:
       operationId: SiteController_list_v1
+      summary: "List Sites"
       security:
         - AppAuth: []
       parameters:
@@ -181,6 +188,7 @@ paths:
   '/v1/sites/{id}':
     get:
       operationId: SiteController_getOne_v1
+      summary: "Get Site"
       security:
         - AppAuth: []
       parameters:
@@ -201,6 +209,7 @@ paths:
         - Site
     patch:
       operationId: SiteController_updateOne_v1
+      summary: "Update Site"
       security:
         - AppAuth: []
       parameters:
@@ -227,6 +236,7 @@ paths:
         - Site
     delete:
       operationId: SiteController_delete_v1
+      summary: "Delete Site"
       security:
         - AppAuth: []
       parameters:
@@ -244,6 +254,7 @@ paths:
   '/v1/sites/{siteId}/duplicate':
     post:
       operationId: SiteController_duplicate_v1
+      summary: "Duplicate Site"
       security:
         - AppAuth: []
       parameters:
@@ -273,6 +284,7 @@ paths:
   /v1/auth/user-info:
     get:
       operationId: AuthController_getUserInfo_v1
+      summary: "Get User Info"
       responses:
         '200':
           description: ''
@@ -285,6 +297,7 @@ paths:
   /v1/workspaces:
     post:
       operationId: WorkspaceController_create_v1
+      summary: "Create Workspace"
       requestBody:
         required: true
         content:
@@ -302,6 +315,7 @@ paths:
         - Workspace
     get:
       operationId: WorkspaceController_list_v1
+      summary: "List Workspaces"
       parameters:
         - name: limit
           required: false
@@ -329,6 +343,7 @@ paths:
   '/v1/workspaces/{id}':
     patch:
       operationId: WorkspaceController_updateOne_v1
+      summary: "Update Workspace"
       parameters:
         - name: id
           required: true
@@ -353,6 +368,7 @@ paths:
         - Workspace
     delete:
       operationId: WorkspaceController_delete_v1
+      summary: "Delete Workspace"
       parameters:
         - name: id
           required: true
@@ -368,6 +384,7 @@ paths:
   '/v1/workspaces/{workspaceId}/members/{userId}':
     post:
       operationId: WorkspaceMemberController_create_v1
+      summary: "Add Workspace Member"
       parameters:
         - name: workspaceId
           required: true
@@ -396,6 +413,7 @@ paths:
         - Workspace Member
     delete:
       operationId: WorkspaceMemberController_delete_v1
+      summary: "Remove Workspace Member"
       parameters:
         - name: workspaceId
           required: true
@@ -418,6 +436,7 @@ paths:
         - Workspace Member
     patch:
       operationId: WorkspaceMemberController_update_v1
+      summary: "Update Workspace Member"
       parameters:
         - name: workspaceId
           required: true
@@ -446,6 +465,7 @@ paths:
         - Workspace Member
     get:
       operationId: WorkspaceMemberController_getUserRole_v1
+      summary: "Get Workspace Member Role"
       parameters:
         - name: workspaceId
           required: true
@@ -473,6 +493,7 @@ paths:
   '/v1/workspaces/{workspaceId}/members':
     get:
       operationId: WorkspaceMemberController_getMembers_v1
+      summary: "List Workspace Members"
       parameters:
         - name: workspaceId
           required: true
@@ -538,6 +559,7 @@ paths:
   '/v1/sites/{siteId}/pages/{pageId}':
     patch:
       operationId: PageController_update_v1
+      summary: "Update Page"
       security:
         - AppAuth: []
       parameters:
@@ -570,6 +592,7 @@ paths:
         - Page
     get:
       operationId: PageController_getOne_v1
+      summary: "Get Page"
       security:
         - AppAuth: []
       parameters:
@@ -596,6 +619,7 @@ paths:
         - Page
     delete:
       operationId: PageController_delete_v1
+      summary: "Delete Page"
       security:
         - AppAuth: []
       parameters:
@@ -663,6 +687,7 @@ paths:
   '/v1/workspaces/{workspaceId}/webhooks':
     post:
       operationId: WebhookController_create_v1
+      summary: "Create Webhook"
       security:
         - AppAuth: []
       parameters:
@@ -689,6 +714,7 @@ paths:
         - Webhook Management
     get:
       operationId: WebhookController_list_v1
+      summary: "List Webhooks"
       security:
         - AppAuth: []
       parameters:
@@ -724,6 +750,7 @@ paths:
   '/v1/webhooks/{id}':
     get:
       operationId: WebhookController_get_v1
+      summary: "Get Webhook"
       security:
         - AppAuth: []
       parameters:
@@ -744,6 +771,7 @@ paths:
         - Webhook Management
     delete:
       operationId: WebhookController_delete_v1
+      summary: "Delete Webhook"
       security:
         - AppAuth: []
       parameters:
@@ -761,6 +789,7 @@ paths:
   '/v1/sites/{siteId}/routes':
     get:
       operationId: SiteRouteController_list_v1
+      summary: "List Routes"
       security:
         - AppAuth: []
       parameters:
@@ -804,6 +833,7 @@ paths:
         - Route
     post:
       operationId: SiteRouteController_create_v1
+      summary: "Create Route"
       security:
         - AppAuth: []
       parameters:
@@ -840,6 +870,7 @@ paths:
   '/v1/routes/{routeId}':
     get:
       operationId: SiteRouteController_get_v1
+      summary: "Get Route"
       security:
         - AppAuth: []
       parameters:
@@ -860,6 +891,7 @@ paths:
         - Route
     patch:
       operationId: SiteRouteController_update_v1
+      summary: "Update Route"
       security:
         - AppAuth: []
       parameters:
@@ -895,6 +927,7 @@ paths:
         - Route
     delete:
       operationId: SiteRouteController_delete_v1
+      summary: "Delete Route"
       security:
         - AppAuth: []
       parameters:
@@ -939,7 +972,7 @@ components:
       type: apiKey
       in: header
       name: Authorization
-      description: "App authentication via API key in Authorization header"
+      description: "The API key for the App"
 
 
   schemas:
