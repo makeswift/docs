@@ -290,8 +290,8 @@
                   {
                     "group": "Pages",
                     "pages": [
-                      "GET /v0/sites/{siteId}/pages",
                       "POST /v1/sites/{siteId}/pages",
+                      "GET /v0/sites/{siteId}/pages",
                       "GET /v1/sites/{siteId}/pages/{pageId}",
                       "PATCH /v1/sites/{siteId}/pages/{pageId}",
                       "DELETE /v1/sites/{siteId}/pages/{pageId}"
@@ -300,8 +300,8 @@
                   {
                     "group": "Locales",
                     "pages": [
-                      "GET /v1/sites/{siteId}/locales",
                       "POST /v1/sites/{siteId}/locales",
+                      "GET /v1/sites/{siteId}/locales",
                       "GET /v1/locales/{id}",
                       "PATCH /v1/locales/{id}",
                       "DELETE /v1/locales/{id}"
@@ -310,8 +310,8 @@
                   {
                     "group": "Routes",
                     "pages": [
-                      "GET /v1/sites/{siteId}/routes",
                       "POST /v1/sites/{siteId}/routes",
+                      "GET /v1/sites/{siteId}/routes",
                       "GET /v1/routes/{routeId}",
                       "PATCH /v1/routes/{routeId}",
                       "DELETE /v1/routes/{routeId}"
@@ -320,20 +320,10 @@
                   {
                     "group": "Webhooks",
                     "pages": [
-                      "GET /v1/workspaces/{workspaceId}/webhooks",
                       "POST /v1/workspaces/{workspaceId}/webhooks",
+                      "GET /v1/workspaces/{workspaceId}/webhooks",
                       "GET /v1/webhooks/{id}",
                       "DELETE /v1/webhooks/{id}"
-                    ]
-                  },
-                  {
-                    "group": "Workspace Members",
-                    "pages": [
-                      "GET /v1/workspaces/{workspaceId}/members",
-                      "POST /v1/workspaces/{workspaceId}/members/{userId}",
-                      "GET /v1/workspaces/{workspaceId}/members/{userId}",
-                      "PATCH /v1/workspaces/{workspaceId}/members/{userId}",
-                      "DELETE /v1/workspaces/{workspaceId}/members/{userId}"
                     ]
                   }
                 ]
