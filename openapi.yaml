@@ -899,7 +899,7 @@ components:
         domain:
           type: string
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          example: 'https://mx.hearthfurniture.co'
+          example: 'https://hearthfurniture.com.mx'
       required:
         - locale
     CreateSiteLocaleV1ResponseBodyDto:
@@ -915,7 +915,7 @@ components:
         domain:
           type: 'null'
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          example: 'https://mx.hearthfurniture.co'
+          example: 'https://hearthfurniture.com.mx'
       required:
         - id
         - locale
@@ -930,7 +930,7 @@ components:
         domain:
           type: string
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          example: 'https://mx.hearthfurniture.co'
+          example: 'https://hearthfurniture.com.mx'
     UpdateSiteLocaleV1ResponseBodyDto:
       type: object
       properties:
@@ -944,7 +944,7 @@ components:
         domain:
           type: 'null'
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          example: 'https://mx.hearthfurniture.co'
+          example: 'https://hearthfurniture.com.mx'
       required:
         - id
         - locale
@@ -962,7 +962,7 @@ components:
         domain:
           type: 'null'
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          example: 'https://mx.hearthfurniture.co'
+          example: 'https://hearthfurniture.com.mx'
       required:
         - id
         - locale
@@ -980,7 +980,7 @@ components:
         domain:
           type: 'null'
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          example: 'https://mx.hearthfurniture.co'
+          example: 'https://hearthfurniture.com.mx'
       required:
         - id
         - locale
@@ -996,7 +996,7 @@ components:
           type: string
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
-          example: 'https://hearthfurniture.co'
+          example: 'https://hearthfurniture.com'
         templateId:
           type: string
           format: uuid
@@ -1026,7 +1026,7 @@ components:
           type: 'null'
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
-          example: 'https://hearthfurniture.co'
+          example: 'https://hearthfurniture.com'
         apiKey:
           type: string
           format: uuid
@@ -1049,7 +1049,7 @@ components:
           type: 'null'
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
-          example: 'https://hearthfurniture.co'
+          example: 'https://hearthfurniture.com'
         apiKey:
           type: string
           format: uuid
@@ -1069,7 +1069,7 @@ components:
           type: string
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
-          example: 'https://hearthfurniture.co'
+          example: 'https://hearthfurniture.com'
     UpdateSiteV1ResponseBodyDto:
       type: object
       properties:
@@ -1084,7 +1084,7 @@ components:
           type: 'null'
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
-          example: 'https://hearthfurniture.co'
+          example: 'https://hearthfurniture.com'
         apiKey:
           type: string
           format: uuid
@@ -1112,7 +1112,7 @@ components:
                 type: 'null'
                 format: uri
                 description: The host URL of the site. The URL should consist of only the origin.
-                example: 'https://hearthfurniture.co'
+                example: 'https://hearthfurniture.com'
               apiKey:
                 type: string
                 format: uuid
@@ -1149,7 +1149,7 @@ components:
           type: 'null'
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
-          example: 'https://hearthfurniture.co'
+          example: 'https://hearthfurniture.com'
         apiKey:
           type: string
           format: uuid
@@ -1511,7 +1511,7 @@ components:
         url:
           type: string
           format: uri
-          example: 'https://hearthfurniture.co/webhook'
+          example: 'https://hearthfurniture.com/webhook'
         eventType:
           type: string
           enum:
@@ -1535,7 +1535,7 @@ components:
         url:
           type: string
           format: uri
-          example: 'https://hearthfurniture.co/webhook'
+          example: 'https://hearthfurniture.com/webhook'
         eventType:
           type: string
           enum:
@@ -1566,7 +1566,7 @@ components:
               url:
                 type: string
                 format: uri
-                example: 'https://hearthfurniture.co/webhook'
+                example: 'https://hearthfurniture.com/webhook'
               eventType:
                 type: string
                 enum:
@@ -1597,7 +1597,7 @@ components:
         url:
           type: string
           format: uri
-          example: 'https://hearthfurniture.co/webhook'
+          example: 'https://hearthfurniture.com/webhook'
         eventType:
           type: string
           enum:
