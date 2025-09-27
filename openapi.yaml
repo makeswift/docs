@@ -37,9 +37,9 @@ paths:
         - name: code
           required: true
           in: query
-          description: Locale of the site locale.
+          description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
           schema:
-            example: es-ES
+            example: es-MX
             type: string
         - name: siteId
           required: true
@@ -294,93 +294,6 @@ paths:
                 $ref: '#/components/schemas/GetUserInfoV1ResponseBodyDto'
       tags:
         - Authentication
-  /v1/workspaces:
-    post:
-      operationId: WorkspaceController_create_v1
-      summary: "Create Workspace"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateWorkspaceV1RequestBodyDto'
-      responses:
-        '201':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateWorkspaceV1ResponseBodyDto'
-      tags:
-        - Workspace
-    get:
-      operationId: WorkspaceController_list_v1
-      summary: "List Workspaces"
-      parameters:
-        - name: limit
-          required: false
-          in: query
-          schema:
-            minimum: 0
-            maximum: 100
-            default: 20
-            type: number
-        - name: after
-          required: false
-          in: query
-          schema:
-            format: uuid
-            type: string
-      responses:
-        '201':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListWorkspaceV1ResponseBodyDto'
-      tags:
-        - Workspace
-  '/v1/workspaces/{id}':
-    patch:
-      operationId: WorkspaceController_updateOne_v1
-      summary: "Update Workspace"
-      parameters:
-        - name: id
-          required: true
-          in: path
-          schema:
-            format: uuid
-            type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateWorkspaceV1RequestBodyDto'
-      responses:
-        '201':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateWorkspaceV1ResponseBodyDto'
-      tags:
-        - Workspace
-    delete:
-      operationId: WorkspaceController_delete_v1
-      summary: "Delete Workspace"
-      parameters:
-        - name: id
-          required: true
-          in: path
-          schema:
-            format: uuid
-            type: string
-      responses:
-        '204':
-          description: ''
-      tags:
-        - Workspace
   '/v1/workspaces/{workspaceId}/members/{userId}':
     post:
       operationId: WorkspaceMemberController_create_v1
@@ -804,7 +717,7 @@ paths:
           in: query
           description: 'Filter routes by pathname. Supports partial match. If not provided, returns all routes.'
           schema:
-            example: /about
+            example: /furniture
             type: string
         - name: limit
           required: false
@@ -943,8 +856,8 @@ paths:
       tags:
         - Route
 info:
-  title: Makeswift API
-  description: Documentation for the Makeswift public REST API.
+  title: Hearth Furniture API
+  description: Documentation for the Hearth Furniture Company public REST API.
   version: '1.0'
   contact: {}
 tags:
@@ -981,12 +894,12 @@ components:
       properties:
         locale:
           type: string
-          description: Locale of the site locale.
-          example: es-ES
+          description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+          example: es-MX
         domain:
           type: string
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          example: 'https://es.example.com'
+          example: 'https://mx.hearthfurniture.co'
       required:
         - locale
     CreateSiteLocaleV1ResponseBodyDto:
@@ -997,12 +910,12 @@ components:
           format: uuid
         locale:
           type: string
-          description: Locale of the site locale.
-          example: es-ES
+          description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+          example: es-MX
         domain:
           type: 'null'
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          example: 'https://es.example.com'
+          example: 'https://mx.hearthfurniture.co'
       required:
         - id
         - locale
@@ -1012,12 +925,12 @@ components:
       properties:
         locale:
           type: string
-          description: Locale of the site locale.
-          example: es-ES
+          description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+          example: es-MX
         domain:
           type: string
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          example: 'https://es.example.com'
+          example: 'https://mx.hearthfurniture.co'
     UpdateSiteLocaleV1ResponseBodyDto:
       type: object
       properties:
@@ -1026,12 +939,12 @@ components:
           format: uuid
         locale:
           type: string
-          description: Locale of the site locale.
-          example: es-ES
+          description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+          example: es-MX
         domain:
           type: 'null'
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          example: 'https://es.example.com'
+          example: 'https://mx.hearthfurniture.co'
       required:
         - id
         - locale
@@ -1044,12 +957,12 @@ components:
           format: uuid
         locale:
           type: string
-          description: Locale of the site locale.
-          example: es-ES
+          description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+          example: es-MX
         domain:
           type: 'null'
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          example: 'https://es.example.com'
+          example: 'https://mx.hearthfurniture.co'
       required:
         - id
         - locale
@@ -1062,12 +975,12 @@ components:
           format: uuid
         locale:
           type: string
-          description: Locale of the site locale.
-          example: es-ES
+          description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+          example: es-MX
         domain:
           type: 'null'
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          example: 'https://es.example.com'
+          example: 'https://mx.hearthfurniture.co'
       required:
         - id
         - locale
@@ -1078,12 +991,12 @@ components:
         name:
           type: string
           description: The name of the site
-          example: Acme Co.
+          example: Hearth Furniture Company
         hostUrl:
           type: string
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
-          example: 'https://example.com'
+          example: 'https://hearthfurniture.co'
         templateId:
           type: string
           format: uuid
@@ -1095,8 +1008,8 @@ components:
           deprecated: true
         locale:
           type: string
-          description: Locale of the site locale.
-          example: es-ES
+          description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+          example: es-MX
       required:
         - name
     CreateSiteV1ResponseBodyDto:
@@ -1108,12 +1021,12 @@ components:
         name:
           type: string
           description: The name of the site
-          example: Acme Co.
+          example: Hearth Furniture Company
         hostUrl:
           type: 'null'
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
-          example: 'https://example.com'
+          example: 'https://hearthfurniture.co'
         apiKey:
           type: string
           format: uuid
@@ -1131,12 +1044,12 @@ components:
         name:
           type: string
           description: The name of the site
-          example: Acme Co.
+          example: Hearth Furniture Company
         hostUrl:
           type: 'null'
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
-          example: 'https://example.com'
+          example: 'https://hearthfurniture.co'
         apiKey:
           type: string
           format: uuid
@@ -1151,12 +1064,12 @@ components:
         name:
           type: string
           description: The name of the site
-          example: Acme Co.
+          example: Hearth Furniture Company
         hostUrl:
           type: string
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
-          example: 'https://example.com'
+          example: 'https://hearthfurniture.co'
     UpdateSiteV1ResponseBodyDto:
       type: object
       properties:
@@ -1166,12 +1079,12 @@ components:
         name:
           type: string
           description: The name of the site
-          example: Acme Co.
+          example: Hearth Furniture Company
         hostUrl:
           type: 'null'
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
-          example: 'https://example.com'
+          example: 'https://hearthfurniture.co'
         apiKey:
           type: string
           format: uuid
@@ -1194,12 +1107,12 @@ components:
               name:
                 type: string
                 description: The name of the site
-                example: Acme Co.
+                example: Hearth Furniture Company
               hostUrl:
                 type: 'null'
                 format: uri
                 description: The host URL of the site. The URL should consist of only the origin.
-                example: 'https://example.com'
+                example: 'https://hearthfurniture.co'
               apiKey:
                 type: string
                 format: uuid
@@ -1219,7 +1132,7 @@ components:
         name:
           type: string
           description: The name for the new duplicated site
-          example: My Duplicated Site
+          example: Hearth Furniture Duplicate
       required:
         - name
     DuplicateSiteV1ResponseBodyDto:
@@ -1231,12 +1144,12 @@ components:
         name:
           type: string
           description: The name of the site
-          example: Acme Co.
+          example: Hearth Furniture Company
         hostUrl:
           type: 'null'
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
-          example: 'https://example.com'
+          example: 'https://hearthfurniture.co'
         apiKey:
           type: string
           format: uuid
@@ -1266,7 +1179,7 @@ components:
         name:
           type: string
           description: The name of the workspace
-          example: Acme Workspace
+          example: Hearth Furniture Workspace
       required:
         - name
     CreateWorkspaceV1ResponseBodyDto:
@@ -1278,7 +1191,7 @@ components:
         name:
           type: string
           description: The name of the workspace
-          example: Acme Workspace
+          example: Hearth Furniture Workspace
       required:
         - id
         - name
@@ -1296,7 +1209,7 @@ components:
               name:
                 type: string
                 description: The name of the workspace
-                example: Acme Workspace
+                example: Hearth Furniture Workspace
             required:
               - id
               - name
@@ -1311,7 +1224,7 @@ components:
         name:
           type: string
           description: The name of the workspace
-          example: Acme Workspace
+          example: Hearth Furniture Workspace
     UpdateWorkspaceV1ResponseBodyDto:
       type: object
       properties:
@@ -1321,7 +1234,7 @@ components:
         name:
           type: string
           description: The name of the workspace
-          example: Acme Workspace
+          example: Hearth Furniture Workspace
       required:
         - id
         - name
@@ -1414,11 +1327,11 @@ components:
         pathname:
           type: string
           description: The pathname of the page
-          example: about
+          example: furniture
         name:
           type: string
           description: The name of the page
-          example: About
+          example: Furniture Collection
         seoCanonicalUrl:
           type: 'null'
           description: The canonical URL of the page
@@ -1476,11 +1389,11 @@ components:
         pathname:
           type: string
           description: The pathname of the page
-          example: about
+          example: furniture
         name:
           type: string
           description: The name of the page
-          example: About
+          example: Furniture Collection
         seoCanonicalUrl:
           type: 'null'
           description: The canonical URL of the page
@@ -1526,11 +1439,11 @@ components:
         pathname:
           type: string
           description: The pathname of the page
-          example: about
+          example: furniture
         name:
           type: string
           description: The name of the page
-          example: About
+          example: Furniture Collection
         seoCanonicalUrl:
           type: 'null'
           description: The canonical URL of the page
@@ -1598,7 +1511,7 @@ components:
         url:
           type: string
           format: uri
-          example: 'https://example.com/webhook'
+          example: 'https://hearthfurniture.co/webhook'
         eventType:
           type: string
           enum:
@@ -1622,7 +1535,7 @@ components:
         url:
           type: string
           format: uri
-          example: 'https://example.com/webhook'
+          example: 'https://hearthfurniture.co/webhook'
         eventType:
           type: string
           enum:
@@ -1653,7 +1566,7 @@ components:
               url:
                 type: string
                 format: uri
-                example: 'https://example.com/webhook'
+                example: 'https://hearthfurniture.co/webhook'
               eventType:
                 type: string
                 enum:
@@ -1684,7 +1597,7 @@ components:
         url:
           type: string
           format: uri
-          example: 'https://example.com/webhook'
+          example: 'https://hearthfurniture.co/webhook'
         eventType:
           type: string
           enum:
@@ -1712,7 +1625,7 @@ components:
               pathname:
                 type: string
                 description: 'Pathname of the route, e.g., "/about".'
-                example: /about
+                example: /furniture
               localizedVariants:
                 type: array
                 items:
@@ -1721,11 +1634,11 @@ components:
                     locale:
                       type: string
                       description: Site locale.
-                      example: es-ES
+                      example: es-MX
                     pathname:
                       type: string
                       description: 'Pathname of the route, e.g., "/about".'
-                      example: /about
+                      example: /furniture
                   required:
                     - locale
                     - pathname
@@ -1748,10 +1661,10 @@ components:
               id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
               pathname: /about
               localizedVariants:
-                - locale: es-ES
-                  pathname: /sobre-nosotros
-                - locale: fr-FR
-                  pathname: /a-propos
+                - locale: es-MX
+                  pathname: /muebles
+                - locale: fr-CA
+                  pathname: /meubles
         hasMore:
           type: boolean
       required:
@@ -1763,7 +1676,7 @@ components:
         pathname:
           type: string
           description: 'Pathname of the route, e.g., "/about".'
-          example: /about
+          example: /furniture
         localizedVariants:
           default: []
           type: array
@@ -1773,11 +1686,11 @@ components:
               locale:
                 type: string
                 description: Site locale.
-                example: es-ES
+                example: es-MX
               pathname:
                 type: string
                 description: 'Pathname of the route, e.g., "/about".'
-                example: /about
+                example: /furniture
             required:
               - locale
               - pathname
@@ -1803,7 +1716,7 @@ components:
         pathname:
           type: string
           description: 'Pathname of the route, e.g., "/about".'
-          example: /about
+          example: /furniture
         localizedVariants:
           type: array
           items:
@@ -1812,11 +1725,11 @@ components:
               locale:
                 type: string
                 description: Site locale.
-                example: es-ES
+                example: es-MX
               pathname:
                 type: string
                 description: 'Pathname of the route, e.g., "/about".'
-                example: /about
+                example: /furniture
             required:
               - locale
               - pathname
@@ -1839,10 +1752,10 @@ components:
         id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
         pathname: /about
         localizedVariants:
-          - locale: es-ES
-            pathname: /sobre-nosotros
-          - locale: fr-FR
-            pathname: /a-propos
+          - locale: es-MX
+            pathname: /muebles
+          - locale: fr-CA
+            pathname: /meubles
     ReadSiteRouteV1ResponseBodyDto:
       type: object
       properties:
@@ -1852,7 +1765,7 @@ components:
         pathname:
           type: string
           description: 'Pathname of the route, e.g., "/about".'
-          example: /about
+          example: /furniture
         localizedVariants:
           type: array
           items:
@@ -1861,11 +1774,11 @@ components:
               locale:
                 type: string
                 description: Site locale.
-                example: es-ES
+                example: es-MX
               pathname:
                 type: string
                 description: 'Pathname of the route, e.g., "/about".'
-                example: /about
+                example: /furniture
             required:
               - locale
               - pathname
@@ -1888,17 +1801,17 @@ components:
         id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
         pathname: /about
         localizedVariants:
-          - locale: es-ES
-            pathname: /sobre-nosotros
-          - locale: fr-FR
-            pathname: /a-propos
+          - locale: es-MX
+            pathname: /muebles
+          - locale: fr-CA
+            pathname: /meubles
     UpdateSiteRouteV1RequestBodyDto:
       type: object
       properties:
         pathname:
           type: string
           description: 'Pathname of the route, e.g., "/about".'
-          example: /about
+          example: /furniture
         localizedVariants:
           type: array
           items:
@@ -1907,11 +1820,11 @@ components:
               locale:
                 type: string
                 description: Site locale.
-                example: es-ES
+                example: es-MX
               pathname:
                 type: string
                 description: 'Pathname of the route, e.g., "/about".'
-                example: /about
+                example: /furniture
             required:
               - locale
               - pathname
@@ -1938,7 +1851,7 @@ components:
         pathname:
           type: string
           description: 'Pathname of the route, e.g., "/about".'
-          example: /about
+          example: /furniture
         localizedVariants:
           type: array
           items:
@@ -1947,11 +1860,11 @@ components:
               locale:
                 type: string
                 description: Site locale.
-                example: es-ES
+                example: es-MX
               pathname:
                 type: string
                 description: 'Pathname of the route, e.g., "/about".'
-                example: /about
+                example: /furniture
             required:
               - locale
               - pathname
@@ -1974,10 +1887,10 @@ components:
         id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
         pathname: /about
         localizedVariants:
-          - locale: es-ES
-            pathname: /sobre-nosotros
-          - locale: fr-FR
-            pathname: /a-propos
+          - locale: es-MX
+            pathname: /muebles
+          - locale: fr-CA
+            pathname: /meubles
 webhooks:
   page.created:
     post:
@@ -2001,11 +1914,11 @@ webhooks:
                     pathname:
                       type: string
                       description: The pathname of the page
-                      example: about
+                      example: furniture
                     name:
                       type: string
                       description: The name of the page
-                      example: About
+                      example: Furniture Collection
                     seoCanonicalUrl:
                       type: 'null'
                       description: The canonical URL of the page
@@ -2070,11 +1983,11 @@ webhooks:
                     pathname:
                       type: string
                       description: The pathname of the page
-                      example: about
+                      example: furniture
                     name:
                       type: string
                       description: The name of the page
-                      example: About
+                      example: Furniture Collection
                     seoCanonicalUrl:
                       type: 'null'
                       description: The canonical URL of the page
@@ -2139,11 +2052,11 @@ webhooks:
                     pathname:
                       type: string
                       description: The pathname of the page
-                      example: about
+                      example: furniture
                     name:
                       type: string
                       description: The name of the page
-                      example: About
+                      example: Furniture Collection
                     seoCanonicalUrl:
                       type: 'null'
                       description: The canonical URL of the page
@@ -2208,11 +2121,11 @@ webhooks:
                     pathname:
                       type: string
                       description: The pathname of the page
-                      example: about
+                      example: furniture
                     name:
                       type: string
                       description: The name of the page
-                      example: About
+                      example: Furniture Collection
                     seoCanonicalUrl:
                       type: 'null'
                       description: The canonical URL of the page

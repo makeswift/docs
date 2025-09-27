@@ -277,19 +277,10 @@
                 },
                 "pages": [
                   {
-                    "group": "Workspaces",
-                    "pages": [
-                      "POST /v1/workspaces",
-                      "GET /v1/workspaces",
-                      "PATCH /v1/workspaces/{id}",
-                      "DELETE /v1/workspaces/{id}"
-                    ]
-                  },
-                  {
                     "group": "Sites",
                     "pages": [
-                      "GET /v1/workspaces/{workspaceId}/sites",
                       "POST /v1/workspaces/{workspaceId}/sites",
+                      "GET /v1/workspaces/{workspaceId}/sites",
                       "GET /v1/sites/{id}",
                       "PATCH /v1/sites/{id}",
                       "DELETE /v1/sites/{id}",
