@@ -272,7 +272,9 @@
               },
               {
                 "group": "REST API",
-                "pages": []
+                "openapi": {
+                  "source": "openapi.yaml"
+                }
               }
             ]
           },

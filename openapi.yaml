@@ -1,0 +1,2344 @@
+openapi: 3.1.0
+paths:
+  '/v1/sites/{siteId}/locales':
+    post:
+      operationId: SiteLocaleController_create_v1
+      security:
+        - UserAuth: []
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: siteId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSiteLocaleV1RequestBodyDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateSiteLocaleV1ResponseBodyDto'
+      tags:
+        - Locale
+    get:
+      operationId: SiteLocaleController_getByLocale_v1
+      security:
+        - UserAuth: []
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: code
+          required: true
+          in: query
+          description: Locale of the site locale.
+          schema:
+            example: es-ES
+            type: string
+        - name: siteId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetByLocaleSiteLocaleV1ResponseBodyDto'
+      tags:
+        - Locale
+  '/v1/locales/{id}':
+    delete:
+      operationId: SiteLocaleController_delete_v1
+      security:
+        - UserAuth: []
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+        - Locale
+    patch:
+      operationId: SiteLocaleController_update_v1
+      security:
+        - UserAuth: []
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSiteLocaleV1RequestBodyDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateSiteLocaleV1ResponseBodyDto'
+      tags:
+        - Locale
+    get:
+      operationId: SiteLocaleController_get_v1
+      security:
+        - UserAuth: []
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReadSiteLocaleV1ResponseBodyDto'
+      tags:
+        - Locale
+  '/v1/workspaces/{workspaceId}/sites':
+    post:
+      operationId: SiteController_create_v1
+      security:
+        - UserAuth: []
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: workspaceId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSiteV1RequestBodyDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateSiteV1ResponseBodyDto'
+      tags:
+        - Site
+    get:
+      operationId: SiteController_list_v1
+      security:
+        - UserAuth: []
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: workspaceId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+        - name: limit
+          required: false
+          in: query
+          schema:
+            minimum: 0
+            maximum: 100
+            default: 20
+            type: number
+        - name: after
+          required: false
+          in: query
+          schema:
+            format: uuid
+            type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSiteV1ResponseBodyDto'
+      tags:
+        - Site
+  '/v1/sites/{id}':
+    get:
+      operationId: SiteController_getOne_v1
+      security:
+        - UserAuth: []
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReadSiteV1ResponseBodyDto'
+      tags:
+        - Site
+    patch:
+      operationId: SiteController_updateOne_v1
+      security:
+        - UserAuth: []
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSiteV1RequestBodyDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateSiteV1ResponseBodyDto'
+      tags:
+        - Site
+    delete:
+      operationId: SiteController_delete_v1
+      security:
+        - UserAuth: []
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+        - Site
+  '/v1/sites/{siteId}/duplicate':
+    post:
+      operationId: SiteController_duplicate_v1
+      security:
+        - UserAuth: []
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: siteId
+          required: true
+          in: path
+          description: The ID of the site to duplicate
+          schema:
+            format: uuid
+            example: 123e4567-e89b-12d3-a456-426614174000
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DuplicateSiteV1RequestBodyDto'
+      responses:
+        '201':
+          description: The newly created duplicated site with all content and configuration copied from the original
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DuplicateSiteV1ResponseBodyDto'
+      tags:
+        - Site
+  /v1/auth/user-info:
+    get:
+      operationId: AuthController_getUserInfo_v1
+      security:
+        - UserAuth: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUserInfoV1ResponseBodyDto'
+      tags:
+        - Authentication
+  /v1/workspaces:
+    post:
+      operationId: WorkspaceController_create_v1
+      security:
+        - FranchiseAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWorkspaceV1RequestBodyDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateWorkspaceV1ResponseBodyDto'
+      tags:
+        - Workspace
+    get:
+      operationId: WorkspaceController_list_v1
+      parameters:
+        - name: limit
+          required: false
+          in: query
+          schema:
+            minimum: 0
+            maximum: 100
+            default: 20
+            type: number
+        - name: after
+          required: false
+          in: query
+          schema:
+            format: uuid
+            type: string
+      security:
+        - UserAuth: []
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListWorkspaceV1ResponseBodyDto'
+      tags:
+        - Workspace
+  '/v1/workspaces/{id}':
+    patch:
+      operationId: WorkspaceController_updateOne_v1
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+      security:
+        - UserAuth: []
+        - FranchiseAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateWorkspaceV1RequestBodyDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateWorkspaceV1ResponseBodyDto'
+      tags:
+        - Workspace
+    delete:
+      operationId: WorkspaceController_delete_v1
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+      security:
+        - UserAuth: []
+        - FranchiseAuth: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - Workspace
+  '/v1/workspaces/{workspaceId}/members/{userId}':
+    post:
+      operationId: WorkspaceMemberController_create_v1
+      security:
+        - UserAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: workspaceId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+        - name: userId
+          required: true
+          in: path
+          description: The ID of the user
+          schema:
+            format: uuid
+            example: d2ccb4e7-1364-496d-a131-bd996269ab2c
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWorkspaceMemberV1RequestBodyDto'
+      responses:
+        '204':
+          description: ''
+      tags:
+        - Workspace Member
+    delete:
+      operationId: WorkspaceMemberController_delete_v1
+      security:
+        - UserAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: workspaceId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+        - name: userId
+          required: true
+          in: path
+          description: The ID of the user
+          schema:
+            format: uuid
+            example: d2ccb4e7-1364-496d-a131-bd996269ab2c
+            type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+        - Workspace Member
+    patch:
+      operationId: WorkspaceMemberController_update_v1
+      security:
+        - UserAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: workspaceId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+        - name: userId
+          required: true
+          in: path
+          description: The ID of the user
+          schema:
+            format: uuid
+            example: d2ccb4e7-1364-496d-a131-bd996269ab2c
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateWorkspaceMemberV1RequestBodyDto'
+      responses:
+        '204':
+          description: ''
+      tags:
+        - Workspace Member
+    get:
+      operationId: WorkspaceMemberController_getUserRole_v1
+      security:
+        - UserAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: workspaceId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+        - name: userId
+          required: true
+          in: path
+          description: The ID of the user
+          schema:
+            format: uuid
+            example: d2ccb4e7-1364-496d-a131-bd996269ab2c
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetWorkspaceMemberV1ResponseBodyDto'
+      tags:
+        - Workspace Member
+  '/v1/workspaces/{workspaceId}/members':
+    get:
+      operationId: WorkspaceMemberController_getMembers_v1
+      security:
+        - UserAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: workspaceId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+        - name: limit
+          required: false
+          in: query
+          schema:
+            minimum: 0
+            maximum: 100
+            default: 20
+            type: number
+        - name: after
+          required: false
+          in: query
+          schema:
+            format: uuid
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListWorkspaceMemberV1ResponseBodyDto'
+      tags:
+        - Workspace Member
+  '/v1/sites/{siteId}/pages':
+    post:
+      operationId: PageController_create_v1
+      security:
+        - UserAuth: []
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: siteId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePageV1RequestBodyDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePageV1ResponseBodyDto'
+      tags:
+        - Page
+  '/v1/sites/{siteId}/pages/{pageId}':
+    patch:
+      operationId: PageController_update_v1
+      security:
+        - UserAuth: []
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: siteId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+        - name: pageId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePageV1RequestBodyDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePageV1ResponseBodyDto'
+      tags:
+        - Page
+    get:
+      operationId: PageController_getOne_v1
+      security:
+        - UserAuth: []
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: siteId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+        - name: pageId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPageV1ResponseBodyDto'
+      tags:
+        - Page
+    delete:
+      operationId: PageController_delete_v1
+      security:
+        - UserAuth: []
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: siteId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+        - name: pageId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+        - Page
+  '/v0/sites/{siteId}/pages':
+    get:
+      operationId: PageController_list_v0
+      security:
+        - UserAuth: []
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: siteId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+        - name: limit
+          required: false
+          in: query
+          description: 'Maximum number of pages to return. Defaults to 20, maximum is 100.'
+          schema:
+            minimum: 1
+            maximum: 100
+            default: 20
+            type: number
+        - name: after
+          required: false
+          in: query
+          description: 'Cursor for pagination. If provided, returns pages after this ID.'
+          schema:
+            format: uuid
+            type: string
+        - name: includeOffline
+          required: false
+          in: query
+          description: Include offline pages. Defaults to false.
+          schema:
+            default: false
+            type: boolean
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListPagesV0ResponseBodyDto'
+      tags:
+        - Page
+  '/v1/workspaces/{workspaceId}/webhooks':
+    post:
+      operationId: WebhookController_create_v1
+      security:
+        - UserAuth: []
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: workspaceId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWebhookV1RequestBodyDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateWebhookV1ResponseBodyDto'
+      tags:
+        - Webhook Management
+    get:
+      operationId: WebhookController_list_v1
+      security:
+        - UserAuth: []
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: workspaceId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+        - name: limit
+          required: false
+          in: query
+          schema:
+            minimum: 0
+            maximum: 100
+            default: 20
+            type: number
+        - name: after
+          required: false
+          in: query
+          schema:
+            format: uuid
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListWebhookV1ResponseBodyDto'
+      tags:
+        - Webhook Management
+  '/v1/webhooks/{id}':
+    get:
+      operationId: WebhookController_get_v1
+      security:
+        - UserAuth: []
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetWebhookV1ResponseBodyDto'
+      tags:
+        - Webhook Management
+    delete:
+      operationId: WebhookController_delete_v1
+      security:
+        - UserAuth: []
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+        - Webhook Management
+  '/v1/sites/{siteId}/routes':
+    get:
+      operationId: SiteRouteController_list_v1
+      security:
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: siteId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+        - name: pathname
+          required: false
+          in: query
+          description: 'Filter routes by pathname. Supports partial match. If not provided, returns all routes.'
+          schema:
+            example: /about
+            type: string
+        - name: limit
+          required: false
+          in: query
+          description: 'Maximum number of routes to return. Defaults to 20, maximum is 100. To paginate, use together with `after` cursor.'
+          schema:
+            minimum: 0
+            maximum: 100
+            default: 20
+            type: number
+        - name: after
+          required: false
+          in: query
+          description: 'Cursor for pagination. If provided, returns routes after this ID.'
+          schema:
+            format: uuid
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSiteRouteV1ResponseBodyDto'
+      tags:
+        - Route
+    post:
+      operationId: SiteRouteController_create_v1
+      security:
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: siteId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+        - name: skipValidation
+          required: false
+          in: query
+          description: 'If true, skips validation of the route, such as pathname format. This is useful for testing or when the route is known to be valid.'
+          schema:
+            enum:
+              - 'true'
+              - 'false'
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSiteRouteV1RequestBodyDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateSiteRouteV1ResponseBodyDto'
+      tags:
+        - Route
+  '/v1/routes/{routeId}':
+    get:
+      operationId: SiteRouteController_get_v1
+      security:
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: routeId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReadSiteRouteV1ResponseBodyDto'
+      tags:
+        - Route
+    patch:
+      operationId: SiteRouteController_update_v1
+      security:
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: routeId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+        - name: skipValidation
+          required: false
+          in: query
+          description: 'If true, skips validation of the route, such as pathname format. This is useful for testing or when the route is known to be valid.'
+          schema:
+            enum:
+              - 'true'
+              - 'false'
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSiteRouteV1RequestBodyDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateSiteRouteV1ResponseBodyDto'
+      tags:
+        - Route
+    delete:
+      operationId: SiteRouteController_delete_v1
+      security:
+        - AppAuth: []
+        - FranchiseAuth: []
+      parameters:
+        - name: routeId
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+        - Route
+info:
+  title: Makeswift API
+  description: Documentation for the Makeswift public REST API.
+  version: '1.0'
+  contact: {}
+tags:
+  - name: Authentication
+    description: ''
+  - name: Workspace
+    description: ''
+  - name: Workspace Member
+    description: ''
+  - name: Site
+    description: ''
+  - name: Locale
+    description: ''
+  - name: Route
+    description: ''
+  - name: Page
+    description: ''
+  - name: Webhook Management
+    description: ''
+servers: []
+components:
+  securitySchemes:
+    UserAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: "User authentication via JWT bearer token"
+
+    AppAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: "App authentication via API key in Authorization header"
+
+    FranchiseAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: "Franchise authentication via API key"
+
+  schemas:
+    CreateSiteLocaleV1RequestBodyDto:
+      type: object
+      properties:
+        locale:
+          type: string
+          description: Locale of the site locale.
+          example: es-ES
+        domain:
+          type: string
+          description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
+          example: 'https://es.example.com'
+      required:
+        - locale
+    CreateSiteLocaleV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        locale:
+          type: string
+          description: Locale of the site locale.
+          example: es-ES
+        domain:
+          type: 'null'
+          description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
+          example: 'https://es.example.com'
+      required:
+        - id
+        - locale
+        - domain
+    UpdateSiteLocaleV1RequestBodyDto:
+      type: object
+      properties:
+        locale:
+          type: string
+          description: Locale of the site locale.
+          example: es-ES
+        domain:
+          type: string
+          description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
+          example: 'https://es.example.com'
+    UpdateSiteLocaleV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        locale:
+          type: string
+          description: Locale of the site locale.
+          example: es-ES
+        domain:
+          type: 'null'
+          description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
+          example: 'https://es.example.com'
+      required:
+        - id
+        - locale
+        - domain
+    ReadSiteLocaleV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        locale:
+          type: string
+          description: Locale of the site locale.
+          example: es-ES
+        domain:
+          type: 'null'
+          description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
+          example: 'https://es.example.com'
+      required:
+        - id
+        - locale
+        - domain
+    GetByLocaleSiteLocaleV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        locale:
+          type: string
+          description: Locale of the site locale.
+          example: es-ES
+        domain:
+          type: 'null'
+          description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
+          example: 'https://es.example.com'
+      required:
+        - id
+        - locale
+        - domain
+    CreateSiteV1RequestBodyDto:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the site
+          example: Acme Co.
+        hostUrl:
+          type: string
+          format: uri
+          description: The host URL of the site. The URL should consist of only the origin.
+          example: 'https://example.com'
+        templateId:
+          type: string
+          format: uuid
+          description: The ID of the template to import.
+        templateSiteId:
+          type: string
+          format: uuid
+          description: The site ID of the template to import. Use templateId instead.
+          deprecated: true
+        locale:
+          type: string
+          description: Locale of the site locale.
+          example: es-ES
+      required:
+        - name
+    CreateSiteV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: The name of the site
+          example: Acme Co.
+        hostUrl:
+          type: 'null'
+          format: uri
+          description: The host URL of the site. The URL should consist of only the origin.
+          example: 'https://example.com'
+        apiKey:
+          type: string
+          format: uuid
+      required:
+        - id
+        - name
+        - hostUrl
+        - apiKey
+    ReadSiteV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: The name of the site
+          example: Acme Co.
+        hostUrl:
+          type: 'null'
+          format: uri
+          description: The host URL of the site. The URL should consist of only the origin.
+          example: 'https://example.com'
+        apiKey:
+          type: string
+          format: uuid
+      required:
+        - id
+        - name
+        - hostUrl
+        - apiKey
+    UpdateSiteV1RequestBodyDto:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the site
+          example: Acme Co.
+        hostUrl:
+          type: string
+          format: uri
+          description: The host URL of the site. The URL should consist of only the origin.
+          example: 'https://example.com'
+    UpdateSiteV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: The name of the site
+          example: Acme Co.
+        hostUrl:
+          type: 'null'
+          format: uri
+          description: The host URL of the site. The URL should consist of only the origin.
+          example: 'https://example.com'
+        apiKey:
+          type: string
+          format: uuid
+      required:
+        - id
+        - name
+        - hostUrl
+        - apiKey
+    ListSiteV1ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+              name:
+                type: string
+                description: The name of the site
+                example: Acme Co.
+              hostUrl:
+                type: 'null'
+                format: uri
+                description: The host URL of the site. The URL should consist of only the origin.
+                example: 'https://example.com'
+              apiKey:
+                type: string
+                format: uuid
+            required:
+              - id
+              - name
+              - hostUrl
+              - apiKey
+        hasMore:
+          type: boolean
+      required:
+        - data
+        - hasMore
+    DuplicateSiteV1RequestBodyDto:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name for the new duplicated site
+          example: My Duplicated Site
+      required:
+        - name
+    DuplicateSiteV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: The name of the site
+          example: Acme Co.
+        hostUrl:
+          type: 'null'
+          format: uri
+          description: The host URL of the site. The URL should consist of only the origin.
+          example: 'https://example.com'
+        apiKey:
+          type: string
+          format: uuid
+      required:
+        - id
+        - name
+        - hostUrl
+        - apiKey
+      description: The newly created duplicated site with all content and configuration copied from the original
+    GetUserInfoV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The ID of the user
+          example: d2ccb4e7-1364-496d-a131-bd996269ab2c
+      required:
+        - id
+    CreateWorkspaceV1RequestBodyDto:
+      type: object
+      properties:
+        ownerId:
+          type: string
+          format: uuid
+          example: a2914010-c1d7-4a03-9c22-cb91313a4f25
+        name:
+          type: string
+          description: The name of the workspace
+          example: Acme Workspace
+      required:
+        - name
+    CreateWorkspaceV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: The name of the workspace
+          example: Acme Workspace
+      required:
+        - id
+        - name
+    ListWorkspaceV1ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+              name:
+                type: string
+                description: The name of the workspace
+                example: Acme Workspace
+            required:
+              - id
+              - name
+        hasMore:
+          type: boolean
+      required:
+        - data
+        - hasMore
+    UpdateWorkspaceV1RequestBodyDto:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the workspace
+          example: Acme Workspace
+    UpdateWorkspaceV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: The name of the workspace
+          example: Acme Workspace
+      required:
+        - id
+        - name
+    CreateWorkspaceMemberV1RequestBodyDto:
+      type: object
+      properties:
+        role:
+          type: string
+          enum:
+            - OWNER
+            - ADMIN
+            - PUBLISHER
+            - EDITOR
+            - GUEST
+      required:
+        - role
+    UpdateWorkspaceMemberV1RequestBodyDto:
+      type: object
+      properties:
+        role:
+          type: string
+          enum:
+            - OWNER
+            - ADMIN
+            - PUBLISHER
+            - EDITOR
+            - GUEST
+      required:
+        - role
+    GetWorkspaceMemberV1ResponseBodyDto:
+      type: object
+      properties:
+        role:
+          type: string
+          enum:
+            - OWNER
+            - ADMIN
+            - PUBLISHER
+            - EDITOR
+            - GUEST
+      required:
+        - role
+    ListWorkspaceMemberV1ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              userId:
+                type: string
+                format: uuid
+                description: The ID of the user
+                example: d2ccb4e7-1364-496d-a131-bd996269ab2c
+              role:
+                type: string
+                enum:
+                  - OWNER
+                  - ADMIN
+                  - PUBLISHER
+                  - EDITOR
+                  - GUEST
+            required:
+              - userId
+              - role
+        hasMore:
+          type: boolean
+      required:
+        - data
+        - hasMore
+    CreatePageV1RequestBodyDto:
+      type: object
+      properties:
+        pathname:
+          type: 'null'
+          description: The pathname of the page
+        name:
+          type: 'null'
+          description: The name of the page
+      required:
+        - pathname
+        - name
+    CreatePageV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        pathname:
+          type: string
+          description: The pathname of the page
+          example: about
+        name:
+          type: string
+          description: The name of the page
+          example: About
+        seoCanonicalUrl:
+          type: 'null'
+          description: The canonical URL of the page
+        seoIsIndexingBlocked:
+          type: 'null'
+          description: Whether the page is blocked from indexing
+        seoSitemapPriority:
+          type: 'null'
+          description: The priority of the page in the sitemap
+        seoSitemapFrequency:
+          type: 'null'
+          description: The frequency with which the page is updated in the sitemap
+        metaTitle:
+          type: 'null'
+          description: The title of the page
+        metaDescription:
+          type: 'null'
+          description: The description of the page
+        metaKeywords:
+          type: 'null'
+          description: The keywords of the page
+        isOnline:
+          type: boolean
+          description: Whether the page is online
+      required:
+        - id
+        - pathname
+        - name
+        - seoCanonicalUrl
+        - seoIsIndexingBlocked
+        - seoSitemapPriority
+        - seoSitemapFrequency
+        - metaTitle
+        - metaDescription
+        - metaKeywords
+        - isOnline
+    UpdatePageV1RequestBodyDto:
+      type: object
+      properties:
+        pathname:
+          type: string
+          description: The pathname of the page
+        name:
+          type: string
+          description: The name of the page
+        isOnline:
+          type: boolean
+          description: Whether the page is online or offline
+    UpdatePageV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        pathname:
+          type: string
+          description: The pathname of the page
+          example: about
+        name:
+          type: string
+          description: The name of the page
+          example: About
+        seoCanonicalUrl:
+          type: 'null'
+          description: The canonical URL of the page
+        seoIsIndexingBlocked:
+          type: 'null'
+          description: Whether the page is blocked from indexing
+        seoSitemapPriority:
+          type: 'null'
+          description: The priority of the page in the sitemap
+        seoSitemapFrequency:
+          type: 'null'
+          description: The frequency with which the page is updated in the sitemap
+        metaTitle:
+          type: 'null'
+          description: The title of the page
+        metaDescription:
+          type: 'null'
+          description: The description of the page
+        metaKeywords:
+          type: 'null'
+          description: The keywords of the page
+        isOnline:
+          type: boolean
+          description: Whether the page is online
+      required:
+        - id
+        - pathname
+        - name
+        - seoCanonicalUrl
+        - seoIsIndexingBlocked
+        - seoSitemapPriority
+        - seoSitemapFrequency
+        - metaTitle
+        - metaDescription
+        - metaKeywords
+        - isOnline
+    GetPageV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        pathname:
+          type: string
+          description: The pathname of the page
+          example: about
+        name:
+          type: string
+          description: The name of the page
+          example: About
+        seoCanonicalUrl:
+          type: 'null'
+          description: The canonical URL of the page
+        seoIsIndexingBlocked:
+          type: 'null'
+          description: Whether the page is blocked from indexing
+        seoSitemapPriority:
+          type: 'null'
+          description: The priority of the page in the sitemap
+        seoSitemapFrequency:
+          type: 'null'
+          description: The frequency with which the page is updated in the sitemap
+        metaTitle:
+          type: 'null'
+          description: The title of the page
+        metaDescription:
+          type: 'null'
+          description: The description of the page
+        metaKeywords:
+          type: 'null'
+          description: The keywords of the page
+        isOnline:
+          type: boolean
+          description: Whether the page is online
+      required:
+        - id
+        - pathname
+        - name
+        - seoCanonicalUrl
+        - seoIsIndexingBlocked
+        - seoSitemapPriority
+        - seoSitemapFrequency
+        - metaTitle
+        - metaDescription
+        - metaKeywords
+        - isOnline
+    ListPagesV0ResponseBodyDto:
+      type: object
+      properties:
+        pages:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+              pathname:
+                type: string
+              isOnline:
+                type: boolean
+            required:
+              - id
+              - pathname
+              - isOnline
+        hasMore:
+          type: boolean
+          description: Whether there are more pages available for pagination.
+      required:
+        - pages
+        - hasMore
+    CreateWebhookV1RequestBodyDto:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          example: 'https://example.com/webhook'
+        eventType:
+          type: string
+          enum:
+            - page.created
+            - page.deleted
+            - page.updated
+            - page.restored
+            - site.published
+      required:
+        - url
+        - eventType
+    CreateWebhookV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        workspaceId:
+          type: string
+          format: uuid
+        url:
+          type: string
+          format: uri
+          example: 'https://example.com/webhook'
+        eventType:
+          type: string
+          enum:
+            - page.created
+            - page.deleted
+            - page.updated
+            - page.restored
+            - site.published
+      required:
+        - id
+        - workspaceId
+        - url
+        - eventType
+    ListWebhookV1ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+              workspaceId:
+                type: string
+                format: uuid
+              url:
+                type: string
+                format: uri
+                example: 'https://example.com/webhook'
+              eventType:
+                type: string
+                enum:
+                  - page.created
+                  - page.deleted
+                  - page.updated
+                  - page.restored
+                  - site.published
+            required:
+              - id
+              - workspaceId
+              - url
+              - eventType
+        hasMore:
+          type: boolean
+      required:
+        - data
+        - hasMore
+    GetWebhookV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        workspaceId:
+          type: string
+          format: uuid
+        url:
+          type: string
+          format: uri
+          example: 'https://example.com/webhook'
+        eventType:
+          type: string
+          enum:
+            - page.created
+            - page.deleted
+            - page.updated
+            - page.restored
+            - site.published
+      required:
+        - id
+        - workspaceId
+        - url
+        - eventType
+    ListSiteRouteV1ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+              pathname:
+                type: string
+                description: 'Pathname of the route, e.g., "/about".'
+                example: /about
+              localizedVariants:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    locale:
+                      type: string
+                      description: Site locale.
+                      example: es-ES
+                    pathname:
+                      type: string
+                      description: 'Pathname of the route, e.g., "/about".'
+                      example: /about
+                  required:
+                    - locale
+                    - pathname
+                  description: Localized variant of a route. Each variant has a locale and a pathname.
+                  example:
+                    locale: es-ES
+                    pathname: /sobre-nosotros
+                description: List of localized variants for the route. Each variant has a locale and a pathname.
+                example:
+                  - locale: es-ES
+                    pathname: /sobre-nosotros
+                  - locale: fr-FR
+                    pathname: /a-propos
+            required:
+              - id
+              - pathname
+              - localizedVariants
+            description: Site route with its localized variants.
+            example:
+              id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
+              pathname: /about
+              localizedVariants:
+                - locale: es-ES
+                  pathname: /sobre-nosotros
+                - locale: fr-FR
+                  pathname: /a-propos
+        hasMore:
+          type: boolean
+      required:
+        - data
+        - hasMore
+    CreateSiteRouteV1RequestBodyDto:
+      type: object
+      properties:
+        pathname:
+          type: string
+          description: 'Pathname of the route, e.g., "/about".'
+          example: /about
+        localizedVariants:
+          default: []
+          type: array
+          items:
+            type: object
+            properties:
+              locale:
+                type: string
+                description: Site locale.
+                example: es-ES
+              pathname:
+                type: string
+                description: 'Pathname of the route, e.g., "/about".'
+                example: /about
+            required:
+              - locale
+              - pathname
+            description: Localized variant of a route. Each variant has a locale and a pathname.
+            example:
+              locale: es-ES
+              pathname: /sobre-nosotros
+          description: 'List of localized variants for the route. If not provided, defaults to an empty array.'
+          example:
+            - locale: es-ES
+              pathname: /sobre-nosotros
+            - locale: fr-FR
+              pathname: /a-propos
+      required:
+        - pathname
+      description: Request body for creating a new site route.
+    CreateSiteRouteV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        pathname:
+          type: string
+          description: 'Pathname of the route, e.g., "/about".'
+          example: /about
+        localizedVariants:
+          type: array
+          items:
+            type: object
+            properties:
+              locale:
+                type: string
+                description: Site locale.
+                example: es-ES
+              pathname:
+                type: string
+                description: 'Pathname of the route, e.g., "/about".'
+                example: /about
+            required:
+              - locale
+              - pathname
+            description: Localized variant of a route. Each variant has a locale and a pathname.
+            example:
+              locale: es-ES
+              pathname: /sobre-nosotros
+          description: List of localized variants for the route. Each variant has a locale and a pathname.
+          example:
+            - locale: es-ES
+              pathname: /sobre-nosotros
+            - locale: fr-FR
+              pathname: /a-propos
+      required:
+        - id
+        - pathname
+        - localizedVariants
+      description: Site route with its localized variants.
+      example:
+        id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
+        pathname: /about
+        localizedVariants:
+          - locale: es-ES
+            pathname: /sobre-nosotros
+          - locale: fr-FR
+            pathname: /a-propos
+    ReadSiteRouteV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        pathname:
+          type: string
+          description: 'Pathname of the route, e.g., "/about".'
+          example: /about
+        localizedVariants:
+          type: array
+          items:
+            type: object
+            properties:
+              locale:
+                type: string
+                description: Site locale.
+                example: es-ES
+              pathname:
+                type: string
+                description: 'Pathname of the route, e.g., "/about".'
+                example: /about
+            required:
+              - locale
+              - pathname
+            description: Localized variant of a route. Each variant has a locale and a pathname.
+            example:
+              locale: es-ES
+              pathname: /sobre-nosotros
+          description: List of localized variants for the route. Each variant has a locale and a pathname.
+          example:
+            - locale: es-ES
+              pathname: /sobre-nosotros
+            - locale: fr-FR
+              pathname: /a-propos
+      required:
+        - id
+        - pathname
+        - localizedVariants
+      description: Site route with its localized variants.
+      example:
+        id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
+        pathname: /about
+        localizedVariants:
+          - locale: es-ES
+            pathname: /sobre-nosotros
+          - locale: fr-FR
+            pathname: /a-propos
+    UpdateSiteRouteV1RequestBodyDto:
+      type: object
+      properties:
+        pathname:
+          type: string
+          description: 'Pathname of the route, e.g., "/about".'
+          example: /about
+        localizedVariants:
+          type: array
+          items:
+            type: object
+            properties:
+              locale:
+                type: string
+                description: Site locale.
+                example: es-ES
+              pathname:
+                type: string
+                description: 'Pathname of the route, e.g., "/about".'
+                example: /about
+            required:
+              - locale
+              - pathname
+            description: Localized variant of a route. Each variant has a locale and a pathname.
+            example:
+              locale: es-ES
+              pathname: /sobre-nosotros
+          description: List of localized variants for the route. Each variant has a locale and a pathname.
+          example:
+            - locale: es-ES
+              pathname: /sobre-nosotros
+            - locale: fr-FR
+              pathname: /a-propos
+      required:
+        - pathname
+        - localizedVariants
+      description: Request body for updating an existing site route.
+    UpdateSiteRouteV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        pathname:
+          type: string
+          description: 'Pathname of the route, e.g., "/about".'
+          example: /about
+        localizedVariants:
+          type: array
+          items:
+            type: object
+            properties:
+              locale:
+                type: string
+                description: Site locale.
+                example: es-ES
+              pathname:
+                type: string
+                description: 'Pathname of the route, e.g., "/about".'
+                example: /about
+            required:
+              - locale
+              - pathname
+            description: Localized variant of a route. Each variant has a locale and a pathname.
+            example:
+              locale: es-ES
+              pathname: /sobre-nosotros
+          description: List of localized variants for the route. Each variant has a locale and a pathname.
+          example:
+            - locale: es-ES
+              pathname: /sobre-nosotros
+            - locale: fr-FR
+              pathname: /a-propos
+      required:
+        - id
+        - pathname
+        - localizedVariants
+      description: Site route with its localized variants.
+      example:
+        id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
+        pathname: /about
+        localizedVariants:
+          - locale: es-ES
+            pathname: /sobre-nosotros
+          - locale: fr-FR
+            pathname: /a-propos
+webhooks:
+  page.created:
+    post:
+      description: A page was created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - page.created
+                page:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    pathname:
+                      type: string
+                      description: The pathname of the page
+                      example: about
+                    name:
+                      type: string
+                      description: The name of the page
+                      example: About
+                    seoCanonicalUrl:
+                      type: 'null'
+                      description: The canonical URL of the page
+                    seoIsIndexingBlocked:
+                      type: 'null'
+                      description: Whether the page is blocked from indexing
+                    seoSitemapPriority:
+                      type: 'null'
+                      description: The priority of the page in the sitemap
+                    seoSitemapFrequency:
+                      type: 'null'
+                      description: The frequency with which the page is updated in the sitemap
+                    metaTitle:
+                      type: 'null'
+                      description: The title of the page
+                    metaDescription:
+                      type: 'null'
+                      description: The description of the page
+                    metaKeywords:
+                      type: 'null'
+                      description: The keywords of the page
+                    isOnline:
+                      type: boolean
+                      description: Whether the page is online
+                  required:
+                    - id
+                    - pathname
+                    - name
+                    - seoCanonicalUrl
+                    - seoIsIndexingBlocked
+                    - seoSitemapPriority
+                    - seoSitemapFrequency
+                    - metaTitle
+                    - metaDescription
+                    - metaKeywords
+                    - isOnline
+              required:
+                - type
+                - page
+      responses:
+        '200':
+          description: Return a 200 status to indicate that the data was received successfully
+  page.updated:
+    post:
+      description: A page was updated
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - page.updated
+                page:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    pathname:
+                      type: string
+                      description: The pathname of the page
+                      example: about
+                    name:
+                      type: string
+                      description: The name of the page
+                      example: About
+                    seoCanonicalUrl:
+                      type: 'null'
+                      description: The canonical URL of the page
+                    seoIsIndexingBlocked:
+                      type: 'null'
+                      description: Whether the page is blocked from indexing
+                    seoSitemapPriority:
+                      type: 'null'
+                      description: The priority of the page in the sitemap
+                    seoSitemapFrequency:
+                      type: 'null'
+                      description: The frequency with which the page is updated in the sitemap
+                    metaTitle:
+                      type: 'null'
+                      description: The title of the page
+                    metaDescription:
+                      type: 'null'
+                      description: The description of the page
+                    metaKeywords:
+                      type: 'null'
+                      description: The keywords of the page
+                    isOnline:
+                      type: boolean
+                      description: Whether the page is online
+                  required:
+                    - id
+                    - pathname
+                    - name
+                    - seoCanonicalUrl
+                    - seoIsIndexingBlocked
+                    - seoSitemapPriority
+                    - seoSitemapFrequency
+                    - metaTitle
+                    - metaDescription
+                    - metaKeywords
+                    - isOnline
+              required:
+                - type
+                - page
+      responses:
+        '200':
+          description: Return a 200 status to indicate that the data was received successfully
+  page.deleted:
+    post:
+      description: A page was deleted
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - page.deleted
+                page:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    pathname:
+                      type: string
+                      description: The pathname of the page
+                      example: about
+                    name:
+                      type: string
+                      description: The name of the page
+                      example: About
+                    seoCanonicalUrl:
+                      type: 'null'
+                      description: The canonical URL of the page
+                    seoIsIndexingBlocked:
+                      type: 'null'
+                      description: Whether the page is blocked from indexing
+                    seoSitemapPriority:
+                      type: 'null'
+                      description: The priority of the page in the sitemap
+                    seoSitemapFrequency:
+                      type: 'null'
+                      description: The frequency with which the page is updated in the sitemap
+                    metaTitle:
+                      type: 'null'
+                      description: The title of the page
+                    metaDescription:
+                      type: 'null'
+                      description: The description of the page
+                    metaKeywords:
+                      type: 'null'
+                      description: The keywords of the page
+                    isOnline:
+                      type: boolean
+                      description: Whether the page is online
+                  required:
+                    - id
+                    - pathname
+                    - name
+                    - seoCanonicalUrl
+                    - seoIsIndexingBlocked
+                    - seoSitemapPriority
+                    - seoSitemapFrequency
+                    - metaTitle
+                    - metaDescription
+                    - metaKeywords
+                    - isOnline
+              required:
+                - type
+                - page
+      responses:
+        '200':
+          description: Return a 200 status to indicate that the data was received successfully
+  page.restored:
+    post:
+      description: A page was restored
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - page.restored
+                page:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    pathname:
+                      type: string
+                      description: The pathname of the page
+                      example: about
+                    name:
+                      type: string
+                      description: The name of the page
+                      example: About
+                    seoCanonicalUrl:
+                      type: 'null'
+                      description: The canonical URL of the page
+                    seoIsIndexingBlocked:
+                      type: 'null'
+                      description: Whether the page is blocked from indexing
+                    seoSitemapPriority:
+                      type: 'null'
+                      description: The priority of the page in the sitemap
+                    seoSitemapFrequency:
+                      type: 'null'
+                      description: The frequency with which the page is updated in the sitemap
+                    metaTitle:
+                      type: 'null'
+                      description: The title of the page
+                    metaDescription:
+                      type: 'null'
+                      description: The description of the page
+                    metaKeywords:
+                      type: 'null'
+                      description: The keywords of the page
+                    isOnline:
+                      type: boolean
+                      description: Whether the page is online
+                  required:
+                    - id
+                    - pathname
+                    - name
+                    - seoCanonicalUrl
+                    - seoIsIndexingBlocked
+                    - seoSitemapPriority
+                    - seoSitemapFrequency
+                    - metaTitle
+                    - metaDescription
+                    - metaKeywords
+                    - isOnline
+              required:
+                - type
+                - page
+      responses:
+        '200':
+          description: Return a 200 status to indicate that the data was received successfully
+  site.published:
+    post:
+      description: A site was published
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - site.published
+                data:
+                  type: object
+                  properties:
+                    siteId:
+                      type: string
+                      format: uuid
+                    publish:
+                      type: object
+                      properties:
+                        from:
+                          type: 'null'
+                          format: uuid
+                        to:
+                          type: string
+                          format: uuid
+                      required:
+                        - from
+                        - to
+                    at:
+                      type: number
+                  required:
+                    - siteId
+                    - publish
+                    - at
+              required:
+                - type
+                - data
+      responses:
+        '200':
+          description: Return a 200 status to indicate that the data was received successfully
