@@ -56,7 +56,7 @@ paths:
                 $ref: '#/components/schemas/GetByLocaleSiteLocaleV1ResponseBodyDto'
       tags:
         - Locale
-  '/v1/locales/{id}':
+  '/v1/locales/{localeId}':
     delete:
       operationId: SiteLocaleController_delete_v1
       summary: "Delete Site Locale"
@@ -668,7 +668,7 @@ paths:
                 $ref: '#/components/schemas/ListWebhookV1ResponseBodyDto'
       tags:
         - Webhook Management
-  '/v1/webhooks/{id}':
+  '/v1/webhooks/{webhookId}':
     get:
       operationId: WebhookController_get_v1
       summary: "Get Webhook"
@@ -1841,9 +1841,6 @@ components:
               pathname: /sobre-nosotros
             - locale: fr-FR
               pathname: /a-propos
-      required:
-        - pathname
-        - localizedVariants
       description: Request body for updating an existing site route.
     UpdateSiteRouteV1ResponseBodyDto:
       type: object

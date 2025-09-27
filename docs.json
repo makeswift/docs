@@ -288,16 +288,6 @@
                     ]
                   },
                   {
-                    "group": "Pages",
-                    "pages": [
-                      "POST /v1/sites/{siteId}/pages",
-                      "GET /v0/sites/{siteId}/pages",
-                      "GET /v1/sites/{siteId}/pages/{pageId}",
-                      "PATCH /v1/sites/{siteId}/pages/{pageId}",
-                      "DELETE /v1/sites/{siteId}/pages/{pageId}"
-                    ]
-                  },
-                  {
                     "group": "Locales",
                     "pages": [
                       "POST /v1/sites/{siteId}/locales",
@@ -305,6 +295,16 @@
                       "GET /v1/locales/{localeId}",
                       "PATCH /v1/locales/{localeId}",
                       "DELETE /v1/locales/{localeId}"
+                    ]
+                  },
+                  {
+                    "group": "Pages",
+                    "pages": [
+                      "POST /v1/sites/{siteId}/pages",
+                      "GET /v0/sites/{siteId}/pages",
+                      "GET /v1/sites/{siteId}/pages/{pageId}",
+                      "PATCH /v1/sites/{siteId}/pages/{pageId}",
+                      "DELETE /v1/sites/{siteId}/pages/{pageId}"
                     ]
                   },
                   {
