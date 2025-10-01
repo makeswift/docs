@@ -117,7 +117,7 @@
                 "icon": "user",
                 "pages": [
                   "product/user-settings/login-methods",
-                  "product/user-settings/feature-previews"
+                  "product/user-settings/early-access"
                 ]
               }
             ]
@@ -173,7 +173,6 @@
                   "developer/guides/how-to/set-cookies",
                   "developer/guides/how-to/add-custom-fonts"
                 ]
-
               },
               {
                 "group": "Troubleshooting",
