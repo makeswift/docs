@@ -1,0 +1,51 @@
+---
+title: Upgrading to 0.26.0
+---
+
+If you haven't yet upgraded to `0.25.0`, please review the [0.25.0 upgrade
+guide](/developer/upgrading/0.25.0) first.
+
+`v0.26.0` of the runtime optimizes the client bundle for Makeswift-integrated
+hosts, and reorganizes several package exports. As part of this reorganization,
+several internal functions and types have been moved to internal-only entry
+points.
+
+Refer to the [official release
+notes](https://github.com/makeswift/makeswift/releases/tag/%40makeswift/runtime%400.26.0)
+for the full list of changes.
+
+## Breaking Changes
+
+### `previewMode` option in Next.js plugin replaced
+
+The Next.js plugin's `previewMode` option has been replaced with
+`disableBuiltInPreview`. This option is `false` by default. When set to `true`,
+this option disables the built-in preview mode handling provided by the plugin.
+In that case, you will need to implement your own preview mode handling in order
+to edit your site in the builder.
+
+For most use cases, we recommend using the built-in preview mode handling.
+
+### Relocated `MakeswiftComponentType` and builtin components
+
+The `MakeswiftComponentType` export - commonly used to override Makeswift's
+built-in component registrations — has been moved to the
+`@makeswift/runtime/react/builtins` entry point:
+
+```diff
+- import { MakeswiftComponentType } from '@makeswift/runtime';
++ import { MakeswiftComponentType } from '@makeswift/runtime/react/builtins';
+```
+
+Similarly, each builtin component has been moved to its own entry point within
+the `@makeswift/runtime/react/builtins` module. This structure enables better
+tree-shaking and smaller client bundles.
+
+For example, the `Image` component can now be imported from
+`@makeswift/runtime/react/builtins/image`:
+
+```diff
+- import { Image } from '@makeswift/runtime/components';
++ import { Image } from '@makeswift/runtime/react/builtins/image';
+```
+
