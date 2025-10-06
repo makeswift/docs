@@ -32,6 +32,12 @@ import DescriptionParam from "/snippets/reference/description-param.mdx";
        <ParamField query="hidden" type="boolean">
         A boolean that determines whether or not this component will be displayed in the Component Tray.
       </ParamField>
+       <ParamField query="builtinSuspense" type="boolean">
+        A boolean that determines whether or not this component will be wrapped in a built-in `<Suspense>` boundary.
+        Defaults to `true`. Set this to `false` if your component already includes its own `<Suspense>` boundary.
+
+        Added in [`v0.26.0`](https://github.com/makeswift/makeswift/releases/tag/%40makeswift%2Fruntime%400.26.0).
+      </ParamField>
        <ParamField query="props" type="Record<string, Control>" required>
           An object mapping prop names to Makeswift [controls](/developer/concepts#controls).
        </ParamField>
@@ -105,6 +111,39 @@ runtime.registerComponent(Sphere, {
   label: "Visuals/Sphere",
   props: {
     className: Style({ properties: Style.All }),
+  },
+});
+```
+
+### Overriding the built-in Suspense boundary
+
+By default, the Makeswift runtime wraps registered components in a built-in `<Suspense>` boundary to
+transparently enable efficient server-side streaming and asynchronous data fetching. If your component
+already includes its own `<Suspense>` boundary, you can disable the built-in one by setting the
+`builtinSuspense` option to `false`:
+
+```tsx
+import { TextInput } from "@makeswift/runtime/controls";
+import { runtime } from "./runtime";
+
+function Discography({ artistId }: { artistId?: string }) {
+  return (
+    <>
+      <h2>Discography</h2>
+      {/* component's own Suspense boundary with a fallback */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <AlbumList artistId={artistId} />
+      </Suspense>
+    </>
+  );
+}
+
+runtime.registerComponent(Discography, {
+  type: 'section-discography',
+  label: 'Discography',
+  builtinSuspense: false, // disable the built-in Suspense boundary
+  props: {
+    artistId: TextInput({ label: 'Artist ID' }),
   },
 });
 ```
