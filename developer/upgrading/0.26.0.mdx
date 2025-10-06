@@ -28,7 +28,7 @@ For most use cases, we recommend using the built-in preview mode handling.
 
 ### Relocated `MakeswiftComponentType` and builtin components
 
-The `MakeswiftComponentType` export - commonly used to override Makeswift's
+The `MakeswiftComponentType` export — commonly used to override Makeswift's
 built-in component registrations — has been moved to the
 `@makeswift/runtime/react/builtins` entry point:
 
@@ -49,3 +49,40 @@ For example, the `Image` component can now be imported from
 + import { Image } from '@makeswift/runtime/react/builtins/image';
 ```
 
+## New APIs
+
+### `builtinSuspense` option in `registerComponent`
+
+We've added a new `builtinSuspense` option to [`registerComponent`](/developer/reference/runtime/register-component)
+that lets you control whether the Makeswift runtime wraps a component in its
+default `<Suspense>` boundary.
+
+The `builtinSuspense` option defaults to `true`. If your component already
+includes its own `<Suspense>` boundary, set this option to `false` to prevent
+the Makeswift runtime from adding another one on top:
+
+```tsx
+import { TextInput } from "@makeswift/runtime/controls";
+import { runtime } from "./runtime";
+
+function Discography({ artistId }: { artistId?: string }) {
+  return (
+    <>
+      <h2>Discography</h2>
+      {/* component's own Suspense boundary with a fallback */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <AlbumList artistId={artistId} />
+      </Suspense>
+    </>
+  );
+}
+
+runtime.registerComponent(Discography, {
+  type: 'section-discography',
+  label: 'Discography',
+  builtinSuspense: false, // disable the built-in Suspense boundary
+  props: {
+    artistId: TextInput({ label: 'Artist ID' }),
+  },
+});
+```
