@@ -1,30 +1,44 @@
 ---
 title: "Animations"
-description: "Animations add dynamic movement to your pages, enhancing the user experience. You can apply animations to a container (e.g., a box or section) and its direct child elements."
+description: "Animations add dynamic movement to your pages, enhancing the user experience. You can apply animations to a box component and its direct child components."
 icon: "sparkles"
 ---
 
-Makeswift offers a variety of effects and customization options, including delay and stagger controls.
+Animations can be customized, and include controls for animation type, duration, delay, and stagger.
 
 <Frame>![Animating a section](/images/property-panels/Animations.gif)</Frame>
 
-## Effects
+## Animation types
 
-Animations are triggered when an element appears into view, or on page load if the element is already in view. Makeswift provides a comprehensive list of animation effects to choose from.
+Animations are triggered when a box is scrolled into view, or on page load if the box is already in view. Makeswift provides a variety of animation effects to choose from.
 
 <Frame>
   ![Animation effects](/images/property-panels/animation-effects.png)
 </Frame>
 
-Animations can be applied to boxes and/or their direct children, allowing for flexibility in how elements animate. When adding animations to a box's items, it will only animate the direct children of the box.
+## Animate box in
+
+Animate box in will apply the selected animation type to the box component and any child components nested within it. 
+
+## Animate items in
+
+You can use “Animate items in” to apply a separate animation type to the child components within a box.
+
+If set to “None”, then the box and its child components animate as a single, unified element, and child components inherit the animation type of the parent box.
 
 <Frame>
   ![Animate boxes or items](/images/property-panels/animate-box-items.png)
 </Frame>
 
+## Duration
+
+Duration specifies the amount of time it takes for an animation to complete.
+
+When considering duration for an animation, aim for a good balance between presentation and usability. If the animation is too short, it may go unnoticed by the visitor. If the animation is too long, visitors may be forced to wait before they can see the content they care about. 
+
 ## Delay
 
-Delay specifies the amount of time to wait before the start of an animation, allowing for precise control over when animations begin. This can be used to create more dynamic and engaging user experiences by staggering animations or synchronizing them with other page events.
+Delay specifies the amount of time to wait before the start of an animation, allowing for precise control over when animations begin. This can be used to create more dynamic and engaging user experiences by strategically timing or synchronizing them with other page events.
 
 ## Stagger
 
@@ -36,9 +50,9 @@ Stagger allows you to easily apply a delay to each item within a box, creating a
 
 ## Pro tips
 
-Very tall sections can cause animations to not be triggered. This can more likely happen on mobile devices since content is stacked. Be sure to test out and adjust your animations for your mobile device to avoid any
+Very tall sections can cause animations to not be triggered. This is more likely to happen on mobile devices since content is stacked. Be sure to test out and adjust your animations for mobile devices to avoid any
 issues.
 
 ## Developer notes
 
-Animations above the fold which are triggered on page load can hurt your page performance score based on Google's standards related to [Largest Contentful Painting (LCP)](https://web.dev/articles/lcp). To prevent lower performance scores, apply animations to elements that are scrolled into view.
+Animations above the fold which are triggered on page load can hurt your page performance score based on Google's standards related to [Largest Contentful Painting (LCP)](https://web.dev/articles/lcp). To prevent lower performance scores, apply animations to elements below the fold that are scrolled into view.
