@@ -122,48 +122,40 @@ paths:
                 $ref: "#/components/schemas/ReadSiteLocaleV1ResponseBodyDto"
       tags:
         - Locale
-  "/v1/workspaces/{workspaceId}/sites":
+  "/v2/sites":
     post:
-      operationId: SiteController_create_v1
+      operationId: SiteController_create_v2
       summary: "Create Site"
       security:
         - AppAuth: []
-      parameters:
-        - name: workspaceId
-          description: The ID of the workspace
-          required: true
-          in: path
-          schema:
-            format: uuid
-            type: string
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateSiteV1RequestBodyDto"
+              $ref: "#/components/schemas/CreateSiteV2RequestBodyDto"
       responses:
         "201":
           description: ""
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CreateSiteV1ResponseBodyDto"
+                $ref: "#/components/schemas/CreateSiteV2ResponseBodyDto"
       tags:
         - Site
     get:
-      operationId: SiteController_list_v1
+      operationId: SiteController_list_v2
       summary: "List Sites"
       security:
         - AppAuth: []
       parameters:
         - name: workspaceId
           required: true
-          in: path
+          in: query
           schema:
             format: uuid
             type: string
-        - name: limit
+        - name: page_size
           required: false
           in: query
           schema:
@@ -171,7 +163,7 @@ paths:
             maximum: 100
             default: 20
             type: number
-        - name: after
+        - name: start_cursor
           required: false
           in: query
           schema:
@@ -183,12 +175,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListSiteV1ResponseBodyDto"
+                $ref: "#/components/schemas/ListSiteV2ResponseBodyDto"
       tags:
         - Site
-  "/v1/sites/{siteId}":
+  "/v2/sites/{siteId}":
     get:
-      operationId: SiteController_getOne_v1
+      operationId: SiteController_getOne_v2
       summary: "Get Site"
       security:
         - AppAuth: []
@@ -209,7 +201,7 @@ paths:
       tags:
         - Site
     patch:
-      operationId: SiteController_updateOne_v1
+      operationId: SiteController_updateOne_v2
       summary: "Update Site"
       security:
         - AppAuth: []
@@ -236,7 +228,7 @@ paths:
       tags:
         - Site
     delete:
-      operationId: SiteController_delete_v1
+      operationId: SiteController_delete_v2
       summary: "Delete Site"
       security:
         - AppAuth: []
@@ -252,9 +244,9 @@ paths:
           description: ""
       tags:
         - Site
-  "/v1/sites/{siteId}/duplicate":
+  "/v2/sites/{siteId}/duplicate":
     post:
-      operationId: SiteController_duplicate_v1
+      operationId: SiteController_duplicate_v2
       summary: "Duplicate Site"
       security:
         - AppAuth: []
@@ -995,9 +987,13 @@ components:
         - id
         - locale
         - domain
-    CreateSiteV1RequestBodyDto:
+    CreateSiteV2RequestBodyDto:
       type: object
       properties:
+        workspaceId:
+          type: string
+          description: The ID of the workspace this site belongs to
+          format: uuid
         name:
           type: string
           description: The name of the site
@@ -1007,15 +1003,15 @@ components:
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
           example: "https://hearthfurniture.com"
-        locale:
+        defaultLocale:
           type: string
-          description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+          description: The primary locale of the site (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
           example: en-US
           x-mint:
             hideInExample: true
       required:
         - name
-    CreateSiteV1ResponseBodyDto:
+    CreateSiteV2ResponseBodyDto:
       type: object
       properties:
         id:
@@ -1096,7 +1092,7 @@ components:
         - name
         - hostUrl
         - apiKey
-    ListSiteV1ResponseBodyDto:
+    ListSiteV2ResponseBodyDto:
       type: object
       properties:
         data:
