@@ -7,7 +7,7 @@
     "light": "#EA3BA7",
     "dark": "#EA3BA7"
   },
-  "favicon": "/images/favicon.svg",
+  "favicon": "/images/favicon.png",
   "navigation": {
     "tabs": [
       {
@@ -117,7 +117,7 @@
                 "icon": "user",
                 "pages": [
                   "product/user-settings/login-methods",
-                  "product/user-settings/feature-previews"
+                  "product/user-settings/early-access"
                 ]
               }
             ]
@@ -186,6 +186,7 @@
               {
                 "group": "Upgrading",
                 "pages": [
+                  "developer/upgrading/0.26.0",
                   "developer/upgrading/0.25.0",
                   "developer/upgrading/0.24.0",
                   "developer/upgrading/0.23.0",

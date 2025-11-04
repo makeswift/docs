@@ -1,6 +1,6 @@
 ---
 title: "Previewing and sharing"
-description: "Makeswift allows you to share previews of different versions of your site for collaboration and feedback."
+description: "Makeswift allows you to share previews of different versions of your site for enhanced collaboration and feedback."
 icon: "share" iconType: "solid"
 ---
 
@@ -12,27 +12,97 @@ icon: "share" iconType: "solid"
   documentation](#preview-button-deprecated).
 </Warning>
 
-Makeswift allows you to share different versions of your site for enhanced collaboration and feedback. In the Visual Builder, you can create shareable links to different site versions, which you can then send to your team members or stakeholders.
+Makeswift allows you to preview and share different versions of your site for enhanced collaboration and feedback using [Site Previews](#site-previews) and [Share Links](#share-links).
 
-Anyone with these links can view the shared version of your site directly on your site's domain itself. This means that site previews can be viewed on any device, including phones and tablets.
-
-You can generate shareable links for any of the following:
+You can preview different versions of your site for any of the following:
 
 - The current draft state of your site in the Visual Builder
 - A particular scheduled publish
 - A specific previous publish of your site
 
-## Privacy
+## Site Preview
 
-Shareable links are site-wide previews. This means that a recipient of a share link will be able to view the entire site as it was in the shared version.
+Site Previews allow you to preview different versions of your site directly on your domain without generating a shareable link. This is useful when you want to review changes privately on your own device before deciding whether to share them with others via [Share Links](#share-links).
 
+### Previewing draft state
+
+There are two ways to preview the draft state (the current state of your site in the Visual Builder):
+
+- Via the **View page** icon in the Visual Builder header
+- Via the **Action Menu** in the Visual Builder header
+
+To preview via the **View page** icon, click the open icon to the right of the address bar in the Visual Builder header. This opens your site in a new tab and shows the current draft state.
+
+<Frame>![View page icon](/images/sharing/direct-preview-1.png)</Frame>
+
+To preview via the **Action Menu**, click the three dots in the top right corner of the Visual Builder header. From the menu, select **View page**.
+
+<Frame>![View page menu selection](/images/sharing/direct-preview-2.png)</Frame>
+
+### Previewing a scheduled publish
+
+To preview a particular scheduled publish, open the publish dialog and navigate to the **Scheduled** tab. Hover over the scheduled publish you'd like to preview and open the **Action Menu** by clicking the three dots, then select **Preview**. This opens your site in a new tab showing the scheduled publish preview.
+
+<Frame>
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    controls
+    title="Directly previewing a scheduled publish"
+    className="aspect-video"
+    src="/images/sharing/direct-preview-3.mp4"
+  ></video>
+</Frame>
+
+### Previewing a previous publish
+
+To preview a specific previous publish, open the publish dialog and navigate to the **History** tab. Hover over the publish you'd like to preview and open the **Action Menu** by clicking the three dots, then select **Preview**. This opens your site in a new tab showing the previous publish preview.
+
+<Frame>
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    controls
+    title="Directly previewing a previous publish"
+    className="aspect-video"
+    src="/images/sharing/direct-preview-4.mp4"
+  ></video>
+</Frame>
+
+### Exiting previews
+
+When you open a preview, you'll see that version of the site directly on your domain, even after refreshing or navigating between pages.
+
+To return to the live site:
+
+- Click **Exit preview** in the bottom-right corner of the page.
+- Or clear your cookies for the site to remove the preview state.
+
+Exiting the preview returns you to the currently published live site. It does not modify your drafts, scheduled publishes, or publish history.
+
+<Frame>![Exit preview button](/images/sharing/exit-preview.png)</Frame>
+
+
+## Share Links
+
+<Note>
 All share links expire after 5 days. After expiration, visiting the share link will result in an error, and users will no longer be able to see the shared version of the site.
+</Note>
 
-By default, share links can only be accessed by other members of your Makeswift workspace. To create a public share link, see the [Public Share Links](#public-share-links) section.
+Share Links are powered by [Site Previews](#site-previews).  They allow you to create shareable links that give others access to specific versions of your site.  This means that a recipient of a share link will be able to view the entire site as it was in the shared version. 
 
-## Sharing draft state
+By default, Share Links can only be accessed by other members of your Makeswift workspace, 
+but you can create a public Share Link by toggling the `Public preview` option when generating the link, allowing anyone with the link to view the shared version without needing workspace access.
 
-To share the draft state (the current state of your site in the Visual Builder), click on the "Share" button in the top right corner of the Visual Builder header.
+<Frame>![Public preview toggle](/images/sharing/public-preview.png)</Frame>
+
+### Sharing draft state
+
+To share the draft state (the current state of your site in the Visual Builder), click on the **Share** button in the top right corner of the Visual Builder header.
 This will open a dialog that has a new shareable link generated for you. You can copy this link and share it with others.
 
 <Frame>
@@ -48,9 +118,9 @@ This will open a dialog that has a new shareable link generated for you. You can
   ></video>
 </Frame>
 
-## Sharing a scheduled publish
+### Sharing a scheduled publish
 
-To share a particular scheduled publish, open the publish dialog and navigate to the "Scheduled" tab. Hover over the scheduled publish you'd like to share and click the "Share" icon, which will open a dialog with a shareable link for that specific publish.
+To share a particular scheduled publish, open the publish dialog and navigate to the **Scheduled** tab. Hover over the scheduled publish you'd like to share and click the **Share** icon, which will open a dialog with a shareable link for that specific publish.
 
 <Frame>
   <video
@@ -65,9 +135,9 @@ To share a particular scheduled publish, open the publish dialog and navigate to
   ></video>
 </Frame>
 
-## Sharing a previous publish
+### Sharing a previous publish
 
-To share a specific previous publish, open the publish dialog and navigate to the "History" tab. Hover over the publish you'd like to share and click the "Share" icon, which will open a dialog with a shareable link for that specific publish.
+To share a specific previous publish, open the publish dialog and navigate to the **History** tab. Hover over the publish you'd like to share and click the **Share** icon, which will open a dialog with a shareable link for that specific publish.
 
 <Frame>
   <video
@@ -81,22 +151,6 @@ To share a specific previous publish, open the publish dialog and navigate to th
     src="/images/sharing/past-publish-share.mp4"
   ></video>
 </Frame>
-
-## Public share links
-
-By default, a share link can only be accessed by other members of your Makeswift workspace. This means that in addition to sending the share link, you may also have to invite the recipient as a guest to your workspace.
-
-If you want your share link to be accessible by anyone, you can toggle the "Public preview" option when creating the share link. This will allow anyone with the link to view the shared version of your site without needing to be a member of your Makeswift workspace.
-
-<Frame>![Public preview toggle](/images/sharing/public-preview.png)</Frame>
-
-## Exiting the preview
-
-When you visit a share link, you will see the shared version of the site directly on the site's domain, even after you refresh. To exit the preview and go back to viewing the live site, click the "Exit preview" button in the bottom right corner of the page.
-
-<Frame>![Exit preview button](/images/sharing/exit-preview.png)</Frame>
-
-Alternatively, you can also clear your cookies for the site.
 
 ## Preview button (deprecated)
 
