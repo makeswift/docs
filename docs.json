@@ -279,12 +279,12 @@
                   {
                     "group": "Sites",
                     "pages": [
-                      "POST /v1/workspaces/{workspaceId}/sites",
-                      "GET /v1/workspaces/{workspaceId}/sites",
-                      "GET /v1/sites/{siteId}",
-                      "PATCH /v1/sites/{siteId}",
-                      "DELETE /v1/sites/{siteId}",
-                      "POST /v1/sites/{siteId}/duplicate"
+                      "POST /v2/sites",
+                      "GET /v2/sites",
+                      "GET /v2/sites/{siteId}",
+                      "PATCH /v2/sites/{siteId}",
+                      "DELETE /v2/sites/{siteId}",
+                      "POST /v2/sites/{siteId}/duplicate"
                     ]
                   },
                   {
