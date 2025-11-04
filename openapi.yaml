@@ -1,6 +1,6 @@
 openapi: 3.1.0
 paths:
-  '/v1/sites/{siteId}/locales':
+  "/v1/sites/{siteId}/locales":
     post:
       operationId: SiteLocaleController_create_v1
       summary: "Create Site Locale"
@@ -18,14 +18,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateSiteLocaleV1RequestBodyDto'
+              $ref: "#/components/schemas/CreateSiteLocaleV1RequestBodyDto"
       responses:
-        '201':
-          description: ''
+        "201":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateSiteLocaleV1ResponseBodyDto'
+                $ref: "#/components/schemas/CreateSiteLocaleV1ResponseBodyDto"
       tags:
         - Locale
     get:
@@ -48,15 +48,15 @@ paths:
             format: uuid
             type: string
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetByLocaleSiteLocaleV1ResponseBodyDto'
+                $ref: "#/components/schemas/GetByLocaleSiteLocaleV1ResponseBodyDto"
       tags:
         - Locale
-  '/v1/locales/{localeId}':
+  "/v1/locales/{localeId}":
     delete:
       operationId: SiteLocaleController_delete_v1
       summary: "Delete Site Locale"
@@ -70,8 +70,8 @@ paths:
             format: uuid
             type: string
       responses:
-        '204':
-          description: ''
+        "204":
+          description: ""
       tags:
         - Locale
     patch:
@@ -91,14 +91,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateSiteLocaleV1RequestBodyDto'
+              $ref: "#/components/schemas/UpdateSiteLocaleV1RequestBodyDto"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UpdateSiteLocaleV1ResponseBodyDto'
+                $ref: "#/components/schemas/UpdateSiteLocaleV1ResponseBodyDto"
       tags:
         - Locale
     get:
@@ -114,15 +114,15 @@ paths:
             format: uuid
             type: string
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ReadSiteLocaleV1ResponseBodyDto'
+                $ref: "#/components/schemas/ReadSiteLocaleV1ResponseBodyDto"
       tags:
         - Locale
-  '/v1/workspaces/{workspaceId}/sites':
+  "/v1/workspaces/{workspaceId}/sites":
     post:
       operationId: SiteController_create_v1
       summary: "Create Site"
@@ -141,14 +141,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateSiteV1RequestBodyDto'
+              $ref: "#/components/schemas/CreateSiteV1RequestBodyDto"
       responses:
-        '201':
-          description: ''
+        "201":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateSiteV1ResponseBodyDto'
+                $ref: "#/components/schemas/CreateSiteV1ResponseBodyDto"
       tags:
         - Site
     get:
@@ -178,15 +178,15 @@ paths:
             format: uuid
             type: string
       responses:
-        '201':
-          description: ''
+        "201":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListSiteV1ResponseBodyDto'
+                $ref: "#/components/schemas/ListSiteV1ResponseBodyDto"
       tags:
         - Site
-  '/v1/sites/{siteId}':
+  "/v1/sites/{siteId}":
     get:
       operationId: SiteController_getOne_v1
       summary: "Get Site"
@@ -200,12 +200,12 @@ paths:
             format: uuid
             type: string
       responses:
-        '201':
-          description: ''
+        "201":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ReadSiteV1ResponseBodyDto'
+                $ref: "#/components/schemas/ReadSiteV1ResponseBodyDto"
       tags:
         - Site
     patch:
@@ -225,14 +225,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateSiteV1RequestBodyDto'
+              $ref: "#/components/schemas/UpdateSiteV1RequestBodyDto"
       responses:
-        '201':
-          description: ''
+        "201":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UpdateSiteV1ResponseBodyDto'
+                $ref: "#/components/schemas/UpdateSiteV1ResponseBodyDto"
       tags:
         - Site
     delete:
@@ -248,11 +248,11 @@ paths:
             format: uuid
             type: string
       responses:
-        '204':
-          description: ''
+        "204":
+          description: ""
       tags:
         - Site
-  '/v1/sites/{siteId}/duplicate':
+  "/v1/sites/{siteId}/duplicate":
     post:
       operationId: SiteController_duplicate_v1
       summary: "Duplicate Site"
@@ -272,14 +272,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DuplicateSiteV1RequestBodyDto'
+              $ref: "#/components/schemas/DuplicateSiteV1RequestBodyDto"
       responses:
-        '201':
+        "201":
           description: The newly created duplicated site with all content and configuration copied from the original
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DuplicateSiteV1ResponseBodyDto'
+                $ref: "#/components/schemas/DuplicateSiteV1ResponseBodyDto"
       tags:
         - Site
   /v1/auth/user-info:
@@ -287,15 +287,15 @@ paths:
       operationId: AuthController_getUserInfo_v1
       summary: "Get User Info"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetUserInfoV1ResponseBodyDto'
+                $ref: "#/components/schemas/GetUserInfoV1ResponseBodyDto"
       tags:
         - Authentication
-  '/v1/workspaces/{workspaceId}/members/{userId}':
+  "/v1/workspaces/{workspaceId}/members/{userId}":
     post:
       operationId: WorkspaceMemberController_create_v1
       summary: "Add Workspace Member"
@@ -319,10 +319,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateWorkspaceMemberV1RequestBodyDto'
+              $ref: "#/components/schemas/CreateWorkspaceMemberV1RequestBodyDto"
       responses:
-        '204':
-          description: ''
+        "204":
+          description: ""
       tags:
         - Workspace Member
     delete:
@@ -344,8 +344,8 @@ paths:
             example: d2ccb4e7-1364-496d-a131-bd996269ab2c
             type: string
       responses:
-        '204':
-          description: ''
+        "204":
+          description: ""
       tags:
         - Workspace Member
     patch:
@@ -371,10 +371,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateWorkspaceMemberV1RequestBodyDto'
+              $ref: "#/components/schemas/UpdateWorkspaceMemberV1RequestBodyDto"
       responses:
-        '204':
-          description: ''
+        "204":
+          description: ""
       tags:
         - Workspace Member
     get:
@@ -396,15 +396,15 @@ paths:
             example: d2ccb4e7-1364-496d-a131-bd996269ab2c
             type: string
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetWorkspaceMemberV1ResponseBodyDto'
+                $ref: "#/components/schemas/GetWorkspaceMemberV1ResponseBodyDto"
       tags:
         - Workspace Member
-  '/v1/workspaces/{workspaceId}/members':
+  "/v1/workspaces/{workspaceId}/members":
     get:
       operationId: WorkspaceMemberController_getMembers_v1
       summary: "List Workspace Members"
@@ -430,15 +430,15 @@ paths:
             format: uuid
             type: string
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListWorkspaceMemberV1ResponseBodyDto'
+                $ref: "#/components/schemas/ListWorkspaceMemberV1ResponseBodyDto"
       tags:
         - Workspace Member
-  '/v1/sites/{siteId}/pages':
+  "/v1/sites/{siteId}/pages":
     post:
       operationId: PageController_create_v1
       summary: "Create Page"
@@ -460,17 +460,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreatePageV1RequestBodyDto'
+              $ref: "#/components/schemas/CreatePageV1RequestBodyDto"
       responses:
-        '201':
-          description: ''
+        "201":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreatePageV1ResponseBodyDto'
+                $ref: "#/components/schemas/CreatePageV1ResponseBodyDto"
       tags:
         - Page
-  '/v1/sites/{siteId}/pages/{pageId}':
+  "/v1/sites/{siteId}/pages/{pageId}":
     patch:
       operationId: PageController_update_v1
       summary: "Update Page"
@@ -494,14 +494,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdatePageV1RequestBodyDto'
+              $ref: "#/components/schemas/UpdatePageV1RequestBodyDto"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UpdatePageV1ResponseBodyDto'
+                $ref: "#/components/schemas/UpdatePageV1ResponseBodyDto"
       tags:
         - Page
     get:
@@ -529,12 +529,12 @@ paths:
             type: boolean
             default: false
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetPageV1ResponseBodyDto'
+                $ref: "#/components/schemas/GetPageV1ResponseBodyDto"
       tags:
         - Page
     delete:
@@ -556,11 +556,11 @@ paths:
             format: uuid
             type: string
       responses:
-        '204':
-          description: ''
+        "204":
+          description: ""
       tags:
         - Page
-  '/v0/sites/{siteId}/pages':
+  "/v0/sites/{siteId}/pages":
     get:
       operationId: PageController_list_v0
       summary: "List Pages"
@@ -576,7 +576,7 @@ paths:
         - name: limit
           required: false
           in: query
-          description: 'Maximum number of pages to return. Defaults to 20, maximum is 100.'
+          description: "Maximum number of pages to return. Defaults to 20, maximum is 100."
           schema:
             minimum: 1
             maximum: 100
@@ -585,7 +585,7 @@ paths:
         - name: after
           required: false
           in: query
-          description: 'Cursor for pagination. If provided, returns pages after this ID.'
+          description: "Cursor for pagination. If provided, returns pages after this ID."
           schema:
             format: uuid
             type: string
@@ -597,15 +597,15 @@ paths:
             default: false
             type: boolean
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListPagesV0ResponseBodyDto'
+                $ref: "#/components/schemas/ListPagesV0ResponseBodyDto"
       tags:
         - Page
-  '/v1/workspaces/{workspaceId}/webhooks':
+  "/v1/workspaces/{workspaceId}/webhooks":
     post:
       operationId: WebhookController_create_v1
       summary: "Create Webhook"
@@ -623,14 +623,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateWebhookV1RequestBodyDto'
+              $ref: "#/components/schemas/CreateWebhookV1RequestBodyDto"
       responses:
-        '201':
-          description: ''
+        "201":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateWebhookV1ResponseBodyDto'
+                $ref: "#/components/schemas/CreateWebhookV1ResponseBodyDto"
       tags:
         - Webhook Management
     get:
@@ -660,15 +660,15 @@ paths:
             format: uuid
             type: string
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListWebhookV1ResponseBodyDto'
+                $ref: "#/components/schemas/ListWebhookV1ResponseBodyDto"
       tags:
         - Webhook Management
-  '/v1/webhooks/{webhookId}':
+  "/v1/webhooks/{webhookId}":
     get:
       operationId: WebhookController_get_v1
       summary: "Get Webhook"
@@ -682,12 +682,12 @@ paths:
             format: uuid
             type: string
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetWebhookV1ResponseBodyDto'
+                $ref: "#/components/schemas/GetWebhookV1ResponseBodyDto"
       tags:
         - Webhook Management
     delete:
@@ -703,11 +703,11 @@ paths:
             format: uuid
             type: string
       responses:
-        '204':
-          description: ''
+        "204":
+          description: ""
       tags:
         - Webhook Management
-  '/v1/sites/{siteId}/routes':
+  "/v1/sites/{siteId}/routes":
     get:
       operationId: SiteRouteController_list_v1
       summary: "List Routes"
@@ -723,14 +723,14 @@ paths:
         - name: pathname
           required: false
           in: query
-          description: 'Filter routes by pathname. Supports partial match. If not provided, returns all routes.'
+          description: "Filter routes by pathname. Supports partial match. If not provided, returns all routes."
           schema:
             example: /furniture
             type: string
         - name: limit
           required: false
           in: query
-          description: 'Maximum number of routes to return. Defaults to 20, maximum is 100. To paginate, use together with `after` cursor.'
+          description: "Maximum number of routes to return. Defaults to 20, maximum is 100. To paginate, use together with `after` cursor."
           schema:
             minimum: 0
             maximum: 100
@@ -739,17 +739,17 @@ paths:
         - name: after
           required: false
           in: query
-          description: 'Cursor for pagination. If provided, returns routes after this ID.'
+          description: "Cursor for pagination. If provided, returns routes after this ID."
           schema:
             format: uuid
             type: string
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListSiteRouteV1ResponseBodyDto'
+                $ref: "#/components/schemas/ListSiteRouteV1ResponseBodyDto"
       tags:
         - Route
     post:
@@ -767,28 +767,28 @@ paths:
         - name: skipValidation
           required: false
           in: query
-          description: 'If true, skips validation of the route, such as pathname format. This is useful for testing or when the route is known to be valid.'
+          description: "If true, skips validation of the route, such as pathname format. This is useful for testing or when the route is known to be valid."
           schema:
             enum:
-              - 'true'
-              - 'false'
+              - "true"
+              - "false"
             type: string
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateSiteRouteV1RequestBodyDto'
+              $ref: "#/components/schemas/CreateSiteRouteV1RequestBodyDto"
       responses:
-        '201':
-          description: ''
+        "201":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateSiteRouteV1ResponseBodyDto'
+                $ref: "#/components/schemas/CreateSiteRouteV1ResponseBodyDto"
       tags:
         - Route
-  '/v1/routes/{routeId}':
+  "/v1/routes/{routeId}":
     get:
       operationId: SiteRouteController_get_v1
       summary: "Get Route"
@@ -802,12 +802,12 @@ paths:
             format: uuid
             type: string
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ReadSiteRouteV1ResponseBodyDto'
+                $ref: "#/components/schemas/ReadSiteRouteV1ResponseBodyDto"
       tags:
         - Route
     patch:
@@ -825,25 +825,25 @@ paths:
         - name: skipValidation
           required: false
           in: query
-          description: 'If true, skips validation of the route, such as pathname format. This is useful for testing or when the route is known to be valid.'
+          description: "If true, skips validation of the route, such as pathname format. This is useful for testing or when the route is known to be valid."
           schema:
             enum:
-              - 'true'
-              - 'false'
+              - "true"
+              - "false"
             type: string
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateSiteRouteV1RequestBodyDto'
+              $ref: "#/components/schemas/UpdateSiteRouteV1RequestBodyDto"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UpdateSiteRouteV1ResponseBodyDto'
+                $ref: "#/components/schemas/UpdateSiteRouteV1ResponseBodyDto"
       tags:
         - Route
     delete:
@@ -859,32 +859,32 @@ paths:
             format: uuid
             type: string
       responses:
-        '204':
-          description: ''
+        "204":
+          description: ""
       tags:
         - Route
 info:
   title: Hearth Furniture API
   description: Documentation for the Hearth Furniture Company public REST API.
-  version: '1.0'
+  version: "1.0"
   contact: {}
 tags:
   - name: Authentication
-    description: ''
+    description: ""
   - name: Workspace
-    description: ''
+    description: ""
   - name: Site
-    description: ''
+    description: ""
   - name: Page
-    description: ''
+    description: ""
   - name: Locale
-    description: ''
+    description: ""
   - name: Route
-    description: ''
+    description: ""
   - name: Webhook Management
-    description: ''
+    description: ""
   - name: Workspace Member
-    description: ''
+    description: ""
 servers:
   - url: "https://8511e6e5e351.ngrok-free.app"
     description: "Local development server with ngrok"
@@ -892,13 +892,11 @@ servers:
     description: "Local development server"
 components:
   securitySchemes:
-
     AppAuth:
       type: http
       scheme: bearer
       bearerFormat: "sk_abc123def456ghi789jkl012mno345pqr678stu901vwx234yz"
       description: "The API key for the App (e.g. sk_eczMHVBY9fV6GYFhvs53qcnxq7yptlXL3ABKOZtn6dQ)"
-
 
   schemas:
     CreateSiteLocaleV1RequestBodyDto:
@@ -911,7 +909,7 @@ components:
         domain:
           type: string
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          example: 'https://hearthfurniture.com.mx'
+          example: "https://hearthfurniture.com.mx"
       required:
         - locale
     CreateSiteLocaleV1ResponseBodyDto:
@@ -925,9 +923,9 @@ components:
           description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
           example: es-MX
         domain:
-          type: 'null'
+          type: "null"
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          example: 'https://hearthfurniture.com.mx'
+          example: "https://hearthfurniture.com.mx"
       required:
         - id
         - locale
@@ -942,7 +940,7 @@ components:
         domain:
           type: string
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          example: 'https://hearthfurniture.com.mx'
+          example: "https://hearthfurniture.com.mx"
     UpdateSiteLocaleV1ResponseBodyDto:
       type: object
       properties:
@@ -954,9 +952,9 @@ components:
           description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
           example: es-MX
         domain:
-          type: 'null'
+          type: "null"
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          example: 'https://hearthfurniture.com.mx'
+          example: "https://hearthfurniture.com.mx"
       required:
         - id
         - locale
@@ -972,9 +970,9 @@ components:
           description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
           example: es-MX
         domain:
-          type: 'null'
+          type: "null"
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          example: 'https://hearthfurniture.com.mx'
+          example: "https://hearthfurniture.com.mx"
       required:
         - id
         - locale
@@ -990,9 +988,9 @@ components:
           description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
           example: es-MX
         domain:
-          type: 'null'
+          type: "null"
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          example: 'https://hearthfurniture.com.mx'
+          example: "https://hearthfurniture.com.mx"
       required:
         - id
         - locale
@@ -1008,7 +1006,7 @@ components:
           type: string
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
-          example: 'https://hearthfurniture.com'
+          example: "https://hearthfurniture.com"
         locale:
           type: string
           description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
@@ -1028,10 +1026,10 @@ components:
           description: The name of the site
           example: Hearth Furniture Company
         hostUrl:
-          type: 'null'
+          type: "null"
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
-          example: 'https://hearthfurniture.com'
+          example: "https://hearthfurniture.com"
         apiKey:
           type: string
           format: uuid
@@ -1051,10 +1049,10 @@ components:
           description: The name of the site
           example: Hearth Furniture Company
         hostUrl:
-          type: 'null'
+          type: "null"
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
-          example: 'https://hearthfurniture.com'
+          example: "https://hearthfurniture.com"
         apiKey:
           type: string
           format: uuid
@@ -1074,7 +1072,7 @@ components:
           type: string
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
-          example: 'https://hearthfurniture.com'
+          example: "https://hearthfurniture.com"
     UpdateSiteV1ResponseBodyDto:
       type: object
       properties:
@@ -1086,10 +1084,10 @@ components:
           description: The name of the site
           example: Hearth Furniture Company
         hostUrl:
-          type: 'null'
+          type: "null"
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
-          example: 'https://hearthfurniture.com'
+          example: "https://hearthfurniture.com"
         apiKey:
           type: string
           format: uuid
@@ -1114,10 +1112,10 @@ components:
                 description: The name of the site
                 example: Hearth Furniture Company
               hostUrl:
-                type: 'null'
+                type: "null"
                 format: uri
                 description: The host URL of the site. The URL should consist of only the origin.
-                example: 'https://hearthfurniture.com'
+                example: "https://hearthfurniture.com"
               apiKey:
                 type: string
                 format: uuid
@@ -1149,10 +1147,10 @@ components:
           description: The name of the site
           example: Hearth Furniture Company
         hostUrl:
-          type: 'null'
+          type: "null"
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
-          example: 'https://hearthfurniture.com'
+          example: "https://hearthfurniture.com"
         apiKey:
           type: string
           format: uuid
@@ -1313,10 +1311,10 @@ components:
       type: object
       properties:
         pathname:
-          type: 'null'
+          type: "null"
           description: The pathname of the page
         name:
-          type: 'null'
+          type: "null"
           description: The name of the page
       required:
         - pathname
@@ -1336,25 +1334,25 @@ components:
           description: The name of the page
           example: Furniture Collection
         seoCanonicalUrl:
-          type: 'null'
+          type: "null"
           description: The canonical URL of the page
         seoIsIndexingBlocked:
-          type: 'null'
+          type: "null"
           description: Whether the page is blocked from indexing
         seoSitemapPriority:
-          type: 'null'
+          type: "null"
           description: The priority of the page in the sitemap
         seoSitemapFrequency:
-          type: 'null'
+          type: "null"
           description: The frequency with which the page is updated in the sitemap
         metaTitle:
-          type: 'null'
+          type: "null"
           description: The title of the page
         metaDescription:
-          type: 'null'
+          type: "null"
           description: The description of the page
         metaKeywords:
-          type: 'null'
+          type: "null"
           description: The keywords of the page
         isOnline:
           type: boolean
@@ -1398,25 +1396,25 @@ components:
           description: The name of the page
           example: Furniture Collection
         seoCanonicalUrl:
-          type: 'null'
+          type: "null"
           description: The canonical URL of the page
         seoIsIndexingBlocked:
-          type: 'null'
+          type: "null"
           description: Whether the page is blocked from indexing
         seoSitemapPriority:
-          type: 'null'
+          type: "null"
           description: The priority of the page in the sitemap
         seoSitemapFrequency:
-          type: 'null'
+          type: "null"
           description: The frequency with which the page is updated in the sitemap
         metaTitle:
-          type: 'null'
+          type: "null"
           description: The title of the page
         metaDescription:
-          type: 'null'
+          type: "null"
           description: The description of the page
         metaKeywords:
-          type: 'null'
+          type: "null"
           description: The keywords of the page
         isOnline:
           type: boolean
@@ -1448,25 +1446,25 @@ components:
           description: The name of the page
           example: Furniture Collection
         seoCanonicalUrl:
-          type: 'null'
+          type: "null"
           description: The canonical URL of the page
         seoIsIndexingBlocked:
-          type: 'null'
+          type: "null"
           description: Whether the page is blocked from indexing
         seoSitemapPriority:
-          type: 'null'
+          type: "null"
           description: The priority of the page in the sitemap
         seoSitemapFrequency:
-          type: 'null'
+          type: "null"
           description: The frequency with which the page is updated in the sitemap
         metaTitle:
-          type: 'null'
+          type: "null"
           description: The title of the page
         metaDescription:
-          type: 'null'
+          type: "null"
           description: The description of the page
         metaKeywords:
-          type: 'null'
+          type: "null"
           description: The keywords of the page
         isOnline:
           type: boolean
@@ -1514,7 +1512,7 @@ components:
         url:
           type: string
           format: uri
-          example: 'https://hearthfurniture.com/webhook'
+          example: "https://hearthfurniture.com/webhook"
         eventType:
           type: string
           enum:
@@ -1538,7 +1536,7 @@ components:
         url:
           type: string
           format: uri
-          example: 'https://hearthfurniture.com/webhook'
+          example: "https://hearthfurniture.com/webhook"
         eventType:
           type: string
           enum:
@@ -1569,7 +1567,7 @@ components:
               url:
                 type: string
                 format: uri
-                example: 'https://hearthfurniture.com/webhook'
+                example: "https://hearthfurniture.com/webhook"
               eventType:
                 type: string
                 enum:
@@ -1600,7 +1598,7 @@ components:
         url:
           type: string
           format: uri
-          example: 'https://hearthfurniture.com/webhook'
+          example: "https://hearthfurniture.com/webhook"
         eventType:
           type: string
           enum:
@@ -1701,7 +1699,7 @@ components:
             example:
               locale: es-ES
               pathname: /sobre-nosotros
-          description: 'List of localized variants for the route. If not provided, defaults to an empty array.'
+          description: "List of localized variants for the route. If not provided, defaults to an empty array."
           example:
             - locale: es-ES
               pathname: /sobre-nosotros
@@ -1920,25 +1918,25 @@ webhooks:
                       description: The name of the page
                       example: Furniture Collection
                     seoCanonicalUrl:
-                      type: 'null'
+                      type: "null"
                       description: The canonical URL of the page
                     seoIsIndexingBlocked:
-                      type: 'null'
+                      type: "null"
                       description: Whether the page is blocked from indexing
                     seoSitemapPriority:
-                      type: 'null'
+                      type: "null"
                       description: The priority of the page in the sitemap
                     seoSitemapFrequency:
-                      type: 'null'
+                      type: "null"
                       description: The frequency with which the page is updated in the sitemap
                     metaTitle:
-                      type: 'null'
+                      type: "null"
                       description: The title of the page
                     metaDescription:
-                      type: 'null'
+                      type: "null"
                       description: The description of the page
                     metaKeywords:
-                      type: 'null'
+                      type: "null"
                       description: The keywords of the page
                     isOnline:
                       type: boolean
@@ -1959,7 +1957,7 @@ webhooks:
                 - type
                 - page
       responses:
-        '200':
+        "200":
           description: Return a 200 status to indicate that the data was received successfully
   page.updated:
     post:
@@ -1989,25 +1987,25 @@ webhooks:
                       description: The name of the page
                       example: Furniture Collection
                     seoCanonicalUrl:
-                      type: 'null'
+                      type: "null"
                       description: The canonical URL of the page
                     seoIsIndexingBlocked:
-                      type: 'null'
+                      type: "null"
                       description: Whether the page is blocked from indexing
                     seoSitemapPriority:
-                      type: 'null'
+                      type: "null"
                       description: The priority of the page in the sitemap
                     seoSitemapFrequency:
-                      type: 'null'
+                      type: "null"
                       description: The frequency with which the page is updated in the sitemap
                     metaTitle:
-                      type: 'null'
+                      type: "null"
                       description: The title of the page
                     metaDescription:
-                      type: 'null'
+                      type: "null"
                       description: The description of the page
                     metaKeywords:
-                      type: 'null'
+                      type: "null"
                       description: The keywords of the page
                     isOnline:
                       type: boolean
@@ -2028,7 +2026,7 @@ webhooks:
                 - type
                 - page
       responses:
-        '200':
+        "200":
           description: Return a 200 status to indicate that the data was received successfully
   page.deleted:
     post:
@@ -2058,25 +2056,25 @@ webhooks:
                       description: The name of the page
                       example: Furniture Collection
                     seoCanonicalUrl:
-                      type: 'null'
+                      type: "null"
                       description: The canonical URL of the page
                     seoIsIndexingBlocked:
-                      type: 'null'
+                      type: "null"
                       description: Whether the page is blocked from indexing
                     seoSitemapPriority:
-                      type: 'null'
+                      type: "null"
                       description: The priority of the page in the sitemap
                     seoSitemapFrequency:
-                      type: 'null'
+                      type: "null"
                       description: The frequency with which the page is updated in the sitemap
                     metaTitle:
-                      type: 'null'
+                      type: "null"
                       description: The title of the page
                     metaDescription:
-                      type: 'null'
+                      type: "null"
                       description: The description of the page
                     metaKeywords:
-                      type: 'null'
+                      type: "null"
                       description: The keywords of the page
                     isOnline:
                       type: boolean
@@ -2097,7 +2095,7 @@ webhooks:
                 - type
                 - page
       responses:
-        '200':
+        "200":
           description: Return a 200 status to indicate that the data was received successfully
   page.restored:
     post:
@@ -2127,25 +2125,25 @@ webhooks:
                       description: The name of the page
                       example: Furniture Collection
                     seoCanonicalUrl:
-                      type: 'null'
+                      type: "null"
                       description: The canonical URL of the page
                     seoIsIndexingBlocked:
-                      type: 'null'
+                      type: "null"
                       description: Whether the page is blocked from indexing
                     seoSitemapPriority:
-                      type: 'null'
+                      type: "null"
                       description: The priority of the page in the sitemap
                     seoSitemapFrequency:
-                      type: 'null'
+                      type: "null"
                       description: The frequency with which the page is updated in the sitemap
                     metaTitle:
-                      type: 'null'
+                      type: "null"
                       description: The title of the page
                     metaDescription:
-                      type: 'null'
+                      type: "null"
                       description: The description of the page
                     metaKeywords:
-                      type: 'null'
+                      type: "null"
                       description: The keywords of the page
                     isOnline:
                       type: boolean
@@ -2166,7 +2164,7 @@ webhooks:
                 - type
                 - page
       responses:
-        '200':
+        "200":
           description: Return a 200 status to indicate that the data was received successfully
   site.published:
     post:
@@ -2191,7 +2189,7 @@ webhooks:
                       type: object
                       properties:
                         from:
-                          type: 'null'
+                          type: "null"
                           format: uuid
                         to:
                           type: string
@@ -2209,5 +2207,5 @@ webhooks:
                 - type
                 - data
       responses:
-        '200':
+        "200":
           description: Return a 200 status to indicate that the data was received successfully
