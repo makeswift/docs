@@ -146,6 +146,7 @@ paths:
     get:
       operationId: SiteController_list_v2
       summary: "List Sites"
+      description: "List sites in a workspace"
       security:
         - AppAuth: []
       parameters:
