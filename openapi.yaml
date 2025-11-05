@@ -146,6 +146,7 @@ paths:
     get:
       operationId: SiteController_list_v2
       summary: "List Sites"
+      description: "List sites in a workspace"
       security:
         - AppAuth: []
       parameters:
@@ -182,6 +183,7 @@ paths:
     get:
       operationId: SiteController_getOne_v2
       summary: "Get Site"
+      description: "Get a site by its ID"
       security:
         - AppAuth: []
       parameters:
