@@ -150,13 +150,13 @@ paths:
       security:
         - AppAuth: []
       parameters:
-        - name: workspace_id
+        - name: workspaceId
           required: true
           in: query
           schema:
             format: uuid
             type: string
-        - name: page_size
+        - name: limit
           required: false
           in: query
           schema:
@@ -164,7 +164,7 @@ paths:
             maximum: 100
             default: 20
             type: number
-        - name: start_cursor
+        - name: start
           required: false
           in: query
           schema:
@@ -1005,7 +1005,7 @@ components:
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
           example: "https://hearthfurniture.com"
-        default_locale:
+        defaultLocale:
           type: string
           description: The primary locale of the site (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
           example: en-US
