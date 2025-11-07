@@ -300,11 +300,11 @@
                   {
                     "group": "Pages",
                     "pages": [
-                      "POST /v1/sites/{siteId}/pages",
-                      "GET /v0/sites/{siteId}/pages",
-                      "GET /v1/sites/{siteId}/pages/{pageId}",
-                      "PATCH /v1/sites/{siteId}/pages/{pageId}",
-                      "DELETE /v1/sites/{siteId}/pages/{pageId}"
+                      "POST /v2/pages",
+                      "GET /v2/pages",
+                      "GET /v2/pages/{pageIdOrPathname}",
+                      "PATCH /v2/pages/{pageId}",
+                      "DELETE /v2/pages/{pageId}"
                     ]
                   },
                   {

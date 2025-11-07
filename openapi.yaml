@@ -432,7 +432,95 @@ paths:
                 $ref: "#/components/schemas/ListWorkspaceMemberV1ResponseBodyDto"
       tags:
         - Workspace Member
-  "/v1/sites/{siteId}/pages":
+  "/v2/pages":
+    get:
+      operationId: PageController_list_v2
+      summary: "List Pages"
+      description: "List pages in a site"
+      security:
+        - AppAuth: []
+      parameters:
+        - name: siteId
+          required: true
+          in: query
+          schema:
+            format: uuid
+            type: string
+        - name: limit
+          required: false
+          in: query
+          description: "Maximum number of pages to return. Defaults to 20, maximum is 100."
+          schema:
+            minimum: 1
+            maximum: 100
+            default: 20
+            type: number
+        - name: after
+          required: false
+          in: query
+          description: "Cursor for pagination. If provided, returns pages after this ID."
+          schema:
+            format: uuid
+            type: string
+        - name: pathPrefix
+          required: false
+          in: query
+          description: "A filter to only retrieve pages with a pathname that begins with this value."
+          schema:
+            type: string
+            default: "/"
+        - name: sortBy
+          required: false
+          in: query
+          description: "The field to sort the result pages by."
+          schema:
+            type: string
+            enum:
+              - title
+              - path
+              - description
+              - createdAt
+              - updatedAt
+            default: path
+        - name: sortDirection
+          required: false
+          in: query
+          description: "The direction of how the result pages are sorted."
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+            default: asc
+        - name: includeOffline
+          required: false
+          in: query
+          description: "Whether the results should include pages that are offline in Makeswift."
+          schema:
+            type: boolean
+            default: false
+        - name: locale
+          required: false
+          in: query
+          description: "A valid locale string (ex. 'en-US')."
+          schema:
+            type: string
+        - name: version
+          required: false
+          in: query
+          description: "The version to retrieve. Can be 'live', 'draft', or a site version UUID."
+          schema:
+            type: string
+            default: live
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListPagesV2ResponseBodyDto"
+      tags:
+        - Page
     post:
       operationId: PageController_create_v1
       summary: "Create Page"
@@ -442,13 +530,6 @@ paths:
           title: "Create Page"
       security:
         - AppAuth: []
-      parameters:
-        - name: siteId
-          required: true
-          in: path
-          schema:
-            format: uuid
-            type: string
       requestBody:
         required: true
         content:
@@ -464,22 +545,53 @@ paths:
                 $ref: "#/components/schemas/CreatePageV1ResponseBodyDto"
       tags:
         - Page
-  "/v1/sites/{siteId}/pages/{pageId}":
+  "/v2/pages/{pageIdOrPathname}":
+    get:
+      operationId: PageController_getOne_v1
+      summary: "Get Page"
+      security:
+        - AppAuth: []
+      parameters:
+        - name: pageIdOrPathname
+          required: true
+          in: path
+          description: The page ID (UUID) or pathname of the page
+          schema:
+            type: string
+        - name: siteId
+          required: false
+          in: query
+          description: The site ID (UUID). Required when using a pathname instead of a page ID.
+          schema:
+            format: uuid
+            type: string
+        - name: version
+          required: false
+          in: query
+          description: "The version to retrieve. Can be 'live', 'draft', or a site version UUID."
+          schema:
+            type: string
+            default: live
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetPageV1ResponseBodyDto"
+      tags:
+        - Page
+  "/v2/pages/{pageId}":
     patch:
       operationId: PageController_update_v1
       summary: "Update Page"
       security:
         - AppAuth: []
       parameters:
-        - name: siteId
-          required: true
-          in: path
-          schema:
-            format: uuid
-            type: string
         - name: pageId
           required: true
           in: path
+          description: The page ID (UUID)
           schema:
             format: uuid
             type: string
@@ -498,60 +610,22 @@ paths:
                 $ref: "#/components/schemas/UpdatePageV1ResponseBodyDto"
       tags:
         - Page
-    get:
-      operationId: PageController_getOne_v1
-      summary: "Get Page"
-      security:
-        - AppAuth: []
-      parameters:
-        - name: siteId
-          required: true
-          in: path
-          schema:
-            format: uuid
-            type: string
-        - name: pageId
-          required: true
-          in: path
-          schema:
-            format: uuid
-            type: string
-        - name: draft
-          required: false
-          in: query
-          schema:
-            type: boolean
-            default: false
-      responses:
-        "200":
-          description: ""
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/GetPageV1ResponseBodyDto"
-      tags:
-        - Page
     delete:
       operationId: PageController_delete_v1
       summary: "Delete Page"
       security:
         - AppAuth: []
       parameters:
-        - name: siteId
-          required: true
-          in: path
-          schema:
-            format: uuid
-            type: string
         - name: pageId
           required: true
           in: path
+          description: The page ID (UUID)
           schema:
             format: uuid
             type: string
       responses:
         "204":
-          description: ""
+          description: "No Content - The page was successfully deleted."
       tags:
         - Page
   "/v0/sites/{siteId}/pages":
@@ -1308,16 +1382,21 @@ components:
     CreatePageV1RequestBodyDto:
       type: object
       properties:
+        siteId:
+          type: string
+          format: uuid
+          description: The ID of the site
         pathname:
-          type: "null"
+          type: string
           description: The pathname of the page
         name:
-          type: "null"
+          type: string
           description: The name of the page
       required:
+        - siteId
         - pathname
         - name
-    CreatePageV1ResponseBodyDto:
+    PageV2Dto:
       type: object
       properties:
         id:
@@ -1327,46 +1406,93 @@ components:
           type: string
           description: The pathname of the page
           example: furniture
-        name:
+        canonicalUrl:
           type: string
-          description: The name of the page
-          example: Furniture Collection
-        seoCanonicalUrl:
-          type: "null"
+          nullable: true
           description: The canonical URL of the page
-        seoIsIndexingBlocked:
-          type: "null"
-          description: Whether the page is blocked from indexing
-        seoSitemapPriority:
-          type: "null"
-          description: The priority of the page in the sitemap
-        seoSitemapFrequency:
-          type: "null"
-          description: The frequency with which the page is updated in the sitemap
-        metaTitle:
-          type: "null"
+        title:
+          type: string
+          nullable: true
           description: The title of the page
-        metaDescription:
-          type: "null"
+        description:
+          type: string
+          nullable: true
           description: The description of the page
-        metaKeywords:
-          type: "null"
-          description: The keywords of the page
+        socialImageUrl:
+          type: string
+          nullable: true
+          description: The social image URL of the page
+        sitemapPriority:
+          type: number
+          nullable: true
+          minimum: 0
+          maximum: 1
+          description: The priority of the page in the sitemap
+        sitemapFrequency:
+          type: string
+          nullable: true
+          enum:
+            - always
+            - hourly
+            - daily
+            - weekly
+            - monthly
+            - yearly
+            - never
+          description: The frequency with which the page is updated in the sitemap
+        createdAt:
+          type: string
+          format: date-time
+          nullable: true
+          description: The date and time when the page was created
+        updatedAt:
+          type: string
+          format: date-time
+          nullable: true
+          description: The date and time when the page was last updated
+        publishedAt:
+          type: string
+          format: date-time
+          nullable: true
+          description: The date and time when the page was published
         isOnline:
           type: boolean
           description: Whether the page is online
+        excludedFromSearch:
+          type: boolean
+          nullable: true
+          description: Whether the page is excluded from search
+        locale:
+          type: string
+          description: The locale of the page
+        localizations:
+          type: array
+          description: The localized variants of the page
+          items:
+            type: object
+            properties:
+              locale:
+                type: string
+                description: The locale of the localized variant
+              pathname:
+                type: string
+                description: The pathname of the localized variant
+              id:
+                type: string
+                format: uuid
+                description: The ID of the localized variant
+            required:
+              - locale
+              - pathname
+              - id
       required:
         - id
         - pathname
-        - name
-        - seoCanonicalUrl
-        - seoIsIndexingBlocked
-        - seoSitemapPriority
-        - seoSitemapFrequency
-        - metaTitle
-        - metaDescription
-        - metaKeywords
         - isOnline
+        - locale
+        - localizations
+    CreatePageV1ResponseBodyDto:
+      $ref: "#/components/schemas/PageV2Dto"
     UpdatePageV1RequestBodyDto:
       type: object
       properties:
@@ -1380,105 +1506,9 @@ components:
           type: boolean
           description: Whether the page is online or offline
     UpdatePageV1ResponseBodyDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        pathname:
-          type: string
-          description: The pathname of the page
-          example: furniture
-        name:
-          type: string
-          description: The name of the page
-          example: Furniture Collection
-        seoCanonicalUrl:
-          type: "null"
-          description: The canonical URL of the page
-        seoIsIndexingBlocked:
-          type: "null"
-          description: Whether the page is blocked from indexing
-        seoSitemapPriority:
-          type: "null"
-          description: The priority of the page in the sitemap
-        seoSitemapFrequency:
-          type: "null"
-          description: The frequency with which the page is updated in the sitemap
-        metaTitle:
-          type: "null"
-          description: The title of the page
-        metaDescription:
-          type: "null"
-          description: The description of the page
-        metaKeywords:
-          type: "null"
-          description: The keywords of the page
-        isOnline:
-          type: boolean
-          description: Whether the page is online
-      required:
-        - id
-        - pathname
-        - name
-        - seoCanonicalUrl
-        - seoIsIndexingBlocked
-        - seoSitemapPriority
-        - seoSitemapFrequency
-        - metaTitle
-        - metaDescription
-        - metaKeywords
-        - isOnline
+      $ref: "#/components/schemas/PageV2Dto"
     GetPageV1ResponseBodyDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        pathname:
-          type: string
-          description: The pathname of the page
-          example: furniture
-        name:
-          type: string
-          description: The name of the page
-          example: Furniture Collection
-        seoCanonicalUrl:
-          type: "null"
-          description: The canonical URL of the page
-        seoIsIndexingBlocked:
-          type: "null"
-          description: Whether the page is blocked from indexing
-        seoSitemapPriority:
-          type: "null"
-          description: The priority of the page in the sitemap
-        seoSitemapFrequency:
-          type: "null"
-          description: The frequency with which the page is updated in the sitemap
-        metaTitle:
-          type: "null"
-          description: The title of the page
-        metaDescription:
-          type: "null"
-          description: The description of the page
-        metaKeywords:
-          type: "null"
-          description: The keywords of the page
-        isOnline:
-          type: boolean
-          description: Whether the page is online
-      required:
-        - id
-        - pathname
-        - name
-        - seoCanonicalUrl
-        - seoIsIndexingBlocked
-        - seoSitemapPriority
-        - seoSitemapFrequency
-        - metaTitle
-        - metaDescription
-        - metaKeywords
-        - isOnline
+      $ref: "#/components/schemas/PageV2Dto"
     ListPagesV0ResponseBodyDto:
       type: object
       properties:
@@ -1503,6 +1533,19 @@ components:
           description: Whether there are more pages available for pagination.
       required:
         - pages
+        - hasMore
+    ListPagesV2ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/PageV2Dto"
+        hasMore:
+          type: boolean
+          description: Whether there are more pages available for pagination.
+      required:
+        - data
         - hasMore
     CreateWebhookV1RequestBodyDto:
       type: object
