@@ -788,16 +788,17 @@ paths:
           description: ""
       tags:
         - Webhook Management
-  "/v1/sites/{siteId}/routes":
+  "/v2/routes":
     get:
-      operationId: SiteRouteController_list_v1
+      operationId: SiteRouteController_list_v2
       summary: "List Routes"
+      description: "List routes in a site"
       security:
         - AppAuth: []
       parameters:
         - name: siteId
           required: true
-          in: path
+          in: query
           schema:
             format: uuid
             type: string
@@ -830,21 +831,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListSiteRouteV1ResponseBodyDto"
+                $ref: "#/components/schemas/ListSiteRouteV2ResponseBodyDto"
       tags:
         - Route
     post:
-      operationId: SiteRouteController_create_v1
+      operationId: SiteRouteController_create_v2
       summary: "Create Route"
       security:
         - AppAuth: []
       parameters:
-        - name: siteId
-          required: true
-          in: path
-          schema:
-            format: uuid
-            type: string
         - name: skipValidation
           required: false
           in: query
@@ -859,19 +854,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateSiteRouteV1RequestBodyDto"
+              $ref: "#/components/schemas/CreateSiteRouteV2RequestBodyDto"
       responses:
         "201":
           description: ""
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CreateSiteRouteV1ResponseBodyDto"
+                $ref: "#/components/schemas/CreateSiteRouteV2ResponseBodyDto"
       tags:
         - Route
-  "/v1/routes/{routeId}":
+  "/v2/routes/{routeId}":
     get:
-      operationId: SiteRouteController_get_v1
+      operationId: SiteRouteController_get_v2
       summary: "Get Route"
       security:
         - AppAuth: []
@@ -888,11 +883,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ReadSiteRouteV1ResponseBodyDto"
+                $ref: "#/components/schemas/ReadSiteRouteV2ResponseBodyDto"
       tags:
         - Route
     patch:
-      operationId: SiteRouteController_update_v1
+      operationId: SiteRouteController_update_v2
       summary: "Update Route"
       security:
         - AppAuth: []
@@ -917,18 +912,18 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UpdateSiteRouteV1RequestBodyDto"
+              $ref: "#/components/schemas/UpdateSiteRouteV2RequestBodyDto"
       responses:
         "200":
           description: ""
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UpdateSiteRouteV1ResponseBodyDto"
+                $ref: "#/components/schemas/UpdateSiteRouteV2ResponseBodyDto"
       tags:
         - Route
     delete:
-      operationId: SiteRouteController_delete_v1
+      operationId: SiteRouteController_delete_v2
       summary: "Delete Route"
       security:
         - AppAuth: []
@@ -1700,7 +1695,230 @@ components:
         - workspaceId
         - url
         - eventType
-    ListSiteRouteV1ResponseBodyDto:
+    CreateSiteRouteV2RequestBodyDto:
+      type: object
+      properties:
+        siteId:
+          type: string
+          format: uuid
+          description: The ID of the site
+        pathname:
+          type: string
+          description: 'Pathname of the route, e.g., "/about".'
+          example: /furniture
+        localizations:
+          default: []
+          type: array
+          items:
+            type: object
+            properties:
+              locale:
+                type: string
+                description: Locale.
+                example: es-MX
+              pathname:
+                type: string
+                description: 'Pathname of the route, e.g., "/about".'
+                example: /furniture
+            required:
+              - locale
+              - pathname
+            description: Localized variant of a route. Each variant has a locale and a pathname.
+            example:
+              locale: es-ES
+              pathname: /sobre-nosotros
+          description: "List of localized variants for the route. If not provided, defaults to an empty array."
+          example:
+            - locale: es-ES
+              pathname: /sobre-nosotros
+            - locale: fr-FR
+              pathname: /a-propos
+      required:
+        - siteId
+        - pathname
+      description: Request body for creating a new route.
+    CreateSiteRouteV2ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        pathname:
+          type: string
+          description: 'Pathname of the route, e.g., "/about".'
+          example: /furniture
+        localizations:
+          type: array
+          items:
+            type: object
+            properties:
+              locale:
+                type: string
+                description: Locale.
+                example: es-MX
+              pathname:
+                type: string
+                description: 'Pathname of the route, e.g., "/about".'
+                example: /furniture
+            required:
+              - locale
+              - pathname
+            description: Localized variant of a route. Each variant has a locale and a pathname.
+            example:
+              locale: es-ES
+              pathname: /sobre-nosotros
+          description: List of localized variants for the route. Each variant has a locale and a pathname.
+          example:
+            - locale: es-ES
+              pathname: /sobre-nosotros
+            - locale: fr-FR
+              pathname: /a-propos
+      required:
+        - id
+        - pathname
+        - localizations
+      description: Route with its localized variants.
+      example:
+        id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
+        pathname: /about
+        localizations:
+          - locale: es-MX
+            pathname: /muebles
+          - locale: fr-CA
+            pathname: /meubles
+    ReadSiteRouteV2ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        pathname:
+          type: string
+          description: 'Pathname of the route, e.g., "/about".'
+          example: /furniture
+        localizations:
+          type: array
+          items:
+            type: object
+            properties:
+              locale:
+                type: string
+                description: Locale.
+                example: es-MX
+              pathname:
+                type: string
+                description: 'Pathname of the route, e.g., "/about".'
+                example: /furniture
+            required:
+              - locale
+              - pathname
+            description: Localized variant of a route. Each variant has a locale and a pathname.
+            example:
+              locale: es-ES
+              pathname: /sobre-nosotros
+          description: List of localized variants for the route. Each variant has a locale and a pathname.
+          example:
+            - locale: es-ES
+              pathname: /sobre-nosotros
+            - locale: fr-FR
+              pathname: /a-propos
+      required:
+        - id
+        - pathname
+        - localizations
+      description: Route with its localized variants.
+      example:
+        id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
+        pathname: /about
+        localizations:
+          - locale: es-MX
+            pathname: /muebles
+          - locale: fr-CA
+            pathname: /meubles
+    UpdateSiteRouteV2RequestBodyDto:
+      type: object
+      properties:
+        pathname:
+          type: string
+          description: 'Pathname of the route, e.g., "/about".'
+          example: /furniture
+        localizations:
+          type: array
+          items:
+            type: object
+            properties:
+              locale:
+                type: string
+                description: Locale.
+                example: es-MX
+              pathname:
+                type: string
+                description: 'Pathname of the route, e.g., "/about".'
+                example: /furniture
+            required:
+              - locale
+              - pathname
+            description: Localized variant of a route. Each variant has a locale and a pathname.
+            example:
+              locale: es-ES
+              pathname: /sobre-nosotros
+          description: List of localized variants for the route. Each variant has a locale and a pathname.
+          example:
+            - locale: es-ES
+              pathname: /sobre-nosotros
+            - locale: fr-FR
+              pathname: /a-propos
+      description: Request body for updating an existing route.
+    UpdateSiteRouteV2ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        pathname:
+          type: string
+          description: 'Pathname of the route, e.g., "/about".'
+          example: /furniture
+        localizations:
+          type: array
+          items:
+            type: object
+            properties:
+              locale:
+                type: string
+                description: Locale.
+                example: es-MX
+              pathname:
+                type: string
+                description: 'Pathname of the route, e.g., "/about".'
+                example: /furniture
+            required:
+              - locale
+              - pathname
+            description: Localized variant of a route. Each variant has a locale and a pathname.
+            example:
+              locale: es-ES
+              pathname: /sobre-nosotros
+          description: List of localized variants for the route. Each variant has a locale and a pathname.
+          example:
+            - locale: es-ES
+              pathname: /sobre-nosotros
+            - locale: fr-FR
+              pathname: /a-propos
+      required:
+        - id
+        - pathname
+        - localizations
+      description: Route with its localized variants.
+      example:
+        id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
+        pathname: /about
+        localizations:
+          - locale: es-MX
+            pathname: /muebles
+          - locale: fr-CA
+            pathname: /meubles
+    ListSiteRouteV2ResponseBodyDto:
       type: object
       properties:
         data:
@@ -1715,7 +1933,7 @@ components:
                 type: string
                 description: 'Pathname of the route, e.g., "/about".'
                 example: /furniture
-              localizedVariants:
+              localizations:
                 type: array
                 items:
                   type: object
@@ -1744,12 +1962,12 @@ components:
             required:
               - id
               - pathname
-              - localizedVariants
-            description: Site route with its localized variants.
+              - localizations
+            description: Route with its localized variants.
             example:
               id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
               pathname: /about
-              localizedVariants:
+              localizations:
                 - locale: es-MX
                   pathname: /muebles
                 - locale: fr-CA
@@ -1759,224 +1977,6 @@ components:
       required:
         - data
         - hasMore
-    CreateSiteRouteV1RequestBodyDto:
-      type: object
-      properties:
-        pathname:
-          type: string
-          description: 'Pathname of the route, e.g., "/about".'
-          example: /furniture
-        localizedVariants:
-          default: []
-          type: array
-          items:
-            type: object
-            properties:
-              locale:
-                type: string
-                description: Locale.
-                example: es-MX
-              pathname:
-                type: string
-                description: 'Pathname of the route, e.g., "/about".'
-                example: /furniture
-            required:
-              - locale
-              - pathname
-            description: Localized variant of a route. Each variant has a locale and a pathname.
-            example:
-              locale: es-ES
-              pathname: /sobre-nosotros
-          description: "List of localized variants for the route. If not provided, defaults to an empty array."
-          example:
-            - locale: es-ES
-              pathname: /sobre-nosotros
-            - locale: fr-FR
-              pathname: /a-propos
-      required:
-        - pathname
-      description: Request body for creating a new site route.
-    CreateSiteRouteV1ResponseBodyDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        pathname:
-          type: string
-          description: 'Pathname of the route, e.g., "/about".'
-          example: /furniture
-        localizedVariants:
-          type: array
-          items:
-            type: object
-            properties:
-              locale:
-                type: string
-                description: Locale.
-                example: es-MX
-              pathname:
-                type: string
-                description: 'Pathname of the route, e.g., "/about".'
-                example: /furniture
-            required:
-              - locale
-              - pathname
-            description: Localized variant of a route. Each variant has a locale and a pathname.
-            example:
-              locale: es-ES
-              pathname: /sobre-nosotros
-          description: List of localized variants for the route. Each variant has a locale and a pathname.
-          example:
-            - locale: es-ES
-              pathname: /sobre-nosotros
-            - locale: fr-FR
-              pathname: /a-propos
-      required:
-        - id
-        - pathname
-        - localizedVariants
-      description: Site route with its localized variants.
-      example:
-        id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-        pathname: /about
-        localizedVariants:
-          - locale: es-MX
-            pathname: /muebles
-          - locale: fr-CA
-            pathname: /meubles
-    ReadSiteRouteV1ResponseBodyDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        pathname:
-          type: string
-          description: 'Pathname of the route, e.g., "/about".'
-          example: /furniture
-        localizedVariants:
-          type: array
-          items:
-            type: object
-            properties:
-              locale:
-                type: string
-                description: Locale.
-                example: es-MX
-              pathname:
-                type: string
-                description: 'Pathname of the route, e.g., "/about".'
-                example: /furniture
-            required:
-              - locale
-              - pathname
-            description: Localized variant of a route. Each variant has a locale and a pathname.
-            example:
-              locale: es-ES
-              pathname: /sobre-nosotros
-          description: List of localized variants for the route. Each variant has a locale and a pathname.
-          example:
-            - locale: es-ES
-              pathname: /sobre-nosotros
-            - locale: fr-FR
-              pathname: /a-propos
-      required:
-        - id
-        - pathname
-        - localizedVariants
-      description: Site route with its localized variants.
-      example:
-        id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-        pathname: /about
-        localizedVariants:
-          - locale: es-MX
-            pathname: /muebles
-          - locale: fr-CA
-            pathname: /meubles
-    UpdateSiteRouteV1RequestBodyDto:
-      type: object
-      properties:
-        pathname:
-          type: string
-          description: 'Pathname of the route, e.g., "/about".'
-          example: /furniture
-        localizedVariants:
-          type: array
-          items:
-            type: object
-            properties:
-              locale:
-                type: string
-                description: Locale.
-                example: es-MX
-              pathname:
-                type: string
-                description: 'Pathname of the route, e.g., "/about".'
-                example: /furniture
-            required:
-              - locale
-              - pathname
-            description: Localized variant of a route. Each variant has a locale and a pathname.
-            example:
-              locale: es-ES
-              pathname: /sobre-nosotros
-          description: List of localized variants for the route. Each variant has a locale and a pathname.
-          example:
-            - locale: es-ES
-              pathname: /sobre-nosotros
-            - locale: fr-FR
-              pathname: /a-propos
-      description: Request body for updating an existing site route.
-    UpdateSiteRouteV1ResponseBodyDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        pathname:
-          type: string
-          description: 'Pathname of the route, e.g., "/about".'
-          example: /furniture
-        localizedVariants:
-          type: array
-          items:
-            type: object
-            properties:
-              locale:
-                type: string
-                description: Locale.
-                example: es-MX
-              pathname:
-                type: string
-                description: 'Pathname of the route, e.g., "/about".'
-                example: /furniture
-            required:
-              - locale
-              - pathname
-            description: Localized variant of a route. Each variant has a locale and a pathname.
-            example:
-              locale: es-ES
-              pathname: /sobre-nosotros
-          description: List of localized variants for the route. Each variant has a locale and a pathname.
-          example:
-            - locale: es-ES
-              pathname: /sobre-nosotros
-            - locale: fr-FR
-              pathname: /a-propos
-      required:
-        - id
-        - pathname
-        - localizedVariants
-      description: Site route with its localized variants.
-      example:
-        id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-        pathname: /about
-        localizedVariants:
-          - locale: es-MX
-            pathname: /muebles
-          - locale: fr-CA
-            pathname: /meubles
 webhooks:
   page.created:
     post:

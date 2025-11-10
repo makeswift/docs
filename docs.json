@@ -310,11 +310,11 @@
                   {
                     "group": "Routes",
                     "pages": [
-                      "POST /v1/sites/{siteId}/routes",
-                      "GET /v1/sites/{siteId}/routes",
-                      "GET /v1/routes/{routeId}",
-                      "PATCH /v1/routes/{routeId}",
-                      "DELETE /v1/routes/{routeId}"
+                      "POST /v2/routes",
+                      "GET /v2/routes",
+                      "GET /v2/routes/{routeId}",
+                      "PATCH /v2/routes/{routeId}",
+                      "DELETE /v2/routes/{routeId}"
                     ]
                   },
                   {
