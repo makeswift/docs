@@ -69,7 +69,7 @@ paths:
         - name: localeIdOrCode
           required: true
           in: path
-          description: The locale ID (UUID) or locale code (e.g., es-MX)
+          description: The locale ID (UUID) or locale code (e.g., es-MX).
           schema:
             type: string
         - name: siteId
@@ -98,7 +98,7 @@ paths:
         - name: localeId
           required: true
           in: path
-          description: The locale ID (UUID)
+          description: The locale ID (UUID).
           schema:
             format: uuid
             type: string
@@ -126,7 +126,7 @@ paths:
         - name: localeId
           required: true
           in: path
-          description: The locale ID (UUID)
+          description: The locale ID (UUID).
           schema:
             format: uuid
             type: string
@@ -269,7 +269,7 @@ paths:
         - name: siteId
           required: true
           in: path
-          description: The ID of the site to duplicate
+          description: The ID of the site to duplicate.
           schema:
             format: uuid
             example: 123e4567-e89b-12d3-a456-426614174000
@@ -282,169 +282,13 @@ paths:
               $ref: "#/components/schemas/DuplicateSiteV1RequestBodyDto"
       responses:
         "201":
-          description: The newly created duplicated site with all content and configuration copied from the original
+          description: The newly created duplicated site with all content and configuration copied from the original.
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/DuplicateSiteV1ResponseBodyDto"
       tags:
         - Site
-  /v1/auth/user-info:
-    get:
-      operationId: AuthController_getUserInfo_v1
-      summary: "Get User Info"
-      responses:
-        "200":
-          description: ""
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/GetUserInfoV1ResponseBodyDto"
-      tags:
-        - Authentication
-  "/v1/workspaces/{workspaceId}/members/{userId}":
-    post:
-      operationId: WorkspaceMemberController_create_v1
-      summary: "Add Workspace Member"
-      parameters:
-        - name: workspaceId
-          required: true
-          in: path
-          schema:
-            format: uuid
-            type: string
-        - name: userId
-          required: true
-          in: path
-          description: The ID of the user
-          schema:
-            format: uuid
-            example: d2ccb4e7-1364-496d-a131-bd996269ab2c
-            type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CreateWorkspaceMemberV1RequestBodyDto"
-      responses:
-        "204":
-          description: ""
-      tags:
-        - Workspace Member
-    delete:
-      operationId: WorkspaceMemberController_delete_v1
-      summary: "Remove Workspace Member"
-      parameters:
-        - name: workspaceId
-          required: true
-          in: path
-          schema:
-            format: uuid
-            type: string
-        - name: userId
-          required: true
-          in: path
-          description: The ID of the user
-          schema:
-            format: uuid
-            example: d2ccb4e7-1364-496d-a131-bd996269ab2c
-            type: string
-      responses:
-        "204":
-          description: ""
-      tags:
-        - Workspace Member
-    patch:
-      operationId: WorkspaceMemberController_update_v1
-      summary: "Update Workspace Member"
-      parameters:
-        - name: workspaceId
-          required: true
-          in: path
-          schema:
-            format: uuid
-            type: string
-        - name: userId
-          required: true
-          in: path
-          description: The ID of the user
-          schema:
-            format: uuid
-            example: d2ccb4e7-1364-496d-a131-bd996269ab2c
-            type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/UpdateWorkspaceMemberV1RequestBodyDto"
-      responses:
-        "204":
-          description: ""
-      tags:
-        - Workspace Member
-    get:
-      operationId: WorkspaceMemberController_getUserRole_v1
-      summary: "Get Workspace Member Role"
-      parameters:
-        - name: workspaceId
-          required: true
-          in: path
-          schema:
-            format: uuid
-            type: string
-        - name: userId
-          required: true
-          in: path
-          description: The ID of the user
-          schema:
-            format: uuid
-            example: d2ccb4e7-1364-496d-a131-bd996269ab2c
-            type: string
-      responses:
-        "200":
-          description: ""
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/GetWorkspaceMemberV1ResponseBodyDto"
-      tags:
-        - Workspace Member
-  "/v1/workspaces/{workspaceId}/members":
-    get:
-      operationId: WorkspaceMemberController_getMembers_v1
-      summary: "List Workspace Members"
-      parameters:
-        - name: workspaceId
-          required: true
-          in: path
-          schema:
-            format: uuid
-            type: string
-        - name: limit
-          required: false
-          in: query
-          schema:
-            minimum: 0
-            maximum: 100
-            default: 20
-            type: number
-        - name: after
-          required: false
-          in: query
-          schema:
-            format: uuid
-            type: string
-      responses:
-        "200":
-          description: ""
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ListWorkspaceMemberV1ResponseBodyDto"
-      tags:
-        - Workspace Member
   "/v2/pages":
     get:
       operationId: PageController_list_v2
@@ -568,7 +412,7 @@ paths:
         - name: pageIdOrPathname
           required: true
           in: path
-          description: The page ID (UUID) or pathname of the page
+          description: The page ID (UUID) or pathname of the page.
           schema:
             type: string
         - name: siteId
@@ -604,7 +448,7 @@ paths:
         - name: pageId
           required: true
           in: path
-          description: The page ID (UUID)
+          description: The page ID (UUID).
           schema:
             format: uuid
             type: string
@@ -632,58 +476,13 @@ paths:
         - name: pageId
           required: true
           in: path
-          description: The page ID (UUID)
+          description: The page ID (UUID).
           schema:
             format: uuid
             type: string
       responses:
         "204":
           description: "No Content - The page was successfully deleted."
-      tags:
-        - Page
-  "/v0/sites/{siteId}/pages":
-    get:
-      operationId: PageController_list_v0
-      summary: "List Pages"
-      security:
-        - AppAuth: []
-      parameters:
-        - name: siteId
-          required: true
-          in: path
-          schema:
-            format: uuid
-            type: string
-        - name: limit
-          required: false
-          in: query
-          description: "Maximum number of pages to return. Defaults to 20, maximum is 100."
-          schema:
-            minimum: 1
-            maximum: 100
-            default: 20
-            type: number
-        - name: after
-          required: false
-          in: query
-          description: "Cursor for pagination. If provided, returns pages after this ID."
-          schema:
-            format: uuid
-            type: string
-        - name: includeOffline
-          required: false
-          in: query
-          description: Include offline pages. Defaults to false.
-          schema:
-            default: false
-            type: boolean
-      responses:
-        "200":
-          description: ""
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ListPagesV0ResponseBodyDto"
       tags:
         - Page
   "/v2/routes":
@@ -843,10 +642,6 @@ info:
   version: "1.0"
   contact: {}
 tags:
-  - name: Authentication
-    description: ""
-  - name: Workspace
-    description: ""
   - name: Site
     description: ""
   - name: Page
@@ -854,8 +649,6 @@ tags:
   - name: Locale
     description: ""
   - name: Route
-    description: ""
-  - name: Workspace Member
     description: ""
 servers:
   - url: "https://8511e6e5e351.ngrok-free.app"
@@ -869,6 +662,8 @@ components:
       scheme: bearer
       bearerFormat: "sk_abc123def456ghi789jkl012mno345pqr678stu901vwx234yz"
       description: "The API key for the App (e.g. sk_eczMHVBY9fV6GYFhvs53qcnxq7yptlXL3ABKOZtn6dQ)"
+      x-mint:
+        label: "Headers"
 
   schemas:
     CreateSiteLocaleV2RequestBodyDto:
@@ -877,7 +672,7 @@ components:
         siteId:
           type: string
           format: uuid
-          description: The ID of the site
+          description: The ID of the site.
         locale:
           type: string
           description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
@@ -889,24 +684,6 @@ components:
       required:
         - siteId
         - locale
-    CreateSiteLocaleV1ResponseBodyDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        locale:
-          type: string
-          description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
-          example: es-MX
-        domain:
-          type: "null"
-          description: Domain for domain-based localization. Domain URL must include the protocol.
-          example: "https://hearthfurniture.com.mx"
-      required:
-        - id
-        - locale
-        - domain
     CreateSiteLocaleV2ResponseBodyDto:
       type: object
       properties:
@@ -1006,11 +783,11 @@ components:
       properties:
         workspaceId:
           type: string
-          description: The ID of the workspace this site belongs to
+          description: The ID of the workspace this site belongs to.
           format: uuid
         name:
           type: string
-          description: The name of the site
+          description: The name of the site.
           example: Hearth Furniture Company
         hostUrl:
           type: string
@@ -1033,7 +810,7 @@ components:
           format: uuid
         name:
           type: string
-          description: The name of the site
+          description: The name of the site.
           example: Hearth Furniture Company
         hostUrl:
           type: "null"
@@ -1056,7 +833,7 @@ components:
           format: uuid
         name:
           type: string
-          description: The name of the site
+          description: The name of the site.
           example: Hearth Furniture Company
         hostUrl:
           type: "null"
@@ -1076,7 +853,7 @@ components:
       properties:
         name:
           type: string
-          description: The name of the site
+          description: The name of the site.
           example: Hearth Furniture Company
         hostUrl:
           type: string
@@ -1091,7 +868,7 @@ components:
           format: uuid
         name:
           type: string
-          description: The name of the site
+          description: The name of the site.
           example: Hearth Furniture Company
         hostUrl:
           type: "null"
@@ -1119,7 +896,7 @@ components:
                 format: uuid
               name:
                 type: string
-                description: The name of the site
+                description: The name of the site.
                 example: Hearth Furniture Company
               hostUrl:
                 type: "null"
@@ -1144,7 +921,7 @@ components:
       properties:
         name:
           type: string
-          description: The name for the new duplicated site
+          description: The name for the new duplicated site.
           example: Hearth Furniture Duplicate
     DuplicateSiteV1ResponseBodyDto:
       type: object
@@ -1154,7 +931,7 @@ components:
           format: uuid
         name:
           type: string
-          description: The name of the site
+          description: The name of the site.
           example: Hearth Furniture Company
         hostUrl:
           type: "null"
@@ -1169,167 +946,20 @@ components:
         - name
         - hostUrl
         - apiKey
-      description: The newly created duplicated site with all content and configuration copied from the original
-    GetUserInfoV1ResponseBodyDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: The ID of the user
-          example: d2ccb4e7-1364-496d-a131-bd996269ab2c
-      required:
-        - id
-    CreateWorkspaceV1RequestBodyDto:
-      type: object
-      properties:
-        ownerId:
-          type: string
-          format: uuid
-          example: a2914010-c1d7-4a03-9c22-cb91313a4f25
-        name:
-          type: string
-          description: The name of the workspace
-          example: Hearth Furniture Workspace
-      required:
-        - name
-    CreateWorkspaceV1ResponseBodyDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-          description: The name of the workspace
-          example: Hearth Furniture Workspace
-      required:
-        - id
-        - name
-    ListWorkspaceV1ResponseBodyDto:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-                format: uuid
-              name:
-                type: string
-                description: The name of the workspace
-                example: Hearth Furniture Workspace
-            required:
-              - id
-              - name
-        hasMore:
-          type: boolean
-      required:
-        - data
-        - hasMore
-    UpdateWorkspaceV1RequestBodyDto:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name of the workspace
-          example: Hearth Furniture Workspace
-    UpdateWorkspaceV1ResponseBodyDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-          description: The name of the workspace
-          example: Hearth Furniture Workspace
-      required:
-        - id
-        - name
-    CreateWorkspaceMemberV1RequestBodyDto:
-      type: object
-      properties:
-        role:
-          type: string
-          enum:
-            - OWNER
-            - ADMIN
-            - PUBLISHER
-            - EDITOR
-            - GUEST
-      required:
-        - role
-    UpdateWorkspaceMemberV1RequestBodyDto:
-      type: object
-      properties:
-        role:
-          type: string
-          enum:
-            - OWNER
-            - ADMIN
-            - PUBLISHER
-            - EDITOR
-            - GUEST
-      required:
-        - role
-    GetWorkspaceMemberV1ResponseBodyDto:
-      type: object
-      properties:
-        role:
-          type: string
-          enum:
-            - OWNER
-            - ADMIN
-            - PUBLISHER
-            - EDITOR
-            - GUEST
-      required:
-        - role
-    ListWorkspaceMemberV1ResponseBodyDto:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            type: object
-            properties:
-              userId:
-                type: string
-                format: uuid
-                description: The ID of the user
-                example: d2ccb4e7-1364-496d-a131-bd996269ab2c
-              role:
-                type: string
-                enum:
-                  - OWNER
-                  - ADMIN
-                  - PUBLISHER
-                  - EDITOR
-                  - GUEST
-            required:
-              - userId
-              - role
-        hasMore:
-          type: boolean
-      required:
-        - data
-        - hasMore
+      description: The newly created duplicated site with all content and configuration copied from the original.
     CreatePageV1RequestBodyDto:
       type: object
       properties:
         siteId:
           type: string
           format: uuid
-          description: The ID of the site
+          description: The ID of the site.
         pathname:
           type: string
-          description: The pathname of the page
+          description: The pathname of the page.
         name:
           type: string
-          description: The name of the page
+          description: The name of the page.
       required:
         - siteId
         - pathname
@@ -1342,30 +972,30 @@ components:
           format: uuid
         pathname:
           type: string
-          description: The pathname of the page
+          description: The pathname of the page.
           example: furniture
         canonicalUrl:
           type: string
           nullable: true
-          description: The canonical URL of the page
+          description: The canonical URL of the page.
         title:
           type: string
           nullable: true
-          description: The title of the page
+          description: The title of the page.
         description:
           type: string
           nullable: true
-          description: The description of the page
+          description: The description of the page.
         socialImageUrl:
           type: string
           nullable: true
-          description: The social image URL of the page
+          description: The social image URL of the page.
         sitemapPriority:
           type: number
           nullable: true
           minimum: 0
           maximum: 1
-          description: The priority of the page in the sitemap
+          description: The priority of the page in the sitemap.
         sitemapFrequency:
           type: string
           nullable: true
@@ -1377,48 +1007,48 @@ components:
             - monthly
             - yearly
             - never
-          description: The frequency with which the page is updated in the sitemap
+          description: The frequency with which the page is updated in the sitemap.
         createdAt:
           type: string
           format: date-time
           nullable: true
-          description: The date and time when the page was created
+          description: The date and time when the page was created.
         updatedAt:
           type: string
           format: date-time
           nullable: true
-          description: The date and time when the page was last updated
+          description: The date and time when the page was last updated.
         publishedAt:
           type: string
           format: date-time
           nullable: true
-          description: The date and time when the page was published
+          description: The date and time when the page was published.
         isOnline:
           type: boolean
-          description: Whether the page is online
+          description: Whether the page is online.
         excludedFromSearch:
           type: boolean
           nullable: true
-          description: Whether the page is excluded from search
+          description: Whether the page is excluded from search.
         locale:
           type: string
-          description: The locale of the page
+          description: The locale of the page.
         localizations:
           type: array
-          description: The localized variants of the page
+          description: The localized variants of the page.
           items:
             type: object
             properties:
               locale:
                 type: string
-                description: The locale of the localized variant
+                description: The locale of the localized variant.
               pathname:
                 type: string
-                description: The pathname of the localized variant
+                description: The pathname of the localized variant.
               id:
                 type: string
                 format: uuid
-                description: The ID of the localized variant
+                description: The ID of the localized variant.
             required:
               - locale
               - pathname
@@ -1436,42 +1066,17 @@ components:
       properties:
         pathname:
           type: string
-          description: The pathname of the page
+          description: The pathname of the page.
         name:
           type: string
-          description: The name of the page
+          description: The name of the page.
         isOnline:
           type: boolean
-          description: Whether the page is online or offline
+          description: Whether the page is online or offline.
     UpdatePageV1ResponseBodyDto:
       $ref: "#/components/schemas/PageV2Dto"
     GetPageV1ResponseBodyDto:
       $ref: "#/components/schemas/PageV2Dto"
-    ListPagesV0ResponseBodyDto:
-      type: object
-      properties:
-        pages:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-                format: uuid
-              pathname:
-                type: string
-              isOnline:
-                type: boolean
-            required:
-              - id
-              - pathname
-              - isOnline
-        hasMore:
-          type: boolean
-          description: Whether there are more pages available for pagination.
-      required:
-        - pages
-        - hasMore
     ListPagesV2ResponseBodyDto:
       type: object
       properties:
@@ -1491,7 +1096,7 @@ components:
         siteId:
           type: string
           format: uuid
-          description: The ID of the site
+          description: The ID of the site.
         pathname:
           type: string
           description: 'Pathname of the route, e.g., "/about".'
@@ -1504,7 +1109,7 @@ components:
             properties:
               locale:
                 type: string
-                description: Locale.
+                description: Locale code.
                 example: es-MX
               pathname:
                 type: string
@@ -1544,7 +1149,7 @@ components:
             properties:
               locale:
                 type: string
-                description: Locale.
+                description: Locale code.
                 example: es-MX
               pathname:
                 type: string
@@ -1593,7 +1198,7 @@ components:
             properties:
               locale:
                 type: string
-                description: Locale.
+                description: Locale code.
                 example: es-MX
               pathname:
                 type: string
@@ -1639,7 +1244,7 @@ components:
             properties:
               locale:
                 type: string
-                description: Locale.
+                description: Locale code.
                 example: es-MX
               pathname:
                 type: string
@@ -1676,7 +1281,7 @@ components:
             properties:
               locale:
                 type: string
-                description: Locale.
+                description: Locale code.
                 example: es-MX
               pathname:
                 type: string
@@ -1730,7 +1335,7 @@ components:
                   properties:
                     locale:
                       type: string
-                      description: Locale.
+                      description: Locale code.
                       example: es-MX
                     pathname:
                       type: string
