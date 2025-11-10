@@ -1,49 +1,52 @@
 openapi: 3.1.0
 paths:
-  "/v1/sites/{siteId}/locales":
+  "/v2/locales":
     post:
-      operationId: SiteLocaleController_create_v1
-      summary: "Create Site Locale"
+      operationId: SiteLocaleController_create_v2
+      summary: "Create Locale"
       security:
         - AppAuth: []
-      parameters:
-        - name: siteId
-          required: true
-          in: path
-          schema:
-            format: uuid
-            type: string
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateSiteLocaleV1RequestBodyDto"
+              $ref: "#/components/schemas/CreateSiteLocaleV2RequestBodyDto"
       responses:
         "201":
           description: ""
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CreateSiteLocaleV1ResponseBodyDto"
+                $ref: "#/components/schemas/CreateSiteLocaleV2ResponseBodyDto"
       tags:
         - Locale
     get:
-      operationId: SiteLocaleController_getByLocale_v1
-      summary: "Get Site Locale by Code"
+      operationId: SiteLocaleController_list_v2
+      summary: "List Locales"
+      description: "List locales in a site"
       security:
         - AppAuth: []
       parameters:
-        - name: code
-          required: true
-          in: query
-          description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
-          schema:
-            example: es-MX
-            type: string
         - name: siteId
           required: true
-          in: path
+          in: query
+          schema:
+            format: uuid
+            type: string
+        - name: limit
+          required: false
+          in: query
+          description: "Maximum number of locales to return. Defaults to 20, maximum is 100. To paginate, use together with `after` cursor."
+          schema:
+            minimum: 0
+            maximum: 100
+            default: 20
+            type: number
+        - name: after
+          required: false
+          in: query
+          description: "Cursor for pagination. If provided, returns locales after this ID."
           schema:
             format: uuid
             type: string
@@ -53,36 +56,49 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetByLocaleSiteLocaleV1ResponseBodyDto"
+                $ref: "#/components/schemas/ListSiteLocaleV2ResponseBodyDto"
       tags:
         - Locale
-  "/v1/locales/{localeId}":
-    delete:
-      operationId: SiteLocaleController_delete_v1
-      summary: "Delete Site Locale"
+  "/v2/locales/{localeIdOrCode}":
+    get:
+      operationId: SiteLocaleController_get_v2
+      summary: "Get Locale"
       security:
         - AppAuth: []
       parameters:
-        - name: localeId
+        - name: localeIdOrCode
           required: true
           in: path
+          description: The locale ID (UUID) or locale code (e.g., es-MX)
+          schema:
+            type: string
+        - name: siteId
+          required: false
+          in: query
+          description: The site ID (UUID). Required when using a locale code instead of a locale ID.
           schema:
             format: uuid
             type: string
       responses:
-        "204":
+        "200":
           description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadSiteLocaleV2ResponseBodyDto"
       tags:
         - Locale
+  "/v2/locales/{localeId}":
     patch:
-      operationId: SiteLocaleController_update_v1
-      summary: "Update Site Locale"
+      operationId: SiteLocaleController_update_v2
+      summary: "Update Locale"
       security:
         - AppAuth: []
       parameters:
         - name: localeId
           required: true
           in: path
+          description: The locale ID (UUID)
           schema:
             format: uuid
             type: string
@@ -91,35 +107,32 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UpdateSiteLocaleV1RequestBodyDto"
+              $ref: "#/components/schemas/UpdateSiteLocaleV2RequestBodyDto"
       responses:
         "200":
           description: ""
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UpdateSiteLocaleV1ResponseBodyDto"
+                $ref: "#/components/schemas/UpdateSiteLocaleV2ResponseBodyDto"
       tags:
         - Locale
-    get:
-      operationId: SiteLocaleController_get_v1
-      summary: "Get Site Locale"
+    delete:
+      operationId: SiteLocaleController_delete_v2
+      summary: "Delete Locale"
       security:
         - AppAuth: []
       parameters:
         - name: localeId
           required: true
           in: path
+          description: The locale ID (UUID)
           schema:
             format: uuid
             type: string
       responses:
-        "200":
+        "204":
           description: ""
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ReadSiteLocaleV1ResponseBodyDto"
       tags:
         - Locale
   "/v2/sites":
@@ -967,18 +980,23 @@ components:
       description: "The API key for the App (e.g. sk_eczMHVBY9fV6GYFhvs53qcnxq7yptlXL3ABKOZtn6dQ)"
 
   schemas:
-    CreateSiteLocaleV1RequestBodyDto:
+    CreateSiteLocaleV2RequestBodyDto:
       type: object
       properties:
+        siteId:
+          type: string
+          format: uuid
+          description: The ID of the site
         locale:
           type: string
-          description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+          description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
           example: es-MX
         domain:
           type: string
-          description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
+          description: Domain for domain-based localization. Domain URL must include the protocol.
           example: "https://hearthfurniture.com.mx"
       required:
+        - siteId
         - locale
     CreateSiteLocaleV1ResponseBodyDto:
       type: object
@@ -988,28 +1006,17 @@ components:
           format: uuid
         locale:
           type: string
-          description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+          description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
           example: es-MX
         domain:
           type: "null"
-          description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
+          description: Domain for domain-based localization. Domain URL must include the protocol.
           example: "https://hearthfurniture.com.mx"
       required:
         - id
         - locale
         - domain
-    UpdateSiteLocaleV1RequestBodyDto:
-      type: object
-      properties:
-        locale:
-          type: string
-          description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
-          example: es-MX
-        domain:
-          type: string
-          description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          example: "https://hearthfurniture.com.mx"
-    UpdateSiteLocaleV1ResponseBodyDto:
+    CreateSiteLocaleV2ResponseBodyDto:
       type: object
       properties:
         id:
@@ -1017,17 +1024,28 @@ components:
           format: uuid
         locale:
           type: string
-          description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+          description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
           example: es-MX
         domain:
           type: "null"
-          description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
+          description: Domain for domain-based localization. Domain URL must include the protocol.
           example: "https://hearthfurniture.com.mx"
       required:
         - id
         - locale
         - domain
-    ReadSiteLocaleV1ResponseBodyDto:
+    UpdateSiteLocaleV2RequestBodyDto:
+      type: object
+      properties:
+        locale:
+          type: string
+          description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+          example: es-MX
+        domain:
+          type: string
+          description: Domain for domain-based localization. Domain URL must include the protocol.
+          example: "https://hearthfurniture.com.mx"
+    UpdateSiteLocaleV2ResponseBodyDto:
       type: object
       properties:
         id:
@@ -1035,17 +1053,17 @@ components:
           format: uuid
         locale:
           type: string
-          description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+          description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
           example: es-MX
         domain:
           type: "null"
-          description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
+          description: Domain for domain-based localization. Domain URL must include the protocol.
           example: "https://hearthfurniture.com.mx"
       required:
         - id
         - locale
         - domain
-    GetByLocaleSiteLocaleV1ResponseBodyDto:
+    ReadSiteLocaleV2ResponseBodyDto:
       type: object
       properties:
         id:
@@ -1053,16 +1071,45 @@ components:
           format: uuid
         locale:
           type: string
-          description: Locale of the site locale (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+          description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
           example: es-MX
         domain:
           type: "null"
-          description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
+          description: Domain for domain-based localization. Domain URL must include the protocol.
           example: "https://hearthfurniture.com.mx"
       required:
         - id
         - locale
         - domain
+    ListSiteLocaleV2ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+              locale:
+                type: string
+                description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+                example: es-MX
+              domain:
+                type: "null"
+                description: Domain for domain-based localization. Domain URL must include the protocol.
+                example: "https://hearthfurniture.com.mx"
+            required:
+              - id
+              - locale
+              - domain
+        hasMore:
+          type: boolean
+          description: Whether there are more locales available for pagination.
+      required:
+        - data
+        - hasMore
     CreateSiteV2RequestBodyDto:
       type: object
       properties:
@@ -1675,7 +1722,7 @@ components:
                   properties:
                     locale:
                       type: string
-                      description: Site locale.
+                      description: Locale.
                       example: es-MX
                     pathname:
                       type: string
@@ -1727,7 +1774,7 @@ components:
             properties:
               locale:
                 type: string
-                description: Site locale.
+                description: Locale.
                 example: es-MX
               pathname:
                 type: string
@@ -1766,7 +1813,7 @@ components:
             properties:
               locale:
                 type: string
-                description: Site locale.
+                description: Locale.
                 example: es-MX
               pathname:
                 type: string
@@ -1815,7 +1862,7 @@ components:
             properties:
               locale:
                 type: string
-                description: Site locale.
+                description: Locale.
                 example: es-MX
               pathname:
                 type: string
@@ -1861,7 +1908,7 @@ components:
             properties:
               locale:
                 type: string
-                description: Site locale.
+                description: Locale.
                 example: es-MX
               pathname:
                 type: string
@@ -1898,7 +1945,7 @@ components:
             properties:
               locale:
                 type: string
-                description: Site locale.
+                description: Locale.
                 example: es-MX
               pathname:
                 type: string

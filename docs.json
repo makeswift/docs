@@ -290,11 +290,11 @@
                   {
                     "group": "Locales",
                     "pages": [
-                      "POST /v1/sites/{siteId}/locales",
-                      "GET /v1/sites/{siteId}/locales",
-                      "GET /v1/locales/{localeId}",
-                      "PATCH /v1/locales/{localeId}",
-                      "DELETE /v1/locales/{localeId}"
+                      "POST /v2/locales",
+                      "GET /v2/locales",
+                      "GET /v2/locales/{localeIdOrCode}",
+                      "PATCH /v2/locales/{localeId}",
+                      "DELETE /v2/locales/{localeId}"
                     ]
                   },
                   {
