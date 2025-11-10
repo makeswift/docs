@@ -316,15 +316,6 @@
                       "PATCH /v2/routes/{routeId}",
                       "DELETE /v2/routes/{routeId}"
                     ]
-                  },
-                  {
-                    "group": "Webhooks",
-                    "pages": [
-                      "POST /v1/workspaces/{workspaceId}/webhooks",
-                      "GET /v1/workspaces/{workspaceId}/webhooks",
-                      "GET /v1/webhooks/{webhookId}",
-                      "DELETE /v1/webhooks/{webhookId}"
-                    ]
                   }
                 ]
               }
