@@ -2,7 +2,7 @@ openapi: 3.1.0
 paths:
   "/v2/locales":
     post:
-      operationId: SiteLocaleController_create_v2
+      operationId: LocaleController_create_v2
       summary: "Create Locale"
       security:
         - Authentication: []
@@ -11,20 +11,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateSiteLocaleV2RequestBodyDto"
+              $ref: "#/components/schemas/CreateLocaleV2RequestBodyDto"
       responses:
         "201":
           description: ""
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CreateSiteLocaleV2ResponseBodyDto"
+                $ref: "#/components/schemas/CreateLocaleV2ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Locale
     get:
-      operationId: SiteLocaleController_list_v2
+      operationId: LocaleController_list_v2
       summary: "List Locales"
       description: "List locales in a site"
       security:
@@ -58,14 +58,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListSiteLocaleV2ResponseBodyDto"
+                $ref: "#/components/schemas/ListLocaleV2ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Locale
   "/v2/locales/{localeIdOrCode}":
     get:
-      operationId: SiteLocaleController_get_v2
+      operationId: LocaleController_get_v2
       summary: "Get Locale"
       security:
         - Authentication: []
@@ -89,14 +89,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ReadSiteLocaleV2ResponseBodyDto"
+                $ref: "#/components/schemas/ReadLocaleV2ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Locale
   "/v2/locales/{localeId}":
     patch:
-      operationId: SiteLocaleController_update_v2
+      operationId: LocaleController_update_v2
       summary: "Update Locale"
       security:
         - Authentication: []
@@ -113,20 +113,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UpdateSiteLocaleV2RequestBodyDto"
+              $ref: "#/components/schemas/UpdateLocaleV2RequestBodyDto"
       responses:
         "200":
           description: ""
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UpdateSiteLocaleV2ResponseBodyDto"
+                $ref: "#/components/schemas/UpdateLocaleV2ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Locale
     delete:
-      operationId: SiteLocaleController_delete_v2
+      operationId: LocaleController_delete_v2
       summary: "Delete Locale"
       security:
         - Authentication: []
@@ -723,7 +723,7 @@ components:
             message: "Unauthorized"
 
   schemas:
-    CreateSiteLocaleV2RequestBodyDto:
+    CreateLocaleV2RequestBodyDto:
       type: object
       properties:
         siteId:
@@ -743,7 +743,7 @@ components:
       required:
         - siteId
         - locale
-    CreateSiteLocaleV2ResponseBodyDto:
+    CreateLocaleV2ResponseBodyDto:
       type: object
       properties:
         id:
@@ -759,7 +759,7 @@ components:
           format: uri
           description: Domain for domain-based localization. Domain URL must include the protocol.
           example: "https://hearthfurniture.com.mx"
-    UpdateSiteLocaleV2RequestBodyDto:
+    UpdateLocaleV2RequestBodyDto:
       type: object
       properties:
         locale:
@@ -772,23 +772,7 @@ components:
           format: uri
           description: Domain for domain-based localization. Domain URL must include the protocol.
           example: "https://hearthfurniture.com.mx"
-    UpdateSiteLocaleV2ResponseBodyDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        locale:
-          type: string
-          description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
-          example: es-MX
-        domain:
-          type: string
-          nullable: true
-          format: uri
-          description: Domain for domain-based localization. Domain URL must include the protocol.
-          example: "https://hearthfurniture.com.mx"
-    ReadSiteLocaleV2ResponseBodyDto:
+    UpdateLocaleV2ResponseBodyDto:
       type: object
       properties:
         id:
@@ -804,7 +788,23 @@ components:
           format: uri
           description: Domain for domain-based localization. Domain URL must include the protocol.
           example: "https://hearthfurniture.com.mx"
-    ListSiteLocaleV2ResponseBodyDto:
+    ReadLocaleV2ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        locale:
+          type: string
+          description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+          example: es-MX
+        domain:
+          type: string
+          nullable: true
+          format: uri
+          description: Domain for domain-based localization. Domain URL must include the protocol.
+          example: "https://hearthfurniture.com.mx"
+    ListLocaleV2ResponseBodyDto:
       type: object
       properties:
         data:
