@@ -5,7 +5,7 @@ paths:
       operationId: SiteLocaleController_create_v2
       summary: "Create Locale"
       security:
-        - AppAuth: []
+        - Authentication: []
       requestBody:
         required: true
         content:
@@ -19,6 +19,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CreateSiteLocaleV2ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Locale
     get:
@@ -26,7 +28,7 @@ paths:
       summary: "List Locales"
       description: "List locales in a site"
       security:
-        - AppAuth: []
+        - Authentication: []
       parameters:
         - name: siteId
           required: true
@@ -57,6 +59,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ListSiteLocaleV2ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Locale
   "/v2/locales/{localeIdOrCode}":
@@ -64,7 +68,7 @@ paths:
       operationId: SiteLocaleController_get_v2
       summary: "Get Locale"
       security:
-        - AppAuth: []
+        - Authentication: []
       parameters:
         - name: localeIdOrCode
           required: true
@@ -86,6 +90,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ReadSiteLocaleV2ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Locale
   "/v2/locales/{localeId}":
@@ -93,7 +99,7 @@ paths:
       operationId: SiteLocaleController_update_v2
       summary: "Update Locale"
       security:
-        - AppAuth: []
+        - Authentication: []
       parameters:
         - name: localeId
           required: true
@@ -115,13 +121,15 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UpdateSiteLocaleV2ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Locale
     delete:
       operationId: SiteLocaleController_delete_v2
       summary: "Delete Locale"
       security:
-        - AppAuth: []
+        - Authentication: []
       parameters:
         - name: localeId
           required: true
@@ -131,8 +139,10 @@ paths:
             format: uuid
             type: string
       responses:
-        "204":
+        "200":
           description: ""
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Locale
   "/v2/sites":
@@ -140,7 +150,7 @@ paths:
       operationId: SiteController_create_v2
       summary: "Create Site"
       security:
-        - AppAuth: []
+        - Authentication: []
       requestBody:
         required: true
         content:
@@ -154,6 +164,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CreateSiteV2ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Site
     get:
@@ -161,7 +173,7 @@ paths:
       summary: "List Sites"
       description: "List sites in a workspace"
       security:
-        - AppAuth: []
+        - Authentication: []
       parameters:
         - name: workspaceId
           required: true
@@ -184,12 +196,14 @@ paths:
             format: uuid
             type: string
       responses:
-        "201":
+        "200":
           description: ""
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/ListSiteV2ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Site
   "/v2/sites/{siteId}":
@@ -198,7 +212,7 @@ paths:
       summary: "Get Site"
       description: "Get a site by its ID"
       security:
-        - AppAuth: []
+        - Authentication: []
       parameters:
         - name: siteId
           required: true
@@ -213,13 +227,15 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ReadSiteV1ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Site
     patch:
       operationId: SiteController_updateOne_v2
       summary: "Update Site"
       security:
-        - AppAuth: []
+        - Authentication: []
       parameters:
         - name: siteId
           required: true
@@ -240,13 +256,15 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UpdateSiteV1ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Site
     delete:
       operationId: SiteController_delete_v2
       summary: "Delete Site"
       security:
-        - AppAuth: []
+        - Authentication: []
       parameters:
         - name: siteId
           required: true
@@ -255,8 +273,10 @@ paths:
             format: uuid
             type: string
       responses:
-        "204":
+        "200":
           description: ""
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Site
   "/v2/sites/{siteId}/duplicate":
@@ -264,7 +284,7 @@ paths:
       operationId: SiteController_duplicate_v2
       summary: "Duplicate Site"
       security:
-        - AppAuth: []
+        - Authentication: []
       parameters:
         - name: siteId
           required: true
@@ -287,6 +307,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/DuplicateSiteV1ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Site
   "/v2/pages":
@@ -295,7 +317,7 @@ paths:
       summary: "List Pages"
       description: "List pages in a site"
       security:
-        - AppAuth: []
+        - Authentication: []
       parameters:
         - name: siteId
           required: true
@@ -376,6 +398,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ListPagesV2ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Page
     post:
@@ -386,7 +410,7 @@ paths:
         metadata:
           title: "Create Page"
       security:
-        - AppAuth: []
+        - Authentication: []
       requestBody:
         required: true
         content:
@@ -400,6 +424,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CreatePageV1ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Page
   "/v2/pages/{pageIdOrPathname}":
@@ -407,7 +433,7 @@ paths:
       operationId: PageController_getOne_v1
       summary: "Get Page"
       security:
-        - AppAuth: []
+        - Authentication: []
       parameters:
         - name: pageIdOrPathname
           required: true
@@ -436,6 +462,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/GetPageV1ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Page
   "/v2/pages/{pageId}":
@@ -443,7 +471,7 @@ paths:
       operationId: PageController_update_v1
       summary: "Update Page"
       security:
-        - AppAuth: []
+        - Authentication: []
       parameters:
         - name: pageId
           required: true
@@ -465,13 +493,15 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UpdatePageV1ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Page
     delete:
       operationId: PageController_delete_v1
       summary: "Delete Page"
       security:
-        - AppAuth: []
+        - Authentication: []
       parameters:
         - name: pageId
           required: true
@@ -481,8 +511,10 @@ paths:
             format: uuid
             type: string
       responses:
-        "204":
+        "200":
           description: "No Content - The page was successfully deleted."
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Page
   "/v2/routes":
@@ -491,7 +523,7 @@ paths:
       summary: "List Routes"
       description: "List routes in a site"
       security:
-        - AppAuth: []
+        - Authentication: []
       parameters:
         - name: siteId
           required: true
@@ -529,13 +561,15 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ListSiteRouteV2ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Route
     post:
       operationId: SiteRouteController_create_v2
       summary: "Create Route"
       security:
-        - AppAuth: []
+        - Authentication: []
       parameters:
         - name: skipValidation
           required: false
@@ -559,6 +593,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CreateSiteRouteV2ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Route
   "/v2/routes/{routeId}":
@@ -566,7 +602,7 @@ paths:
       operationId: SiteRouteController_get_v2
       summary: "Get Route"
       security:
-        - AppAuth: []
+        - Authentication: []
       parameters:
         - name: routeId
           required: true
@@ -581,13 +617,15 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ReadSiteRouteV2ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Route
     patch:
       operationId: SiteRouteController_update_v2
       summary: "Update Route"
       security:
-        - AppAuth: []
+        - Authentication: []
       parameters:
         - name: routeId
           required: true
@@ -617,13 +655,15 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UpdateSiteRouteV2ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Route
     delete:
       operationId: SiteRouteController_delete_v2
       summary: "Delete Route"
       security:
-        - AppAuth: []
+        - Authentication: []
       parameters:
         - name: routeId
           required: true
@@ -632,8 +672,10 @@ paths:
             format: uuid
             type: string
       responses:
-        "204":
+        "200":
           description: ""
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Route
 info:
@@ -657,13 +699,28 @@ servers:
     description: "Local development server"
 components:
   securitySchemes:
-    AppAuth:
+    Authentication:
       type: http
       scheme: bearer
-      bearerFormat: "sk_abc123def456ghi789jkl012mno345pqr678stu901vwx234yz"
       description: "The API key for the App (e.g. sk_eczMHVBY9fV6GYFhvs53qcnxq7yptlXL3ABKOZtn6dQ)"
-      x-mint:
-        label: "Headers"
+
+  responses:
+    UnauthorizedError:
+      description: Access token is missing or invalid
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Unauthorized"
+              message:
+                type: string
+                example: "Unauthorized"
+          example:
+            error: "Unauthorized"
+            message: "Unauthorized"
 
   schemas:
     CreateSiteLocaleV2RequestBodyDto:
@@ -679,6 +736,8 @@ components:
           example: es-MX
         domain:
           type: string
+          nullable: true
+          format: uri
           description: Domain for domain-based localization. Domain URL must include the protocol.
           example: "https://hearthfurniture.com.mx"
       required:
@@ -695,13 +754,11 @@ components:
           description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
           example: es-MX
         domain:
-          type: "null"
+          type: string
+          nullable: true
+          format: uri
           description: Domain for domain-based localization. Domain URL must include the protocol.
           example: "https://hearthfurniture.com.mx"
-      required:
-        - id
-        - locale
-        - domain
     UpdateSiteLocaleV2RequestBodyDto:
       type: object
       properties:
@@ -711,6 +768,8 @@ components:
           example: es-MX
         domain:
           type: string
+          nullable: true
+          format: uri
           description: Domain for domain-based localization. Domain URL must include the protocol.
           example: "https://hearthfurniture.com.mx"
     UpdateSiteLocaleV2ResponseBodyDto:
@@ -724,13 +783,11 @@ components:
           description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
           example: es-MX
         domain:
-          type: "null"
+          type: string
+          nullable: true
+          format: uri
           description: Domain for domain-based localization. Domain URL must include the protocol.
           example: "https://hearthfurniture.com.mx"
-      required:
-        - id
-        - locale
-        - domain
     ReadSiteLocaleV2ResponseBodyDto:
       type: object
       properties:
@@ -742,13 +799,11 @@ components:
           description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
           example: es-MX
         domain:
-          type: "null"
+          type: string
+          nullable: true
+          format: uri
           description: Domain for domain-based localization. Domain URL must include the protocol.
           example: "https://hearthfurniture.com.mx"
-      required:
-        - id
-        - locale
-        - domain
     ListSiteLocaleV2ResponseBodyDto:
       type: object
       properties:
@@ -765,19 +820,14 @@ components:
                 description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
                 example: es-MX
               domain:
-                type: "null"
+                type: string
+                nullable: true
+                format: uri
                 description: Domain for domain-based localization. Domain URL must include the protocol.
                 example: "https://hearthfurniture.com.mx"
-            required:
-              - id
-              - locale
-              - domain
         hasMore:
           type: boolean
           description: Whether there are more locales available for pagination.
-      required:
-        - data
-        - hasMore
     CreateSiteV2RequestBodyDto:
       type: object
       properties:
@@ -791,6 +841,7 @@ components:
           example: Hearth Furniture Company
         hostUrl:
           type: string
+          nullable: true
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
           example: "https://hearthfurniture.com"
@@ -813,18 +864,18 @@ components:
           description: The name of the site.
           example: Hearth Furniture Company
         hostUrl:
-          type: "null"
+          type: string
+          nullable: true
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
           example: "https://hearthfurniture.com"
         apiKey:
           type: string
           format: uuid
-      required:
-        - id
-        - name
-        - hostUrl
-        - apiKey
+        defaultLocale:
+          type: string
+          description: The primary locale of the site (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+          example: en-US
     ReadSiteV1ResponseBodyDto:
       type: object
       properties:
@@ -836,18 +887,18 @@ components:
           description: The name of the site.
           example: Hearth Furniture Company
         hostUrl:
-          type: "null"
+          type: string
+          nullable: true
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
           example: "https://hearthfurniture.com"
         apiKey:
           type: string
           format: uuid
-      required:
-        - id
-        - name
-        - hostUrl
-        - apiKey
+        defaultLocale:
+          type: string
+          description: The primary locale of the site (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+          example: en-US
     UpdateSiteV1RequestBodyDto:
       type: object
       properties:
@@ -857,6 +908,7 @@ components:
           example: Hearth Furniture Company
         hostUrl:
           type: string
+          nullable: true
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
           example: "https://hearthfurniture.com"
@@ -871,18 +923,14 @@ components:
           description: The name of the site.
           example: Hearth Furniture Company
         hostUrl:
-          type: "null"
+          type: string
+          nullable: true
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
           example: "https://hearthfurniture.com"
         apiKey:
           type: string
           format: uuid
-      required:
-        - id
-        - name
-        - hostUrl
-        - apiKey
     ListSiteV2ResponseBodyDto:
       type: object
       properties:
@@ -899,23 +947,20 @@ components:
                 description: The name of the site.
                 example: Hearth Furniture Company
               hostUrl:
-                type: "null"
+                type: string
+                nullable: true
                 format: uri
                 description: The host URL of the site. The URL should consist of only the origin.
                 example: "https://hearthfurniture.com"
               apiKey:
                 type: string
                 format: uuid
-            required:
-              - id
-              - name
-              - hostUrl
-              - apiKey
+              defaultLocale:
+                type: string
+                description: The primary locale of the site (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+                example: en-US
         hasMore:
           type: boolean
-      required:
-        - data
-        - hasMore
     DuplicateSiteV1RequestBodyDto:
       type: object
       properties:
@@ -934,18 +979,18 @@ components:
           description: The name of the site.
           example: Hearth Furniture Company
         hostUrl:
-          type: "null"
+          type: string
+          nullable: true
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
           example: "https://hearthfurniture.com"
         apiKey:
           type: string
           format: uuid
-      required:
-        - id
-        - name
-        - hostUrl
-        - apiKey
+        defaultLocale:
+          type: string
+          description: The primary locale of the site (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+          example: en-US
       description: The newly created duplicated site with all content and configuration copied from the original.
     CreatePageV1RequestBodyDto:
       type: object
@@ -1049,16 +1094,6 @@ components:
                 type: string
                 format: uuid
                 description: The ID of the localized variant.
-            required:
-              - locale
-              - pathname
-              - id
-      required:
-        - id
-        - pathname
-        - isOnline
-        - locale
-        - localizations
     CreatePageV1ResponseBodyDto:
       $ref: "#/components/schemas/PageV2Dto"
     UpdatePageV1RequestBodyDto:
@@ -1087,9 +1122,6 @@ components:
         hasMore:
           type: boolean
           description: Whether there are more pages available for pagination.
-      required:
-        - data
-        - hasMore
     CreateSiteRouteV2RequestBodyDto:
       type: object
       properties:
@@ -1168,10 +1200,6 @@ components:
               pathname: /sobre-nosotros
             - locale: fr-FR
               pathname: /a-propos
-      required:
-        - id
-        - pathname
-        - localizations
       description: Route with its localized variants.
       example:
         id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
@@ -1287,9 +1315,6 @@ components:
                 type: string
                 description: 'Pathname of the route, e.g., "/about".'
                 example: /furniture
-            required:
-              - locale
-              - pathname
             description: Localized variant of a route. Each variant has a locale and a pathname.
             example:
               locale: es-ES
@@ -1300,10 +1325,6 @@ components:
               pathname: /sobre-nosotros
             - locale: fr-FR
               pathname: /a-propos
-      required:
-        - id
-        - pathname
-        - localizations
       description: Route with its localized variants.
       example:
         id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
@@ -1341,9 +1362,6 @@ components:
                       type: string
                       description: 'Pathname of the route, e.g., "/about".'
                       example: /furniture
-                  required:
-                    - locale
-                    - pathname
                   description: Localized variant of a route. Each variant has a locale and a pathname.
                   example:
                     locale: es-ES
@@ -1354,10 +1372,6 @@ components:
                     pathname: /sobre-nosotros
                   - locale: fr-FR
                     pathname: /a-propos
-            required:
-              - id
-              - pathname
-              - localizations
             description: Route with its localized variants.
             example:
               id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
@@ -1369,6 +1383,3 @@ components:
                   pathname: /meubles
         hasMore:
           type: boolean
-      required:
-        - data
-        - hasMore
