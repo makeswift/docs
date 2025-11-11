@@ -736,7 +736,6 @@ components:
           example: es-MX
         domain:
           type: string
-          nullable: true
           format: uri
           description: Domain for domain-based localization. Domain URL must include the protocol.
           example: "https://hearthfurniture.com.mx"
@@ -768,7 +767,6 @@ components:
           example: es-MX
         domain:
           type: string
-          nullable: true
           format: uri
           description: Domain for domain-based localization. Domain URL must include the protocol.
           example: "https://hearthfurniture.com.mx"
@@ -841,7 +839,6 @@ components:
           example: Hearth Furniture Company
         hostUrl:
           type: string
-          nullable: true
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
           example: "https://hearthfurniture.com"
@@ -849,10 +846,12 @@ components:
           type: string
           description: The primary locale of the site (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
           example: en-US
+          default: en-US
           x-mint:
             hideInExample: true
       required:
         - name
+        - workspaceId
     CreateSiteV2ResponseBodyDto:
       type: object
       properties:
@@ -908,7 +907,6 @@ components:
           example: Hearth Furniture Company
         hostUrl:
           type: string
-          nullable: true
           format: uri
           description: The host URL of the site. The URL should consist of only the origin.
           example: "https://hearthfurniture.com"
@@ -963,6 +961,8 @@ components:
           type: boolean
     DuplicateSiteV1RequestBodyDto:
       type: object
+      required:
+        - name
       properties:
         name:
           type: string
@@ -977,7 +977,7 @@ components:
         name:
           type: string
           description: The name of the site.
-          example: Hearth Furniture Company
+          example: Hearth Furniture Duplicate
         hostUrl:
           type: string
           nullable: true
