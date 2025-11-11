@@ -1,39 +1,38 @@
 ---
 title: "Routes (beta)"
 description: "View your site's external routes."
-icon: "slash-forward" iconType: "solid"
+icon: "link" iconType: "solid"
 ---
 
-Routes organize your pages by [pathname](/product/page/paths), providing a sitemap-like view that makes it easier to find and navigate between pages across your entire site. Routes represent external pages (not created in Makeswift) that you want to include in your site's navigation structure.
+Routes represent external pages (not created in Makeswift) that you want to include in your site's navigation structure.
 
-<Note>
-  Routes that are not Makeswift pages cannot be edited in the page builder.
-</Note>
+The main difference between a page and a route is that you cannot change the URL or delete a route from the Pages Tab.  You can edit a route via the Makeswift page builder if that page
+has Makeswift editing capabilities enabled.
 
 <Frame>
   ![ Makeswift builder Pages Tab with Routes](/images/routes/routes.png)
 </Frame>
 
-When enabled, the Pages Tab in the Site Sidebar displays both pages and routes associated with your site. You can tell if an item is a route by the route icon that appears to the right of the name in the Pages Tab. A tooltip also appears stating "_This page is managed externally_".
+## Enabling routes
+
+To enable routes on your site, you must turn on the feature in the **Early access** dialog:
+
+- In the bottom of the Site Sidebar, click **Settings**
+- In the Settings dialog, select the **Early Access**
+- Enable the **Path-based Pages Sidebar** early access feature
+
+<Frame>
+  ![Settings page to enable routes](/images/routes/enable-routes.png)
+</Frame>
+
+Once enabled, the Pages Tab in the Site Sidebar will display both pages and routes associated with your site. You can identify routes by the route icon that appears to the right of the name. A tooltip will also appear stating "_This page is managed externally_".
 
 <Frame>
   ![ Makeswift builder Pages Tab with
   Routes](/images/routes/route-indicator.png)
 </Frame>
 
-## Enabling routes
-
-To enable routes on your site, you must turn on the feature in the **Early access** dialog window:
-
-- In the bottom of the Site Sidebar, click **Settings**.
-- In the Settings dialog window, select the **Early Access** option.
-- Enable the **Path-based Pages Sidebar** early access feature.
-
-<Frame>
-  ![Settings page to enable routes](/images/routes/enable-routes.png)
-</Frame>
-
-Once enabled, a new Site setting called Routes will be available in the Settings dialog window. This setting allows you to add, edit, and delete routes that you want to see in the Pages Tab.
+A new Site setting called **Routes** will also be available in the Settings dialog. This setting allows you to add, edit, and delete routes that you want to see in the Pages Tab.
 
 <Frame>![New routes settings](/images/routes/route-settings.png)</Frame>
 
@@ -42,7 +41,7 @@ Once enabled, a new Site setting called Routes will be available in the Settings
 To add a route to your site:
 
 - In the bottom of the Site Sidebar, click **Settings**
-- In the Settings dialog window, select the **Routes** option
+- In the Settings dialog, select the **Routes** option
 - Click the **Add Route** button at the top right of the Routes setting page
 - Enter a path for the route
 
@@ -55,9 +54,9 @@ The route should now appear in the Pages Tab of the Site Sidebar.
 To edit an existing route:
 
 - In the bottom of the Site Sidebar, click **Settings**
-- In the Settings dialog window, select the **Routes** option
+- In the Settings dialog, select the **Routes** option
 - Hover over the route you want to edit and select the **Edit** icon that appears to the right of the route name
-- In the **Edit Route** dialog window, make your changes and click **Save**
+- In the **Edit Route** dialog, make your changes and click **Save**
 
 The route will be updated in the Pages Tab of the Site Sidebar.
 
@@ -66,8 +65,8 @@ The route will be updated in the Pages Tab of the Site Sidebar.
 To delete an existing route:
 
 - In the bottom of the Site Sidebar, click **Settings**
-- In the Settings dialog window, select the **Routes** option
+- In the Settings dialog, select the **Routes** option
 - Hover over the route you want to delete and select the **Delete** icon that appears to the right of the route name
-- In the Delete Route dialog window, click **Delete**
+- In the Delete Route dialog, click **Delete**
 
 The route will be removed from the Pages Tab of the Site Sidebar.
