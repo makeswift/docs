@@ -519,7 +519,7 @@ paths:
         - Page
   "/v2/routes":
     get:
-      operationId: SiteRouteController_list_v2
+      operationId: RouteController_list_v2
       summary: "List Routes"
       description: "List routes in a site"
       security:
@@ -560,13 +560,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListSiteRouteV2ResponseBodyDto"
+                $ref: "#/components/schemas/ListRouteV2ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Route
     post:
-      operationId: SiteRouteController_create_v2
+      operationId: RouteController_create_v2
       summary: "Create Route"
       security:
         - Authentication: []
@@ -585,21 +585,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateSiteRouteV2RequestBodyDto"
+              $ref: "#/components/schemas/CreateRouteV2RequestBodyDto"
       responses:
         "201":
           description: ""
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CreateSiteRouteV2ResponseBodyDto"
+                $ref: "#/components/schemas/CreateRouteV2ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Route
   "/v2/routes/{routeId}":
     get:
-      operationId: SiteRouteController_get_v2
+      operationId: RouteController_get_v2
       summary: "Get Route"
       security:
         - Authentication: []
@@ -616,13 +616,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ReadSiteRouteV2ResponseBodyDto"
+                $ref: "#/components/schemas/ReadRouteV2ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Route
     patch:
-      operationId: SiteRouteController_update_v2
+      operationId: RouteController_update_v2
       summary: "Update Route"
       security:
         - Authentication: []
@@ -647,20 +647,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UpdateSiteRouteV2RequestBodyDto"
+              $ref: "#/components/schemas/UpdateRouteV2RequestBodyDto"
       responses:
         "200":
           description: ""
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UpdateSiteRouteV2ResponseBodyDto"
+                $ref: "#/components/schemas/UpdateRouteV2ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
       tags:
         - Route
     delete:
-      operationId: SiteRouteController_delete_v2
+      operationId: RouteController_delete_v2
       summary: "Delete Route"
       security:
         - Authentication: []
@@ -1122,7 +1122,7 @@ components:
         hasMore:
           type: boolean
           description: Whether there are more pages available for pagination.
-    CreateSiteRouteV2RequestBodyDto:
+    CreateRouteV2RequestBodyDto:
       type: object
       properties:
         siteId:
@@ -1164,7 +1164,7 @@ components:
         - siteId
         - pathname
       description: Request body for creating a new route.
-    CreateSiteRouteV2ResponseBodyDto:
+    CreateRouteV2ResponseBodyDto:
       type: object
       properties:
         id:
@@ -1209,7 +1209,7 @@ components:
             pathname: /muebles
           - locale: fr-CA
             pathname: /meubles
-    ReadSiteRouteV2ResponseBodyDto:
+    ReadRouteV2ResponseBodyDto:
       type: object
       properties:
         id:
@@ -1258,7 +1258,7 @@ components:
             pathname: /muebles
           - locale: fr-CA
             pathname: /meubles
-    UpdateSiteRouteV2RequestBodyDto:
+    UpdateRouteV2RequestBodyDto:
       type: object
       properties:
         pathname:
@@ -1292,7 +1292,7 @@ components:
             - locale: fr-FR
               pathname: /a-propos
       description: Request body for updating an existing route.
-    UpdateSiteRouteV2ResponseBodyDto:
+    UpdateRouteV2ResponseBodyDto:
       type: object
       properties:
         id:
@@ -1334,7 +1334,7 @@ components:
             pathname: /muebles
           - locale: fr-CA
             pathname: /meubles
-    ListSiteRouteV2ResponseBodyDto:
+    ListRouteV2ResponseBodyDto:
       type: object
       properties:
         data:
