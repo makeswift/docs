@@ -1215,16 +1215,23 @@ components:
                 type: string
                 description: 'Pathname of the route, e.g., "/about".'
                 example: /furniture
-            description: Localized variant of a route. Each variant has a locale and a pathname.
+              id:
+                type: string
+                format: uuid
+                description: The ID of the localized variant.
+            description: Localized variant of a route. Each variant has a locale, pathname, and id.
             example:
               locale: es-ES
               pathname: /sobre-nosotros
-          description: List of localized variants for the route. Each variant has a locale and a pathname.
+              id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
+          description: List of localized variants for the route. Each variant has a locale, pathname, and id.
           example:
             - locale: es-ES
               pathname: /sobre-nosotros
+              id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
             - locale: fr-FR
               pathname: /a-propos
+              id: 47c29d52-0863-5bef-0bff-g53bc5g85c15
       description: Route with its localized variants.
       example:
         id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
@@ -1232,8 +1239,10 @@ components:
         localizations:
           - locale: es-MX
             pathname: /muebles
+            id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
           - locale: fr-CA
             pathname: /meubles
+            id: 47c29d52-0863-5bef-0bff-g53bc5g85c15
     UpdateRouteV2RequestBodyDto:
       type: object
       properties:
@@ -1338,16 +1347,23 @@ components:
                       type: string
                       description: 'Pathname of the route, e.g., "/about".'
                       example: /furniture
-                  description: Localized variant of a route. Each variant has a locale and a pathname.
+                    id:
+                      type: string
+                      format: uuid
+                      description: The ID of the localized variant.
+                  description: Localized variant of a route. Each variant has a locale, pathname, and id.
                   example:
                     locale: es-ES
                     pathname: /sobre-nosotros
-                description: List of localized variants for the route. Each variant has a locale and a pathname.
+                    id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
+                description: List of localized variants for the route. Each variant has a locale, pathname, and id.
                 example:
                   - locale: es-ES
                     pathname: /sobre-nosotros
+                    id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
                   - locale: fr-FR
                     pathname: /a-propos
+                    id: 47c29d52-0863-5bef-0bff-g53bc5g85c15
             description: Route with its localized variants.
             example:
               id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
@@ -1355,7 +1371,9 @@ components:
               localizations:
                 - locale: es-MX
                   pathname: /muebles
+                  id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
                 - locale: fr-CA
                   pathname: /meubles
+                  id: 47c29d52-0863-5bef-0bff-g53bc5g85c15
         hasMore:
           type: boolean
