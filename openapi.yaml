@@ -1173,9 +1173,6 @@ components:
                 type: string
                 description: 'Pathname of the route, e.g., "/about".'
                 example: /furniture
-            required:
-              - locale
-              - pathname
             description: Localized variant of a route. Each variant has a locale and a pathname.
             example:
               locale: es-ES
@@ -1218,9 +1215,6 @@ components:
                 type: string
                 description: 'Pathname of the route, e.g., "/about".'
                 example: /furniture
-            required:
-              - locale
-              - pathname
             description: Localized variant of a route. Each variant has a locale and a pathname.
             example:
               locale: es-ES
@@ -1231,10 +1225,6 @@ components:
               pathname: /sobre-nosotros
             - locale: fr-FR
               pathname: /a-propos
-      required:
-        - id
-        - pathname
-        - localizations
       description: Route with its localized variants.
       example:
         id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
