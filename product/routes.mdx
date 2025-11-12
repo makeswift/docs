@@ -5,18 +5,28 @@ description: "View your site's external routes."
 icon: "link" iconType: "regular"
 ---
 
-import ReadinessBadge from '/snippets/readinessBadge.jsx';
+import ReadinessBadge from "/snippets/readinessBadge.jsx";
 
 <ReadinessBadge />
 
 <Note>
-  Routes do not support [page collections.](/product/pages-tab#managing-collections) However, if page
+  Routes do not support [page
+  collections.](/product/pages-tab#managing-collections) However, if page
   collections exist when enabling Routes they will be preserved and not deleted.
 </Note>
 
 Routes represent external pages (not managed by Makeswift) that you want to include in your site's navigation structure.
 
 The main difference between a page and a route is that you cannot change the URL or delete a route from the Pages Tab. However, You can edit the content after navigating to a route if it has been integrated with Makeswift.
+
+Routes are useful for several scenarios:
+
+- **External content**: Blog posts managed in a CMS or products in an e-commerce platform
+- **Hardcoded pages**: Any static pages you don't want to be editable in Makeswift but want visible for better discoverability
+- **Authentication pages**: Sign up and login views with editable marketing content integrated
+- **System pages**: Terms of service, privacy policy, or other fixed content pages
+
+These routes will appear in the Pages Tab alongside your Makeswift-managed pages, giving you a complete view of your site's structure.
 
 <Frame>
   ![ Makeswift builder Pages Tab with Routes](/images/routes/routes.png)
