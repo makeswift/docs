@@ -698,14 +698,14 @@ components:
           schema:
             type: object
             properties:
-              error:
+              code:
                 type: string
                 example: "Unauthorized"
               message:
                 type: string
                 example: "Unauthorized"
           example:
-            error: "Unauthorized"
+            code: "unauthorized"
             message: "Unauthorized"
 
   schemas:
