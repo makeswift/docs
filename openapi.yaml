@@ -778,7 +778,10 @@ components:
     Authentication:
       type: http
       scheme: bearer
-      description: "The API key for the App (e.g. sk_eczMHVBY9fV6GYFhvs53qcnxq7yptlXL3ABKOZtn6dQ)"
+      description: |
+        The App API key.
+
+        (e.g. sk_eczMHVBY9fV6GYFhvs53qcnxq7yptlXL3ABKOZtn6dQ)
 
   responses:
     UnauthorizedError:
