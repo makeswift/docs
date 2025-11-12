@@ -864,6 +864,9 @@ components:
               format: uri
               description: "The domain URL for domain-based localization. The URL must include the protocol."
               example: "https://hearthfurniture.com.mx"
+            isDefault:
+              type: boolean
+              description: "Whether this locale is the default locale for the site."
     UpdateLocaleV2RequestBodyDto:
       type: object
       properties:
@@ -895,6 +898,9 @@ components:
               format: uri
               description: "The domain URL for domain-based localization. The URL must include the protocol."
               example: "https://hearthfurniture.com.mx"
+            isDefault:
+              type: boolean
+              description: "Whether this locale is the default locale for the site."
     ReadLocaleV2ResponseBodyDto:
       type: object
       properties:
@@ -914,6 +920,9 @@ components:
               format: uri
               description: "The domain URL for domain-based localization. The URL must include the protocol."
               example: "https://hearthfurniture.com.mx"
+            isDefault:
+              type: boolean
+              description: "Whether this locale is the default locale for the site."
     ListLocaleV2ResponseBodyDto:
       type: object
       properties:
@@ -935,6 +944,9 @@ components:
                 format: uri
                 description: "The domain URL for domain-based localization. The URL must include the protocol."
                 example: "https://hearthfurniture.com.mx"
+              isDefault:
+                type: boolean
+                description: "Whether this locale is the default locale for the site."
         hasMore:
           type: boolean
           description: "Whether there are more locales available."
