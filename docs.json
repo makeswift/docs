@@ -275,10 +275,6 @@
                 "pages": ["developer/reference/client/get-sitemap"]
               }
             ]
-          },
-          {
-            "group": "Integrations",
-            "pages": ["developer/integrations/bigcommerce-catalyst"]
           }
         ]
       },
@@ -576,6 +572,11 @@
     {
       "source": "/developer/integrations",
       "destination": "/developer",
+      "permanent": true
+    },
+    {
+      "source": "developer/integrations/bigcommerce-catalyst",
+      "destination": "https://developer.bigcommerce.com/docs/storefront/catalyst/getting-started",
       "permanent": true
     },
     {
