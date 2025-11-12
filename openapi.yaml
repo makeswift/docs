@@ -21,6 +21,8 @@ paths:
                 $ref: "#/components/schemas/CreateLocaleV2ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
       tags:
         - Locale
     get:
@@ -61,6 +63,8 @@ paths:
                 $ref: "#/components/schemas/ListLocaleV2ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
       tags:
         - Locale
   "/v2/locales/{localeIdOrCode}":
@@ -92,6 +96,8 @@ paths:
                 $ref: "#/components/schemas/ReadLocaleV2ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
       tags:
         - Locale
   "/v2/locales/{localeId}":
@@ -123,6 +129,8 @@ paths:
                 $ref: "#/components/schemas/UpdateLocaleV2ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
       tags:
         - Locale
     delete:
@@ -143,6 +151,8 @@ paths:
           description: ""
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
       tags:
         - Locale
   "/v2/sites":
@@ -166,6 +176,8 @@ paths:
                 $ref: "#/components/schemas/CreateSiteV2ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
       tags:
         - Site
     get:
@@ -204,6 +216,8 @@ paths:
                 $ref: "#/components/schemas/ListSiteV2ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
       tags:
         - Site
   "/v2/sites/{siteId}":
@@ -229,6 +243,8 @@ paths:
                 $ref: "#/components/schemas/ReadSiteV1ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
       tags:
         - Site
     patch:
@@ -258,6 +274,8 @@ paths:
                 $ref: "#/components/schemas/UpdateSiteV1ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
       tags:
         - Site
     delete:
@@ -277,6 +295,8 @@ paths:
           description: ""
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
       tags:
         - Site
   "/v2/sites/{siteId}/duplicate":
@@ -309,6 +329,8 @@ paths:
                 $ref: "#/components/schemas/DuplicateSiteV1ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
       tags:
         - Site
   "/v2/pages":
@@ -393,6 +415,8 @@ paths:
                 $ref: "#/components/schemas/ListPagesV2ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
       tags:
         - Page
     post:
@@ -419,6 +443,8 @@ paths:
                 $ref: "#/components/schemas/CreatePageV1ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
       tags:
         - Page
   "/v2/pages/{pageIdOrPathname}":
@@ -450,6 +476,8 @@ paths:
                 $ref: "#/components/schemas/GetPageV1ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
       tags:
         - Page
   "/v2/pages/{pageId}":
@@ -481,6 +509,8 @@ paths:
                 $ref: "#/components/schemas/UpdatePageV1ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
       tags:
         - Page
     delete:
@@ -501,6 +531,8 @@ paths:
           description: "No Content - The page was successfully deleted."
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
       tags:
         - Page
   "/v2/routes":
@@ -549,6 +581,8 @@ paths:
                 $ref: "#/components/schemas/ListRouteV2ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
       tags:
         - Route
     post:
@@ -581,6 +615,8 @@ paths:
                 $ref: "#/components/schemas/CreateRouteV2ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
       tags:
         - Route
   "/v2/routes/{routeId}":
@@ -605,6 +641,8 @@ paths:
                 $ref: "#/components/schemas/ReadRouteV2ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
       tags:
         - Route
     patch:
@@ -643,6 +681,8 @@ paths:
                 $ref: "#/components/schemas/UpdateRouteV2ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
       tags:
         - Route
     delete:
@@ -662,6 +702,8 @@ paths:
           description: ""
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
       tags:
         - Route
 info:
@@ -707,6 +749,26 @@ components:
           example:
             code: "unauthorized"
             message: "Unauthorized"
+    RateLimitError:
+      description: Rate limit exceeded
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: "rate_limited"
+                  message:
+                    type: string
+                    example: "The rate limit of 100 requests per second was exceeded. Make sure to throttle your usage to prevent hitting this error case."
+          example:
+            error:
+              code: "rate_limited"
+              message: "The rate limit of 100 requests per second exceeded. Make sure to throttle your usage to prevent hitting this error case."
 
   schemas:
     CreateLocaleV2RequestBodyDto:
