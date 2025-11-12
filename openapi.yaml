@@ -731,19 +731,22 @@ components:
     CreateLocaleV2ResponseBodyDto:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-        locale:
-          type: string
-          description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
-          example: es-MX
-        domain:
-          type: string
-          nullable: true
-          format: uri
-          description: Domain for domain-based localization. Domain URL must include the protocol.
-          example: "https://hearthfurniture.com.mx"
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            locale:
+              type: string
+              description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+              example: es-MX
+            domain:
+              type: string
+              nullable: true
+              format: uri
+              description: Domain for domain-based localization. Domain URL must include the protocol.
+              example: "https://hearthfurniture.com.mx"
     UpdateLocaleV2RequestBodyDto:
       type: object
       properties:
@@ -759,35 +762,41 @@ components:
     UpdateLocaleV2ResponseBodyDto:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-        locale:
-          type: string
-          description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
-          example: es-MX
-        domain:
-          type: string
-          nullable: true
-          format: uri
-          description: Domain for domain-based localization. Domain URL must include the protocol.
-          example: "https://hearthfurniture.com.mx"
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            locale:
+              type: string
+              description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+              example: es-MX
+            domain:
+              type: string
+              nullable: true
+              format: uri
+              description: Domain for domain-based localization. Domain URL must include the protocol.
+              example: "https://hearthfurniture.com.mx"
     ReadLocaleV2ResponseBodyDto:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-        locale:
-          type: string
-          description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
-          example: es-MX
-        domain:
-          type: string
-          nullable: true
-          format: uri
-          description: Domain for domain-based localization. Domain URL must include the protocol.
-          example: "https://hearthfurniture.com.mx"
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            locale:
+              type: string
+              description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+              example: es-MX
+            domain:
+              type: string
+              nullable: true
+              format: uri
+              description: Domain for domain-based localization. Domain URL must include the protocol.
+              example: "https://hearthfurniture.com.mx"
     ListLocaleV2ResponseBodyDto:
       type: object
       properties:
@@ -841,49 +850,55 @@ components:
     CreateSiteV2ResponseBodyDto:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-          description: The name of the site.
-          example: Hearth Furniture Company
-        hostUrl:
-          type: string
-          nullable: true
-          format: uri
-          description: The host URL of the site. The URL should consist of only the origin.
-          example: "https://hearthfurniture.com"
-        apiKey:
-          type: string
-          format: uuid
-        defaultLocale:
-          type: string
-          description: The primary locale of the site (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
-          example: en-US
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            name:
+              type: string
+              description: The name of the site.
+              example: Hearth Furniture Company
+            hostUrl:
+              type: string
+              nullable: true
+              format: uri
+              description: The host URL of the site. The URL should consist of only the origin.
+              example: "https://hearthfurniture.com"
+            apiKey:
+              type: string
+              format: uuid
+            defaultLocale:
+              type: string
+              description: The primary locale of the site (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+              example: en-US
     ReadSiteV1ResponseBodyDto:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-          description: The name of the site.
-          example: Hearth Furniture Company
-        hostUrl:
-          type: string
-          nullable: true
-          format: uri
-          description: The host URL of the site. The URL should consist of only the origin.
-          example: "https://hearthfurniture.com"
-        apiKey:
-          type: string
-          format: uuid
-        defaultLocale:
-          type: string
-          description: The primary locale of the site (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
-          example: en-US
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            name:
+              type: string
+              description: The name of the site.
+              example: Hearth Furniture Company
+            hostUrl:
+              type: string
+              nullable: true
+              format: uri
+              description: The host URL of the site. The URL should consist of only the origin.
+              example: "https://hearthfurniture.com"
+            apiKey:
+              type: string
+              format: uuid
+            defaultLocale:
+              type: string
+              description: The primary locale of the site (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+              example: en-US
     UpdateSiteV1RequestBodyDto:
       type: object
       properties:
@@ -899,22 +914,25 @@ components:
     UpdateSiteV1ResponseBodyDto:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-          description: The name of the site.
-          example: Hearth Furniture Company
-        hostUrl:
-          type: string
-          nullable: true
-          format: uri
-          description: The host URL of the site. The URL should consist of only the origin.
-          example: "https://hearthfurniture.com"
-        apiKey:
-          type: string
-          format: uuid
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            name:
+              type: string
+              description: The name of the site.
+              example: Hearth Furniture Company
+            hostUrl:
+              type: string
+              nullable: true
+              format: uri
+              description: The host URL of the site. The URL should consist of only the origin.
+              example: "https://hearthfurniture.com"
+            apiKey:
+              type: string
+              format: uuid
     ListSiteV2ResponseBodyDto:
       type: object
       properties:
@@ -957,26 +975,29 @@ components:
     DuplicateSiteV1ResponseBodyDto:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-          description: The name of the site.
-          example: Hearth Furniture Duplicate
-        hostUrl:
-          type: string
-          nullable: true
-          format: uri
-          description: The host URL of the site. The URL should consist of only the origin.
-          example: "https://hearthfurniture.com"
-        apiKey:
-          type: string
-          format: uuid
-        defaultLocale:
-          type: string
-          description: The primary locale of the site (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
-          example: en-US
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            name:
+              type: string
+              description: The name of the site.
+              example: Hearth Furniture Duplicate
+            hostUrl:
+              type: string
+              nullable: true
+              format: uri
+              description: The host URL of the site. The URL should consist of only the origin.
+              example: "https://hearthfurniture.com"
+            apiKey:
+              type: string
+              format: uuid
+            defaultLocale:
+              type: string
+              description: The primary locale of the site (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+              example: en-US
       description: The newly created duplicated site with all content and configuration copied from the original.
     CreatePageV1RequestBodyDto:
       type: object
@@ -1081,7 +1102,10 @@ components:
                 format: uuid
                 description: The ID of the localized variant.
     CreatePageV1ResponseBodyDto:
-      $ref: "#/components/schemas/PageV2Dto"
+      type: object
+      properties:
+        data:
+          $ref: "#/components/schemas/PageV2Dto"
     UpdatePageV1RequestBodyDto:
       type: object
       properties:
@@ -1095,9 +1119,15 @@ components:
           type: boolean
           description: Whether the page is online or offline.
     UpdatePageV1ResponseBodyDto:
-      $ref: "#/components/schemas/PageV2Dto"
+      type: object
+      properties:
+        data:
+          $ref: "#/components/schemas/PageV2Dto"
     GetPageV1ResponseBodyDto:
-      $ref: "#/components/schemas/PageV2Dto"
+      type: object
+      properties:
+        data:
+          $ref: "#/components/schemas/PageV2Dto"
     ListPagesV2ResponseBodyDto:
       type: object
       properties:
@@ -1153,96 +1183,102 @@ components:
     CreateRouteV2ResponseBodyDto:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-        pathname:
-          type: string
-          description: 'Pathname of the route, e.g., "/about".'
-          example: /furniture
-        localizations:
-          type: array
-          items:
-            type: object
-            properties:
-              locale:
-                type: string
-                description: Locale code.
-                example: es-MX
-              pathname:
-                type: string
-                description: 'Pathname of the route, e.g., "/about".'
-                example: /furniture
-            description: Localized variant of a route. Each variant has a locale and a pathname.
-            example:
-              locale: es-ES
-              pathname: /sobre-nosotros
-          description: List of localized variants for the route. Each variant has a locale and a pathname.
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            pathname:
+              type: string
+              description: 'Pathname of the route, e.g., "/about".'
+              example: /furniture
+            localizations:
+              type: array
+              items:
+                type: object
+                properties:
+                  locale:
+                    type: string
+                    description: Locale code.
+                    example: es-MX
+                  pathname:
+                    type: string
+                    description: 'Pathname of the route, e.g., "/about".'
+                    example: /furniture
+                description: Localized variant of a route. Each variant has a locale and a pathname.
+                example:
+                  locale: es-ES
+                  pathname: /sobre-nosotros
+              description: List of localized variants for the route. Each variant has a locale and a pathname.
+              example:
+                - locale: es-ES
+                  pathname: /sobre-nosotros
+                - locale: fr-FR
+                  pathname: /a-propos
+          description: Route with its localized variants.
           example:
-            - locale: es-ES
-              pathname: /sobre-nosotros
-            - locale: fr-FR
-              pathname: /a-propos
-      description: Route with its localized variants.
-      example:
-        id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-        pathname: /about
-        localizations:
-          - locale: es-MX
-            pathname: /muebles
-          - locale: fr-CA
-            pathname: /meubles
+            id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
+            pathname: /about
+            localizations:
+              - locale: es-MX
+                pathname: /muebles
+              - locale: fr-CA
+                pathname: /meubles
     ReadRouteV2ResponseBodyDto:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-        pathname:
-          type: string
-          description: 'Pathname of the route, e.g., "/about".'
-          example: /furniture
-        localizations:
-          type: array
-          items:
-            type: object
-            properties:
-              locale:
-                type: string
-                description: Locale code.
-                example: es-MX
-              pathname:
-                type: string
-                description: 'Pathname of the route, e.g., "/about".'
-                example: /furniture
-              id:
-                type: string
-                format: uuid
-                description: The ID of the localized variant.
-            description: Localized variant of a route. Each variant has a locale, pathname, and id.
-            example:
-              locale: es-ES
-              pathname: /sobre-nosotros
-              id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-          description: List of localized variants for the route. Each variant has a locale, pathname, and id.
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            pathname:
+              type: string
+              description: 'Pathname of the route, e.g., "/about".'
+              example: /furniture
+            localizations:
+              type: array
+              items:
+                type: object
+                properties:
+                  locale:
+                    type: string
+                    description: Locale code.
+                    example: es-MX
+                  pathname:
+                    type: string
+                    description: 'Pathname of the route, e.g., "/about".'
+                    example: /furniture
+                  id:
+                    type: string
+                    format: uuid
+                    description: The ID of the localized variant.
+                description: Localized variant of a route. Each variant has a locale, pathname, and id.
+                example:
+                  locale: es-ES
+                  pathname: /sobre-nosotros
+                  id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
+              description: List of localized variants for the route. Each variant has a locale, pathname, and id.
+              example:
+                - locale: es-ES
+                  pathname: /sobre-nosotros
+                  id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
+                - locale: fr-FR
+                  pathname: /a-propos
+                  id: 47c29d52-0863-5bef-0bff-g53bc5g85c15
+          description: Route with its localized variants.
           example:
-            - locale: es-ES
-              pathname: /sobre-nosotros
-              id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-            - locale: fr-FR
-              pathname: /a-propos
-              id: 47c29d52-0863-5bef-0bff-g53bc5g85c15
-      description: Route with its localized variants.
-      example:
-        id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-        pathname: /about
-        localizations:
-          - locale: es-MX
-            pathname: /muebles
             id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-          - locale: fr-CA
-            pathname: /meubles
-            id: 47c29d52-0863-5bef-0bff-g53bc5g85c15
+            pathname: /about
+            localizations:
+              - locale: es-MX
+                pathname: /muebles
+                id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
+              - locale: fr-CA
+                pathname: /meubles
+                id: 47c29d52-0863-5bef-0bff-g53bc5g85c15
     UpdateRouteV2RequestBodyDto:
       type: object
       properties:
@@ -1280,45 +1316,48 @@ components:
     UpdateRouteV2ResponseBodyDto:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-        pathname:
-          type: string
-          description: 'Pathname of the route, e.g., "/about".'
-          example: /furniture
-        localizations:
-          type: array
-          items:
-            type: object
-            properties:
-              locale:
-                type: string
-                description: Locale code.
-                example: es-MX
-              pathname:
-                type: string
-                description: 'Pathname of the route, e.g., "/about".'
-                example: /furniture
-            description: Localized variant of a route. Each variant has a locale and a pathname.
-            example:
-              locale: es-ES
-              pathname: /sobre-nosotros
-          description: List of localized variants for the route. Each variant has a locale and a pathname.
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            pathname:
+              type: string
+              description: 'Pathname of the route, e.g., "/about".'
+              example: /furniture
+            localizations:
+              type: array
+              items:
+                type: object
+                properties:
+                  locale:
+                    type: string
+                    description: Locale code.
+                    example: es-MX
+                  pathname:
+                    type: string
+                    description: 'Pathname of the route, e.g., "/about".'
+                    example: /furniture
+                description: Localized variant of a route. Each variant has a locale and a pathname.
+                example:
+                  locale: es-ES
+                  pathname: /sobre-nosotros
+              description: List of localized variants for the route. Each variant has a locale and a pathname.
+              example:
+                - locale: es-ES
+                  pathname: /sobre-nosotros
+                - locale: fr-FR
+                  pathname: /a-propos
+          description: Route with its localized variants.
           example:
-            - locale: es-ES
-              pathname: /sobre-nosotros
-            - locale: fr-FR
-              pathname: /a-propos
-      description: Route with its localized variants.
-      example:
-        id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-        pathname: /about
-        localizations:
-          - locale: es-MX
-            pathname: /muebles
-          - locale: fr-CA
-            pathname: /meubles
+            id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
+            pathname: /about
+            localizations:
+              - locale: es-MX
+                pathname: /muebles
+              - locale: fr-CA
+                pathname: /meubles
     ListRouteV2ResponseBodyDto:
       type: object
       properties:
