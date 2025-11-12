@@ -28,7 +28,7 @@ paths:
     get:
       operationId: LocaleController_list_v2
       summary: "List Locales"
-      description: "List locales in a site"
+      description: "Returns a list of locales for a site."
       security:
         - Authentication: []
       parameters:
@@ -41,7 +41,7 @@ paths:
         - name: limit
           required: false
           in: query
-          description: "Maximum number of locales to return. Defaults to 20, maximum is 100. To paginate, use together with `after` cursor."
+          description: "Maximum number of locales to return."
           schema:
             minimum: 0
             maximum: 100
@@ -50,7 +50,7 @@ paths:
         - name: after
           required: false
           in: query
-          description: "Cursor for pagination. If provided, returns locales after this ID."
+          description: "Pagination cursor to return locales after this ID."
           schema:
             format: uuid
             type: string
@@ -77,13 +77,13 @@ paths:
         - name: localeIdOrCode
           required: true
           in: path
-          description: The locale ID (UUID) or locale code (e.g., es-MX).
+          description: "The locale ID or locale code."
           schema:
             type: string
         - name: siteId
           required: false
           in: query
-          description: The site ID (UUID). Required when using a locale code instead of a locale ID.
+          description: "The site ID required when using a locale code instead of a locale ID."
           schema:
             format: uuid
             type: string
@@ -110,7 +110,7 @@ paths:
         - name: localeId
           required: true
           in: path
-          description: The locale ID (UUID).
+          description: "The locale ID."
           schema:
             format: uuid
             type: string
@@ -142,7 +142,7 @@ paths:
         - name: localeId
           required: true
           in: path
-          description: The locale ID (UUID).
+          description: "The locale ID."
           schema:
             format: uuid
             type: string
@@ -183,7 +183,7 @@ paths:
     get:
       operationId: SiteController_list_v2
       summary: "List Sites"
-      description: "List sites in a workspace"
+      description: "Returns a list of sites in a workspace."
       security:
         - Authentication: []
       parameters:
@@ -224,7 +224,7 @@ paths:
     get:
       operationId: SiteController_getOne_v2
       summary: "Get Site"
-      description: "Get a site by its ID"
+      description: "Returns a site by its ID."
       security:
         - Authentication: []
       parameters:
@@ -309,7 +309,7 @@ paths:
         - name: siteId
           required: true
           in: path
-          description: The ID of the site to duplicate.
+          description: "The ID of the site to duplicate."
           schema:
             format: uuid
             example: 123e4567-e89b-12d3-a456-426614174000
@@ -322,7 +322,7 @@ paths:
               $ref: "#/components/schemas/DuplicateSiteV1RequestBodyDto"
       responses:
         "201":
-          description: The newly created duplicated site with all content and configuration copied from the original.
+          description: "Returns the newly created duplicated site."
           content:
             application/json:
               schema:
@@ -337,7 +337,7 @@ paths:
     get:
       operationId: PageController_list_v2
       summary: "List Pages"
-      description: "List pages in a site"
+      description: "Returns a list of pages for a site."
       security:
         - Authentication: []
       parameters:
@@ -350,7 +350,7 @@ paths:
         - name: limit
           required: false
           in: query
-          description: "Maximum number of pages to return. Defaults to 20, maximum is 100."
+          description: "Maximum number of pages to return."
           schema:
             minimum: 1
             maximum: 100
@@ -359,21 +359,21 @@ paths:
         - name: after
           required: false
           in: query
-          description: "Cursor for pagination. If provided, returns pages after this ID."
+          description: "Pagination cursor to return pages after this ID."
           schema:
             format: uuid
             type: string
         - name: pathPrefix
           required: false
           in: query
-          description: "A filter to only retrieve pages with a pathname that begins with this value."
+          description: "Filters pages to only those with a pathname that begins with this value."
           schema:
             type: string
             default: "/"
         - name: sortBy
           required: false
           in: query
-          description: "The field to sort the result pages by."
+          description: "The field to sort pages by."
           schema:
             type: string
             enum:
@@ -386,7 +386,7 @@ paths:
         - name: sortDirection
           required: false
           in: query
-          description: "The direction of how the result pages are sorted."
+          description: "The sort direction."
           schema:
             type: string
             enum:
@@ -396,14 +396,14 @@ paths:
         - name: includeOffline
           required: false
           in: query
-          description: "Whether the results should include pages that are offline in Makeswift."
+          description: "Whether to include offline pages in the results."
           schema:
             type: boolean
             default: false
         - name: locale
           required: false
           in: query
-          description: "A valid locale string (ex. 'en-US')."
+          description: "The locale code to filter pages by."
           schema:
             type: string
         - name: versionRef
@@ -446,7 +446,7 @@ paths:
     post:
       operationId: PageController_create_v1
       summary: "Create Page"
-      description: "Create a new page in a site"
+      description: "Creates a new page in a site."
       x-mint:
         metadata:
           title: "Create Page"
@@ -481,13 +481,13 @@ paths:
         - name: pageIdOrPathname
           required: true
           in: path
-          description: The page ID (UUID) or pathname of the page.
+          description: "The page ID or pathname."
           schema:
             type: string
         - name: siteId
           required: false
           in: query
-          description: The site ID (UUID). Required when using a pathname instead of a page ID.
+          description: "The site ID required when using a pathname instead of a page ID."
           schema:
             format: uuid
             type: string
@@ -538,7 +538,7 @@ paths:
         - name: pageId
           required: true
           in: path
-          description: The page ID (UUID).
+          description: "The page ID."
           schema:
             format: uuid
             type: string
@@ -570,13 +570,13 @@ paths:
         - name: pageId
           required: true
           in: path
-          description: The page ID (UUID).
+          description: "The page ID."
           schema:
             format: uuid
             type: string
       responses:
         "200":
-          description: "No Content - The page was successfully deleted."
+          description: "Returns success when the page is deleted."
         "401":
           $ref: "#/components/responses/UnauthorizedError"
         "429":
@@ -587,7 +587,7 @@ paths:
     get:
       operationId: RouteController_list_v2
       summary: "List Routes"
-      description: "List routes in a site"
+      description: "Returns a list of routes for a site."
       security:
         - Authentication: []
       parameters:
@@ -600,14 +600,14 @@ paths:
         - name: pathname
           required: false
           in: query
-          description: "Filter routes by pathname. Supports partial match. If not provided, returns all routes."
+          description: "Filters routes by pathname using partial match."
           schema:
             example: /furniture
             type: string
         - name: limit
           required: false
           in: query
-          description: "Maximum number of routes to return. Defaults to 20, maximum is 100. To paginate, use together with `after` cursor."
+          description: "Maximum number of routes to return."
           schema:
             minimum: 0
             maximum: 100
@@ -616,7 +616,7 @@ paths:
         - name: after
           required: false
           in: query
-          description: "Cursor for pagination. If provided, returns routes after this ID."
+          description: "Pagination cursor to return routes after this ID."
           schema:
             format: uuid
             type: string
@@ -642,7 +642,7 @@ paths:
         - name: skipValidation
           required: false
           in: query
-          description: "If true, skips validation of the route, such as pathname format. This is useful for testing or when the route is known to be valid."
+          description: "Whether to skip route validation. Useful when an external system has a different way of validating routes that Makeswift."
           schema:
             enum:
               - "true"
@@ -708,7 +708,7 @@ paths:
         - name: skipValidation
           required: false
           in: query
-          description: "If true, skips validation of the route, such as pathname format. This is useful for testing or when the route is known to be valid."
+          description: "Whether to skip route validation. Useful when an external system has a different way of validating routes."
           schema:
             enum:
               - "true"
@@ -829,15 +829,15 @@ components:
         siteId:
           type: string
           format: uuid
-          description: The ID of the site.
+          description: "The site ID."
         locale:
           type: string
-          description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+          description: "The locale code."
           example: es-MX
         domain:
           type: string
           format: uri
-          description: Domain for domain-based localization. Domain URL must include the protocol.
+          description: "The domain URL for domain-based localization. The URL must include the protocol."
           example: "https://hearthfurniture.com.mx"
       required:
         - siteId
@@ -853,25 +853,25 @@ components:
               format: uuid
             locale:
               type: string
-              description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+              description: "The locale code."
               example: es-MX
             domain:
               type: string
               nullable: true
               format: uri
-              description: Domain for domain-based localization. Domain URL must include the protocol.
+              description: "The domain URL for domain-based localization. The URL must include the protocol."
               example: "https://hearthfurniture.com.mx"
     UpdateLocaleV2RequestBodyDto:
       type: object
       properties:
         locale:
           type: string
-          description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+          description: "The locale code."
           example: es-MX
         domain:
           type: string
           format: uri
-          description: Domain for domain-based localization. Domain URL must include the protocol.
+          description: "The domain URL for domain-based localization. The URL must include the protocol."
           example: "https://hearthfurniture.com.mx"
     UpdateLocaleV2ResponseBodyDto:
       type: object
@@ -884,13 +884,13 @@ components:
               format: uuid
             locale:
               type: string
-              description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+              description: "The locale code."
               example: es-MX
             domain:
               type: string
               nullable: true
               format: uri
-              description: Domain for domain-based localization. Domain URL must include the protocol.
+              description: "The domain URL for domain-based localization. The URL must include the protocol."
               example: "https://hearthfurniture.com.mx"
     ReadLocaleV2ResponseBodyDto:
       type: object
@@ -903,13 +903,13 @@ components:
               format: uuid
             locale:
               type: string
-              description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+              description: "The locale code."
               example: es-MX
             domain:
               type: string
               nullable: true
               format: uri
-              description: Domain for domain-based localization. Domain URL must include the protocol.
+              description: "The domain URL for domain-based localization. The URL must include the protocol."
               example: "https://hearthfurniture.com.mx"
     ListLocaleV2ResponseBodyDto:
       type: object
@@ -924,36 +924,36 @@ components:
                 format: uuid
               locale:
                 type: string
-                description: Locale code (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+                description: "The locale code."
                 example: es-MX
               domain:
                 type: string
                 nullable: true
                 format: uri
-                description: Domain for domain-based localization. Domain URL must include the protocol.
+                description: "The domain URL for domain-based localization. The URL must include the protocol."
                 example: "https://hearthfurniture.com.mx"
         hasMore:
           type: boolean
-          description: Whether there are more locales available for pagination.
+          description: "Whether there are more locales available."
     CreateSiteV2RequestBodyDto:
       type: object
       properties:
         workspaceId:
           type: string
-          description: The ID of the workspace this site belongs to.
+          description: "The workspace ID."
           format: uuid
         name:
           type: string
-          description: The name of the site.
+          description: "The site name."
           example: Hearth Furniture Company
         hostUrl:
           type: string
           format: uri
-          description: The host URL of the site. The URL should consist of only the origin.
+          description: "The host URL of the site."
           example: "https://hearthfurniture.com"
         defaultLocale:
           type: string
-          description: The primary locale of the site (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+          description: "The primary locale of the site."
           example: en-US
           default: en-US
           x-mint:
@@ -972,20 +972,20 @@ components:
               format: uuid
             name:
               type: string
-              description: The name of the site.
+              description: "The site name."
               example: Hearth Furniture Company
             hostUrl:
               type: string
               nullable: true
               format: uri
-              description: The host URL of the site. The URL should consist of only the origin.
+              description: "The host URL of the site."
               example: "https://hearthfurniture.com"
             apiKey:
               type: string
               format: uuid
             defaultLocale:
               type: string
-              description: The primary locale of the site (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+              description: "The primary locale of the site."
               example: en-US
     ReadSiteV1ResponseBodyDto:
       type: object
@@ -998,32 +998,32 @@ components:
               format: uuid
             name:
               type: string
-              description: The name of the site.
+              description: "The site name."
               example: Hearth Furniture Company
             hostUrl:
               type: string
               nullable: true
               format: uri
-              description: The host URL of the site. The URL should consist of only the origin.
+              description: "The host URL of the site."
               example: "https://hearthfurniture.com"
             apiKey:
               type: string
               format: uuid
             defaultLocale:
               type: string
-              description: The primary locale of the site (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+              description: "The primary locale of the site."
               example: en-US
     UpdateSiteV1RequestBodyDto:
       type: object
       properties:
         name:
           type: string
-          description: The name of the site.
+          description: "The site name."
           example: Hearth Furniture Company
         hostUrl:
           type: string
           format: uri
-          description: The host URL of the site. The URL should consist of only the origin.
+          description: "The host URL of the site."
           example: "https://hearthfurniture.com"
     UpdateSiteV1ResponseBodyDto:
       type: object
@@ -1036,13 +1036,13 @@ components:
               format: uuid
             name:
               type: string
-              description: The name of the site.
+              description: "The site name."
               example: Hearth Furniture Company
             hostUrl:
               type: string
               nullable: true
               format: uri
-              description: The host URL of the site. The URL should consist of only the origin.
+              description: "The host URL of the site."
               example: "https://hearthfurniture.com"
             apiKey:
               type: string
@@ -1060,20 +1060,20 @@ components:
                 format: uuid
               name:
                 type: string
-                description: The name of the site.
+                description: "The site name."
                 example: Hearth Furniture Company
               hostUrl:
                 type: string
                 nullable: true
                 format: uri
-                description: The host URL of the site. The URL should consist of only the origin.
+                description: "The host URL of the site."
                 example: "https://hearthfurniture.com"
               apiKey:
                 type: string
                 format: uuid
               defaultLocale:
                 type: string
-                description: The primary locale of the site (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+                description: "The primary locale of the site."
                 example: en-US
         hasMore:
           type: boolean
@@ -1084,7 +1084,7 @@ components:
       properties:
         name:
           type: string
-          description: The name for the new duplicated site.
+          description: "The name for the duplicated site."
           example: Hearth Furniture Duplicate
     DuplicateSiteV1ResponseBodyDto:
       type: object
@@ -1097,35 +1097,35 @@ components:
               format: uuid
             name:
               type: string
-              description: The name of the site.
+              description: "The site name."
               example: Hearth Furniture Duplicate
             hostUrl:
               type: string
               nullable: true
               format: uri
-              description: The host URL of the site. The URL should consist of only the origin.
+              description: "The host URL of the site."
               example: "https://hearthfurniture.com"
             apiKey:
               type: string
               format: uuid
             defaultLocale:
               type: string
-              description: The primary locale of the site (e.g., es-MX for Mexican Spanish, fr-CA for Canadian French).
+              description: "The primary locale of the site."
               example: en-US
-      description: The newly created duplicated site with all content and configuration copied from the original.
+      description: "Returns the newly created duplicated site."
     CreatePageV1RequestBodyDto:
       type: object
       properties:
         siteId:
           type: string
           format: uuid
-          description: The ID of the site.
+          description: "The site ID."
         pathname:
           type: string
-          description: The pathname of the page.
+          description: "The page pathname."
         name:
           type: string
-          description: The name of the page.
+          description: "The page name."
       required:
         - siteId
         - pathname
@@ -1138,30 +1138,30 @@ components:
           format: uuid
         pathname:
           type: string
-          description: The pathname of the page.
+          description: "The page pathname."
           example: furniture
         canonicalUrl:
           type: string
           nullable: true
-          description: The canonical URL of the page.
+          description: "The canonical URL of the page."
         title:
           type: string
           nullable: true
-          description: The title of the page.
+          description: "The page title."
         description:
           type: string
           nullable: true
-          description: The description of the page.
+          description: "The page description."
         socialImageUrl:
           type: string
           nullable: true
-          description: The social image URL of the page.
+          description: "The social image URL of the page."
         sitemapPriority:
           type: number
           nullable: true
           minimum: 0
           maximum: 1
-          description: The priority of the page in the sitemap.
+          description: "The sitemap priority."
         sitemapFrequency:
           type: string
           nullable: true
@@ -1173,48 +1173,48 @@ components:
             - monthly
             - yearly
             - never
-          description: The frequency with which the page is updated in the sitemap.
+          description: "The sitemap update frequency."
         createdAt:
           type: string
           format: date-time
           nullable: true
-          description: The date and time when the page was created.
+          description: "The page creation date and time."
         updatedAt:
           type: string
           format: date-time
           nullable: true
-          description: The date and time when the page was last updated.
+          description: "The page last update date and time."
         publishedAt:
           type: string
           format: date-time
           nullable: true
-          description: The date and time when the page was published.
+          description: "The page publication date and time."
         isOnline:
           type: boolean
-          description: Whether the page is online.
+          description: "Whether the page is online."
         excludedFromSearch:
           type: boolean
           nullable: true
-          description: Whether the page is excluded from search.
+          description: "Whether the page is excluded from search."
         locale:
           type: string
-          description: The locale of the page.
+          description: "The page locale."
         localizations:
           type: array
-          description: The localized variants of the page.
+          description: "The localizations of the page."
           items:
             type: object
             properties:
               locale:
                 type: string
-                description: The locale of the localized variant.
+                description: "The locale of the localization."
               pathname:
                 type: string
-                description: The pathname of the localized variant.
+                description: "The pathname of the localization."
               id:
                 type: string
                 format: uuid
-                description: The ID of the localized variant.
+                description: "The ID of the localization."
     CreatePageV1ResponseBodyDto:
       type: object
       properties:
@@ -1225,13 +1225,13 @@ components:
       properties:
         pathname:
           type: string
-          description: The pathname of the page.
+          description: "The page pathname."
         name:
           type: string
-          description: The name of the page.
+          description: "The page name."
         isOnline:
           type: boolean
-          description: Whether the page is online or offline.
+          description: "Whether the page is online."
     UpdatePageV1ResponseBodyDto:
       type: object
       properties:
@@ -1251,17 +1251,17 @@ components:
             $ref: "#/components/schemas/PageV2Dto"
         hasMore:
           type: boolean
-          description: Whether there are more pages available for pagination.
+          description: "Whether there are more pages available."
     CreateRouteV2RequestBodyDto:
       type: object
       properties:
         siteId:
           type: string
           format: uuid
-          description: The ID of the site.
+          description: "The site ID."
         pathname:
           type: string
-          description: 'Pathname of the route, e.g., "/about".'
+          description: "The route pathname."
           example: /furniture
         localizations:
           default: []
@@ -1271,20 +1271,20 @@ components:
             properties:
               locale:
                 type: string
-                description: Locale code.
+                description: "The locale code."
                 example: es-MX
               pathname:
                 type: string
-                description: 'Pathname of the route, e.g., "/about".'
+                description: "The route pathname."
                 example: /furniture
             required:
               - locale
               - pathname
-            description: Localized variant of a route. Each variant has a locale and a pathname.
+            description: "A localization of a route."
             example:
               locale: es-ES
               pathname: /sobre-nosotros
-          description: "List of localized variants for the route. If not provided, defaults to an empty array."
+          description: "The localizations for the route."
           example:
             - locale: es-ES
               pathname: /sobre-nosotros
@@ -1293,7 +1293,7 @@ components:
       required:
         - siteId
         - pathname
-      description: Request body for creating a new route.
+      description: "Request body for creating a new route."
     CreateRouteV2ResponseBodyDto:
       type: object
       properties:
@@ -1305,7 +1305,7 @@ components:
               format: uuid
             pathname:
               type: string
-              description: 'Pathname of the route, e.g., "/about".'
+              description: "The route pathname."
               example: /furniture
             localizations:
               type: array
@@ -1314,23 +1314,23 @@ components:
                 properties:
                   locale:
                     type: string
-                    description: Locale code.
+                    description: "The locale code."
                     example: es-MX
                   pathname:
                     type: string
-                    description: 'Pathname of the route, e.g., "/about".'
+                    description: "The route pathname."
                     example: /furniture
-                description: Localized variant of a route. Each variant has a locale and a pathname.
+                description: "A localization of a route."
                 example:
                   locale: es-ES
                   pathname: /sobre-nosotros
-              description: List of localized variants for the route. Each variant has a locale and a pathname.
+              description: "The localizations for the route."
               example:
                 - locale: es-ES
                   pathname: /sobre-nosotros
                 - locale: fr-FR
                   pathname: /a-propos
-          description: Route with its localized variants.
+          description: "Route with its localizations."
           example:
             id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
             pathname: /about
@@ -1350,7 +1350,7 @@ components:
               format: uuid
             pathname:
               type: string
-              description: 'Pathname of the route, e.g., "/about".'
+              description: "The route pathname."
               example: /furniture
             localizations:
               type: array
@@ -1359,22 +1359,22 @@ components:
                 properties:
                   locale:
                     type: string
-                    description: Locale code.
+                    description: "The locale code."
                     example: es-MX
                   pathname:
                     type: string
-                    description: 'Pathname of the route, e.g., "/about".'
+                    description: "The route pathname."
                     example: /furniture
                   id:
                     type: string
                     format: uuid
-                    description: The ID of the localized variant.
-                description: Localized variant of a route. Each variant has a locale, pathname, and id.
+                    description: "The ID of the localization."
+                description: "A localization of a route."
                 example:
                   locale: es-ES
                   pathname: /sobre-nosotros
                   id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-              description: List of localized variants for the route. Each variant has a locale, pathname, and id.
+              description: "The localizations for the route."
               example:
                 - locale: es-ES
                   pathname: /sobre-nosotros
@@ -1382,7 +1382,7 @@ components:
                 - locale: fr-FR
                   pathname: /a-propos
                   id: 47c29d52-0863-5bef-0bff-g53bc5g85c15
-          description: Route with its localized variants.
+          description: "Route with its localizations."
           example:
             id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
             pathname: /about
@@ -1398,7 +1398,7 @@ components:
       properties:
         pathname:
           type: string
-          description: 'Pathname of the route, e.g., "/about".'
+          description: "The route pathname."
           example: /furniture
         localizations:
           type: array
@@ -1407,20 +1407,20 @@ components:
             properties:
               locale:
                 type: string
-                description: Locale code.
+                description: "The locale code."
                 example: es-MX
               pathname:
                 type: string
-                description: 'Pathname of the route, e.g., "/about".'
+                description: "The route pathname."
                 example: /furniture
             required:
               - locale
               - pathname
-            description: Localized variant of a route. Each variant has a locale and a pathname.
+            description: "A localization of a route."
             example:
               locale: es-ES
               pathname: /sobre-nosotros
-          description: List of localized variants for the route. Each variant has a locale and a pathname.
+          description: "The localizations for the route."
           example:
             - locale: es-ES
               pathname: /sobre-nosotros
@@ -1438,7 +1438,7 @@ components:
               format: uuid
             pathname:
               type: string
-              description: 'Pathname of the route, e.g., "/about".'
+              description: "The route pathname."
               example: /furniture
             localizations:
               type: array
@@ -1447,23 +1447,23 @@ components:
                 properties:
                   locale:
                     type: string
-                    description: Locale code.
+                    description: "The locale code."
                     example: es-MX
                   pathname:
                     type: string
-                    description: 'Pathname of the route, e.g., "/about".'
+                    description: "The route pathname."
                     example: /furniture
-                description: Localized variant of a route. Each variant has a locale and a pathname.
+                description: "A localization of a route."
                 example:
                   locale: es-ES
                   pathname: /sobre-nosotros
-              description: List of localized variants for the route. Each variant has a locale and a pathname.
+              description: "The localizations for the route."
               example:
                 - locale: es-ES
                   pathname: /sobre-nosotros
                 - locale: fr-FR
                   pathname: /a-propos
-          description: Route with its localized variants.
+          description: "Route with its localizations."
           example:
             id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
             pathname: /about
@@ -1485,7 +1485,7 @@ components:
                 format: uuid
               pathname:
                 type: string
-                description: 'Pathname of the route, e.g., "/about".'
+                description: "The route pathname."
                 example: /furniture
               localizations:
                 type: array
@@ -1494,22 +1494,22 @@ components:
                   properties:
                     locale:
                       type: string
-                      description: Locale code.
+                      description: "The locale code."
                       example: es-MX
                     pathname:
                       type: string
-                      description: 'Pathname of the route, e.g., "/about".'
+                      description: "The route pathname."
                       example: /furniture
                     id:
                       type: string
                       format: uuid
-                      description: The ID of the localized variant.
-                  description: Localized variant of a route. Each variant has a locale, pathname, and id.
+                      description: "The ID of the localization."
+                  description: "A localization of a route."
                   example:
                     locale: es-ES
                     pathname: /sobre-nosotros
                     id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-                description: List of localized variants for the route. Each variant has a locale, pathname, and id.
+                description: "The localizations for the route."
                 example:
                   - locale: es-ES
                     pathname: /sobre-nosotros
@@ -1517,7 +1517,7 @@ components:
                   - locale: fr-FR
                     pathname: /a-propos
                     id: 47c29d52-0863-5bef-0bff-g53bc5g85c15
-            description: Route with its localized variants.
+            description: "Route with its localizations."
             example:
               id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
               pathname: /about
