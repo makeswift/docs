@@ -677,16 +677,23 @@ paths:
           $ref: "#/components/responses/RateLimitError"
       tags:
         - Route
-  "/v2/routes/{routeId}":
+  "/v2/routes/{routeIdOrPathname}":
     get:
       operationId: RouteController_get_v2
       summary: "Get Route"
       security:
         - Authentication: []
       parameters:
-        - name: routeId
+        - name: routeIdOrPathname
           required: true
           in: path
+          description: "The route ID or pathname."
+          schema:
+            type: string
+        - name: siteId
+          required: false
+          in: query
+          description: "The site ID required when using a pathname instead of a route ID."
           schema:
             format: uuid
             type: string
@@ -703,6 +710,7 @@ paths:
           $ref: "#/components/responses/RateLimitError"
       tags:
         - Route
+  "/v2/routes/{routeId}":
     patch:
       operationId: RouteController_update_v2
       summary: "Update Route"

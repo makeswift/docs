@@ -312,7 +312,7 @@
                     "pages": [
                       "POST /v2/routes",
                       "GET /v2/routes",
-                      "GET /v2/routes/{routeId}",
+                      "GET /v2/routes/{routeIdOrPathname}",
                       "PATCH /v2/routes/{routeId}",
                       "DELETE /v2/routes/{routeId}"
                     ]
