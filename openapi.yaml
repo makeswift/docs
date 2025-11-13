@@ -440,7 +440,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListPagesV2ResponseBodyDto"
+                $ref: "#/components/schemas/ListPagesV6ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
         "429":
@@ -461,14 +461,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreatePageV1RequestBodyDto"
+              $ref: "#/components/schemas/CreatePageV6RequestBodyDto"
       responses:
         "201":
           description: ""
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CreatePageV1ResponseBodyDto"
+                $ref: "#/components/schemas/CreatePageV6ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
         "409":
@@ -527,7 +527,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetPageV1ResponseBodyDto"
+                $ref: "#/components/schemas/GetPageV6ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
         "429":
@@ -553,14 +553,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UpdatePageV1RequestBodyDto"
+              $ref: "#/components/schemas/UpdatePageV6RequestBodyDto"
       responses:
         "200":
           description: ""
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UpdatePageV1ResponseBodyDto"
+                $ref: "#/components/schemas/UpdatePageV6ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
         "409":
@@ -1180,7 +1180,7 @@ components:
               description: "The primary locale of the site."
               example: en-US
       description: "Returns the newly created duplicated site."
-    CreatePageV1RequestBodyDto:
+    CreatePageV6RequestBodyDto:
       type: object
       properties:
         siteId:
@@ -1197,7 +1197,7 @@ components:
         - siteId
         - pathname
         - name
-    PageV2Dto:
+    PageV6Dto:
       type: object
       properties:
         id:
@@ -1282,12 +1282,12 @@ components:
                 type: string
                 format: uuid
                 description: "The ID of the localization."
-    CreatePageV1ResponseBodyDto:
+    CreatePageV6ResponseBodyDto:
       type: object
       properties:
         data:
-          $ref: "#/components/schemas/PageV2Dto"
-    UpdatePageV1RequestBodyDto:
+          $ref: "#/components/schemas/PageV6Dto"
+    UpdatePageV6RequestBodyDto:
       type: object
       properties:
         pathname:
@@ -1299,23 +1299,23 @@ components:
         isOnline:
           type: boolean
           description: "Whether the page is online."
-    UpdatePageV1ResponseBodyDto:
+    UpdatePageV6ResponseBodyDto:
       type: object
       properties:
         data:
-          $ref: "#/components/schemas/PageV2Dto"
-    GetPageV1ResponseBodyDto:
+          $ref: "#/components/schemas/PageV6Dto"
+    GetPageV6ResponseBodyDto:
       type: object
       properties:
         data:
-          $ref: "#/components/schemas/PageV2Dto"
-    ListPagesV2ResponseBodyDto:
+          $ref: "#/components/schemas/PageV6Dto"
+    ListPagesV6ResponseBodyDto:
       type: object
       properties:
         data:
           type: array
           items:
-            $ref: "#/components/schemas/PageV2Dto"
+            $ref: "#/components/schemas/PageV6Dto"
         hasMore:
           type: boolean
           description: "Whether there are more pages available."
