@@ -37,13 +37,14 @@ paths:
         - name: siteId
           required: true
           in: query
+          description: "The site ID to list locales from."
           schema:
             format: uuid
             type: string
         - name: limit
           required: false
           in: query
-          description: "Maximum number of locales to return."
+          description: "The maximum number of locales to return."
           schema:
             minimum: 0
             maximum: 100
@@ -52,7 +53,7 @@ paths:
         - name: after
           required: false
           in: query
-          description: "Pagination cursor to return locales after this ID."
+          description: "The pagination cursor. This is used to indicate what ID to list from."
           schema:
             format: uuid
             type: string
@@ -194,18 +195,21 @@ paths:
         - name: workspaceId
           required: true
           in: query
+          description: "The workspace ID to list sites from."
           schema:
             format: uuid
             type: string
         - name: limit
           required: false
           in: query
+          description: "The maximum number of sites to return."
           schema:
             minimum: 0
             maximum: 100
             default: 20
             type: number
         - name: start
+          description: "The pagination cursor. This is used to indicate what ID to list from."
           required: false
           in: query
           schema:
@@ -233,6 +237,7 @@ paths:
         - Authentication: []
       parameters:
         - name: siteId
+          description: "The site ID for the site you are requesting."
           required: true
           in: path
           schema:
@@ -258,6 +263,7 @@ paths:
         - Authentication: []
       parameters:
         - name: siteId
+          description: "The site ID for the site you are updating."
           required: true
           in: path
           schema:
@@ -289,6 +295,7 @@ paths:
         - Authentication: []
       parameters:
         - name: siteId
+          description: "The site ID for the site you are deleting."
           required: true
           in: path
           schema:
@@ -313,10 +320,9 @@ paths:
         - name: siteId
           required: true
           in: path
-          description: "The ID of the site to duplicate."
+          description: "The site ID for the site you are duplicating."
           schema:
             format: uuid
-            example: 123e4567-e89b-12d3-a456-426614174000
             type: string
       requestBody:
         required: true
@@ -347,6 +353,7 @@ paths:
       parameters:
         - name: siteId
           required: true
+          description: "The site ID to list pages from."
           in: query
           schema:
             format: uuid
@@ -354,7 +361,7 @@ paths:
         - name: limit
           required: false
           in: query
-          description: "Maximum number of pages to return."
+          description: "The maximum number of pages to return."
           schema:
             minimum: 1
             maximum: 100
@@ -363,14 +370,14 @@ paths:
         - name: after
           required: false
           in: query
-          description: "Pagination cursor to return pages after this ID."
+          description: "The pagination cursor. This is used to indicate what ID to list from."
           schema:
             format: uuid
             type: string
         - name: pathPrefix
           required: false
           in: query
-          description: "Filters pages to only those with a pathname that begins with this value."
+          description: "The filter that limits pages to only those with a pathname that begins with this value."
           schema:
             type: string
             default: "/"
@@ -400,7 +407,7 @@ paths:
         - name: includeOffline
           required: false
           in: query
-          description: "Whether to include offline pages in the results."
+          description: "The flag that determines whether to include offline pages in the results."
           schema:
             type: boolean
             default: false
@@ -487,7 +494,7 @@ paths:
         - name: pageIdOrPathname
           required: true
           in: path
-          description: "The page ID or pathname."
+          description: "The page ID or pathname for the page you are requesting."
           schema:
             type: string
         - name: siteId
@@ -544,7 +551,7 @@ paths:
         - name: pageId
           required: true
           in: path
-          description: "The page ID."
+          description: "The page ID for the page you are updating."
           schema:
             format: uuid
             type: string
@@ -578,13 +585,13 @@ paths:
         - name: pageId
           required: true
           in: path
-          description: "The page ID."
+          description: "The page ID for the page you are deleting."
           schema:
             format: uuid
             type: string
       responses:
         "200":
-          description: "Returns success when the page is deleted."
+          description: "The response that indicates success when the page is deleted."
         "401":
           $ref: "#/components/responses/UnauthorizedError"
         "429":
@@ -602,20 +609,21 @@ paths:
         - name: siteId
           required: true
           in: query
+          description: "The site ID to list routes from."
           schema:
             format: uuid
             type: string
         - name: pathname
           required: false
           in: query
-          description: "Filters routes by pathname using partial match."
+          description: "The pathname to filter routes by."
           schema:
             example: /furniture
             type: string
         - name: limit
           required: false
           in: query
-          description: "Maximum number of routes to return."
+          description: "The maximum number of routes to return."
           schema:
             minimum: 0
             maximum: 100
@@ -624,7 +632,7 @@ paths:
         - name: after
           required: false
           in: query
-          description: "Pagination cursor to return routes after this ID."
+          description: "The pagination cursor. This is used to indicate what ID to list from."
           schema:
             format: uuid
             type: string
@@ -650,7 +658,7 @@ paths:
         - name: skipValidation
           required: false
           in: query
-          description: "Whether to skip route validation. Useful when an external system has a different way of validating routes that Makeswift."
+          description: "The flag that determines whether to skip route validation. Useful when an external system has a different way of validating routes than Makeswift."
           schema:
             enum:
               - "true"
@@ -687,7 +695,7 @@ paths:
         - name: routeIdOrPathname
           required: true
           in: path
-          description: "The route ID or pathname."
+          description: "The route ID or pathname for the route you are requesting."
           schema:
             type: string
         - name: siteId
@@ -720,13 +728,14 @@ paths:
         - name: routeId
           required: true
           in: path
+          description: "The route ID for the route you are updating."
           schema:
             format: uuid
             type: string
         - name: skipValidation
           required: false
           in: query
-          description: "Whether to skip route validation. Useful when an external system has a different way of validating routes."
+          description: "The flag that determines whether to skip route validation. Useful when an external system has a different way of validating routes."
           schema:
             enum:
               - "true"
@@ -762,6 +771,7 @@ paths:
         - name: routeId
           required: true
           in: path
+          description: "The route ID for the route you are deleting."
           schema:
             format: uuid
             type: string
@@ -892,7 +902,7 @@ components:
         siteId:
           type: string
           format: uuid
-          description: "The site ID."
+          description: "The site ID to create the locale for."
         locale:
           type: string
           description: "The locale code."
@@ -900,7 +910,7 @@ components:
         domain:
           type: string
           format: uri
-          description: "The domain URL for domain-based localization. The URL must include the protocol."
+          description: "The domain URL for domain-based localization. This URL must include the protocol."
           example: "https://hearthfurniture.com.mx"
       required:
         - siteId
@@ -914,30 +924,31 @@ components:
             id:
               type: string
               format: uuid
+              description: "The ID of the created locale."
             locale:
               type: string
-              description: "The locale code."
+              description: "The locale code for the created locale."
               example: es-MX
             domain:
               type: string
               nullable: true
               format: uri
-              description: "The domain URL for domain-based localization. The URL must include the protocol."
+              description: "The domain URL for domain-based localization."
               example: "https://hearthfurniture.com.mx"
             isDefault:
               type: boolean
-              description: "Whether this locale is the default locale for the site."
+              description: "The flag that indicates whether this locale is the default locale for the site."
     UpdateLocaleV2RequestBodyDto:
       type: object
       properties:
         locale:
           type: string
-          description: "The locale code."
+          description: "The locale code for the locale you are updating."
           example: es-MX
         domain:
           type: string
           format: uri
-          description: "The domain URL for domain-based localization. The URL must include the protocol."
+          description: "The domain URL for domain-based localization. This URL must include the protocol."
           example: "https://hearthfurniture.com.mx"
     UpdateLocaleV2ResponseBodyDto:
       type: object
@@ -948,19 +959,20 @@ components:
             id:
               type: string
               format: uuid
+              description: "The ID of the updated locale."
             locale:
               type: string
-              description: "The locale code."
+              description: "The locale code for the locale you are getting."
               example: es-MX
             domain:
               type: string
               nullable: true
               format: uri
-              description: "The domain URL for domain-based localization. The URL must include the protocol."
+              description: "The domain URL for domain-based localization."
               example: "https://hearthfurniture.com.mx"
             isDefault:
               type: boolean
-              description: "Whether this locale is the default locale for the site."
+              description: "The flag that indicates whether this locale is the default locale for the site."
     ReadLocaleV2ResponseBodyDto:
       type: object
       properties:
@@ -970,6 +982,7 @@ components:
             id:
               type: string
               format: uuid
+              description: "The ID of the locale you are getting."
             locale:
               type: string
               description: "The locale code."
@@ -978,11 +991,11 @@ components:
               type: string
               nullable: true
               format: uri
-              description: "The domain URL for domain-based localization. The URL must include the protocol."
+              description: "The domain URL for domain-based localization."
               example: "https://hearthfurniture.com.mx"
             isDefault:
               type: boolean
-              description: "Whether this locale is the default locale for the site."
+              description: "The flag that indicates whether this locale is the default locale for the site."
     ListLocaleV2ResponseBodyDto:
       type: object
       properties:
@@ -994,6 +1007,7 @@ components:
               id:
                 type: string
                 format: uuid
+                description: "The ID of the locale you are getting."
               locale:
                 type: string
                 description: "The locale code."
@@ -1002,20 +1016,20 @@ components:
                 type: string
                 nullable: true
                 format: uri
-                description: "The domain URL for domain-based localization. The URL must include the protocol."
+                description: "The domain URL for domain-based localization."
                 example: "https://hearthfurniture.com.mx"
               isDefault:
                 type: boolean
-                description: "Whether this locale is the default locale for the site."
+                description: "The flag that indicates whether this locale is the default locale for the site."
         hasMore:
           type: boolean
-          description: "Whether there are more locales available."
+          description: "The flag that indicates whether there are more locales available."
     CreateSiteV2RequestBodyDto:
       type: object
       properties:
         workspaceId:
           type: string
-          description: "The workspace ID."
+          description: "The ID of the workspace that contains this site."
           format: uuid
         name:
           type: string
@@ -1024,11 +1038,11 @@ components:
         hostUrl:
           type: string
           format: uri
-          description: "The host URL of the site."
+          description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
           example: "https://hearthfurniture.com"
         defaultLocale:
           type: string
-          description: "The primary locale of the site."
+          description: "The primary locale of this site."
           example: en-US
           default: en-US
           x-mint:
@@ -1045,6 +1059,7 @@ components:
             id:
               type: string
               format: uuid
+              description: "The ID of the created site."
             name:
               type: string
               description: "The site name."
@@ -1053,14 +1068,15 @@ components:
               type: string
               nullable: true
               format: uri
-              description: "The host URL of the site."
+              description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
               example: "https://hearthfurniture.com"
             apiKey:
               type: string
+              description: "The publishable API key that a host can use to get page and component data for rendering your site."
               format: uuid
             defaultLocale:
               type: string
-              description: "The primary locale of the site."
+              description: "The primary locale of this site."
               example: en-US
     ReadSiteV1ResponseBodyDto:
       type: object
@@ -1071,6 +1087,7 @@ components:
             id:
               type: string
               format: uuid
+              description: "The ID of the site you are getting."
             name:
               type: string
               description: "The site name."
@@ -1079,14 +1096,15 @@ components:
               type: string
               nullable: true
               format: uri
-              description: "The host URL of the site."
+              description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
               example: "https://hearthfurniture.com"
             apiKey:
               type: string
+              description: "The publishable API key that a host can use to get page and component data for rendering your site."
               format: uuid
             defaultLocale:
               type: string
-              description: "The primary locale of the site."
+              description: "The primary locale of this site."
               example: en-US
     UpdateSiteV1RequestBodyDto:
       type: object
@@ -1098,7 +1116,7 @@ components:
         hostUrl:
           type: string
           format: uri
-          description: "The host URL of the site."
+          description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
           example: "https://hearthfurniture.com"
     UpdateSiteV1ResponseBodyDto:
       type: object
@@ -1109,6 +1127,7 @@ components:
             id:
               type: string
               format: uuid
+              description: "The ID of the site you are updating."
             name:
               type: string
               description: "The site name."
@@ -1117,10 +1136,11 @@ components:
               type: string
               nullable: true
               format: uri
-              description: "The host URL of the site."
+              description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
               example: "https://hearthfurniture.com"
             apiKey:
               type: string
+              description: "The publishable API key that a host can use to get page and component data for rendering your site."
               format: uuid
     ListSiteV2ResponseBodyDto:
       type: object
@@ -1133,6 +1153,7 @@ components:
               id:
                 type: string
                 format: uuid
+                description: "The ID of the site you are listing."
               name:
                 type: string
                 description: "The site name."
@@ -1141,16 +1162,18 @@ components:
                 type: string
                 nullable: true
                 format: uri
-                description: "The host URL of the site."
+                description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
                 example: "https://hearthfurniture.com"
               apiKey:
                 type: string
+                description: "The publishable API key that a host can use to get page and component data for rendering your site."
                 format: uuid
               defaultLocale:
                 type: string
-                description: "The primary locale of the site."
+                description: "The primary locale of this site."
                 example: en-US
         hasMore:
+          description: "The flag that indicates whether there are more sites available."
           type: boolean
     DuplicateSiteV1RequestBodyDto:
       type: object
@@ -1170,6 +1193,7 @@ components:
             id:
               type: string
               format: uuid
+              description: "The ID of the duplicated site."
             name:
               type: string
               description: "The site name."
@@ -1178,14 +1202,15 @@ components:
               type: string
               nullable: true
               format: uri
-              description: "The host URL of the site."
+              description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
               example: "https://hearthfurniture.com"
             apiKey:
               type: string
+              description: "The publishable API key that a host can use to get page and component data for rendering your site."
               format: uuid
             defaultLocale:
               type: string
-              description: "The primary locale of the site."
+              description: "The primary locale of this site."
               example: en-US
       description: "Returns the newly created duplicated site."
     CreatePageV6RequestBodyDto:
@@ -1194,7 +1219,7 @@ components:
         siteId:
           type: string
           format: uuid
-          description: "The site ID."
+          description: "The site ID to create the page for."
         pathname:
           type: string
           description: "The page pathname."
@@ -1210,6 +1235,7 @@ components:
       properties:
         id:
           type: string
+          description: "The ID of the page."
           format: uuid
         pathname:
           type: string
@@ -1266,11 +1292,11 @@ components:
           description: "The page publication date and time."
         isOnline:
           type: boolean
-          description: "Whether the page is online."
+          description: "The flag that indicates whether the page is online."
         excludedFromSearch:
           type: boolean
           nullable: true
-          description: "Whether the page is excluded from search."
+          description: "The flag that indicates whether the page is excluded from search."
         locale:
           type: string
           description: "The page locale. This defaults to the default locale of the parent site."
@@ -1306,7 +1332,7 @@ components:
           description: "The page name."
         isOnline:
           type: boolean
-          description: "Whether the page is online."
+          description: "The flag that indicates whether the page is online."
     UpdatePageV6ResponseBodyDto:
       type: object
       properties:
@@ -1326,14 +1352,14 @@ components:
             $ref: "#/components/schemas/PageV6Dto"
         hasMore:
           type: boolean
-          description: "Whether there are more pages available."
+          description: "The flag that indicates whether there are more pages available."
     CreateRouteV2RequestBodyDto:
       type: object
       properties:
         siteId:
           type: string
           format: uuid
-          description: "The site ID."
+          description: "The site ID to create the route for."
         pathname:
           type: string
           description: "The route pathname."
@@ -1355,12 +1381,12 @@ components:
             required:
               - locale
               - pathname
-            description: "A localization of a route."
+            description: "The localization of a route."
           description: "The localizations for the route."
       required:
         - siteId
         - pathname
-      description: "Request body for creating a new route."
+      description: "The request body for creating a new route."
     CreateRouteV2ResponseBodyDto:
       type: object
       properties:
@@ -1370,6 +1396,7 @@ components:
             id:
               type: string
               format: uuid
+              description: "The ID of the created route."
             pathname:
               type: string
               description: "The route pathname."
@@ -1387,9 +1414,9 @@ components:
                     type: string
                     description: "The route pathname."
                     example: /furniture
-                description: "A localization of a route."
+                description: "The localization of a route."
               description: "The localizations for the route."
-          description: "Route with its localizations."
+          description: "The route with its localizations."
     ReadRouteV2ResponseBodyDto:
       type: object
       properties:
@@ -1399,6 +1426,7 @@ components:
             id:
               type: string
               format: uuid
+              description: "The ID of the route you are getting."
             pathname:
               type: string
               description: "The route pathname."
@@ -1420,9 +1448,9 @@ components:
                     type: string
                     format: uuid
                     description: "The ID of the localization."
-                description: "A localization of a route."
+                description: "The localization of a route."
               description: "The localizations for the route."
-          description: "Route with its localizations."
+          description: "The route with its localizations."
     UpdateRouteV2RequestBodyDto:
       type: object
       properties:
@@ -1446,9 +1474,9 @@ components:
             required:
               - locale
               - pathname
-            description: "A localization of a route."
+            description: "The localization of a route."
           description: "The localizations for the route."
-      description: Request body for updating an existing route.
+      description: "The request body for updating an existing route."
     UpdateRouteV2ResponseBodyDto:
       type: object
       properties:
@@ -1475,9 +1503,9 @@ components:
                     type: string
                     description: "The route pathname."
                     example: /furniture
-                description: "A localization of a route."
+                description: "The localization of a route."
               description: "The localizations for the route."
-          description: "Route with its localizations."
+          description: "The route with its localizations."
     ListRouteV2ResponseBodyDto:
       type: object
       properties:
@@ -1489,6 +1517,7 @@ components:
               id:
                 type: string
                 format: uuid
+                description: "The ID of the route you are listing."
               pathname:
                 type: string
                 description: "The route pathname."
@@ -1510,8 +1539,9 @@ components:
                       type: string
                       format: uuid
                       description: "The ID of the localization."
-                  description: "A localization of a route."
+                  description: "The localization of a route."
                 description: "The localizations for the route."
-            description: "Route with its localizations."
+            description: "The route with its localizations."
         hasMore:
           type: boolean
+          description: "The flag that indicates whether there are more routes available."
