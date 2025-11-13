@@ -1,30 +1,22 @@
 import { useEffect } from "react";
 
-const ReadinessBadge = () => {
+const ReadinessBadge = ({ type }) => {
   const validTags = ["beta", "alpha", "experimental"];
 
+  const tagText = type?.trim().toLowerCase();
+  if (!tagText || !validTags.includes(tagText)) return null;
+
   useEffect(() => {
-    const addBadge = () => {
-      const tagElement = document.querySelector(".nav-tag-pill-text");
-      if (!tagElement) return;
+    const titleElement = document.querySelector("#page-title, .page-title, h1");
+    if (!titleElement) return;
+    if (titleElement.querySelector(".badge")) return;
 
-      const tagText = tagElement.textContent?.trim().toLowerCase() || "";
-      if (!validTags.includes(tagText)) return;
-
-      const titleElement = document.querySelector(
-        "#page-title, .page-title, h1"
-      );
-      if (!titleElement || titleElement.querySelector(`.${tagText}-badge`))
-        return;
-
-      const badge = document.createElement("span");
-      badge.className = `badge ${tagText}-badge`;
-      badge.textContent = tagText;
-      titleElement.appendChild(badge);
-    };
-
-    addBadge();
+    const badge = document.createElement("span");
+    badge.className = `badge ${tagText}-badge`;
+    badge.textContent = tagText;
+    titleElement.appendChild(badge);
   }, []);
+
   return null;
 };
 
