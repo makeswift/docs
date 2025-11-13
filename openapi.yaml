@@ -1356,15 +1356,7 @@ components:
               - locale
               - pathname
             description: "A localization of a route."
-            example:
-              locale: es-ES
-              pathname: /sobre-nosotros
           description: "The localizations for the route."
-          example:
-            - locale: es-ES
-              pathname: /sobre-nosotros
-            - locale: fr-FR
-              pathname: /a-propos
       required:
         - siteId
         - pathname
@@ -1396,24 +1388,8 @@ components:
                     description: "The route pathname."
                     example: /furniture
                 description: "A localization of a route."
-                example:
-                  locale: es-ES
-                  pathname: /sobre-nosotros
               description: "The localizations for the route."
-              example:
-                - locale: es-ES
-                  pathname: /sobre-nosotros
-                - locale: fr-FR
-                  pathname: /a-propos
           description: "Route with its localizations."
-          example:
-            id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-            pathname: /about
-            localizations:
-              - locale: es-MX
-                pathname: /muebles
-              - locale: fr-CA
-                pathname: /meubles
     ReadRouteV2ResponseBodyDto:
       type: object
       properties:
@@ -1445,29 +1421,8 @@ components:
                     format: uuid
                     description: "The ID of the localization."
                 description: "A localization of a route."
-                example:
-                  locale: es-ES
-                  pathname: /sobre-nosotros
-                  id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
               description: "The localizations for the route."
-              example:
-                - locale: es-ES
-                  pathname: /sobre-nosotros
-                  id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-                - locale: fr-FR
-                  pathname: /a-propos
-                  id: 47c29d52-0863-5bef-0bff-g53bc5g85c15
           description: "Route with its localizations."
-          example:
-            id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-            pathname: /about
-            localizations:
-              - locale: es-MX
-                pathname: /muebles
-                id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-              - locale: fr-CA
-                pathname: /meubles
-                id: 47c29d52-0863-5bef-0bff-g53bc5g85c15
     UpdateRouteV2RequestBodyDto:
       type: object
       properties:
@@ -1492,15 +1447,7 @@ components:
               - locale
               - pathname
             description: "A localization of a route."
-            example:
-              locale: es-ES
-              pathname: /sobre-nosotros
           description: "The localizations for the route."
-          example:
-            - locale: es-ES
-              pathname: /sobre-nosotros
-            - locale: fr-FR
-              pathname: /a-propos
       description: Request body for updating an existing route.
     UpdateRouteV2ResponseBodyDto:
       type: object
@@ -1529,24 +1476,8 @@ components:
                     description: "The route pathname."
                     example: /furniture
                 description: "A localization of a route."
-                example:
-                  locale: es-ES
-                  pathname: /sobre-nosotros
               description: "The localizations for the route."
-              example:
-                - locale: es-ES
-                  pathname: /sobre-nosotros
-                - locale: fr-FR
-                  pathname: /a-propos
           description: "Route with its localizations."
-          example:
-            id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-            pathname: /about
-            localizations:
-              - locale: es-MX
-                pathname: /muebles
-              - locale: fr-CA
-                pathname: /meubles
     ListRouteV2ResponseBodyDto:
       type: object
       properties:
@@ -1580,28 +1511,7 @@ components:
                       format: uuid
                       description: "The ID of the localization."
                   description: "A localization of a route."
-                  example:
-                    locale: es-ES
-                    pathname: /sobre-nosotros
-                    id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
                 description: "The localizations for the route."
-                example:
-                  - locale: es-ES
-                    pathname: /sobre-nosotros
-                    id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-                  - locale: fr-FR
-                    pathname: /a-propos
-                    id: 47c29d52-0863-5bef-0bff-g53bc5g85c15
             description: "Route with its localizations."
-            example:
-              id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-              pathname: /about
-              localizations:
-                - locale: es-MX
-                  pathname: /muebles
-                  id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-                - locale: fr-CA
-                  pathname: /meubles
-                  id: 47c29d52-0863-5bef-0bff-g53bc5g85c15
         hasMore:
           type: boolean
