@@ -21,6 +21,8 @@ paths:
                 $ref: "#/components/schemas/CreateLocaleV2ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "409":
+          $ref: "#/components/responses/LocaleConflictError"
         "429":
           $ref: "#/components/responses/RateLimitError"
       tags:
@@ -129,6 +131,8 @@ paths:
                 $ref: "#/components/schemas/UpdateLocaleV2ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "409":
+          $ref: "#/components/responses/LocaleConflictError"
         "429":
           $ref: "#/components/responses/RateLimitError"
       tags:
@@ -467,6 +471,8 @@ paths:
                 $ref: "#/components/schemas/CreatePageV1ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "409":
+          $ref: "#/components/responses/PathnameConflictError"
         "429":
           $ref: "#/components/responses/RateLimitError"
       tags:
@@ -557,6 +563,8 @@ paths:
                 $ref: "#/components/schemas/UpdatePageV1ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "409":
+          $ref: "#/components/responses/PathnameConflictError"
         "429":
           $ref: "#/components/responses/RateLimitError"
       tags:
@@ -663,6 +671,8 @@ paths:
                 $ref: "#/components/schemas/CreateRouteV2ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "409":
+          $ref: "#/components/responses/PathnameConflictError"
         "429":
           $ref: "#/components/responses/RateLimitError"
       tags:
@@ -729,6 +739,8 @@ paths:
                 $ref: "#/components/schemas/UpdateRouteV2ResponseBodyDto"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
+        "409":
+          $ref: "#/components/responses/PathnameConflictError"
         "429":
           $ref: "#/components/responses/RateLimitError"
       tags:
@@ -824,6 +836,46 @@ components:
             error:
               code: "rate_limited"
               message: "The rate limit of 100 requests per second exceeded. Make sure to throttle your usage to prevent hitting this error case."
+    LocaleConflictError:
+      description: Locale conflict
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: "conflict"
+                  message:
+                    type: string
+                    example: "A locale with this locale code already exists."
+          example:
+            error:
+              code: "conflict"
+              message: "A locale with this locale code already exists."
+    PathnameConflictError:
+      description: Pathname conflict
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: "conflict"
+                  message:
+                    type: string
+                    example: "A page or route with this pathname already exists."
+          example:
+            error:
+              code: "conflict"
+              message: "A page or route with this pathname already exists."
 
   schemas:
     CreateLocaleV2RequestBodyDto:
