@@ -20,6 +20,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CreateLocaleV2ResponseBodyDto"
+        "400":
+          $ref: "#/components/responses/SiteIdBadRequestError"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
         "409":
@@ -133,6 +135,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UpdateLocaleV2ResponseBodyDto"
+        "400":
+          $ref: "#/components/responses/LocaleBadRequestError"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
         "409":
@@ -184,6 +188,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CreateSiteV2ResponseBodyDto"
+        "400":
+          $ref: "#/components/responses/WorkspaceIdBadRequestError"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
         "429":
@@ -288,6 +294,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UpdateSiteV1ResponseBodyDto"
+        "400":
+          $ref: "#/components/responses/NameBadRequestError"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
         "429":
@@ -344,6 +352,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/DuplicateSiteV1ResponseBodyDto"
+        "400":
+          $ref: "#/components/responses/NameBadRequestError"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
         "429":
@@ -483,6 +493,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CreatePageV6ResponseBodyDto"
+        "400":
+          $ref: "#/components/responses/SiteIdBadRequestError"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
         "409":
@@ -577,6 +589,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UpdatePageV6ResponseBodyDto"
+        "400":
+          $ref: "#/components/responses/PathnameBadRequestError"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
         "409":
@@ -688,6 +702,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CreateRouteV2ResponseBodyDto"
+        "400":
+          $ref: "#/components/responses/SiteIdBadRequestError"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
         "409":
@@ -767,6 +783,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UpdateRouteV2ResponseBodyDto"
+        "400":
+          $ref: "#/components/responses/PathnameBadRequestError"
         "401":
           $ref: "#/components/responses/UnauthorizedError"
         "409":
@@ -908,6 +926,106 @@ components:
             error:
               code: "conflict"
               message: "A page or route with this pathname already exists."
+    SiteIdBadRequestError:
+      description: Missing siteId field
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: "bad_request"
+                  message:
+                    type: string
+                    example: "The required field 'siteId' is missing."
+          example:
+            error:
+              code: "bad_request"
+              message: "The required field 'siteId' is missing."
+    LocaleBadRequestError:
+      description: Missing locale field
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: "bad_request"
+                  message:
+                    type: string
+                    example: "The required field 'locale' is missing."
+          example:
+            error:
+              code: "bad_request"
+              message: "The required field 'locale' is missing."
+    NameBadRequestError:
+      description: Missing name field
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: "bad_request"
+                  message:
+                    type: string
+                    example: "The required field 'name' is missing."
+          example:
+            error:
+              code: "bad_request"
+              message: "The required field 'name' is missing."
+    PathnameBadRequestError:
+      description: Missing pathname field
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: "bad_request"
+                  message:
+                    type: string
+                    example: "The required field 'pathname' is missing."
+          example:
+            error:
+              code: "bad_request"
+              message: "The required field 'pathname' is missing."
+    WorkspaceIdBadRequestError:
+      description: Missing workspaceId field
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: "bad_request"
+                  message:
+                    type: string
+                    example: "The required field 'workspaceId' is missing."
+          example:
+            error:
+              code: "bad_request"
+              message: "The required field 'workspaceId' is missing."
 
   schemas:
     CreateLocaleV2RequestBodyDto:
