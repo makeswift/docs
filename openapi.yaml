@@ -337,7 +337,7 @@ paths:
           $ref: "#/components/responses/RateLimitError"
       tags:
         - Site
-  "/v2/pages":
+  "/v6/pages":
     get:
       operationId: PageController_list_v2
       summary: "List Pages"
@@ -477,7 +477,7 @@ paths:
           $ref: "#/components/responses/RateLimitError"
       tags:
         - Page
-  "/v2/pages/{pageIdOrPathname}":
+  "/v6/pages/{pageIdOrPathname}":
     get:
       operationId: PageController_getOne_v1
       summary: "Get Page"
@@ -534,7 +534,7 @@ paths:
           $ref: "#/components/responses/RateLimitError"
       tags:
         - Page
-  "/v2/pages/{pageId}":
+  "/v6/pages/{pageId}":
     patch:
       operationId: PageController_update_v1
       summary: "Update Page"
