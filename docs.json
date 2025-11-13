@@ -35,6 +35,14 @@
             "group": "The Visual Builder",
             "pages": [
               "product/builder-basics",
+              {
+                "group": "Pages & Routes",
+                "icon": "file-code",
+                "pages": [
+                  "product/pages-tab",
+                  "product/routes"
+                ]
+              },
               "product/layouts",
               "product/components",
               "product/theming",
