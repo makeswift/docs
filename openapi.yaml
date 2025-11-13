@@ -4,6 +4,7 @@ paths:
     post:
       operationId: LocaleController_create_v2
       summary: "Create Locale"
+      description: "Creates a new locale for a site."
       security:
         - Authentication: []
       requestBody:
@@ -74,6 +75,7 @@ paths:
     get:
       operationId: LocaleController_get_v2
       summary: "Get Locale"
+      description: "Returns a locale by its ID or locale code."
       security:
         - Authentication: []
       parameters:
@@ -107,6 +109,7 @@ paths:
     patch:
       operationId: LocaleController_update_v2
       summary: "Update Locale"
+      description: "Updates an existing locale."
       security:
         - Authentication: []
       parameters:
@@ -141,6 +144,7 @@ paths:
     delete:
       operationId: LocaleController_delete_v2
       summary: "Delete Locale"
+      description: "Deletes a locale."
       security:
         - Authentication: []
       parameters:
@@ -164,6 +168,7 @@ paths:
     post:
       operationId: SiteController_create_v2
       summary: "Create Site"
+      description: "Creates a new site in a workspace."
       security:
         - Authentication: []
       requestBody:
@@ -259,6 +264,7 @@ paths:
     patch:
       operationId: SiteController_updateOne_v2
       summary: "Update Site"
+      description: "Updates an existing site."
       security:
         - Authentication: []
       parameters:
@@ -291,6 +297,7 @@ paths:
     delete:
       operationId: SiteController_delete_v2
       summary: "Delete Site"
+      description: "Deletes a site."
       security:
         - Authentication: []
       parameters:
@@ -488,6 +495,7 @@ paths:
     get:
       operationId: PageController_getOne_v1
       summary: "Get Page"
+      description: "Returns a page by its ID or pathname."
       security:
         - Authentication: []
       parameters:
@@ -545,6 +553,7 @@ paths:
     patch:
       operationId: PageController_update_v1
       summary: "Update Page"
+      description: "Updates an existing page."
       security:
         - Authentication: []
       parameters:
@@ -579,6 +588,7 @@ paths:
     delete:
       operationId: PageController_delete_v1
       summary: "Delete Page"
+      description: "Deletes a page."
       security:
         - Authentication: []
       parameters:
@@ -652,6 +662,7 @@ paths:
     post:
       operationId: RouteController_create_v2
       summary: "Create Route"
+      description: "Creates a new route for a site."
       security:
         - Authentication: []
       parameters:
@@ -689,6 +700,7 @@ paths:
     get:
       operationId: RouteController_get_v2
       summary: "Get Route"
+      description: "Returns a route by its ID or pathname."
       security:
         - Authentication: []
       parameters:
@@ -722,6 +734,7 @@ paths:
     patch:
       operationId: RouteController_update_v2
       summary: "Update Route"
+      description: "Updates an existing route."
       security:
         - Authentication: []
       parameters:
@@ -765,6 +778,7 @@ paths:
     delete:
       operationId: RouteController_delete_v2
       summary: "Delete Route"
+      description: "Deletes a route."
       security:
         - Authentication: []
       parameters:
