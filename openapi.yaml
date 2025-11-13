@@ -1265,7 +1265,7 @@ components:
           description: "Whether the page is excluded from search."
         locale:
           type: string
-          description: "The page locale."
+          description: "The page locale. This defaults to the default locale of the parent site."
         localizations:
           type: array
           description: "The localizations of the page."
