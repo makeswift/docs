@@ -9,8 +9,12 @@ import ReadinessBadge from "/snippets/readinessBadge.jsx";
 
 <ReadinessBadge type='beta' />
 
+<Callout icon="flask" color="#FFC107" iconType="regular">
+  Routes are currently in Beta and can be enabled via the [Early Access](/product/user-settings/early-access) settings.
+</Callout>
+
 <Note>
-  Routes do not support [page collections](/product/pages-tab#managing-collections). However, if page
+  Routes do not support [collections](/product/pages-tab#managing-collections). However, if
   collections exist when enabling Routes they will be preserved and not deleted.
 </Note>
 
@@ -25,19 +29,7 @@ Routes are useful for several scenarios:
 - **Authentication pages**: Sign up and login views with editable marketing content integrated
 - **System pages**: Terms of service, privacy policy, or other fixed content pages
 
-These routes will appear in the Pages Tab alongside your Makeswift-managed pages, giving you a complete view of your site's structure.
-
-<Frame>
-  ![ Makeswift builder Pages Tab with Routes](/images/routes/routes.png)
-</Frame>
-
-## Enabling routes
-
-To enable routes on your site, you must turn on the feature in the [**Early access**](/product/user-settings/early-access) dialog:
-
-- In the bottom of the Site Sidebar, click **Settings**
-- In the Settings dialog, select the **Early Access**
-- Enable the **Routes** early access feature
+To enable routes on your site, you must enable the feature in the [**Early access**](/product/user-settings/early-access) settings:
 
 <Frame>
   ![Settings page to enable routes](/images/routes/enable-routes.png)
@@ -63,7 +55,7 @@ To add a route to your site:
 - Click the **Add Route** button at the top right of the Routes setting page
 - Enter a path for the route
 
-The route should now appear in the Pages Tab of the Site Sidebar.
+The route will now appear in the Pages Tab of the Site Sidebar.
 
 ## Editing routes
 
@@ -71,7 +63,7 @@ To edit an existing route:
 
 - In the bottom of the Site Sidebar, click **Settings**
 - In the Settings dialog, click **Routes**
-- Hover over the route you want to edit and select the **Edit** icon that appears to the right of the route name
+- Hover over the route you want to edit and click the **Edit** icon that appears to the right of the route name
 - In the **Edit Route** dialog, make your changes and click **Save**
 
 The route will be updated in the Pages Tab of the Site Sidebar.
@@ -82,7 +74,7 @@ To delete an existing route:
 
 - In the bottom of the Site Sidebar, click **Settings**
 - In the Settings dialog, click **Routes**
-- Hover over the route you want to delete and select the **Delete** icon that appears to the right of the route name
+- Hover over the route you want to delete and click the **Delete** icon that appears to the right of the route name
 - In the Delete Route dialog, click **Delete**
 
 The route will be removed from the Pages Tab of the Site Sidebar.
