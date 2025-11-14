@@ -49,7 +49,7 @@ paths:
           in: query
           description: "The maximum number of locales to return."
           schema:
-            minimum: 0
+            minimum: 1
             maximum: 100
             default: 20
             type: number
@@ -215,7 +215,7 @@ paths:
           in: query
           description: "The maximum number of sites to return."
           schema:
-            minimum: 0
+            minimum: 1
             maximum: 100
             default: 20
             type: number
@@ -649,7 +649,7 @@ paths:
           in: query
           description: "The maximum number of routes to return."
           schema:
-            minimum: 0
+            minimum: 1
             maximum: 100
             default: 20
             type: number
@@ -1392,7 +1392,7 @@ components:
         sitemapPriority:
           type: number
           nullable: true
-          minimum: 0
+          minimum: 1
           maximum: 1
           description: "The sitemap priority."
         sitemapFrequency:
@@ -1425,7 +1425,7 @@ components:
         isOnline:
           type: boolean
           description: "The flag that indicates whether the page is online."
-        excludedFromSearch:
+        excludedFromSearchEngines:
           type: boolean
           nullable: true
           description: "The flag that indicates whether the page is excluded from search."
