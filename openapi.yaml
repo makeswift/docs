@@ -1,0 +1,1679 @@
+openapi: 3.1.0
+paths:
+  "/v2/locales":
+    post:
+      operationId: LocaleController_create_v2
+      summary: "Create Locale"
+      description: "Creates a new locale for a site."
+      security:
+        - Authentication: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateLocaleV2RequestBodyDto"
+      responses:
+        "201":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateLocaleV2ResponseBodyDto"
+        "400":
+          $ref: "#/components/responses/SiteIdBadRequestError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "409":
+          $ref: "#/components/responses/LocaleConflictError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
+      tags:
+        - Locale
+    get:
+      operationId: LocaleController_list_v2
+      summary: "List Locales"
+      description: "Returns a list of locales for a site."
+      security:
+        - Authentication: []
+      parameters:
+        - name: siteId
+          required: true
+          in: query
+          description: "The site ID to list locales from."
+          schema:
+            format: uuid
+            type: string
+        - name: limit
+          required: false
+          in: query
+          description: "The maximum number of locales to return."
+          schema:
+            minimum: 1
+            maximum: 100
+            default: 20
+            type: number
+        - name: after
+          required: false
+          in: query
+          description: "The pagination cursor. This is used to indicate what ID to list from."
+          schema:
+            format: uuid
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListLocaleV2ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
+      tags:
+        - Locale
+  "/v2/locales/{localeIdOrCode}":
+    get:
+      operationId: LocaleController_get_v2
+      summary: "Get Locale"
+      description: "Returns a locale by its ID or locale code."
+      security:
+        - Authentication: []
+      parameters:
+        - name: localeIdOrCode
+          required: true
+          in: path
+          description: "The locale ID or locale code."
+          schema:
+            type: string
+        - name: siteId
+          required: false
+          in: query
+          description: "The site ID required when using a locale code instead of a locale ID."
+          schema:
+            format: uuid
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadLocaleV2ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
+      tags:
+        - Locale
+  "/v2/locales/{localeId}":
+    patch:
+      operationId: LocaleController_update_v2
+      summary: "Update Locale"
+      description: "Updates an existing locale."
+      security:
+        - Authentication: []
+      parameters:
+        - name: localeId
+          required: true
+          in: path
+          description: "The locale ID."
+          schema:
+            format: uuid
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateLocaleV2RequestBodyDto"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdateLocaleV2ResponseBodyDto"
+        "400":
+          $ref: "#/components/responses/LocaleBadRequestError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "409":
+          $ref: "#/components/responses/LocaleConflictError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
+      tags:
+        - Locale
+    delete:
+      operationId: LocaleController_delete_v2
+      summary: "Delete Locale"
+      description: "Deletes a locale."
+      security:
+        - Authentication: []
+      parameters:
+        - name: localeId
+          required: true
+          in: path
+          description: "The locale ID."
+          schema:
+            format: uuid
+            type: string
+      responses:
+        "200":
+          description: ""
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
+      tags:
+        - Locale
+  "/v2/sites":
+    post:
+      operationId: SiteController_create_v2
+      summary: "Create Site"
+      description: "Creates a new site in a workspace."
+      security:
+        - Authentication: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateSiteV2RequestBodyDto"
+      responses:
+        "201":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateSiteV2ResponseBodyDto"
+        "400":
+          $ref: "#/components/responses/WorkspaceIdBadRequestError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
+      tags:
+        - Site
+    get:
+      operationId: SiteController_list_v2
+      summary: "List Sites"
+      description: "Returns a list of sites in a workspace."
+      security:
+        - Authentication: []
+      parameters:
+        - name: workspaceId
+          required: true
+          in: query
+          description: "The workspace ID to list sites from."
+          schema:
+            format: uuid
+            type: string
+        - name: limit
+          required: false
+          in: query
+          description: "The maximum number of sites to return."
+          schema:
+            minimum: 1
+            maximum: 100
+            default: 20
+            type: number
+        - name: start
+          description: "The pagination cursor. This is used to indicate what ID to list from."
+          required: false
+          in: query
+          schema:
+            format: uuid
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListSiteV2ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
+      tags:
+        - Site
+  "/v2/sites/{siteId}":
+    get:
+      operationId: SiteController_getOne_v2
+      summary: "Get Site"
+      description: "Returns a site by its ID."
+      security:
+        - Authentication: []
+      parameters:
+        - name: siteId
+          description: "The site ID for the site you are requesting."
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+      responses:
+        "201":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadSiteV1ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
+      tags:
+        - Site
+    patch:
+      operationId: SiteController_updateOne_v2
+      summary: "Update Site"
+      description: "Updates an existing site."
+      security:
+        - Authentication: []
+      parameters:
+        - name: siteId
+          description: "The site ID for the site you are updating."
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateSiteV1RequestBodyDto"
+      responses:
+        "201":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdateSiteV1ResponseBodyDto"
+        "400":
+          $ref: "#/components/responses/NameBadRequestError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
+      tags:
+        - Site
+    delete:
+      operationId: SiteController_delete_v2
+      summary: "Delete Site"
+      description: "Deletes a site."
+      security:
+        - Authentication: []
+      parameters:
+        - name: siteId
+          description: "The site ID for the site you are deleting."
+          required: true
+          in: path
+          schema:
+            format: uuid
+            type: string
+      responses:
+        "200":
+          description: ""
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
+      tags:
+        - Site
+  "/v2/sites/{siteId}/duplicate":
+    post:
+      operationId: SiteController_duplicate_v2
+      summary: "Duplicate Site"
+      security:
+        - Authentication: []
+      parameters:
+        - name: siteId
+          required: true
+          in: path
+          description: "The site ID for the site you are duplicating."
+          schema:
+            format: uuid
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DuplicateSiteV1RequestBodyDto"
+      responses:
+        "201":
+          description: "Returns the newly created duplicated site."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DuplicateSiteV1ResponseBodyDto"
+        "400":
+          $ref: "#/components/responses/NameBadRequestError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
+      tags:
+        - Site
+  "/v6/pages":
+    get:
+      operationId: PageController_list_v2
+      summary: "List Pages"
+      description: "Returns a list of pages for a site."
+      security:
+        - Authentication: []
+      parameters:
+        - name: siteId
+          required: true
+          description: "The site ID to list pages from."
+          in: query
+          schema:
+            format: uuid
+            type: string
+        - name: limit
+          required: false
+          in: query
+          description: "The maximum number of pages to return."
+          schema:
+            minimum: 1
+            maximum: 100
+            default: 20
+            type: number
+        - name: after
+          required: false
+          in: query
+          description: "The pagination cursor. This is used to indicate what ID to list from."
+          schema:
+            format: uuid
+            type: string
+        - name: pathPrefix
+          required: false
+          in: query
+          description: "The filter that limits pages to only those with a pathname that begins with this value."
+          schema:
+            type: string
+            default: "/"
+        - name: sortBy
+          required: false
+          in: query
+          description: "The field to sort pages by."
+          schema:
+            type: string
+            enum:
+              - title
+              - path
+              - description
+              - createdAt
+              - updatedAt
+            default: path
+        - name: sortDirection
+          required: false
+          in: query
+          description: "The sort direction."
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+            default: asc
+        - name: includeOffline
+          required: false
+          in: query
+          description: "The flag that determines whether to include offline pages in the results."
+          schema:
+            type: boolean
+            default: false
+        - name: locale
+          required: false
+          in: query
+          description: "The locale code to filter pages by."
+          schema:
+            type: string
+        - name: versionRef
+          required: false
+          in: query
+          description: |
+            The version reference to retrieve pages from. Defaults to `ref:live` if not provided.
+
+            Supported formats:
+            - `ref:live` - Live/published version
+            - `ref:draft` - Draft/working version
+          schema:
+            type: string
+            pattern: ^ref:(live|draft)$
+            enum:
+              - ref:live
+              - ref:draft
+            default: ref:live
+            examples:
+              live:
+                value: ref:live
+                summary: Live version
+              draft:
+                value: ref:draft
+                summary: Draft version
+          example: ref:live
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListPagesV6ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
+      tags:
+        - Page
+    post:
+      operationId: PageController_create_v1
+      summary: "Create Page"
+      description: "Creates a new page in a site."
+      x-mint:
+        metadata:
+          title: "Create Page"
+      security:
+        - Authentication: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatePageV6RequestBodyDto"
+      responses:
+        "201":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreatePageV6ResponseBodyDto"
+        "400":
+          $ref: "#/components/responses/SiteIdBadRequestError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "409":
+          $ref: "#/components/responses/PathnameConflictError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
+      tags:
+        - Page
+  "/v6/pages/{pageIdOrPathname}":
+    get:
+      operationId: PageController_getOne_v1
+      summary: "Get Page"
+      description: "Returns a page by its ID or pathname."
+      security:
+        - Authentication: []
+      parameters:
+        - name: pageIdOrPathname
+          required: true
+          in: path
+          description: "The page ID or pathname for the page you are requesting."
+          schema:
+            type: string
+        - name: siteId
+          required: false
+          in: query
+          description: "The site ID required when using a pathname instead of a page ID."
+          schema:
+            format: uuid
+            type: string
+        - name: versionRef
+          required: false
+          in: query
+          description: |
+            The version reference to retrieve the page from. Defaults to `ref:live` if not provided.
+
+            Supported formats:
+            - `ref:live` - Live/published version
+            - `ref:draft` - Draft/working version
+          schema:
+            type: string
+            pattern: ^ref:(live|draft)$
+            enum:
+              - ref:live
+              - ref:draft
+            default: ref:live
+            examples:
+              live:
+                value: ref:live
+                summary: Live version
+              draft:
+                value: ref:draft
+                summary: Draft version
+          example: ref:live
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetPageV6ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
+      tags:
+        - Page
+  "/v6/pages/{pageId}":
+    patch:
+      operationId: PageController_update_v1
+      summary: "Update Page"
+      description: "Updates an existing page."
+      security:
+        - Authentication: []
+      parameters:
+        - name: pageId
+          required: true
+          in: path
+          description: "The page ID for the page you are updating."
+          schema:
+            format: uuid
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdatePageV6RequestBodyDto"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdatePageV6ResponseBodyDto"
+        "400":
+          $ref: "#/components/responses/PathnameBadRequestError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "409":
+          $ref: "#/components/responses/PathnameConflictError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
+      tags:
+        - Page
+    delete:
+      operationId: PageController_delete_v1
+      summary: "Delete Page"
+      description: "Deletes a page."
+      security:
+        - Authentication: []
+      parameters:
+        - name: pageId
+          required: true
+          in: path
+          description: "The page ID for the page you are deleting."
+          schema:
+            format: uuid
+            type: string
+      responses:
+        "200":
+          description: "The response that indicates success when the page is deleted."
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
+      tags:
+        - Page
+  "/v2/routes":
+    get:
+      operationId: RouteController_list_v2
+      summary: "List Routes"
+      description: "Returns a list of routes for a site."
+      security:
+        - Authentication: []
+      parameters:
+        - name: siteId
+          required: true
+          in: query
+          description: "The site ID to list routes from."
+          schema:
+            format: uuid
+            type: string
+        - name: pathname
+          required: false
+          in: query
+          description: "The pathname to filter routes by."
+          schema:
+            example: /furniture
+            type: string
+        - name: limit
+          required: false
+          in: query
+          description: "The maximum number of routes to return."
+          schema:
+            minimum: 1
+            maximum: 100
+            default: 20
+            type: number
+        - name: after
+          required: false
+          in: query
+          description: "The pagination cursor. This is used to indicate what ID to list from."
+          schema:
+            format: uuid
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListRouteV2ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
+      tags:
+        - Route
+    post:
+      operationId: RouteController_create_v2
+      summary: "Create Route"
+      description: "Creates a new route for a site."
+      security:
+        - Authentication: []
+      parameters:
+        - name: skipValidation
+          required: false
+          in: query
+          description: "The flag that determines whether to skip route validation. Useful when an external system has a different way of validating routes than Makeswift."
+          schema:
+            enum:
+              - "true"
+              - "false"
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateRouteV2RequestBodyDto"
+      responses:
+        "201":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateRouteV2ResponseBodyDto"
+        "400":
+          $ref: "#/components/responses/SiteIdBadRequestError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "409":
+          $ref: "#/components/responses/PathnameConflictError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
+      tags:
+        - Route
+  "/v2/routes/{routeIdOrPathname}":
+    get:
+      operationId: RouteController_get_v2
+      summary: "Get Route"
+      description: "Returns a route by its ID or pathname."
+      security:
+        - Authentication: []
+      parameters:
+        - name: routeIdOrPathname
+          required: true
+          in: path
+          description: "The route ID or pathname for the route you are requesting."
+          schema:
+            type: string
+        - name: siteId
+          required: false
+          in: query
+          description: "The site ID required when using a pathname instead of a route ID."
+          schema:
+            format: uuid
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadRouteV2ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
+      tags:
+        - Route
+  "/v2/routes/{routeId}":
+    patch:
+      operationId: RouteController_update_v2
+      summary: "Update Route"
+      description: "Updates an existing route."
+      security:
+        - Authentication: []
+      parameters:
+        - name: routeId
+          required: true
+          in: path
+          description: "The route ID for the route you are updating."
+          schema:
+            format: uuid
+            type: string
+        - name: skipValidation
+          required: false
+          in: query
+          description: "The flag that determines whether to skip route validation. Useful when an external system has a different way of validating routes."
+          schema:
+            enum:
+              - "true"
+              - "false"
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateRouteV2RequestBodyDto"
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdateRouteV2ResponseBodyDto"
+        "400":
+          $ref: "#/components/responses/PathnameBadRequestError"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "409":
+          $ref: "#/components/responses/PathnameConflictError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
+      tags:
+        - Route
+    delete:
+      operationId: RouteController_delete_v2
+      summary: "Delete Route"
+      description: "Deletes a route."
+      security:
+        - Authentication: []
+      parameters:
+        - name: routeId
+          required: true
+          in: path
+          description: "The route ID for the route you are deleting."
+          schema:
+            format: uuid
+            type: string
+      responses:
+        "200":
+          description: ""
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
+      tags:
+        - Route
+info:
+  title: Hearth Furniture API
+  description: Documentation for the Hearth Furniture Company public REST API.
+  version: "1.0"
+  contact: {}
+tags:
+  - name: Site
+    description: ""
+  - name: Page
+    description: ""
+  - name: Locale
+    description: ""
+  - name: Route
+    description: ""
+servers:
+  - url: "https://8511e6e5e351.ngrok-free.app"
+    description: "Local development server with ngrok"
+  - url: "http://localhost:8020"
+    description: "Local development server"
+components:
+  securitySchemes:
+    Authentication:
+      type: http
+      scheme: bearer
+      description: |
+        The App API key.
+
+        (e.g. sk_eczMHVBY9fV6GYFhvs53qcnxq7yptlXL3ABKOZtn6dQ)
+
+  responses:
+    UnauthorizedError:
+      description: Access token is missing or invalid
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: "unauthorized"
+                  message:
+                    type: string
+                    example: "Unauthorized"
+          example:
+            error:
+              code: "unauthorized"
+              message: "Unauthorized"
+    RateLimitError:
+      description: Rate limit exceeded
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: "rate_limited"
+                  message:
+                    type: string
+                    example: "The rate limit of 100 requests per second was exceeded. Make sure to throttle your usage to prevent hitting this error case."
+          example:
+            error:
+              code: "rate_limited"
+              message: "The rate limit of 100 requests per second exceeded. Make sure to throttle your usage to prevent hitting this error case."
+    LocaleConflictError:
+      description: Locale conflict
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: "conflict"
+                  message:
+                    type: string
+                    example: "A locale with this locale code already exists."
+          example:
+            error:
+              code: "conflict"
+              message: "A locale with this locale code already exists."
+    PathnameConflictError:
+      description: Pathname conflict
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: "conflict"
+                  message:
+                    type: string
+                    example: "A page or route with this pathname already exists."
+          example:
+            error:
+              code: "conflict"
+              message: "A page or route with this pathname already exists."
+    SiteIdBadRequestError:
+      description: Missing siteId field
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: "bad_request"
+                  message:
+                    type: string
+                    example: "The required field 'siteId' is missing."
+          example:
+            error:
+              code: "bad_request"
+              message: "The required field 'siteId' is missing."
+    LocaleBadRequestError:
+      description: Missing locale field
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: "bad_request"
+                  message:
+                    type: string
+                    example: "The required field 'locale' is missing."
+          example:
+            error:
+              code: "bad_request"
+              message: "The required field 'locale' is missing."
+    NameBadRequestError:
+      description: Missing name field
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: "bad_request"
+                  message:
+                    type: string
+                    example: "The required field 'name' is missing."
+          example:
+            error:
+              code: "bad_request"
+              message: "The required field 'name' is missing."
+    PathnameBadRequestError:
+      description: Missing pathname field
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: "bad_request"
+                  message:
+                    type: string
+                    example: "The required field 'pathname' is missing."
+          example:
+            error:
+              code: "bad_request"
+              message: "The required field 'pathname' is missing."
+    WorkspaceIdBadRequestError:
+      description: Missing workspaceId field
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: "bad_request"
+                  message:
+                    type: string
+                    example: "The required field 'workspaceId' is missing."
+          example:
+            error:
+              code: "bad_request"
+              message: "The required field 'workspaceId' is missing."
+
+  schemas:
+    CreateLocaleV2RequestBodyDto:
+      type: object
+      properties:
+        siteId:
+          type: string
+          format: uuid
+          description: "The site ID to create the locale for."
+        locale:
+          type: string
+          description: "The locale code."
+          example: es-MX
+        domain:
+          type: string
+          format: uri
+          description: "The domain URL for domain-based localization. This URL must include the protocol."
+          example: "https://hearthfurniture.com.mx"
+      required:
+        - siteId
+        - locale
+    CreateLocaleV2ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: "The ID of the created locale."
+            locale:
+              type: string
+              description: "The locale code for the created locale."
+              example: es-MX
+            domain:
+              type: string
+              nullable: true
+              format: uri
+              description: "The domain URL for domain-based localization."
+              example: "https://hearthfurniture.com.mx"
+            isDefault:
+              type: boolean
+              description: "The flag that indicates whether this locale is the default locale for the site."
+    UpdateLocaleV2RequestBodyDto:
+      type: object
+      properties:
+        locale:
+          type: string
+          description: "The locale code for the locale you are updating."
+          example: es-MX
+        domain:
+          type: string
+          format: uri
+          description: "The domain URL for domain-based localization. This URL must include the protocol."
+          example: "https://hearthfurniture.com.mx"
+    UpdateLocaleV2ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: "The ID of the updated locale."
+            locale:
+              type: string
+              description: "The locale code for the locale you are getting."
+              example: es-MX
+            domain:
+              type: string
+              nullable: true
+              format: uri
+              description: "The domain URL for domain-based localization."
+              example: "https://hearthfurniture.com.mx"
+            isDefault:
+              type: boolean
+              description: "The flag that indicates whether this locale is the default locale for the site."
+    ReadLocaleV2ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: "The ID of the locale you are getting."
+            locale:
+              type: string
+              description: "The locale code."
+              example: es-MX
+            domain:
+              type: string
+              nullable: true
+              format: uri
+              description: "The domain URL for domain-based localization."
+              example: "https://hearthfurniture.com.mx"
+            isDefault:
+              type: boolean
+              description: "The flag that indicates whether this locale is the default locale for the site."
+    ListLocaleV2ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+                description: "The ID of the locale you are getting."
+              locale:
+                type: string
+                description: "The locale code."
+                example: es-MX
+              domain:
+                type: string
+                nullable: true
+                format: uri
+                description: "The domain URL for domain-based localization."
+                example: "https://hearthfurniture.com.mx"
+              isDefault:
+                type: boolean
+                description: "The flag that indicates whether this locale is the default locale for the site."
+        hasMore:
+          type: boolean
+          description: "The flag that indicates whether there are more locales available."
+    CreateSiteV2RequestBodyDto:
+      type: object
+      properties:
+        workspaceId:
+          type: string
+          description: "The ID of the workspace that contains this site."
+          format: uuid
+        name:
+          type: string
+          description: "The site name."
+          example: Hearth Furniture Company
+        hostUrl:
+          type: string
+          format: uri
+          description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
+          example: "https://hearthfurniture.com"
+        defaultLocale:
+          type: string
+          description: "The primary locale of this site."
+          example: en-US
+          default: en-US
+          x-mint:
+            hideInExample: true
+      required:
+        - name
+        - workspaceId
+    CreateSiteV2ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: "The ID of the created site."
+            name:
+              type: string
+              description: "The site name."
+              example: Hearth Furniture Company
+            hostUrl:
+              type: string
+              nullable: true
+              format: uri
+              description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
+              example: "https://hearthfurniture.com"
+            apiKey:
+              type: string
+              description: "The publishable API key that a host can use to get page and component data for rendering your site."
+              format: uuid
+            defaultLocale:
+              type: string
+              description: "The primary locale of this site."
+              example: en-US
+    ReadSiteV1ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: "The ID of the site you are getting."
+            name:
+              type: string
+              description: "The site name."
+              example: Hearth Furniture Company
+            hostUrl:
+              type: string
+              nullable: true
+              format: uri
+              description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
+              example: "https://hearthfurniture.com"
+            apiKey:
+              type: string
+              description: "The publishable API key that a host can use to get page and component data for rendering your site."
+              format: uuid
+            defaultLocale:
+              type: string
+              description: "The primary locale of this site."
+              example: en-US
+    UpdateSiteV1RequestBodyDto:
+      type: object
+      properties:
+        name:
+          type: string
+          description: "The site name."
+          example: Hearth Furniture Company
+        hostUrl:
+          type: string
+          format: uri
+          description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
+          example: "https://hearthfurniture.com"
+    UpdateSiteV1ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: "The ID of the site you are updating."
+            name:
+              type: string
+              description: "The site name."
+              example: Hearth Furniture Company
+            hostUrl:
+              type: string
+              nullable: true
+              format: uri
+              description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
+              example: "https://hearthfurniture.com"
+            apiKey:
+              type: string
+              description: "The publishable API key that a host can use to get page and component data for rendering your site."
+              format: uuid
+    ListSiteV2ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+                description: "The ID of the site you are listing."
+              name:
+                type: string
+                description: "The site name."
+                example: Hearth Furniture Company
+              hostUrl:
+                type: string
+                nullable: true
+                format: uri
+                description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
+                example: "https://hearthfurniture.com"
+              apiKey:
+                type: string
+                description: "The publishable API key that a host can use to get page and component data for rendering your site."
+                format: uuid
+              defaultLocale:
+                type: string
+                description: "The primary locale of this site."
+                example: en-US
+        hasMore:
+          description: "The flag that indicates whether there are more sites available."
+          type: boolean
+    DuplicateSiteV1RequestBodyDto:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: "The name for the duplicated site."
+          example: Hearth Furniture Duplicate
+    DuplicateSiteV1ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: "The ID of the duplicated site."
+            name:
+              type: string
+              description: "The site name."
+              example: Hearth Furniture Duplicate
+            hostUrl:
+              type: string
+              nullable: true
+              format: uri
+              description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
+              example: "https://hearthfurniture.com"
+            apiKey:
+              type: string
+              description: "The publishable API key that a host can use to get page and component data for rendering your site."
+              format: uuid
+            defaultLocale:
+              type: string
+              description: "The primary locale of this site."
+              example: en-US
+      description: "Returns the newly created duplicated site."
+    CreatePageV6RequestBodyDto:
+      type: object
+      properties:
+        siteId:
+          type: string
+          format: uuid
+          description: "The site ID to create the page for."
+        pathname:
+          type: string
+          description: "The page pathname."
+        name:
+          type: string
+          description: "The page name."
+      required:
+        - siteId
+        - pathname
+        - name
+    PageV6Dto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: "The ID of the page."
+          format: uuid
+        pathname:
+          type: string
+          description: "The page pathname."
+          example: furniture
+        canonicalUrl:
+          type: string
+          nullable: true
+          description: "The canonical URL of the page."
+        title:
+          type: string
+          nullable: true
+          description: "The page title."
+        description:
+          type: string
+          nullable: true
+          description: "The page description."
+        socialImageUrl:
+          type: string
+          nullable: true
+          description: "The social image URL of the page."
+        sitemapPriority:
+          type: number
+          nullable: true
+          minimum: 1
+          maximum: 1
+          description: "The sitemap priority."
+        sitemapFrequency:
+          type: string
+          nullable: true
+          enum:
+            - always
+            - hourly
+            - daily
+            - weekly
+            - monthly
+            - yearly
+            - never
+          description: "The sitemap update frequency."
+        createdAt:
+          type: string
+          format: date-time
+          nullable: true
+          description: "The page creation date and time."
+        updatedAt:
+          type: string
+          format: date-time
+          nullable: true
+          description: "The page last update date and time."
+        publishedAt:
+          type: string
+          format: date-time
+          nullable: true
+          description: "The page publication date and time."
+        isOnline:
+          type: boolean
+          description: "The flag that indicates whether the page is online."
+        excludedFromSearchEngines:
+          type: boolean
+          nullable: true
+          description: "The flag that indicates whether the page is excluded from search."
+        locale:
+          type: string
+          description: "The page locale. This defaults to the default locale of the parent site."
+        localizations:
+          type: array
+          description: "The localizations of the page."
+          items:
+            type: object
+            properties:
+              locale:
+                type: string
+                description: "The locale of the localization."
+              pathname:
+                type: string
+                description: "The pathname of the localization."
+              id:
+                type: string
+                format: uuid
+                description: "The ID of the localization."
+    CreatePageV6ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          $ref: "#/components/schemas/PageV6Dto"
+    UpdatePageV6RequestBodyDto:
+      type: object
+      properties:
+        pathname:
+          type: string
+          description: "The page pathname."
+        name:
+          type: string
+          description: "The page name."
+        isOnline:
+          type: boolean
+          description: "The flag that indicates whether the page is online."
+    UpdatePageV6ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          $ref: "#/components/schemas/PageV6Dto"
+    GetPageV6ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          $ref: "#/components/schemas/PageV6Dto"
+    ListPagesV6ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/PageV6Dto"
+        hasMore:
+          type: boolean
+          description: "The flag that indicates whether there are more pages available."
+    CreateRouteV2RequestBodyDto:
+      type: object
+      properties:
+        siteId:
+          type: string
+          format: uuid
+          description: "The site ID to create the route for."
+        pathname:
+          type: string
+          description: "The route pathname."
+          example: /furniture
+        localizations:
+          default: []
+          type: array
+          items:
+            type: object
+            properties:
+              locale:
+                type: string
+                description: "The locale code."
+                example: es-MX
+              pathname:
+                type: string
+                description: "The route pathname."
+                example: /furniture
+            required:
+              - locale
+              - pathname
+            description: "The localization of a route."
+          description: "The localizations for the route."
+      required:
+        - siteId
+        - pathname
+      description: "The request body for creating a new route."
+    CreateRouteV2ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: "The ID of the created route."
+            pathname:
+              type: string
+              description: "The route pathname."
+              example: /furniture
+            localizations:
+              type: array
+              items:
+                type: object
+                properties:
+                  locale:
+                    type: string
+                    description: "The locale code."
+                    example: es-MX
+                  pathname:
+                    type: string
+                    description: "The route pathname."
+                    example: /furniture
+                description: "The localization of a route."
+              description: "The localizations for the route."
+          description: "The route with its localizations."
+    ReadRouteV2ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: "The ID of the route you are getting."
+            pathname:
+              type: string
+              description: "The route pathname."
+              example: /furniture
+            localizations:
+              type: array
+              items:
+                type: object
+                properties:
+                  locale:
+                    type: string
+                    description: "The locale code."
+                    example: es-MX
+                  pathname:
+                    type: string
+                    description: "The route pathname."
+                    example: /furniture
+                  id:
+                    type: string
+                    format: uuid
+                    description: "The ID of the localization."
+                description: "The localization of a route."
+              description: "The localizations for the route."
+          description: "The route with its localizations."
+    UpdateRouteV2RequestBodyDto:
+      type: object
+      properties:
+        pathname:
+          type: string
+          description: "The route pathname."
+          example: /furniture
+        localizations:
+          type: array
+          items:
+            type: object
+            properties:
+              locale:
+                type: string
+                description: "The locale code."
+                example: es-MX
+              pathname:
+                type: string
+                description: "The route pathname."
+                example: /furniture
+            required:
+              - locale
+              - pathname
+            description: "The localization of a route."
+          description: "The localizations for the route."
+      description: "The request body for updating an existing route."
+    UpdateRouteV2ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            pathname:
+              type: string
+              description: "The route pathname."
+              example: /furniture
+            localizations:
+              type: array
+              items:
+                type: object
+                properties:
+                  locale:
+                    type: string
+                    description: "The locale code."
+                    example: es-MX
+                  pathname:
+                    type: string
+                    description: "The route pathname."
+                    example: /furniture
+                description: "The localization of a route."
+              description: "The localizations for the route."
+          description: "The route with its localizations."
+    ListRouteV2ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+                description: "The ID of the route you are listing."
+              pathname:
+                type: string
+                description: "The route pathname."
+                example: /furniture
+              localizations:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    locale:
+                      type: string
+                      description: "The locale code."
+                      example: es-MX
+                    pathname:
+                      type: string
+                      description: "The route pathname."
+                      example: /furniture
+                    id:
+                      type: string
+                      format: uuid
+                      description: "The ID of the localization."
+                  description: "The localization of a route."
+                description: "The localizations for the route."
+            description: "The route with its localizations."
+        hasMore:
+          type: boolean
+          description: "The flag that indicates whether there are more routes available."
