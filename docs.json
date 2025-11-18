@@ -708,6 +708,11 @@
       "source": "/developer/guides/how-to/setting-cookies",
       "destination": "/developer/guides/how-to/set-cookies",
       "permanent": true
+    },
+    {
+      "source": "/developer/guides/how-to/built-in-components",
+      "destination": "/developer/guides/components/card",
+      "permanent": true
     }
   ]
 }
