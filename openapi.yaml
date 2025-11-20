@@ -831,7 +831,7 @@ tags:
   - name: Route
     description: ""
 servers:
-  - url: "https://8511e6e5e351.ngrok-free.app"
+  - url: "https://e79ae1ce7d23.ngrok-free.app"
     description: "Local development server with ngrok"
   - url: "http://localhost:8020"
     description: "Local development server"
@@ -853,19 +853,19 @@ components:
           schema:
             type: object
             properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    example: "unauthorized"
-                  message:
-                    type: string
-                    example: "Unauthorized"
+              object:
+                type: string
+                example: "error"
+              code:
+                type: string
+                example: "unauthorized"
+              message:
+                type: string
+                example: "Unauthorized"
           example:
-            error:
-              code: "unauthorized"
-              message: "Unauthorized"
+            object: "error"
+            code: "unauthorized"
+            message: "Unauthorized"
     RateLimitError:
       description: Rate limit exceeded
       content:
@@ -873,19 +873,19 @@ components:
           schema:
             type: object
             properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    example: "rate_limited"
-                  message:
-                    type: string
-                    example: "The rate limit of 100 requests per second was exceeded. Make sure to throttle your usage to prevent hitting this error case."
+              object:
+                type: string
+                example: "error"
+              code:
+                type: string
+                example: "rate_limited"
+              message:
+                type: string
+                example: "The rate limit of 100 requests per second was exceeded. Make sure to throttle your usage to prevent hitting this error case."
           example:
-            error:
-              code: "rate_limited"
-              message: "The rate limit of 100 requests per second exceeded. Make sure to throttle your usage to prevent hitting this error case."
+            object: "error"
+            code: "rate_limited"
+            message: "The rate limit of 100 requests per second exceeded. Make sure to throttle your usage to prevent hitting this error case."
     LocaleConflictError:
       description: Locale conflict
       content:
@@ -893,19 +893,19 @@ components:
           schema:
             type: object
             properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    example: "conflict"
-                  message:
-                    type: string
-                    example: "A locale with this locale code already exists."
+              object:
+                type: string
+                example: "error"
+              code:
+                type: string
+                example: "conflict"
+              message:
+                type: string
+                example: "A locale with this locale code already exists."
           example:
-            error:
-              code: "conflict"
-              message: "A locale with this locale code already exists."
+            object: "error"
+            code: "conflict"
+            message: "A locale with this locale code already exists."
     PathnameConflictError:
       description: Pathname conflict
       content:
@@ -913,19 +913,19 @@ components:
           schema:
             type: object
             properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    example: "conflict"
-                  message:
-                    type: string
-                    example: "A page or route with this pathname already exists."
+              object:
+                type: string
+                example: "error"
+              code:
+                type: string
+                example: "conflict"
+              message:
+                type: string
+                example: "A page or route with this pathname already exists."
           example:
-            error:
-              code: "conflict"
-              message: "A page or route with this pathname already exists."
+            object: "error"
+            code: "conflict"
+            message: "A page or route with this pathname already exists."
     SiteIdBadRequestError:
       description: Missing siteId field
       content:
@@ -933,19 +933,19 @@ components:
           schema:
             type: object
             properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    example: "bad_request"
-                  message:
-                    type: string
-                    example: "The required field 'siteId' is missing."
+              object:
+                type: string
+                example: "error"
+              code:
+                type: string
+                example: "bad_request"
+              message:
+                type: string
+                example: "The required field 'siteId' is missing."
           example:
-            error:
-              code: "bad_request"
-              message: "The required field 'siteId' is missing."
+            object: "error"
+            code: "bad_request"
+            message: "The required field 'siteId' is missing."
     LocaleBadRequestError:
       description: Missing locale field
       content:
@@ -953,19 +953,19 @@ components:
           schema:
             type: object
             properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    example: "bad_request"
-                  message:
-                    type: string
-                    example: "The required field 'locale' is missing."
+              object:
+                type: string
+                example: "error"
+              code:
+                type: string
+                example: "bad_request"
+              message:
+                type: string
+                example: "The required field 'locale' is missing."
           example:
-            error:
-              code: "bad_request"
-              message: "The required field 'locale' is missing."
+            object: "error"
+            code: "bad_request"
+            message: "The required field 'locale' is missing."
     NameBadRequestError:
       description: Missing name field
       content:
@@ -973,19 +973,19 @@ components:
           schema:
             type: object
             properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    example: "bad_request"
-                  message:
-                    type: string
-                    example: "The required field 'name' is missing."
+              object:
+                type: string
+                example: "error"
+              code:
+                type: string
+                example: "bad_request"
+              message:
+                type: string
+                example: "The required field 'name' is missing."
           example:
-            error:
-              code: "bad_request"
-              message: "The required field 'name' is missing."
+            object: "error"
+            code: "bad_request"
+            message: "The required field 'name' is missing."
     PathnameBadRequestError:
       description: Missing pathname field
       content:
@@ -993,19 +993,19 @@ components:
           schema:
             type: object
             properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    example: "bad_request"
-                  message:
-                    type: string
-                    example: "The required field 'pathname' is missing."
+              object:
+                type: string
+                example: "error"
+              code:
+                type: string
+                example: "bad_request"
+              message:
+                type: string
+                example: "The required field 'pathname' is missing."
           example:
-            error:
-              code: "bad_request"
-              message: "The required field 'pathname' is missing."
+            object: "error"
+            code: "bad_request"
+            message: "The required field 'pathname' is missing."
     WorkspaceIdBadRequestError:
       description: Missing workspaceId field
       content:
@@ -1013,19 +1013,19 @@ components:
           schema:
             type: object
             properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    example: "bad_request"
-                  message:
-                    type: string
-                    example: "The required field 'workspaceId' is missing."
+              object:
+                type: string
+                example: "error"
+              code:
+                type: string
+                example: "bad_request"
+              message:
+                type: string
+                example: "The required field 'workspaceId' is missing."
           example:
-            error:
-              code: "bad_request"
-              message: "The required field 'workspaceId' is missing."
+            object: "error"
+            code: "bad_request"
+            message: "The required field 'workspaceId' is missing."
 
   schemas:
     CreateLocaleV2RequestBodyDto:
@@ -1050,26 +1050,26 @@ components:
     CreateLocaleV2ResponseBodyDto:
       type: object
       properties:
-        data:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              description: "The ID of the created locale."
-            locale:
-              type: string
-              description: "The locale code for the created locale."
-              example: es-MX
-            domain:
-              type: string
-              nullable: true
-              format: uri
-              description: "The domain URL for domain-based localization."
-              example: "https://hearthfurniture.com.mx"
-            isDefault:
-              type: boolean
-              description: "The flag that indicates whether this locale is the default locale for the site."
+        object:
+          type: string
+          example: "locale"
+        id:
+          type: string
+          format: uuid
+          description: "The ID of the created locale."
+        locale:
+          type: string
+          description: "The locale code for the created locale."
+          example: es-MX
+        domain:
+          type: string
+          nullable: true
+          format: uri
+          description: "The domain URL for domain-based localization."
+          example: "https://hearthfurniture.com.mx"
+        isDefault:
+          type: boolean
+          description: "The flag that indicates whether this locale is the default locale for the site."
     UpdateLocaleV2RequestBodyDto:
       type: object
       properties:
@@ -1085,57 +1085,63 @@ components:
     UpdateLocaleV2ResponseBodyDto:
       type: object
       properties:
-        data:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              description: "The ID of the updated locale."
-            locale:
-              type: string
-              description: "The locale code for the locale you are getting."
-              example: es-MX
-            domain:
-              type: string
-              nullable: true
-              format: uri
-              description: "The domain URL for domain-based localization."
-              example: "https://hearthfurniture.com.mx"
-            isDefault:
-              type: boolean
-              description: "The flag that indicates whether this locale is the default locale for the site."
+        object:
+          type: string
+          example: "locale"
+        id:
+          type: string
+          format: uuid
+          description: "The ID of the updated locale."
+        locale:
+          type: string
+          description: "The locale code for the locale you are getting."
+          example: es-MX
+        domain:
+          type: string
+          nullable: true
+          format: uri
+          description: "The domain URL for domain-based localization."
+          example: "https://hearthfurniture.com.mx"
+        isDefault:
+          type: boolean
+          description: "The flag that indicates whether this locale is the default locale for the site."
     ReadLocaleV2ResponseBodyDto:
       type: object
       properties:
-        data:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              description: "The ID of the locale you are getting."
-            locale:
-              type: string
-              description: "The locale code."
-              example: es-MX
-            domain:
-              type: string
-              nullable: true
-              format: uri
-              description: "The domain URL for domain-based localization."
-              example: "https://hearthfurniture.com.mx"
-            isDefault:
-              type: boolean
-              description: "The flag that indicates whether this locale is the default locale for the site."
+        object:
+          type: string
+          example: "locale"
+        id:
+          type: string
+          format: uuid
+          description: "The ID of the locale you are getting."
+        locale:
+          type: string
+          description: "The locale code."
+          example: es-MX
+        domain:
+          type: string
+          nullable: true
+          format: uri
+          description: "The domain URL for domain-based localization."
+          example: "https://hearthfurniture.com.mx"
+        isDefault:
+          type: boolean
+          description: "The flag that indicates whether this locale is the default locale for the site."
     ListLocaleV2ResponseBodyDto:
       type: object
       properties:
+        object:
+          type: string
+          example: "list"
         data:
           type: array
           items:
             type: object
             properties:
+              object:
+                type: string
+                example: "locale"
               id:
                 type: string
                 format: uuid
@@ -1185,59 +1191,59 @@ components:
     CreateSiteV2ResponseBodyDto:
       type: object
       properties:
-        data:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              description: "The ID of the created site."
-            name:
-              type: string
-              description: "The site name."
-              example: Hearth Furniture Company
-            hostOrigin:
-              type: string
-              nullable: true
-              format: uri
-              description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
-              example: "https://hearthfurniture.com"
-            apiKey:
-              type: string
-              description: "The publishable API key that a host can use to get page and component data for rendering your site."
-              format: uuid
-            defaultLocale:
-              type: string
-              description: "The primary locale of this site."
-              example: en-US
+        object:
+          type: string
+          example: "site"
+        id:
+          type: string
+          format: uuid
+          description: "The ID of the created site."
+        name:
+          type: string
+          description: "The site name."
+          example: Hearth Furniture Company
+        hostOrigin:
+          type: string
+          nullable: true
+          format: uri
+          description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
+          example: "https://hearthfurniture.com"
+        apiKey:
+          type: string
+          description: "The publishable API key that a host can use to get page and component data for rendering your site."
+          format: uuid
+        defaultLocale:
+          type: string
+          description: "The primary locale of this site."
+          example: en-US
     ReadSiteV1ResponseBodyDto:
       type: object
       properties:
-        data:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              description: "The ID of the site you are getting."
-            name:
-              type: string
-              description: "The site name."
-              example: Hearth Furniture Company
-            hostOrigin:
-              type: string
-              nullable: true
-              format: uri
-              description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
-              example: "https://hearthfurniture.com"
-            apiKey:
-              type: string
-              description: "The publishable API key that a host can use to get page and component data for rendering your site."
-              format: uuid
-            defaultLocale:
-              type: string
-              description: "The primary locale of this site."
-              example: en-US
+        object:
+          type: string
+          example: "site"
+        id:
+          type: string
+          format: uuid
+          description: "The ID of the site you are getting."
+        name:
+          type: string
+          description: "The site name."
+          example: Hearth Furniture Company
+        hostOrigin:
+          type: string
+          nullable: true
+          format: uri
+          description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
+          example: "https://hearthfurniture.com"
+        apiKey:
+          type: string
+          description: "The publishable API key that a host can use to get page and component data for rendering your site."
+          format: uuid
+        defaultLocale:
+          type: string
+          description: "The primary locale of this site."
+          example: en-US
     UpdateSiteV1RequestBodyDto:
       type: object
       properties:
@@ -1253,35 +1259,41 @@ components:
     UpdateSiteV1ResponseBodyDto:
       type: object
       properties:
-        data:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              description: "The ID of the site you are updating."
-            name:
-              type: string
-              description: "The site name."
-              example: Hearth Furniture Company
-            hostOrigin:
-              type: string
-              nullable: true
-              format: uri
-              description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
-              example: "https://hearthfurniture.com"
-            apiKey:
-              type: string
-              description: "The publishable API key that a host can use to get page and component data for rendering your site."
-              format: uuid
+        object:
+          type: string
+          example: "site"
+        id:
+          type: string
+          format: uuid
+          description: "The ID of the site you are updating."
+        name:
+          type: string
+          description: "The site name."
+          example: Hearth Furniture Company
+        hostOrigin:
+          type: string
+          nullable: true
+          format: uri
+          description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
+          example: "https://hearthfurniture.com"
+        apiKey:
+          type: string
+          description: "The publishable API key that a host can use to get page and component data for rendering your site."
+          format: uuid
     ListSiteV2ResponseBodyDto:
       type: object
       properties:
+        object:
+          type: string
+          example: "list"
         data:
           type: array
           items:
             type: object
             properties:
+              object:
+                type: string
+                example: "site"
               id:
                 type: string
                 format: uuid
@@ -1319,31 +1331,31 @@ components:
     DuplicateSiteV1ResponseBodyDto:
       type: object
       properties:
-        data:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              description: "The ID of the duplicated site."
-            name:
-              type: string
-              description: "The site name."
-              example: Hearth Furniture Duplicate
-            hostOrigin:
-              type: string
-              nullable: true
-              format: uri
-              description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
-              example: "https://hearthfurniture.com"
-            apiKey:
-              type: string
-              description: "The publishable API key that a host can use to get page and component data for rendering your site."
-              format: uuid
-            defaultLocale:
-              type: string
-              description: "The primary locale of this site."
-              example: en-US
+        object:
+          type: string
+          example: "site"
+        id:
+          type: string
+          format: uuid
+          description: "The ID of the duplicated site."
+        name:
+          type: string
+          description: "The site name."
+          example: Hearth Furniture Duplicate
+        hostOrigin:
+          type: string
+          nullable: true
+          format: uri
+          description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
+          example: "https://hearthfurniture.com"
+        apiKey:
+          type: string
+          description: "The publishable API key that a host can use to get page and component data for rendering your site."
+          format: uuid
+        defaultLocale:
+          type: string
+          description: "The primary locale of this site."
+          example: en-US
       description: "Returns the newly created duplicated site."
     CreatePageV6RequestBodyDto:
       type: object
@@ -1449,10 +1461,13 @@ components:
                 format: uuid
                 description: "The ID of the localization."
     CreatePageV6ResponseBodyDto:
-      type: object
-      properties:
-        data:
-          $ref: "#/components/schemas/PageV6Dto"
+      allOf:
+        - type: object
+          properties:
+            object:
+              type: string
+              example: "page"
+        - $ref: "#/components/schemas/PageV6Dto"
     UpdatePageV6RequestBodyDto:
       type: object
       properties:
@@ -1466,22 +1481,37 @@ components:
           type: boolean
           description: "The flag that indicates whether the page is online."
     UpdatePageV6ResponseBodyDto:
-      type: object
-      properties:
-        data:
-          $ref: "#/components/schemas/PageV6Dto"
+      allOf:
+        - type: object
+          properties:
+            object:
+              type: string
+              example: "page"
+        - $ref: "#/components/schemas/PageV6Dto"
     GetPageV6ResponseBodyDto:
-      type: object
-      properties:
-        data:
-          $ref: "#/components/schemas/PageV6Dto"
+      allOf:
+        - type: object
+          properties:
+            object:
+              type: string
+              example: "page"
+        - $ref: "#/components/schemas/PageV6Dto"
     ListPagesV6ResponseBodyDto:
       type: object
       properties:
+        object:
+          type: string
+          example: "list"
         data:
           type: array
           items:
-            $ref: "#/components/schemas/PageV6Dto"
+            allOf:
+              - type: object
+                properties:
+                  object:
+                    type: string
+                    example: "page"
+              - $ref: "#/components/schemas/PageV6Dto"
         hasMore:
           type: boolean
           description: "The flag that indicates whether there are more pages available."
@@ -1522,67 +1552,65 @@ components:
     CreateRouteV2ResponseBodyDto:
       type: object
       properties:
-        data:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              description: "The ID of the created route."
-            pathname:
-              type: string
-              description: "The route pathname."
-              example: /furniture
-            localizations:
-              type: array
-              items:
-                type: object
-                properties:
-                  locale:
-                    type: string
-                    description: "The locale code."
-                    example: es-MX
-                  pathname:
-                    type: string
-                    description: "The route pathname."
-                    example: /furniture
-                description: "The localization of a route."
-              description: "The localizations for the route."
-          description: "The route with its localizations."
+        object:
+          type: string
+          example: "route"
+        id:
+          type: string
+          format: uuid
+          description: "The ID of the created route."
+        pathname:
+          type: string
+          description: "The route pathname."
+          example: /furniture
+        localizations:
+          type: array
+          items:
+            type: object
+            properties:
+              locale:
+                type: string
+                description: "The locale code."
+                example: es-MX
+              pathname:
+                type: string
+                description: "The route pathname."
+                example: /furniture
+            description: "The localization of a route."
+          description: "The localizations for the route."
     ReadRouteV2ResponseBodyDto:
       type: object
       properties:
-        data:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              description: "The ID of the route you are getting."
-            pathname:
-              type: string
-              description: "The route pathname."
-              example: /furniture
-            localizations:
-              type: array
-              items:
-                type: object
-                properties:
-                  locale:
-                    type: string
-                    description: "The locale code."
-                    example: es-MX
-                  pathname:
-                    type: string
-                    description: "The route pathname."
-                    example: /furniture
-                  id:
-                    type: string
-                    format: uuid
-                    description: "The ID of the localization."
-                description: "The localization of a route."
-              description: "The localizations for the route."
-          description: "The route with its localizations."
+        object:
+          type: string
+          example: "route"
+        id:
+          type: string
+          format: uuid
+          description: "The ID of the route you are getting."
+        pathname:
+          type: string
+          description: "The route pathname."
+          example: /furniture
+        localizations:
+          type: array
+          items:
+            type: object
+            properties:
+              locale:
+                type: string
+                description: "The locale code."
+                example: es-MX
+              pathname:
+                type: string
+                description: "The route pathname."
+                example: /furniture
+              id:
+                type: string
+                format: uuid
+                description: "The ID of the localization."
+            description: "The localization of a route."
+          description: "The localizations for the route."
     UpdateRouteV2RequestBodyDto:
       type: object
       properties:
@@ -1612,40 +1640,45 @@ components:
     UpdateRouteV2ResponseBodyDto:
       type: object
       properties:
-        data:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-            pathname:
-              type: string
-              description: "The route pathname."
-              example: /furniture
-            localizations:
-              type: array
-              items:
-                type: object
-                properties:
-                  locale:
-                    type: string
-                    description: "The locale code."
-                    example: es-MX
-                  pathname:
-                    type: string
-                    description: "The route pathname."
-                    example: /furniture
-                description: "The localization of a route."
-              description: "The localizations for the route."
-          description: "The route with its localizations."
+        object:
+          type: string
+          example: "route"
+        id:
+          type: string
+          format: uuid
+        pathname:
+          type: string
+          description: "The route pathname."
+          example: /furniture
+        localizations:
+          type: array
+          items:
+            type: object
+            properties:
+              locale:
+                type: string
+                description: "The locale code."
+                example: es-MX
+              pathname:
+                type: string
+                description: "The route pathname."
+                example: /furniture
+            description: "The localization of a route."
+          description: "The localizations for the route."
     ListRouteV2ResponseBodyDto:
       type: object
       properties:
+        object:
+          type: string
+          example: "list"
         data:
           type: array
           items:
             type: object
             properties:
+              object:
+                type: string
+                example: "route"
               id:
                 type: string
                 format: uuid
