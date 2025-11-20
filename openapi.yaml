@@ -1037,8 +1037,14 @@ components:
           description: "The site ID to create the locale for."
         locale:
           type: string
-          description: "The locale code."
-          example: es-MX
+          description: "We support the subset of locales specified with ISO 3166 that are composed of language and optionally a region."
+          examples:
+            - en
+            - es
+            - fr-FR
+            - ar-EG
+            - ja-JP
+          example: en
         domain:
           type: string
           format: uri
@@ -1059,8 +1065,14 @@ components:
           description: "The ID of the created locale."
         locale:
           type: string
-          description: "The locale code for the created locale."
-          example: es-MX
+          description: "We support the subset of locales specified with ISO 3166 that are composed of language and optionally a region."
+          examples:
+            - en
+            - es
+            - fr-FR
+            - ar-EG
+            - ja-JP
+          example: en
         domain:
           type: string
           nullable: true
@@ -1075,8 +1087,14 @@ components:
       properties:
         locale:
           type: string
-          description: "The locale code for the locale you are updating."
-          example: es-MX
+          description: "We support the subset of locales specified with ISO 3166 that are composed of language and optionally a region."
+          examples:
+            - en
+            - es
+            - fr-FR
+            - ar-EG
+            - ja-JP
+          example: en
         domain:
           type: string
           format: uri
@@ -1094,8 +1112,14 @@ components:
           description: "The ID of the updated locale."
         locale:
           type: string
-          description: "The locale code for the locale you are getting."
-          example: es-MX
+          description: "We support the subset of locales specified with ISO 3166 that are composed of language and optionally a region."
+          examples:
+            - en
+            - es
+            - fr-FR
+            - ar-EG
+            - ja-JP
+          example: en
         domain:
           type: string
           nullable: true
@@ -1117,8 +1141,14 @@ components:
           description: "The ID of the locale you are getting."
         locale:
           type: string
-          description: "The locale code."
-          example: es-MX
+          description: "We support the subset of locales specified with ISO 3166 that are composed of language and optionally a region."
+          examples:
+            - en
+            - es
+            - fr-FR
+            - ar-EG
+            - ja-JP
+          example: en
         domain:
           type: string
           nullable: true
@@ -1148,8 +1178,14 @@ components:
                 description: "The ID of the locale you are getting."
               locale:
                 type: string
-                description: "The locale code."
-                example: es-MX
+                description: "We support the subset of locales specified with ISO 3166 that are composed of language and optionally a region."
+                examples:
+                  - en
+                  - es
+                  - fr-FR
+                  - ar-EG
+                  - ja-JP
+                example: en
               domain:
                 type: string
                 nullable: true
@@ -1534,8 +1570,14 @@ components:
             properties:
               locale:
                 type: string
-                description: "The locale code."
-                example: es-MX
+                description: "We support the subset of locales specified with ISO 3166 that are composed of language and optionally a region."
+                examples:
+                  - en
+                  - es
+                  - fr-FR
+                  - ar-EG
+                  - ja-JP
+                example: en
               pathname:
                 type: string
                 description: "The route pathname."
@@ -1570,8 +1612,14 @@ components:
             properties:
               locale:
                 type: string
-                description: "The locale code."
-                example: es-MX
+                description: "We support the subset of locales specified with ISO 3166 that are composed of language and optionally a region."
+                examples:
+                  - en
+                  - es
+                  - fr-FR
+                  - ar-EG
+                  - ja-JP
+                example: en
               pathname:
                 type: string
                 description: "The route pathname."
@@ -1599,8 +1647,14 @@ components:
             properties:
               locale:
                 type: string
-                description: "The locale code."
-                example: es-MX
+                description: "We support the subset of locales specified with ISO 3166 that are composed of language and optionally a region."
+                examples:
+                  - en
+                  - es
+                  - fr-FR
+                  - ar-EG
+                  - ja-JP
+                example: en
               pathname:
                 type: string
                 description: "The route pathname."
@@ -1625,8 +1679,14 @@ components:
             properties:
               locale:
                 type: string
-                description: "The locale code."
-                example: es-MX
+                description: "We support the subset of locales specified with ISO 3166 that are composed of language and optionally a region."
+                examples:
+                  - en
+                  - es
+                  - fr-FR
+                  - ar-EG
+                  - ja-JP
+                example: en
               pathname:
                 type: string
                 description: "The route pathname."
@@ -1657,8 +1717,14 @@ components:
             properties:
               locale:
                 type: string
-                description: "The locale code."
-                example: es-MX
+                description: "We support the subset of locales specified with ISO 3166 that are composed of language and optionally a region."
+                examples:
+                  - en
+                  - es
+                  - fr-FR
+                  - ar-EG
+                  - ja-JP
+                example: en
               pathname:
                 type: string
                 description: "The route pathname."
@@ -1694,8 +1760,14 @@ components:
                   properties:
                     locale:
                       type: string
-                      description: "The locale code."
-                      example: es-MX
+                      description: "We support the subset of locales specified with ISO 3166 that are composed of language and optionally a region."
+                      examples:
+                        - en
+                        - es
+                        - fr-FR
+                        - ar-EG
+                        - ja-JP
+                      example: en
                     pathname:
                       type: string
                       description: "The route pathname."
