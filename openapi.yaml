@@ -107,7 +107,6 @@ paths:
           $ref: "#/components/responses/RateLimitError"
       tags:
         - Locale
-  "/v2/locales/{localeId}":
     patch:
       operationId: LocaleController_update_v2
       summary: "Update Locale"
@@ -115,10 +114,16 @@ paths:
       security:
         - Authentication: []
       parameters:
-        - name: localeId
+        - name: localeIdOrCode
           required: true
           in: path
-          description: "The locale ID."
+          description: "The locale ID or locale code."
+          schema:
+            type: string
+        - name: siteId
+          required: false
+          in: query
+          description: "The site ID required when using a locale code instead of a locale ID."
           schema:
             format: uuid
             type: string
@@ -152,10 +157,16 @@ paths:
       security:
         - Authentication: []
       parameters:
-        - name: localeId
+        - name: localeIdOrCode
           required: true
           in: path
-          description: "The locale ID."
+          description: "The locale ID or locale code."
+          schema:
+            type: string
+        - name: siteId
+          required: false
+          in: query
+          description: "The site ID required when using a locale code instead of a locale ID."
           schema:
             format: uuid
             type: string
@@ -561,7 +572,6 @@ paths:
           $ref: "#/components/responses/RateLimitError"
       tags:
         - Page
-  "/v6/pages/{pageId}":
     patch:
       operationId: PageController_update_v1
       summary: "Update Page"
@@ -569,10 +579,16 @@ paths:
       security:
         - Authentication: []
       parameters:
-        - name: pageId
+        - name: pageIdOrPathname
           required: true
           in: path
-          description: "The page ID for the page you are updating."
+          description: "The page ID or pathname for the page you are updating."
+          schema:
+            type: string
+        - name: siteId
+          required: false
+          in: query
+          description: "The site ID required when using a pathname instead of a page ID."
           schema:
             format: uuid
             type: string
@@ -606,10 +622,16 @@ paths:
       security:
         - Authentication: []
       parameters:
-        - name: pageId
+        - name: pageIdOrPathname
           required: true
           in: path
-          description: "The page ID for the page you are deleting."
+          description: "The page ID or pathname for the page you are deleting."
+          schema:
+            type: string
+        - name: siteId
+          required: false
+          in: query
+          description: "The site ID required when using a pathname instead of a page ID."
           schema:
             format: uuid
             type: string
@@ -746,7 +768,6 @@ paths:
           $ref: "#/components/responses/RateLimitError"
       tags:
         - Route
-  "/v2/routes/{routeId}":
     patch:
       operationId: RouteController_update_v2
       summary: "Update Route"
@@ -754,10 +775,16 @@ paths:
       security:
         - Authentication: []
       parameters:
-        - name: routeId
+        - name: routeIdOrPathname
           required: true
           in: path
-          description: "The route ID for the route you are updating."
+          description: "The route ID or pathname for the route you are updating."
+          schema:
+            type: string
+        - name: siteId
+          required: false
+          in: query
+          description: "The site ID required when using a pathname instead of a route ID."
           schema:
             format: uuid
             type: string
@@ -800,10 +827,16 @@ paths:
       security:
         - Authentication: []
       parameters:
-        - name: routeId
+        - name: routeIdOrPathname
           required: true
           in: path
-          description: "The route ID for the route you are deleting."
+          description: "The route ID or pathname for the route you are deleting."
+          schema:
+            type: string
+        - name: siteId
+          required: false
+          in: query
+          description: "The site ID required when using a pathname instead of a route ID."
           schema:
             format: uuid
             type: string
@@ -831,7 +864,7 @@ tags:
   - name: Route
     description: ""
 servers:
-  - url: "https://e79ae1ce7d23.ngrok-free.app"
+  - url: "https://49648ee6e010.ngrok-free.app"
     description: "Local development server with ngrok"
   - url: "http://localhost:8020"
     description: "Local development server"
