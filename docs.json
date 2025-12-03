@@ -38,10 +38,7 @@
               {
                 "group": "Pages & Routes",
                 "icon": "file-code",
-                "pages": [
-                  "product/pages-tab",
-                  "product/routes"
-                ]
+                "pages": ["product/pages-tab", "product/routes"]
               },
               "product/layouts",
               "product/components",
@@ -712,6 +709,11 @@
     {
       "source": "/developer/guides/how-to/built-in-components",
       "destination": "/developer/guides/components/card",
+      "permanent": true
+    },
+    {
+      "source": "/runtime/registering-fonts",
+      "destination": "/developer/guides/how-to/add-custom-fonts#registering-fonts-with-makeswift",
       "permanent": true
     }
   ]
