@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 const ReadinessBadge = ({ type }) => {
   const validTags = ["beta", "alpha", "experimental"];
 
