@@ -864,8 +864,10 @@ tags:
   - name: Route
     description: ""
 servers:
-  - url: "https://49648ee6e010.ngrok-free.app"
+  - url: "https://29505813f8b1.ngrok-free.app"
     description: "Local development server with ngrok"
+  - url: "https://api.makeswift.com"
+    description: "Prod development server"
   - url: "http://localhost:8020"
     description: "Local development server"
 components:
