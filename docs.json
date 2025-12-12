@@ -294,7 +294,8 @@
                       "GET /v2/locales",
                       "GET /v2/locales/{localeIdOrCode}",
                       "PATCH /v2/locales/{localeIdOrCode}",
-                      "DELETE /v2/locales/{localeIdOrCode}"
+                      "DELETE /v2/locales/{localeIdOrCode}",
+                      "POST /v2/locales/{localeIdOrCode}/restore"
                     ]
                   },
                   {

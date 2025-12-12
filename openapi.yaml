@@ -179,6 +179,42 @@ paths:
           $ref: "#/components/responses/RateLimitError"
       tags:
         - Locale
+  "/v2/locales/{localeIdOrCode}/restore":
+    post:
+      operationId: LocaleController_restore_v2
+      summary: "Restore Locale"
+      description: "Restores a previously deleted locale."
+      security:
+        - Authentication: []
+      parameters:
+        - name: localeIdOrCode
+          required: true
+          in: path
+          description: "The locale ID or locale code."
+          schema:
+            type: string
+        - name: siteId
+          required: false
+          in: query
+          description: "The site ID required when using a locale code instead of a locale ID."
+          schema:
+            format: uuid
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestoreLocaleV2ResponseBodyDto"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "404":
+          $ref: "#/components/responses/LocaleNotFoundError"
+        "429":
+          $ref: "#/components/responses/RateLimitError"
+      tags:
+        - Locale
   "/v2/sites":
     post:
       operationId: SiteController_create_v2
@@ -941,6 +977,26 @@ components:
             object: "error"
             code: "conflict"
             message: "A locale with this locale code already exists."
+    LocaleNotFoundError:
+      description: Locale not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              object:
+                type: string
+                example: "error"
+              code:
+                type: string
+                example: "not_found"
+              message:
+                type: string
+                example: "The locale was not found or is not eligible for restoration."
+          example:
+            object: "error"
+            code: "not_found"
+            message: "The locale was not found or is not eligible for restoration."
     PathnameConflictError:
       description: Pathname conflict
       content:
@@ -1233,6 +1289,35 @@ components:
         hasMore:
           type: boolean
           description: "The flag that indicates whether there are more locales available."
+    RestoreLocaleV2ResponseBodyDto:
+      type: object
+      properties:
+        object:
+          type: string
+          example: "locale"
+        id:
+          type: string
+          format: uuid
+          description: "The ID of the restored locale."
+        locale:
+          type: string
+          description: "We support the subset of locales specified with ISO 3166 that are composed of language and optionally a region."
+          examples:
+            - en
+            - es
+            - fr-FR
+            - ar-EG
+            - ja-JP
+          example: en
+        domain:
+          type: string
+          nullable: true
+          format: uri
+          description: "The domain URL for domain-based localization."
+          example: "https://hearthfurniture.com.mx"
+        isDefault:
+          type: boolean
+          description: "The flag that indicates whether this locale is the default locale for the site."
     CreateSiteV2RequestBodyDto:
       type: object
       properties:
