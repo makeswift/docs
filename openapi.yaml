@@ -1364,7 +1364,7 @@ components:
           format: uri
           description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
           example: "https://hearthfurniture.com"
-        apiKey:
+        publicApiKey:
           type: string
           description: "The publishable API key that a host can use to get page and component data for rendering your site."
           format: uuid
@@ -1392,7 +1392,7 @@ components:
           format: uri
           description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
           example: "https://hearthfurniture.com"
-        apiKey:
+        publicApiKey:
           type: string
           description: "The publishable API key that a host can use to get page and component data for rendering your site."
           format: uuid
@@ -1432,7 +1432,7 @@ components:
           format: uri
           description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
           example: "https://hearthfurniture.com"
-        apiKey:
+        publicApiKey:
           type: string
           description: "The publishable API key that a host can use to get page and component data for rendering your site."
           format: uuid
@@ -1464,7 +1464,7 @@ components:
                 format: uri
                 description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
                 example: "https://hearthfurniture.com"
-              apiKey:
+              publicApiKey:
                 type: string
                 description: "The publishable API key that a host can use to get page and component data for rendering your site."
                 format: uuid
@@ -1504,7 +1504,7 @@ components:
           format: uri
           description: "The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing."
           example: "https://hearthfurniture.com"
-        apiKey:
+        publicApiKey:
           type: string
           description: "The publishable API key that a host can use to get page and component data for rendering your site."
           format: uuid
