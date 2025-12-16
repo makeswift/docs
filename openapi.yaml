@@ -485,26 +485,26 @@ paths:
           required: false
           in: query
           description: |
-            The version reference to retrieve pages from. Defaults to `ref:live` if not provided.
+            The version reference to retrieve pages from. Defaults to `ref:draft` if not provided.
 
             Supported formats:
-            - `ref:live` - Live/published version
             - `ref:draft` - Draft/working version
+            - `ref:live` - Live/published version
           schema:
             type: string
             pattern: ^ref:(live|draft)$
             enum:
-              - ref:live
               - ref:draft
-            default: ref:live
+              - ref:live
+            default: ref:draft
             examples:
-              live:
-                value: ref:live
-                summary: Live version
               draft:
                 value: ref:draft
                 summary: Draft version
-          example: ref:live
+              live:
+                value: ref:live
+                summary: Live version
+          example: ref:draft
       responses:
         "200":
           description: ""
@@ -575,26 +575,26 @@ paths:
           required: false
           in: query
           description: |
-            The version reference to retrieve the page from. Defaults to `ref:live` if not provided.
+            The version reference to retrieve the page from. Defaults to `ref:draft` if not provided.
 
             Supported formats:
-            - `ref:live` - Live/published version
             - `ref:draft` - Draft/working version
+            - `ref:live` - Live/published version
           schema:
             type: string
             pattern: ^ref:(live|draft)$
             enum:
-              - ref:live
               - ref:draft
-            default: ref:live
+              - ref:live
+            default: ref:draft
             examples:
-              live:
-                value: ref:live
-                summary: Live version
               draft:
                 value: ref:draft
                 summary: Draft version
-          example: ref:live
+              live:
+                value: ref:live
+                summary: Live version
+          example: ref:draft
       responses:
         "200":
           description: ""
