@@ -212,64 +212,119 @@
             "group": "Reference",
             "pages": [
               {
-                "group": "Components",
+                "group": "@makeswift/runtime",
                 "pages": [
-                  "developer/reference/components/page",
-                  "developer/reference/components/makeswift-component",
-                  "developer/reference/components/slot",
-                  "developer/reference/components/react-runtime-provider",
-                  "developer/reference/components/root-style-registry"
-                ]
-              },
-              {
-                "group": "Controls",
-                "pages": [
-                  "developer/reference/controls/checkbox",
-                  "developer/reference/controls/color",
-                  "developer/reference/controls/combobox",
-                  "developer/reference/controls/group",
-                  "developer/reference/controls/image",
-                  "developer/reference/controls/font",
-                  "developer/reference/controls/link",
-                  "developer/reference/controls/list",
-                  "developer/reference/controls/number",
-                  "developer/reference/controls/rich-text",
-                  "developer/reference/controls/select",
-                  "developer/reference/controls/slot",
-                  "developer/reference/controls/style",
-                  "developer/reference/controls/text-area",
-                  "developer/reference/controls/text-input",
                   {
-                    "group": "Deprecated",
-                    "pages": ["developer/reference/controls/shape"]
+                    "group": "Components",
+                    "pages": [
+                      "developer/reference/components/page",
+                      "developer/reference/components/makeswift-component",
+                      "developer/reference/components/slot",
+                      "developer/reference/components/react-runtime-provider",
+                      "developer/reference/components/root-style-registry"
+                    ]
+                  },
+                  {
+                    "group": "Controls",
+                    "pages": [
+                      "developer/reference/controls/checkbox",
+                      "developer/reference/controls/color",
+                      "developer/reference/controls/combobox",
+                      "developer/reference/controls/group",
+                      "developer/reference/controls/image",
+                      "developer/reference/controls/font",
+                      "developer/reference/controls/link",
+                      "developer/reference/controls/list",
+                      "developer/reference/controls/number",
+                      "developer/reference/controls/rich-text",
+                      "developer/reference/controls/select",
+                      "developer/reference/controls/slot",
+                      "developer/reference/controls/style",
+                      "developer/reference/controls/text-area",
+                      "developer/reference/controls/text-input",
+                      {
+                        "group": "Deprecated",
+                        "pages": ["developer/reference/controls/shape"]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Client",
+                    "pages": [
+                      "developer/reference/client/constructor",
+                      "developer/reference/client/get-pages",
+                      "developer/reference/client/get-page-snapshot",
+                      "developer/reference/client/get-component-snapshot",
+                      "developer/reference/client/get-site-version"
+                    ]
+                  },
+                  "developer/reference/makeswift-api-handler",
+                  {
+                    "group": "ReactRuntime",
+                    "pages": [
+                      "developer/reference/runtime/constructor",
+                      "developer/reference/runtime/register-component"
+                    ]
+                  },
+                  {
+                    "group": "Functions",
+                    "pages": ["developer/reference/get-site-version"]
+                  },
+                  {
+                    "group": "Legacy APIs",
+                    "pages": ["developer/reference/client/get-sitemap"]
                   }
                 ]
               },
               {
-                "group": "Client",
+                "group": "REST API",
+                "openapi": {
+                  "source": "openapi.yaml"
+                },
                 "pages": [
-                  "developer/reference/client/constructor",
-                  "developer/reference/client/get-pages",
-                  "developer/reference/client/get-page-snapshot",
-                  "developer/reference/client/get-component-snapshot",
-                  "developer/reference/client/get-site-version"
+                  {
+                    "group": "Sites",
+                    "pages": [
+                      "POST /v2/sites",
+                      "GET /v2/sites",
+                      "GET /v2/sites/{siteId}",
+                      "PATCH /v2/sites/{siteId}",
+                      "DELETE /v2/sites/{siteId}",
+                      "POST /v2/sites/{siteId}/duplicate"
+                    ]
+                  },
+                  {
+                    "group": "Locales",
+                    "pages": [
+                      "POST /v2/locales",
+                      "GET /v2/locales",
+                      "GET /v2/locales/{localeIdOrCode}",
+                      "PATCH /v2/locales/{localeIdOrCode}",
+                      "DELETE /v2/locales/{localeIdOrCode}",
+                      "POST /v2/locales/{localeIdOrCode}/restore"
+                    ]
+                  },
+                  {
+                    "group": "Pages",
+                    "pages": [
+                      "POST /v6/pages",
+                      "GET /v6/pages",
+                      "GET /v6/pages/{pageIdOrPathname}",
+                      "PATCH /v6/pages/{pageIdOrPathname}",
+                      "DELETE /v6/pages/{pageIdOrPathname}"
+                    ]
+                  },
+                  {
+                    "group": "Routes",
+                    "pages": [
+                      "POST /v2/routes",
+                      "GET /v2/routes",
+                      "GET /v2/routes/{routeIdOrPathname}",
+                      "PATCH /v2/routes/{routeIdOrPathname}",
+                      "DELETE /v2/routes/{routeIdOrPathname}"
+                    ]
+                  }
                 ]
-              },
-              "developer/reference/makeswift-api-handler",
-              {
-                "group": "ReactRuntime",
-                "pages": [
-                  "developer/reference/runtime/constructor",
-                  "developer/reference/runtime/register-component"
-                ]
-              },
-              {
-                "group": "Functions",
-                "pages": ["developer/reference/get-site-version"]
-              },
-              {
-                "group": "Legacy APIs",
-                "pages": ["developer/reference/client/get-sitemap"]
               }
             ]
           }
