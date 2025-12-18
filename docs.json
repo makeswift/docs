@@ -8,6 +8,7 @@
     "dark": "#EA3BA7"
   },
   "favicon": "/images/favicon.png",
+  "openapi": ["openapi.yaml"],
   "navigation": {
     "tabs": [
       {
@@ -277,51 +278,49 @@
                 ]
               },
               {
-                "group": "REST API",
-                "openapi": {
-                  "source": "openapi.yaml"
-                },
+                "group": "Public API",
                 "pages": [
+                  "developer/reference/api/overview",
                   {
                     "group": "Sites",
                     "pages": [
-                      "POST /v2/sites",
-                      "GET /v2/sites",
-                      "GET /v2/sites/{siteId}",
-                      "PATCH /v2/sites/{siteId}",
-                      "DELETE /v2/sites/{siteId}",
-                      "POST /v2/sites/{siteId}/duplicate"
+                      "developer/reference/api/sites/create-site",
+                      "developer/reference/api/sites/list-sites",
+                      "developer/reference/api/sites/get-site",
+                      "developer/reference/api/sites/update-site",
+                      "developer/reference/api/sites/delete-site",
+                      "developer/reference/api/sites/duplicate-site"
                     ]
                   },
                   {
                     "group": "Locales",
                     "pages": [
-                      "POST /v2/locales",
-                      "GET /v2/locales",
-                      "GET /v2/locales/{localeIdOrCode}",
-                      "PATCH /v2/locales/{localeIdOrCode}",
-                      "DELETE /v2/locales/{localeIdOrCode}",
-                      "POST /v2/locales/{localeIdOrCode}/restore"
+                      "developer/reference/api/locales/create-locale",
+                      "developer/reference/api/locales/list-locales",
+                      "developer/reference/api/locales/get-locale",
+                      "developer/reference/api/locales/update-locale",
+                      "developer/reference/api/locales/delete-locale",
+                      "developer/reference/api/locales/restore-locale"
                     ]
                   },
                   {
                     "group": "Pages",
                     "pages": [
-                      "POST /v6/pages",
-                      "GET /v6/pages",
-                      "GET /v6/pages/{pageIdOrPathname}",
-                      "PATCH /v6/pages/{pageIdOrPathname}",
-                      "DELETE /v6/pages/{pageIdOrPathname}"
+                      "developer/reference/api/pages/create-page",
+                      "developer/reference/api/pages/list-pages",
+                      "developer/reference/api/pages/get-page",
+                      "developer/reference/api/pages/update-page",
+                      "developer/reference/api/pages/delete-page"
                     ]
                   },
                   {
                     "group": "Routes",
                     "pages": [
-                      "POST /v2/routes",
-                      "GET /v2/routes",
-                      "GET /v2/routes/{routeIdOrPathname}",
-                      "PATCH /v2/routes/{routeIdOrPathname}",
-                      "DELETE /v2/routes/{routeIdOrPathname}"
+                      "developer/reference/api/routes/create-route",
+                      "developer/reference/api/routes/list-routes",
+                      "developer/reference/api/routes/get-route",
+                      "developer/reference/api/routes/update-route",
+                      "developer/reference/api/routes/delete-route"
                     ]
                   }
                 ]

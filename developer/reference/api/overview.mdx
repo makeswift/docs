@@ -1,0 +1,76 @@
+---
+title: "Overview"
+description: "Programmatically manage your Makeswift sites, pages, locales, and routes."
+---
+
+import ReadinessBadge from "/snippets/readinessBadge.jsx";
+
+<ReadinessBadge type='beta' />
+
+The Makeswift Public API allows you to programmatically manage your Makeswift resources. Use it to automate workflows, integrate with external systems, or build custom tooling.
+
+## Base URL
+
+All API requests should be made to:
+
+```
+https://api.makeswift.com
+```
+
+## Authentication
+
+Authenticate requests by including your API key in the `x-api-key` header:
+
+```bash
+curl https://api.makeswift.com/v2/sites \
+  -H "x-api-key: your-api-key"
+```
+
+<Note>
+  Your API key can be found in your site settings. Keep it secure and never expose it in client-side code.
+</Note>
+
+## Resources
+
+| Resource | Description |
+| -------- | ----------- |
+| [Sites](/developer/reference/api/sites/list-sites) | Create, read, update, delete, and duplicate sites |
+| [Pages](/developer/reference/api/pages/list-pages) | Manage pages within a site |
+| [Locales](/developer/reference/api/locales/list-locales) | Configure localization settings |
+| [Routes](/developer/reference/api/routes/list-routes) | Define external routes for your site |
+
+## Response format
+
+All responses return JSON. Successful responses include an `object` field indicating the resource type:
+
+```json
+{
+  "object": "site",
+  "id": "550e8400-e29b-41d4-a716-446655440000",
+  "name": "My Site"
+}
+```
+
+List endpoints return paginated results with a `hasMore` field:
+
+```json
+{
+  "object": "list",
+  "data": [...],
+  "hasMore": false
+}
+```
+
+## Errors
+
+The API uses standard HTTP status codes:
+
+| Status | Description |
+| ------ | ----------- |
+| `200` | Success |
+| `201` | Created |
+| `400` | Bad request - check your parameters |
+| `401` | Unauthorized - invalid or missing API key |
+| `404` | Not found |
+| `409` | Conflict - resource already exists |
+
