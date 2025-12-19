@@ -5,7 +5,7 @@ description: "Programmatically manage your Makeswift sites, pages, locales, and 
 
 import ReadinessBadge from "/snippets/readinessBadge.jsx";
 
-<ReadinessBadge type='beta' />
+<ReadinessBadge type="beta" />
 
 The Makeswift Public API allows you to programmatically manage your Makeswift resources. Use it to automate workflows, integrate with external systems, or build custom tooling.
 
@@ -27,17 +27,18 @@ curl https://api.makeswift.com/v2/sites \
 ```
 
 <Note>
-  Your API key can be found in your site settings. Keep it secure and never expose it in client-side code.
+  Your API key can be found in your site settings. Keep it secure and never
+  expose it in client-side code.
 </Note>
 
 ## Resources
 
-| Resource | Description |
-| -------- | ----------- |
-| [Sites](/developer/reference/api/sites/list-sites) | Create, read, update, delete, and duplicate sites |
-| [Pages](/developer/reference/api/pages/list-pages) | Manage pages within a site |
-| [Locales](/developer/reference/api/locales/list-locales) | Configure localization settings |
-| [Routes](/developer/reference/api/routes/list-routes) | Define external routes for your site |
+| Resource                                                 | Description                                       |
+| -------------------------------------------------------- | ------------------------------------------------- |
+| [Sites](/developer/reference/api/sites/list-sites)       | Create, read, update, delete, and duplicate sites |
+| [Pages](/developer/reference/api/pages/list-pages)       | Manage pages within a site                        |
+| [Locales](/developer/reference/api/locales/list-locales) | Configure localization settings                   |
+| [Routes](/developer/reference/api/routes/list-routes)    | Define external routes for your site              |
 
 ## Response format
 
@@ -51,26 +52,117 @@ All responses return JSON. Successful responses include an `object` field indica
 }
 ```
 
-List endpoints return paginated results with a `hasMore` field:
+List endpoints return paginated results:
 
 ```json
 {
   "object": "list",
   "data": [...],
-  "hasMore": false
+  "hasMore": true
 }
+```
+
+## Pagination
+
+List endpoints support cursor-based pagination using the following query parameters:
+
+| Parameter        | Type   | Default | Description                                              |
+| ---------------- | ------ | ------- | -------------------------------------------------------- |
+| `limit`          | number | `20`    | Number of results to return (max `100`)                  |
+| `starting_after` | string | -       | Cursor for fetching results after a specific resource ID |
+
+To paginate through results:
+
+1. Make an initial request without the `starting_after` parameter
+2. If `hasMore` is `true`, use the `id` of the last item in `data` as the `starting_after` parameter for the next request
+3. Repeat until `hasMore` is `false`
+
+```bash
+# First page
+curl "https://api.makeswift.com/v2/sites/YOUR_SITE_ID/pages?limit=10" \
+  -H "x-api-key: your-api-key"
+
+# Next page (using the last page ID from previous response)
+curl "https://api.makeswift.com/v2/sites/YOUR_SITE_ID/pages?limit=10&starting_after=550e8400-e29b-41d4-a716-446655440000" \
+  -H "x-api-key: your-api-key"
 ```
 
 ## Errors
 
-The API uses standard HTTP status codes:
+The API uses standard HTTP status codes and returns consistent error responses:
 
-| Status | Description |
-| ------ | ----------- |
-| `200` | Success |
-| `201` | Created |
-| `400` | Bad request - check your parameters |
-| `401` | Unauthorized - invalid or missing API key |
-| `404` | Not found |
-| `409` | Conflict - resource already exists |
+| Status | Description                               |
+| ------ | ----------------------------------------- |
+| `200`  | Success                                   |
+| `201`  | Created                                   |
+| `400`  | Bad request - check your parameters       |
+| `401`  | Unauthorized - invalid or missing API key |
+| `403`  | Forbidden - insufficient permissions      |
+| `404`  | Not found                                 |
+| `409`  | Conflict - resource already exists        |
 
+### 400 Bad Request
+
+Returned when the request body or query parameters are invalid.
+
+```json
+{
+  "object": "error",
+  "code": "bad_request",
+  "message": "Invalid request parameters",
+  "details": [
+    {
+      "field": "name",
+      "message": "Name is required"
+    }
+  ]
+}
+```
+
+### 401 Unauthorized
+
+Returned when the API key is missing or invalid.
+
+```json
+{
+  "object": "error",
+  "code": "unauthorized",
+  "message": "Invalid or missing API key"
+}
+```
+
+### 403 Forbidden
+
+Returned when the API key is valid but lacks permission to access the resource.
+
+```json
+{
+  "object": "error",
+  "code": "forbidden",
+  "message": "You do not have permission to access this resource"
+}
+```
+
+### 404 Not Found
+
+Returned when the requested resource doesn't exist.
+
+```json
+{
+  "object": "error",
+  "code": "not_found",
+  "message": "Site not found"
+}
+```
+
+### 409 Conflict
+
+Returned when attempting to create a resource that already exists.
+
+```json
+{
+  "object": "error",
+  "code": "conflict",
+  "message": "A page with this path already exists"
+}
+```
