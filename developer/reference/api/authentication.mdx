@@ -1,0 +1,115 @@
+---
+title: "Authentication"
+description: "Create an app and get your API key to authenticate with the Makeswift Public API."
+---
+
+import ReadinessBadge from "/snippets/readinessBadge.jsx";
+
+<ReadinessBadge type="beta" />
+
+To use the Makeswift Public API, you'll need to create an app and obtain an API key. This guide walks you through the setup process.
+
+## Prerequisites
+
+Apps is currently an early access feature. You'll need to enable it before you can create an app.
+
+## Enable Apps early access
+
+1. Open **Settings** in the Makeswift builder
+2. Navigate to **User** → **Early access**
+3. Toggle on **Apps**
+
+<Frame>
+  <img
+    src="/images/apps/toggle-apps-early-access.png"
+    alt="Early access settings showing the Apps toggle"
+  />
+</Frame>
+
+## Create an app
+
+Once Apps is enabled, you can create your first app:
+
+1. Open **Settings** in the Makeswift builder
+2. Navigate to **Workspace** → **Apps**
+3. Click **Create app**
+
+<Frame>
+  <img src="/images/apps/go-to-apps-settings.png" alt="Apps settings page" />
+</Frame>
+
+4. Enter a **Name** for your app
+5. Optionally, choose an **Icon** and add a **Description**
+6. Click **Continue**
+
+<Frame>
+  <img src="/images/apps/create-app.png" alt="Create app dialog" />
+</Frame>
+
+## Copy your API key
+
+After creating your app, you'll be shown your API key. This is the only time the key will be displayed.
+
+<Warning>
+  Save your API key immediately. It won't be shown again after you close the
+  dialog. If you lose it, you'll need to create a new app.
+</Warning>
+
+<Frame>
+  <img src="/images/apps/copy-app-api-key.png" alt="App API key dialog" />
+</Frame>
+
+1. Click the **Copy** button or **Copy and Close** to copy the API key
+2. Store the key securely (e.g., in environment variables or a secrets manager)
+
+## Get your Site ID
+
+Many API endpoints require a Site ID. To find it:
+
+1. Open **Settings** in the Makeswift builder
+2. Navigate to **Site** → **Site**
+3. Copy the **Site Id** value
+
+<Frame>
+  <img
+    src="/images/apps/copy-site-id.png"
+    alt="Site settings showing Site Id"
+  />
+</Frame>
+
+## Get your Workspace ID
+
+Some API endpoints operate at the workspace level and require a Workspace ID:
+
+1. Open **Settings** in the Makeswift builder
+2. Navigate to **Workspace** → **Workspace**
+3. Copy the **Workspace Id** value
+
+<Frame>
+  <img
+    src="/images/apps/copy-workspace-id.png"
+    alt="Workspace settings showing Workspace Id"
+  />
+</Frame>
+
+## Using your API key
+
+Include your API key in the `x-api-key` header with every request:
+
+```bash
+curl https://api.makeswift.com/v2/sites \
+  -H "x-api-key: your-api-key"
+```
+
+<Note>
+  Keep your API key secure and never expose it in client-side code. Use
+  environment variables to store your key in your application.
+</Note>
+
+## Next steps
+
+Now that you have your API key, you can start making requests to the API:
+
+- [List your sites](/developer/reference/api/sites/list-sites)
+- [List your pages](/developer/reference/api/pages/list-pages)
+- [Configure locales](/developer/reference/api/locales/create-locale)
