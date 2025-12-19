@@ -12,6 +12,7 @@ const ReadinessBadge = ({ type }) => {
     const badge = document.createElement("span");
     badge.className = `badge ${tagText}-badge`;
     badge.textContent = tagText;
+    badge.style.transform = "translateY(-3px)";
     titleElement.appendChild(badge);
   }, []);
 
