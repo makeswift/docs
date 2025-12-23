@@ -2,7 +2,7 @@ openapi: 3.1.0
 info:
   title: Makeswift API
   description: Documentation for the Makeswift public REST API.
-  version: "1.0"
+  version: '1.0'
 servers: []
 paths:
   /v1/auth/user-info:
@@ -15,12 +15,12 @@ paths:
           schema:
             type: string
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetUserInfoV1ResponseBodyDto"
+                $ref: '#/components/schemas/GetUserInfoV1ResponseBodyDto'
       tags:
         - Authentication
   /v1/workspaces:
@@ -43,14 +43,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateWorkspaceV1RequestBodyDto"
+              $ref: '#/components/schemas/CreateWorkspaceV1RequestBodyDto'
       responses:
-        "201":
-          description: ""
+        '201':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CreateWorkspaceV1ResponseBodyDto"
+                $ref: '#/components/schemas/CreateWorkspaceV1ResponseBodyDto'
       tags:
         - Workspace
     get:
@@ -76,15 +76,15 @@ paths:
           schema:
             type: string
       responses:
-        "201":
-          description: ""
+        '201':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListWorkspaceV1ResponseBodyDto"
+                $ref: '#/components/schemas/ListWorkspaceV1ResponseBodyDto'
       tags:
         - Workspace
-  "/v1/workspaces/{id}":
+  '/v1/workspaces/{id}':
     patch:
       operationId: WorkspaceController_updateOne_v1
       parameters:
@@ -110,14 +110,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UpdateWorkspaceV1RequestBodyDto"
+              $ref: '#/components/schemas/UpdateWorkspaceV1RequestBodyDto'
       responses:
-        "201":
-          description: ""
+        '201':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UpdateWorkspaceV1ResponseBodyDto"
+                $ref: '#/components/schemas/UpdateWorkspaceV1ResponseBodyDto'
       tags:
         - Workspace
     delete:
@@ -141,11 +141,73 @@ paths:
             type: string
             format: uuid
       responses:
-        "204":
-          description: ""
+        '204':
+          description: ''
       tags:
         - Workspace
-  "/v1/workspaces/{workspaceId}/members/{userId}":
+  '/v1/workspaces/{id}/apps/{appSlug}/install':
+    post:
+      operationId: WorkspaceController_installApp_v1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: appSlug
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: User bearer token
+          schema:
+            type: string
+        - name: x-api-key
+          in: header
+          description: Franchise key
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '201':
+          description: ''
+      tags:
+        - Workspace
+  '/v1/workspaces/{id}/apps/{appSlug}/uninstall':
+    post:
+      operationId: WorkspaceController_uninstallApp_v1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: appSlug
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: User bearer token
+          schema:
+            type: string
+        - name: x-api-key
+          in: header
+          description: Franchise key
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: ''
+      tags:
+        - Workspace
+  '/v1/workspaces/{workspaceId}/members/{userId}':
     post:
       operationId: WorkspaceMemberController_create_v1
       parameters:
@@ -179,10 +241,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateWorkspaceMemberV1RequestBodyDto"
+              $ref: '#/components/schemas/CreateWorkspaceMemberV1RequestBodyDto'
       responses:
-        "204":
-          description: ""
+        '204':
+          description: ''
       tags:
         - Workspace Member
     delete:
@@ -214,8 +276,8 @@ paths:
             format: uuid
             example: d2ccb4e7-1364-496d-a131-bd996269ab2c
       responses:
-        "204":
-          description: ""
+        '204':
+          description: ''
       tags:
         - Workspace Member
     patch:
@@ -251,10 +313,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UpdateWorkspaceMemberV1RequestBodyDto"
+              $ref: '#/components/schemas/UpdateWorkspaceMemberV1RequestBodyDto'
       responses:
-        "204":
-          description: ""
+        '204':
+          description: ''
       tags:
         - Workspace Member
     get:
@@ -286,15 +348,15 @@ paths:
             format: uuid
             example: d2ccb4e7-1364-496d-a131-bd996269ab2c
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetWorkspaceMemberV1ResponseBodyDto"
+                $ref: '#/components/schemas/GetWorkspaceMemberV1ResponseBodyDto'
       tags:
         - Workspace Member
-  "/v1/workspaces/{workspaceId}/members":
+  '/v1/workspaces/{workspaceId}/members':
     get:
       operationId: WorkspaceMemberController_getMembers_v1
       parameters:
@@ -330,15 +392,15 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListWorkspaceMemberV1ResponseBodyDto"
+                $ref: '#/components/schemas/ListWorkspaceMemberV1ResponseBodyDto'
       tags:
         - Workspace Member
-  "/v1/workspaces/{workspaceId}/sites":
+  '/v1/workspaces/{workspaceId}/sites':
     post:
       operationId: SiteController_create_v1
       parameters:
@@ -364,14 +426,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateSiteV1RequestBodyDto"
+              $ref: '#/components/schemas/CreateSiteV1RequestBodyDto'
       responses:
-        "201":
-          description: ""
+        '201':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CreateSiteV1ResponseBodyDto"
+                $ref: '#/components/schemas/CreateSiteV1ResponseBodyDto'
       tags:
         - Site
     get:
@@ -409,12 +471,12 @@ paths:
             type: string
             format: uuid
       responses:
-        "201":
-          description: ""
+        '201':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListSiteV1ResponseBodyDto"
+                $ref: '#/components/schemas/ListSiteV1ResponseBodyDto'
       tags:
         - Site
   /v2/sites:
@@ -437,38 +499,38 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateSiteV2RequestBodyDto"
+              $ref: '#/components/schemas/CreateSiteV2RequestBodyDto'
       responses:
-        "201":
-          description: ""
+        '201':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CreateSiteV2ResponseBodyDto"
-        "400":
-          description: ""
+                $ref: '#/components/schemas/CreateSiteV2ResponseBodyDto'
+        '400':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BadRequestResponseDto"
-        "403":
-          description: ""
+                $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ForbiddenResponseDto"
-        "404":
-          description: ""
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NotFoundResponseDto"
-        "500":
-          description: ""
+                $ref: '#/components/schemas/NotFoundResponseDto'
+        '500':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/InternalServerErrorResponseDto"
+                $ref: '#/components/schemas/InternalServerErrorResponseDto'
       tags:
         - Site
     get:
@@ -508,39 +570,39 @@ paths:
             format: uuid
             example: 123e4567-e89b-12d3-a456-426614174000
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListSiteV2ResponseBodyDto"
-        "400":
-          description: ""
+                $ref: '#/components/schemas/ListSiteV2ResponseBodyDto'
+        '400':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BadRequestResponseDto"
-        "403":
-          description: ""
+                $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ForbiddenResponseDto"
-        "404":
-          description: ""
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NotFoundResponseDto"
-        "500":
-          description: ""
+                $ref: '#/components/schemas/NotFoundResponseDto'
+        '500':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/InternalServerErrorResponseDto"
+                $ref: '#/components/schemas/InternalServerErrorResponseDto'
       tags:
         - Site
-  "/v1/sites/{id}":
+  '/v1/sites/{id}':
     get:
       operationId: SiteController_getOne_v1
       parameters:
@@ -562,12 +624,12 @@ paths:
             type: string
             format: uuid
       responses:
-        "201":
-          description: ""
+        '201':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ReadSiteV1ResponseBodyDto"
+                $ref: '#/components/schemas/ReadSiteV1ResponseBodyDto'
       tags:
         - Site
     patch:
@@ -595,14 +657,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UpdateSiteV1RequestBodyDto"
+              $ref: '#/components/schemas/UpdateSiteV1RequestBodyDto'
       responses:
-        "201":
-          description: ""
+        '201':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UpdateSiteV1ResponseBodyDto"
+                $ref: '#/components/schemas/UpdateSiteV1ResponseBodyDto'
       tags:
         - Site
     delete:
@@ -626,11 +688,11 @@ paths:
             type: string
             format: uuid
       responses:
-        "204":
-          description: ""
+        '204':
+          description: ''
       tags:
         - Site
-  "/v2/sites/{siteId}":
+  '/v2/sites/{siteId}':
     get:
       operationId: SiteController_getOneV2_v2
       parameters:
@@ -652,30 +714,30 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ReadSiteV2ResponseBodyDto"
-        "403":
-          description: ""
+                $ref: '#/components/schemas/ReadSiteV2ResponseBodyDto'
+        '403':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ForbiddenResponseDto"
-        "404":
-          description: ""
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NotFoundResponseDto"
-        "500":
-          description: ""
+                $ref: '#/components/schemas/NotFoundResponseDto'
+        '500':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/InternalServerErrorResponseDto"
+                $ref: '#/components/schemas/InternalServerErrorResponseDto'
       tags:
         - Site
     patch:
@@ -703,38 +765,38 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UpdateSiteV2RequestBodyDto"
+              $ref: '#/components/schemas/UpdateSiteV2RequestBodyDto'
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UpdateSiteV2ResponseBodyDto"
-        "400":
-          description: ""
+                $ref: '#/components/schemas/UpdateSiteV2ResponseBodyDto'
+        '400':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BadRequestResponseDto"
-        "403":
-          description: ""
+                $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ForbiddenResponseDto"
-        "404":
-          description: ""
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NotFoundResponseDto"
-        "500":
-          description: ""
+                $ref: '#/components/schemas/NotFoundResponseDto'
+        '500':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/InternalServerErrorResponseDto"
+                $ref: '#/components/schemas/InternalServerErrorResponseDto'
       tags:
         - Site
     delete:
@@ -758,29 +820,29 @@ paths:
             type: string
             format: uuid
       responses:
-        "204":
-          description: ""
-        "403":
-          description: ""
+        '204':
+          description: ''
+        '403':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ForbiddenResponseDto"
-        "404":
-          description: ""
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NotFoundResponseDto"
-        "500":
-          description: ""
+                $ref: '#/components/schemas/NotFoundResponseDto'
+        '500':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/InternalServerErrorResponseDto"
+                $ref: '#/components/schemas/InternalServerErrorResponseDto'
       tags:
         - Site
-  "/v1/sites/{siteId}/duplicate":
+  '/v1/sites/{siteId}/duplicate':
     post:
       operationId: SiteController_duplicate_v1
       parameters:
@@ -808,17 +870,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/DuplicateSiteV1RequestBodyDto"
+              $ref: '#/components/schemas/DuplicateSiteV1RequestBodyDto'
       responses:
-        "201":
+        '201':
           description: The newly created duplicated site with all content and configuration copied from the original
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DuplicateSiteV1ResponseBodyDto"
+                $ref: '#/components/schemas/DuplicateSiteV1ResponseBodyDto'
       tags:
         - Site
-  "/v2/sites/{siteId}/duplicate":
+  '/v2/sites/{siteId}/duplicate':
     post:
       operationId: SiteController_duplicateV2_v2
       parameters:
@@ -846,41 +908,41 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/DuplicateSiteV2RequestBodyDto"
+              $ref: '#/components/schemas/DuplicateSiteV2RequestBodyDto'
       responses:
-        "201":
+        '201':
           description: The newly created duplicated site with all content and configuration copied from the original
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DuplicateSiteV2ResponseBodyDto"
-        "400":
-          description: ""
+                $ref: '#/components/schemas/DuplicateSiteV2ResponseBodyDto'
+        '400':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BadRequestResponseDto"
-        "403":
-          description: ""
+                $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ForbiddenResponseDto"
-        "404":
-          description: ""
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NotFoundResponseDto"
-        "500":
-          description: ""
+                $ref: '#/components/schemas/NotFoundResponseDto'
+        '500':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/InternalServerErrorResponseDto"
+                $ref: '#/components/schemas/InternalServerErrorResponseDto'
       tags:
         - Site
-  "/v1/sites/{siteId}/pages":
+  '/v1/sites/{siteId}/pages':
     post:
       operationId: PageController_create_v1
       parameters:
@@ -906,14 +968,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreatePageV1RequestBodyDto"
+              $ref: '#/components/schemas/CreatePageV1RequestBodyDto'
       responses:
-        "201":
-          description: ""
+        '201':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CreatePageV1ResponseBodyDto"
+                $ref: '#/components/schemas/CreatePageV1ResponseBodyDto'
       tags:
         - Page
   /v6/pages:
@@ -936,14 +998,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreatePageV6RequestBodyDto"
+              $ref: '#/components/schemas/CreatePageV6RequestBodyDto'
       responses:
-        "201":
-          description: ""
+        '201':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CreatePageV6ResponseBodyDto"
+                $ref: '#/components/schemas/CreatePageV6ResponseBodyDto'
       tags:
         - Page
     get:
@@ -968,7 +1030,7 @@ paths:
             format: uuid
         - name: limit
           in: query
-          description: "Maximum number of pages to return. Defaults to 20, maximum is 100."
+          description: 'Maximum number of pages to return. Defaults to 20, maximum is 100.'
           required: false
           schema:
             type: number
@@ -977,7 +1039,7 @@ paths:
             minimum: 1
         - name: starting_after
           in: query
-          description: "Cursor for pagination. If provided, returns pages after this ID."
+          description: 'Cursor for pagination. If provided, returns pages after this ID.'
           required: false
           schema:
             type: string
@@ -1018,10 +1080,10 @@ paths:
           required: false
           schema:
             type: string
-            default: "false"
+            default: 'false'
             enum:
-              - "true"
-              - "false"
+              - 'true'
+              - 'false'
         - name: locale
           in: query
           description: Filter pages by locale. Defaults to all locales.
@@ -1034,20 +1096,20 @@ paths:
           required: false
           schema:
             type: string
-            default: "ref:draft"
+            default: 'ref:draft'
             enum:
-              - "ref:live"
-              - "ref:draft"
+              - 'ref:live'
+              - 'ref:draft'
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListPagesV2ResponseBodyDto"
+                $ref: '#/components/schemas/ListPagesV2ResponseBodyDto'
       tags:
         - Page
-  "/v6/pages/{pageIdOrPathname}":
+  '/v6/pages/{pageIdOrPathname}':
     patch:
       operationId: PageController_updateV6_v6
       parameters:
@@ -1081,14 +1143,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UpdatePageV6RequestBodyDto"
+              $ref: '#/components/schemas/UpdatePageV6RequestBodyDto'
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UpdatePageV6ResponseBodyDto"
+                $ref: '#/components/schemas/UpdatePageV6ResponseBodyDto'
       tags:
         - Page
     delete:
@@ -1120,8 +1182,8 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
       tags:
         - Page
     get:
@@ -1154,30 +1216,30 @@ paths:
             format: uuid
         - name: versionRef
           in: query
-          description: "The version reference to retrieve the page from. Defaults to ref:live if not provided."
+          description: 'The version reference to retrieve the page from. Defaults to ref:live if not provided.'
           required: false
           schema:
             type: string
-            default: "ref:draft"
+            default: 'ref:draft'
             enum:
-              - "ref:live"
-              - "ref:draft"
+              - 'ref:live'
+              - 'ref:draft'
         - name: locale
           in: query
-          description: "The locale to retrieve the page in. If provided, localized page data is collapsed into the response."
+          description: 'The locale to retrieve the page in. If provided, localized page data is collapsed into the response.'
           required: false
           schema:
             type: string
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetPageV6ResponseBodyDto"
+                $ref: '#/components/schemas/GetPageV6ResponseBodyDto'
       tags:
         - Page
-  "/v1/sites/{siteId}/pages/{pageId}":
+  '/v1/sites/{siteId}/pages/{pageId}':
     patch:
       operationId: PageController_update_v1
       parameters:
@@ -1209,14 +1271,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UpdatePageV1RequestBodyDto"
+              $ref: '#/components/schemas/UpdatePageV1RequestBodyDto'
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UpdatePageV1ResponseBodyDto"
+                $ref: '#/components/schemas/UpdatePageV1ResponseBodyDto'
       tags:
         - Page
     get:
@@ -1246,12 +1308,12 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetPageV1ResponseBodyDto"
+                $ref: '#/components/schemas/GetPageV1ResponseBodyDto'
       tags:
         - Page
     delete:
@@ -1281,11 +1343,11 @@ paths:
             type: string
             format: uuid
       responses:
-        "204":
-          description: ""
+        '204':
+          description: ''
       tags:
         - Page
-  "/v0/sites/{siteId}/pages":
+  '/v0/sites/{siteId}/pages':
     get:
       operationId: PageController_list_v0
       parameters:
@@ -1308,7 +1370,7 @@ paths:
             format: uuid
         - name: limit
           in: query
-          description: "Maximum number of pages to return. Defaults to 20, maximum is 100."
+          description: 'Maximum number of pages to return. Defaults to 20, maximum is 100.'
           required: false
           schema:
             type: number
@@ -1317,7 +1379,7 @@ paths:
             minimum: 1
         - name: after
           in: query
-          description: "Cursor for pagination. If provided, returns pages after this ID."
+          description: 'Cursor for pagination. If provided, returns pages after this ID.'
           required: false
           schema:
             type: string
@@ -1330,15 +1392,15 @@ paths:
             type: boolean
             default: false
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListPagesV0ResponseBodyDto"
+                $ref: '#/components/schemas/ListPagesV0ResponseBodyDto'
       tags:
         - Page
-  "/v1/sites/{siteId}/locales":
+  '/v1/sites/{siteId}/locales':
     post:
       operationId: SiteLocaleController_create_v1
       parameters:
@@ -1364,14 +1426,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateSiteLocaleV1RequestBodyDto"
+              $ref: '#/components/schemas/CreateSiteLocaleV1RequestBodyDto'
       responses:
-        "201":
-          description: ""
+        '201':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CreateSiteLocaleV1ResponseBodyDto"
+                $ref: '#/components/schemas/CreateSiteLocaleV1ResponseBodyDto'
       tags:
         - Locale
     get:
@@ -1402,12 +1464,12 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetByLocaleSiteLocaleV1ResponseBodyDto"
+                $ref: '#/components/schemas/GetByLocaleSiteLocaleV1ResponseBodyDto'
       tags:
         - Locale
   /v2/locales:
@@ -1430,38 +1492,38 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateSiteLocaleV2RequestBodyDto"
+              $ref: '#/components/schemas/CreateSiteLocaleV2RequestBodyDto'
       responses:
-        "201":
-          description: ""
+        '201':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CreateSiteLocaleV2ResponseBodyDto"
-        "400":
-          description: ""
+                $ref: '#/components/schemas/CreateSiteLocaleV2ResponseBodyDto'
+        '400':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BadRequestResponseDto"
-        "403":
-          description: ""
+                $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ForbiddenResponseDto"
-        "404":
-          description: ""
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NotFoundResponseDto"
-        "409":
-          description: ""
+                $ref: '#/components/schemas/NotFoundResponseDto'
+        '409':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ConflictResponseDto"
+                $ref: '#/components/schemas/ConflictResponseDto'
       tags:
         - Locale
     get:
@@ -1498,39 +1560,34 @@ paths:
           schema:
             type: string
             format: uuid
-        - name: foobar
-          in: query
-          required: true
-          schema:
-            type: string
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListSiteLocaleV2ResponseBodyDto"
-        "400":
-          description: ""
+                $ref: '#/components/schemas/ListSiteLocaleV2ResponseBodyDto'
+        '400':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BadRequestResponseDto"
-        "403":
-          description: ""
+                $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ForbiddenResponseDto"
-        "404":
-          description: ""
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NotFoundResponseDto"
+                $ref: '#/components/schemas/NotFoundResponseDto'
       tags:
         - Locale
-  "/v1/locales/{id}":
+  '/v1/locales/{id}':
     delete:
       operationId: SiteLocaleController_delete_v1
       parameters:
@@ -1552,8 +1609,8 @@ paths:
             type: string
             format: uuid
       responses:
-        "204":
-          description: ""
+        '204':
+          description: ''
       tags:
         - Locale
     patch:
@@ -1581,14 +1638,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UpdateSiteLocaleV1RequestBodyDto"
+              $ref: '#/components/schemas/UpdateSiteLocaleV1RequestBodyDto'
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UpdateSiteLocaleV1ResponseBodyDto"
+                $ref: '#/components/schemas/UpdateSiteLocaleV1ResponseBodyDto'
       tags:
         - Locale
     get:
@@ -1612,15 +1669,15 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ReadSiteLocaleV1ResponseBodyDto"
+                $ref: '#/components/schemas/ReadSiteLocaleV1ResponseBodyDto'
       tags:
         - Locale
-  "/v2/locales/{localeIdOrCode}":
+  '/v2/locales/{localeIdOrCode}':
     delete:
       operationId: SiteLocaleController_deleteV2_v2
       parameters:
@@ -1647,26 +1704,26 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description: Locale successfully deleted.
-        "400":
-          description: ""
+        '400':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BadRequestResponseDto"
-        "403":
-          description: ""
+                $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ForbiddenResponseDto"
-        "404":
-          description: ""
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NotFoundResponseDto"
+                $ref: '#/components/schemas/NotFoundResponseDto'
       tags:
         - Locale
     patch:
@@ -1699,38 +1756,38 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UpdateSiteLocaleV2RequestBodyDto"
+              $ref: '#/components/schemas/UpdateSiteLocaleV2RequestBodyDto'
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UpdateSiteLocaleV2ResponseBodyDto"
-        "400":
-          description: ""
+                $ref: '#/components/schemas/UpdateSiteLocaleV2ResponseBodyDto'
+        '400':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BadRequestResponseDto"
-        "403":
-          description: ""
+                $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ForbiddenResponseDto"
-        "404":
-          description: ""
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NotFoundResponseDto"
-        "409":
-          description: ""
+                $ref: '#/components/schemas/NotFoundResponseDto'
+        '409':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ConflictResponseDto"
+                $ref: '#/components/schemas/ConflictResponseDto'
       tags:
         - Locale
     get:
@@ -1759,33 +1816,33 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ReadSiteLocaleV2ResponseBodyDto"
-        "400":
-          description: ""
+                $ref: '#/components/schemas/ReadSiteLocaleV2ResponseBodyDto'
+        '400':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BadRequestResponseDto"
-        "403":
-          description: ""
+                $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ForbiddenResponseDto"
-        "404":
-          description: ""
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NotFoundResponseDto"
+                $ref: '#/components/schemas/NotFoundResponseDto'
       tags:
         - Locale
-  "/v2/locales/{localeIdOrCode}/restore":
+  '/v2/locales/{localeIdOrCode}/restore':
     post:
       operationId: SiteLocaleController_restoreV2_v2
       parameters:
@@ -1812,33 +1869,33 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description: Locale successfully restored.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/RestoreSiteLocaleV2ResponseBodyDto"
-        "400":
-          description: ""
+                $ref: '#/components/schemas/RestoreSiteLocaleV2ResponseBodyDto'
+        '400':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BadRequestResponseDto"
-        "403":
-          description: ""
+                $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ForbiddenResponseDto"
-        "404":
-          description: ""
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NotFoundResponseDto"
+                $ref: '#/components/schemas/NotFoundResponseDto'
       tags:
         - Locale
-  "/v1/workspaces/{workspaceId}/webhooks":
+  '/v1/workspaces/{workspaceId}/webhooks':
     post:
       operationId: WebhookController_create_v1
       parameters:
@@ -1864,14 +1921,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateWebhookV1RequestBodyDto"
+              $ref: '#/components/schemas/CreateWebhookV1RequestBodyDto'
       responses:
-        "201":
-          description: ""
+        '201':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CreateWebhookV1ResponseBodyDto"
+                $ref: '#/components/schemas/CreateWebhookV1ResponseBodyDto'
       tags:
         - Webhook Management
     get:
@@ -1909,15 +1966,15 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListWebhookV1ResponseBodyDto"
+                $ref: '#/components/schemas/ListWebhookV1ResponseBodyDto'
       tags:
         - Webhook Management
-  "/v1/webhooks/{id}":
+  '/v1/webhooks/{id}':
     get:
       operationId: WebhookController_get_v1
       parameters:
@@ -1939,12 +1996,12 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetWebhookV1ResponseBodyDto"
+                $ref: '#/components/schemas/GetWebhookV1ResponseBodyDto'
       tags:
         - Webhook Management
     delete:
@@ -1968,11 +2025,11 @@ paths:
             type: string
             format: uuid
       responses:
-        "204":
-          description: ""
+        '204':
+          description: ''
       tags:
         - Webhook Management
-  "/v1/sites/{siteId}/routes":
+  '/v1/sites/{siteId}/routes':
     get:
       operationId: SiteRouteController_list_v1
       parameters:
@@ -1990,14 +2047,14 @@ paths:
             format: uuid
         - name: pathname
           in: query
-          description: "Filter routes by pathname. Supports partial match. If not provided, returns all routes."
+          description: 'Filter routes by pathname. Supports partial match. If not provided, returns all routes.'
           required: false
           schema:
             type: string
             example: /about
         - name: limit
           in: query
-          description: "Maximum number of routes to return. Defaults to 20, maximum is 100. To paginate, use together with `after` cursor."
+          description: 'Maximum number of routes to return. Defaults to 20, maximum is 100. To paginate, use together with `after` cursor.'
           required: false
           schema:
             type: number
@@ -2006,18 +2063,18 @@ paths:
             minimum: 0
         - name: after
           in: query
-          description: "Cursor for pagination. If provided, returns routes after this ID."
+          description: 'Cursor for pagination. If provided, returns routes after this ID.'
           required: false
           schema:
             type: string
             format: uuid
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListSiteRouteV1ResponseBodyDto"
+                $ref: '#/components/schemas/ListSiteRouteV1ResponseBodyDto'
       tags:
         - Route
     post:
@@ -2037,29 +2094,29 @@ paths:
             format: uuid
         - name: skipValidation
           in: query
-          description: "If true, skips validation of the route, such as pathname format. This is useful for testing or when the route is known to be valid."
+          description: 'If true, skips validation of the route, such as pathname format. This is useful for testing or when the route is known to be valid.'
           required: false
           schema:
             type: string
             enum:
-              - "true"
-              - "false"
+              - 'true'
+              - 'false'
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateSiteRouteV1RequestBodyDto"
+              $ref: '#/components/schemas/CreateSiteRouteV1RequestBodyDto'
       responses:
-        "201":
-          description: ""
+        '201':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CreateSiteRouteV1ResponseBodyDto"
+                $ref: '#/components/schemas/CreateSiteRouteV1ResponseBodyDto'
       tags:
         - Route
-  "/v1/routes/{routeId}":
+  '/v1/routes/{routeId}':
     get:
       operationId: SiteRouteController_get_v1
       parameters:
@@ -2076,12 +2133,12 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ReadSiteRouteV1ResponseBodyDto"
+                $ref: '#/components/schemas/ReadSiteRouteV1ResponseBodyDto'
       tags:
         - Route
     patch:
@@ -2101,26 +2158,26 @@ paths:
             format: uuid
         - name: skipValidation
           in: query
-          description: "If true, skips validation of the route, such as pathname format. This is useful for testing or when the route is known to be valid."
+          description: 'If true, skips validation of the route, such as pathname format. This is useful for testing or when the route is known to be valid.'
           required: false
           schema:
             type: string
             enum:
-              - "true"
-              - "false"
+              - 'true'
+              - 'false'
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UpdateSiteRouteV1RequestBodyDto"
+              $ref: '#/components/schemas/UpdateSiteRouteV1RequestBodyDto'
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UpdateSiteRouteV1ResponseBodyDto"
+                $ref: '#/components/schemas/UpdateSiteRouteV1ResponseBodyDto'
       tags:
         - Route
     delete:
@@ -2139,8 +2196,8 @@ paths:
             type: string
             format: uuid
       responses:
-        "204":
-          description: ""
+        '204':
+          description: ''
       tags:
         - Route
   /v2/routes:
@@ -2174,24 +2231,24 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListSiteRouteV2ResponseBodyDto"
-        "400":
-          description: ""
+                $ref: '#/components/schemas/ListSiteRouteV2ResponseBodyDto'
+        '400':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BadRequestResponseDto"
-        "403":
-          description: ""
+                $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ForbiddenResponseDto"
+                $ref: '#/components/schemas/ForbiddenResponseDto'
       tags:
         - Route
     post:
@@ -2209,42 +2266,42 @@ paths:
           schema:
             type: string
             enum:
-              - "true"
-              - "false"
+              - 'true'
+              - 'false'
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateSiteRouteV2RequestBodyDto"
+              $ref: '#/components/schemas/CreateSiteRouteV2RequestBodyDto'
       responses:
-        "201":
-          description: ""
+        '201':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CreateSiteRouteV2ResponseBodyDto"
-        "400":
-          description: ""
+                $ref: '#/components/schemas/CreateSiteRouteV2ResponseBodyDto'
+        '400':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BadRequestResponseDto"
-        "403":
-          description: ""
+                $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ForbiddenResponseDto"
-        "409":
-          description: ""
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '409':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ConflictResponseDto"
+                $ref: '#/components/schemas/ConflictResponseDto'
       tags:
         - Route
-  "/v2/routes/{routeIdOrPathname}":
+  '/v2/routes/{routeIdOrPathname}':
     get:
       operationId: SiteRouteController_getV2_v2
       parameters:
@@ -2266,30 +2323,30 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ReadSiteRouteV2ResponseBodyDto"
-        "400":
-          description: ""
+                $ref: '#/components/schemas/ReadSiteRouteV2ResponseBodyDto'
+        '400':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BadRequestResponseDto"
-        "403":
-          description: ""
+                $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ForbiddenResponseDto"
-        "404":
-          description: ""
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NotFoundResponseDto"
+                $ref: '#/components/schemas/NotFoundResponseDto'
       tags:
         - Route
     patch:
@@ -2318,45 +2375,45 @@ paths:
           schema:
             type: string
             enum:
-              - "true"
-              - "false"
+              - 'true'
+              - 'false'
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UpdateSiteRouteV2RequestBodyDto"
+              $ref: '#/components/schemas/UpdateSiteRouteV2RequestBodyDto'
       responses:
-        "200":
-          description: ""
+        '200':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UpdateSiteRouteV2ResponseBodyDto"
-        "400":
-          description: ""
+                $ref: '#/components/schemas/UpdateSiteRouteV2ResponseBodyDto'
+        '400':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BadRequestResponseDto"
-        "403":
-          description: ""
+                $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ForbiddenResponseDto"
-        "404":
-          description: ""
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NotFoundResponseDto"
-        "409":
-          description: ""
+                $ref: '#/components/schemas/NotFoundResponseDto'
+        '409':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ConflictResponseDto"
+                $ref: '#/components/schemas/ConflictResponseDto'
       tags:
         - Route
     delete:
@@ -2380,26 +2437,26 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description: Route successfully deleted.
-        "400":
-          description: ""
+        '400':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/BadRequestResponseDto"
-        "403":
-          description: ""
+                $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ForbiddenResponseDto"
-        "404":
-          description: ""
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NotFoundResponseDto"
+                $ref: '#/components/schemas/NotFoundResponseDto'
       tags:
         - Route
 components:
@@ -2562,7 +2619,7 @@ components:
           description: The host URL of the site. The URL should consist of only the origin.
           type: string
           format: uri
-          example: "https://example.com"
+          example: 'https://example.com'
         templateId:
           description: The ID of the template to import.
           type: string
@@ -2590,9 +2647,9 @@ components:
           example: Acme Co.
         hostUrl:
           description: The host URL of the site. The URL should consist of only the origin.
-          type: "null"
+          type: 'null'
           format: uri
-          example: "https://example.com"
+          example: 'https://example.com'
         apiKey:
           type: string
           format: uuid
@@ -2615,7 +2672,7 @@ components:
           description: The host URL of the site. The URL should consist of only the origin.
           type: string
           format: uri
-          example: "https://example.com"
+          example: 'https://example.com'
         defaultLocale:
           description: Locale of the site locale.
           type: string
@@ -2635,9 +2692,9 @@ components:
           example: Acme Co.
         hostOrigin:
           description: The host URL of the site. The URL should consist of only the origin.
-          type: "null"
+          type: 'null'
           format: uri
-          example: "https://example.com"
+          example: 'https://example.com'
         publicApiKey:
           type: string
           format: uuid
@@ -2738,9 +2795,9 @@ components:
           example: Acme Co.
         hostUrl:
           description: The host URL of the site. The URL should consist of only the origin.
-          type: "null"
+          type: 'null'
           format: uri
-          example: "https://example.com"
+          example: 'https://example.com'
         apiKey:
           type: string
           format: uuid
@@ -2761,9 +2818,9 @@ components:
           example: Acme Co.
         hostOrigin:
           description: The host URL of the site. The URL should consist of only the origin.
-          type: "null"
+          type: 'null'
           format: uri
-          example: "https://example.com"
+          example: 'https://example.com'
         publicApiKey:
           type: string
           format: uuid
@@ -2795,7 +2852,7 @@ components:
           description: The host URL of the site. The URL should consist of only the origin.
           type: string
           format: uri
-          example: "https://example.com"
+          example: 'https://example.com'
     UpdateSiteV1ResponseBodyDto:
       type: object
       properties:
@@ -2808,9 +2865,9 @@ components:
           example: Acme Co.
         hostUrl:
           description: The host URL of the site. The URL should consist of only the origin.
-          type: "null"
+          type: 'null'
           format: uri
-          example: "https://example.com"
+          example: 'https://example.com'
         apiKey:
           type: string
           format: uuid
@@ -2830,7 +2887,7 @@ components:
           description: The host URL of the site. The URL should consist of only the origin.
           type: string
           format: uri
-          example: "https://example.com"
+          example: 'https://example.com'
     UpdateSiteV2ResponseBodyDto:
       type: object
       properties:
@@ -2843,9 +2900,9 @@ components:
           example: Acme Co.
         hostOrigin:
           description: The host URL of the site. The URL should consist of only the origin.
-          type: "null"
+          type: 'null'
           format: uri
-          example: "https://example.com"
+          example: 'https://example.com'
         publicApiKey:
           type: string
           format: uuid
@@ -2883,9 +2940,9 @@ components:
                 example: Acme Co.
               hostUrl:
                 description: The host URL of the site. The URL should consist of only the origin.
-                type: "null"
+                type: 'null'
                 format: uri
-                example: "https://example.com"
+                example: 'https://example.com'
               apiKey:
                 type: string
                 format: uuid
@@ -2920,9 +2977,9 @@ components:
                 example: Acme Co.
               hostOrigin:
                 description: The host URL of the site. The URL should consist of only the origin.
-                type: "null"
+                type: 'null'
                 format: uri
-                example: "https://example.com"
+                example: 'https://example.com'
               publicApiKey:
                 type: string
                 format: uuid
@@ -2971,9 +3028,9 @@ components:
           example: Acme Co.
         hostUrl:
           description: The host URL of the site. The URL should consist of only the origin.
-          type: "null"
+          type: 'null'
           format: uri
-          example: "https://example.com"
+          example: 'https://example.com'
         apiKey:
           type: string
           format: uuid
@@ -3004,9 +3061,9 @@ components:
           example: Acme Co.
         hostOrigin:
           description: The host URL of the site. The URL should consist of only the origin.
-          type: "null"
+          type: 'null'
           format: uri
-          example: "https://example.com"
+          example: 'https://example.com'
         publicApiKey:
           type: string
           format: uuid
@@ -3032,10 +3089,10 @@ components:
       properties:
         pathname:
           description: The pathname of the page
-          type: "null"
+          type: 'null'
         name:
           description: The name of the page
-          type: "null"
+          type: 'null'
       required:
         - pathname
         - name
@@ -3055,25 +3112,25 @@ components:
           example: About
         seoCanonicalUrl:
           description: The canonical URL of the page
-          type: "null"
+          type: 'null'
         seoIsIndexingBlocked:
           description: Whether the page is blocked from indexing
-          type: "null"
+          type: 'null'
         seoSitemapPriority:
           description: The priority of the page in the sitemap
-          type: "null"
+          type: 'null'
         seoSitemapFrequency:
           description: The frequency with which the page is updated in the sitemap
-          type: "null"
+          type: 'null'
         metaTitle:
           description: The title of the page
-          type: "null"
+          type: 'null'
         metaDescription:
           description: The description of the page
-          type: "null"
+          type: 'null'
         metaKeywords:
           description: The keywords of the page
-          type: "null"
+          type: 'null'
         isOnline:
           description: Whether the page is online
           type: boolean
@@ -3123,24 +3180,24 @@ components:
           type: string
         canonicalUrl:
           description: The canonical URL of the page.
-          type: "null"
+          type: 'null'
         title:
           description: The page title.
-          type: "null"
+          type: 'null'
         description:
           description: The page description.
-          type: "null"
+          type: 'null'
         socialImageUrl:
           description: The social image URL of the page.
-          type: "null"
+          type: 'null'
         sitemapPriority:
           description: The sitemap priority.
-          type: "null"
+          type: 'null'
           maximum: 1
           minimum: 0
         sitemapFrequency:
           description: The sitemap update frequency.
-          type: "null"
+          type: 'null'
           enum:
             - always
             - hourly
@@ -3151,22 +3208,22 @@ components:
             - never
         createdAt:
           description: The page creation date and time.
-          type: "null"
+          type: 'null'
           format: date-time
         updatedAt:
           description: The page last update date and time.
-          type: "null"
+          type: 'null'
           format: date-time
         publishedAt:
           description: The page publication date and time.
-          type: "null"
+          type: 'null'
           format: date-time
         isOnline:
           description: The flag that indicates whether the page is online.
           type: boolean
         excludedFromSearchEngines:
           description: The flag that indicates whether the page is excluded from search.
-          type: "null"
+          type: 'null'
         locale:
           description: The page locale. This defaults to the default locale of the parent site.
           type: string
@@ -3230,24 +3287,24 @@ components:
           type: string
         canonicalUrl:
           description: The canonical URL of the page.
-          type: "null"
+          type: 'null'
         title:
           description: The page title.
-          type: "null"
+          type: 'null'
         description:
           description: The page description.
-          type: "null"
+          type: 'null'
         socialImageUrl:
           description: The social image URL of the page.
-          type: "null"
+          type: 'null'
         sitemapPriority:
           description: The sitemap priority.
-          type: "null"
+          type: 'null'
           maximum: 1
           minimum: 0
         sitemapFrequency:
           description: The sitemap update frequency.
-          type: "null"
+          type: 'null'
           enum:
             - always
             - hourly
@@ -3258,22 +3315,22 @@ components:
             - never
         createdAt:
           description: The page creation date and time.
-          type: "null"
+          type: 'null'
           format: date-time
         updatedAt:
           description: The page last update date and time.
-          type: "null"
+          type: 'null'
           format: date-time
         publishedAt:
           description: The page publication date and time.
-          type: "null"
+          type: 'null'
           format: date-time
         isOnline:
           description: The flag that indicates whether the page is online.
           type: boolean
         excludedFromSearchEngines:
           description: The flag that indicates whether the page is excluded from search.
-          type: "null"
+          type: 'null'
         locale:
           description: The page locale. This defaults to the default locale of the parent site.
           type: string
@@ -3335,25 +3392,25 @@ components:
           example: About
         seoCanonicalUrl:
           description: The canonical URL of the page
-          type: "null"
+          type: 'null'
         seoIsIndexingBlocked:
           description: Whether the page is blocked from indexing
-          type: "null"
+          type: 'null'
         seoSitemapPriority:
           description: The priority of the page in the sitemap
-          type: "null"
+          type: 'null'
         seoSitemapFrequency:
           description: The frequency with which the page is updated in the sitemap
-          type: "null"
+          type: 'null'
         metaTitle:
           description: The title of the page
-          type: "null"
+          type: 'null'
         metaDescription:
           description: The description of the page
-          type: "null"
+          type: 'null'
         metaKeywords:
           description: The keywords of the page
-          type: "null"
+          type: 'null'
         isOnline:
           description: Whether the page is online
           type: boolean
@@ -3385,25 +3442,25 @@ components:
           example: About
         seoCanonicalUrl:
           description: The canonical URL of the page
-          type: "null"
+          type: 'null'
         seoIsIndexingBlocked:
           description: Whether the page is blocked from indexing
-          type: "null"
+          type: 'null'
         seoSitemapPriority:
           description: The priority of the page in the sitemap
-          type: "null"
+          type: 'null'
         seoSitemapFrequency:
           description: The frequency with which the page is updated in the sitemap
-          type: "null"
+          type: 'null'
         metaTitle:
           description: The title of the page
-          type: "null"
+          type: 'null'
         metaDescription:
           description: The description of the page
-          type: "null"
+          type: 'null'
         metaKeywords:
           description: The keywords of the page
-          type: "null"
+          type: 'null'
         isOnline:
           description: Whether the page is online
           type: boolean
@@ -3471,24 +3528,24 @@ components:
                 type: string
               canonicalUrl:
                 description: The canonical URL of the page.
-                type: "null"
+                type: 'null'
               title:
                 description: The page title.
-                type: "null"
+                type: 'null'
               description:
                 description: The page description.
-                type: "null"
+                type: 'null'
               socialImageUrl:
                 description: The social image URL of the page.
-                type: "null"
+                type: 'null'
               sitemapPriority:
                 description: The sitemap priority.
-                type: "null"
+                type: 'null'
                 maximum: 1
                 minimum: 0
               sitemapFrequency:
                 description: The sitemap update frequency.
-                type: "null"
+                type: 'null'
                 enum:
                   - always
                   - hourly
@@ -3499,22 +3556,22 @@ components:
                   - never
               createdAt:
                 description: The page creation date and time.
-                type: "null"
+                type: 'null'
                 format: date-time
               updatedAt:
                 description: The page last update date and time.
-                type: "null"
+                type: 'null'
                 format: date-time
               publishedAt:
                 description: The page publication date and time.
-                type: "null"
+                type: 'null'
                 format: date-time
               isOnline:
                 description: The flag that indicates whether the page is online.
                 type: boolean
               excludedFromSearchEngines:
                 description: The flag that indicates whether the page is excluded from search.
-                type: "null"
+                type: 'null'
               locale:
                 description: The page locale. This defaults to the default locale of the parent site.
                 type: string
@@ -3571,24 +3628,24 @@ components:
           type: string
         canonicalUrl:
           description: The canonical URL of the page.
-          type: "null"
+          type: 'null'
         title:
           description: The page title.
-          type: "null"
+          type: 'null'
         description:
           description: The page description.
-          type: "null"
+          type: 'null'
         socialImageUrl:
           description: The social image URL of the page.
-          type: "null"
+          type: 'null'
         sitemapPriority:
           description: The sitemap priority.
-          type: "null"
+          type: 'null'
           maximum: 1
           minimum: 0
         sitemapFrequency:
           description: The sitemap update frequency.
-          type: "null"
+          type: 'null'
           enum:
             - always
             - hourly
@@ -3599,22 +3656,22 @@ components:
             - never
         createdAt:
           description: The page creation date and time.
-          type: "null"
+          type: 'null'
           format: date-time
         updatedAt:
           description: The page last update date and time.
-          type: "null"
+          type: 'null'
           format: date-time
         publishedAt:
           description: The page publication date and time.
-          type: "null"
+          type: 'null'
           format: date-time
         isOnline:
           description: The flag that indicates whether the page is online.
           type: boolean
         excludedFromSearchEngines:
           description: The flag that indicates whether the page is excluded from search.
-          type: "null"
+          type: 'null'
         locale:
           description: The page locale. This defaults to the default locale of the parent site.
           type: string
@@ -3658,7 +3715,7 @@ components:
         domain:
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
           type: string
-          example: "https://es.example.com"
+          example: 'https://es.example.com'
       required:
         - locale
     CreateSiteLocaleV1ResponseBodyDto:
@@ -3673,8 +3730,8 @@ components:
           example: es-ES
         domain:
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          type: "null"
-          example: "https://es.example.com"
+          type: 'null'
+          example: 'https://es.example.com'
       required:
         - id
         - locale
@@ -3692,7 +3749,7 @@ components:
         domain:
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
           type: string
-          example: "https://es.example.com"
+          example: 'https://es.example.com'
       required:
         - siteId
         - locale
@@ -3712,8 +3769,8 @@ components:
           example: es-ES
         domain:
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          type: "null"
-          example: "https://es.example.com"
+          type: 'null'
+          example: 'https://es.example.com'
         isDefault:
           type: boolean
       required:
@@ -3756,7 +3813,7 @@ components:
                 enum:
                   - locale
               id:
-                type: "null"
+                type: 'null'
                 format: uuid
               locale:
                 description: Locale of the site locale.
@@ -3764,8 +3821,8 @@ components:
                 example: es-ES
               domain:
                 description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-                type: "null"
-                example: "https://es.example.com"
+                type: 'null'
+                example: 'https://es.example.com'
               isDefault:
                 type: boolean
             required:
@@ -3796,8 +3853,8 @@ components:
           example: es-ES
         domain:
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          type: "null"
-          example: "https://es.example.com"
+          type: 'null'
+          example: 'https://es.example.com'
         isDefault:
           type: boolean
       required:
@@ -3816,7 +3873,7 @@ components:
         domain:
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
           type: string
-          example: "https://es.example.com"
+          example: 'https://es.example.com'
     UpdateSiteLocaleV1ResponseBodyDto:
       type: object
       properties:
@@ -3829,8 +3886,8 @@ components:
           example: es-ES
         domain:
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          type: "null"
-          example: "https://es.example.com"
+          type: 'null'
+          example: 'https://es.example.com'
       required:
         - id
         - locale
@@ -3845,7 +3902,7 @@ components:
         domain:
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
           type: string
-          example: "https://es.example.com"
+          example: 'https://es.example.com'
     UpdateSiteLocaleV2ResponseBodyDto:
       type: object
       properties:
@@ -3862,8 +3919,8 @@ components:
           example: es-ES
         domain:
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          type: "null"
-          example: "https://es.example.com"
+          type: 'null'
+          example: 'https://es.example.com'
         isDefault:
           type: boolean
       required:
@@ -3884,8 +3941,8 @@ components:
           example: es-ES
         domain:
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          type: "null"
-          example: "https://es.example.com"
+          type: 'null'
+          example: 'https://es.example.com'
       required:
         - id
         - locale
@@ -3898,7 +3955,7 @@ components:
           enum:
             - locale
         id:
-          type: "null"
+          type: 'null'
           format: uuid
         locale:
           description: Locale of the site locale.
@@ -3906,8 +3963,8 @@ components:
           example: es-ES
         domain:
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          type: "null"
-          example: "https://es.example.com"
+          type: 'null'
+          example: 'https://es.example.com'
         isDefault:
           type: boolean
       required:
@@ -3928,8 +3985,8 @@ components:
           example: es-ES
         domain:
           description: Domain of the site locale if using domain-based localization. Domain URL must include the protocol.
-          type: "null"
-          example: "https://es.example.com"
+          type: 'null'
+          example: 'https://es.example.com'
       required:
         - id
         - locale
@@ -3940,7 +3997,7 @@ components:
         url:
           type: string
           format: uri
-          example: "https://example.com/webhook"
+          example: 'https://example.com/webhook'
         eventType:
           type: string
           enum:
@@ -3964,7 +4021,7 @@ components:
         url:
           type: string
           format: uri
-          example: "https://example.com/webhook"
+          example: 'https://example.com/webhook'
         eventType:
           type: string
           enum:
@@ -3995,7 +4052,7 @@ components:
               url:
                 type: string
                 format: uri
-                example: "https://example.com/webhook"
+                example: 'https://example.com/webhook'
               eventType:
                 type: string
                 enum:
@@ -4026,7 +4083,7 @@ components:
         url:
           type: string
           format: uri
-          example: "https://example.com/webhook"
+          example: 'https://example.com/webhook'
         eventType:
           type: string
           enum:
@@ -4265,21 +4322,21 @@ components:
         - pathname
 tags:
   - name: Authentication
-    description: ""
+    description: ''
   - name: Workspace
-    description: ""
+    description: ''
   - name: Workspace Member
-    description: ""
+    description: ''
   - name: Site
-    description: ""
+    description: ''
   - name: Locale
-    description: ""
+    description: ''
   - name: Route
-    description: ""
+    description: ''
   - name: Page
-    description: ""
+    description: ''
   - name: Webhook Management
-    description: ""
+    description: ''
 webhooks:
   page.created:
     post:
@@ -4310,25 +4367,25 @@ webhooks:
                       example: About
                     seoCanonicalUrl:
                       description: The canonical URL of the page
-                      type: "null"
+                      type: 'null'
                     seoIsIndexingBlocked:
                       description: Whether the page is blocked from indexing
-                      type: "null"
+                      type: 'null'
                     seoSitemapPriority:
                       description: The priority of the page in the sitemap
-                      type: "null"
+                      type: 'null'
                     seoSitemapFrequency:
                       description: The frequency with which the page is updated in the sitemap
-                      type: "null"
+                      type: 'null'
                     metaTitle:
                       description: The title of the page
-                      type: "null"
+                      type: 'null'
                     metaDescription:
                       description: The description of the page
-                      type: "null"
+                      type: 'null'
                     metaKeywords:
                       description: The keywords of the page
-                      type: "null"
+                      type: 'null'
                     isOnline:
                       description: Whether the page is online
                       type: boolean
@@ -4348,7 +4405,7 @@ webhooks:
                 - type
                 - page
       responses:
-        "200":
+        '200':
           description: Return a 200 status to indicate that the data was received successfully
   page.updated:
     post:
@@ -4379,25 +4436,25 @@ webhooks:
                       example: About
                     seoCanonicalUrl:
                       description: The canonical URL of the page
-                      type: "null"
+                      type: 'null'
                     seoIsIndexingBlocked:
                       description: Whether the page is blocked from indexing
-                      type: "null"
+                      type: 'null'
                     seoSitemapPriority:
                       description: The priority of the page in the sitemap
-                      type: "null"
+                      type: 'null'
                     seoSitemapFrequency:
                       description: The frequency with which the page is updated in the sitemap
-                      type: "null"
+                      type: 'null'
                     metaTitle:
                       description: The title of the page
-                      type: "null"
+                      type: 'null'
                     metaDescription:
                       description: The description of the page
-                      type: "null"
+                      type: 'null'
                     metaKeywords:
                       description: The keywords of the page
-                      type: "null"
+                      type: 'null'
                     isOnline:
                       description: Whether the page is online
                       type: boolean
@@ -4417,7 +4474,7 @@ webhooks:
                 - type
                 - page
       responses:
-        "200":
+        '200':
           description: Return a 200 status to indicate that the data was received successfully
   page.deleted:
     post:
@@ -4448,25 +4505,25 @@ webhooks:
                       example: About
                     seoCanonicalUrl:
                       description: The canonical URL of the page
-                      type: "null"
+                      type: 'null'
                     seoIsIndexingBlocked:
                       description: Whether the page is blocked from indexing
-                      type: "null"
+                      type: 'null'
                     seoSitemapPriority:
                       description: The priority of the page in the sitemap
-                      type: "null"
+                      type: 'null'
                     seoSitemapFrequency:
                       description: The frequency with which the page is updated in the sitemap
-                      type: "null"
+                      type: 'null'
                     metaTitle:
                       description: The title of the page
-                      type: "null"
+                      type: 'null'
                     metaDescription:
                       description: The description of the page
-                      type: "null"
+                      type: 'null'
                     metaKeywords:
                       description: The keywords of the page
-                      type: "null"
+                      type: 'null'
                     isOnline:
                       description: Whether the page is online
                       type: boolean
@@ -4486,7 +4543,7 @@ webhooks:
                 - type
                 - page
       responses:
-        "200":
+        '200':
           description: Return a 200 status to indicate that the data was received successfully
   page.restored:
     post:
@@ -4517,25 +4574,25 @@ webhooks:
                       example: About
                     seoCanonicalUrl:
                       description: The canonical URL of the page
-                      type: "null"
+                      type: 'null'
                     seoIsIndexingBlocked:
                       description: Whether the page is blocked from indexing
-                      type: "null"
+                      type: 'null'
                     seoSitemapPriority:
                       description: The priority of the page in the sitemap
-                      type: "null"
+                      type: 'null'
                     seoSitemapFrequency:
                       description: The frequency with which the page is updated in the sitemap
-                      type: "null"
+                      type: 'null'
                     metaTitle:
                       description: The title of the page
-                      type: "null"
+                      type: 'null'
                     metaDescription:
                       description: The description of the page
-                      type: "null"
+                      type: 'null'
                     metaKeywords:
                       description: The keywords of the page
-                      type: "null"
+                      type: 'null'
                     isOnline:
                       description: Whether the page is online
                       type: boolean
@@ -4555,7 +4612,7 @@ webhooks:
                 - type
                 - page
       responses:
-        "200":
+        '200':
           description: Return a 200 status to indicate that the data was received successfully
   site.published:
     post:
@@ -4580,7 +4637,7 @@ webhooks:
                       type: object
                       properties:
                         from:
-                          type: "null"
+                          type: 'null'
                           format: uuid
                         to:
                           type: string
@@ -4598,5 +4655,5 @@ webhooks:
                 - type
                 - data
       responses:
-        "200":
+        '200':
           description: Return a 200 status to indicate that the data was received successfully
