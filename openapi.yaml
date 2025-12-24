@@ -5,24 +5,6 @@ info:
   version: '1.0'
 servers: []
 paths:
-  /v1/auth/user-info:
-    get:
-      operationId: AuthController_getUserInfo_v1
-      parameters:
-        - name: Authorization
-          in: header
-          description: User bearer token
-          schema:
-            type: string
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetUserInfoV1ResponseBodyDto'
-      tags:
-        - Authentication
   /v1/workspaces:
     post:
       operationId: WorkspaceController_create_v1
@@ -338,6 +320,24 @@ paths:
                 $ref: '#/components/schemas/ListWorkspaceMemberV1ResponseBodyDto'
       tags:
         - Workspace Member
+  /v1/auth/user-info:
+    get:
+      operationId: AuthController_getUserInfo_v1
+      parameters:
+        - name: Authorization
+          in: header
+          description: User bearer token
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUserInfoV1ResponseBodyDto'
+      tags:
+        - Authentication
   '/v1/workspaces/{workspaceId}/sites':
     post:
       operationId: SiteController_create_v1
@@ -1780,8 +1780,6 @@ paths:
                 $ref: '#/components/schemas/NotFoundResponseDto'
       tags:
         - Locale
-<<<<<<< HEAD
-=======
   '/v2/locales/{localeIdOrCode}/restore':
     post:
       operationId: SiteLocaleController_restoreV2_v2
@@ -1835,141 +1833,6 @@ paths:
                 $ref: '#/components/schemas/NotFoundResponseDto'
       tags:
         - Locale
->>>>>>> master
-  '/v1/workspaces/{workspaceId}/webhooks':
-    post:
-      operationId: WebhookController_create_v1
-      parameters:
-        - name: Authorization
-          in: header
-          description: User bearer token
-          schema:
-            type: string
-        - name: x-api-key
-          in: header
-          description: Franchise key
-          schema:
-            type: string
-            format: uuid
-        - name: workspaceId
-          in: path
-          required: true
-          schema:
-            type: string
-            format: uuid
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateWebhookV1RequestBodyDto'
-      responses:
-        '201':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateWebhookV1ResponseBodyDto'
-      tags:
-        - Webhook Management
-    get:
-      operationId: WebhookController_list_v1
-      parameters:
-        - name: Authorization
-          in: header
-          description: User bearer token
-          schema:
-            type: string
-        - name: x-api-key
-          in: header
-          description: Franchise key
-          schema:
-            type: string
-            format: uuid
-        - name: workspaceId
-          in: path
-          required: true
-          schema:
-            type: string
-            format: uuid
-        - name: limit
-          in: query
-          required: false
-          schema:
-            type: number
-            default: 20
-            maximum: 100
-            minimum: 0
-        - name: after
-          in: query
-          required: false
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListWebhookV1ResponseBodyDto'
-      tags:
-        - Webhook Management
-  '/v1/webhooks/{id}':
-    get:
-      operationId: WebhookController_get_v1
-      parameters:
-        - name: Authorization
-          in: header
-          description: User bearer token
-          schema:
-            type: string
-        - name: x-api-key
-          in: header
-          description: Franchise key
-          schema:
-            type: string
-            format: uuid
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetWebhookV1ResponseBodyDto'
-      tags:
-        - Webhook Management
-    delete:
-      operationId: WebhookController_delete_v1
-      parameters:
-        - name: Authorization
-          in: header
-          description: User bearer token
-          schema:
-            type: string
-        - name: x-api-key
-          in: header
-          description: Franchise key
-          schema:
-            type: string
-            format: uuid
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '204':
-          description: ''
-      tags:
-        - Webhook Management
   '/v1/sites/{siteId}/routes':
     get:
       operationId: SiteRouteController_list_v1
@@ -2141,8 +2004,6 @@ paths:
           description: ''
       tags:
         - Route
-<<<<<<< HEAD
-=======
   /v2/routes:
     get:
       operationId: SiteRouteController_listV2_v2
@@ -2402,19 +2263,142 @@ paths:
                 $ref: '#/components/schemas/NotFoundResponseDto'
       tags:
         - Route
->>>>>>> master
+  '/v1/workspaces/{workspaceId}/webhooks':
+    post:
+      operationId: WebhookController_create_v1
+      parameters:
+        - name: Authorization
+          in: header
+          description: User bearer token
+          schema:
+            type: string
+        - name: x-api-key
+          in: header
+          description: Franchise key
+          schema:
+            type: string
+            format: uuid
+        - name: workspaceId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWebhookV1RequestBodyDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateWebhookV1ResponseBodyDto'
+      tags:
+        - Webhook Management
+    get:
+      operationId: WebhookController_list_v1
+      parameters:
+        - name: Authorization
+          in: header
+          description: User bearer token
+          schema:
+            type: string
+        - name: x-api-key
+          in: header
+          description: Franchise key
+          schema:
+            type: string
+            format: uuid
+        - name: workspaceId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: number
+            default: 20
+            maximum: 100
+            minimum: 0
+        - name: after
+          in: query
+          required: false
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListWebhookV1ResponseBodyDto'
+      tags:
+        - Webhook Management
+  '/v1/webhooks/{id}':
+    get:
+      operationId: WebhookController_get_v1
+      parameters:
+        - name: Authorization
+          in: header
+          description: User bearer token
+          schema:
+            type: string
+        - name: x-api-key
+          in: header
+          description: Franchise key
+          schema:
+            type: string
+            format: uuid
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetWebhookV1ResponseBodyDto'
+      tags:
+        - Webhook Management
+    delete:
+      operationId: WebhookController_delete_v1
+      parameters:
+        - name: Authorization
+          in: header
+          description: User bearer token
+          schema:
+            type: string
+        - name: x-api-key
+          in: header
+          description: Franchise key
+          schema:
+            type: string
+            format: uuid
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: ''
+      tags:
+        - Webhook Management
 components:
   schemas:
-    GetUserInfoV1ResponseBodyDto:
-      type: object
-      properties:
-        id:
-          description: The ID of the user
-          type: string
-          format: uuid
-          example: d2ccb4e7-1364-496d-a131-bd996269ab2c
-      required:
-        - id
     CreateWorkspaceV1RequestBodyDto:
       type: object
       properties:
@@ -2552,6 +2536,16 @@ components:
       required:
         - data
         - hasMore
+    GetUserInfoV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          description: The ID of the user
+          type: string
+          format: uuid
+          example: d2ccb4e7-1364-496d-a131-bd996269ab2c
+      required:
+        - id
     CreateSiteV1RequestBodyDto:
       type: object
       properties:
@@ -3935,112 +3929,6 @@ components:
         - id
         - locale
         - domain
-    CreateWebhookV1RequestBodyDto:
-      type: object
-      properties:
-        url:
-          type: string
-          format: uri
-          example: 'https://example.com/webhook'
-        eventType:
-          type: string
-          enum:
-            - page.created
-            - page.deleted
-            - page.updated
-            - page.restored
-            - site.published
-      required:
-        - url
-        - eventType
-    CreateWebhookV1ResponseBodyDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        workspaceId:
-          type: string
-          format: uuid
-        url:
-          type: string
-          format: uri
-          example: 'https://example.com/webhook'
-        eventType:
-          type: string
-          enum:
-            - page.created
-            - page.deleted
-            - page.updated
-            - page.restored
-            - site.published
-      required:
-        - id
-        - workspaceId
-        - url
-        - eventType
-    ListWebhookV1ResponseBodyDto:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-                format: uuid
-              workspaceId:
-                type: string
-                format: uuid
-              url:
-                type: string
-                format: uri
-                example: 'https://example.com/webhook'
-              eventType:
-                type: string
-                enum:
-                  - page.created
-                  - page.deleted
-                  - page.updated
-                  - page.restored
-                  - site.published
-            required:
-              - id
-              - workspaceId
-              - url
-              - eventType
-        hasMore:
-          type: boolean
-      required:
-        - data
-        - hasMore
-    GetWebhookV1ResponseBodyDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        workspaceId:
-          type: string
-          format: uuid
-        url:
-          type: string
-          format: uri
-          example: 'https://example.com/webhook'
-        eventType:
-          type: string
-          enum:
-            - page.created
-            - page.deleted
-            - page.updated
-            - page.restored
-            - site.published
-      required:
-        - id
-        - workspaceId
-        - url
-        - eventType
     ListSiteRouteV1ResponseBodyDto:
       type: object
       properties:
@@ -4112,8 +4000,6 @@ components:
       required:
         - id
         - pathname
-<<<<<<< HEAD
-=======
     ListSiteRouteV2ResponseBodyDto:
       type: object
       properties:
@@ -4241,7 +4127,6 @@ components:
         - object
         - id
         - pathname
->>>>>>> master
     UpdateSiteRouteV1RequestBodyDto:
       description: Request body for updating an existing site route.
       type: object
@@ -4267,6 +4152,112 @@ components:
       required:
         - id
         - pathname
+    CreateWebhookV1RequestBodyDto:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          example: 'https://example.com/webhook'
+        eventType:
+          type: string
+          enum:
+            - page.created
+            - page.deleted
+            - page.updated
+            - page.restored
+            - site.published
+      required:
+        - url
+        - eventType
+    CreateWebhookV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        workspaceId:
+          type: string
+          format: uuid
+        url:
+          type: string
+          format: uri
+          example: 'https://example.com/webhook'
+        eventType:
+          type: string
+          enum:
+            - page.created
+            - page.deleted
+            - page.updated
+            - page.restored
+            - site.published
+      required:
+        - id
+        - workspaceId
+        - url
+        - eventType
+    ListWebhookV1ResponseBodyDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+              workspaceId:
+                type: string
+                format: uuid
+              url:
+                type: string
+                format: uri
+                example: 'https://example.com/webhook'
+              eventType:
+                type: string
+                enum:
+                  - page.created
+                  - page.deleted
+                  - page.updated
+                  - page.restored
+                  - site.published
+            required:
+              - id
+              - workspaceId
+              - url
+              - eventType
+        hasMore:
+          type: boolean
+      required:
+        - data
+        - hasMore
+    GetWebhookV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        workspaceId:
+          type: string
+          format: uuid
+        url:
+          type: string
+          format: uri
+          example: 'https://example.com/webhook'
+        eventType:
+          type: string
+          enum:
+            - page.created
+            - page.deleted
+            - page.updated
+            - page.restored
+            - site.published
+      required:
+        - id
+        - workspaceId
+        - url
+        - eventType
 tags:
   - name: Authentication
     description: ''
