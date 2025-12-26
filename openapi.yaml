@@ -127,6 +127,68 @@ paths:
           description: ''
       tags:
         - Workspace
+  '/v1/workspaces/{id}/apps/{appSlug}/install':
+    post:
+      operationId: WorkspaceController_installApp_v1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: appSlug
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: User bearer token
+          schema:
+            type: string
+        - name: x-api-key
+          in: header
+          description: Franchise key
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '201':
+          description: ''
+      tags:
+        - Workspace
+  '/v1/workspaces/{id}/apps/{appSlug}/uninstall':
+    post:
+      operationId: WorkspaceController_uninstallApp_v1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: appSlug
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: User bearer token
+          schema:
+            type: string
+        - name: x-api-key
+          in: header
+          description: Franchise key
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: ''
+      tags:
+        - Workspace
   '/v1/workspaces/{workspaceId}/members/{userId}':
     post:
       operationId: WorkspaceMemberController_create_v1
