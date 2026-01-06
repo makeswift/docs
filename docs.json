@@ -307,6 +307,7 @@
                   },
                   {
                     "group": "Pages",
+                    "hidden": true,
                     "pages": [
                       "developer/reference/api/pages/create-page",
                       "developer/reference/api/pages/list-pages",
