@@ -279,6 +279,7 @@
               },
               {
                 "group": "Public API",
+                "hidden": true,
                 "pages": [
                   "developer/reference/api/overview",
                   "developer/reference/api/authentication",
