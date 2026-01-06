@@ -16,26 +16,15 @@ Makeswift's localization feature allows you to manage localized versions of your
 
 <Steps>
   <Step title="Add locales in the Makeswift builder">
-    Open site settings and go to the "Locales" tab.
+    Click "Settings" and go to the "Locales" tab.
 
     <Frame>
-      ![Localization first step](/images/localization-first-step.png)
+      ![Settings Locales](/images/makeswift-settings-locales.png)
     </Frame>
 
-    To add a new locale, click the "+ Add locale" button. You can modify or delete existing locales by hovering over the locale:
+    To add a new locale, click the "Add locale" button. To modify or delete existing locales, hover over the locale and use the edit or delete button. The default locale cannot be deleted.
 
-    <Frame>
-      ![Hovering over the locale](/images/localization-hover-locale.png)
-    </Frame>
-
-    You can also modify the default locale by hovering over it and clicking the edit button.
-
-    Here's an example of what a list of locales in settings looks like:
-
-    <Frame>
-      ![Manage locales in settings](/images/localization-manage-locales.png)
-    </Frame>
-
+    When adding or editing a locale, you can specify its language and region. A locale can apply to a single geographic region, or all regions. For sites with localized domain names, you can optionally specify a domain URL for each locale. For example, *mysite.com* might use *mysite.co.uk* and *mysite.com.au* for the United Kingdom and Australia, respectively.
   </Step>
 
   <Step title="Configure locales in your Next.js config">
