@@ -87,13 +87,13 @@ export function Accordions({ accordionTitles }) {
 
 ### An array of objects
 
-This example uses the [Shape](/developer/reference/controls/shape) control to define the structure of the objects in the `accordions` array.
+This example uses the [Group](/developer/reference/controls/group) control to define the structure of the objects in the `accordions` array.
 
 <CodeGroup>
 
 ```tsx Accordions.makeswift.ts
 import { runtime } from "@/lib/makeswift/runtime";
-import { List, Shape, TextInput, TextArea } from "@makeswift/runtime/controls";
+import { List, Group, TextInput, TextArea } from "@makeswift/runtime/controls";
 
 import { Accordions } from "./Accordions";
 
@@ -103,8 +103,8 @@ runtime.registerComponent(Accordions, {
   props: {
     accordions: List({
       label: "Accordions",
-      type: Shape({
-        type: {
+      type: Group({
+        props: {
           title: TextInput({ label: "Title", defaultValue: "Accordion Title" }),
           body: TextArea({ label: "Body", defaultValue: "This is the body!" }),
         },
