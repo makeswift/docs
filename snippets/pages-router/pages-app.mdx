@@ -7,10 +7,10 @@ import "@/makeswift/components";
 
 export default function App({
   Component,
-  pageProps: { previewMode, ...pageProps },
+  pageProps: { siteVersion, ...pageProps },
 }: AppProps) {
   return (
-    <ReactRuntimeProvider runtime={runtime} previewMode={previewMode}>
+    <ReactRuntimeProvider runtime={runtime} siteVersion={siteVersion}>
       <Component {...pageProps} />
     </ReactRuntimeProvider>
   );

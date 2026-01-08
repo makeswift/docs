@@ -13,9 +13,9 @@ import PagesApp from "/snippets/pages-router/pages-app.mdx";
   A Makeswift [runtime](/developer/reference/runtime/constructor).
 </ParamField>
 
-<ParamField query="previewMode" type="boolean" required>
-  When set to `true`, the preview version of a page will be rendered. See
-  [example](#example) below for usage.
+<ParamField query="siteVersion" type="SiteVersion" required>
+  Determines which version of the site to render. If `null` is passed,
+  then the published site content will be rendered.
 </ParamField>
 
 <ParamField query="children" type="React.Node">
@@ -46,7 +46,7 @@ import PagesApp from "/snippets/pages-router/pages-app.mdx";
   </Tab>
   <Tab title="Pages Router">
 
-    The following example shows how to add a `<ReactRuntimeProvider>` to a [Custom App](https://nextjs.org/docs/pages/building-your-application/routing/custom-app) as outlined in step 10 of the [Pages Router Installation guide](/developer/pages-router/installation). The `previewMode` property is returned from `getStaticProps` in an optional catch-all route.
+    The following example shows how to add a `<ReactRuntimeProvider>` to a [Custom App](https://nextjs.org/docs/pages/building-your-application/routing/custom-app) as outlined in step 10 of the [Pages Router Installation guide](/developer/pages-router/installation). The `siteVersion` property is returned from `getStaticProps` in an optional catch-all route.
 
     <CodeGroup>
 
@@ -56,11 +56,12 @@ import PagesApp from "/snippets/pages-router/pages-app.mdx";
 
     export async function getStaticProps({ params, previewData }) {
       // ...
+      const siteVersion = Makeswift.getSiteVersion(previewData);
 
       return {
         props: {
           // ...
-          previewMode: Makeswift.getPreviewMode(previewData),
+          siteVersion,
         },
       };
     }
@@ -69,3 +70,10 @@ import PagesApp from "/snippets/pages-router/pages-app.mdx";
 
   </Tab>  
 </Tabs>
+
+
+## Changelog
+
+| Version                                                                                          | Changes                               |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------- |
+| [`v0.25.0`](https://github.com/makeswift/makeswift/releases/tag/%40makeswift%2Fruntime%400.25.0) | Replace the `previewMode` boolean prop with `siteVersion` |

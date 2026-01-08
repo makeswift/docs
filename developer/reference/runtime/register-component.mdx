@@ -3,6 +3,8 @@ title: "registerComponent"
 description: Adds your components to the Makeswift builder.
 ---
 
+import DescriptionParam from "/snippets/reference/description-param.mdx";
+
 ## Arguments
 
 {/* prettier-ignore-start */}
@@ -23,11 +25,18 @@ description: Adds your components to the Makeswift builder.
        <ParamField query="label" type="string" required>
           The label shown in the Makeswift builder.
        </ParamField>
+       <DescriptionParam/>
        <ParamField query="icon" type="Icon">
           The icon shown in the Makeswift builder. You can find all available icons in the [icons list](#icons-list) section.
        </ParamField>
        <ParamField query="hidden" type="boolean">
         A boolean that determines whether or not this component will be displayed in the Component Tray.
+      </ParamField>
+       <ParamField query="builtinSuspense" type="boolean">
+        A boolean that determines whether or not this component will be wrapped in a built-in `<Suspense>` boundary.
+        Defaults to `true`. Set this to `false` if your component already includes its own `<Suspense>` boundary.
+
+        Added in [`v0.26.0`](https://github.com/makeswift/makeswift/releases/tag/%40makeswift%2Fruntime%400.26.0).
       </ParamField>
        <ParamField query="props" type="Record<string, Control>" required>
           An object mapping prop names to Makeswift [controls](/developer/concepts#controls).
@@ -106,6 +115,39 @@ runtime.registerComponent(Sphere, {
 });
 ```
 
+### Overriding the built-in Suspense boundary
+
+By default, the Makeswift runtime wraps registered components in a built-in `<Suspense>` boundary to
+transparently enable efficient server-side streaming and asynchronous data fetching. If your component
+already includes its own `<Suspense>` boundary, you can disable the built-in one by setting the
+`builtinSuspense` option to `false`:
+
+```tsx
+import { TextInput } from "@makeswift/runtime/controls";
+import { runtime } from "./runtime";
+
+function Discography({ artistId }: { artistId?: string }) {
+  return (
+    <>
+      <h2>Discography</h2>
+      {/* component's own Suspense boundary with a fallback */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <AlbumList artistId={artistId} />
+      </Suspense>
+    </>
+  );
+}
+
+runtime.registerComponent(Discography, {
+  type: 'section-discography',
+  label: 'Discography',
+  builtinSuspense: false, // disable the built-in Suspense boundary
+  props: {
+    artistId: TextInput({ label: 'Artist ID' }),
+  },
+});
+```
+
 ### Adding custom icons
 
 This example shows how to register an `ImageGallery` component with a custom icon. We
@@ -145,6 +187,61 @@ runtime.registerComponent(Cube, {
   },
 });
 ```
+
+### Adding a description
+
+This example shows how to add a `Circle` component with a rich description. We
+can define a description string using markdown formatting, and pass it into the component description field.
+
+```typescript
+const mdDescription = `
+# This is a larger heading
+
+This is some text at the top of here
+
+[![robot](https://plus.unsplash.com/premium_photo-1738614647383-0435fcb26a55?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8fA%3D%3D)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+
+## This is a smaller heading
+
+This is a **description** about this component, click to [learn more](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
+* First Item
+* Second item
+
+This is a line with some \`\`<code/>\`\`
+`
+```
+
+```tsx makeswift/components.tsx
+import { Style } from "@makeswift/runtime/controls";
+
+import { runtime } from "@/makeswift/runtime";
+
+function Circle({ className }) {
+  return <div className={className}>I'm a circle!</div>;
+}
+
+runtime.registerComponent(Circle, {
+  type: "circle-tester",
+  label: "Custom / Circle",
+  icon: "chats",
+  hidden: false,
+  description: mdDescription,
+  props: {
+    className: Style({ properties: Style.All }),
+  },
+});
+```
+
+In the Properties Sidebar, we can see an info icon next to the component label. Hover over the label to open the description tooltip.
+
+<Frame>
+  <img
+    src="/images/developer/reference/register-component/register-custom-description.png"
+    alt="custom component description open"
+  />
+</Frame>
+
+Descriptions that are longer than the standard tooltip will have a scrollbar to view the overflowing content.
 
 ### Organizing registration code
 
@@ -193,6 +290,7 @@ Then update your `makeswift/components.tsx` file to import all of the component 
 import "@/components/Box/Box.makeswift";
 import "@/components/Cube/Cube.makeswift";
 import "@/components/Sphere/Sphere.makeswift";
+import "@/components/Circle/Circle.makeswift";
 /*
  * Add all of your component registrations here
  */

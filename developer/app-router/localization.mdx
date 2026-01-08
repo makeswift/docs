@@ -64,7 +64,7 @@ export default withNextIntl(withMakeswift(nextConfig));
 
 ```tsx
 <NextIntlClientProvider>
-  <MakeswiftProvider previewMode={(await draftMode()).isEnabled}>
+  <MakeswiftProvider siteVersion={await getSiteVersion()}>
     {children}
   </MakeswiftProvider>
 </NextIntlClientProvider>

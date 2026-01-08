@@ -9,6 +9,7 @@ import {
   Page as MakeswiftPage,
   PageProps as MakeswiftPageProps,
   Makeswift,
+  type SiteVersion
 } from "@makeswift/runtime/next";
 
 import { client } from "@/makeswift/client";
@@ -32,7 +33,7 @@ export async function getStaticPaths(): Promise<
 }
 
 export type PageProps = MakeswiftPageProps & {
-  previewMode: boolean;
+  siteVersion: SiteVersion | null;
   locale: string | undefined;
 };
 
@@ -44,8 +45,9 @@ export async function getStaticProps({
   GetStaticPropsResult<PageProps>
 > {
   const path = "/" + (params?.path ?? []).join("/");
+  const siteVersion = Makeswift.getSiteVersion(previewData);
   const snapshot = await client.getPageSnapshot(path, {
-    siteVersion: Makeswift.getSiteVersion(previewData),
+    siteVersion,
     locale,
   });
 
@@ -54,7 +56,7 @@ export async function getStaticProps({
   return {
     props: {
       snapshot,
-      previewMode: Makeswift.getPreviewMode(previewData),
+      siteVersion,
       locale,
     },
   };

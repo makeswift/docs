@@ -1,0 +1,154 @@
+---
+title: Upgrading to 0.25.0
+---
+
+If you haven't yet upgraded to `0.24.0`, please review the [0.24.0 upgrade
+guide](/developer/upgrading/0.24.0) first.
+
+`v0.25.0` of the runtime introduces new mechanisms for viewing different
+versions of your site, including support for shareable links and previewing
+scheduled/past publishes. It also includes several internal improvements and bug
+fixes.
+
+Refer to the [official release
+notes](https://github.com/makeswift/makeswift/releases/tag/%40makeswift/runtime%400.25.0)
+for the full list of changes.
+
+## Breaking Changes
+
+### Minimum Node.js v20 required
+
+Now that [Node.js 18 has reached its end of
+life](https://nodejs.org/en/blog/announcements/node-18-eol-support), version
+`0.25.0` of the runtime requires a minimum of Node.js v20.
+
+### `MakeswiftSiteVersion` replaced with `SiteVersion`
+
+We've replaced the `MakeswiftSiteVersion` type with `SiteVersion`, which is now
+the return type of the `getSiteVersion` function. Any client method that accepts
+a `siteVersion` option (including `getPageSnapshot`, `getComponentSnapshot`, and
+`getPages`) should only be using the value returned by `getSiteVersion`. If
+you're already using `getSiteVersion` for these methods (as recommended by our
+installation guides), no changes should be required.
+
+### `ReactRuntimeProvider` takes a `siteVersion` prop
+
+The `<ReactRuntimeProvider>`'s `previewMode` prop has been replaced with the
+required `siteVersion` prop. The value passed for this prop should be set
+by the same `getSiteVersion` function.
+
+#### App Router
+
+If you're using App Router, use the `getSiteVersion` function to get the value
+to be passed to the `siteVersion` prop of `<ReactRuntimeProvider>`. If you
+followed our installation guide and created a `<MakeswiftProvider>` component in
+`src/makeswift/provider.tsx`, you can update the props of this component:
+
+```diff
+"use client";
+
+import { runtime } from "@/makeswift/runtime";
+import {
+  ReactRuntimeProvider,
+  RootStyleRegistry,
++ type SiteVersion,
+} from "@makeswift/runtime/next";
+import "@/makeswift/components";
+
+export function MakeswiftProvider({
+  children,
+-  previewMode,
++  siteVersion,
+}: {
+  children: React.ReactNode;
+-  previewMode: boolean;
++  siteVersion: SiteVersion | null
+}) {
+  return (
+    <ReactRuntimeProvider siteVersion={siteVersion} runtime={runtime}>
+      <RootStyleRegistry>{children}</RootStyleRegistry>
+    </ReactRuntimeProvider>
+  );
+}
+```
+
+Then, you can update the value being passed to the `siteVersion` prop in the
+root layout (`layout.tsx`):
+
+```diff
+import { MakeswiftProvider } from '@/makeswift/provider'
+- import { draftMode } from 'next/headers'
++ import { getSiteVersion } from '@makeswift/runtime/next/server'
+
+export default async function RootLayout({
+  children,
+  params,
+}: Readonly<{
+  children: React.ReactNode
+  params: Params
+}>) {
+  const { lang } = await params
+  return (
+    <html lang={lang}>
+      <body>
+-        <MakeswiftProvider previewMode={(await draftMode()).isEnabled} locale={lang}>
++        <MakeswiftProvider siteVersion={await getSiteVersion()} locale={lang}>
+          {children}
+        </MakeswiftProvider>
+      </body>
+    </html>
+  )
+}
+```
+
+#### Pages Router
+
+If you're using Pages Router, you'll need to update the `getStaticProps`
+function in your optional catch-all route to replace `previewMode` with
+`siteVersion` in its returned data so that it becomes available in the
+`_app.tsx` file:
+
+```diff
+return {
+  props: {
+    snapshot,
+-   previewMode: Makeswift.getPreviewMode(previewData),
++   siteVersion: Makeswift.getSiteVersion(previewData),
+    locale,
+  },
+};
+```
+
+Then, you can consume this data in your `_app.tsx` file and pass it to the
+`<ReactRuntimeProvider>`.
+
+```diff
+export default function App({
+  Component,
+-  pageProps: { previewMode, locale, ...pageProps },
++  pageProps: { siteVersion, locale, ...pageProps },
+}: AppProps) {
+  return (
+    <ReactRuntimeProvider
+      runtime={runtime}
+-     previewMode={previewMode}
++     siteVersion={siteVersion}
+      locale={locale}
+    >
+      <Component {...pageProps} />
+    </ReactRuntimeProvider>
+  );
+}
+```
+
+### Removed deprecated client `getSitemap` method
+
+The `getSitemap` client method, which was deprecated in
+[`v0.19.0`](https://github.com/makeswift/makeswift/releases/tag/%40makeswift%2Fruntime%400.19.0),
+has been removed. See the [v0.19.0 upgrade guide](/developer/upgrading/0.19.0)
+on how to use the `client.getPages` method to create a sitemap instead.
+
+### Removed `PageProvider` component and `usePageId` hook
+
+The `PageProvider` component and `usePageId` hook have been removed from the
+runtime. These exports were obsolete and not being used for any functionality.

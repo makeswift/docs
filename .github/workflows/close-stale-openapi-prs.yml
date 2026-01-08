@@ -1,0 +1,56 @@
+name: Close Stale OpenAPI Sync PRs
+
+on:
+  schedule:
+    # Runs every hour
+    - cron: "0 * * * *"
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  close-stale-prs:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Close stale openapi-sync PRs
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const oneWeekAgo = new Date();
+            oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+            const { data: prs } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              per_page: 100
+            });
+
+            const stalePrs = prs.filter(pr => {
+              const isOpenApiSync = pr.head.ref.startsWith('openapi-sync/');
+              const lastUpdated = new Date(pr.updated_at);
+              const isStale = lastUpdated < oneWeekAgo;
+              return isOpenApiSync && isStale;
+            });
+
+            console.log(`Found ${stalePrs.length} stale openapi-sync PRs to close`);
+
+            for (const pr of stalePrs) {
+              console.log(`Closing PR #${pr.number}: ${pr.title} (last updated: ${pr.updated_at})`);
+              
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr.number,
+                body: '🧹 Automatically closing this PR as it hasn\'t been updated in over a week. Feel free to reopen if still needed.'
+              });
+
+              await github.rest.pulls.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: pr.number,
+                state: 'closed'
+              });
+            }
+
+            console.log('Done!');
