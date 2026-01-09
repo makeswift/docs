@@ -793,7 +793,6 @@ paths:
           required: true
           schema:
             type: string
-            minLength: 1
         - name: siteId
           in: query
           description: The site ID required when using a pathname instead of a page ID.
@@ -833,7 +832,6 @@ paths:
           required: true
           schema:
             type: string
-            minLength: 1
         - name: siteId
           in: query
           description: The site ID required when using a pathname instead of a page ID.
@@ -859,7 +857,6 @@ paths:
           required: true
           schema:
             type: string
-            minLength: 1
         - name: siteId
           in: query
           description: The site ID required when using a pathname instead of a page ID.
@@ -2296,6 +2293,7 @@ components:
           type: string
           format: uri
           example: 'https://hearthfurniture.com'
+      additionalProperties: false
     UpdateSiteV2ResponseBodyDto:
       type: object
       properties:
@@ -2587,7 +2585,6 @@ components:
         pathname:
           description: The page pathname.
           type: string
-          minLength: 1
         name:
           description: The page name.
           type: string
@@ -2701,7 +2698,6 @@ components:
         pathname:
           description: The page pathname.
           type: string
-          minLength: 1
         name:
           description: The page name.
           type: string
