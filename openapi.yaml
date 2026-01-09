@@ -393,7 +393,7 @@ paths:
             default: 20
             maximum: 100
             minimum: 1
-        - name: starting_after
+        - name: startingAfter
           in: query
           description: The pagination cursor. This is used to indicate what ID to list from.
           required: false
@@ -702,7 +702,7 @@ paths:
             default: 20
             maximum: 100
             minimum: 1
-        - name: starting_after
+        - name: startingAfter
           in: query
           description: The pagination cursor. This is used to indicate what ID to list from.
           required: false
@@ -793,7 +793,6 @@ paths:
           required: true
           schema:
             type: string
-            minLength: 1
         - name: siteId
           in: query
           description: The site ID required when using a pathname instead of a page ID.
@@ -833,7 +832,6 @@ paths:
           required: true
           schema:
             type: string
-            minLength: 1
         - name: siteId
           in: query
           description: The site ID required when using a pathname instead of a page ID.
@@ -842,7 +840,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        '204':
           description: The response that indicates success when the page is deleted.
         '403':
           description: Access forbidden.
@@ -859,7 +857,6 @@ paths:
           required: true
           schema:
             type: string
-            minLength: 1
         - name: siteId
           in: query
           description: The site ID required when using a pathname instead of a page ID.
@@ -1130,7 +1127,7 @@ paths:
             default: 20
             maximum: 100
             minimum: 1
-        - name: starting_after
+        - name: startingAfter
           in: query
           description: The pagination cursor. This is used to indicate what ID to list from.
           required: false
@@ -1235,7 +1232,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        '204':
           description: Locale successfully deleted.
         '400':
           description: ''
@@ -1556,7 +1553,7 @@ paths:
             default: 20
             maximum: 100
             minimum: 1
-        - name: starting_after
+        - name: startingAfter
           in: query
           description: The pagination cursor. This is used to indicate what ID to list from.
           required: false
@@ -1762,7 +1759,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        '204':
           description: Route successfully deleted.
         '400':
           description: ''
@@ -2296,6 +2293,7 @@ components:
           type: string
           format: uri
           example: 'https://hearthfurniture.com'
+      additionalProperties: false
     UpdateSiteV2ResponseBodyDto:
       type: object
       properties:
@@ -2587,7 +2585,6 @@ components:
         pathname:
           description: The page pathname.
           type: string
-          minLength: 1
         name:
           description: The page name.
           type: string
@@ -2701,7 +2698,6 @@ components:
         pathname:
           description: The page pathname.
           type: string
-          minLength: 1
         name:
           description: The page name.
           type: string
