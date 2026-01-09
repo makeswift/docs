@@ -393,7 +393,7 @@ paths:
             default: 20
             maximum: 100
             minimum: 1
-        - name: starting_after
+        - name: startingAfter
           in: query
           description: The pagination cursor. This is used to indicate what ID to list from.
           required: false
@@ -702,7 +702,7 @@ paths:
             default: 20
             maximum: 100
             minimum: 1
-        - name: starting_after
+        - name: startingAfter
           in: query
           description: The pagination cursor. This is used to indicate what ID to list from.
           required: false
@@ -793,7 +793,6 @@ paths:
           required: true
           schema:
             type: string
-            minLength: 1
         - name: siteId
           in: query
           description: The site ID required when using a pathname instead of a page ID.
@@ -833,7 +832,6 @@ paths:
           required: true
           schema:
             type: string
-            minLength: 1
         - name: siteId
           in: query
           description: The site ID required when using a pathname instead of a page ID.
@@ -842,7 +840,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        '204':
           description: The response that indicates success when the page is deleted.
         '403':
           description: Access forbidden.
@@ -859,7 +857,6 @@ paths:
           required: true
           schema:
             type: string
-            minLength: 1
         - name: siteId
           in: query
           description: The site ID required when using a pathname instead of a page ID.
@@ -1130,7 +1127,7 @@ paths:
             default: 20
             maximum: 100
             minimum: 1
-        - name: starting_after
+        - name: startingAfter
           in: query
           description: The pagination cursor. This is used to indicate what ID to list from.
           required: false
@@ -1235,7 +1232,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        '204':
           description: Locale successfully deleted.
         '400':
           description: ''
@@ -1556,7 +1553,7 @@ paths:
             default: 20
             maximum: 100
             minimum: 1
-        - name: starting_after
+        - name: startingAfter
           in: query
           description: The pagination cursor. This is used to indicate what ID to list from.
           required: false
@@ -1762,7 +1759,7 @@ paths:
             type: string
             format: uuid
       responses:
-        '200':
+        '204':
           description: Route successfully deleted.
         '400':
           description: ''
@@ -2067,9 +2064,10 @@ components:
           example: Hearth Furniture Company
         hostUrl:
           description: The host URL of the site. The URL should consist of only the origin.
-          type: 'null'
+          type: string
           format: uri
           example: 'https://example.com'
+          nullable: true
         apiKey:
           type: string
           format: uuid
@@ -2126,9 +2124,10 @@ components:
           example: Hearth Furniture Company
         hostOrigin:
           description: The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing.
-          type: 'null'
+          type: string
           format: uri
           example: 'https://hearthfurniture.com'
+          nullable: true
         publicApiKey:
           description: The publishable API key that a host can use to get page and component data for rendering your site.
           type: string
@@ -2196,9 +2195,10 @@ components:
           example: Hearth Furniture Company
         hostUrl:
           description: The host URL of the site. The URL should consist of only the origin.
-          type: 'null'
+          type: string
           format: uri
           example: 'https://example.com'
+          nullable: true
         apiKey:
           type: string
           format: uuid
@@ -2225,9 +2225,10 @@ components:
           example: Hearth Furniture Company
         hostOrigin:
           description: The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing.
-          type: 'null'
+          type: string
           format: uri
           example: 'https://hearthfurniture.com'
+          nullable: true
         publicApiKey:
           description: The publishable API key that a host can use to get page and component data for rendering your site.
           type: string
@@ -2273,9 +2274,10 @@ components:
           example: Hearth Furniture Company
         hostUrl:
           description: The host URL of the site. The URL should consist of only the origin.
-          type: 'null'
+          type: string
           format: uri
           example: 'https://example.com'
+          nullable: true
         apiKey:
           type: string
           format: uuid
@@ -2296,6 +2298,7 @@ components:
           type: string
           format: uri
           example: 'https://hearthfurniture.com'
+      additionalProperties: false
     UpdateSiteV2ResponseBodyDto:
       type: object
       properties:
@@ -2314,9 +2317,10 @@ components:
           example: Hearth Furniture Company
         hostOrigin:
           description: The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing.
-          type: 'null'
+          type: string
           format: uri
           example: 'https://hearthfurniture.com'
+          nullable: true
         publicApiKey:
           description: The publishable API key that a host can use to get page and component data for rendering your site.
           type: string
@@ -2355,9 +2359,10 @@ components:
                 example: Hearth Furniture Company
               hostUrl:
                 description: The host URL of the site. The URL should consist of only the origin.
-                type: 'null'
+                type: string
                 format: uri
                 example: 'https://example.com'
+                nullable: true
               apiKey:
                 type: string
                 format: uuid
@@ -2399,9 +2404,10 @@ components:
                 example: Hearth Furniture Company
               hostOrigin:
                 description: The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing.
-                type: 'null'
+                type: string
                 format: uri
                 example: 'https://hearthfurniture.com'
+                nullable: true
               publicApiKey:
                 description: The publishable API key that a host can use to get page and component data for rendering your site.
                 type: string
@@ -2452,9 +2458,10 @@ components:
           example: Hearth Furniture Company
         hostUrl:
           description: The host URL of the site. The URL should consist of only the origin.
-          type: 'null'
+          type: string
           format: uri
           example: 'https://example.com'
+          nullable: true
         apiKey:
           type: string
           format: uuid
@@ -2491,9 +2498,10 @@ components:
           example: Hearth Furniture Company
         hostOrigin:
           description: The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing.
-          type: 'null'
+          type: string
           format: uri
           example: 'https://hearthfurniture.com'
+          nullable: true
         publicApiKey:
           description: The publishable API key that a host can use to get page and component data for rendering your site.
           type: string
@@ -2520,10 +2528,12 @@ components:
       properties:
         pathname:
           description: The pathname of the page
-          type: 'null'
+          type: string
+          nullable: true
         name:
           description: The name of the page
-          type: 'null'
+          type: string
+          nullable: true
       required:
         - pathname
         - name
@@ -2543,25 +2553,32 @@ components:
           example: About
         seoCanonicalUrl:
           description: The canonical URL of the page
-          type: 'null'
+          type: string
+          nullable: true
         seoIsIndexingBlocked:
           description: Whether the page is blocked from indexing
-          type: 'null'
+          type: boolean
+          nullable: true
         seoSitemapPriority:
           description: The priority of the page in the sitemap
-          type: 'null'
+          type: number
+          nullable: true
         seoSitemapFrequency:
           description: The frequency with which the page is updated in the sitemap
-          type: 'null'
+          type: string
+          nullable: true
         metaTitle:
           description: The title of the page
-          type: 'null'
+          type: string
+          nullable: true
         metaDescription:
           description: The description of the page
-          type: 'null'
+          type: string
+          nullable: true
         metaKeywords:
           description: The keywords of the page
-          type: 'null'
+          type: string
+          nullable: true
         isOnline:
           description: Whether the page is online
           type: boolean
@@ -2587,7 +2604,6 @@ components:
         pathname:
           description: The page pathname.
           type: string
-          minLength: 1
         name:
           description: The page name.
           type: string
@@ -2614,24 +2630,29 @@ components:
           example: furniture
         canonicalUrl:
           description: The canonical URL of the page.
-          type: 'null'
+          type: string
+          nullable: true
         title:
           description: The page title.
-          type: 'null'
+          type: string
+          nullable: true
         description:
           description: The page description.
-          type: 'null'
+          type: string
+          nullable: true
         socialImageUrl:
           description: The social image URL of the page.
-          type: 'null'
+          type: string
+          nullable: true
         sitemapPriority:
           description: The sitemap priority.
-          type: 'null'
+          type: number
           maximum: 1
           minimum: 0
+          nullable: true
         sitemapFrequency:
           description: The sitemap update frequency.
-          type: 'null'
+          type: string
           enum:
             - always
             - hourly
@@ -2640,24 +2661,29 @@ components:
             - monthly
             - yearly
             - never
+          nullable: true
         createdAt:
           description: The page creation date and time.
-          type: 'null'
+          type: string
           format: date-time
+          nullable: true
         updatedAt:
           description: The page last update date and time.
-          type: 'null'
+          type: string
           format: date-time
+          nullable: true
         publishedAt:
           description: The page publication date and time.
-          type: 'null'
+          type: string
           format: date-time
+          nullable: true
         isOnline:
           description: The flag that indicates whether the page is online.
           type: boolean
         excludedFromSearchEngines:
           description: The flag that indicates whether the page is excluded from search.
-          type: 'null'
+          type: boolean
+          nullable: true
         locale:
           description: The page locale. This defaults to the default locale of the parent site.
           type: string
@@ -2701,7 +2727,6 @@ components:
         pathname:
           description: The page pathname.
           type: string
-          minLength: 1
         name:
           description: The page name.
           type: string
@@ -2727,24 +2752,29 @@ components:
           example: furniture
         canonicalUrl:
           description: The canonical URL of the page.
-          type: 'null'
+          type: string
+          nullable: true
         title:
           description: The page title.
-          type: 'null'
+          type: string
+          nullable: true
         description:
           description: The page description.
-          type: 'null'
+          type: string
+          nullable: true
         socialImageUrl:
           description: The social image URL of the page.
-          type: 'null'
+          type: string
+          nullable: true
         sitemapPriority:
           description: The sitemap priority.
-          type: 'null'
+          type: number
           maximum: 1
           minimum: 0
+          nullable: true
         sitemapFrequency:
           description: The sitemap update frequency.
-          type: 'null'
+          type: string
           enum:
             - always
             - hourly
@@ -2753,24 +2783,29 @@ components:
             - monthly
             - yearly
             - never
+          nullable: true
         createdAt:
           description: The page creation date and time.
-          type: 'null'
+          type: string
           format: date-time
+          nullable: true
         updatedAt:
           description: The page last update date and time.
-          type: 'null'
+          type: string
           format: date-time
+          nullable: true
         publishedAt:
           description: The page publication date and time.
-          type: 'null'
+          type: string
           format: date-time
+          nullable: true
         isOnline:
           description: The flag that indicates whether the page is online.
           type: boolean
         excludedFromSearchEngines:
           description: The flag that indicates whether the page is excluded from search.
-          type: 'null'
+          type: boolean
+          nullable: true
         locale:
           description: The page locale. This defaults to the default locale of the parent site.
           type: string
@@ -2836,25 +2871,32 @@ components:
           example: About
         seoCanonicalUrl:
           description: The canonical URL of the page
-          type: 'null'
+          type: string
+          nullable: true
         seoIsIndexingBlocked:
           description: Whether the page is blocked from indexing
-          type: 'null'
+          type: boolean
+          nullable: true
         seoSitemapPriority:
           description: The priority of the page in the sitemap
-          type: 'null'
+          type: number
+          nullable: true
         seoSitemapFrequency:
           description: The frequency with which the page is updated in the sitemap
-          type: 'null'
+          type: string
+          nullable: true
         metaTitle:
           description: The title of the page
-          type: 'null'
+          type: string
+          nullable: true
         metaDescription:
           description: The description of the page
-          type: 'null'
+          type: string
+          nullable: true
         metaKeywords:
           description: The keywords of the page
-          type: 'null'
+          type: string
+          nullable: true
         isOnline:
           description: Whether the page is online
           type: boolean
@@ -2886,25 +2928,32 @@ components:
           example: About
         seoCanonicalUrl:
           description: The canonical URL of the page
-          type: 'null'
+          type: string
+          nullable: true
         seoIsIndexingBlocked:
           description: Whether the page is blocked from indexing
-          type: 'null'
+          type: boolean
+          nullable: true
         seoSitemapPriority:
           description: The priority of the page in the sitemap
-          type: 'null'
+          type: number
+          nullable: true
         seoSitemapFrequency:
           description: The frequency with which the page is updated in the sitemap
-          type: 'null'
+          type: string
+          nullable: true
         metaTitle:
           description: The title of the page
-          type: 'null'
+          type: string
+          nullable: true
         metaDescription:
           description: The description of the page
-          type: 'null'
+          type: string
+          nullable: true
         metaKeywords:
           description: The keywords of the page
-          type: 'null'
+          type: string
+          nullable: true
         isOnline:
           description: Whether the page is online
           type: boolean
@@ -2973,24 +3022,29 @@ components:
                 example: furniture
               canonicalUrl:
                 description: The canonical URL of the page.
-                type: 'null'
+                type: string
+                nullable: true
               title:
                 description: The page title.
-                type: 'null'
+                type: string
+                nullable: true
               description:
                 description: The page description.
-                type: 'null'
+                type: string
+                nullable: true
               socialImageUrl:
                 description: The social image URL of the page.
-                type: 'null'
+                type: string
+                nullable: true
               sitemapPriority:
                 description: The sitemap priority.
-                type: 'null'
+                type: number
                 maximum: 1
                 minimum: 0
+                nullable: true
               sitemapFrequency:
                 description: The sitemap update frequency.
-                type: 'null'
+                type: string
                 enum:
                   - always
                   - hourly
@@ -2999,24 +3053,29 @@ components:
                   - monthly
                   - yearly
                   - never
+                nullable: true
               createdAt:
                 description: The page creation date and time.
-                type: 'null'
+                type: string
                 format: date-time
+                nullable: true
               updatedAt:
                 description: The page last update date and time.
-                type: 'null'
+                type: string
                 format: date-time
+                nullable: true
               publishedAt:
                 description: The page publication date and time.
-                type: 'null'
+                type: string
                 format: date-time
+                nullable: true
               isOnline:
                 description: The flag that indicates whether the page is online.
                 type: boolean
               excludedFromSearchEngines:
                 description: The flag that indicates whether the page is excluded from search.
-                type: 'null'
+                type: boolean
+                nullable: true
               locale:
                 description: The page locale. This defaults to the default locale of the parent site.
                 type: string
@@ -3079,24 +3138,29 @@ components:
           example: furniture
         canonicalUrl:
           description: The canonical URL of the page.
-          type: 'null'
+          type: string
+          nullable: true
         title:
           description: The page title.
-          type: 'null'
+          type: string
+          nullable: true
         description:
           description: The page description.
-          type: 'null'
+          type: string
+          nullable: true
         socialImageUrl:
           description: The social image URL of the page.
-          type: 'null'
+          type: string
+          nullable: true
         sitemapPriority:
           description: The sitemap priority.
-          type: 'null'
+          type: number
           maximum: 1
           minimum: 0
+          nullable: true
         sitemapFrequency:
           description: The sitemap update frequency.
-          type: 'null'
+          type: string
           enum:
             - always
             - hourly
@@ -3105,24 +3169,29 @@ components:
             - monthly
             - yearly
             - never
+          nullable: true
         createdAt:
           description: The page creation date and time.
-          type: 'null'
+          type: string
           format: date-time
+          nullable: true
         updatedAt:
           description: The page last update date and time.
-          type: 'null'
+          type: string
           format: date-time
+          nullable: true
         publishedAt:
           description: The page publication date and time.
-          type: 'null'
+          type: string
           format: date-time
+          nullable: true
         isOnline:
           description: The flag that indicates whether the page is online.
           type: boolean
         excludedFromSearchEngines:
           description: The flag that indicates whether the page is excluded from search.
-          type: 'null'
+          type: boolean
+          nullable: true
         locale:
           description: The page locale. This defaults to the default locale of the parent site.
           type: string
@@ -3196,9 +3265,10 @@ components:
             - ja-JP
         domain:
           description: The domain URL for domain-based localization. This URL must include the protocol.
-          type: 'null'
+          type: string
           format: uri
           example: 'https://hearthfurniture.com.mx'
+          nullable: true
       required:
         - id
         - locale
@@ -3245,9 +3315,10 @@ components:
             - ja-JP
         domain:
           description: The domain URL for domain-based localization.
-          type: 'null'
+          type: string
           format: uri
           example: 'https://hearthfurniture.com.mx'
+          nullable: true
         isDefault:
           description: The flag that indicates whether this locale is the default locale for the site.
           type: boolean
@@ -3311,8 +3382,9 @@ components:
                   - locale
               id:
                 description: The ID of the locale you are getting.
-                type: 'null'
+                type: string
                 format: uuid
+                nullable: true
               locale:
                 description: We support the subset of locales specified with ISO 3166 that are composed of language and optionally a region.
                 type: string
@@ -3324,9 +3396,10 @@ components:
                   - ja-JP
               domain:
                 description: The domain URL for domain-based localization.
-                type: 'null'
+                type: string
                 format: uri
                 example: 'https://hearthfurniture.com.mx'
+                nullable: true
               isDefault:
                 description: The flag that indicates whether this locale is the default locale for the site.
                 type: boolean
@@ -3366,9 +3439,10 @@ components:
             - ja-JP
         domain:
           description: The domain URL for domain-based localization.
-          type: 'null'
+          type: string
           format: uri
           example: 'https://hearthfurniture.com.mx'
+          nullable: true
         isDefault:
           description: The flag that indicates whether this locale is the default locale for the site.
           type: boolean
@@ -3412,9 +3486,10 @@ components:
             - ja-JP
         domain:
           description: The domain URL for domain-based localization. This URL must include the protocol.
-          type: 'null'
+          type: string
           format: uri
           example: 'https://hearthfurniture.com.mx'
+          nullable: true
       required:
         - id
         - locale
@@ -3454,9 +3529,10 @@ components:
             - ja-JP
         domain:
           description: The domain URL for domain-based localization.
-          type: 'null'
+          type: string
           format: uri
           example: 'https://hearthfurniture.com.mx'
+          nullable: true
         isDefault:
           description: The flag that indicates whether this locale is the default locale for the site.
           type: boolean
@@ -3483,9 +3559,10 @@ components:
             - ja-JP
         domain:
           description: The domain URL for domain-based localization. This URL must include the protocol.
-          type: 'null'
+          type: string
           format: uri
           example: 'https://hearthfurniture.com.mx'
+          nullable: true
       required:
         - id
         - locale
@@ -3500,8 +3577,9 @@ components:
             - locale
         id:
           description: The ID of the locale you are getting.
-          type: 'null'
+          type: string
           format: uuid
+          nullable: true
         locale:
           description: We support the subset of locales specified with ISO 3166 that are composed of language and optionally a region.
           type: string
@@ -3513,9 +3591,10 @@ components:
             - ja-JP
         domain:
           description: The domain URL for domain-based localization.
-          type: 'null'
+          type: string
           format: uri
           example: 'https://hearthfurniture.com.mx'
+          nullable: true
         isDefault:
           description: The flag that indicates whether this locale is the default locale for the site.
           type: boolean
@@ -3542,9 +3621,10 @@ components:
             - ja-JP
         domain:
           description: The domain URL for domain-based localization. This URL must include the protocol.
-          type: 'null'
+          type: string
           format: uri
           example: 'https://hearthfurniture.com.mx'
+          nullable: true
       required:
         - id
         - locale
@@ -3944,25 +4024,32 @@ webhooks:
                       example: About
                     seoCanonicalUrl:
                       description: The canonical URL of the page
-                      type: 'null'
+                      type: string
+                      nullable: true
                     seoIsIndexingBlocked:
                       description: Whether the page is blocked from indexing
-                      type: 'null'
+                      type: boolean
+                      nullable: true
                     seoSitemapPriority:
                       description: The priority of the page in the sitemap
-                      type: 'null'
+                      type: number
+                      nullable: true
                     seoSitemapFrequency:
                       description: The frequency with which the page is updated in the sitemap
-                      type: 'null'
+                      type: string
+                      nullable: true
                     metaTitle:
                       description: The title of the page
-                      type: 'null'
+                      type: string
+                      nullable: true
                     metaDescription:
                       description: The description of the page
-                      type: 'null'
+                      type: string
+                      nullable: true
                     metaKeywords:
                       description: The keywords of the page
-                      type: 'null'
+                      type: string
+                      nullable: true
                     isOnline:
                       description: Whether the page is online
                       type: boolean
@@ -4013,25 +4100,32 @@ webhooks:
                       example: About
                     seoCanonicalUrl:
                       description: The canonical URL of the page
-                      type: 'null'
+                      type: string
+                      nullable: true
                     seoIsIndexingBlocked:
                       description: Whether the page is blocked from indexing
-                      type: 'null'
+                      type: boolean
+                      nullable: true
                     seoSitemapPriority:
                       description: The priority of the page in the sitemap
-                      type: 'null'
+                      type: number
+                      nullable: true
                     seoSitemapFrequency:
                       description: The frequency with which the page is updated in the sitemap
-                      type: 'null'
+                      type: string
+                      nullable: true
                     metaTitle:
                       description: The title of the page
-                      type: 'null'
+                      type: string
+                      nullable: true
                     metaDescription:
                       description: The description of the page
-                      type: 'null'
+                      type: string
+                      nullable: true
                     metaKeywords:
                       description: The keywords of the page
-                      type: 'null'
+                      type: string
+                      nullable: true
                     isOnline:
                       description: Whether the page is online
                       type: boolean
@@ -4082,25 +4176,32 @@ webhooks:
                       example: About
                     seoCanonicalUrl:
                       description: The canonical URL of the page
-                      type: 'null'
+                      type: string
+                      nullable: true
                     seoIsIndexingBlocked:
                       description: Whether the page is blocked from indexing
-                      type: 'null'
+                      type: boolean
+                      nullable: true
                     seoSitemapPriority:
                       description: The priority of the page in the sitemap
-                      type: 'null'
+                      type: number
+                      nullable: true
                     seoSitemapFrequency:
                       description: The frequency with which the page is updated in the sitemap
-                      type: 'null'
+                      type: string
+                      nullable: true
                     metaTitle:
                       description: The title of the page
-                      type: 'null'
+                      type: string
+                      nullable: true
                     metaDescription:
                       description: The description of the page
-                      type: 'null'
+                      type: string
+                      nullable: true
                     metaKeywords:
                       description: The keywords of the page
-                      type: 'null'
+                      type: string
+                      nullable: true
                     isOnline:
                       description: Whether the page is online
                       type: boolean
@@ -4151,25 +4252,32 @@ webhooks:
                       example: About
                     seoCanonicalUrl:
                       description: The canonical URL of the page
-                      type: 'null'
+                      type: string
+                      nullable: true
                     seoIsIndexingBlocked:
                       description: Whether the page is blocked from indexing
-                      type: 'null'
+                      type: boolean
+                      nullable: true
                     seoSitemapPriority:
                       description: The priority of the page in the sitemap
-                      type: 'null'
+                      type: number
+                      nullable: true
                     seoSitemapFrequency:
                       description: The frequency with which the page is updated in the sitemap
-                      type: 'null'
+                      type: string
+                      nullable: true
                     metaTitle:
                       description: The title of the page
-                      type: 'null'
+                      type: string
+                      nullable: true
                     metaDescription:
                       description: The description of the page
-                      type: 'null'
+                      type: string
+                      nullable: true
                     metaKeywords:
                       description: The keywords of the page
-                      type: 'null'
+                      type: string
+                      nullable: true
                     isOnline:
                       description: Whether the page is online
                       type: boolean
@@ -4214,8 +4322,9 @@ webhooks:
                       type: object
                       properties:
                         from:
-                          type: 'null'
+                          type: string
                           format: uuid
+                          nullable: true
                         to:
                           type: string
                           format: uuid
