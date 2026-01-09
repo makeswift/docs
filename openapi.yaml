@@ -393,7 +393,7 @@ paths:
             default: 20
             maximum: 100
             minimum: 1
-        - name: starting_after
+        - name: startingAfter
           in: query
           description: The pagination cursor. This is used to indicate what ID to list from.
           required: false
@@ -702,7 +702,7 @@ paths:
             default: 20
             maximum: 100
             minimum: 1
-        - name: starting_after
+        - name: startingAfter
           in: query
           description: The pagination cursor. This is used to indicate what ID to list from.
           required: false
@@ -1127,7 +1127,7 @@ paths:
             default: 20
             maximum: 100
             minimum: 1
-        - name: starting_after
+        - name: startingAfter
           in: query
           description: The pagination cursor. This is used to indicate what ID to list from.
           required: false
@@ -1559,7 +1559,7 @@ paths:
             default: 20
             maximum: 100
             minimum: 1
-        - name: starting_after
+        - name: startingAfter
           in: query
           description: The pagination cursor. This is used to indicate what ID to list from.
           required: false
