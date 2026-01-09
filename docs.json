@@ -279,7 +279,7 @@
               },
               {
                 "group": "Public API",
-                "hidden": true,
+                "tag": "beta",
                 "pages": [
                   "developer/reference/api/overview",
                   "developer/reference/api/authentication",
