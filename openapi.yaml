@@ -1388,6 +1388,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFoundResponseDto'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictResponseDto'
       tags:
         - Locale
   '/v1/sites/{siteId}/routes':
@@ -3972,9 +3978,9 @@ components:
       in: header
       name: x-api-key
       description: |-
-        The App API key.
-
-        (e.g. sk_eczMHVBY9fV6GYFhvs53qcnxq7yptlXL3ABKOZtn6dQ)
+        API key authentication. Accepts either:
+        - App API key (e.g. sk_eczMHVBY9fV6GYFhvs53qcnxq7yptlXL3ABKOZtn6dQ)
+        - Site API key (UUID format, e.g. 550e8400-e29b-41d4-a716-446655440000)
 tags:
   - name: Authentication
     description: ''
