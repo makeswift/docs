@@ -69,12 +69,12 @@ List endpoints support cursor-based pagination using the following query paramet
 | Parameter        | Type   | Default | Description                                              |
 | ---------------- | ------ | ------- | -------------------------------------------------------- |
 | `limit`          | number | `20`    | Number of results to return (max `100`)                  |
-| `starting_after` | string | -       | Cursor for fetching results after a specific resource ID |
+| `startingAfter` | string | -       | Cursor for fetching results after a specific resource ID |
 
 To paginate through results:
 
-1. Make an initial request without the `starting_after` parameter
-2. If `hasMore` is `true`, use the `id` of the last item in `data` as the `starting_after` parameter for the next request
+1. Make an initial request without the `startingAfter` parameter
+2. If `hasMore` is `true`, use the `id` of the last item in `data` as the `startingAfter` parameter for the next request
 3. Repeat until `hasMore` is `false`
 
 ```bash
@@ -83,7 +83,7 @@ curl "https://api.makeswift.com/v2/sites/YOUR_SITE_ID/pages?limit=10" \
   -H "x-api-key: your-api-key"
 
 # Next page (using the last page ID from previous response)
-curl "https://api.makeswift.com/v2/sites/YOUR_SITE_ID/pages?limit=10&starting_after=550e8400-e29b-41d4-a716-446655440000" \
+curl "https://api.makeswift.com/v2/sites/YOUR_SITE_ID/pages?limit=10&startingAfter=550e8400-e29b-41d4-a716-446655440000" \
   -H "x-api-key: your-api-key"
 ```
 
