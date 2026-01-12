@@ -278,7 +278,7 @@
                 ]
               },
               {
-                "group": "Public API",
+                "group": "REST API",
                 "tag": "beta",
                 "pages": [
                   "developer/reference/api/overview",
