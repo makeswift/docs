@@ -3475,6 +3475,7 @@ components:
           type: string
           format: uri
           example: 'https://hearthfurniture.com.mx'
+          nullable: true
     UpdateSiteLocaleV1ResponseBodyDto:
       type: object
       properties:
@@ -3512,6 +3513,7 @@ components:
           type: string
           format: uri
           example: 'https://hearthfurniture.com.mx'
+          nullable: true
     UpdateSiteLocaleV2ResponseBodyDto:
       type: object
       properties:
