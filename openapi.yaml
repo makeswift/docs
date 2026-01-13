@@ -3474,6 +3474,7 @@ components:
           description: The domain URL for domain-based localization. This URL must include the protocol.
           type: string
           format: uri
+          nullable: true
           example: 'https://hearthfurniture.com.mx'
     UpdateSiteLocaleV1ResponseBodyDto:
       type: object
@@ -3511,6 +3512,7 @@ components:
           description: The domain URL for domain-based localization. This URL must include the protocol.
           type: string
           format: uri
+          nullable: true
           example: 'https://hearthfurniture.com.mx'
     UpdateSiteLocaleV2ResponseBodyDto:
       type: object
