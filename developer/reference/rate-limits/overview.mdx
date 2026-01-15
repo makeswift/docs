@@ -1,0 +1,73 @@
+The Makeswift REST API implements rate limiting to ensure fair usage and protect service stability. Rate limits are applied per authentication token across all endpoints.
+
+---
+
+## Rate Limit Configuration
+
+### Limits
+
+- **Rate**: 100 requests per second
+- **Time Window (TTL)**: 1 second
+- **Scope**: Per authentication token (API key or Bearer token)
+
+### What This Means
+
+Each unique API key or Bearer token is allowed to make up to 100 requests per second. The limit resets every second, providing a rolling window of allowed requests.
+
+---
+
+## Response Headers
+
+<Note>
+  While both API Key and Bearer Token authentication methods are supported, you
+  must use **only one** authentication method per request. Requests that include
+  both an API Key and Bearer Token will be rejected.
+</Note>
+
+### Rate Limit Headers
+
+Every API response includes headers showing your current rate limit status:
+
+```http
+x-ratelimit-limit: 100
+x-ratelimit-remaining: 95
+x-ratelimit-reset: 1
+```
+
+#### Header Descriptions
+
+| Header                  | Description                                        | Example |
+| ----------------------- | -------------------------------------------------- | ------- |
+| `x-ratelimit-limit`     | Maximum requests allowed in the current window     | `100`   |
+| `x-ratelimit-remaining` | Number of requests remaining in the current window | `95`    |
+| `x-ratelimit-reset`     | Time in seconds until the limit resets             | `1`     |
+
+---
+
+## Rate Limit Exceeded
+
+### 429 Response
+
+When you exceed the rate limit, the API returns a `429 Too Many Requests` response:
+
+**Example Response:**
+
+```http
+HTTP/1.1 429 Too Many Requests
+x-ratelimit-limit: 100
+x-ratelimit-remaining: 0
+x-ratelimit-reset: 1
+Content-Type: application/json
+
+{
+  "statusCode": 429,
+  "message": "ThrottlerException: Too Many Requests",
+  "error": "Too Many Requests"
+}
+```
+
+### What to Do
+
+1. **Wait**: Wait for the time specified in `x-ratelimit-reset` header (typically 1 second)
+2. **Retry**: Implement exponential backoff for retries
+3. **Monitor**: Track the `x-ratelimit-remaining` header to avoid hitting limits

@@ -326,6 +326,10 @@
                     ]
                   }
                 ]
+              },
+              {
+                "group": "Rate limits",
+                "pages": ["developer/reference/rate-limits/overview"]
               }
             ]
           }
