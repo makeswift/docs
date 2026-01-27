@@ -629,6 +629,41 @@ paths:
                 $ref: '#/components/schemas/ForbiddenResponseDto'
       tags:
         - Site
+  '/v1alpha1/sites/{siteId}/publish':
+    post:
+      operationId: SiteController_publishSite_v1alpha1
+      summary: Publish Site
+      description: Publishes a site with optional page filtering and content resource inclusion.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublishSiteV1Alpha1RequestBodyDto'
+      responses:
+        '204':
+          description: Site published successfully
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+      tags:
+        - Site
   '/v1/sites/{siteId}/pages':
     post:
       operationId: PageController_create_v1
@@ -2529,6 +2564,27 @@ components:
         - hostOrigin
         - publicApiKey
         - defaultLocale
+    PublishSiteV1Alpha1RequestBodyDto:
+      type: object
+      properties:
+        includeContentResources:
+          description: 'When true, publishes all non-page resources (swatches, typographies, components)'
+          type: boolean
+          example: true
+        pageIds:
+          description: 'If provided, publishes only those pages. If omitted, publishes all pages.'
+          type: array
+          items:
+            type: string
+            format: uuid
+          example:
+            - 123e4567-e89b-12d3-a456-426614174000
+        message:
+          description: Optional commit message for the publish
+          type: string
+          example: Published homepage updates
+      required:
+        - includeContentResources
     CreatePageV1RequestBodyDto:
       type: object
       properties:
@@ -3475,6 +3531,7 @@ components:
           type: string
           format: uri
           example: 'https://hearthfurniture.com.mx'
+          nullable: true
     UpdateSiteLocaleV1ResponseBodyDto:
       type: object
       properties:
@@ -3512,6 +3569,7 @@ components:
           type: string
           format: uri
           example: 'https://hearthfurniture.com.mx'
+          nullable: true
     UpdateSiteLocaleV2ResponseBodyDto:
       type: object
       properties:
