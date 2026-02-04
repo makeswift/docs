@@ -629,6 +629,42 @@ paths:
                 $ref: '#/components/schemas/ForbiddenResponseDto'
       tags:
         - Site
+  '/v1/sites/{siteId}/publish':
+    post:
+      operationId: SiteController_publish_v1
+      summary: Publish Site
+      description: 'Publishes changes for a site. Can publish all pages or specific pages, and optionally include content resources.'
+      parameters:
+        - name: siteId
+          in: path
+          description: The site ID for the site you are publishing.
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublishSiteV1RequestBodyDto'
+      responses:
+        '204':
+          description: Site successfully published.
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+      tags:
+        - Site
   '/v1/sites/{siteId}/pages':
     post:
       operationId: PageController_create_v1
@@ -2529,6 +2565,20 @@ components:
         - hostOrigin
         - publicApiKey
         - defaultLocale
+    PublishSiteV1RequestBodyDto:
+      type: object
+      properties:
+        pageIds:
+          description: 'An array of page IDs to publish. If empty or not provided, all pages with changes will be published.'
+          type: array
+          items:
+            type: string
+            format: uuid
+          default: []
+        includeContentResources:
+          description: 'Whether to publish content resources (swatches, typographies, etc.). Defaults to true.'
+          type: boolean
+          default: true
     CreatePageV1RequestBodyDto:
       type: object
       properties:
@@ -3475,6 +3525,7 @@ components:
           type: string
           format: uri
           example: 'https://hearthfurniture.com.mx'
+          nullable: true
     UpdateSiteLocaleV1ResponseBodyDto:
       type: object
       properties:
@@ -3512,6 +3563,7 @@ components:
           type: string
           format: uri
           example: 'https://hearthfurniture.com.mx'
+          nullable: true
     UpdateSiteLocaleV2ResponseBodyDto:
       type: object
       properties:
