@@ -70,7 +70,7 @@ interface Props {
   accordionTitles: string[];
 }
 
-export function Accordions({ accordionTitles }) {
+export function Accordions({ accordionTitles }: Props) {
   return (
     <div className="grid gap-3">
       {accordionTitles.map((title, index) => (
@@ -127,7 +127,7 @@ interface Props {
   }[];
 }
 
-export function Accordions({ accordionTitles }) {
+export function Accordions({ accordionTitles }: Props) {
   return (
     <div className="grid gap-3">
       {accordions.map((accordion, index) => (

@@ -57,7 +57,7 @@ interface Props {
   text?: string;
 }
 
-export function Button({ text = "Click me" }) {
+export function Button({ text = "Click me" }: Props) {
   return (
     <button className="px-4 py-3 rounded bg-primary text-white shadow">
       {text}

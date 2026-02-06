@@ -79,7 +79,7 @@ interface Props {
   }[]
 }
 
-export function FeatureGrid({ features }) {
+export function FeatureGrid({ features }: Props) {
   return (
     <div className="grid grid-cols-2 gap-4">
       {features.map((feature, index) => (
