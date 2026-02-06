@@ -90,7 +90,7 @@ interface Props {
   variant?: "floating" | "outline" | "clear";
 }
 
-export function Button({ variant = "floating" }) {
+export function Button({ variant = "floating" }: Props) {
   return (
     <a
       className={clsx(

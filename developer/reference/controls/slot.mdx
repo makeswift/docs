@@ -49,7 +49,7 @@ interface Props {
   media: ReactNode
 }
 
-export function FeatureCard({ icon, headline, body, media }) {
+export function FeatureCard({ icon, headline, body, media }: Props) {
   return (
     <div className="rounded-lg bg-black/20 shadow space-y-4">
       <img src={icon} />
