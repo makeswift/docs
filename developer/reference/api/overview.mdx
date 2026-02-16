@@ -66,9 +66,9 @@ List endpoints return paginated results:
 
 List endpoints support cursor-based pagination using the following query parameters:
 
-| Parameter        | Type   | Default | Description                                              |
-| ---------------- | ------ | ------- | -------------------------------------------------------- |
-| `limit`          | number | `20`    | Number of results to return (max `100`)                  |
+| Parameter       | Type   | Default | Description                                              |
+| --------------- | ------ | ------- | -------------------------------------------------------- |
+| `limit`         | number | `20`    | Number of results to return (max `100`)                  |
 | `startingAfter` | string | -       | Cursor for fetching results after a specific resource ID |
 
 To paginate through results:
@@ -87,6 +87,10 @@ curl "https://api.makeswift.com/v2/sites/YOUR_SITE_ID/pages?limit=10&startingAft
   -H "x-api-key: your-api-key"
 ```
 
+## Rate Limits
+
+The API implements rate limiting per authentication credential (API key or Bearer token) to ensure fair usage and protect service stability. Rate limits may be adjusted over time.
+
 ## Errors
 
 The API uses standard HTTP status codes and returns consistent error responses:
@@ -100,6 +104,7 @@ The API uses standard HTTP status codes and returns consistent error responses:
 | `403`  | Forbidden - insufficient permissions      |
 | `404`  | Not found                                 |
 | `409`  | Conflict - resource already exists        |
+| `429`  | Too many requests - rate limit exceeded   |
 
 ### 400 Bad Request
 
@@ -164,5 +169,17 @@ Returned when attempting to create a resource that already exists.
   "object": "error",
   "code": "conflict",
   "message": "A page with this path already exists"
+}
+```
+
+### 429 Too Many Requests
+
+Returned when the rate limit is exceeded.
+
+```json
+{
+  "object": "error",
+  "code": "too_many_requests",
+  "message": "Rate limit exceeded"
 }
 ```
