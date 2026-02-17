@@ -1,0 +1,40 @@
+---
+title: Upgrading to 0.27.0
+---
+
+If you haven't yet upgraded to `0.26.0`, please review the [0.26.0 upgrade
+guide](/developer/upgrading/0.26.0) first.
+
+`v0.27.0` of the runtime introduces support for multiple isolated Makeswift-enabled
+React regions on a single page.
+
+Since version 0.23, the runtime has included [built-in elements support](/developer/upgrading/0.23.0#built-in-elements),
+allowing developers to define editable regions within a page. However, this capability
+implicitly required all page regions to exist under a single React root and within
+one [`<MakeswiftRuntimeProvider>`](/developer/reference/components/react-runtime-provider#reactruntimeprovider).
+This release removes that limitation.
+
+As part of this change,
+`ReactRuntime` import for Next.js has been moved from `@makeswift/runtime/react` to `@makeswift/runtime/next`.
+
+Refer to the [official release
+notes](https://github.com/makeswift/makeswift/releases/tag/%40makeswift%2Fruntime%400.27.0)
+for the full list of changes.
+
+## Breaking Changes
+
+### `ReactRuntime` import
+
+`ReactRuntime` import for Next.js has been moved from `@makeswift/runtime/react` to `@makeswift/runtime/next`:
+
+```diff
+- import { ReactRuntime } from '@makeswift/runtime/react';
++ import { ReactRuntime } from '@makeswift/runtime/next';
+
+export const runtime = new ReactRuntime();
+```
+
+### (internal) `appOrigin` and `apiOrigin` params
+
+Undocumented `appOrigin` and `apiOrigin` params are now passed directly to the `ReactRuntime` constructor.
+See [internal apps](https://github.com/makeswift/makeswift/tree/@makeswift/runtime@0.27.0/apps) for details.
