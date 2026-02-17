@@ -2740,6 +2740,7 @@ components:
         isOnline:
           description: The flag that indicates whether the page is online.
           type: boolean
+      additionalProperties: false
     UpdatePageV6ResponseBodyDto:
       type: object
       properties:
@@ -3475,6 +3476,7 @@ components:
           type: string
           format: uri
           example: 'https://hearthfurniture.com.mx'
+          nullable: true
     UpdateSiteLocaleV1ResponseBodyDto:
       type: object
       properties:
@@ -3512,6 +3514,8 @@ components:
           type: string
           format: uri
           example: 'https://hearthfurniture.com.mx'
+          nullable: true
+      additionalProperties: false
     UpdateSiteLocaleV2ResponseBodyDto:
       type: object
       properties:
@@ -3817,6 +3821,7 @@ components:
           description: The route pathname.
           type: string
           example: /furniture
+      additionalProperties: false
     UpdateSiteRouteV2ResponseBodyDto:
       description: The route.
       type: object
