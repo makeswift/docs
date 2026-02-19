@@ -24,7 +24,8 @@ import ComponentSnapshotLocalizedExample from "/snippets/app-router/component-sn
          A valid locale string.
        </ParamField>
        <ParamField query="allowLocaleFallback" type="boolean" default={true}>
-         Controls whether a request for a localized component should fallback to the default locale if the requested locale is not available.
+         Controls whether a request for a localized component should fallback to
+         the default locale if the requested locale is not available.
        </ParamField>
      </Expandable>
    </ParamField>
@@ -40,18 +41,18 @@ import ComponentSnapshotLocalizedExample from "/snippets/app-router/component-sn
 
 ### Basic usage
 
-The following example shows how to fetch a component snapshot and render it using the [`<MakeswiftComponent>`](/developer/reference/components/makeswift-component) component within a page.
+The following example shows how to fetch a page-specific component snapshot and render it using the [`<Slot>`](/developer/reference/components/slot) component within a page.
 
 <ComponentSnapshotExample />
 
 ### Localization
 
-The following example uses the `locale` param to fetch a localized snapshot of a component.
+The following example uses the `locale` param to fetch a localized snapshot of a page-specific component.
 
 <ComponentSnapshotLocalizedExample />
 
 ## Changelog
 
-| Version                                                                                          | Changes                               |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------- |
+| Version                                                                                          | Changes                                  |
+| ------------------------------------------------------------------------------------------------ | ---------------------------------------- |
 | [`v0.23.0`](https://github.com/makeswift/makeswift/releases/tag/%40makeswift%2Fruntime%400.23.0) | `getComponentSnapshot` method introduced |
