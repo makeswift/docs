@@ -3,8 +3,8 @@ title: "getComponentSnapshot"
 description: "An instance method of the Makeswift [client](/developer/reference/client/constructor) that fetches a snapshot of a Makeswift component by its `id`. This snapshot is only intended to be rendered by [`<MakeswiftComponent>`](/developer/reference/components/makeswift-component) and [`<Slot>`](/developer/reference/components/slot)."
 ---
 
-import PagesCatchAllExample from "/snippets/pages-router/catch-all.mdx";
-import PagesCatchAllLocalizedExample from "/snippets/pages-router/catch-all-localized.mdx";
+import ComponentSnapshotExample from "/snippets/app-router/component-snapshot.mdx";
+import ComponentSnapshotLocalizedExample from "/snippets/app-router/component-snapshot-localized.mdx";
 
 ## Arguments
 
@@ -24,7 +24,8 @@ import PagesCatchAllLocalizedExample from "/snippets/pages-router/catch-all-loca
          A valid locale string.
        </ParamField>
        <ParamField query="allowLocaleFallback" type="boolean" default={true}>
-         Controls whether a request for a localized component should fallback to the default locale if the requested locale is not available.
+         Controls whether a request for a localized component should fallback to
+         the default locale if the requested locale is not available.
        </ParamField>
      </Expandable>
    </ParamField>
@@ -38,51 +39,20 @@ import PagesCatchAllLocalizedExample from "/snippets/pages-router/catch-all-loca
 
 ## Examples
 
-The following examples expect that you have a Makeswift client instance already configured and exported from `"@/makeswift/client.ts"`. If you don't, see the [client](/developer/reference/client/constructor) reference.
-
 ### Basic usage
 
-```tsx
-import { getSiteVersion } from "@makeswift/runtime/next/server";
-import { Makeswift } from "@makeswift/runtime/next";
-import { ReactRuntime } from "@makeswift/runtime/react";
+The following example shows how to fetch a page-specific component snapshot and render it using the [`<Slot>`](/developer/reference/components/slot) component within a page.
 
-export const runtime = new ReactRuntime();
-
-export const client = new Makeswift(process.env.MAKESWIFT_SITE_API_KEY, {
-  runtime,
-});
-
-const productDetailSnapshot = await client.getComponentSnapshot(
-  `my-product-details`,
-  {
-    siteVersion: getSiteVersion(),
-  }
-);
-```
+<ComponentSnapshotExample />
 
 ### Localization
 
-```tsx
-import { getSiteVersion } from "@makeswift/runtime/next/server";
-import { Makeswift } from "@makeswift/runtime/next";
-import { ReactRuntime } from "@makeswift/runtime/react";
+The following example uses the `locale` param to fetch a localized snapshot of a page-specific component.
 
-export const runtime = new ReactRuntime();
-
-export const client = new Makeswift(process.env.MAKESWIFT_SITE_API_KEY, {
-  runtime,
-});
-
-const locale = "en-US";
-const snapshot = await client.getComponentSnapshot(id, {
-  siteVersion: getSiteVersion(),
-  locale,
-});
-```
+<ComponentSnapshotLocalizedExample />
 
 ## Changelog
 
-| Version                                                                                          | Changes                               |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------- |
+| Version                                                                                          | Changes                                  |
+| ------------------------------------------------------------------------------------------------ | ---------------------------------------- |
 | [`v0.23.0`](https://github.com/makeswift/makeswift/releases/tag/%40makeswift%2Fruntime%400.23.0) | `getComponentSnapshot` method introduced |

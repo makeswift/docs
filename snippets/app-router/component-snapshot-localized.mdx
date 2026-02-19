@@ -1,0 +1,29 @@
+```tsx src/app/[locale]/products/[slug]/page.tsx
+import { getSiteVersion } from "@makeswift/runtime/next/server";
+import { Slot } from "@makeswift/runtime/next";
+
+import { client } from "@/makeswift/client";
+
+type Props = {
+  params: Promise<{ locale: string; slug: string }>;
+};
+
+export default async function ProductPage({ params }: Props) {
+  const { locale, slug } = await params;
+
+  const snapshot = await client.getComponentSnapshot(
+    `product-details-${slug}`,
+    {
+      siteVersion: getSiteVersion(),
+      locale,
+    }
+  );
+
+  return (
+    <main>
+      <h1>Product: {slug}</h1>
+      <Slot snapshot={snapshot} label={`Product details for ${slug}`} />
+    </main>
+  );
+}
+```
