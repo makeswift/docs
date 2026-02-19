@@ -18,7 +18,7 @@ export default async function ProductPage({ params }: Props) {
   return (
     <main>
       <h1>Product: {slug}</h1>
-      {snapshot && <MakeswiftComponent snapshot={snapshot} />}
+      <MakeswiftComponent snapshot={snapshot} />
     </main>
   );
 }
