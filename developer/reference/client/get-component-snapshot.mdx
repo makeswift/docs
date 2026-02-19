@@ -3,8 +3,8 @@ title: "getComponentSnapshot"
 description: "An instance method of the Makeswift [client](/developer/reference/client/constructor) that fetches a snapshot of a Makeswift component by its `id`. This snapshot is only intended to be rendered by [`<MakeswiftComponent>`](/developer/reference/components/makeswift-component) and [`<Slot>`](/developer/reference/components/slot)."
 ---
 
-import PagesCatchAllExample from "/snippets/pages-router/catch-all.mdx";
-import PagesCatchAllLocalizedExample from "/snippets/pages-router/catch-all-localized.mdx";
+import ComponentSnapshotExample from "/snippets/app-router/component-snapshot.mdx";
+import ComponentSnapshotLocalizedExample from "/snippets/app-router/component-snapshot-localized.mdx";
 
 ## Arguments
 
@@ -38,48 +38,17 @@ import PagesCatchAllLocalizedExample from "/snippets/pages-router/catch-all-loca
 
 ## Examples
 
-The following examples expect that you have a Makeswift client instance already configured and exported from `"@/makeswift/client.ts"`. If you don't, see the [client](/developer/reference/client/constructor) reference.
-
 ### Basic usage
 
-```tsx
-import { getSiteVersion } from "@makeswift/runtime/next/server";
-import { Makeswift } from "@makeswift/runtime/next";
-import { ReactRuntime } from "@makeswift/runtime/react";
+The following example shows how to fetch a component snapshot and render it using the [`<MakeswiftComponent>`](/developer/reference/components/makeswift-component) component within a page.
 
-export const runtime = new ReactRuntime();
-
-export const client = new Makeswift(process.env.MAKESWIFT_SITE_API_KEY, {
-  runtime,
-});
-
-const productDetailSnapshot = await client.getComponentSnapshot(
-  `my-product-details`,
-  {
-    siteVersion: getSiteVersion(),
-  }
-);
-```
+<ComponentSnapshotExample />
 
 ### Localization
 
-```tsx
-import { getSiteVersion } from "@makeswift/runtime/next/server";
-import { Makeswift } from "@makeswift/runtime/next";
-import { ReactRuntime } from "@makeswift/runtime/react";
+The following example uses the `locale` param to fetch a localized snapshot of a component.
 
-export const runtime = new ReactRuntime();
-
-export const client = new Makeswift(process.env.MAKESWIFT_SITE_API_KEY, {
-  runtime,
-});
-
-const locale = "en-US";
-const snapshot = await client.getComponentSnapshot(id, {
-  siteVersion: getSiteVersion(),
-  locale,
-});
-```
+<ComponentSnapshotLocalizedExample />
 
 ## Changelog
 
