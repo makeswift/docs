@@ -4458,6 +4458,7 @@ webhooks:
                     - siteId
                     - publish
                     - at
+                    - unstable_diff
               required:
                 - type
                 - data
