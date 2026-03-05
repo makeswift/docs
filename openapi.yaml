@@ -4392,6 +4392,7 @@ webhooks:
                               - pageId
                               - locale
                               - changeType
+                              - pathname
                         globalElements:
                           type: array
                           items:
