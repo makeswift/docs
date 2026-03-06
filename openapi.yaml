@@ -4346,6 +4346,7 @@ webhooks:
                       type: number
                     unstable_diff:
                       type: object
+                      nullable: true
                       properties:
                         components:
                           items:
@@ -4458,7 +4459,6 @@ webhooks:
                     - siteId
                     - publish
                     - at
-                    - unstable_diff
               required:
                 - type
                 - data
