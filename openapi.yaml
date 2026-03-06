@@ -2155,6 +2155,7 @@ components:
         - hostOrigin
         - publicApiKey
         - defaultLocale
+        - localeManagementMode
     BadRequestResponseDto:
       type: object
       properties:
@@ -2256,6 +2257,7 @@ components:
         - hostOrigin
         - publicApiKey
         - defaultLocale
+        - localeManagementMode
     UpdateSiteV1RequestBodyDto:
       type: object
       properties:
@@ -2348,6 +2350,7 @@ components:
         - hostOrigin
         - publicApiKey
         - defaultLocale
+        - localeManagementMode
     ListSiteV1ResponseBodyDto:
       type: object
       properties:
@@ -2435,6 +2438,7 @@ components:
               - hostOrigin
               - publicApiKey
               - defaultLocale
+              - localeManagementMode
         hasMore:
           description: The flag that indicates whether there are more sites available.
           type: boolean
@@ -2529,6 +2533,7 @@ components:
         - hostOrigin
         - publicApiKey
         - defaultLocale
+        - localeManagementMode
     CreatePageV1RequestBodyDto:
       type: object
       properties:
@@ -2740,6 +2745,7 @@ components:
         isOnline:
           description: The flag that indicates whether the page is online.
           type: boolean
+      additionalProperties: false
     UpdatePageV6ResponseBodyDto:
       type: object
       properties:
@@ -3475,6 +3481,7 @@ components:
           type: string
           format: uri
           example: 'https://hearthfurniture.com.mx'
+          nullable: true
     UpdateSiteLocaleV1ResponseBodyDto:
       type: object
       properties:
@@ -3512,6 +3519,8 @@ components:
           type: string
           format: uri
           example: 'https://hearthfurniture.com.mx'
+          nullable: true
+      additionalProperties: false
     UpdateSiteLocaleV2ResponseBodyDto:
       type: object
       properties:
@@ -3817,6 +3826,7 @@ components:
           description: The route pathname.
           type: string
           example: /furniture
+      additionalProperties: false
     UpdateSiteRouteV2ResponseBodyDto:
       description: The route.
       type: object
