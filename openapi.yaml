@@ -2148,6 +2148,12 @@ components:
             - fr-FR
             - ar-EG
             - ja-JP
+        localeManagementMode:
+          description: Controls whether locales are managed internally via the builder or externally via API.
+          type: string
+          enum:
+            - internal
+            - external
       required:
         - object
         - id
@@ -2250,6 +2256,12 @@ components:
             - fr-FR
             - ar-EG
             - ja-JP
+        localeManagementMode:
+          description: Controls whether locales are managed internally via the builder or externally via API.
+          type: string
+          enum:
+            - internal
+            - external
       required:
         - object
         - id
@@ -2343,6 +2355,12 @@ components:
             - fr-FR
             - ar-EG
             - ja-JP
+        localeManagementMode:
+          description: Controls whether locales are managed internally via the builder or externally via API.
+          type: string
+          enum:
+            - internal
+            - external
       required:
         - object
         - id
@@ -2431,6 +2449,12 @@ components:
                   - fr-FR
                   - ar-EG
                   - ja-JP
+              localeManagementMode:
+                description: Controls whether locales are managed internally via the builder or externally via API.
+                type: string
+                enum:
+                  - internal
+                  - external
             required:
               - object
               - id
@@ -2526,6 +2550,12 @@ components:
             - fr-FR
             - ar-EG
             - ja-JP
+        localeManagementMode:
+          description: Controls whether locales are managed internally via the builder or externally via API.
+          type: string
+          enum:
+            - internal
+            - external
       required:
         - object
         - id
