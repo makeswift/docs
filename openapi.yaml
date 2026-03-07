@@ -3097,10 +3097,20 @@ components:
                 type: string
               isOnline:
                 type: boolean
+              pageTypeId:
+                type: string
+                format: uuid
+                nullable: true
+              collectionId:
+                type: string
+                format: uuid
+                nullable: true
             required:
               - id
               - pathname
               - isOnline
+              - pageTypeId
+              - collectionId
         hasMore:
           description: Whether there are more pages available for pagination.
           type: boolean
