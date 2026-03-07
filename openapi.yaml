@@ -981,6 +981,13 @@ paths:
           schema:
             type: string
             format: uuid
+        - name: collectionId
+          in: query
+          description: Filter pages by collection ID.
+          required: false
+          schema:
+            type: string
+            format: uuid
         - name: pageTypeId
           in: query
           description: Filter pages by page type ID.
