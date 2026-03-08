@@ -1419,6 +1419,80 @@ paths:
                 $ref: '#/components/schemas/ConflictResponseDto'
       tags:
         - Locale
+  '/v0/sites/{siteId}/page-types':
+    get:
+      operationId: PageTypeController_list_v0
+      summary: List Page Types
+      description: List page types for a site.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GetPageTypeResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Page Type
+  '/v0/sites/{siteId}/page-types/{pageTypeId}':
+    get:
+      operationId: PageTypeController_get_v0
+      summary: Get Page Type
+      description: Get a page type by ID.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageTypeId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPageTypeResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Page Type
   '/v1/sites/{siteId}/routes':
     get:
       operationId: SiteRouteController_list_v1
@@ -1900,80 +1974,6 @@ paths:
           description: ''
       tags:
         - Webhook Management
-  '/v0/sites/{siteId}/page-types':
-    get:
-      operationId: PageTypeController_list_v0
-      summary: List Page Types
-      description: List page types for a site.
-      parameters:
-        - name: siteId
-          in: path
-          required: true
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/GetPageTypeResponseDto'
-        '403':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ForbiddenResponseDto'
-        '404':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NotFoundResponseDto'
-      tags:
-        - Page Type
-  '/v0/sites/{siteId}/page-types/{pageTypeId}':
-    get:
-      operationId: PageTypeController_get_v0
-      summary: Get Page Type
-      description: Get a page type by ID.
-      parameters:
-        - name: siteId
-          in: path
-          required: true
-          schema:
-            type: string
-            format: uuid
-        - name: pageTypeId
-          in: path
-          required: true
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPageTypeResponseDto'
-        '403':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ForbiddenResponseDto'
-        '404':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NotFoundResponseDto'
-      tags:
-        - Page Type
 components:
   schemas:
     CreateWorkspaceV1RequestBodyDto:
@@ -3829,6 +3829,32 @@ components:
         - id
         - locale
         - domain
+    GetPageTypeResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          description: The name of the page type.
+          type: string
+        isExternal:
+          description: Whether pages of this type are externally managed.
+          type: boolean
+        createdAt:
+          description: When the page type was created.
+          type: string
+          format: date-time
+        updatedAt:
+          description: When the page type was last updated.
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - isExternal
+        - createdAt
+        - updatedAt
     ListSiteRouteV1ResponseBodyDto:
       type: object
       properties:
@@ -4167,32 +4193,6 @@ components:
         - workspaceId
         - url
         - eventType
-    GetPageTypeResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          description: The name of the page type.
-          type: string
-        isExternal:
-          description: Whether pages of this type are externally managed.
-          type: boolean
-        createdAt:
-          description: When the page type was created.
-          type: string
-          format: date-time
-        updatedAt:
-          description: When the page type was last updated.
-          type: string
-          format: date-time
-      required:
-        - id
-        - name
-        - isExternal
-        - createdAt
-        - updatedAt
   securitySchemes:
     Authentication:
       type: apiKey
