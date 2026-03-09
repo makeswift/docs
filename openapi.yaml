@@ -1420,6 +1420,44 @@ paths:
       tags:
         - Locale
   '/v0/sites/{siteId}/page-types':
+    post:
+      operationId: PageTypeController_create_v0
+      summary: Create Page Type
+      description: Create a page type for a site.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePageTypeBodyDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePageTypeResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Page Type
     get:
       operationId: PageTypeController_list_v0
       summary: List Page Types
@@ -3829,6 +3867,45 @@ components:
         - id
         - locale
         - domain
+    CreatePageTypeBodyDto:
+      type: object
+      properties:
+        name:
+          description: The name of the page type.
+          type: string
+          minLength: 1
+        isExternal:
+          description: Whether pages of this type are externally managed.
+          type: boolean
+      required:
+        - name
+        - isExternal
+    CreatePageTypeResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          description: The name of the page type.
+          type: string
+        isExternal:
+          description: Whether pages of this type are externally managed.
+          type: boolean
+        createdAt:
+          description: When the page type was created.
+          type: string
+          format: date-time
+        updatedAt:
+          description: When the page type was last updated.
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - isExternal
+        - createdAt
+        - updatedAt
     GetPageTypeResponseDto:
       type: object
       properties:
