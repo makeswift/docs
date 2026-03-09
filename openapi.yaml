@@ -1493,6 +1493,50 @@ paths:
       tags:
         - Page Type
   '/v0/sites/{siteId}/page-types/{pageTypeId}':
+    patch:
+      operationId: PageTypeController_update_v0
+      summary: Update Page Type
+      description: Update a page type by ID.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageTypeId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePageTypeBodyDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePageTypeResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Page Type
     get:
       operationId: PageTypeController_get_v0
       summary: Get Page Type
@@ -3881,6 +3925,41 @@ components:
         - name
         - isExternal
     CreatePageTypeResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          description: The name of the page type.
+          type: string
+        isExternal:
+          description: Whether pages of this type are externally managed.
+          type: boolean
+        createdAt:
+          description: When the page type was created.
+          type: string
+          format: date-time
+        updatedAt:
+          description: When the page type was last updated.
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - isExternal
+        - createdAt
+        - updatedAt
+    UpdatePageTypeBodyDto:
+      type: object
+      properties:
+        name:
+          description: The name of the page type.
+          type: string
+          minLength: 1
+      required:
+        - name
+    UpdatePageTypeResponseDto:
       type: object
       properties:
         id:
