@@ -629,6 +629,90 @@ paths:
                 $ref: '#/components/schemas/ForbiddenResponseDto'
       tags:
         - Site
+  '/v0/sites/{siteId}/collections':
+    get:
+      operationId: CollectionController_list_v0
+      summary: List Collections
+      description: List collections for a site.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: parentId
+          in: query
+          required: false
+          schema:
+            type: string
+            format: uuid
+        - name: pageTypeId
+          in: query
+          required: false
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCollectionsResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Collection
+  '/v0/sites/{siteId}/collections/{collectionId}':
+    get:
+      operationId: CollectionController_get_v0
+      summary: Get Collection
+      description: Get a collection by ID.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: collectionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCollectionResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Collection
   '/v1/sites/{siteId}/pages':
     post:
       operationId: PageController_create_v1
@@ -981,6 +1065,29 @@ paths:
           schema:
             type: string
             format: uuid
+        - name: collectionId
+          in: query
+          description: Filter pages by collection ID.
+          required: false
+          schema:
+            type: string
+            format: uuid
+        - name: pageTypeId
+          in: query
+          description: Filter pages by page type ID.
+          required: false
+          schema:
+            type: string
+            format: uuid
+        - name: untyped
+          in: query
+          description: 'When true, returns only pages with no page type.'
+          required: false
+          schema:
+            type: string
+            enum:
+              - 'true'
+              - 'false'
         - name: limit
           in: query
           description: 'Maximum number of pages to return. Defaults to 20, maximum is 100.'
@@ -2148,6 +2255,12 @@ components:
             - fr-FR
             - ar-EG
             - ja-JP
+        localeManagementMode:
+          description: Controls whether locales are managed internally via the builder or externally via API.
+          type: string
+          enum:
+            - internal
+            - external
       required:
         - object
         - id
@@ -2155,6 +2268,7 @@ components:
         - hostOrigin
         - publicApiKey
         - defaultLocale
+        - localeManagementMode
     BadRequestResponseDto:
       type: object
       properties:
@@ -2249,6 +2363,12 @@ components:
             - fr-FR
             - ar-EG
             - ja-JP
+        localeManagementMode:
+          description: Controls whether locales are managed internally via the builder or externally via API.
+          type: string
+          enum:
+            - internal
+            - external
       required:
         - object
         - id
@@ -2256,6 +2376,7 @@ components:
         - hostOrigin
         - publicApiKey
         - defaultLocale
+        - localeManagementMode
     UpdateSiteV1RequestBodyDto:
       type: object
       properties:
@@ -2304,6 +2425,16 @@ components:
           type: string
           format: uri
           example: 'https://hearthfurniture.com'
+        defaultLocale:
+          description: The primary locale of this site.
+          type: string
+          example: en-US
+          examples:
+            - en
+            - es
+            - fr-FR
+            - ar-EG
+            - ja-JP
       additionalProperties: false
     UpdateSiteV2ResponseBodyDto:
       type: object
@@ -2341,6 +2472,12 @@ components:
             - fr-FR
             - ar-EG
             - ja-JP
+        localeManagementMode:
+          description: Controls whether locales are managed internally via the builder or externally via API.
+          type: string
+          enum:
+            - internal
+            - external
       required:
         - object
         - id
@@ -2348,6 +2485,7 @@ components:
         - hostOrigin
         - publicApiKey
         - defaultLocale
+        - localeManagementMode
     ListSiteV1ResponseBodyDto:
       type: object
       properties:
@@ -2428,6 +2566,12 @@ components:
                   - fr-FR
                   - ar-EG
                   - ja-JP
+              localeManagementMode:
+                description: Controls whether locales are managed internally via the builder or externally via API.
+                type: string
+                enum:
+                  - internal
+                  - external
             required:
               - object
               - id
@@ -2435,6 +2579,7 @@ components:
               - hostOrigin
               - publicApiKey
               - defaultLocale
+              - localeManagementMode
         hasMore:
           description: The flag that indicates whether there are more sites available.
           type: boolean
@@ -2522,6 +2667,12 @@ components:
             - fr-FR
             - ar-EG
             - ja-JP
+        localeManagementMode:
+          description: Controls whether locales are managed internally via the builder or externally via API.
+          type: string
+          enum:
+            - internal
+            - external
       required:
         - object
         - id
@@ -2529,6 +2680,94 @@ components:
         - hostOrigin
         - publicApiKey
         - defaultLocale
+        - localeManagementMode
+    ListCollectionsResponseDto:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+            format: uuid
+          name:
+            description: The name of the collection.
+            type: string
+          parentId:
+            description: The parent collection ID.
+            type: string
+            format: uuid
+            nullable: true
+          pageTypeId:
+            description: The page type this collection is scoped to.
+            type: string
+            format: uuid
+            nullable: true
+          createdAt:
+            description: When the collection was created.
+            type: string
+            format: date-time
+          updatedAt:
+            description: When the collection was last updated.
+            type: string
+            format: date-time
+        required:
+          - id
+          - name
+          - parentId
+          - pageTypeId
+          - createdAt
+          - updatedAt
+    NotFoundResponseDto:
+      type: object
+      properties:
+        object:
+          type: string
+          enum:
+            - error
+        code:
+          type: string
+          enum:
+            - not_found
+        message:
+          type: string
+      required:
+        - object
+        - code
+        - message
+    GetCollectionResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          description: The name of the collection.
+          type: string
+        parentId:
+          description: The parent collection ID.
+          type: string
+          format: uuid
+          nullable: true
+        pageTypeId:
+          description: The page type this collection is scoped to.
+          type: string
+          format: uuid
+          nullable: true
+        createdAt:
+          description: When the collection was created.
+          type: string
+          format: date-time
+        updatedAt:
+          description: When the collection was last updated.
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - parentId
+        - pageTypeId
+        - createdAt
+        - updatedAt
     CreatePageV1RequestBodyDto:
       type: object
       properties:
@@ -2540,6 +2779,14 @@ components:
           description: The name of the page
           type: string
           nullable: true
+        pageTypeId:
+          description: The page type ID for the page.
+          type: string
+          format: uuid
+        collectionId:
+          description: The collection to place the page in. Defaults to the site root collection.
+          type: string
+          format: uuid
       required:
         - pathname
         - name
@@ -2557,6 +2804,16 @@ components:
           description: The name of the page
           type: string
           example: About
+        pageTypeId:
+          description: The page type ID of the page.
+          type: string
+          format: uuid
+          nullable: true
+        collectionId:
+          description: The collection ID of the page.
+          type: string
+          format: uuid
+          nullable: true
         seoCanonicalUrl:
           description: The canonical URL of the page
           type: string
@@ -2592,6 +2849,8 @@ components:
         - id
         - pathname
         - name
+        - pageTypeId
+        - collectionId
         - seoCanonicalUrl
         - seoIsIndexingBlocked
         - seoSitemapPriority
@@ -2740,6 +2999,7 @@ components:
         isOnline:
           description: The flag that indicates whether the page is online.
           type: boolean
+      additionalProperties: false
     UpdatePageV6ResponseBodyDto:
       type: object
       properties:
@@ -2861,6 +3121,10 @@ components:
         isOnline:
           description: Whether the page is online or offline
           type: boolean
+        collectionId:
+          description: The collection to move the page to.
+          type: string
+          format: uuid
     UpdatePageV1ResponseBodyDto:
       type: object
       properties:
@@ -2875,6 +3139,16 @@ components:
           description: The name of the page
           type: string
           example: About
+        pageTypeId:
+          description: The page type ID of the page.
+          type: string
+          format: uuid
+          nullable: true
+        collectionId:
+          description: The collection ID of the page.
+          type: string
+          format: uuid
+          nullable: true
         seoCanonicalUrl:
           description: The canonical URL of the page
           type: string
@@ -2910,6 +3184,8 @@ components:
         - id
         - pathname
         - name
+        - pageTypeId
+        - collectionId
         - seoCanonicalUrl
         - seoIsIndexingBlocked
         - seoSitemapPriority
@@ -2932,6 +3208,16 @@ components:
           description: The name of the page
           type: string
           example: About
+        pageTypeId:
+          description: The page type ID of the page.
+          type: string
+          format: uuid
+          nullable: true
+        collectionId:
+          description: The collection ID of the page.
+          type: string
+          format: uuid
+          nullable: true
         seoCanonicalUrl:
           description: The canonical URL of the page
           type: string
@@ -2967,6 +3253,8 @@ components:
         - id
         - pathname
         - name
+        - pageTypeId
+        - collectionId
         - seoCanonicalUrl
         - seoIsIndexingBlocked
         - seoSitemapPriority
@@ -2990,10 +3278,20 @@ components:
                 type: string
               isOnline:
                 type: boolean
+              pageTypeId:
+                type: string
+                format: uuid
+                nullable: true
+              collectionId:
+                type: string
+                format: uuid
+                nullable: true
             required:
               - id
               - pathname
               - isOnline
+              - pageTypeId
+              - collectionId
         hasMore:
           description: Whether there are more pages available for pagination.
           type: boolean
@@ -3334,23 +3632,6 @@ components:
         - locale
         - domain
         - isDefault
-    NotFoundResponseDto:
-      type: object
-      properties:
-        object:
-          type: string
-          enum:
-            - error
-        code:
-          type: string
-          enum:
-            - not_found
-        message:
-          type: string
-      required:
-        - object
-        - code
-        - message
     ConflictResponseDto:
       type: object
       properties:
@@ -3475,6 +3756,7 @@ components:
           type: string
           format: uri
           example: 'https://hearthfurniture.com.mx'
+          nullable: true
     UpdateSiteLocaleV1ResponseBodyDto:
       type: object
       properties:
@@ -3512,6 +3794,8 @@ components:
           type: string
           format: uri
           example: 'https://hearthfurniture.com.mx'
+          nullable: true
+      additionalProperties: false
     UpdateSiteLocaleV2ResponseBodyDto:
       type: object
       properties:
@@ -3817,6 +4101,7 @@ components:
           description: The route pathname.
           type: string
           example: /furniture
+      additionalProperties: false
     UpdateSiteRouteV2ResponseBodyDto:
       description: The route.
       type: object
@@ -3996,6 +4281,8 @@ tags:
     description: ''
   - name: Page
     description: ''
+  - name: Collection
+    description: ''
   - name: Webhook Management
     description: ''
 security:
@@ -4028,6 +4315,16 @@ webhooks:
                       description: The name of the page
                       type: string
                       example: About
+                    pageTypeId:
+                      description: The page type ID of the page.
+                      type: string
+                      format: uuid
+                      nullable: true
+                    collectionId:
+                      description: The collection ID of the page.
+                      type: string
+                      format: uuid
+                      nullable: true
                     seoCanonicalUrl:
                       description: The canonical URL of the page
                       type: string
@@ -4063,6 +4360,8 @@ webhooks:
                     - id
                     - pathname
                     - name
+                    - pageTypeId
+                    - collectionId
                     - seoCanonicalUrl
                     - seoIsIndexingBlocked
                     - seoSitemapPriority
@@ -4104,6 +4403,16 @@ webhooks:
                       description: The name of the page
                       type: string
                       example: About
+                    pageTypeId:
+                      description: The page type ID of the page.
+                      type: string
+                      format: uuid
+                      nullable: true
+                    collectionId:
+                      description: The collection ID of the page.
+                      type: string
+                      format: uuid
+                      nullable: true
                     seoCanonicalUrl:
                       description: The canonical URL of the page
                       type: string
@@ -4139,6 +4448,8 @@ webhooks:
                     - id
                     - pathname
                     - name
+                    - pageTypeId
+                    - collectionId
                     - seoCanonicalUrl
                     - seoIsIndexingBlocked
                     - seoSitemapPriority
@@ -4180,6 +4491,16 @@ webhooks:
                       description: The name of the page
                       type: string
                       example: About
+                    pageTypeId:
+                      description: The page type ID of the page.
+                      type: string
+                      format: uuid
+                      nullable: true
+                    collectionId:
+                      description: The collection ID of the page.
+                      type: string
+                      format: uuid
+                      nullable: true
                     seoCanonicalUrl:
                       description: The canonical URL of the page
                       type: string
@@ -4215,6 +4536,8 @@ webhooks:
                     - id
                     - pathname
                     - name
+                    - pageTypeId
+                    - collectionId
                     - seoCanonicalUrl
                     - seoIsIndexingBlocked
                     - seoSitemapPriority
@@ -4256,6 +4579,16 @@ webhooks:
                       description: The name of the page
                       type: string
                       example: About
+                    pageTypeId:
+                      description: The page type ID of the page.
+                      type: string
+                      format: uuid
+                      nullable: true
+                    collectionId:
+                      description: The collection ID of the page.
+                      type: string
+                      format: uuid
+                      nullable: true
                     seoCanonicalUrl:
                       description: The canonical URL of the page
                       type: string
@@ -4291,6 +4624,8 @@ webhooks:
                     - id
                     - pathname
                     - name
+                    - pageTypeId
+                    - collectionId
                     - seoCanonicalUrl
                     - seoIsIndexingBlocked
                     - seoSitemapPriority
