@@ -2537,6 +2537,16 @@ components:
           type: string
           format: uri
           example: 'https://hearthfurniture.com'
+        defaultLocale:
+          description: The primary locale of this site.
+          type: string
+          example: en-US
+          examples:
+            - en
+            - es
+            - fr-FR
+            - ar-EG
+            - ja-JP
       additionalProperties: false
     UpdateSiteV2ResponseBodyDto:
       type: object
