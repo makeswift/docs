@@ -1537,6 +1537,46 @@ paths:
                 $ref: '#/components/schemas/NotFoundResponseDto'
       tags:
         - Page Type
+    delete:
+      operationId: PageTypeController_delete_v0
+      summary: Delete Page Type
+      description: Delete a page type by ID.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageTypeId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: ''
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictResponseDto'
+      tags:
+        - Page Type
     get:
       operationId: PageTypeController_get_v0
       summary: Get Page Type
