@@ -630,6 +630,50 @@ paths:
       tags:
         - Site
   '/v0/sites/{siteId}/collections':
+    post:
+      operationId: CollectionController_create_v0
+      summary: Create Collection
+      description: Create a collection for a site.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCollectionBodyDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateCollectionResponseDto'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Collection
     get:
       operationId: CollectionController_list_v0
       summary: List Collections
@@ -675,6 +719,90 @@ paths:
       tags:
         - Collection
   '/v0/sites/{siteId}/collections/{collectionId}':
+    patch:
+      operationId: CollectionController_update_v0
+      summary: Update Collection
+      description: Rename or move a collection.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: collectionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCollectionBodyDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateCollectionResponseDto'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Collection
+    delete:
+      operationId: CollectionController_delete_v0
+      summary: Delete Collection
+      description: Soft-delete a collection and all its descendant pages.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: collectionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: ''
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Collection
     get:
       operationId: CollectionController_get_v0
       summary: Get Collection
@@ -1503,6 +1631,202 @@ paths:
                 $ref: '#/components/schemas/ConflictResponseDto'
       tags:
         - Locale
+  '/v0/sites/{siteId}/page-types':
+    post:
+      operationId: PageTypeController_create_v0
+      summary: Create Page Type
+      description: Create a page type for a site.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePageTypeBodyDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePageTypeResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Page Type
+    get:
+      operationId: PageTypeController_list_v0
+      summary: List Page Types
+      description: List page types for a site.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GetPageTypeResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Page Type
+  '/v0/sites/{siteId}/page-types/{pageTypeId}':
+    patch:
+      operationId: PageTypeController_update_v0
+      summary: Update Page Type
+      description: Update a page type by ID.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageTypeId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePageTypeBodyDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePageTypeResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Page Type
+    delete:
+      operationId: PageTypeController_delete_v0
+      summary: Delete Page Type
+      description: Delete a page type by ID.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageTypeId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: ''
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictResponseDto'
+      tags:
+        - Page Type
+    get:
+      operationId: PageTypeController_get_v0
+      summary: Get Page Type
+      description: Get a page type by ID.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageTypeId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPageTypeResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Page Type
   '/v1/sites/{siteId}/routes':
     get:
       operationId: SiteRouteController_list_v1
@@ -2184,11 +2508,15 @@ components:
         apiKey:
           type: string
           format: uuid
+        collectionId:
+          type: string
+          format: uuid
       required:
         - id
         - name
         - hostUrl
         - apiKey
+        - collectionId
     CreateSiteV2RequestBodyDto:
       type: object
       properties:
@@ -2322,11 +2650,15 @@ components:
         apiKey:
           type: string
           format: uuid
+        collectionId:
+          type: string
+          format: uuid
       required:
         - id
         - name
         - hostUrl
         - apiKey
+        - collectionId
     ReadSiteV2ResponseBodyDto:
       type: object
       properties:
@@ -2408,11 +2740,15 @@ components:
         apiKey:
           type: string
           format: uuid
+        collectionId:
+          type: string
+          format: uuid
       required:
         - id
         - name
         - hostUrl
         - apiKey
+        - collectionId
     UpdateSiteV2RequestBodyDto:
       type: object
       properties:
@@ -2510,11 +2846,15 @@ components:
               apiKey:
                 type: string
                 format: uuid
+              collectionId:
+                type: string
+                format: uuid
             required:
               - id
               - name
               - hostUrl
               - apiKey
+              - collectionId
         hasMore:
           type: boolean
       required:
@@ -2616,11 +2956,15 @@ components:
         apiKey:
           type: string
           format: uuid
+        collectionId:
+          type: string
+          format: uuid
       required:
         - id
         - name
         - hostUrl
         - apiKey
+        - collectionId
     DuplicateSiteV2RequestBodyDto:
       type: object
       properties:
@@ -2681,6 +3025,118 @@ components:
         - publicApiKey
         - defaultLocale
         - localeManagementMode
+    CreateCollectionBodyDto:
+      type: object
+      properties:
+        name:
+          description: The name of the collection.
+          type: string
+        parentId:
+          description: The parent collection ID.
+          type: string
+          format: uuid
+        pageTypeId:
+          description: The page type to scope this collection to.
+          type: string
+          format: uuid
+      required:
+        - name
+        - parentId
+    CreateCollectionResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          description: The name of the collection.
+          type: string
+        parentId:
+          description: The parent collection ID.
+          type: string
+          format: uuid
+          nullable: true
+        pageTypeId:
+          description: The page type this collection is scoped to.
+          type: string
+          format: uuid
+          nullable: true
+        createdAt:
+          description: When the collection was created.
+          type: string
+          format: date-time
+        updatedAt:
+          description: When the collection was last updated.
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - parentId
+        - pageTypeId
+        - createdAt
+        - updatedAt
+    NotFoundResponseDto:
+      type: object
+      properties:
+        object:
+          type: string
+          enum:
+            - error
+        code:
+          type: string
+          enum:
+            - not_found
+        message:
+          type: string
+      required:
+        - object
+        - code
+        - message
+    UpdateCollectionBodyDto:
+      type: object
+      properties:
+        name:
+          description: The new name of the collection.
+          type: string
+        parentId:
+          description: Move the collection under this parent.
+          type: string
+          format: uuid
+    UpdateCollectionResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          description: The name of the collection.
+          type: string
+        parentId:
+          description: The parent collection ID.
+          type: string
+          format: uuid
+          nullable: true
+        pageTypeId:
+          description: The page type this collection is scoped to.
+          type: string
+          format: uuid
+          nullable: true
+        createdAt:
+          description: When the collection was created.
+          type: string
+          format: date-time
+        updatedAt:
+          description: When the collection was last updated.
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - parentId
+        - pageTypeId
+        - createdAt
+        - updatedAt
     ListCollectionsResponseDto:
       type: array
       items:
@@ -2717,23 +3173,6 @@ components:
           - pageTypeId
           - createdAt
           - updatedAt
-    NotFoundResponseDto:
-      type: object
-      properties:
-        object:
-          type: string
-          enum:
-            - error
-        code:
-          type: string
-          enum:
-            - not_found
-        message:
-          type: string
-      required:
-        - object
-        - code
-        - message
     GetCollectionResponseDto:
       type: object
       properties:
@@ -3919,6 +4358,106 @@ components:
         - id
         - locale
         - domain
+    CreatePageTypeBodyDto:
+      type: object
+      properties:
+        name:
+          description: The name of the page type.
+          type: string
+          minLength: 1
+        isExternal:
+          description: Whether pages of this type are externally managed.
+          type: boolean
+      required:
+        - name
+        - isExternal
+    CreatePageTypeResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          description: The name of the page type.
+          type: string
+        isExternal:
+          description: Whether pages of this type are externally managed.
+          type: boolean
+        createdAt:
+          description: When the page type was created.
+          type: string
+          format: date-time
+        updatedAt:
+          description: When the page type was last updated.
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - isExternal
+        - createdAt
+        - updatedAt
+    UpdatePageTypeBodyDto:
+      type: object
+      properties:
+        name:
+          description: The name of the page type.
+          type: string
+          minLength: 1
+      required:
+        - name
+    UpdatePageTypeResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          description: The name of the page type.
+          type: string
+        isExternal:
+          description: Whether pages of this type are externally managed.
+          type: boolean
+        createdAt:
+          description: When the page type was created.
+          type: string
+          format: date-time
+        updatedAt:
+          description: When the page type was last updated.
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - isExternal
+        - createdAt
+        - updatedAt
+    GetPageTypeResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          description: The name of the page type.
+          type: string
+        isExternal:
+          description: Whether pages of this type are externally managed.
+          type: boolean
+        createdAt:
+          description: When the page type was created.
+          type: string
+          format: date-time
+        updatedAt:
+          description: When the page type was last updated.
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - isExternal
+        - createdAt
+        - updatedAt
     ListSiteRouteV1ResponseBodyDto:
       type: object
       properties:
@@ -4280,6 +4819,8 @@ tags:
   - name: Route
     description: ''
   - name: Page
+    description: ''
+  - name: Page Type
     description: ''
   - name: Collection
     description: ''
