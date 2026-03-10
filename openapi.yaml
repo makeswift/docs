@@ -3061,6 +3061,9 @@ components:
           type: string
           format: uuid
           nullable: true
+        isPageTypeRoot:
+          description: Whether this is the root collection for its page type.
+          type: boolean
         createdAt:
           description: When the collection was created.
           type: string
@@ -3074,6 +3077,7 @@ components:
         - name
         - parentId
         - pageTypeId
+        - isPageTypeRoot
         - createdAt
         - updatedAt
     NotFoundResponseDto:
@@ -3122,6 +3126,9 @@ components:
           type: string
           format: uuid
           nullable: true
+        isPageTypeRoot:
+          description: Whether this is the root collection for its page type.
+          type: boolean
         createdAt:
           description: When the collection was created.
           type: string
@@ -3135,6 +3142,7 @@ components:
         - name
         - parentId
         - pageTypeId
+        - isPageTypeRoot
         - createdAt
         - updatedAt
     ListCollectionsResponseDto:
@@ -3158,6 +3166,9 @@ components:
             type: string
             format: uuid
             nullable: true
+          isPageTypeRoot:
+            description: Whether this is the root collection for its page type.
+            type: boolean
           createdAt:
             description: When the collection was created.
             type: string
@@ -3171,6 +3182,7 @@ components:
           - name
           - parentId
           - pageTypeId
+          - isPageTypeRoot
           - createdAt
           - updatedAt
     GetCollectionResponseDto:
@@ -3192,6 +3204,9 @@ components:
           type: string
           format: uuid
           nullable: true
+        isPageTypeRoot:
+          description: Whether this is the root collection for its page type.
+          type: boolean
         createdAt:
           description: When the collection was created.
           type: string
@@ -3205,6 +3220,7 @@ components:
         - name
         - parentId
         - pageTypeId
+        - isPageTypeRoot
         - createdAt
         - updatedAt
     CreatePageV1RequestBodyDto:
@@ -4383,6 +4399,11 @@ components:
         isExternal:
           description: Whether pages of this type are externally managed.
           type: boolean
+        rootCollectionId:
+          description: The ID of the root collection for this page type.
+          type: string
+          format: uuid
+          nullable: true
         createdAt:
           description: When the page type was created.
           type: string
@@ -4395,6 +4416,7 @@ components:
         - id
         - name
         - isExternal
+        - rootCollectionId
         - createdAt
         - updatedAt
     UpdatePageTypeBodyDto:
@@ -4418,6 +4440,11 @@ components:
         isExternal:
           description: Whether pages of this type are externally managed.
           type: boolean
+        rootCollectionId:
+          description: The ID of the root collection for this page type.
+          type: string
+          format: uuid
+          nullable: true
         createdAt:
           description: When the page type was created.
           type: string
@@ -4430,6 +4457,7 @@ components:
         - id
         - name
         - isExternal
+        - rootCollectionId
         - createdAt
         - updatedAt
     GetPageTypeResponseDto:
@@ -4444,6 +4472,11 @@ components:
         isExternal:
           description: Whether pages of this type are externally managed.
           type: boolean
+        rootCollectionId:
+          description: The ID of the root collection for this page type.
+          type: string
+          format: uuid
+          nullable: true
         createdAt:
           description: When the page type was created.
           type: string
@@ -4456,6 +4489,7 @@ components:
         - id
         - name
         - isExternal
+        - rootCollectionId
         - createdAt
         - updatedAt
     ListSiteRouteV1ResponseBodyDto:
