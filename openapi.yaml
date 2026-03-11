@@ -5249,6 +5249,117 @@ webhooks:
                         - to
                     at:
                       type: number
+                    unstable_diff:
+                      type: object
+                      nullable: true
+                      properties:
+                        components:
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                              locale:
+                                type: string
+                                nullable: true
+                              changeType:
+                                type: string
+                                enum:
+                                  - created
+                                  - updated
+                                  - deleted
+                            required:
+                              - id
+                              - locale
+                              - changeType
+                          type: array
+                        pages:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              pageId:
+                                type: string
+                                format: uuid
+                              locale:
+                                type: string
+                                nullable: true
+                              changeType:
+                                type: string
+                                enum:
+                                  - created
+                                  - updated
+                                  - deleted
+                              pathname:
+                                type: string
+                              previousPathname:
+                                type: string
+                            required:
+                              - pageId
+                              - locale
+                              - changeType
+                              - pathname
+                        globalElements:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                format: uuid
+                              locale:
+                                type: string
+                                nullable: true
+                              changeType:
+                                type: string
+                                enum:
+                                  - created
+                                  - updated
+                                  - deleted
+                            required:
+                              - id
+                              - locale
+                              - changeType
+                        swatches:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                format: uuid
+                              changeType:
+                                type: string
+                                enum:
+                                  - created
+                                  - updated
+                                  - deleted
+                            required:
+                              - id
+                              - changeType
+                        typographies:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                format: uuid
+                              changeType:
+                                type: string
+                                enum:
+                                  - created
+                                  - updated
+                                  - deleted
+                            required:
+                              - id
+                              - changeType
+                      required:
+                        - components
+                        - pages
+                        - globalElements
+                        - swatches
+                        - typographies
                   required:
                     - siteId
                     - publish
