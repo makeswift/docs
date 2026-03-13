@@ -3998,6 +3998,10 @@ components:
         isExternal:
           description: Whether pages of this type are externally managed.
           type: boolean
+        slug:
+          description: Machine-readable identifier for the page type.
+          type: string
+          nullable: true
       required:
         - name
         - isExternal
@@ -4013,6 +4017,10 @@ components:
         isExternal:
           description: Whether pages of this type are externally managed.
           type: boolean
+        slug:
+          description: Machine-readable identifier for the page type.
+          type: string
+          nullable: true
         rootCollectionId:
           description: The ID of the root collection for this page type.
           type: string
@@ -4030,6 +4038,7 @@ components:
         - id
         - name
         - isExternal
+        - slug
         - rootCollectionId
         - createdAt
         - updatedAt
@@ -4040,8 +4049,10 @@ components:
           description: The name of the page type.
           type: string
           minLength: 1
-      required:
-        - name
+        slug:
+          description: Machine-readable identifier for the page type.
+          type: string
+          nullable: true
     UpdatePageTypeResponseDto:
       type: object
       properties:
@@ -4054,6 +4065,10 @@ components:
         isExternal:
           description: Whether pages of this type are externally managed.
           type: boolean
+        slug:
+          description: Machine-readable identifier for the page type.
+          type: string
+          nullable: true
         rootCollectionId:
           description: The ID of the root collection for this page type.
           type: string
@@ -4071,6 +4086,7 @@ components:
         - id
         - name
         - isExternal
+        - slug
         - rootCollectionId
         - createdAt
         - updatedAt
@@ -4103,6 +4119,10 @@ components:
         isExternal:
           description: Whether pages of this type are externally managed.
           type: boolean
+        slug:
+          description: Machine-readable identifier for the page type.
+          type: string
+          nullable: true
         rootCollectionId:
           description: The ID of the root collection for this page type.
           type: string
@@ -4120,6 +4140,7 @@ components:
         - id
         - name
         - isExternal
+        - slug
         - rootCollectionId
         - createdAt
         - updatedAt
