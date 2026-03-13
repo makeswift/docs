@@ -4049,8 +4049,10 @@ components:
           description: The name of the page type.
           type: string
           minLength: 1
-      required:
-        - name
+        slug:
+          description: Machine-readable identifier for the page type.
+          type: string
+          nullable: true
     UpdatePageTypeResponseDto:
       type: object
       properties:
