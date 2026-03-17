@@ -2583,6 +2583,9 @@ components:
             - fr-FR
             - ar-EG
             - ja-JP
+        defaultLocalePathPrefix:
+          type: string
+          nullable: true
         localeManagementMode:
           description: Controls whether locales are managed internally via the builder or externally via API.
           type: string
@@ -2695,6 +2698,9 @@ components:
             - fr-FR
             - ar-EG
             - ja-JP
+        defaultLocalePathPrefix:
+          type: string
+          nullable: true
         localeManagementMode:
           description: Controls whether locales are managed internally via the builder or externally via API.
           type: string
@@ -2808,6 +2814,9 @@ components:
             - fr-FR
             - ar-EG
             - ja-JP
+        defaultLocalePathPrefix:
+          type: string
+          nullable: true
         localeManagementMode:
           description: Controls whether locales are managed internally via the builder or externally via API.
           type: string
@@ -2906,6 +2915,9 @@ components:
                   - fr-FR
                   - ar-EG
                   - ja-JP
+              defaultLocalePathPrefix:
+                type: string
+                nullable: true
               localeManagementMode:
                 description: Controls whether locales are managed internally via the builder or externally via API.
                 type: string
@@ -3011,6 +3023,9 @@ components:
             - fr-FR
             - ar-EG
             - ja-JP
+        defaultLocalePathPrefix:
+          type: string
+          nullable: true
         localeManagementMode:
           description: Controls whether locales are managed internally via the builder or externally via API.
           type: string
