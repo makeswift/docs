@@ -4010,19 +4010,16 @@ components:
           description: The name of the page type.
           type: string
           minLength: 1
-        managementMode:
-          description: Controls whether pages of this type are managed internally via the builder or externally via API.
-          type: string
-          enum:
-            - internal
-            - external
+        isExternal:
+          description: Whether pages of this type are externally managed.
+          type: boolean
         slug:
           description: Machine-readable identifier for the page type.
           type: string
           nullable: true
       required:
         - name
-        - managementMode
+        - isExternal
     CreatePageTypeResponseDto:
       type: object
       properties:
@@ -4032,12 +4029,9 @@ components:
         name:
           description: The name of the page type.
           type: string
-        managementMode:
-          description: Controls whether pages of this type are managed internally via the builder or externally via API.
-          type: string
-          enum:
-            - internal
-            - external
+        isExternal:
+          description: Whether pages of this type are externally managed.
+          type: boolean
         slug:
           description: Machine-readable identifier for the page type.
           type: string
@@ -4058,7 +4052,7 @@ components:
       required:
         - id
         - name
-        - managementMode
+        - isExternal
         - slug
         - rootCollectionId
         - createdAt
@@ -4083,12 +4077,9 @@ components:
         name:
           description: The name of the page type.
           type: string
-        managementMode:
-          description: Controls whether pages of this type are managed internally via the builder or externally via API.
-          type: string
-          enum:
-            - internal
-            - external
+        isExternal:
+          description: Whether pages of this type are externally managed.
+          type: boolean
         slug:
           description: Machine-readable identifier for the page type.
           type: string
@@ -4109,7 +4100,7 @@ components:
       required:
         - id
         - name
-        - managementMode
+        - isExternal
         - slug
         - rootCollectionId
         - createdAt
@@ -4140,12 +4131,9 @@ components:
         name:
           description: The name of the page type.
           type: string
-        managementMode:
-          description: Controls whether pages of this type are managed internally via the builder or externally via API.
-          type: string
-          enum:
-            - internal
-            - external
+        isExternal:
+          description: Whether pages of this type are externally managed.
+          type: boolean
         slug:
           description: Machine-readable identifier for the page type.
           type: string
@@ -4166,7 +4154,7 @@ components:
       required:
         - id
         - name
-        - managementMode
+        - isExternal
         - slug
         - rootCollectionId
         - createdAt
