@@ -1108,6 +1108,37 @@ paths:
           description: Access forbidden.
       tags:
         - Page
+  '/v0/sites/{siteId}/pages/{pageId}':
+    patch:
+      operationId: PageController_updateV0_v0
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePageV0RequestBodyDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePageV0ResponseBodyDto'
+      tags:
+        - Page
   '/v1/sites/{siteId}/pages/{pageId}':
     patch:
       operationId: PageController_update_v1
@@ -3579,6 +3610,95 @@ components:
         - isOnline
         - excludedFromSearchEngines
         - localizations
+    UpdatePageV0RequestBodyDto:
+      type: object
+      properties:
+        pathname:
+          description: The pathname of the page
+          type: string
+        name:
+          description: The name of the page
+          type: string
+        isOnline:
+          description: Whether the page is online or offline
+          type: boolean
+        collectionId:
+          description: The collection to move the page to.
+          type: string
+          format: uuid
+        pageTypeId:
+          description: The page type to assign to the page.
+          type: string
+          format: uuid
+    UpdatePageV0ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        pathname:
+          description: The pathname of the page
+          type: string
+          example: about
+        name:
+          description: The name of the page
+          type: string
+          example: About
+        pageTypeId:
+          description: The page type ID of the page.
+          type: string
+          format: uuid
+          nullable: true
+        collectionId:
+          description: The collection ID of the page.
+          type: string
+          format: uuid
+          nullable: true
+        seoCanonicalUrl:
+          description: The canonical URL of the page
+          type: string
+          nullable: true
+        seoIsIndexingBlocked:
+          description: Whether the page is blocked from indexing
+          type: boolean
+          nullable: true
+        seoSitemapPriority:
+          description: The priority of the page in the sitemap
+          type: number
+          nullable: true
+        seoSitemapFrequency:
+          description: The frequency with which the page is updated in the sitemap
+          type: string
+          nullable: true
+        metaTitle:
+          description: The title of the page
+          type: string
+          nullable: true
+        metaDescription:
+          description: The description of the page
+          type: string
+          nullable: true
+        metaKeywords:
+          description: The keywords of the page
+          type: string
+          nullable: true
+        isOnline:
+          description: Whether the page is online
+          type: boolean
+      required:
+        - id
+        - pathname
+        - name
+        - pageTypeId
+        - collectionId
+        - seoCanonicalUrl
+        - seoIsIndexingBlocked
+        - seoSitemapPriority
+        - seoSitemapFrequency
+        - metaTitle
+        - metaDescription
+        - metaKeywords
+        - isOnline
     UpdatePageV1RequestBodyDto:
       type: object
       properties:
@@ -4445,11 +4565,6 @@ components:
           type: string
           format: uri
           example: 'https://hearthfurniture.com.mx'
-          nullable: true
-        pathPrefix:
-          description: Custom URL path prefix for this locale. Strip leading/trailing slashes before sending. Null means the locale code is used as the prefix (default behavior).
-          type: string
-          example: french
           nullable: true
       additionalProperties: false
     UpdateSiteLocaleV2ResponseBodyDto:
