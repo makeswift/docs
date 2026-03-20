@@ -3346,6 +3346,9 @@ components:
         isOnline:
           description: Whether the page is online
           type: boolean
+        dummyField:
+          description: A dummy field for testing BugBot.
+          type: string
       required:
         - id
         - pathname
@@ -3360,6 +3363,7 @@ components:
         - metaDescription
         - metaKeywords
         - isOnline
+        - dummyField
     CreatePageV6RequestBodyDto:
       type: object
       properties:
@@ -3685,6 +3689,9 @@ components:
         isOnline:
           description: Whether the page is online
           type: boolean
+        dummyField:
+          description: A dummy field for testing BugBot.
+          type: string
       required:
         - id
         - pathname
@@ -3699,6 +3706,7 @@ components:
         - metaDescription
         - metaKeywords
         - isOnline
+        - dummyField
     UpdatePageV1RequestBodyDto:
       type: object
       properties:
@@ -3770,6 +3778,9 @@ components:
         isOnline:
           description: Whether the page is online
           type: boolean
+        dummyField:
+          description: A dummy field for testing BugBot.
+          type: string
       required:
         - id
         - pathname
@@ -3784,6 +3795,7 @@ components:
         - metaDescription
         - metaKeywords
         - isOnline
+        - dummyField
     GetPageV1ResponseBodyDto:
       type: object
       properties:
@@ -3839,6 +3851,9 @@ components:
         isOnline:
           description: Whether the page is online
           type: boolean
+        dummyField:
+          description: A dummy field for testing BugBot.
+          type: string
       required:
         - id
         - pathname
@@ -3853,6 +3868,7 @@ components:
         - metaDescription
         - metaKeywords
         - isOnline
+        - dummyField
     ListPagesV0ResponseBodyDto:
       type: object
       properties:
@@ -5141,6 +5157,9 @@ webhooks:
                     isOnline:
                       description: Whether the page is online
                       type: boolean
+                    dummyField:
+                      description: A dummy field for testing BugBot.
+                      type: string
                   required:
                     - id
                     - pathname
@@ -5155,6 +5174,7 @@ webhooks:
                     - metaDescription
                     - metaKeywords
                     - isOnline
+                    - dummyField
               required:
                 - type
                 - page
@@ -5229,6 +5249,9 @@ webhooks:
                     isOnline:
                       description: Whether the page is online
                       type: boolean
+                    dummyField:
+                      description: A dummy field for testing BugBot.
+                      type: string
                   required:
                     - id
                     - pathname
@@ -5243,6 +5266,7 @@ webhooks:
                     - metaDescription
                     - metaKeywords
                     - isOnline
+                    - dummyField
               required:
                 - type
                 - page
@@ -5317,6 +5341,9 @@ webhooks:
                     isOnline:
                       description: Whether the page is online
                       type: boolean
+                    dummyField:
+                      description: A dummy field for testing BugBot.
+                      type: string
                   required:
                     - id
                     - pathname
@@ -5331,6 +5358,7 @@ webhooks:
                     - metaDescription
                     - metaKeywords
                     - isOnline
+                    - dummyField
               required:
                 - type
                 - page
@@ -5405,6 +5433,9 @@ webhooks:
                     isOnline:
                       description: Whether the page is online
                       type: boolean
+                    dummyField:
+                      description: A dummy field for testing BugBot.
+                      type: string
                   required:
                     - id
                     - pathname
@@ -5419,6 +5450,7 @@ webhooks:
                     - metaDescription
                     - metaKeywords
                     - isOnline
+                    - dummyField
               required:
                 - type
                 - page
