@@ -5570,6 +5570,9 @@ webhooks:
                         - globalElements
                         - swatches
                         - typographies
+                    unstable_defaultLocale:
+                      type: string
+                      nullable: true
                   required:
                     - siteId
                     - publish
