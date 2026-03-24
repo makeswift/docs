@@ -4165,6 +4165,11 @@ components:
         isDefault:
           description: Whether this is the default page type.
           type: boolean
+        managedBy:
+          description: 'The ID of the app that manages this page type, if any.'
+          type: string
+          format: uuid
+          nullable: true
         rootCollectionId:
           description: The ID of the root collection for this page type.
           type: string
@@ -4184,6 +4189,7 @@ components:
         - managementMode
         - slug
         - isDefault
+        - managedBy
         - rootCollectionId
         - createdAt
         - updatedAt
@@ -4220,6 +4226,11 @@ components:
         isDefault:
           description: Whether this is the default page type.
           type: boolean
+        managedBy:
+          description: 'The ID of the app that manages this page type, if any.'
+          type: string
+          format: uuid
+          nullable: true
         rootCollectionId:
           description: The ID of the root collection for this page type.
           type: string
@@ -4239,6 +4250,7 @@ components:
         - managementMode
         - slug
         - isDefault
+        - managedBy
         - rootCollectionId
         - createdAt
         - updatedAt
@@ -4281,6 +4293,11 @@ components:
         isDefault:
           description: Whether this is the default page type.
           type: boolean
+        managedBy:
+          description: 'The ID of the app that manages this page type, if any.'
+          type: string
+          format: uuid
+          nullable: true
         rootCollectionId:
           description: The ID of the root collection for this page type.
           type: string
@@ -4300,6 +4317,7 @@ components:
         - managementMode
         - slug
         - isDefault
+        - managedBy
         - rootCollectionId
         - createdAt
         - updatedAt
