@@ -691,12 +691,11 @@ paths:
           schema:
             type: string
             format: uuid
-        - name: pageTypeId
+        - name: pageTypeIdOrSlug
           in: query
           required: false
           schema:
             type: string
-            format: uuid
       responses:
         '200':
           description: ''
@@ -1231,13 +1230,12 @@ paths:
           schema:
             type: string
             format: uuid
-        - name: pageTypeId
+        - name: pageTypeIdOrSlug
           in: query
-          description: Filter pages by page type ID.
+          description: Filter pages by page type ID or slug.
           required: false
           schema:
             type: string
-            format: uuid
         - name: untyped
           in: query
           description: 'When true, returns only pages with no page type.'
@@ -3078,10 +3076,9 @@ components:
           description: The parent collection ID.
           type: string
           format: uuid
-        pageTypeId:
-          description: The page type to scope this collection to.
+        pageTypeIdOrSlug:
+          description: The page type ID or slug to scope this collection to.
           type: string
-          format: uuid
       required:
         - name
         - parentId
@@ -3277,10 +3274,9 @@ components:
           description: The name of the page
           type: string
           nullable: true
-        pageTypeId:
-          description: The page type ID for the page.
+        pageTypeIdOrSlug:
+          description: The page type ID or slug for the page.
           type: string
-          format: uuid
         collectionId:
           description: The collection to place the page in. Defaults to the site root collection.
           type: string
@@ -3623,10 +3619,9 @@ components:
           description: The collection to move the page to.
           type: string
           format: uuid
-        pageTypeId:
-          description: The page type to assign to the page.
+        pageTypeIdOrSlug:
+          description: The page type ID or slug to assign to the page.
           type: string
-          format: uuid
     UpdatePageV0ResponseBodyDto:
       type: object
       properties:
