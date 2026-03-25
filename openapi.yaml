@@ -1236,15 +1236,6 @@ paths:
           required: false
           schema:
             type: string
-        - name: untyped
-          in: query
-          description: 'When true, returns only pages with no page type.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - 'true'
-              - 'false'
         - name: limit
           in: query
           description: 'Maximum number of pages to return. Defaults to 20, maximum is 100.'
