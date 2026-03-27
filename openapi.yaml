@@ -4128,6 +4128,7 @@ components:
           description: Machine-readable identifier for the page type.
           type: string
           nullable: true
+          pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'
       required:
         - name
         - managementMode
@@ -4192,6 +4193,7 @@ components:
           description: Machine-readable identifier for the page type.
           type: string
           nullable: true
+          pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'
     UpdatePageTypeResponseDto:
       type: object
       properties:
