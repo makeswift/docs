@@ -3269,7 +3269,7 @@ components:
           description: The page type ID or slug for the page.
           type: string
         collectionId:
-          description: The collection to place the page in. Defaults to the site root collection.
+          description: 'The collection to place the page in. If omitted and pageTypeIdOrSlug is provided, defaults to the page type root collection. Otherwise defaults to the site root collection.'
           type: string
           format: uuid
       required:
