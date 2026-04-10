@@ -1280,7 +1280,11 @@ paths:
               $ref: '#/components/schemas/BatchLookupPagesV0RequestBodyDto'
       responses:
         '200':
-          description: Batch lookup pages by pathname.
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchLookupPagesV0Response'
         '403':
           description: Access forbidden.
       tags:
@@ -4145,6 +4149,78 @@ components:
       required:
         - siteId
         - pages
+    BatchLookupPagesV0Response:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+            format: uuid
+          pathname:
+            description: The pathname of the page
+            type: string
+            example: about
+          name:
+            description: The name of the page
+            type: string
+            example: About
+          pageTypeId:
+            description: The page type ID of the page.
+            type: string
+            format: uuid
+            nullable: true
+          collectionId:
+            description: The collection ID of the page.
+            type: string
+            format: uuid
+            nullable: true
+          seoCanonicalUrl:
+            description: The canonical URL of the page
+            type: string
+            nullable: true
+          seoIsIndexingBlocked:
+            description: Whether the page is blocked from indexing
+            type: boolean
+            nullable: true
+          seoSitemapPriority:
+            description: The priority of the page in the sitemap
+            type: number
+            nullable: true
+          seoSitemapFrequency:
+            description: The frequency with which the page is updated in the sitemap
+            type: string
+            nullable: true
+          metaTitle:
+            description: The title of the page
+            type: string
+            nullable: true
+          metaDescription:
+            description: The description of the page
+            type: string
+            nullable: true
+          metaKeywords:
+            description: The keywords of the page
+            type: string
+            nullable: true
+          isOnline:
+            description: Whether the page is online
+            type: boolean
+        required:
+          - id
+          - pathname
+          - name
+          - pageTypeId
+          - collectionId
+          - seoCanonicalUrl
+          - seoIsIndexingBlocked
+          - seoSitemapPriority
+          - seoSitemapFrequency
+          - metaTitle
+          - metaDescription
+          - metaKeywords
+          - isOnline
+        nullable: true
     CreatePageTypeBodyDto:
       type: object
       properties:
