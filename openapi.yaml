@@ -4129,15 +4129,22 @@ components:
         siteId:
           type: string
           format: uuid
-        pathnames:
+        pages:
           type: array
           items:
-            type: string
+            type: object
+            properties:
+              pathname:
+                type: string
+              locale:
+                type: string
+            required:
+              - pathname
           maxItems: 1000
           minItems: 1
       required:
         - siteId
-        - pathnames
+        - pages
     CreatePageTypeBodyDto:
       type: object
       properties:
