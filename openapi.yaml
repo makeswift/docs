@@ -4,7 +4,7 @@ info:
   description: Documentation for the Makeswift public REST API.
   version: '1.0'
 servers:
-  - url: 'https://api.makeswift.com'
+  - url: https://api.makeswift.com
     description: Production server
 paths:
   /v1/workspaces:
@@ -52,7 +52,7 @@ paths:
                 $ref: '#/components/schemas/ListWorkspaceV1ResponseBodyDto'
       tags:
         - Workspace
-  '/v1/workspaces/{id}':
+  /v1/workspaces/{id}:
     patch:
       operationId: WorkspaceController_updateOne_v1
       parameters:
@@ -91,7 +91,7 @@ paths:
           description: ''
       tags:
         - Workspace
-  '/v1/workspaces/{id}/apps/{appSlug}/install':
+  /v1/workspaces/{id}/apps/{appSlug}/install:
     post:
       operationId: WorkspaceController_installApp_v1
       parameters:
@@ -111,7 +111,7 @@ paths:
           description: ''
       tags:
         - Workspace
-  '/v1/workspaces/{id}/apps/{appSlug}/uninstall':
+  /v1/workspaces/{id}/apps/{appSlug}/uninstall:
     post:
       operationId: WorkspaceController_uninstallApp_v1
       parameters:
@@ -131,7 +131,7 @@ paths:
           description: ''
       tags:
         - Workspace
-  '/v1/workspaces/{workspaceId}/members/{userId}':
+  /v1/workspaces/{workspaceId}/members/{userId}:
     post:
       operationId: WorkspaceMemberController_create_v1
       parameters:
@@ -236,7 +236,7 @@ paths:
                 $ref: '#/components/schemas/GetWorkspaceMemberV1ResponseBodyDto'
       tags:
         - Workspace Member
-  '/v1/workspaces/{workspaceId}/members':
+  /v1/workspaces/{workspaceId}/members:
     get:
       operationId: WorkspaceMemberController_getMembers_v1
       parameters:
@@ -282,7 +282,7 @@ paths:
                 $ref: '#/components/schemas/GetUserInfoV1ResponseBodyDto'
       tags:
         - Authentication
-  '/v1/workspaces/{workspaceId}/sites':
+  /v1/workspaces/{workspaceId}/sites:
     post:
       operationId: SiteController_create_v1
       parameters:
@@ -415,7 +415,7 @@ paths:
                 $ref: '#/components/schemas/ForbiddenResponseDto'
       tags:
         - Site
-  '/v1/sites/{id}':
+  /v1/sites/{id}:
     get:
       operationId: SiteController_getOne_v1
       parameters:
@@ -472,7 +472,7 @@ paths:
           description: ''
       tags:
         - Site
-  '/v2/sites/{siteId}':
+  /v2/sites/{siteId}:
     get:
       operationId: SiteController_getOneV2_v2
       summary: Get Site
@@ -562,7 +562,7 @@ paths:
                 $ref: '#/components/schemas/ForbiddenResponseDto'
       tags:
         - Site
-  '/v1/sites/{siteId}/duplicate':
+  /v1/sites/{siteId}/duplicate:
     post:
       operationId: SiteController_duplicate_v1
       parameters:
@@ -589,7 +589,7 @@ paths:
                 $ref: '#/components/schemas/DuplicateSiteV1ResponseBodyDto'
       tags:
         - Site
-  '/v2/sites/{siteId}/duplicate':
+  /v2/sites/{siteId}/duplicate:
     post:
       operationId: SiteController_duplicateV2_v2
       summary: Duplicate Site
@@ -629,7 +629,7 @@ paths:
                 $ref: '#/components/schemas/ForbiddenResponseDto'
       tags:
         - Site
-  '/v0/sites/{siteId}/collections':
+  /v0/sites/{siteId}/collections:
     post:
       operationId: CollectionController_create_v0
       summary: Create Collection
@@ -717,7 +717,7 @@ paths:
                 $ref: '#/components/schemas/NotFoundResponseDto'
       tags:
         - Collection
-  '/v0/sites/{siteId}/collections/{collectionId}':
+  /v0/sites/{siteId}/collections/{collectionId}:
     patch:
       operationId: CollectionController_update_v0
       summary: Update Collection
@@ -840,7 +840,7 @@ paths:
                 $ref: '#/components/schemas/NotFoundResponseDto'
       tags:
         - Collection
-  '/v1/sites/{siteId}/pages':
+  /v1/sites/{siteId}/pages:
     post:
       operationId: PageController_create_v1
       parameters:
@@ -977,10 +977,10 @@ paths:
           required: false
           schema:
             type: string
-            default: 'ref:draft'
+            default: ref:draft
             enum:
-              - 'ref:live'
-              - 'ref:draft'
+              - ref:live
+              - ref:draft
       responses:
         '200':
           description: ''
@@ -992,7 +992,7 @@ paths:
           description: Access forbidden.
       tags:
         - Page
-  '/v6/pages/{pageIdOrPathname}':
+  /v6/pages/{pageIdOrPathname}:
     patch:
       operationId: PageController_updateV6_v6
       summary: Update Page
@@ -1086,13 +1086,13 @@ paths:
           required: false
           schema:
             type: string
-            default: 'ref:draft'
+            default: ref:draft
             enum:
-              - 'ref:live'
-              - 'ref:draft'
+              - ref:live
+              - ref:draft
         - name: locale
           in: query
-          description: 'The locale to retrieve the page in. If provided, localized page data is collapsed into the response.'
+          description: The locale to retrieve the page in. If provided, localized page data is collapsed into the response.
           required: false
           schema:
             type: string
@@ -1107,7 +1107,7 @@ paths:
           description: Access forbidden.
       tags:
         - Page
-  '/v0/sites/{siteId}/pages/{pageId}':
+  /v0/sites/{siteId}/pages/{pageId}:
     patch:
       operationId: PageController_updateV0_v0
       parameters:
@@ -1138,7 +1138,7 @@ paths:
                 $ref: '#/components/schemas/UpdatePageV0ResponseBodyDto'
       tags:
         - Page
-  '/v1/sites/{siteId}/pages/{pageId}':
+  /v1/sites/{siteId}/pages/{pageId}:
     patch:
       operationId: PageController_update_v1
       parameters:
@@ -1213,7 +1213,7 @@ paths:
           description: ''
       tags:
         - Page
-  '/v0/sites/{siteId}/pages':
+  /v0/sites/{siteId}/pages:
     get:
       operationId: PageController_list_v0
       parameters:
@@ -1238,7 +1238,7 @@ paths:
             type: string
         - name: limit
           in: query
-          description: 'Maximum number of pages to return. Defaults to 20, maximum is 100.'
+          description: Maximum number of pages to return. Defaults to 20, maximum is 100.
           required: false
           schema:
             type: number
@@ -1247,7 +1247,7 @@ paths:
             minimum: 1
         - name: after
           in: query
-          description: 'Cursor for pagination. If provided, returns pages after this ID.'
+          description: Cursor for pagination. If provided, returns pages after this ID.
           required: false
           schema:
             type: string
@@ -1268,28 +1268,7 @@ paths:
                 $ref: '#/components/schemas/ListPagesV0ResponseBodyDto'
       tags:
         - Page
-  /v0/pages/batch/lookup:
-    post:
-      operationId: PageController_batchLookupV0_v0
-      parameters: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BatchLookupPagesV0RequestBodyDto'
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BatchLookupPagesV0Response'
-        '403':
-          description: Access forbidden.
-      tags:
-        - Page
-  '/v0/sites/{siteId}/page-types':
+  /v0/sites/{siteId}/page-types:
     post:
       operationId: PageTypeController_create_v0
       summary: Create Page Type
@@ -1362,7 +1341,7 @@ paths:
                 $ref: '#/components/schemas/NotFoundResponseDto'
       tags:
         - Page Type
-  '/v0/sites/{siteId}/page-types/{pageTypeIdOrSlug}':
+  /v0/sites/{siteId}/page-types/{pageTypeIdOrSlug}:
     patch:
       operationId: PageTypeController_update_v0
       summary: Update Page Type
@@ -1482,7 +1461,7 @@ paths:
                 $ref: '#/components/schemas/NotFoundResponseDto'
       tags:
         - Page Type
-  '/v1/sites/{siteId}/locales':
+  /v1/sites/{siteId}/locales:
     post:
       operationId: SiteLocaleController_create_v1
       parameters:
@@ -1624,7 +1603,7 @@ paths:
                 $ref: '#/components/schemas/ForbiddenResponseDto'
       tags:
         - Locale
-  '/v1/locales/{id}':
+  /v1/locales/{id}:
     delete:
       operationId: SiteLocaleController_delete_v1
       parameters:
@@ -1681,7 +1660,7 @@ paths:
                 $ref: '#/components/schemas/ReadSiteLocaleV1ResponseBodyDto'
       tags:
         - Locale
-  '/v2/locales/{localeIdOrCode}':
+  /v2/locales/{localeIdOrCode}:
     delete:
       operationId: SiteLocaleController_deleteV2_v2
       summary: Delete Locale
@@ -1813,7 +1792,7 @@ paths:
                 $ref: '#/components/schemas/ForbiddenResponseDto'
       tags:
         - Locale
-  '/v2/locales/{localeIdOrCode}/restore':
+  /v2/locales/{localeIdOrCode}/restore:
     post:
       operationId: SiteLocaleController_restoreV2_v2
       summary: Restore Locale
@@ -1865,7 +1844,7 @@ paths:
                 $ref: '#/components/schemas/ConflictResponseDto'
       tags:
         - Locale
-  '/v1/workspaces/{workspaceId}/webhooks':
+  /v1/workspaces/{workspaceId}/webhooks:
     post:
       operationId: WebhookController_create_v1
       parameters:
@@ -1922,7 +1901,7 @@ paths:
                 $ref: '#/components/schemas/ListWebhookV1ResponseBodyDto'
       tags:
         - Webhook Management
-  '/v1/webhooks/{id}':
+  /v1/webhooks/{id}:
     get:
       operationId: WebhookController_get_v1
       parameters:
@@ -2115,7 +2094,7 @@ components:
           description: The host URL of the site. The URL should consist of only the origin.
           type: string
           format: uri
-          example: 'https://example.com'
+          example: https://example.com
         templateId:
           description: The ID of the template to import.
           type: string
@@ -2150,7 +2129,7 @@ components:
           description: The host URL of the site. The URL should consist of only the origin.
           type: string
           format: uri
-          example: 'https://example.com'
+          example: https://example.com
           nullable: true
         apiKey:
           type: string
@@ -2179,7 +2158,7 @@ components:
           description: The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com'
+          example: https://hearthfurniture.com
         defaultLocale:
           description: The primary locale of this site.
           type: string
@@ -2214,7 +2193,7 @@ components:
           description: The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com'
+          example: https://hearthfurniture.com
           nullable: true
         publicApiKey:
           description: The publishable API key that a host can use to get page and component data for rendering your site.
@@ -2295,7 +2274,7 @@ components:
           description: The host URL of the site. The URL should consist of only the origin.
           type: string
           format: uri
-          example: 'https://example.com'
+          example: https://example.com
           nullable: true
         apiKey:
           type: string
@@ -2329,7 +2308,7 @@ components:
           description: The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com'
+          example: https://hearthfurniture.com
           nullable: true
         publicApiKey:
           description: The publishable API key that a host can use to get page and component data for rendering your site.
@@ -2373,7 +2352,7 @@ components:
           description: The host URL of the site. The URL should consist of only the origin.
           type: string
           format: uri
-          example: 'https://example.com'
+          example: https://example.com
     UpdateSiteV1ResponseBodyDto:
       type: object
       properties:
@@ -2388,7 +2367,7 @@ components:
           description: The host URL of the site. The URL should consist of only the origin.
           type: string
           format: uri
-          example: 'https://example.com'
+          example: https://example.com
           nullable: true
         apiKey:
           type: string
@@ -2413,7 +2392,7 @@ components:
           description: The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com'
+          example: https://hearthfurniture.com
         defaultLocale:
           description: The primary locale of this site.
           type: string
@@ -2445,7 +2424,7 @@ components:
           description: The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com'
+          example: https://hearthfurniture.com
           nullable: true
         publicApiKey:
           description: The publishable API key that a host can use to get page and component data for rendering your site.
@@ -2497,7 +2476,7 @@ components:
                 description: The host URL of the site. The URL should consist of only the origin.
                 type: string
                 format: uri
-                example: 'https://example.com'
+                example: https://example.com
                 nullable: true
               apiKey:
                 type: string
@@ -2546,7 +2525,7 @@ components:
                 description: The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing.
                 type: string
                 format: uri
-                example: 'https://hearthfurniture.com'
+                example: https://hearthfurniture.com
                 nullable: true
               publicApiKey:
                 description: The publishable API key that a host can use to get page and component data for rendering your site.
@@ -2610,7 +2589,7 @@ components:
           description: The host URL of the site. The URL should consist of only the origin.
           type: string
           format: uri
-          example: 'https://example.com'
+          example: https://example.com
           nullable: true
         apiKey:
           type: string
@@ -2654,7 +2633,7 @@ components:
           description: The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com'
+          example: https://hearthfurniture.com
           nullable: true
         publicApiKey:
           description: The publishable API key that a host can use to get page and component data for rendering your site.
@@ -2899,7 +2878,7 @@ components:
           description: The page type ID or slug for the page.
           type: string
         collectionId:
-          description: 'The collection to place the page in. If omitted and pageTypeIdOrSlug is provided, defaults to the page type root collection. Otherwise defaults to the site root collection.'
+          description: The collection to place the page in. If omitted and pageTypeIdOrSlug is provided, defaults to the page type root collection. Otherwise defaults to the site root collection.
           type: string
           format: uuid
       required:
@@ -3847,7 +3826,7 @@ components:
           description: Machine-readable identifier for the page type.
           type: string
           nullable: true
-          pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'
+          pattern: ^[a-z0-9]+(?:-[a-z0-9]+)*$
       required:
         - name
         - managementMode
@@ -3874,7 +3853,7 @@ components:
           description: Whether this is the default page type.
           type: boolean
         managedBy:
-          description: 'The ID of the app that manages this page type, if any.'
+          description: The ID of the app that manages this page type, if any.
           type: string
           format: uuid
           nullable: true
@@ -3912,7 +3891,7 @@ components:
           description: Machine-readable identifier for the page type.
           type: string
           nullable: true
-          pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'
+          pattern: ^[a-z0-9]+(?:-[a-z0-9]+)*$
     UpdatePageTypeResponseDto:
       type: object
       properties:
@@ -3936,7 +3915,7 @@ components:
           description: Whether this is the default page type.
           type: boolean
         managedBy:
-          description: 'The ID of the app that manages this page type, if any.'
+          description: The ID of the app that manages this page type, if any.
           type: string
           format: uuid
           nullable: true
@@ -4003,7 +3982,7 @@ components:
           description: Whether this is the default page type.
           type: boolean
         managedBy:
-          description: 'The ID of the app that manages this page type, if any.'
+          description: The ID of the app that manages this page type, if any.
           type: string
           format: uuid
           nullable: true
@@ -4046,7 +4025,7 @@ components:
           description: The domain URL for domain-based localization. This URL must include the protocol.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com.mx'
+          example: https://hearthfurniture.com.mx
       required:
         - locale
     CreateSiteLocaleV1ResponseBodyDto:
@@ -4068,7 +4047,7 @@ components:
           description: The domain URL for domain-based localization. This URL must include the protocol.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com.mx'
+          example: https://hearthfurniture.com.mx
           nullable: true
       required:
         - id
@@ -4089,7 +4068,7 @@ components:
           description: The domain URL for domain-based localization. This URL must include the protocol.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com.mx'
+          example: https://hearthfurniture.com.mx
       required:
         - siteId
         - locale
@@ -4118,7 +4097,7 @@ components:
           description: The domain URL for domain-based localization.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com.mx'
+          example: https://hearthfurniture.com.mx
           nullable: true
         pathPrefix:
           description: Custom URL path prefix. Null means the locale code is used as the default prefix.
@@ -4171,7 +4150,7 @@ components:
                 description: The domain URL for domain-based localization.
                 type: string
                 format: uri
-                example: 'https://hearthfurniture.com.mx'
+                example: https://hearthfurniture.com.mx
                 nullable: true
               pathPrefix:
                 description: Custom URL path prefix. Null means the locale code is used as the default prefix.
@@ -4220,7 +4199,7 @@ components:
           description: The domain URL for domain-based localization.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com.mx'
+          example: https://hearthfurniture.com.mx
           nullable: true
         pathPrefix:
           description: Custom URL path prefix. Null means the locale code is used as the default prefix.
@@ -4253,7 +4232,7 @@ components:
           description: The domain URL for domain-based localization. This URL must include the protocol.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com.mx'
+          example: https://hearthfurniture.com.mx
           nullable: true
     UpdateSiteLocaleV1ResponseBodyDto:
       type: object
@@ -4274,7 +4253,7 @@ components:
           description: The domain URL for domain-based localization. This URL must include the protocol.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com.mx'
+          example: https://hearthfurniture.com.mx
           nullable: true
       required:
         - id
@@ -4291,7 +4270,7 @@ components:
           description: The domain URL for domain-based localization. This URL must include the protocol.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com.mx'
+          example: https://hearthfurniture.com.mx
           nullable: true
       additionalProperties: false
     UpdateSiteLocaleV2ResponseBodyDto:
@@ -4319,7 +4298,7 @@ components:
           description: The domain URL for domain-based localization.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com.mx'
+          example: https://hearthfurniture.com.mx
           nullable: true
         pathPrefix:
           description: Custom URL path prefix. Null means the locale code is used as the default prefix.
@@ -4355,7 +4334,7 @@ components:
           description: The domain URL for domain-based localization. This URL must include the protocol.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com.mx'
+          example: https://hearthfurniture.com.mx
           nullable: true
       required:
         - id
@@ -4387,7 +4366,7 @@ components:
           description: The domain URL for domain-based localization.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com.mx'
+          example: https://hearthfurniture.com.mx
           nullable: true
         pathPrefix:
           description: Custom URL path prefix. Null means the locale code is used as the default prefix.
@@ -4423,7 +4402,7 @@ components:
           description: The domain URL for domain-based localization. This URL must include the protocol.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com.mx'
+          example: https://hearthfurniture.com.mx
           nullable: true
       required:
         - id
@@ -4435,7 +4414,7 @@ components:
         url:
           type: string
           format: uri
-          example: 'https://example.com/webhook'
+          example: https://example.com/webhook
         eventType:
           type: string
           enum:
@@ -4459,7 +4438,7 @@ components:
         url:
           type: string
           format: uri
-          example: 'https://example.com/webhook'
+          example: https://example.com/webhook
         eventType:
           type: string
           enum:
@@ -4490,7 +4469,7 @@ components:
               url:
                 type: string
                 format: uri
-                example: 'https://example.com/webhook'
+                example: https://example.com/webhook
               eventType:
                 type: string
                 enum:
@@ -4521,7 +4500,7 @@ components:
         url:
           type: string
           format: uri
-          example: 'https://example.com/webhook'
+          example: https://example.com/webhook
         eventType:
           type: string
           enum:
