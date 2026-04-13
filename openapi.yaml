@@ -1268,6 +1268,27 @@ paths:
                 $ref: '#/components/schemas/ListPagesV0ResponseBodyDto'
       tags:
         - Page
+  /v0/pages/batch/lookup:
+    post:
+      operationId: PageController_batchLookupV0_v0
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchLookupPagesV0RequestBodyDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchLookupPagesV0Response'
+        '403':
+          description: Access forbidden.
+      tags:
+        - Page
   /v0/sites/{siteId}/page-types:
     post:
       operationId: PageTypeController_create_v0
