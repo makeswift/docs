@@ -7,6 +7,19 @@ servers:
   - url: https://api.makeswift.com
     description: Production server
 paths:
+  /v1/auth/user-info:
+    get:
+      operationId: AuthController_getUserInfo_v1
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUserInfoV1ResponseBodyDto'
+      tags:
+        - Authentication
   /v1/workspaces:
     post:
       operationId: WorkspaceController_create_v1
@@ -269,19 +282,6 @@ paths:
                 $ref: '#/components/schemas/ListWorkspaceMemberV1ResponseBodyDto'
       tags:
         - Workspace Member
-  /v1/auth/user-info:
-    get:
-      operationId: AuthController_getUserInfo_v1
-      parameters: []
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetUserInfoV1ResponseBodyDto'
-      tags:
-        - Authentication
   /v1/workspaces/{workspaceId}/sites:
     post:
       operationId: SiteController_create_v1
@@ -629,7 +629,7 @@ paths:
                 $ref: '#/components/schemas/ForbiddenResponseDto'
       tags:
         - Site
-  '/v1/sites/{siteId}/publish':
+  /v1/sites/{siteId}/publish:
     post:
       operationId: SiteController_publishSite_v1
       summary: Publish Site
@@ -656,6 +656,173 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+      tags:
+        - Site
+  /v0/sites/{siteId}/collections:
+    post:
+      operationId: CollectionController_create_v0
+      summary: Create Collection
+      description: Create a collection for a site.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCollectionBodyDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateCollectionResponseDto'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Collection
+    get:
+      operationId: CollectionController_list_v0
+      summary: List Collections
+      description: List collections for a site.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: parentId
+          in: query
+          required: false
+          schema:
+            type: string
+            format: uuid
+        - name: pageTypeIdOrSlug
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCollectionsResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Collection
+  /v0/sites/{siteId}/collections/{collectionId}:
+    patch:
+      operationId: CollectionController_update_v0
+      summary: Update Collection
+      description: Rename or move a collection.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: collectionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCollectionBodyDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateCollectionResponseDto'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Collection
+    delete:
+      operationId: CollectionController_delete_v0
+      summary: Delete Collection
+      description: Soft-delete a collection and all its descendant pages.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: collectionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: ''
         '403':
           description: ''
           content:
@@ -708,9 +875,7 @@ paths:
                 $ref: '#/components/schemas/NotFoundResponseDto'
       tags:
         - Collection
-      tags:
-        - Site
-  '/v1/sites/{siteId}/pages':
+  /v1/sites/{siteId}/pages:
     post:
       operationId: PageController_create_v1
       parameters:
@@ -1827,6 +1992,16 @@ paths:
         - Webhook Management
 components:
   schemas:
+    GetUserInfoV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          description: The ID of the user
+          type: string
+          format: uuid
+          example: d2ccb4e7-1364-496d-a131-bd996269ab2c
+      required:
+        - id
     CreateWorkspaceV1RequestBodyDto:
       type: object
       properties:
@@ -1964,16 +2139,6 @@ components:
       required:
         - data
         - hasMore
-    GetUserInfoV1ResponseBodyDto:
-      type: object
-      properties:
-        id:
-          description: The ID of the user
-          type: string
-          format: uuid
-          example: d2ccb4e7-1364-496d-a131-bd996269ab2c
-      required:
-        - id
     CreateSiteV1RequestBodyDto:
       type: object
       properties:
@@ -2556,16 +2721,17 @@ components:
         - hostOrigin
         - publicApiKey
         - defaultLocale
+        - localeManagementMode
     PublishSiteV1RequestBodyDto:
       type: object
       properties:
         includeContentResources:
-          description: 'When true, publishes all non-page resources (swatches, typographies, components). Defaults to true when omitted.'
+          description: When true, publishes all non-page resources (swatches, typographies, components). Defaults to true when omitted.
           type: boolean
           example: true
           default: true
         pageIds:
-          description: 'If provided, publishes only those pages. If omitted, publishes all pages.'
+          description: If provided, publishes only those pages. If omitted, publishes all pages.
           type: array
           items:
             type: string
@@ -2576,6 +2742,203 @@ components:
           description: Optional commit message for the publish
           type: string
           example: Published homepage updates
+    CreateCollectionBodyDto:
+      type: object
+      properties:
+        name:
+          description: The name of the collection.
+          type: string
+        parentId:
+          description: The parent collection ID.
+          type: string
+          format: uuid
+        pageTypeIdOrSlug:
+          description: The page type ID or slug to scope this collection to.
+          type: string
+      required:
+        - name
+        - parentId
+    CreateCollectionResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          description: The name of the collection.
+          type: string
+        parentId:
+          description: The parent collection ID.
+          type: string
+          format: uuid
+          nullable: true
+        pageTypeId:
+          description: The page type this collection is scoped to.
+          type: string
+          format: uuid
+          nullable: true
+        isPageTypeRoot:
+          description: Whether this is the root collection for its page type.
+          type: boolean
+        createdAt:
+          description: When the collection was created.
+          type: string
+          format: date-time
+        updatedAt:
+          description: When the collection was last updated.
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - parentId
+        - pageTypeId
+        - isPageTypeRoot
+        - createdAt
+        - updatedAt
+    NotFoundResponseDto:
+      type: object
+      properties:
+        object:
+          type: string
+          enum:
+            - error
+        code:
+          type: string
+          enum:
+            - not_found
+        message:
+          type: string
+      required:
+        - object
+        - code
+        - message
+    UpdateCollectionBodyDto:
+      type: object
+      properties:
+        name:
+          description: The new name of the collection.
+          type: string
+        parentId:
+          description: Move the collection under this parent.
+          type: string
+          format: uuid
+    UpdateCollectionResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          description: The name of the collection.
+          type: string
+        parentId:
+          description: The parent collection ID.
+          type: string
+          format: uuid
+          nullable: true
+        pageTypeId:
+          description: The page type this collection is scoped to.
+          type: string
+          format: uuid
+          nullable: true
+        isPageTypeRoot:
+          description: Whether this is the root collection for its page type.
+          type: boolean
+        createdAt:
+          description: When the collection was created.
+          type: string
+          format: date-time
+        updatedAt:
+          description: When the collection was last updated.
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - parentId
+        - pageTypeId
+        - isPageTypeRoot
+        - createdAt
+        - updatedAt
+    ListCollectionsResponseDto:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+            format: uuid
+          name:
+            description: The name of the collection.
+            type: string
+          parentId:
+            description: The parent collection ID.
+            type: string
+            format: uuid
+            nullable: true
+          pageTypeId:
+            description: The page type this collection is scoped to.
+            type: string
+            format: uuid
+            nullable: true
+          isPageTypeRoot:
+            description: Whether this is the root collection for its page type.
+            type: boolean
+          createdAt:
+            description: When the collection was created.
+            type: string
+            format: date-time
+          updatedAt:
+            description: When the collection was last updated.
+            type: string
+            format: date-time
+        required:
+          - id
+          - name
+          - parentId
+          - pageTypeId
+          - isPageTypeRoot
+          - createdAt
+          - updatedAt
+    GetCollectionResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          description: The name of the collection.
+          type: string
+        parentId:
+          description: The parent collection ID.
+          type: string
+          format: uuid
+          nullable: true
+        pageTypeId:
+          description: The page type this collection is scoped to.
+          type: string
+          format: uuid
+          nullable: true
+        isPageTypeRoot:
+          description: Whether this is the root collection for its page type.
+          type: boolean
+        createdAt:
+          description: When the collection was created.
+          type: string
+          format: date-time
+        updatedAt:
+          description: When the collection was last updated.
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - parentId
+        - pageTypeId
+        - isPageTypeRoot
+        - createdAt
+        - updatedAt
     CreatePageV1RequestBodyDto:
       type: object
       properties:
