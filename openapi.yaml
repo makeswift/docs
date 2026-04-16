@@ -4,7 +4,7 @@ info:
   description: Documentation for the Makeswift public REST API.
   version: '1.0'
 servers:
-  - url: 'https://api.makeswift.com'
+  - url: https://api.makeswift.com
     description: Production server
 paths:
   /v1/workspaces:
@@ -52,7 +52,7 @@ paths:
                 $ref: '#/components/schemas/ListWorkspaceV1ResponseBodyDto'
       tags:
         - Workspace
-  '/v1/workspaces/{id}':
+  /v1/workspaces/{id}:
     patch:
       operationId: WorkspaceController_updateOne_v1
       parameters:
@@ -91,7 +91,7 @@ paths:
           description: ''
       tags:
         - Workspace
-  '/v1/workspaces/{id}/apps/{appSlug}/install':
+  /v1/workspaces/{id}/apps/{appSlug}/install:
     post:
       operationId: WorkspaceController_installApp_v1
       parameters:
@@ -111,7 +111,7 @@ paths:
           description: ''
       tags:
         - Workspace
-  '/v1/workspaces/{id}/apps/{appSlug}/uninstall':
+  /v1/workspaces/{id}/apps/{appSlug}/uninstall:
     post:
       operationId: WorkspaceController_uninstallApp_v1
       parameters:
@@ -131,7 +131,7 @@ paths:
           description: ''
       tags:
         - Workspace
-  '/v1/workspaces/{workspaceId}/members/{userId}':
+  /v1/workspaces/{workspaceId}/members/{userId}:
     post:
       operationId: WorkspaceMemberController_create_v1
       parameters:
@@ -236,7 +236,7 @@ paths:
                 $ref: '#/components/schemas/GetWorkspaceMemberV1ResponseBodyDto'
       tags:
         - Workspace Member
-  '/v1/workspaces/{workspaceId}/members':
+  /v1/workspaces/{workspaceId}/members:
     get:
       operationId: WorkspaceMemberController_getMembers_v1
       parameters:
@@ -282,7 +282,7 @@ paths:
                 $ref: '#/components/schemas/GetUserInfoV1ResponseBodyDto'
       tags:
         - Authentication
-  '/v1/workspaces/{workspaceId}/sites':
+  /v1/workspaces/{workspaceId}/sites:
     post:
       operationId: SiteController_create_v1
       parameters:
@@ -415,7 +415,7 @@ paths:
                 $ref: '#/components/schemas/ForbiddenResponseDto'
       tags:
         - Site
-  '/v1/sites/{id}':
+  /v1/sites/{id}:
     get:
       operationId: SiteController_getOne_v1
       parameters:
@@ -472,7 +472,7 @@ paths:
           description: ''
       tags:
         - Site
-  '/v2/sites/{siteId}':
+  /v2/sites/{siteId}:
     get:
       operationId: SiteController_getOneV2_v2
       summary: Get Site
@@ -562,7 +562,7 @@ paths:
                 $ref: '#/components/schemas/ForbiddenResponseDto'
       tags:
         - Site
-  '/v1/sites/{siteId}/duplicate':
+  /v1/sites/{siteId}/duplicate:
     post:
       operationId: SiteController_duplicate_v1
       parameters:
@@ -589,7 +589,7 @@ paths:
                 $ref: '#/components/schemas/DuplicateSiteV1ResponseBodyDto'
       tags:
         - Site
-  '/v2/sites/{siteId}/duplicate':
+  /v2/sites/{siteId}/duplicate:
     post:
       operationId: SiteController_duplicateV2_v2
       summary: Duplicate Site
@@ -629,7 +629,218 @@ paths:
                 $ref: '#/components/schemas/ForbiddenResponseDto'
       tags:
         - Site
-  '/v1/sites/{siteId}/pages':
+  /v0/sites/{siteId}/collections:
+    post:
+      operationId: CollectionController_create_v0
+      summary: Create Collection
+      description: Create a collection for a site.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCollectionBodyDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateCollectionResponseDto'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Collection
+    get:
+      operationId: CollectionController_list_v0
+      summary: List Collections
+      description: List collections for a site.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: parentId
+          in: query
+          required: false
+          schema:
+            type: string
+            format: uuid
+        - name: pageTypeIdOrSlug
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCollectionsResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Collection
+  /v0/sites/{siteId}/collections/{collectionId}:
+    patch:
+      operationId: CollectionController_update_v0
+      summary: Update Collection
+      description: Rename or move a collection.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: collectionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCollectionBodyDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateCollectionResponseDto'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Collection
+    delete:
+      operationId: CollectionController_delete_v0
+      summary: Delete Collection
+      description: Soft-delete a collection and all its descendant pages.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: collectionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: ''
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Collection
+    get:
+      operationId: CollectionController_get_v0
+      summary: Get Collection
+      description: Get a collection by ID.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: collectionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCollectionResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Collection
+  /v1/sites/{siteId}/pages:
     post:
       operationId: PageController_create_v1
       parameters:
@@ -766,10 +977,10 @@ paths:
           required: false
           schema:
             type: string
-            default: 'ref:draft'
+            default: ref:draft
             enum:
-              - 'ref:live'
-              - 'ref:draft'
+              - ref:live
+              - ref:draft
       responses:
         '200':
           description: ''
@@ -781,7 +992,7 @@ paths:
           description: Access forbidden.
       tags:
         - Page
-  '/v6/pages/{pageIdOrPathname}':
+  /v6/pages/{pageIdOrPathname}:
     patch:
       operationId: PageController_updateV6_v6
       summary: Update Page
@@ -875,13 +1086,13 @@ paths:
           required: false
           schema:
             type: string
-            default: 'ref:draft'
+            default: ref:draft
             enum:
-              - 'ref:live'
-              - 'ref:draft'
+              - ref:live
+              - ref:draft
         - name: locale
           in: query
-          description: 'The locale to retrieve the page in. If provided, localized page data is collapsed into the response.'
+          description: The locale to retrieve the page in. If provided, localized page data is collapsed into the response.
           required: false
           schema:
             type: string
@@ -896,7 +1107,38 @@ paths:
           description: Access forbidden.
       tags:
         - Page
-  '/v1/sites/{siteId}/pages/{pageId}':
+  /v0/sites/{siteId}/pages/{pageId}:
+    patch:
+      operationId: PageController_updateV0_v0
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePageV0RequestBodyDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePageV0ResponseBodyDto'
+      tags:
+        - Page
+  /v1/sites/{siteId}/pages/{pageId}:
     patch:
       operationId: PageController_update_v1
       parameters:
@@ -971,7 +1213,7 @@ paths:
           description: ''
       tags:
         - Page
-  '/v0/sites/{siteId}/pages':
+  /v0/sites/{siteId}/pages:
     get:
       operationId: PageController_list_v0
       parameters:
@@ -981,9 +1223,22 @@ paths:
           schema:
             type: string
             format: uuid
+        - name: collectionId
+          in: query
+          description: Filter pages by collection ID.
+          required: false
+          schema:
+            type: string
+            format: uuid
+        - name: pageTypeIdOrSlug
+          in: query
+          description: Filter pages by page type ID or slug.
+          required: false
+          schema:
+            type: string
         - name: limit
           in: query
-          description: 'Maximum number of pages to return. Defaults to 20, maximum is 100.'
+          description: Maximum number of pages to return. Defaults to 20, maximum is 100.
           required: false
           schema:
             type: number
@@ -992,7 +1247,7 @@ paths:
             minimum: 1
         - name: after
           in: query
-          description: 'Cursor for pagination. If provided, returns pages after this ID.'
+          description: Cursor for pagination. If provided, returns pages after this ID.
           required: false
           schema:
             type: string
@@ -1013,7 +1268,240 @@ paths:
                 $ref: '#/components/schemas/ListPagesV0ResponseBodyDto'
       tags:
         - Page
-  '/v1/sites/{siteId}/locales':
+  /v0/pages/batch:
+    post:
+      operationId: PageController_batchCreateV0_v0
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchCreatePagesV0RequestBodyDto'
+      responses:
+        '200':
+          description: Batch create pages.
+        '400':
+          description: Validation error or pages array invalid.
+        '403':
+          description: Access forbidden.
+      tags:
+        - Page
+  /v0/pages/batch/lookup:
+    post:
+      operationId: PageController_batchLookupV0_v0
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchLookupPagesV0RequestBodyDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchLookupPagesV0Response'
+        '403':
+          description: Access forbidden.
+      tags:
+        - Page
+  /v0/sites/{siteId}/page-types:
+    post:
+      operationId: PageTypeController_create_v0
+      summary: Create Page Type
+      description: Create a page type for a site.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePageTypeBodyDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePageTypeResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Page Type
+    get:
+      operationId: PageTypeController_list_v0
+      summary: List Page Types
+      description: List page types for a site.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GetPageTypeResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Page Type
+  /v0/sites/{siteId}/page-types/{pageTypeIdOrSlug}:
+    patch:
+      operationId: PageTypeController_update_v0
+      summary: Update Page Type
+      description: Update a page type by ID.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageTypeIdOrSlug
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePageTypeBodyDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePageTypeResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Page Type
+    delete:
+      operationId: PageTypeController_delete_v0
+      summary: Delete Page Type
+      description: Delete a page type by ID.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageTypeIdOrSlug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: ''
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictResponseDto'
+      tags:
+        - Page Type
+    get:
+      operationId: PageTypeController_get_v0
+      summary: Get Page Type
+      description: Get a page type by ID.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageTypeIdOrSlug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPageTypeResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponseDto'
+      tags:
+        - Page Type
+  /v1/sites/{siteId}/locales:
     post:
       operationId: SiteLocaleController_create_v1
       parameters:
@@ -1155,7 +1643,7 @@ paths:
                 $ref: '#/components/schemas/ForbiddenResponseDto'
       tags:
         - Locale
-  '/v1/locales/{id}':
+  /v1/locales/{id}:
     delete:
       operationId: SiteLocaleController_delete_v1
       parameters:
@@ -1212,7 +1700,7 @@ paths:
                 $ref: '#/components/schemas/ReadSiteLocaleV1ResponseBodyDto'
       tags:
         - Locale
-  '/v2/locales/{localeIdOrCode}':
+  /v2/locales/{localeIdOrCode}:
     delete:
       operationId: SiteLocaleController_deleteV2_v2
       summary: Delete Locale
@@ -1344,7 +1832,7 @@ paths:
                 $ref: '#/components/schemas/ForbiddenResponseDto'
       tags:
         - Locale
-  '/v2/locales/{localeIdOrCode}/restore':
+  /v2/locales/{localeIdOrCode}/restore:
     post:
       operationId: SiteLocaleController_restoreV2_v2
       summary: Restore Locale
@@ -1396,398 +1884,7 @@ paths:
                 $ref: '#/components/schemas/ConflictResponseDto'
       tags:
         - Locale
-  '/v1/sites/{siteId}/routes':
-    get:
-      operationId: SiteRouteController_list_v1
-      parameters:
-        - name: siteId
-          in: path
-          required: true
-          schema:
-            type: string
-            format: uuid
-        - name: pathname
-          in: query
-          description: 'Filter routes by pathname. Supports partial match. If not provided, returns all routes.'
-          required: false
-          schema:
-            type: string
-            example: /about
-        - name: limit
-          in: query
-          description: 'Maximum number of routes to return. Defaults to 20, maximum is 100. To paginate, use together with `after` cursor.'
-          required: false
-          schema:
-            type: number
-            default: 20
-            maximum: 100
-            minimum: 0
-        - name: after
-          in: query
-          description: 'Cursor for pagination. If provided, returns routes after this ID.'
-          required: false
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListSiteRouteV1ResponseBodyDto'
-      tags:
-        - Route
-    post:
-      operationId: SiteRouteController_create_v1
-      parameters:
-        - name: siteId
-          in: path
-          required: true
-          schema:
-            type: string
-            format: uuid
-        - name: skipValidation
-          in: query
-          description: 'If true, skips validation of the route, such as pathname format. This is useful for testing or when the route is known to be valid.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - 'true'
-              - 'false'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateSiteRouteV1RequestBodyDto'
-      responses:
-        '201':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateSiteRouteV1ResponseBodyDto'
-      tags:
-        - Route
-  '/v1/routes/{routeId}':
-    get:
-      operationId: SiteRouteController_get_v1
-      parameters:
-        - name: routeId
-          in: path
-          required: true
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ReadSiteRouteV1ResponseBodyDto'
-      tags:
-        - Route
-    patch:
-      operationId: SiteRouteController_update_v1
-      parameters:
-        - name: routeId
-          in: path
-          required: true
-          schema:
-            type: string
-            format: uuid
-        - name: skipValidation
-          in: query
-          description: 'If true, skips validation of the route, such as pathname format. This is useful for testing or when the route is known to be valid.'
-          required: false
-          schema:
-            type: string
-            enum:
-              - 'true'
-              - 'false'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateSiteRouteV1RequestBodyDto'
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateSiteRouteV1ResponseBodyDto'
-      tags:
-        - Route
-    delete:
-      operationId: SiteRouteController_delete_v1
-      parameters:
-        - name: routeId
-          in: path
-          required: true
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '204':
-          description: ''
-      tags:
-        - Route
-  /v2/routes:
-    get:
-      operationId: SiteRouteController_listV2_v2
-      summary: List Routes
-      description: Returns a list of routes for a site.
-      parameters:
-        - name: siteId
-          in: query
-          description: The site ID to list routes from.
-          required: true
-          schema:
-            type: string
-            format: uuid
-        - name: limit
-          in: query
-          description: The maximum number of routes to return.
-          required: false
-          schema:
-            type: number
-            default: 20
-            maximum: 100
-            minimum: 1
-        - name: startingAfter
-          in: query
-          description: The pagination cursor. This is used to indicate what ID to list from.
-          required: false
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListSiteRouteV2ResponseBodyDto'
-        '400':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BadRequestResponseDto'
-        '403':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ForbiddenResponseDto'
-      tags:
-        - Route
-    post:
-      operationId: SiteRouteController_createV2_v2
-      summary: Create Route
-      description: Creates a new route for a site.
-      parameters:
-        - name: skipValidation
-          in: query
-          description: The flag that determines whether to skip route validation. Useful when an external system has a different way of validating routes than Makeswift.
-          required: false
-          schema:
-            type: string
-            enum:
-              - 'true'
-              - 'false'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateSiteRouteV2RequestBodyDto'
-      responses:
-        '201':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateSiteRouteV2ResponseBodyDto'
-        '400':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BadRequestResponseDto'
-        '403':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ForbiddenResponseDto'
-        '409':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ConflictResponseDto'
-      tags:
-        - Route
-  '/v2/routes/{routeIdOrPathname}':
-    get:
-      operationId: SiteRouteController_getV2_v2
-      summary: Get Route
-      description: Returns a route by its ID or pathname.
-      parameters:
-        - name: routeIdOrPathname
-          in: path
-          description: The route ID or pathname for the route you are requesting.
-          required: true
-          schema:
-            type: string
-        - name: siteId
-          in: query
-          description: The site ID required when using a pathname instead of a route ID.
-          required: false
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ReadSiteRouteV2ResponseBodyDto'
-        '400':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BadRequestResponseDto'
-        '403':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ForbiddenResponseDto'
-        '404':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NotFoundResponseDto'
-      tags:
-        - Route
-    patch:
-      operationId: SiteRouteController_updateV2_v2
-      summary: Update Route
-      description: Updates an existing route.
-      parameters:
-        - name: routeIdOrPathname
-          in: path
-          description: The route ID or pathname for the route you are updating.
-          required: true
-          schema:
-            type: string
-        - name: siteId
-          in: query
-          description: The site ID required when using a pathname instead of a route ID.
-          required: false
-          schema:
-            type: string
-            format: uuid
-        - name: skipValidation
-          in: query
-          description: The flag that determines whether to skip route validation. Useful when an external system has a different way of validating routes.
-          required: false
-          schema:
-            type: string
-            enum:
-              - 'true'
-              - 'false'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateSiteRouteV2RequestBodyDto'
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateSiteRouteV2ResponseBodyDto'
-        '400':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BadRequestResponseDto'
-        '403':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ForbiddenResponseDto'
-        '404':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NotFoundResponseDto'
-        '409':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ConflictResponseDto'
-      tags:
-        - Route
-    delete:
-      operationId: SiteRouteController_deleteV2_v2
-      summary: Delete Route
-      description: Deletes a route.
-      parameters:
-        - name: routeIdOrPathname
-          in: path
-          description: The route ID or pathname for the route you are deleting.
-          required: true
-          schema:
-            type: string
-        - name: siteId
-          in: query
-          description: The site ID required when using a pathname instead of a route ID.
-          required: false
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '204':
-          description: Route successfully deleted.
-        '400':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BadRequestResponseDto'
-        '403':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ForbiddenResponseDto'
-        '404':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NotFoundResponseDto'
-      tags:
-        - Route
-  '/v1/workspaces/{workspaceId}/webhooks':
+  /v1/workspaces/{workspaceId}/webhooks:
     post:
       operationId: WebhookController_create_v1
       parameters:
@@ -1844,7 +1941,7 @@ paths:
                 $ref: '#/components/schemas/ListWebhookV1ResponseBodyDto'
       tags:
         - Webhook Management
-  '/v1/webhooks/{id}':
+  /v1/webhooks/{id}:
     get:
       operationId: WebhookController_get_v1
       parameters:
@@ -2037,7 +2134,7 @@ components:
           description: The host URL of the site. The URL should consist of only the origin.
           type: string
           format: uri
-          example: 'https://example.com'
+          example: https://example.com
         templateId:
           description: The ID of the template to import.
           type: string
@@ -2072,9 +2169,12 @@ components:
           description: The host URL of the site. The URL should consist of only the origin.
           type: string
           format: uri
-          example: 'https://example.com'
+          example: https://example.com
           nullable: true
         apiKey:
+          type: string
+          format: uuid
+        collectionId:
           type: string
           format: uuid
       required:
@@ -2082,6 +2182,7 @@ components:
         - name
         - hostUrl
         - apiKey
+        - collectionId
     CreateSiteV2RequestBodyDto:
       type: object
       properties:
@@ -2097,7 +2198,7 @@ components:
           description: The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com'
+          example: https://hearthfurniture.com
         defaultLocale:
           description: The primary locale of this site.
           type: string
@@ -2132,7 +2233,7 @@ components:
           description: The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com'
+          example: https://hearthfurniture.com
           nullable: true
         publicApiKey:
           description: The publishable API key that a host can use to get page and component data for rendering your site.
@@ -2148,6 +2249,15 @@ components:
             - fr-FR
             - ar-EG
             - ja-JP
+        defaultLocalePathPrefix:
+          type: string
+          nullable: true
+        localeManagementMode:
+          description: Controls whether locales are managed internally via the builder or externally via API.
+          type: string
+          enum:
+            - internal
+            - external
       required:
         - object
         - id
@@ -2155,6 +2265,7 @@ components:
         - hostOrigin
         - publicApiKey
         - defaultLocale
+        - localeManagementMode
     BadRequestResponseDto:
       type: object
       properties:
@@ -2203,9 +2314,12 @@ components:
           description: The host URL of the site. The URL should consist of only the origin.
           type: string
           format: uri
-          example: 'https://example.com'
+          example: https://example.com
           nullable: true
         apiKey:
+          type: string
+          format: uuid
+        collectionId:
           type: string
           format: uuid
       required:
@@ -2213,6 +2327,7 @@ components:
         - name
         - hostUrl
         - apiKey
+        - collectionId
     ReadSiteV2ResponseBodyDto:
       type: object
       properties:
@@ -2233,7 +2348,7 @@ components:
           description: The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com'
+          example: https://hearthfurniture.com
           nullable: true
         publicApiKey:
           description: The publishable API key that a host can use to get page and component data for rendering your site.
@@ -2249,6 +2364,15 @@ components:
             - fr-FR
             - ar-EG
             - ja-JP
+        defaultLocalePathPrefix:
+          type: string
+          nullable: true
+        localeManagementMode:
+          description: Controls whether locales are managed internally via the builder or externally via API.
+          type: string
+          enum:
+            - internal
+            - external
       required:
         - object
         - id
@@ -2256,6 +2380,7 @@ components:
         - hostOrigin
         - publicApiKey
         - defaultLocale
+        - localeManagementMode
     UpdateSiteV1RequestBodyDto:
       type: object
       properties:
@@ -2267,7 +2392,7 @@ components:
           description: The host URL of the site. The URL should consist of only the origin.
           type: string
           format: uri
-          example: 'https://example.com'
+          example: https://example.com
     UpdateSiteV1ResponseBodyDto:
       type: object
       properties:
@@ -2282,9 +2407,12 @@ components:
           description: The host URL of the site. The URL should consist of only the origin.
           type: string
           format: uri
-          example: 'https://example.com'
+          example: https://example.com
           nullable: true
         apiKey:
+          type: string
+          format: uuid
+        collectionId:
           type: string
           format: uuid
       required:
@@ -2292,6 +2420,7 @@ components:
         - name
         - hostUrl
         - apiKey
+        - collectionId
     UpdateSiteV2RequestBodyDto:
       type: object
       properties:
@@ -2303,7 +2432,17 @@ components:
           description: The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com'
+          example: https://hearthfurniture.com
+        defaultLocale:
+          description: The primary locale of this site.
+          type: string
+          example: en-US
+          examples:
+            - en
+            - es
+            - fr-FR
+            - ar-EG
+            - ja-JP
       additionalProperties: false
     UpdateSiteV2ResponseBodyDto:
       type: object
@@ -2325,7 +2464,7 @@ components:
           description: The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com'
+          example: https://hearthfurniture.com
           nullable: true
         publicApiKey:
           description: The publishable API key that a host can use to get page and component data for rendering your site.
@@ -2341,6 +2480,15 @@ components:
             - fr-FR
             - ar-EG
             - ja-JP
+        defaultLocalePathPrefix:
+          type: string
+          nullable: true
+        localeManagementMode:
+          description: Controls whether locales are managed internally via the builder or externally via API.
+          type: string
+          enum:
+            - internal
+            - external
       required:
         - object
         - id
@@ -2348,6 +2496,7 @@ components:
         - hostOrigin
         - publicApiKey
         - defaultLocale
+        - localeManagementMode
     ListSiteV1ResponseBodyDto:
       type: object
       properties:
@@ -2367,9 +2516,12 @@ components:
                 description: The host URL of the site. The URL should consist of only the origin.
                 type: string
                 format: uri
-                example: 'https://example.com'
+                example: https://example.com
                 nullable: true
               apiKey:
+                type: string
+                format: uuid
+              collectionId:
                 type: string
                 format: uuid
             required:
@@ -2377,6 +2529,7 @@ components:
               - name
               - hostUrl
               - apiKey
+              - collectionId
         hasMore:
           type: boolean
       required:
@@ -2412,7 +2565,7 @@ components:
                 description: The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing.
                 type: string
                 format: uri
-                example: 'https://hearthfurniture.com'
+                example: https://hearthfurniture.com
                 nullable: true
               publicApiKey:
                 description: The publishable API key that a host can use to get page and component data for rendering your site.
@@ -2428,6 +2581,15 @@ components:
                   - fr-FR
                   - ar-EG
                   - ja-JP
+              defaultLocalePathPrefix:
+                type: string
+                nullable: true
+              localeManagementMode:
+                description: Controls whether locales are managed internally via the builder or externally via API.
+                type: string
+                enum:
+                  - internal
+                  - external
             required:
               - object
               - id
@@ -2435,6 +2597,7 @@ components:
               - hostOrigin
               - publicApiKey
               - defaultLocale
+              - localeManagementMode
         hasMore:
           description: The flag that indicates whether there are more sites available.
           type: boolean
@@ -2466,9 +2629,12 @@ components:
           description: The host URL of the site. The URL should consist of only the origin.
           type: string
           format: uri
-          example: 'https://example.com'
+          example: https://example.com
           nullable: true
         apiKey:
+          type: string
+          format: uuid
+        collectionId:
           type: string
           format: uuid
       required:
@@ -2476,6 +2642,7 @@ components:
         - name
         - hostUrl
         - apiKey
+        - collectionId
     DuplicateSiteV2RequestBodyDto:
       type: object
       properties:
@@ -2506,7 +2673,7 @@ components:
           description: The public URL where your site is hosted. This is the URL that Makeswift uses to render your site for editing.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com'
+          example: https://hearthfurniture.com
           nullable: true
         publicApiKey:
           description: The publishable API key that a host can use to get page and component data for rendering your site.
@@ -2522,6 +2689,15 @@ components:
             - fr-FR
             - ar-EG
             - ja-JP
+        defaultLocalePathPrefix:
+          type: string
+          nullable: true
+        localeManagementMode:
+          description: Controls whether locales are managed internally via the builder or externally via API.
+          type: string
+          enum:
+            - internal
+            - external
       required:
         - object
         - id
@@ -2529,6 +2705,204 @@ components:
         - hostOrigin
         - publicApiKey
         - defaultLocale
+        - localeManagementMode
+    CreateCollectionBodyDto:
+      type: object
+      properties:
+        name:
+          description: The name of the collection.
+          type: string
+        parentId:
+          description: The parent collection ID.
+          type: string
+          format: uuid
+        pageTypeIdOrSlug:
+          description: The page type ID or slug to scope this collection to.
+          type: string
+      required:
+        - name
+        - parentId
+    CreateCollectionResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          description: The name of the collection.
+          type: string
+        parentId:
+          description: The parent collection ID.
+          type: string
+          format: uuid
+          nullable: true
+        pageTypeId:
+          description: The page type this collection is scoped to.
+          type: string
+          format: uuid
+          nullable: true
+        isPageTypeRoot:
+          description: Whether this is the root collection for its page type.
+          type: boolean
+        createdAt:
+          description: When the collection was created.
+          type: string
+          format: date-time
+        updatedAt:
+          description: When the collection was last updated.
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - parentId
+        - pageTypeId
+        - isPageTypeRoot
+        - createdAt
+        - updatedAt
+    NotFoundResponseDto:
+      type: object
+      properties:
+        object:
+          type: string
+          enum:
+            - error
+        code:
+          type: string
+          enum:
+            - not_found
+        message:
+          type: string
+      required:
+        - object
+        - code
+        - message
+    UpdateCollectionBodyDto:
+      type: object
+      properties:
+        name:
+          description: The new name of the collection.
+          type: string
+        parentId:
+          description: Move the collection under this parent.
+          type: string
+          format: uuid
+    UpdateCollectionResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          description: The name of the collection.
+          type: string
+        parentId:
+          description: The parent collection ID.
+          type: string
+          format: uuid
+          nullable: true
+        pageTypeId:
+          description: The page type this collection is scoped to.
+          type: string
+          format: uuid
+          nullable: true
+        isPageTypeRoot:
+          description: Whether this is the root collection for its page type.
+          type: boolean
+        createdAt:
+          description: When the collection was created.
+          type: string
+          format: date-time
+        updatedAt:
+          description: When the collection was last updated.
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - parentId
+        - pageTypeId
+        - isPageTypeRoot
+        - createdAt
+        - updatedAt
+    ListCollectionsResponseDto:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+            format: uuid
+          name:
+            description: The name of the collection.
+            type: string
+          parentId:
+            description: The parent collection ID.
+            type: string
+            format: uuid
+            nullable: true
+          pageTypeId:
+            description: The page type this collection is scoped to.
+            type: string
+            format: uuid
+            nullable: true
+          isPageTypeRoot:
+            description: Whether this is the root collection for its page type.
+            type: boolean
+          createdAt:
+            description: When the collection was created.
+            type: string
+            format: date-time
+          updatedAt:
+            description: When the collection was last updated.
+            type: string
+            format: date-time
+        required:
+          - id
+          - name
+          - parentId
+          - pageTypeId
+          - isPageTypeRoot
+          - createdAt
+          - updatedAt
+    GetCollectionResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          description: The name of the collection.
+          type: string
+        parentId:
+          description: The parent collection ID.
+          type: string
+          format: uuid
+          nullable: true
+        pageTypeId:
+          description: The page type this collection is scoped to.
+          type: string
+          format: uuid
+          nullable: true
+        isPageTypeRoot:
+          description: Whether this is the root collection for its page type.
+          type: boolean
+        createdAt:
+          description: When the collection was created.
+          type: string
+          format: date-time
+        updatedAt:
+          description: When the collection was last updated.
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - parentId
+        - pageTypeId
+        - isPageTypeRoot
+        - createdAt
+        - updatedAt
     CreatePageV1RequestBodyDto:
       type: object
       properties:
@@ -2540,6 +2914,13 @@ components:
           description: The name of the page
           type: string
           nullable: true
+        pageTypeIdOrSlug:
+          description: The page type ID or slug for the page.
+          type: string
+        collectionId:
+          description: The collection to place the page in. If omitted and pageTypeIdOrSlug is provided, defaults to the page type root collection. Otherwise defaults to the site root collection.
+          type: string
+          format: uuid
       required:
         - pathname
         - name
@@ -2557,6 +2938,16 @@ components:
           description: The name of the page
           type: string
           example: About
+        pageTypeId:
+          description: The page type ID of the page.
+          type: string
+          format: uuid
+          nullable: true
+        collectionId:
+          description: The collection ID of the page.
+          type: string
+          format: uuid
+          nullable: true
         seoCanonicalUrl:
           description: The canonical URL of the page
           type: string
@@ -2592,6 +2983,8 @@ components:
         - id
         - pathname
         - name
+        - pageTypeId
+        - collectionId
         - seoCanonicalUrl
         - seoIsIndexingBlocked
         - seoSitemapPriority
@@ -2740,6 +3133,7 @@ components:
         isOnline:
           description: The flag that indicates whether the page is online.
           type: boolean
+      additionalProperties: false
     UpdatePageV6ResponseBodyDto:
       type: object
       properties:
@@ -2849,7 +3243,7 @@ components:
         - isOnline
         - excludedFromSearchEngines
         - localizations
-    UpdatePageV1RequestBodyDto:
+    UpdatePageV0RequestBodyDto:
       type: object
       properties:
         pathname:
@@ -2861,7 +3255,14 @@ components:
         isOnline:
           description: Whether the page is online or offline
           type: boolean
-    UpdatePageV1ResponseBodyDto:
+        collectionId:
+          description: The collection to move the page to.
+          type: string
+          format: uuid
+        pageTypeIdOrSlug:
+          description: The page type ID or slug to assign to the page.
+          type: string
+    UpdatePageV0ResponseBodyDto:
       type: object
       properties:
         id:
@@ -2875,6 +3276,16 @@ components:
           description: The name of the page
           type: string
           example: About
+        pageTypeId:
+          description: The page type ID of the page.
+          type: string
+          format: uuid
+          nullable: true
+        collectionId:
+          description: The collection ID of the page.
+          type: string
+          format: uuid
+          nullable: true
         seoCanonicalUrl:
           description: The canonical URL of the page
           type: string
@@ -2910,6 +3321,93 @@ components:
         - id
         - pathname
         - name
+        - pageTypeId
+        - collectionId
+        - seoCanonicalUrl
+        - seoIsIndexingBlocked
+        - seoSitemapPriority
+        - seoSitemapFrequency
+        - metaTitle
+        - metaDescription
+        - metaKeywords
+        - isOnline
+    UpdatePageV1RequestBodyDto:
+      type: object
+      properties:
+        pathname:
+          description: The pathname of the page
+          type: string
+        name:
+          description: The name of the page
+          type: string
+        isOnline:
+          description: Whether the page is online or offline
+          type: boolean
+        collectionId:
+          description: The collection to move the page to.
+          type: string
+          format: uuid
+    UpdatePageV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        pathname:
+          description: The pathname of the page
+          type: string
+          example: about
+        name:
+          description: The name of the page
+          type: string
+          example: About
+        pageTypeId:
+          description: The page type ID of the page.
+          type: string
+          format: uuid
+          nullable: true
+        collectionId:
+          description: The collection ID of the page.
+          type: string
+          format: uuid
+          nullable: true
+        seoCanonicalUrl:
+          description: The canonical URL of the page
+          type: string
+          nullable: true
+        seoIsIndexingBlocked:
+          description: Whether the page is blocked from indexing
+          type: boolean
+          nullable: true
+        seoSitemapPriority:
+          description: The priority of the page in the sitemap
+          type: number
+          nullable: true
+        seoSitemapFrequency:
+          description: The frequency with which the page is updated in the sitemap
+          type: string
+          nullable: true
+        metaTitle:
+          description: The title of the page
+          type: string
+          nullable: true
+        metaDescription:
+          description: The description of the page
+          type: string
+          nullable: true
+        metaKeywords:
+          description: The keywords of the page
+          type: string
+          nullable: true
+        isOnline:
+          description: Whether the page is online
+          type: boolean
+      required:
+        - id
+        - pathname
+        - name
+        - pageTypeId
+        - collectionId
         - seoCanonicalUrl
         - seoIsIndexingBlocked
         - seoSitemapPriority
@@ -2932,6 +3430,16 @@ components:
           description: The name of the page
           type: string
           example: About
+        pageTypeId:
+          description: The page type ID of the page.
+          type: string
+          format: uuid
+          nullable: true
+        collectionId:
+          description: The collection ID of the page.
+          type: string
+          format: uuid
+          nullable: true
         seoCanonicalUrl:
           description: The canonical URL of the page
           type: string
@@ -2967,6 +3475,8 @@ components:
         - id
         - pathname
         - name
+        - pageTypeId
+        - collectionId
         - seoCanonicalUrl
         - seoIsIndexingBlocked
         - seoSitemapPriority
@@ -2990,10 +3500,20 @@ components:
                 type: string
               isOnline:
                 type: boolean
+              pageTypeId:
+                type: string
+                format: uuid
+                nullable: true
+              collectionId:
+                type: string
+                format: uuid
+                nullable: true
             required:
               - id
               - pathname
               - isOnline
+              - pageTypeId
+              - collectionId
         hasMore:
           description: Whether there are more pages available for pagination.
           type: boolean
@@ -3235,6 +3755,336 @@ components:
         - isOnline
         - excludedFromSearchEngines
         - localizations
+    BatchCreatePagesV0RequestBodyDto:
+      type: object
+      properties:
+        siteId:
+          type: string
+          format: uuid
+        pages:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                description: The ID of an existing base page. Required when locale is specified.
+                type: string
+                format: uuid
+              pathname:
+                description: The pathname of the page. Required when locale is not specified.
+                type: string
+              name:
+                description: The name of the page.
+                type: string
+              pageTypeIdOrSlug:
+                description: The page type ID or slug. Only used when locale is not specified.
+                type: string
+              collectionId:
+                description: The collection ID. Only used when locale is not specified.
+                type: string
+                format: uuid
+              locale:
+                description: A site_locale UUID or locale code (e.g. "en-US"). When present, creates a localized page for the existing base page identified by id.
+                type: string
+          maxItems: 1000
+          minItems: 1
+      required:
+        - siteId
+        - pages
+    BatchLookupPagesV0RequestBodyDto:
+      type: object
+      properties:
+        siteId:
+          type: string
+          format: uuid
+        pages:
+          type: array
+          items:
+            type: object
+            properties:
+              pathname:
+                type: string
+              locale:
+                type: string
+            required:
+              - pathname
+          maxItems: 1000
+          minItems: 1
+      required:
+        - siteId
+        - pages
+    BatchLookupPagesV0Response:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+            format: uuid
+          pathname:
+            description: The pathname of the page
+            type: string
+            example: about
+          name:
+            description: The name of the page
+            type: string
+            example: About
+          pageTypeId:
+            description: The page type ID of the page.
+            type: string
+            format: uuid
+            nullable: true
+          collectionId:
+            description: The collection ID of the page.
+            type: string
+            format: uuid
+            nullable: true
+          seoCanonicalUrl:
+            description: The canonical URL of the page
+            type: string
+            nullable: true
+          seoIsIndexingBlocked:
+            description: Whether the page is blocked from indexing
+            type: boolean
+            nullable: true
+          seoSitemapPriority:
+            description: The priority of the page in the sitemap
+            type: number
+            nullable: true
+          seoSitemapFrequency:
+            description: The frequency with which the page is updated in the sitemap
+            type: string
+            nullable: true
+          metaTitle:
+            description: The title of the page
+            type: string
+            nullable: true
+          metaDescription:
+            description: The description of the page
+            type: string
+            nullable: true
+          metaKeywords:
+            description: The keywords of the page
+            type: string
+            nullable: true
+          isOnline:
+            description: Whether the page is online
+            type: boolean
+        required:
+          - id
+          - pathname
+          - name
+          - pageTypeId
+          - collectionId
+          - seoCanonicalUrl
+          - seoIsIndexingBlocked
+          - seoSitemapPriority
+          - seoSitemapFrequency
+          - metaTitle
+          - metaDescription
+          - metaKeywords
+          - isOnline
+        nullable: true
+    CreatePageTypeBodyDto:
+      type: object
+      properties:
+        name:
+          description: The name of the page type.
+          type: string
+          minLength: 1
+        managementMode:
+          description: Controls whether pages of this type are managed internally via the builder or externally via API.
+          type: string
+          enum:
+            - internal
+            - external
+        slug:
+          description: Machine-readable identifier for the page type.
+          type: string
+          nullable: true
+          pattern: ^[a-z0-9]+(?:-[a-z0-9]+)*$
+      required:
+        - name
+        - managementMode
+    CreatePageTypeResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          description: The name of the page type.
+          type: string
+        managementMode:
+          description: Controls whether pages of this type are managed internally via the builder or externally via API.
+          type: string
+          enum:
+            - internal
+            - external
+        slug:
+          description: Machine-readable identifier for the page type.
+          type: string
+          nullable: true
+        isDefault:
+          description: Whether this is the default page type.
+          type: boolean
+        managedBy:
+          description: The ID of the app that manages this page type, if any.
+          type: string
+          format: uuid
+          nullable: true
+        rootCollectionId:
+          description: The ID of the root collection for this page type.
+          type: string
+          format: uuid
+          nullable: true
+        createdAt:
+          description: When the page type was created.
+          type: string
+          format: date-time
+        updatedAt:
+          description: When the page type was last updated.
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - managementMode
+        - slug
+        - isDefault
+        - managedBy
+        - rootCollectionId
+        - createdAt
+        - updatedAt
+    UpdatePageTypeBodyDto:
+      type: object
+      properties:
+        name:
+          description: The name of the page type.
+          type: string
+          minLength: 1
+        slug:
+          description: Machine-readable identifier for the page type.
+          type: string
+          nullable: true
+          pattern: ^[a-z0-9]+(?:-[a-z0-9]+)*$
+    UpdatePageTypeResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          description: The name of the page type.
+          type: string
+        managementMode:
+          description: Controls whether pages of this type are managed internally via the builder or externally via API.
+          type: string
+          enum:
+            - internal
+            - external
+        slug:
+          description: Machine-readable identifier for the page type.
+          type: string
+          nullable: true
+        isDefault:
+          description: Whether this is the default page type.
+          type: boolean
+        managedBy:
+          description: The ID of the app that manages this page type, if any.
+          type: string
+          format: uuid
+          nullable: true
+        rootCollectionId:
+          description: The ID of the root collection for this page type.
+          type: string
+          format: uuid
+          nullable: true
+        createdAt:
+          description: When the page type was created.
+          type: string
+          format: date-time
+        updatedAt:
+          description: When the page type was last updated.
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - managementMode
+        - slug
+        - isDefault
+        - managedBy
+        - rootCollectionId
+        - createdAt
+        - updatedAt
+    ConflictResponseDto:
+      type: object
+      properties:
+        object:
+          type: string
+          enum:
+            - error
+        code:
+          type: string
+          enum:
+            - conflict
+        message:
+          type: string
+      required:
+        - object
+        - code
+        - message
+    GetPageTypeResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          description: The name of the page type.
+          type: string
+        managementMode:
+          description: Controls whether pages of this type are managed internally via the builder or externally via API.
+          type: string
+          enum:
+            - internal
+            - external
+        slug:
+          description: Machine-readable identifier for the page type.
+          type: string
+          nullable: true
+        isDefault:
+          description: Whether this is the default page type.
+          type: boolean
+        managedBy:
+          description: The ID of the app that manages this page type, if any.
+          type: string
+          format: uuid
+          nullable: true
+        rootCollectionId:
+          description: The ID of the root collection for this page type.
+          type: string
+          format: uuid
+          nullable: true
+        createdAt:
+          description: When the page type was created.
+          type: string
+          format: date-time
+        updatedAt:
+          description: When the page type was last updated.
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - managementMode
+        - slug
+        - isDefault
+        - managedBy
+        - rootCollectionId
+        - createdAt
+        - updatedAt
     CreateSiteLocaleV1RequestBodyDto:
       type: object
       properties:
@@ -3251,7 +4101,7 @@ components:
           description: The domain URL for domain-based localization. This URL must include the protocol.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com.mx'
+          example: https://hearthfurniture.com.mx
       required:
         - locale
     CreateSiteLocaleV1ResponseBodyDto:
@@ -3273,7 +4123,7 @@ components:
           description: The domain URL for domain-based localization. This URL must include the protocol.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com.mx'
+          example: https://hearthfurniture.com.mx
           nullable: true
       required:
         - id
@@ -3294,7 +4144,7 @@ components:
           description: The domain URL for domain-based localization. This URL must include the protocol.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com.mx'
+          example: https://hearthfurniture.com.mx
       required:
         - siteId
         - locale
@@ -3323,7 +4173,12 @@ components:
           description: The domain URL for domain-based localization.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com.mx'
+          example: https://hearthfurniture.com.mx
+          nullable: true
+        pathPrefix:
+          description: Custom URL path prefix. Null means the locale code is used as the default prefix.
+          type: string
+          example: french
           nullable: true
         isDefault:
           description: The flag that indicates whether this locale is the default locale for the site.
@@ -3333,41 +4188,8 @@ components:
         - id
         - locale
         - domain
+        - pathPrefix
         - isDefault
-    NotFoundResponseDto:
-      type: object
-      properties:
-        object:
-          type: string
-          enum:
-            - error
-        code:
-          type: string
-          enum:
-            - not_found
-        message:
-          type: string
-      required:
-        - object
-        - code
-        - message
-    ConflictResponseDto:
-      type: object
-      properties:
-        object:
-          type: string
-          enum:
-            - error
-        code:
-          type: string
-          enum:
-            - conflict
-        message:
-          type: string
-      required:
-        - object
-        - code
-        - message
     ListSiteLocaleV2ResponseBodyDto:
       type: object
       properties:
@@ -3404,7 +4226,12 @@ components:
                 description: The domain URL for domain-based localization.
                 type: string
                 format: uri
-                example: 'https://hearthfurniture.com.mx'
+                example: https://hearthfurniture.com.mx
+                nullable: true
+              pathPrefix:
+                description: Custom URL path prefix. Null means the locale code is used as the default prefix.
+                type: string
+                example: french
                 nullable: true
               isDefault:
                 description: The flag that indicates whether this locale is the default locale for the site.
@@ -3414,6 +4241,7 @@ components:
               - id
               - locale
               - domain
+              - pathPrefix
               - isDefault
         hasMore:
           description: The flag that indicates whether there are more locales available.
@@ -3447,7 +4275,12 @@ components:
           description: The domain URL for domain-based localization.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com.mx'
+          example: https://hearthfurniture.com.mx
+          nullable: true
+        pathPrefix:
+          description: Custom URL path prefix. Null means the locale code is used as the default prefix.
+          type: string
+          example: french
           nullable: true
         isDefault:
           description: The flag that indicates whether this locale is the default locale for the site.
@@ -3457,6 +4290,7 @@ components:
         - id
         - locale
         - domain
+        - pathPrefix
         - isDefault
     UpdateSiteLocaleV1RequestBodyDto:
       type: object
@@ -3474,7 +4308,8 @@ components:
           description: The domain URL for domain-based localization. This URL must include the protocol.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com.mx'
+          example: https://hearthfurniture.com.mx
+          nullable: true
     UpdateSiteLocaleV1ResponseBodyDto:
       type: object
       properties:
@@ -3494,7 +4329,7 @@ components:
           description: The domain URL for domain-based localization. This URL must include the protocol.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com.mx'
+          example: https://hearthfurniture.com.mx
           nullable: true
       required:
         - id
@@ -3511,7 +4346,9 @@ components:
           description: The domain URL for domain-based localization. This URL must include the protocol.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com.mx'
+          example: https://hearthfurniture.com.mx
+          nullable: true
+      additionalProperties: false
     UpdateSiteLocaleV2ResponseBodyDto:
       type: object
       properties:
@@ -3537,7 +4374,12 @@ components:
           description: The domain URL for domain-based localization.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com.mx'
+          example: https://hearthfurniture.com.mx
+          nullable: true
+        pathPrefix:
+          description: Custom URL path prefix. Null means the locale code is used as the default prefix.
+          type: string
+          example: french
           nullable: true
         isDefault:
           description: The flag that indicates whether this locale is the default locale for the site.
@@ -3547,6 +4389,7 @@ components:
         - id
         - locale
         - domain
+        - pathPrefix
         - isDefault
     ReadSiteLocaleV1ResponseBodyDto:
       type: object
@@ -3567,7 +4410,7 @@ components:
           description: The domain URL for domain-based localization. This URL must include the protocol.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com.mx'
+          example: https://hearthfurniture.com.mx
           nullable: true
       required:
         - id
@@ -3599,7 +4442,12 @@ components:
           description: The domain URL for domain-based localization.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com.mx'
+          example: https://hearthfurniture.com.mx
+          nullable: true
+        pathPrefix:
+          description: Custom URL path prefix. Null means the locale code is used as the default prefix.
+          type: string
+          example: french
           nullable: true
         isDefault:
           description: The flag that indicates whether this locale is the default locale for the site.
@@ -3609,6 +4457,7 @@ components:
         - id
         - locale
         - domain
+        - pathPrefix
         - isDefault
     GetByLocaleSiteLocaleV1ResponseBodyDto:
       type: object
@@ -3629,250 +4478,19 @@ components:
           description: The domain URL for domain-based localization. This URL must include the protocol.
           type: string
           format: uri
-          example: 'https://hearthfurniture.com.mx'
+          example: https://hearthfurniture.com.mx
           nullable: true
       required:
         - id
         - locale
         - domain
-    ListSiteRouteV1ResponseBodyDto:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-                format: uuid
-              pathname:
-                description: 'Pathname of the route, e.g., "/about".'
-                type: string
-                example: /about
-            required:
-              - id
-              - pathname
-            description: Site route.
-            example:
-              id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-              pathname: /about
-        hasMore:
-          type: boolean
-      required:
-        - data
-        - hasMore
-    CreateSiteRouteV1RequestBodyDto:
-      description: Request body for creating a new site route.
-      type: object
-      properties:
-        pathname:
-          description: 'Pathname of the route, e.g., "/about".'
-          type: string
-          example: /about
-      required:
-        - pathname
-    CreateSiteRouteV1ResponseBodyDto:
-      description: Site route.
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        pathname:
-          description: 'Pathname of the route, e.g., "/about".'
-          type: string
-          example: /about
-      example:
-        id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-        pathname: /about
-      required:
-        - id
-        - pathname
-    ReadSiteRouteV1ResponseBodyDto:
-      description: Site route.
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        pathname:
-          description: 'Pathname of the route, e.g., "/about".'
-          type: string
-          example: /about
-      example:
-        id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-        pathname: /about
-      required:
-        - id
-        - pathname
-    ListSiteRouteV2ResponseBodyDto:
-      type: object
-      properties:
-        object:
-          type: string
-          enum:
-            - list
-        data:
-          type: array
-          items:
-            type: object
-            properties:
-              object:
-                type: string
-                enum:
-                  - route
-              id:
-                description: The ID of the route.
-                type: string
-                format: uuid
-              pathname:
-                description: The route pathname.
-                type: string
-                example: /furniture
-            required:
-              - object
-              - id
-              - pathname
-            description: The route.
-            example:
-              object: route
-              id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-              pathname: /furniture
-        hasMore:
-          description: The flag that indicates whether there are more routes available.
-          type: boolean
-      required:
-        - object
-        - data
-        - hasMore
-    CreateSiteRouteV2RequestBodyDto:
-      description: The request body for creating a new route.
-      type: object
-      properties:
-        siteId:
-          description: The site ID to create the route for.
-          type: string
-          format: uuid
-        pathname:
-          description: The route pathname.
-          type: string
-          example: /furniture
-      required:
-        - siteId
-        - pathname
-    CreateSiteRouteV2ResponseBodyDto:
-      description: The route.
-      type: object
-      properties:
-        object:
-          type: string
-          enum:
-            - route
-        id:
-          description: The ID of the route.
-          type: string
-          format: uuid
-        pathname:
-          description: The route pathname.
-          type: string
-          example: /furniture
-      example:
-        object: route
-        id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-        pathname: /furniture
-      required:
-        - object
-        - id
-        - pathname
-    ReadSiteRouteV2ResponseBodyDto:
-      description: The route.
-      type: object
-      properties:
-        object:
-          type: string
-          enum:
-            - route
-        id:
-          description: The ID of the route.
-          type: string
-          format: uuid
-        pathname:
-          description: The route pathname.
-          type: string
-          example: /furniture
-      example:
-        object: route
-        id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-        pathname: /furniture
-      required:
-        - object
-        - id
-        - pathname
-    UpdateSiteRouteV2RequestBodyDto:
-      description: The request body for updating an existing route.
-      type: object
-      properties:
-        pathname:
-          description: The route pathname.
-          type: string
-          example: /furniture
-    UpdateSiteRouteV2ResponseBodyDto:
-      description: The route.
-      type: object
-      properties:
-        object:
-          type: string
-          enum:
-            - route
-        id:
-          description: The ID of the route.
-          type: string
-          format: uuid
-        pathname:
-          description: The route pathname.
-          type: string
-          example: /furniture
-      example:
-        object: route
-        id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-        pathname: /furniture
-      required:
-        - object
-        - id
-        - pathname
-    UpdateSiteRouteV1RequestBodyDto:
-      description: Request body for updating an existing site route.
-      type: object
-      properties:
-        pathname:
-          description: 'Pathname of the route, e.g., "/about".'
-          type: string
-          example: /about
-    UpdateSiteRouteV1ResponseBodyDto:
-      description: Site route.
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        pathname:
-          description: 'Pathname of the route, e.g., "/about".'
-          type: string
-          example: /about
-      example:
-        id: 37b18c41-9752-4adf-9aef-f42ab4f74b04
-        pathname: /about
-      required:
-        - id
-        - pathname
     CreateWebhookV1RequestBodyDto:
       type: object
       properties:
         url:
           type: string
           format: uri
-          example: 'https://example.com/webhook'
+          example: https://example.com/webhook
         eventType:
           type: string
           enum:
@@ -3896,7 +4514,7 @@ components:
         url:
           type: string
           format: uri
-          example: 'https://example.com/webhook'
+          example: https://example.com/webhook
         eventType:
           type: string
           enum:
@@ -3927,7 +4545,7 @@ components:
               url:
                 type: string
                 format: uri
-                example: 'https://example.com/webhook'
+                example: https://example.com/webhook
               eventType:
                 type: string
                 enum:
@@ -3958,7 +4576,7 @@ components:
         url:
           type: string
           format: uri
-          example: 'https://example.com/webhook'
+          example: https://example.com/webhook
         eventType:
           type: string
           enum:
@@ -3992,9 +4610,11 @@ tags:
     description: ''
   - name: Locale
     description: ''
-  - name: Route
-    description: ''
   - name: Page
+    description: ''
+  - name: Page Type
+    description: ''
+  - name: Collection
     description: ''
   - name: Webhook Management
     description: ''
@@ -4028,6 +4648,16 @@ webhooks:
                       description: The name of the page
                       type: string
                       example: About
+                    pageTypeId:
+                      description: The page type ID of the page.
+                      type: string
+                      format: uuid
+                      nullable: true
+                    collectionId:
+                      description: The collection ID of the page.
+                      type: string
+                      format: uuid
+                      nullable: true
                     seoCanonicalUrl:
                       description: The canonical URL of the page
                       type: string
@@ -4063,6 +4693,8 @@ webhooks:
                     - id
                     - pathname
                     - name
+                    - pageTypeId
+                    - collectionId
                     - seoCanonicalUrl
                     - seoIsIndexingBlocked
                     - seoSitemapPriority
@@ -4104,6 +4736,16 @@ webhooks:
                       description: The name of the page
                       type: string
                       example: About
+                    pageTypeId:
+                      description: The page type ID of the page.
+                      type: string
+                      format: uuid
+                      nullable: true
+                    collectionId:
+                      description: The collection ID of the page.
+                      type: string
+                      format: uuid
+                      nullable: true
                     seoCanonicalUrl:
                       description: The canonical URL of the page
                       type: string
@@ -4139,6 +4781,8 @@ webhooks:
                     - id
                     - pathname
                     - name
+                    - pageTypeId
+                    - collectionId
                     - seoCanonicalUrl
                     - seoIsIndexingBlocked
                     - seoSitemapPriority
@@ -4180,6 +4824,16 @@ webhooks:
                       description: The name of the page
                       type: string
                       example: About
+                    pageTypeId:
+                      description: The page type ID of the page.
+                      type: string
+                      format: uuid
+                      nullable: true
+                    collectionId:
+                      description: The collection ID of the page.
+                      type: string
+                      format: uuid
+                      nullable: true
                     seoCanonicalUrl:
                       description: The canonical URL of the page
                       type: string
@@ -4215,6 +4869,8 @@ webhooks:
                     - id
                     - pathname
                     - name
+                    - pageTypeId
+                    - collectionId
                     - seoCanonicalUrl
                     - seoIsIndexingBlocked
                     - seoSitemapPriority
@@ -4256,6 +4912,16 @@ webhooks:
                       description: The name of the page
                       type: string
                       example: About
+                    pageTypeId:
+                      description: The page type ID of the page.
+                      type: string
+                      format: uuid
+                      nullable: true
+                    collectionId:
+                      description: The collection ID of the page.
+                      type: string
+                      format: uuid
+                      nullable: true
                     seoCanonicalUrl:
                       description: The canonical URL of the page
                       type: string
@@ -4291,6 +4957,8 @@ webhooks:
                     - id
                     - pathname
                     - name
+                    - pageTypeId
+                    - collectionId
                     - seoCanonicalUrl
                     - seoIsIndexingBlocked
                     - seoSitemapPriority
@@ -4339,6 +5007,120 @@ webhooks:
                         - to
                     at:
                       type: number
+                    unstable_diff:
+                      type: object
+                      nullable: true
+                      properties:
+                        components:
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                              locale:
+                                type: string
+                                nullable: true
+                              changeType:
+                                type: string
+                                enum:
+                                  - created
+                                  - updated
+                                  - deleted
+                            required:
+                              - id
+                              - locale
+                              - changeType
+                          type: array
+                        pages:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              pageId:
+                                type: string
+                                format: uuid
+                              locale:
+                                type: string
+                                nullable: true
+                              changeType:
+                                type: string
+                                enum:
+                                  - created
+                                  - updated
+                                  - deleted
+                              pathname:
+                                type: string
+                              previousPathname:
+                                type: string
+                            required:
+                              - pageId
+                              - locale
+                              - changeType
+                              - pathname
+                        globalElements:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                format: uuid
+                              locale:
+                                type: string
+                                nullable: true
+                              changeType:
+                                type: string
+                                enum:
+                                  - created
+                                  - updated
+                                  - deleted
+                            required:
+                              - id
+                              - locale
+                              - changeType
+                        swatches:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                format: uuid
+                              changeType:
+                                type: string
+                                enum:
+                                  - created
+                                  - updated
+                                  - deleted
+                            required:
+                              - id
+                              - changeType
+                        typographies:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                format: uuid
+                              changeType:
+                                type: string
+                                enum:
+                                  - created
+                                  - updated
+                                  - deleted
+                            required:
+                              - id
+                              - changeType
+                      required:
+                        - components
+                        - pages
+                        - globalElements
+                        - swatches
+                        - typographies
+                    unstable_defaultLocale:
+                      type: string
+                      nullable: true
                   required:
                     - siteId
                     - publish
