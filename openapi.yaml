@@ -7,6 +7,19 @@ servers:
   - url: https://api.makeswift.com
     description: Production server
 paths:
+  /v1/auth/user-info:
+    get:
+      operationId: AuthController_getUserInfo_v1
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUserInfoV1ResponseBodyDto'
+      tags:
+        - Authentication
   /v1/workspaces:
     post:
       operationId: WorkspaceController_create_v1
@@ -269,19 +282,6 @@ paths:
                 $ref: '#/components/schemas/ListWorkspaceMemberV1ResponseBodyDto'
       tags:
         - Workspace Member
-  /v1/auth/user-info:
-    get:
-      operationId: AuthController_getUserInfo_v1
-      parameters: []
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetUserInfoV1ResponseBodyDto'
-      tags:
-        - Authentication
   /v1/workspaces/{workspaceId}/sites:
     post:
       operationId: SiteController_create_v1
@@ -615,6 +615,41 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DuplicateSiteV2ResponseBodyDto'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponseDto'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponseDto'
+      tags:
+        - Site
+  /v1/sites/{siteId}/publish:
+    post:
+      operationId: SiteController_publishSite_v1
+      summary: Publish Site
+      description: Publishes a site with optional page filtering and content resource inclusion.
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublishSiteV1RequestBodyDto'
+      responses:
+        '204':
+          description: Site published successfully
         '400':
           description: ''
           content:
@@ -1976,6 +2011,16 @@ paths:
         - Webhook Management
 components:
   schemas:
+    GetUserInfoV1ResponseBodyDto:
+      type: object
+      properties:
+        id:
+          description: The ID of the user
+          type: string
+          format: uuid
+          example: d2ccb4e7-1364-496d-a131-bd996269ab2c
+      required:
+        - id
     CreateWorkspaceV1RequestBodyDto:
       type: object
       properties:
@@ -2113,16 +2158,6 @@ components:
       required:
         - data
         - hasMore
-    GetUserInfoV1ResponseBodyDto:
-      type: object
-      properties:
-        id:
-          description: The ID of the user
-          type: string
-          format: uuid
-          example: d2ccb4e7-1364-496d-a131-bd996269ab2c
-      required:
-        - id
     CreateSiteV1RequestBodyDto:
       type: object
       properties:
@@ -2706,6 +2741,26 @@ components:
         - publicApiKey
         - defaultLocale
         - localeManagementMode
+    PublishSiteV1RequestBodyDto:
+      type: object
+      properties:
+        includeContentResources:
+          description: When true, publishes all non-page resources (swatches, typographies, components). Defaults to true when omitted.
+          type: boolean
+          example: true
+          default: true
+        pageIds:
+          description: If provided, publishes only those pages. If omitted, publishes all pages.
+          type: array
+          items:
+            type: string
+            format: uuid
+          example:
+            - 123e4567-e89b-12d3-a456-426614174000
+        message:
+          description: Optional commit message for the publish
+          type: string
+          example: Published homepage updates
     CreateCollectionBodyDto:
       type: object
       properties:
