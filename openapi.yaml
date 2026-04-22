@@ -3952,6 +3952,7 @@ components:
                     enum:
                       - PATHNAME_CONFLICT
                       - INVALID_PATHNAME
+                      - INVALID_PAGE_TYPE
                       - DUPLICATE_IN_BATCH
                       - INVALID_LOCALE
                       - NOT_FOUND
