@@ -4013,6 +4013,14 @@ components:
               locale:
                 description: A site_locale UUID or locale code (e.g. "en-US"). When present, updates the localized page for the base page identified by id.
                 type: string
+              pageTypeIdOrSlug:
+                description: The page type ID or slug to assign. Only applies to base pages (when locale is not set). Ignored for localized page updates.
+                type: string
+                deprecated: true
+              collectionId:
+                description: The collection to assign the page to. Only applies to base pages (when locale is not set). Ignored for localized page updates.
+                type: string
+                format: uuid
             required:
               - id
           maxItems: 1000
@@ -4123,6 +4131,7 @@ components:
                       - PATHNAME_CONFLICT
                       - INVALID_PATHNAME
                       - NOT_FOUND
+                      - INVALID_PAGE_TYPE
                   message:
                     type: string
                 required:
