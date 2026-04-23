@@ -4002,7 +4002,7 @@ components:
                 type: string
                 format: uuid
               name:
-                description: The new name of the page.
+                description: The new name of the page. Only applies to base pages (when locale is not set). Ignored for localized page updates.
                 type: string
               pathname:
                 description: The new pathname of the page.
